@@ -1126,6 +1126,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.0.1</b> : le bloc « Besoins » est désormais cliquable à toutes les étapes, y compris en Contact et sur une fiche neuve (il restait vide et inutilisable en Contact).</li>
 <li><b>Avancement automatique du dossier (V4.0)</b> : en haut de la fiche, une barre à 5 jalons (Contact, R1, R2, R3, Signé) se met à jour toute seule : ✓ vert = fait, rond orange = en cours, gris = à venir, avec un pourcentage d'avancement. Plus aucun clic obligatoire pour « valider » une étape. Sous la barre, des pastilles (✓ vert / ○ orange) montrent ce qui est fait ou reste à faire. Le bandeau <b>« À faire maintenant »</b> indique la prochaine action, avec un bouton <b>Aide</b> (à quoi ça sert, quoi faire, et ensuite) ; quand tout est prêt, il passe au vert (« Prêt pour R2 / R3 »). Le lien <b>« Changer l'étape manuellement »</b> permet de forcer une étape. Dans le portefeuille, la colonne Étape affiche l'étape, quatre points de progression et la pastille « Prêt pour R2 ».</li>
 <li><b>Champs obligatoires allégés (V4.0)</b> : seul le <b>nom de la pharmacie</b> est toujours obligatoire ; l'<b>échéance du projet</b> l'est à partir de la R1. Titulaire, ville, CIP, SIRET et e-mail ne bloquent plus (un format douteux affiche seulement un avertissement). S'il manque un champ, une fenêtre le liste ; cliquez sur la ligne pour y aller. Les champs à remplir (et le niveau d'intérêt) <b>clignotent doucement</b> jusqu'à leur saisie ; le clignotement s'arrête si votre appareil réduit les animations.</li>
 <li><b>Garde-fous de saisie (V4.0)</b> : une nouvelle fiche avec un nom de pharmacie est <b>enregistrée automatiquement</b> après quelques secondes (petit message en bas) ; la bande « Dernières fiches créées » de l'accueil permet de la rouvrir. Le bouton « Besoins » enregistre d'abord la fiche puis ouvre les besoins.</li>
@@ -1764,7 +1765,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.0';
+const APP_VERSION = '4.0.1';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -4617,12 +4618,11 @@ function saveBesoins() {
 const besoinsDate = c => c.besoinsDate || (c.history || []).find(h => /^Besoins et problématiques/.test(h.action))?.date || '';
 function renderBesoins(c) {
   const box = $('f-besoins-box'), L = c?.besoins || [];
-  if (!c || (c.step === 'Contact' && !L.length)) { box.innerHTML = ''; return; }
-  const bd = besoinsDate(c);
-  box.innerHTML = `<div class="fbox ${L.length ? 'ok' : 'todo'}">${fboxHead('Besoins et problématiques du client', L.length > 0, L.length ? editBtn('openBesoins()') : '', c.step === 'R1' && !L.length ? '(obligatoire avant la R2)' : '')}
+  const bd = c ? besoinsDate(c) : null;
+  box.innerHTML = `<div class="fbox ${L.length ? 'ok' : 'todo'}">${fboxHead('Besoins et problématiques du client', L.length > 0, L.length ? editBtn('openBesoins()') : '', c && c.step === 'R1' && !L.length ? '(utile avant la R2)' : '')}
     ${L.length ? `<div class="rounded-lg bg-emerald-50 border border-emerald-200 text-emerald-900 text-[13px] font-semibold px-3 py-2 mb-2.5"><i class="fas fa-circle-check mr-1.5"></i>Besoins validés${bd ? ' le ' + fmtD(bd) : ''} · ${L.length} point${L.length > 1 ? 's' : ''}</div>
       <div class="flex flex-wrap gap-1.5">${L.map(l => { const i = (BESOINS.find(b => b[0] === l) || [, 'fa-check'])[1]; return `<span class="chip-ok"><i class="fas ${i} text-[11px]"></i>${esc(l)}</span>`; }).join('')}</div>${c.besoinsNote ? `<p class="text-xs text-muted mt-2">${esc(c.besoinsNote)}</p>` : ''}`
-    : '<button class="w-full rounded-xl border-2 border-dashed border-orange-300 bg-orange-50/40 px-3 py-3 text-[13px] font-semibold text-orange-900 text-left" onclick="openBesoins()"><i class="fas fa-clipboard-check mr-1.5"></i>À renseigner après la R1 : rapidité, accompagnement patient, gain de temps, espace, sécurisation, sérialisation, stocks, démarque, image, effectif, panier moyen…</button>'}</div>`;
+    : '<button class="w-full rounded-xl border-2 border-dashed border-orange-300 bg-orange-50/40 px-3 py-3 text-[13px] font-semibold text-orange-900 text-left" onclick="openBesoins()"><i class="fas fa-clipboard-check mr-1.5"></i>Cliquez pour renseigner les besoins (à tout moment, idéalement après la R1) : rapidité, accompagnement patient, gain de temps, espace, sécurisation, sérialisation, stocks, démarque, image, effectif, panier moyen…</button>'}</div>`;
 }
 function openStep(target) {
   const c = ensureSaved(); if (!c || !ORDER.includes(c.step)) return;
