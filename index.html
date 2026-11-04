@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -885,6 +885,7 @@
 <ul>
 <li><b>Créer une fiche</b> : recherchez la pharmacie par nom ou par n° CIP ; le téléphone, le SIRET et le titulaire se complètent depuis la base des pharmacies.</li>
 <li><b>Prochaine action et rappels</b> : à droite de chaque fiche (même signée ou perdue), le cadre orange reste visible quand vous faites défiler. Cliquez sur une icône (Relance, Rappel, Appel, Visite, Visio, E-mail), indiquez <b>la date, l'heure et un commentaire obligatoire</b>. Vous pouvez en poser plusieurs ; ils apparaissent dans « Ma journée », « Cette semaine » et « À relancer ». « Réalisée » les inscrit à l'historique avec votre commentaire.</li>
+<li><b>V2.5</b> : écran de connexion reconnu par les navigateurs (<b>enregistrement et remplissage du mot de passe</b>) ; case <b>« Rester connecté »</b> : un rafraîchissement de la page ne redemande plus le mot de passe (session limitée à l'onglet et à la durée d'inactivité).</li>
 <li><b>V2.4</b> : <b>sécurité</b> (connexion e-mail + mot de passe fort, chiffrement des données, clé de récupération, verrouillage automatique, cadenas) ; <b>RGPD</b> (fiches à réviser après 3 ans sans action : supprimer, anonymiser, prolonger) ; fenêtre « Ma journée » <b>au centre de l'écran</b> ; <b>devis fusionné dans l'offre de robotisation</b> (une seule carte, date « Réalisé le » facultative, confirmation sur « Réalisé ») ; explication sous « Devis + maintenance » ; <b>GENESI</b> : 2 options seulement (Couleur, Plateau supérieur en verre) ; colonne gauche de la fiche compactée ; « Prochaine action » avec le type, le compte à rebours et la liste des <b>autres actions prévues</b>.</li>
 <li><b>V2.3</b> : dernière vente robot (date et montant) dans Ventes ; un seul modèle de robot par offre ; <b>offres multiples A / B / C</b> par prospect (onglets, étoile = offre privilégiée du pipeline, bouton « Comparer », PDF comparatif, choix de l'offre signée) ; message clair sur les pièces manquantes avant le PDF ; <b>commission affichée et pointable</b> dans la fiche (robot et add-ons signés) ; tableaux resserrés (indicateur couleur, échéance en fin de ligne) ; « Ma journée » : clic = panneau détaillé à droite + nombre d'actions du jour ; Synchro clignote en rouge si non reliée ; Paramètres en menu à gauche (Documents et Envois et liens à part, sélecteurs) ; export CSV de Mon secteur (LGPI, Prospects, les deux) ; fiche client plus compacte ; infobulles et confirmations avant annulation ou suppression.</li>
 <li><b>V2.2</b> : accueil beaucoup plus compact pour voir le portefeuille sans dézoomer. Bloc « Ventes » sur une hauteur réduite (CA signé, signatures probables avec « Ce mois-ci » en jaune cadré orange, et graphique côte à côte ; période choisie par les boutons de l'en-tête, les dates n'apparaissent que pour « Dates ») ; indicateurs, dernière vente et challenge en une ligne de pastilles ; « Ma journée » à la même hauteur avec défilement ; pipeline et compteurs « Mes dossiers » sur une ligne. Le portefeuille garde ses colonnes et sa présentation. L'en-tête du smartphone ne déborde plus.</li>
@@ -947,6 +948,7 @@
 <li><b>Création du compte</b> au premier lancement : adresse e-mail (identifiant) et mot de passe fort (12 caractères minimum, majuscule, minuscule, chiffre, caractère spécial). Vos fiches existantes sont alors chiffrées, sans perte : une copie de secours est faite avant toute modification de version.</li>
 <li><b>Chiffrement</b> AES-256-GCM, clé dérivée du mot de passe (PBKDF2-SHA-256, 310 000 itérations). Les fiches, les réglages et les copies de secours du navigateur sont illisibles sans le mot de passe.</li>
 <li><b>Clé de récupération</b> (XXXX-XXXX-XXXX-XXXX), affichée <b>une seule fois</b> : imprimez-la ou rangez-la dans un gestionnaire de mots de passe. Elle réinitialise un mot de passe oublié (« Mot de passe oublié ? » sur l'écran de connexion), sans perte de données.</li>
+<li><b>Rester connecté</b> (case sur l'écran de connexion) : un rafraîchissement de la page ne redemande pas le mot de passe. La session se ferme à la fermeture de l'onglet, avec le cadenas ou après l'inactivité réglée. Les navigateurs (Chrome, Edge, Safari) proposent d'<b>enregistrer le mot de passe</b> et de le remplir.</li>
 <li><b>Verrouillage automatique</b> après inactivité (10 min par défaut, réglable de 5 à 60 min) et bouton <b>cadenas</b> en haut à droite pour verrouiller à la main. Un formulaire contenant des modifications non enregistrées empêche le verrouillage automatique.</li>
 <li><b>Paramètres › Profil › Sécurité du compte</b> : modifier l'identifiant ou le mot de passe, régler le verrouillage, régénérer la clé de récupération.</li>
 <li><b>Clé et mot de passe perdus</b> : les données de cet appareil ne peuvent pas être récupérées. Utilisez « Réinitialiser l'application » sur l'écran de récupération, puis restaurez votre dernière <b>sauvegarde JSON</b>.</li>
@@ -1249,7 +1251,7 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
 (function () {
   'use strict';
   const LS = window.localStorage, TE = new TextEncoder(), TD = new TextDecoder();
-  const PUB = /^(ptk_sec|ptk_sec_skip|ptk_app_version|ptk_schema|ptk_v\d+_mig)$/, ITER = 310000;
+  const PUB = /^(ptk_sec|ptk_sec_skip|ptk_sec_stay|ptk_app_version|ptk_schema|ptk_v\d+_mig)$/, ITER = 310000;
   const $q = id => document.getElementById(id), rnd = n => crypto.getRandomValues(new Uint8Array(n)), sleep = ms => new Promise(r => setTimeout(r, ms));
   const b64 = u => { u = new Uint8Array(u); let s = ''; for (let i = 0; i < u.length; i += 8192) s += String.fromCharCode.apply(null, u.subarray(i, i + 8192)); return btoa(s); };
   const ub = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
@@ -1338,31 +1340,32 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
   const done = () => { if (ov) { ov.remove(); ov = null; } if (RUNNING) { RUNNING = false; armIdle(); const b = document.getElementById('nav-lock'); if (b) b.title = 'Verrouiller l’application'; return; } window.__ptkStart(); armIdle(); };
 
   function showLogin() {
-    const d = screen(`<h3>🔒 Connexion</h3><div><label for="sc-m">Adresse e-mail</label><input type="email" id="sc-m" autocomplete="username" value="${esc(sec.email)}"></div>${pwField('sc-p', 'Mot de passe', 'current-password')}<div class="ft"><span></span><button class="lk" id="sc-fg" type="button">Mot de passe oublié ?</button></div><div class="er" id="sc-er"></div><button class="go" id="sc-go" type="button">Déverrouiller</button><p style="text-align:center">🛡 Données chiffrées sur cet appareil</p>`);
+    const stay = LS.getItem('ptk_sec_stay') === '1';
+    const d = screen(`<form id="sc-fm" autocomplete="on" style="display:flex;flex-direction:column;gap:11px"><h3>🔒 Connexion</h3><div><label for="sc-m">Adresse e-mail</label><input type="email" id="sc-m" name="username" autocomplete="username" value="${esc(sec.email)}"></div>${pwField('sc-p', 'Mot de passe', 'current-password')}<div class="ft"><label style="display:flex;gap:6px;align-items:center;margin:0;font-weight:600"><input type="checkbox" id="sc-stay" style="width:auto" ${stay ? 'checked' : ''}> Rester connecté (jusqu’à la fermeture de l’onglet)</label><button class="lk" id="sc-fg" type="button">Mot de passe oublié ?</button></div><div class="er" id="sc-er"></div><button class="go" id="sc-go" type="submit">Déverrouiller</button><p style="text-align:center">🛡 Données chiffrées sur cet appareil</p></form>`);
     const go = async () => {
       say(''); const b = $q('sc-go'); b.disabled = true;
-      try { if (val('sc-m').trim().toLowerCase() !== sec.email.toLowerCase()) throw 0; await unlockWith(val('sc-p'), 'pw'); await loadAll(); install(); fails = 0; done(); }
+      try { if (val('sc-m').trim().toLowerCase() !== sec.email.toLowerCase()) throw 0; await unlockWith(val('sc-p'), 'pw'); await loadAll(); install(); fails = 0; const st = $q('sc-stay').checked; LS.setItem('ptk_sec_stay', st ? '1' : '0'); if (st) saveSess(); else clearSess(); done(); }
       catch { fails++; await sleep(Math.min(fails * 700, 6000)); say(fails >= 5 ? 'Trop d’essais : patientez quelques secondes. Mot de passe oublié ? Utilisez votre clé de récupération.' : 'E-mail ou mot de passe incorrect.'); b.disabled = false; }
     };
-    $q('sc-go').onclick = go; d.addEventListener('keydown', e => { if (e.key === 'Enter') go(); }); $q('sc-fg').onclick = showForgot; setTimeout(() => $q('sc-p').focus(), 50);
+    $q('sc-fm').onsubmit = e => { e.preventDefault(); go(); }; $q('sc-fg').onclick = showForgot; setTimeout(() => $q('sc-p').focus(), 50);
   }
   function showForgot() {
-    const d = screen(`<h3>🔑 Clé de récupération</h3><p>Saisissez le code de secours remis à la création de votre compte, puis choisissez un nouveau mot de passe.</p><div><label for="sc-k">Clé de récupération</label><input type="text" id="sc-k" placeholder="XXXX-XXXX-XXXX-XXXX" autocomplete="off" style="font-family:ui-monospace,Consolas,monospace;letter-spacing:.06em"></div>${pwField('sc-p', 'Nouveau mot de passe', 'new-password')}<div id="sc-mt"></div><div class="er" id="sc-er"></div><button class="go" id="sc-go" type="button">Réinitialiser</button><div class="tp"><b>Clé perdue ?</b> Vos données restent chiffrées et illisibles sans elle. Vous pouvez réinitialiser l’application, puis restaurer votre dernière sauvegarde (fichier JSON).</div><div class="ft"><button class="lk" id="sc-bk" type="button">← Retour à la connexion</button><button class="lk" id="sc-rs" type="button">Réinitialiser l’application…</button></div>`);
+    const d = screen(`<form id="sc-fm" autocomplete="on" style="display:flex;flex-direction:column;gap:11px"><input type="email" name="username" autocomplete="username" value="${esc(sec.email)}" style="display:none"><h3>🔑 Clé de récupération</h3><p>Saisissez le code de secours remis à la création de votre compte, puis choisissez un nouveau mot de passe.</p><div><label for="sc-k">Clé de récupération</label><input type="text" id="sc-k" placeholder="XXXX-XXXX-XXXX-XXXX" autocomplete="off" style="font-family:ui-monospace,Consolas,monospace;letter-spacing:.06em"></div>${pwField('sc-p', 'Nouveau mot de passe', 'new-password')}<div id="sc-mt"></div><div class="er" id="sc-er"></div><button class="go" id="sc-go" type="submit">Réinitialiser</button><div class="tp"><b>Clé perdue ?</b> Vos données restent chiffrées et illisibles sans elle. Vous pouvez réinitialiser l’application, puis restaurer votre dernière sauvegarde (fichier JSON).</div><div class="ft"><button class="lk" id="sc-bk" type="button">← Retour à la connexion</button><button class="lk" id="sc-rs" type="button">Réinitialiser l’application…</button></div></form>`);
     meter($q('sc-mt'), ''); $q('sc-p').oninput = () => meter($q('sc-mt'), val('sc-p')); $q('sc-bk').onclick = showLogin;
-    $q('sc-go').onclick = async () => {
-      say(''); const pw = val('sc-p'); if (!strong(pw)) return say('Le nouveau mot de passe n’est pas assez fort.'); const b = $q('sc-go'); b.disabled = true;
+    $q('sc-fm').onsubmit = async e => {
+      e.preventDefault(); say(''); const pw = val('sc-p'); if (!strong(pw)) return say('Le nouveau mot de passe n’est pas assez fort.'); const b = $q('sc-go'); b.disabled = true;
       try { await unlockWith(val('sc-k'), 'rk'); await setPw(pw); await loadAll(); install(); done(); } catch { await sleep(800); say('Clé de récupération incorrecte.'); b.disabled = false; }
     };
     $q('sc-rs').onclick = () => { const t = prompt('Cette action EFFACE toutes les données de cet appareil (fiches, réglages). Tapez EFFACER pour confirmer :'); if (t === 'EFFACER') { Object.keys(LS).filter(k => k.startsWith('ptk_')).forEach(k => LS.removeItem(k)); location.reload(); } };
   }
   function showCreate(first) {
     let pre = ''; try { pre = (JSON.parse(LS.getItem('ptk_user_settings') || '{}').email || '').replace(/^eric\.r@.*$/, ''); } catch { }
-    const d = screen(`<h3>🔒 Création du compte</h3><p>Protégez vos données : adresse e-mail (identifiant) et mot de passe fort. Vos fiches seront chiffrées sur cet appareil.</p><div><label for="sc-m">Adresse e-mail (identifiant)</label><input type="email" id="sc-m" autocomplete="username" value="${esc(pre)}" placeholder="prenom.nom@pharmathek.fr"></div>${pwField('sc-p', 'Mot de passe', 'new-password')}<div id="sc-mt"></div>${pwField('sc-p2', 'Confirmer le mot de passe', 'new-password')}<div class="er" id="sc-er"></div><button class="go" id="sc-go" type="button">Créer mon compte</button><p>Une clé de récupération vous sera ensuite remise.</p>${first ? '<div style="text-align:center"><button class="lk" id="sc-sk" type="button">Continuer sans protection pour cette fois</button></div>' : '<div style="text-align:center"><button class="lk" id="sc-cn" type="button">Annuler</button></div>'}`);
+    const d = screen(`<form id="sc-fm" autocomplete="on" style="display:flex;flex-direction:column;gap:11px"><h3>🔒 Création du compte</h3><p>Protégez vos données : adresse e-mail (identifiant) et mot de passe fort. Vos fiches seront chiffrées sur cet appareil.</p><div><label for="sc-m">Adresse e-mail (identifiant)</label><input type="email" id="sc-m" name="username" autocomplete="username" value="${esc(pre)}" placeholder="prenom.nom@pharmathek.fr"></div>${pwField('sc-p', 'Mot de passe', 'new-password')}<div id="sc-mt"></div>${pwField('sc-p2', 'Confirmer le mot de passe', 'new-password')}<div class="er" id="sc-er"></div><button class="go" id="sc-go" type="submit">Créer mon compte</button><p>Une clé de récupération vous sera ensuite remise.</p>${first ? '<div style="text-align:center"><button class="lk" id="sc-sk" type="button">Continuer sans protection pour cette fois</button></div>' : '<div style="text-align:center"><button class="lk" id="sc-cn" type="button">Annuler</button></div>'}</form>`);
     meter($q('sc-mt'), ''); $q('sc-p').oninput = () => meter($q('sc-mt'), val('sc-p'));
     if (!first) $q('sc-cn').onclick = () => { RUNNING = false; ov.remove(); ov = null; };
     if (first) $q('sc-sk').onclick = () => { if (ov) { ov.remove(); ov = null; } window.__ptkStart(); armIdle(); };
-    $q('sc-go').onclick = async () => {
-      say(''); const m = val('sc-m').trim(), pw = val('sc-p');
+    $q('sc-fm').onsubmit = async e => {
+      e.preventDefault(); say(''); const m = val('sc-m').trim(), pw = val('sc-p');
       if (!okMail(m)) return say('Adresse e-mail non valide.'); if (!strong(pw)) return say('Mot de passe trop faible : respectez les 4 règles.'); if (pw !== val('sc-p2')) return say('Les deux mots de passe sont différents.');
       const b = $q('sc-go'); b.disabled = true; b.textContent = 'Chiffrement en cours…';
       try { const rk = await create(m, pw); install(); await loadAll(); showKey(rk); } catch (e) { console.error(e); say('Création impossible : vos données n’ont pas été modifiées.'); b.disabled = false; b.textContent = 'Créer mon compte'; }
@@ -1376,14 +1379,21 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
     $q('sc-go').onclick = () => { if (onDone) { ov.remove(); ov = null; onDone(); } else done(); };
   }
 
+  /* ----- « Rester connecté » : la clé reste dans l'onglet seulement (sessionStorage), effacée à la fermeture, au verrouillage ou après inactivité ----- */
+  const saveSess = () => { try { sessionStorage.setItem('ptk_sess', JSON.stringify({k: b64(DKRAW), t: Date.now()})); } catch { } };
+  const clearSess = () => { try { sessionStorage.removeItem('ptk_sess'); } catch { } };
+  async function restore() {
+    try { const o = JSON.parse(sessionStorage.getItem('ptk_sess') || 'null'); if (!o || Date.now() - o.t > (sec.lockMin || 10) * 60000) { clearSess(); return false; }
+      DKRAW = ub(o.k); DK = await dkKey(DKRAW); await loadAll(); install(); return true; } catch { DK = null; DKRAW = null; MEM.clear(); clearSess(); return false; }
+  }
   /* ----- verrouillage automatique ----- */
   function armIdle() {
     if (!sec || window.__ptkIdle) return; window.__ptkIdle = true;
     ['mousemove', 'keydown', 'click', 'touchstart', 'scroll'].forEach(ev => window.addEventListener(ev, () => { last = Date.now(); }, {passive: true, capture: true}));
-    setInterval(() => { if (!sec || !DK) return; let dirty = false; try { dirty = !!ui.dirty; } catch { } if (!dirty && Date.now() - last > (sec.lockMin || 10) * 60000) lock(); }, 15000);
+    setInterval(() => { if (!sec || !DK) return; try { if (Date.now() - last < 16000 && sessionStorage.getItem('ptk_sess')) saveSess(); } catch { } let dirty = false; try { dirty = !!ui.dirty; } catch { } if (!dirty && Date.now() - last > (sec.lockMin || 10) * 60000) lock(); }, 15000);
     document.addEventListener('visibilitychange', () => { if (document.hidden) flush(); });
   }
-  async function lock() { await flush(); location.reload(); }
+  async function lock() { await flush(); clearSess(); location.reload(); }
 
   /* ----- API pour Paramètres ----- */
   window.SEC = {
@@ -1403,7 +1413,7 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
   const boot = () => {
     if (!window.crypto || !crypto.subtle) return window.__ptkStart();             // navigateur sans chiffrement : fonctionnement habituel
     sec = readSec();
-    if (sec) return showLogin();
+    if (sec) return restore().then(ok => { if (ok) { window.__ptkStart(); armIdle(); } else showLogin(); });
     if (window.__ptkNoSec) return window.__ptkStart();                             // essais automatiques
     showCreate(true);
   };
@@ -1455,7 +1465,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '2.4';
+const APP_VERSION = '2.5';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
