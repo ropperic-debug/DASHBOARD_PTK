@@ -84,7 +84,44 @@
 /* V2.4 : autres actions prévues */
 .ao{display:flex;flex-direction:column;gap:4px;border-top:1px solid #F5D3B5;padding-top:8px}
 .ao-h{display:flex;justify-content:space-between;font-size:10.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:#9A3412}.ao-h button{font-weight:600;text-transform:none;letter-spacing:0;color:#64748B;text-decoration:underline}
+.ao-w{display:flex;gap:5px;align-items:stretch}.ao-w .ao-r{flex:1;min-width:0}.ao-x{flex:none;width:32px;border-radius:9px;border:1.5px solid #F5B1B1;background:#fff;color:#B42318;font-size:13px}.ao-x:hover{background:#FEECEC;border-color:#DC2626}
 .ao-r{display:grid;grid-template-columns:28px 1fr auto;gap:8px;align-items:center;text-align:left;background:#fff;border:1px solid #F3E3D3;border-radius:9px;padding:4px 6px}.ao-r:hover{border-color:#FDBA74}.ao-r.late{border-color:#F5B1B1;background:#FFF5F5}
+
+/* V2.6 : cadres, Coordonnées, tuile sélectionnée, Ma journée, Paramètres, commissions */
+.dz{border:2.5px dashed #0F172A!important;border-radius:18px!important}
+.cz{padding:9px;background:#fff}
+.cc{background:#fff;border:1px solid #E2E8F0;border-radius:14px;overflow:hidden}
+.cc-h{display:flex;align-items:center;gap:9px;padding:11px 14px;background:#0F172A;color:#fff}.cc-h h2{font-size:14px;font-weight:800}
+.cc-ed{margin-left:auto;background:rgba(255,255,255,.14);color:#fff;border-radius:8px;padding:4px 10px;font-size:12px;font-weight:700}.cc-ed:hover{background:rgba(255,255,255,.26)}
+.sc2{padding:12px 14px;border-bottom:1px solid #EEF1F5}.sc2:last-child{border:0}
+.lb{font-size:10px;font-weight:800;letter-spacing:.07em;color:#64748B;text-transform:uppercase;margin-bottom:7px;display:flex;justify-content:space-between;align-items:center}
+.lb-add{color:#C2410C;text-transform:none;letter-spacing:0;font-size:12px;font-weight:700}.lb-add:hover{text-decoration:underline}
+.ln2{display:grid;grid-template-columns:22px 1fr auto;gap:8px;align-items:center;padding:4px 0;font-size:13px}.ln2>i{color:#64748B;text-align:center}.ln2 small{color:#64748B}
+.mini{width:32px;height:32px;border-radius:8px;border:1px solid #E2E8F0;display:inline-flex;align-items:center;justify-content:center;color:#475569;background:#fff;flex:none}.mini:hover{background:#F8FAFC}
+.mini.g{background:#047857;border-color:#047857;color:#fff}.mini.g:hover{background:#065F46}
+.chipd{display:inline-flex;gap:5px;align-items:center;background:#F1F5F9;border-radius:99px;padding:2px 9px;font-size:11px;font-weight:700;color:#475569;text-transform:none;letter-spacing:0}
+.pc{display:flex;gap:9px;align-items:center;padding:5px 0}.pc .av{width:32px;height:32px;border-radius:50%;background:#0F172A;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex:none}.pc .av2{background:#E2E8F0;color:#334155}
+.cqs{display:grid;gap:6px;margin-top:10px}
+.cq{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;height:52px;border:1px solid #E2E8F0;border-radius:10px;background:#fff;font-size:11px;font-weight:700;color:#0F172A}.cq:hover{background:#F8FAFC}
+.cq.p{background:#047857;border-color:#047857;color:#fff}.cq.p:hover{background:#065F46}.cq.off{opacity:.4;pointer-events:none}
+/* colonne gauche de la fiche */
+#view-client .fz{border:2.5px dashed #0F172A;border-radius:18px;background:#fff;padding:16px 18px;transition:background .2s}
+#view-client .fz.fz-on{background:#FFF9F3}
+#view-client .fz .fz{border:0;padding:0;background:transparent}
+#view-client #f-project .fz+.fz{margin-top:0}
+/* tuile KPI sélectionnée */
+#view-dashboard #tiles>button.border-ptk{border:2.5px dashed #0F172A!important;border-radius:16px!important;background:#FFF7ED!important}
+/* Ma journée : une action = un cadre */
+#day-body>div.rounded-xl,#day-body ol>li,#day-body details{border:2.5px dashed #0F172A!important;border-radius:16px!important}
+#day-body ol>li{margin:0 0 8px!important;padding:7px 8px!important;gap:8px!important}#day-body ol>li .pill{display:none!important}
+/* Paramètres : fenêtres entourées d'un trait plein */
+.pf-box{border:2px solid #0F172A!important;border-radius:16px!important}
+/* Détail des commissions : une ligne = un cadre */
+.tbl-com{border-collapse:separate!important;border-spacing:0 8px!important}
+.tbl-com tbody td{border-top:2.5px dashed #0F172A!important;border-bottom:2.5px dashed #0F172A!important;border-left:0!important;border-right:0!important;padding-top:6px!important;padding-bottom:6px!important;background:#fff}
+.tbl-com tbody td:first-child{border-left:2.5px dashed #0F172A!important;border-radius:14px 0 0 14px}.tbl-com tbody td:last-child{border-right:2.5px dashed #0F172A!important;border-radius:0 14px 14px 0}
+.tbl-com tfoot td{border:0!important}
+@media(max-width:640px){#view-dashboard #tiles>button.border-ptk{border-width:2px!important}#view-client .fz{border-width:2px;padding:10px 9px;border-radius:15px}.cz{padding:6px}}
 .ao-i{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:#fff;font-size:12px;background:#EA580C}
 .t-appel{background:#0F766E}.t-visio{background:#4F46E5}.t-mail{background:#B45309}.t-rappel{background:#DC2626}.t-relance{background:#2563EB}.t-visite{background:#EA580C}
 .ao-t{min-width:0;display:flex;flex-direction:column;font-size:12px;line-height:1.2}.ao-t small{color:#64748B;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -383,7 +420,8 @@
       <div id="f-banner"></div>
 
       <nav id="f-secnav" aria-label="Sections de la fiche" class="sticky top-[118px] lg:top-[62px] z-20 bg-white/95 backdrop-blur border border-slate-200 rounded-2xl p-1 shadow-sm flex gap-1 overflow-x-auto"></nav>
-      <section id="f-project" class="card p-5 flex flex-col gap-4">
+      <section id="f-project" class="flex flex-col gap-4">
+        <div class="fz flex flex-col gap-4" data-zone="1">
         <div id="sec-1" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">1</span><h2 class="h2">Projet</h2><span id="f-horizon"></span><span id="sst-1" class="ml-auto text-xs font-semibold"></span></div>
         <fieldset id="f-ind-box">
           <legend class="lbl">Intérêt du prospect pour le projet <span class="font-normal">(obligatoire avant la R1)</span></legend>
@@ -404,7 +442,8 @@
         </div>
         <div id="f-qual-box"></div>
         <div id="f-type-box"></div>
-        <div class="flex flex-col gap-3 rounded-2xl border-2 border-orange-300 bg-orange-50/40 p-4">
+        </div>
+        <div class="fz flex flex-col gap-3" data-zone="2">
           <div id="sec-2" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">2</span><h2 class="h2">Détail de l'officine</h2><span id="sst-2" class="ml-auto text-xs font-semibold"></span></div>
           <div id="f-det-box"></div>
         <div id="f-sit-box" class="fbox ok"><div class="flex justify-between items-center gap-2 mb-2.5"><span class="text-[13px] font-bold text-ink flex items-center gap-2"><i class="fas fa-circle-check text-emerald-700"></i>L'officine est-elle déjà robotisée ?</span><span id="f-sit-act" class="flex items-center gap-1"></span></div>
@@ -420,9 +459,9 @@
             <div class="min-w-[170px] flex-1"><label class="lbl" for="f-rc-projet">Projet envisagé</label><select id="f-rc-projet" class="inp"><option value="remplacement">Remplacement</option><option value="extension">Extension</option><option value="peripheriques">Périphériques</option></select></div>
           </div></div></div>
         </div>
-        <div class="flex flex-col gap-3 pt-3 border-t border-slate-200"><div id="sec-3" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">3</span><h2 class="h2">Besoins</h2><span id="sst-3" class="ml-auto text-xs font-semibold"></span></div>
+        <div class="fz flex flex-col gap-3" data-zone="3"><div id="sec-3" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">3</span><h2 class="h2">Besoins</h2><span id="sst-3" class="ml-auto text-xs font-semibold"></span></div>
         <div id="f-besoins-box"></div></div>
-        <div class="flex flex-col gap-3 pt-3 border-t border-slate-200"><div id="sec-4" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">4</span><h2 class="h2">Offre de robotisation</h2><span id="sec-offre-ico" class="inline-flex items-center gap-1"></span><span id="sst-4" class="ml-auto text-xs font-semibold"></span></div>
+        <div class="fz flex flex-col gap-3" data-zone="4"><div id="sec-4" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">4</span><h2 class="h2">Offre de robotisation</h2><span id="sec-offre-ico" class="inline-flex items-center gap-1"></span><span id="sst-4" class="ml-auto text-xs font-semibold"></span></div>
         <div id="f-off-tabs"></div>
         <div class="offer-card">
         <div id="f-models-box"></div>
@@ -434,6 +473,7 @@
                 <p id="f-tip" class="m-0 text-xs text-amber-900"></p>
       </section>
 
+      <div class="fz flex flex-col gap-3" data-zone="5">
       <div id="sec-5" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap px-1"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">5</span><h2 class="h2">Suivi</h2><span id="sst-5" class="ml-auto text-xs font-semibold"></span></div>
       <div class="suivi-grid">
       <details id="f-crcard" class="card">
@@ -487,6 +527,7 @@
         </div>
       </details>
       </div>
+      </div>
 
       <section id="f-addons-card" class="card p-5 hidden flex-col gap-3">
         <div class="flex justify-between items-center"><h2 class="h2">Ventes additionnelles</h2><button class="btn btn-g" onclick="openAddon(ui.editId)"><i class="fas fa-plus"></i>Add-on</button></div>
@@ -497,10 +538,11 @@
     <aside class="w-full lg:flex-[4] min-w-0 flex flex-col gap-4 lg:sticky lg:top-20 lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto">
       <div id="f-rap" class="lg:sticky lg:top-0 lg:z-10 lg:pb-2" style="background:#F5F6F8"></div>
       <div id="f-stage" class="hidden lg:block"></div>
-      <section data-pane="coord" class="card p-5 flex flex-col gap-4">
-        <div class="flex justify-between items-center"><h2 class="h2">Coordonnées</h2><button id="f-coord-toggle" class="btn !h-9 !px-3 border-transparent text-ptkd hover:bg-orange-50" onclick="toggleCoord()">Modifier</button></div>
-        <div id="f-coord-view" class="flex flex-col gap-4"></div>
-        <div id="f-coord-edit" class="flex flex-col gap-3">
+      <section data-pane="coord" class="dz cz">
+       <div class="cc">
+        <div class="cc-h"><i class="fas fa-address-card"></i><h2>Coordonnées</h2><button id="f-coord-toggle" type="button" class="cc-ed" onclick="toggleCoord()">Modifier</button></div>
+        <div id="f-coord-view"></div>
+        <div id="f-coord-edit" class="flex flex-col gap-3 p-3.5">
           <div id="f-search" class="relative rounded-xl bg-blue-50 border border-blue-100 p-3">
             <div class="grid grid-cols-[1fr_96px] gap-2">
               <div><label class="lbl !text-blue-900" for="s-q"><i class="fas fa-magnifying-glass mr-1"></i>Annuaire officiel des pharmacies</label><input id="s-q" class="inp" placeholder="Ex. : Prado" oninput="searchPharma()"></div>
@@ -535,7 +577,8 @@
           </div>
           <div><label class="lbl" for="f-email">E-mail</label><input id="f-email" type="email" class="inp"></div>
         </div>
-        <div id="f-contacts" class="flex flex-col gap-2 pt-3 border-t border-slate-100"></div>
+        <div id="f-contacts" class="sc2"></div>
+       </div>
       </section>
       <section data-pane="hist" class="card p-5 flex flex-col gap-4">
         <div class="flex justify-between items-center"><h2 class="h2">Historique</h2><span id="f-hist-n" class="text-xs text-muted"></span></div>
@@ -682,8 +725,8 @@
     </div>
   </div>
   <div class="px-5 py-4 border-t bg-slate-50 flex flex-wrap justify-between gap-2">
-    <a id="act-link" target="_blank" rel="noopener" class="btn btn-g"></a>
-    <div class="flex gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-action')">Annuler</button><button class="btn btn-ok" onclick="saveAction()"><i class="fas fa-check"></i>Enregistrer</button></div>
+    <div class="flex flex-wrap gap-2"><a id="act-link" target="_blank" rel="noopener" class="btn btn-g"></a><button type="button" id="act-cancel" class="btn hidden" style="border:1.5px solid #DC2626;color:#B42318;background:#fff" onclick="actCancel()"><i class="fas fa-ban"></i>Annuler cette action</button></div>
+    <div class="flex gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-action')">Fermer</button><button class="btn btn-ok" onclick="saveAction()"><i class="fas fa-check"></i>Enregistrer</button></div>
   </div>
 </dialog>
 
@@ -885,6 +928,7 @@
 <ul>
 <li><b>Créer une fiche</b> : recherchez la pharmacie par nom ou par n° CIP ; le téléphone, le SIRET et le titulaire se complètent depuis la base des pharmacies.</li>
 <li><b>Prochaine action et rappels</b> : à droite de chaque fiche (même signée ou perdue), le cadre orange reste visible quand vous faites défiler. Cliquez sur une icône (Relance, Rappel, Appel, Visite, Visio, E-mail), indiquez <b>la date, l'heure et un commentaire obligatoire</b>. Vous pouvez en poser plusieurs ; ils apparaissent dans « Ma journée », « Cette semaine » et « À relancer ». « Réalisée » les inscrit à l'historique avec votre commentaire.</li>
+<li><b>V2.6</b> : <b>annulation d'une action</b> depuis « Autres actions prévues » (icône ⛔) ou depuis la fenêtre de l'action (bouton rouge « Annuler cette action »), avec confirmation et trace dans l'historique ; bloc <b>Coordonnées</b> refondu (officine, contact principal, autres contacts, barre Appeler / E-mail / Itinéraire / Teams) ; <b>cadres</b> : pointillés noirs sur les sections de la fiche (la section en cours est en fond orangé), sur la tuile sélectionnée du tableau de bord, sur chaque action de « Ma journée et ma semaine » et sur chaque ligne du détail des commissions ; trait plein autour des blocs des Paramètres.</li>
 <li><b>V2.5</b> : écran de connexion reconnu par les navigateurs (<b>enregistrement et remplissage du mot de passe</b>) ; case <b>« Rester connecté »</b> : un rafraîchissement de la page ne redemande plus le mot de passe (session limitée à l'onglet et à la durée d'inactivité).</li>
 <li><b>V2.4</b> : <b>sécurité</b> (connexion e-mail + mot de passe fort, chiffrement des données, clé de récupération, verrouillage automatique, cadenas) ; <b>RGPD</b> (fiches à réviser après 3 ans sans action : supprimer, anonymiser, prolonger) ; fenêtre « Ma journée » <b>au centre de l'écran</b> ; <b>devis fusionné dans l'offre de robotisation</b> (une seule carte, date « Réalisé le » facultative, confirmation sur « Réalisé ») ; explication sous « Devis + maintenance » ; <b>GENESI</b> : 2 options seulement (Couleur, Plateau supérieur en verre) ; colonne gauche de la fiche compactée ; « Prochaine action » avec le type, le compte à rebours et la liste des <b>autres actions prévues</b>.</li>
 <li><b>V2.3</b> : dernière vente robot (date et montant) dans Ventes ; un seul modèle de robot par offre ; <b>offres multiples A / B / C</b> par prospect (onglets, étoile = offre privilégiée du pipeline, bouton « Comparer », PDF comparatif, choix de l'offre signée) ; message clair sur les pièces manquantes avant le PDF ; <b>commission affichée et pointable</b> dans la fiche (robot et add-ons signés) ; tableaux resserrés (indicateur couleur, échéance en fin de ligne) ; « Ma journée » : clic = panneau détaillé à droite + nombre d'actions du jour ; Synchro clignote en rouge si non reliée ; Paramètres en menu à gauche (Documents et Envois et liens à part, sélecteurs) ; export CSV de Mon secteur (LGPI, Prospects, les deux) ; fiche client plus compacte ; infobulles et confirmations avant annulation ou suppression.</li>
@@ -1465,7 +1509,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '2.5';
+const APP_VERSION = '2.6';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2620,13 +2664,14 @@ function renderRap(c) {
   el.innerHTML = `<section class="rounded-2xl p-3.5 flex flex-col gap-2.5" style="border:2px solid ${late0 ? '#DC2626' : '#EA580C'};background:${late0 ? '#FFF7F7' : '#FFF7ED'}">
     <div class="font-extrabold uppercase tracking-wide text-[11px] flex items-center justify-between ${late0 ? 'text-rose-700' : 'text-orange-800'}"><span><i class="fas fa-flag mr-1"></i>Prochaine action</span>${badge}</div>${main}
     <div class="grid grid-cols-6 gap-1.5">${tiles}</div>
-    ${oth.length ? `<div class="ao"><div class="ao-h"><span>Autres actions prévues · ${oth.length}</span><button type="button" onclick="rapList()" title="Voir toutes les actions prévues">tout voir</button></div>${oth.slice(0, 4).map(r => { const T = RAP_T[r.type] || RAP_T.rappel, d = parseD(r.dt), late = d < new Date(), soon = !late && (d - new Date()) < 7 * 864e5; return `<button type="button" class="ao-r ${late ? 'late' : ''}" title="Ouvrir cette action (modifier, réaliser, annuler)" onclick="openRap('${r.type}',${r.id})"><span class="ao-i t-${r.type}"><i class="fas ${T.fa}"></i></span><span class="ao-t"><b>${T.l}</b><small>${esc(r.note || '')}</small></span><span class="ao-d ${late ? 'd1' : soon ? 'd2' : 'd3'}">${late ? 'en retard · ' : ''}${d.toLocaleDateString('fr-FR', {weekday: 'short', day: '2-digit', month: '2-digit'})}</span></button>`; }).join('')}${oth.length > 4 ? `<button type="button" class="text-left text-[11.5px] font-bold text-orange-900 pt-1" onclick="rapList()">+ ${oth.length - 4} autre${oth.length - 4 > 1 ? 's' : ''} · Voir ›</button>` : ''}</div>` : ''}</section>`;
+    ${oth.length ? `<div class="ao"><div class="ao-h"><span>Autres actions prévues · ${oth.length}</span><button type="button" onclick="rapList()" title="Voir toutes les actions prévues">tout voir</button></div>${oth.slice(0, 4).map(r => { const T = RAP_T[r.type] || RAP_T.rappel, d = parseD(r.dt), late = d < new Date(), soon = !late && (d - new Date()) < 7 * 864e5; return `<div class="ao-w"><button type="button" class="ao-r ${late ? 'late' : ''}" title="Ouvrir cette action (modifier, réaliser, annuler)" onclick="openRap('${r.type}',${r.id})"><span class="ao-i t-${r.type}"><i class="fas ${T.fa}"></i></span><span class="ao-t"><b>${T.l}</b><small>${esc(r.note || '')}</small></span><span class="ao-d ${late ? 'd1' : soon ? 'd2' : 'd3'}">${late ? 'en retard · ' : ''}${d.toLocaleDateString('fr-FR', {weekday: 'short', day: '2-digit', month: '2-digit'})}</span></button><button type="button" class="ao-x" title="Annuler cette action" aria-label="Annuler cette action" onclick="cancelRap(${c.id},${r.id})"><i class="fas fa-ban"></i></button></div>`; }).join('')}${oth.length > 4 ? `<button type="button" class="text-left text-[11.5px] font-bold text-orange-900 pt-1" onclick="rapList()">+ ${oth.length - 4} autre${oth.length - 4 > 1 ? 's' : ''} · Voir ›</button>` : ''}</div>` : ''}</section>`;
 }
+function actCancel() { const R = ui.act && ui.act.rap; if (!R || !R.rid) return; cancelRap(ui.act.cid, R.rid); }
 function cancelRap(cid, rid) {
   const c = byId(cid), r = (c?.rappels || []).find(x => x.id === rid); if (!r) return;
   confirmBox('Annuler cette action ?', `<b>${(RAP_T[r.type] || RAP_T.rappel).l}</b> · ${esc(c.pharma)} · prévu(e) ${fmtDT(r.dt)}`, '<i class="fas fa-ban"></i>Oui, annuler', () => {
     c.rappels = c.rappels.filter(x => x.id !== rid); log(c, `${(RAP_T[r.type] || RAP_T.rappel).l} annulé(e)`, `Prévu(e) le ${fmtDT(r.dt)}. Annulé(e) le ${fmtDT(nowDT())}.`); save();
-    if ($('dlg-rapl').open) closeDlg('dlg-rapl'); renderRap(c); renderChrome(c); refresh(); toast('Action annulée');
+    if ($('dlg-rapl').open) closeDlg('dlg-rapl'); if ($('dlg-action').open) closeDlg('dlg-action'); renderRap(c); renderChrome(c); refresh(); toast('Action annulée');
   }, {no: 'Non, la garder', icon: 'fa-rotate-left'});
 }
 function cancelNext(id) {
@@ -3088,6 +3133,7 @@ function openAction(cid, type = 'relance', aid = null, opts = {}) {
   if (opts.rap) $('act-next').checked = false; $('act-next').closest('label').classList.toggle('hidden', !!opts.rap);
   setActType(type);
   if (opts.motif) { $('act-motif').value = opts.motif; actGen(); }
+  $('act-cancel').classList.toggle('hidden', !(opts.rap && opts.rap.rid));
   $('dlg-action').showModal();
 }
 const actAddon = () => { const {cid, aid} = ui.act; return aid ? byId(cid).addons.find(a => a.id === aid) : null; };
@@ -3245,6 +3291,9 @@ function secDraw() {
   const ic = (d.robots || []).map(m => robotIco(m, 26)).join('');
   if ($('sec-offre-ico')) $('sec-offre-ico').innerHTML = ic || '<i class="fas fa-robot text-slate-300 text-lg" aria-hidden="true"></i>';
 }
+/* V2.6 : zone active de la fiche (fond orange clair) */
+(function () { let t = 0; const upd = () => { t = 0; const z = [...document.querySelectorAll('#view-client .fz[data-zone]')]; if (!z.length || !z[0].offsetParent) return; const y = 190; let on = null; z.forEach(e => { const r = e.getBoundingClientRect(); if (r.top <= y && r.bottom > y) on = e; }); if (!on) on = z.find(e => e.getBoundingClientRect().top > y) || z[z.length - 1]; z.forEach(e => e.classList.toggle('fz-on', e === on)); };
+  window.addEventListener('scroll', () => { if (!t) t = requestAnimationFrame(upd); }, {passive: true}); window.addEventListener('resize', () => { if (!t) t = requestAnimationFrame(upd); }); setInterval(upd, 700); })();
 document.addEventListener('input', e => { if (e.target.closest && e.target.closest('#view-client')) secStat(); });
 document.addEventListener('change', e => { if (e.target.closest && e.target.closest('#view-client')) secStat(); });
 function mxSync() { mxRead(); renderModels(collectRaw().robots); }
@@ -4285,38 +4334,39 @@ function toggleCoord() {
 function renderCoord() {
   const edit = ui.coordEdit || !ui.editId;
   $('f-coord-edit').classList.toggle('hidden', !edit); $('f-coord-view').classList.toggle('hidden', edit);
-  $('f-coord-toggle').textContent = edit ? 'Enregistrer' : 'Modifier';
+  $('f-coord-toggle').innerHTML = edit ? '<i class="fas fa-check"></i> Enregistrer' : '<i class="fas fa-pen"></i> Modifier';
   $('f-coord-toggle').classList.toggle('hidden', !ui.editId);
   if (edit) return;
   const c = {...collectRaw(), id: ui.editId}, ini = ((c.prenom[0] || '') + (c.nom[0] || '')).toUpperCase() || '?';
-  const row = (fa, label, html) => html ? `<div class="flex gap-3 items-start"><i class="fas ${fa} w-4 mt-1 text-muted" aria-label="${label}"></i><div class="text-sm">${html}</div></div>` : '';
-  const qa = (href, icn, label, style = '', extra = '') => `<${href ? 'a' : 'button'} ${href ? `href="${href}"` : ''} ${extra} class="qa ${href || extra ? '' : 'opacity-40 pointer-events-none'}" ${style ? `style="${style}"` : ''}>${ic(icn, 20)}${label}</${href ? 'a' : 'button'}>`;
+  const mini = (href, icn, t, g = '', x = '') => href ? `<a class="mini ${g}" href="${href}" ${x} title="${t}" aria-label="${t}">${ic(icn, 15)}</a>` : '';
   const lgo = c.lgo === 'Autre' ? (c.lgoAutre || 'Autre') : c.lgo;
+  const tel = c.telPort || c.telFixe, d = dist(c), hasAdr = c.rue || c.ville;
+  const ids = [c.groupement && 'Groupement ' + c.groupement, c.cip && 'CIP ' + c.cip, lgo ? `<b>${esc(lgo)}</b>` : '<span class="text-amber-800">LGO non renseigné</span>'].map((x, k) => k < 2 && x ? esc(x) : x).filter(Boolean).join(' · ');
+  const ln = (fa, html, btn = '') => html ? `<div class="ln2"><i class="fas ${fa}"></i><span class="min-w-0">${html}</span>${btn || '<span></span>'}</div>` : '';
+  const cq = (href, icn, label, style = '', extra = '', cls = '') => `<${href ? 'a' : 'button'} type="${href ? '' : 'button'}" ${href ? `href="${href}"` : ''} ${extra} class="cq ${cls} ${href || extra ? '' : 'off'}">${ic(icn, 18, style)}<span>${label}</span></${href ? 'a' : 'button'}>`;
   $('f-coord-view').innerHTML = `
-    <div><div class="text-lg font-bold leading-tight">${esc(c.pharma || 'Pharmacie')}</div><div class="text-xs text-muted mt-0.5">${esc([c.groupement && 'Groupement ' + c.groupement, c.cip && 'CIP ' + c.cip, c.siret && 'SIRET ' + c.siret.replace(/^(\d{3})(\d{3})(\d{3})(\d{5})$/, '$1 $2 $3 $4')].filter(Boolean).join(' · '))}</div></div>
-    <div class="flex gap-3 items-center"><span class="w-10 h-10 rounded-full bg-ink text-white inline-flex items-center justify-center text-sm font-bold">${esc(ini)}</span>
-      <div><div class="text-[15px] font-semibold">${esc(`${c.genre} ${c.prenom} ${c.nom}`)}</div><div class="text-xs text-muted">Pharmacien titulaire</div></div></div>
-    <div class="flex flex-col gap-3">
-      ${row('fa-location-dot', 'Adresse', c.rue || c.ville ? `${esc(c.rue)}<br>${esc(c.cp)} ${esc(c.ville)} ${dist(c) ? `<span class="text-muted">· ${dist(c)}</span>` : ''}` : '')}
-      ${row('fa-phone', 'Téléphones', [c.telFixe && `<span class="tabular-nums">${esc(c.telFixe)}</span> <span class="text-muted">fixe</span>`, c.telPort && `<span class="tabular-nums">${esc(c.telPort)}</span> <span class="text-muted">portable</span>`].filter(Boolean).join('<br>'))}
-      ${row('fa-envelope', 'E-mail', c.email && `<a href="mailto:${esc(c.email)}">${esc(c.email)}</a>`)}
-      ${row('fa-desktop', 'Logiciel', lgo ? `LGO : <b>${esc(lgo)}</b>` : '<span class="text-amber-800">LGO non renseigné</span>')}
-    </div>
-    <div class="grid gap-2" style="grid-template-columns:repeat(${2 + opt('gps') + opt('teams')},minmax(0,1fr))">
-      ${qa(c.telPort || c.telFixe ? telUrl(c) : '', 'phone', 'Appeler')}
-      ${qa(c.email ? mailUrl(c, 'Pharmathek — votre projet', '') : '', 'mail', 'E-mail')}
-      ${opt('gps') ? qa(c.ville ? mapsUrl(c) : '', 'route', 'Itinéraire', '', 'target="_blank" rel="noopener"') : ''}
-      ${opt('teams') ? qa('', 'video', 'Teams', `color:${TEAMS}`, `onclick="openAction(${ui.editId},'teams')"`) : ''}
-    </div>`;
+    <div class="sc2"><div class="lb"><span>Officine</span>${d ? `<span class="chipd">${ic('route', 12)}${d}</span>` : ''}</div>
+      <div class="font-extrabold text-[15px] leading-tight">${esc(c.pharma || 'Pharmacie')}</div><div class="text-xs text-muted mt-0.5 mb-1.5">${ids}${c.siret ? ' · SIRET ' + esc(c.siret.replace(/^(\d{3})(\d{3})(\d{3})(\d{5})$/, '$1 $2 $3 $4')) : ''}</div>
+      ${hasAdr ? ln('fa-location-dot', `${esc([c.rue, ((c.cp || '') + ' ' + (c.ville || '')).trim()].filter(Boolean).join(', '))}`, c.ville ? mini(mapsUrl(c), 'route', 'Itinéraire', '', 'target="_blank" rel="noopener"') : '') : ''}</div>
+    <div class="sc2"><div class="lb"><span>Contact principal</span></div>
+      <div class="pc"><span class="av">${esc(ini)}</span><div><b>${esc(`${c.genre} ${c.prenom} ${c.nom}`)}</b><div class="text-xs text-muted">Pharmacien titulaire</div></div></div>
+      ${c.telPort ? ln('fa-phone', `<span class="tabular-nums">${esc(c.telPort)}</span> <small>portable</small>`, mini(`tel:${esc(c.telPort.replace(/\s/g, ''))}`, 'phone', 'Appeler', 'g')) : ''}
+      ${c.telFixe ? ln('fa-phone-volume', `<span class="tabular-nums">${esc(c.telFixe)}</span> <small>fixe</small>`, mini(`tel:${esc(c.telFixe.replace(/\s/g, ''))}`, 'phone', 'Appeler le fixe', c.telPort ? '' : 'g')) : ''}
+      ${c.email ? ln('fa-envelope', `<a class="block truncate" href="mailto:${esc(c.email)}">${esc(c.email)}</a>`, mini(mailUrl(c, 'Pharmathek — votre projet', ''), 'mail', 'Écrire')) : ''}
+      <div class="cqs" style="grid-template-columns:repeat(${2 + opt('gps') + opt('teams')},minmax(0,1fr))">
+        ${cq(tel ? telUrl(c) : '', 'phone', 'Appeler', '', '', 'p')}
+        ${cq(c.email ? mailUrl(c, 'Pharmathek — votre projet', '') : '', 'mail', 'E-mail', 'color:#C2410C')}
+        ${opt('gps') ? cq(c.ville ? mapsUrl(c) : '', 'route', 'Itinéraire', 'color:#C2410C', 'target="_blank" rel="noopener"') : ''}
+        ${opt('teams') ? cq('', 'video', 'Teams', `color:${TEAMS}`, `onclick="openAction(${ui.editId},'teams')"`) : ''}
+      </div></div>`;
 }
 function renderContacts() {
   const c = ui.editId ? byId(ui.editId) : null, L = c?.contacts || [];
-  $('f-contacts').innerHTML = `<div class="flex justify-between items-center"><span class="kicker">Autres contacts du projet</span><button class="btn !h-9 !px-3 border-transparent text-ptkd hover:bg-orange-50" onclick="openContact()">${ic('plus', 15)}Ajouter un contact</button></div>`
-    + (L.length ? L.map(x => `<div class="flex items-center gap-3 rounded-xl border border-slate-200 px-3 py-2.5">
-        <span class="w-9 h-9 rounded-full bg-slate-100 text-slate-700 inline-flex items-center justify-center text-xs font-bold shrink-0">${esc(((x.prenom || '')[0] || '') + ((x.nom || '')[0] || ''))}</span>
-        <div class="min-w-0 flex-1"><div class="text-sm font-semibold truncate">${esc(`${x.genre} ${x.prenom} ${x.nom}`)}</div><div class="text-xs text-muted truncate">${esc(x.fonction)}${x.tel ? ' · ' + esc(x.tel) : ''}</div></div>
-        <span class="flex gap-1 shrink-0">${x.tel ? `<a class="qb" href="tel:${esc(x.tel.replace(/\s/g, ''))}" aria-label="Appeler">${ic('phone', 15)}</a>` : ''}${x.email ? `<a class="qb" href="mailto:${esc(x.email)}" aria-label="E-mail">${ic('mail', 15)}</a>` : ''}
-        <button class="qb" aria-label="Modifier" onclick="openContact(${x.id})"><i class="fas fa-pen text-xs"></i></button></span></div>`).join('')
+  $('f-contacts').innerHTML = `<div class="lb"><span>Autres contacts${L.length ? ' · ' + L.length : ''}</span><button type="button" class="lb-add" onclick="openContact()">+ Ajouter</button></div>`
+    + (L.length ? L.map(x => `<div class="pc"><span class="av av2">${esc(((x.prenom || '')[0] || '') + ((x.nom || '')[0] || ''))}</span>
+        <div class="min-w-0 flex-1"><div class="text-[12.5px] font-bold truncate">${esc(`${x.genre} ${x.prenom} ${x.nom}`)}</div><div class="text-xs text-muted truncate">${esc(x.fonction)}${x.tel ? ' · ' + esc(x.tel) : ''}</div></div>
+        <span class="flex gap-1 shrink-0">${x.tel ? `<a class="mini" href="tel:${esc(x.tel.replace(/\s/g, ''))}" title="Appeler" aria-label="Appeler">${ic('phone', 15)}</a>` : ''}${x.email ? `<a class="mini" href="mailto:${esc(x.email)}" title="Écrire" aria-label="E-mail">${ic('mail', 15)}</a>` : ''}
+        <button type="button" class="mini" title="Modifier" aria-label="Modifier" onclick="openContact(${x.id})"><i class="fas fa-pen text-xs"></i></button></span></div>`).join('')
       : '<p class="text-xs text-muted">Agenceur, architecte, électricien, coordinateur de travaux…</p>');
 }
 function openContact(id = null) {
@@ -5558,7 +5608,16 @@ function renderProfile() {
   $('pf-tabs').innerHTML = PTABS.map(([k, i, l, g]) => `${g ? `<span class="pf-grp">${g}</span>` : ''}<button class="ptab ${ui.ptab === k ? 'ptab-on' : ''}" onclick="ui.ptab='${k}';renderProfile()"><i class="fas ${i}"></i>${l}</button>`).join('');
   ({profil: pfProfil, objectifs: pfObj, secteur: pfSecteur, sync: pfSync, sauv: pfSauv, options: pfOptions, docs: pfDocs, envois: pfEnvois})[ui.ptab]();
   $('pf-body').insertAdjacentHTML('afterbegin', pfSummary(ui.ptab));
+  pfFrame();
 }
+function pfFrame() {
+  const body = $('pf-body'); if (!body) return;
+  body.querySelectorAll('.pf-box').forEach(e => e.classList.remove('pf-box'));
+  if (ui.ptab === 'objectifs' && (ui.comSub || 'mes') === 'mes') return;
+  const c = [...body.querySelectorAll('.card,[class*="rounded-2xl"][class*="border"],[class*="rounded-xl"][class*="border"],details')].filter(e => e.offsetHeight > (e.tagName === 'DETAILS' ? 35 : 62) && !e.matches('input,select,button,label,a,.btn,.inp,.pill,.chip,.w-fit,.tbl') && !e.closest('button,label') && !e.querySelector(':scope > input'));
+  c.filter(e => !c.some(o => o !== e && e.contains(o))).forEach(e => e.classList.add('pf-box'));
+}
+(function () { let t = null; const go = () => { clearTimeout(t); t = setTimeout(() => { if ($('pf-body') && $('pf-body').offsetParent) pfFrame(); }, 150); }; const b = document.getElementById('pf-body'); if (b) new MutationObserver(go).observe(b, {childList: true, subtree: true}); })();
 const PF_TONE = {ok: ['#E8F5EE', '#14603F', 'fa-circle-check'], warn: ['#FEF6E4', '#6B4607', 'fa-triangle-exclamation'], ko: ['#FDECEC', '#9B1C1C', 'fa-circle-xmark'], info: ['#EEF2FC', '#1E3A8A', 'fa-circle-info']};
 const pfBand = (tone, html, id = '') => { const [bg, fg, ic] = PF_TONE[tone]; return `<div ${id ? `id="${id}"` : ''} class="rounded-2xl px-4 py-3 text-[13.5px] font-semibold flex items-center gap-2.5" style="background:${bg};color:${fg}"><i class="fas ${ic}"></i><span>${html}</span></div>`; };
 function fbSumInfo() {
@@ -5646,7 +5705,7 @@ function pfCom() {
         <h2 class="h2">Détail des commissions</h2>
         <div class="flex gap-2 flex-wrap"><button class="btn btn-ok !h-9" ${sel.size ? '' : 'disabled style="opacity:.45"'} onclick="openPay([...ui.paySel])"><i class="fas fa-circle-check"></i>Marquer comme payées (${sel.size})</button><button class="btn btn-g !h-9" onclick="exportCom()"><i class="fas fa-download"></i>CSV</button></div>
       </div>
-      <div class="overflow-x-auto"><table class="tbl w-full min-w-[1080px]"><thead><tr>
+      <div class="overflow-x-auto"><table class="tbl tbl-com w-full min-w-[1080px]"><thead><tr>
         <th><span class="block pl-5 pr-2 py-3"><input type="checkbox" aria-label="Tout sélectionner" class="w-4 h-4 accent-orange-700" ${att.length && att.every(r => sel.has(r.key)) ? 'checked' : ''} onchange="${att.length ? `[${att.map(r => `'${r.key}'`).join(',')}].forEach(k=>this.checked?ui.paySel.add(k):ui.paySel.delete(k));renderProfile()` : ''}"></span></th>
         ${['Date de signature', 'Pharmacie', 'Vente', 'Rang', 'Montant HT', 'Assiette', 'Base', 'Taux', 'Commission', 'Statut', ''].map(h => `<th class="${['Montant HT', 'Assiette', 'Base', 'Taux', 'Commission'].includes(h) ? 'text-right' : ''}"><span class="block px-2.5 py-3">${h}</span></th>`).join('')}</tr></thead>
         <tbody>${rows.length ? [...rows].reverse().map(r => `<tr>
