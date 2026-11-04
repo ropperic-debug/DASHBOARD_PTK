@@ -112,6 +112,11 @@
 .mb-err{color:#B42318;font-size:12px;font-weight:600;margin-top:5px}
 .mb-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:5px;font-size:11.5px;color:#64748B}
 .mb-cp{display:inline-flex;align-items:center;gap:5px;border:1.5px solid #CBD5E1;border-radius:8px;padding:3px 10px;font-weight:700;font-size:12px;color:#334155;background:#fff;cursor:pointer}.mb-cp:hover{border-color:#EA580C;color:#C2410C}
+/* V3.6 : filtres des commissions */
+.cf-bar{padding:12px 20px;background:#F8FAFC;border-bottom:1px solid #E2E8F0;display:flex;flex-direction:column;gap:10px}
+.cf-chip{border:1.5px solid #CBD5E1;border-radius:99px;padding:5px 12px;font-size:13px;font-weight:700;background:#fff;cursor:pointer}.cf-chip i{font-style:normal;opacity:.7;font-weight:600;margin-left:5px}.cf-chip.on{background:#EA580C;border-color:#EA580C;color:#fff}
+.cf-bar select{max-width:200px}.cf-on{border-color:#EA580C!important;background:#FFF7ED!important;color:#9A3412;font-weight:700}
+.cf-tot{padding:9px 20px;font-size:13.5px;background:#FFF7ED;border-bottom:1px solid #FED7AA;display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
 /* V2.8 : fiche sans bloc Étape en cours, bouton Dossier perdu */
 #f-stage{display:none!important}
 .zlost{margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:11px;border:2px solid #DC2626;background:#FEF2F2;color:#B91C1C;font-weight:800;font-size:13.5px}.zlost:hover{background:#FEE2E2}
@@ -884,7 +889,8 @@
   </div>
   <div class="dlg-body p-5 flex flex-col gap-3">
     <p id="pay-sub" class="text-sm"></p>
-    <div><label class="lbl" for="pay-month">Mois et année du paiement *</label><input type="month" id="pay-month" class="inp"></div>
+    <div><label class="lbl" for="pay-month">Pointée en (mois et année) *</label><input type="month" id="pay-month" class="inp"></div>
+    <div><label class="lbl" for="pay-sal">Sur le salaire de (mois et année) *</label><input type="month" id="pay-sal" class="inp"><p class="text-xs text-muted mt-1">Par défaut le mois précédent : modifiez-le si la commission figure sur un autre bulletin de salaire.</p></div>
   </div>
   <div class="px-5 py-4 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-pay')">Annuler</button><button class="btn btn-ok" onclick="confirmPay()">Confirmer le paiement</button></div>
 </dialog>
@@ -1025,6 +1031,11 @@
 <li><b>Se déconnecter (V2.9)</b> : l'icône <b>porte avec flèche</b>, en haut à gauche à côté du logo, ferme la session et ramène à l'écran de connexion (le cadenas à droite fait de même). Les données restent chiffrées sur l'appareil.</li>
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
+<li><b>Commissions : double date (V3.6)</b> : quand vous pointez une commission (fenêtre « Payée… » ou case « Commission payée » de la fiche client), vous indiquez deux mois : <b>« Pointée en »</b> (le mois où vous constatez le paiement, par défaut le mois en cours) et <b>« Sur le salaire de »</b> (le bulletin concerné, par défaut le mois précédent, modifiable). Exemple : pointée en novembre, sur le salaire d'octobre. Les deux mois sont affichés dans le détail, l'historique et le CSV. Les commissions déjà pointées gardent leur mois, qui sert aussi de mois de salaire.</li>
+<li><b>Commissions : tableau sur 8 colonnes (V3.6)</b> : plus de défilement horizontal. La date de signature et le n° de dossier sont sous le nom de la pharmacie, le rang sous le modèle, et montant HT, assiette et base sont regroupés dans « Calcul ». Le statut et le bouton « Payée… » sont toujours visibles.</li>
+<li><b>Commissions : filtres pour le pointage (V3.6)</b> : au-dessus du détail, choisissez le statut (Tous, En attente, Payées, Bloquées), le type de vente (SINTESI, GENESI, Add-on), le modèle, le mois de signature, le <b>mois du salaire</b> (avec le total de chaque mois) ou tapez un nom de pharmacie / n° de dossier. Le bandeau indique le nombre de lignes et le total affichés ; « Tout sélectionner » ne coche que les lignes affichées ; le CSV exporte les lignes affichées ; « Réinitialiser » efface les filtres.</li>
+<li><b>Objectifs annuels (V3.6)</b> : ils sont calculés sur l'année civile, du 1er janvier au 31 décembre (objectif de robots, objectif de CA, rang et palier de commission), jamais sur 12 mois glissants.</li>
+<li><b>V3.6</b> : double date des commissions, tableau sur 8 colonnes, filtres de pointage, année civile des objectifs.</li>
 <li><b>Destinataires du fichier CRO à pastilles (V3.5)</b> : dans Paramètres › Envois et liens et dans la fenêtre « Prévisions », chaque adresse devient une pastille (✕ pour la retirer). Collez une adresse copiée depuis Outlook, par exemple « Emmanuel Zittoun » &lt;e.zittoun@pharmathek.com&gt; : seule l'adresse est gardée, le nom reste en infobulle. Une liste collée donne une pastille par adresse ; une adresse invalide passe en rouge et bloque l'envoi ; un doublon n'est pas ajouté. Des suggestions apparaissent en tapant (adresses déjà utilisées et fiches clients). Le bouton <b>Copier</b> met toutes les adresses d'un champ dans le presse-papiers, séparées par des points-virgules, pour un seul Ctrl+V dans Outlook.</li>
 <li><b>V3.5</b> : destinataires du fichier CRO à pastilles, collage « Nom » &lt;adresse&gt;, bouton Copier.</li>
 <li><b>Date de replanification en heures de travail (V3.4)</b> : dans « Sans réponse · réessayer plus tard », la nouvelle date proposée tombe toujours du lundi au vendredi, entre 8h30 et 12h00 ou entre 14h00 et 19h00 (pause de midi : 14h00 ; après 19h00 : 8h30 le jour ouvré suivant ; week-end : lundi 8h30). Vous pouvez la modifier librement.</li>
@@ -1630,6 +1641,8 @@ const fmtD = s => { const d = parseD(s); return d ? d.toLocaleDateString('fr-FR'
 const fmtDT = s => { const d = parseD(s); return d ? `${d.toLocaleDateString('fr-FR', {weekday: 'short', day: '2-digit', month: '2-digit'})} à ${pad(d.getHours())}h${pad(d.getMinutes())}` : '—'; };
 const fmtHM = s => { const d = parseD(s); return d ? `${pad(d.getHours())}:${pad(d.getMinutes())}` : ''; };
 const fmtMin = m => m < 60 ? `${Math.round(m)} min` : `${Math.floor(m / 60)} h ${pad(Math.round(m % 60))}`;
+const fmtMonthS = ym => { if (!ym) return ''; return parseD(ym + '-01').toLocaleDateString('fr-FR', {month: 'short', year: 'numeric'}); };
+const prevMonth = () => { const d = new Date(TODAY.getFullYear(), TODAY.getMonth() - 1, 1); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0'); };
 const fmtMonth = ym => { if (!ym) return ''; const d = parseD(ym + '-01'); return d.toLocaleDateString('fr-FR', {month: 'long', year: 'numeric'}); };
 const daysSince = s => { const d = parseD(s); return d ? Math.round((TODAY - new Date(d.getFullYear(), d.getMonth(), d.getDate())) / 864e5) : null; };
 const sameDay = (s, d) => { const x = parseD(s); return !!x && x.getFullYear() === d.getFullYear() && x.getMonth() === d.getMonth() && x.getDate() === d.getDate(); };
@@ -1641,7 +1654,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '3.5';
+const APP_VERSION = '3.6';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2060,16 +2073,17 @@ function comRows() {
       const taux = (tiers.filter(t => n >= t.de).pop() || {taux: 0}).taux;
       const assiette = +settings.com.assiette[f] || 0, base = Math.max(0, (c.montant || 0) - assiette), com = Math.round(base * taux) / 100;
       const statut = c.hasReserves && !c.leveeDate ? 'bloque' : c.commissionPaid ? 'paye' : 'attente';
-      return {key: 'c' + c.id, c, f, n, y, date: c.signatureDate, montant: c.montant || 0, label: (c.robots || []).join(', '), taux, assiette, base, com, statut, paid: c.commissionPaid};
+      return {key: 'c' + c.id, c, f, n, y, date: c.signatureDate, montant: c.montant || 0, label: (c.robots || []).join(', '), taux, assiette, base, com, statut, paid: c.commissionPaid, sal: c.commissionPaid ? (c.commissionSalary || c.commissionPaid) : ''};
     });
   const tA = +settings.com.addon || 0;
   const add = clients.flatMap(c => (c.addons || []).filter(a => a.statut === 'signe' && a.date).map(a => {
     const base = a.montant || 0, com = Math.round(base * tA) / 100;
-    return {key: 'a' + a.id, c, a, f: 'Add-on', n: null, y: +a.date.slice(0, 4), date: a.date, montant: base, label: a.quoi, taux: tA, assiette: 0, base, com, statut: a.commissionPaid ? 'paye' : 'attente', paid: a.commissionPaid};
+    return {key: 'a' + a.id, c, a, f: 'Add-on', n: null, y: +a.date.slice(0, 4), date: a.date, montant: base, label: a.quoi, taux: tA, assiette: 0, base, com, statut: a.commissionPaid ? 'paye' : 'attente', paid: a.commissionPaid, sal: a.commissionPaid ? (a.commissionSalary || a.commissionPaid) : ''};
   }));
   return [...rob, ...add].sort((a, b) => a.date.localeCompare(b.date));
 }
 const COM_ST = {bloque: ['Bloquée · réserves', '#FDECEC', '#9F1C1C', 'fa-lock'], attente: ['En attente de paiement', '#FEF6E4', '#6B4607', 'fa-hourglass-half'], paye: ['Payée', '#E8F5EE', '#14603F', 'fa-circle-check']};
+const comPillS = r => { const [l, bg, fg, i] = COM_ST[r.statut], sh = {bloque: 'Bloquée · réserves', attente: 'En attente', paye: 'Payée'}[r.statut]; return `<span class="pill" style="background:${bg};color:${fg}"><i class="fas ${i}"></i>${sh}</span>${r.statut === 'paye' ? `<div class="text-[11.5px] text-muted mt-0.5 leading-snug">pointée ${fmtMonthS(r.paid)}<br>salaire ${fmtMonthS(r.sal)}</div>` : ''}`; };
 const rk = n => n === 1 ? '1<sup>er</sup>' : `${n}<sup>e</sup>`;
 const comPill = r => { const [l, bg, fg, i] = COM_ST[r.statut]; return `<span class="pill" style="background:${bg};color:${fg}"><i class="fas ${i}"></i>${l}${r.statut === 'paye' ? ' · ' + fmtMonth(r.paid) : ''}</span>`; };
 const comRef = key => { const id = +key.slice(1); if (key[0] === 'c') return {c: byId(id)}; for (const c of clients) { const a = (c.addons || []).find(x => x.id === id); if (a) return {c, a}; } return {}; };
@@ -4253,17 +4267,18 @@ function renderChrome(c) {
 }
 /* ----- Commissions dans la fiche client ----- */
 const comTickUi = (r, big) => {
-  const lock = r.statut === 'bloque', on = r.statut === 'paye', m = on ? r.paid : isoDay(TODAY).slice(0, 7);
-  return `<label class="flex items-center gap-2 rounded-xl border-2 ${lock ? 'border-slate-200 bg-slate-50 text-slate-400' : on ? 'border-emerald-500 bg-emerald-50 text-emerald-900' : 'border-emerald-300 bg-white text-emerald-900'} ${big ? 'px-3 py-2' : 'px-2 py-1'} font-bold ${lock ? '' : 'cursor-pointer'}" title="${lock ? 'Bloquée : les réserves ne sont pas encore levées' : on ? 'Décocher pour annuler le paiement' : 'Cocher quand la commission est payée'}">
+  const lock = r.statut === 'bloque', on = r.statut === 'paye', m = on ? r.paid : isoDay(TODAY).slice(0, 7), sm = on ? (r.sal || r.paid) : prevMonth();
+  return `<label class="flex flex-wrap items-center gap-2 rounded-xl border-2 ${lock ? 'border-slate-200 bg-slate-50 text-slate-400' : on ? 'border-emerald-500 bg-emerald-50 text-emerald-900' : 'border-emerald-300 bg-white text-emerald-900'} ${big ? 'px-3 py-2' : 'px-2 py-1'} font-bold ${lock ? '' : 'cursor-pointer'}" title="${lock ? 'Bloquée : les réserves ne sont pas encore levées' : on ? 'Décocher pour annuler le paiement' : 'Cocher quand la commission est payée'}">
     <input type="checkbox" class="${big ? 'w-5 h-5' : 'w-4 h-4'} accent-emerald-700" ${on ? 'checked' : ''} ${lock ? 'disabled' : ''} onchange="comTick('${r.key}',this.checked)">${big ? 'Commission payée' : 'Payée'}
-    ${lock ? '' : `<span class="text-xs font-medium text-muted">mois : <input type="month" class="inp !h-7 !w-36 !text-xs !py-0" id="cm-${r.key}" value="${esc(m)}" onclick="event.stopPropagation()" onchange="comMonth('${r.key}',this.value)" title="Mois de paiement"></span>`}</label>`;
+    ${lock ? '' : `<span class="text-xs font-medium text-muted">pointée en : <input type="month" class="inp !h-7 !w-36 !text-xs !py-0" id="cm-${r.key}" value="${esc(m)}" onclick="event.stopPropagation()" onchange="comMonth('${r.key}',this.value)" title="Mois où la commission est pointée"></span><span class="text-xs font-medium text-muted">sur le salaire de : <input type="month" class="inp !h-7 !w-36 !text-xs !py-0" id="cs-${r.key}" value="${esc(sm)}" onclick="event.stopPropagation()" onchange="comSal('${r.key}',this.value)" title="Mois du bulletin de salaire"></span>`}</label>`;
 };
 function comTick(key, on) {
-  const {c, a} = comRef(key); if (!c) return; const t = a || c, mEl = $('cm-' + key), m = (mEl && mEl.value) || isoDay(TODAY).slice(0, 7);
+  const {c, a} = comRef(key); if (!c) return; const t = a || c, mEl = $('cm-' + key), m = (mEl && mEl.value) || isoDay(TODAY).slice(0, 7), sEl = $('cs-' + key), sm = (sEl && sEl.value) || prevMonth();
   const done = () => { save(); refreshComFiche(c); if (ui.ptab === 'objectifs' && !$('view-profile')?.classList.contains('hidden')) renderProfile(); };
-  if (on) { t.commissionPaid = m; log(c, a ? `Commission add-on payée : ${a.quoi} (${fmtMonth(m)})` : `Commission payée (${fmtMonth(m)})`); done(); toast(`Commission pointée : ${fmtMonth(m)}`); }
-  else confirmBox('Annuler le paiement ?', `La commission ${a ? "de l'add-on <b>" + esc(a.quoi) + '</b>' : 'du robot'} repassera « en attente de paiement ».`, '<i class="fas fa-rotate-left"></i>Oui, annuler', () => { t.commissionPaid = ''; log(c, 'Paiement de commission annulé'); done(); toast('Paiement annulé'); }, {no: 'Non, garder', icon: 'fa-circle-question', onNo: () => refreshComFiche(c)});
+  if (on) { t.commissionPaid = m; t.commissionSalary = sm; log(c, a ? `Commission add-on payée : ${a.quoi} (pointée en ${fmtMonth(m)} · salaire de ${fmtMonth(sm)})` : `Commission payée (pointée en ${fmtMonth(m)} · salaire de ${fmtMonth(sm)})`); done(); toast(`Commission pointée : ${fmtMonth(m)} · salaire de ${fmtMonth(sm)}`); }
+  else confirmBox('Annuler le paiement ?', `La commission ${a ? "de l'add-on <b>" + esc(a.quoi) + '</b>' : 'du robot'} repassera « en attente de paiement ».`, '<i class="fas fa-rotate-left"></i>Oui, annuler', () => { t.commissionPaid = ''; t.commissionSalary = ''; log(c, 'Paiement de commission annulé'); done(); toast('Paiement annulé'); }, {no: 'Non, garder', icon: 'fa-circle-question', onNo: () => refreshComFiche(c)});
 }
+function comSal(key, m) { const {c, a} = comRef(key); if (!c || !m) return; const t = a || c; if (t.commissionPaid) { t.commissionSalary = m; save(); refreshComFiche(c); if (ui.ptab === 'objectifs' && !$('view-profile')?.classList.contains('hidden')) renderProfile(); } }
 function comMonth(key, m) { const {c, a} = comRef(key); if (!c || !m) return; const t = a || c; if (t.commissionPaid) { t.commissionPaid = m; save(); refreshComFiche(c); } }
 function refreshComFiche(c) { if ($('f-com')) $('f-com').outerHTML = comFicheBox(c); renderAddonsList(c); if (ui.editId === c.id) renderHistory(c); }
 function comFicheBox(c) {
@@ -5785,7 +5800,7 @@ function confirmR3() {
     const m = +$('r3-montant').value, d = $('r3-date').value; if (!m || !d) return toast('Date et prix final obligatoires.', true);
     const res = document.querySelector('input[name=r3-res]:checked').value === 'oui';
     offSignApply(c);
-    Object.assign(c, {step: 'Signé', signatureDate: d, montant: m, numDossier: $('r3-dossier').value.trim(), hasReserves: res, leveeDate: '', commissionPaid: '', nextDate: null, nextType: null});
+    Object.assign(c, {step: 'Signé', signatureDate: d, montant: m, numDossier: $('r3-dossier').value.trim(), hasReserves: res, leveeDate: '', commissionPaid: '', commissionSalary: '', nextDate: null, nextType: null});
     log(c, `Contrat robot signé : ${(c.robots || []).join(', ')} (${eur(m)} HT)`, res ? `Avec réserves : ${c.reservesText}` : 'Sans réserve.');
     toast(res ? 'Contrat signé — commission bloquée jusqu’à la levée des réserves' : 'Contrat signé enregistré — bravo !');
   } else {
@@ -5905,6 +5920,34 @@ function comFiltered() {
   const P = ui.comP;
   return comRows().filter(r => P.mode === 'year' ? r.y === P.year : (!P.du || r.date >= P.du) && (!P.au || r.date <= P.au));
 }
+/* V3.6 : filtres du détail des commissions */
+const comF = () => ui.comF || (ui.comF = {st: 'tous', typ: '', mod: '', ms: '', sal: '', q: ''});
+function comView(rows, skip) {
+  const F = comF(), q = F.q.trim().toLowerCase();
+  return rows.filter(r => (skip === 'st' || F.st === 'tous' || r.statut === F.st) && (skip === 'typ' || !F.typ || r.f === F.typ) && (skip === 'mod' || !F.mod || r.label === F.mod) && (skip === 'ms' || !F.ms || r.date.slice(0, 7) === F.ms) && (skip === 'sal' || !F.sal || r.sal === F.sal)
+    && (!q || [r.c.pharma, r.c.numDossier, r.a && r.a.notes, r.label, r.c.ville].filter(Boolean).join(' ').toLowerCase().includes(q)));
+}
+function comSet(k, v) { comF()[k] = v; renderProfile(); }
+function comReset() { ui.comF = null; renderProfile(); }
+function comSearch(v) { comF().q = v; renderProfile(); const e = $('cf-q'); if (e) { e.focus(); e.setSelectionRange(e.value.length, e.value.length); } }
+function comBar(rows, vw) {
+  const F = comF(), n = (skip, f) => comView(rows, skip).filter(f).length;
+  const chip = (k, l, st) => { const c = comView(rows, 'st').filter(r => st === 'tous' || r.statut === st).length; return `<button type="button" class="cf-chip ${F.st === st ? 'on' : ''}" onclick="comSet('st','${st}')">${l}<i>${c}</i></button>`; };
+  const opts = (skip, key, vals, lab, all) => `<select class="inp !h-9 !text-[13px] ${F[key] ? 'cf-on' : ''}" onchange="comSet('${key}',this.value)" aria-label="${all}"><option value="">${all}</option>${vals.map(v => `<option value="${esc(v)}" ${F[key] === v ? 'selected' : ''}>${lab(v)}</option>`).join('')}</select>`;
+  const base = k => comView(rows, k), uniq = (arr) => [...new Set(arr)].filter(Boolean);
+  const types = uniq(base('typ').map(r => r.f)), mods = uniq(base('mod').map(r => r.label)).sort(), mss = uniq(base('ms').map(r => r.date.slice(0, 7))).sort().reverse(), sals = uniq(base('sal').map(r => r.sal)).sort().reverse();
+  const cnt = (k, f) => base(k).filter(f).length, active = F.st !== 'tous' || F.typ || F.mod || F.ms || F.sal || F.q.trim();
+  const fld = (l, h) => `<div class="flex flex-col gap-1"><span class="text-[10.5px] font-extrabold tracking-wide text-slate-500">${l}</span>${h}</div>`;
+  return `<div class="cf-bar"><div class="flex flex-wrap gap-1.5">${chip('st', 'Tous', 'tous')}${chip('st', 'En attente', 'attente')}${chip('st', 'Payées', 'paye')}${chip('st', 'Bloquées', 'bloque')}</div>
+    <div class="flex flex-wrap gap-2.5 items-end">
+      ${fld('TYPE DE VENTE', opts('typ', 'typ', types, v => `${v === 'Add-on' ? 'Add-on' : 'Robot ' + v} · ${cnt('typ', r => r.f === v)}`, 'Tous les types'))}
+      ${fld('MODÈLE', opts('mod', 'mod', mods, v => `${esc(v)} · ${cnt('mod', r => r.label === v)}`, 'Tous les modèles'))}
+      ${fld('MOIS DE SIGNATURE', opts('ms', 'ms', mss, v => `${fmtMonth(v)} · ${cnt('ms', r => r.date.slice(0, 7) === v)}`, 'Tous'))}
+      ${fld('MOIS DU SALAIRE', opts('sal', 'sal', sals, v => `${fmtMonth(v)} · ${cnt('sal', r => r.sal === v)} · ${eur2(sum(base('sal').filter(r => r.sal === v), r => r.com))}`, 'Tous'))}
+      ${fld('RECHERCHE', `<input id="cf-q" type="search" class="inp !h-9 !text-[13px] !w-56" placeholder="Pharmacie ou n° de dossier" value="${esc(F.q)}" oninput="comSearch(this.value)">`)}
+      ${active ? '<button type="button" class="btn btn-g !h-9" onclick="comReset()"><i class="fas fa-rotate-left"></i>Réinitialiser</button>' : ''}
+    </div></div>`;
+}
 function pfCom() {
   const P = ui.comP, rows = comFiltered(), all = comRows();
   const yr = P.mode === 'year' ? P.year : CUR_YEAR;
@@ -5913,8 +5956,8 @@ function pfCom() {
   const obj = +settings.objectif || 18, tS = tierInfo('SINTESI', nS), tG = tierInfo('GENESI', nG);
   const tile = (l, v, s, bg, fg) => `<div class="rounded-2xl p-4" style="background:${bg}"><div class="text-[11px] font-semibold uppercase tracking-wider" style="color:${fg}">${l}</div><div class="text-[22px] font-bold mt-1" style="color:${fg}">${v}</div><div class="text-xs" style="color:${fg}">${s}</div></div>`;
   const years = [...new Set([CUR_YEAR, ...all.map(r => r.y)])].sort((a, b) => b - a);
-  const sel = ui.paySel; [...sel].forEach(k => { if (!rows.some(r => r.key === k && r.statut === 'attente')) sel.delete(k); });
-  const att = rows.filter(r => r.statut === 'attente');
+  const vw = comView(rows), attP = rows.filter(r => r.statut === 'attente'), att = vw.filter(r => r.statut === 'attente');
+  const sel = ui.paySel; [...sel].forEach(k => { if (!att.some(r => r.key === k)) sel.delete(k); });
   const actives = settings.challenges.filter(ch => ['encours', 'atteint'].includes(chalProgress(ch).st));
   const sub = 'mes';
   const subTabs = objSub();
@@ -5931,7 +5974,7 @@ function pfCom() {
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
       ${tile('Commissions acquises', eur2(tot('attente') + tot('paye')), 'hors dossiers bloqués', '#F1F3F6', '#0F172A')}
       ${tile('Payées', eur2(tot('paye')), `${rows.filter(r => r.statut === 'paye').length} dossier(s)`, '#E8F5EE', '#14603F')}
-      ${tile('En attente de paiement', eur2(tot('attente')), `${att.length} dossier(s)`, '#FEF6E4', '#6B4607')}
+      ${tile('En attente de paiement', eur2(tot('attente')), `${attP.length} dossier(s)`, '#FEF6E4', '#6B4607')}
       ${tile('Bloquées · réserves', eur2(tot('bloque')), `${rows.filter(r => r.statut === 'bloque').length} dossier(s) à lever`, '#FDECEC', '#9F1C1C')}
     </div>
     <div class="grid lg:grid-cols-3 gap-5">
@@ -5950,17 +5993,21 @@ function pfCom() {
         <h2 class="h2">Détail des commissions</h2>
         <div class="flex gap-2 flex-wrap"><button class="btn btn-ok !h-9" ${sel.size ? '' : 'disabled style="opacity:.45"'} onclick="openPay([...ui.paySel])"><i class="fas fa-circle-check"></i>Marquer comme payées (${sel.size})</button><button class="btn btn-g !h-9" onclick="exportCom()"><i class="fas fa-download"></i>CSV</button></div>
       </div>
-      <div class="overflow-x-auto"><table class="tbl tbl-com w-full min-w-[1080px]"><thead><tr>
-        <th><span class="block pl-5 pr-2 py-3"><input type="checkbox" aria-label="Tout sélectionner" class="w-4 h-4 accent-orange-700" ${att.length && att.every(r => sel.has(r.key)) ? 'checked' : ''} onchange="${att.length ? `[${att.map(r => `'${r.key}'`).join(',')}].forEach(k=>this.checked?ui.paySel.add(k):ui.paySel.delete(k));renderProfile()` : ''}"></span></th>
-        ${['Date de signature', 'Pharmacie', 'Vente', 'Rang', 'Montant HT', 'Assiette', 'Base', 'Taux', 'Commission', 'Statut', ''].map(h => `<th class="${['Montant HT', 'Assiette', 'Base', 'Taux', 'Commission'].includes(h) ? 'text-right' : ''}"><span class="block px-2.5 py-3">${h}</span></th>`).join('')}</tr></thead>
-        <tbody>${rows.length ? [...rows].reverse().map(r => `<tr>
-          <td>${r.statut === 'attente' ? `<input type="checkbox" class="w-4 h-4 accent-orange-700" aria-label="Sélectionner" ${sel.has(r.key) ? 'checked' : ''} onchange="this.checked?ui.paySel.add('${r.key}'):ui.paySel.delete('${r.key}');renderProfile()">` : ''}</td>
-          <td class="tabular-nums">${fmtD(r.date)}</td><td><button class="font-semibold text-left hover:underline" onclick="openClient(${r.c.id})">${esc(r.c.pharma)}</button><div class="text-xs text-muted">${esc(r.a ? (r.a.notes || '') : (r.c.numDossier || ''))}</div></td>
-          <td><span class="inline-flex items-center gap-2">${r.a ? (optIco(r.label, 28) || `<span class="pill bg-indigo-50 text-indigo-900">Add-on</span>`) : robotIco(r.label, 28)}<span>${esc(r.label)}</span></span></td><td class="whitespace-nowrap">${r.a ? '<span class="text-muted">—</span>' : `${rk(r.n)} ${r.f}`}</td><td class="text-right whitespace-nowrap">${eur(r.montant)}</td><td class="text-right text-muted whitespace-nowrap">${r.assiette ? '− ' + eur(r.assiette) : '—'}</td><td class="text-right whitespace-nowrap">${eur(r.base)}</td>
-          <td class="text-right whitespace-nowrap">${r.taux.toLocaleString('fr-FR')} %</td><td class="text-right font-bold whitespace-nowrap">${eur2(r.com)}</td><td>${comPill(r)}</td>
-          <td class="text-right">${r.statut === 'attente' ? `<button class="btn btn-g !h-9 !px-3" onclick="openPay(['${r.key}'])">Payée…</button>` : r.statut === 'paye' ? `<button class="btn btn-g !h-9 !px-3" onclick="unpay('${r.key}')">Annuler</button>` : `<button class="btn btn-g !h-9 !px-3" onclick="openClient(${r.c.id})">Lever les réserves</button>`}</td></tr>`).join('')
-          : '<tr><td colspan="12" class="!py-12 text-center text-muted">Aucune vente signée sur cette période</td></tr>'}</tbody>
-        ${rows.length ? `<tfoot><tr class="bg-slate-50 font-bold"><td></td><td colspan="4">Total · ${nR} robot${nR > 1 ? 's' : ''} · ${nA} add-on${nA > 1 ? 's' : ''}</td><td class="text-right">${eur(sum(rows, r => r.montant))}</td><td></td><td class="text-right whitespace-nowrap">${eur(sum(rows, r => r.base))}</td><td></td><td class="text-right">${eur2(sum(rows, r => r.com))}</td><td colspan="2"></td></tr></tfoot>` : ''}</table></div>
+      ${comBar(rows, vw)}
+      <div class="cf-tot"><span><b>${vw.length} ligne${vw.length > 1 ? 's' : ''}</b> affichée${vw.length > 1 ? 's' : ''} sur ${rows.length} · commissions <b>${eur2(sum(vw, r => r.com))}</b></span>${att.length ? `<label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="w-4 h-4 accent-orange-700" ${att.every(r => sel.has(r.key)) ? 'checked' : ''} onchange="[${att.map(r => `'${r.key}'`).join(',')}].forEach(k=>this.checked?ui.paySel.add(k):ui.paySel.delete(k));renderProfile()"><b>Tout sélectionner</b> (${att.length} ligne${att.length > 1 ? 's' : ''} à pointer affichée${att.length > 1 ? 's' : ''})</label>` : ''}</div>
+      <div class="overflow-x-auto"><table class="tbl tbl-com w-full min-w-[940px]" style="table-layout:fixed"><colgroup><col style="width:40px"><col style="width:19%"><col style="width:16%"><col style="width:14%"><col style="width:6%"><col style="width:10%"><col style="width:17%"><col style="width:128px"></colgroup><thead><tr>
+        <th></th>
+        ${['Pharmacie', 'Vente', 'Calcul', 'Taux', 'Commission', 'Statut', ''].map(h => `<th class="${['Taux', 'Commission', 'Calcul'].includes(h) ? 'text-right' : ''}"><span class="block px-2.5 py-3">${h}</span></th>`).join('')}</tr></thead>
+        <tbody>${vw.length ? [...vw].reverse().map(r => `<tr>
+          <td class="!pl-4">${r.statut === 'attente' ? `<input type="checkbox" class="w-4 h-4 accent-orange-700" aria-label="Sélectionner" ${sel.has(r.key) ? 'checked' : ''} onchange="this.checked?ui.paySel.add('${r.key}'):ui.paySel.delete('${r.key}');renderProfile()">` : ''}</td>
+          <td><button class="font-semibold text-left hover:underline" onclick="openClient(${r.c.id})">${esc(r.c.pharma)}</button><div class="text-xs text-muted tabular-nums">${fmtD(r.date)}${(r.a ? r.a.notes : r.c.numDossier) ? ' · ' + esc(r.a ? r.a.notes : r.c.numDossier) : ''}</div></td>
+          <td><span class="inline-flex items-center gap-2">${r.a ? (optIco(r.label, 28) || `<span class="pill bg-indigo-50 text-indigo-900">Add-on</span>`) : robotIco(r.label, 28)}<span>${esc(r.label)}</span></span>${r.a ? '' : `<div class="text-xs text-muted">${rk(r.n)} ${r.f}</div>`}</td>
+          <td class="text-right whitespace-nowrap tabular-nums"><div class="text-[12.5px] text-muted">${eur(r.montant)}${r.assiette ? ' − ' + eur(r.assiette) : ''}</div><div class="font-semibold">= ${eur(r.base)}</div></td>
+          <td class="text-right whitespace-nowrap">${r.taux.toLocaleString('fr-FR')} %</td><td class="text-right font-bold whitespace-nowrap">${eur2(r.com)}</td>
+          <td>${comPillS(r)}</td>
+          <td class="text-right !pr-4">${r.statut === 'attente' ? `<button class="btn btn-g !h-9 !px-3" onclick="openPay(['${r.key}'])">Payée…</button>` : r.statut === 'paye' ? `<button class="btn btn-g !h-9 !px-3" onclick="unpay('${r.key}')">Annuler</button>` : `<button class="btn btn-g !h-9 !px-2 !text-[12.5px]" onclick="openClient(${r.c.id})">Lever les réserves</button>`}</td></tr>`).join('')
+          : `<tr><td colspan="8" class="!py-12 text-center text-muted">${rows.length ? 'Aucune ligne ne correspond aux filtres.' : 'Aucune vente signée sur cette période'}</td></tr>`}</tbody>
+        ${vw.length ? `<tfoot><tr class="bg-slate-50 font-bold"><td></td><td colspan="2">Total · ${vw.filter(r => !r.a).length} robot${vw.filter(r => !r.a).length > 1 ? 's' : ''} · ${vw.filter(r => r.a).length} add-on${vw.filter(r => r.a).length > 1 ? 's' : ''}</td><td class="text-right whitespace-nowrap">= ${eur(sum(vw, r => r.base))}</td><td></td><td class="text-right">${eur2(sum(vw, r => r.com))}</td><td colspan="2"></td></tr></tfoot>` : ''}</table></div>
       <p class="px-5 py-3 border-t border-slate-200 text-xs text-muted">Commission = (montant HT − assiette d'installation) × taux du palier. Chaque robot garde le taux de son rang dans l'année (pas de rattrapage). Les dossiers avec réserves non levées sont bloqués. Ventes additionnelles : ${(+settings.com.addon || 0).toLocaleString('fr-FR')} % du montant HT, sans assiette. Règles modifiables dans l'onglet « Paramétrage ».</p>
     </section>`;
 }
@@ -5968,20 +6015,21 @@ function openPay(keys) {
   if (!keys.length) return; ui.payIds = keys;
   const rows = comRows().filter(r => keys.includes(r.key));
   $('pay-sub').innerHTML = `${rows.length} commission${rows.length > 1 ? 's' : ''} · <b>${eur2(sum(rows, r => r.com))}</b><br><span class="text-xs text-muted">${esc(rows.map(r => r.c.pharma + (r.a ? ' (add-on)' : '')).join(', '))}</span>`;
-  $('pay-month').value = isoDay(TODAY).slice(0, 7);
+  $('pay-month').value = isoDay(TODAY).slice(0, 7); $('pay-sal').value = prevMonth();
   $('dlg-pay').showModal();
 }
 function confirmPay() {
-  const m = $('pay-month').value; if (!m) return toast('Choisissez le mois et l\'année.', true);
-  ui.payIds.forEach(k => { const {c, a} = comRef(k); if (!c) return; if (a) { a.commissionPaid = m; log(c, `Commission add-on payée : ${a.quoi} (${fmtMonth(m)})`); } else { c.commissionPaid = m; log(c, `Commission payée (${fmtMonth(m)})`); } ui.paySel.delete(k); });
-  save(); closeDlg('dlg-pay'); renderProfile(); toast(`Paiement enregistré : ${fmtMonth(m)}`);
+  const m = $('pay-month').value, sm = $('pay-sal').value; if (!m) return toast('Indiquez le mois de pointage.', true); if (!sm) return toast('Indiquez le mois du salaire.', true);
+  const lab = `pointée en ${fmtMonth(m)} · salaire de ${fmtMonth(sm)}`;
+  ui.payIds.forEach(k => { const {c, a} = comRef(k); if (!c) return; if (a) { a.commissionPaid = m; a.commissionSalary = sm; log(c, `Commission add-on payée : ${a.quoi} (${lab})`); } else { c.commissionPaid = m; c.commissionSalary = sm; log(c, `Commission payée (${lab})`); } ui.paySel.delete(k); });
+  save(); closeDlg('dlg-pay'); renderProfile(); toast(`Paiement enregistré : ${lab}`);
 }
-function unpay(k) { const {c, a} = comRef(k); if (!c || !confirm('Annuler le paiement de cette commission ?')) return; (a || c).commissionPaid = ''; save(); renderProfile(); }
+function unpay(k) { const {c, a} = comRef(k); if (!c || !confirm('Annuler le paiement de cette commission ?')) return; (a || c).commissionPaid = ''; (a || c).commissionSalary = ''; save(); renderProfile(); }
 function exportCom() {
-  const rows = comFiltered(); if (!rows.length) return toast('Aucune donnée.', true);
+  const rows = comView(comFiltered()); if (!rows.length) return toast('Aucune donnée.', true);
   const q = v => `"${String(v).replace(/"/g, '""')}"`;
-  const lines = [['Date de signature', 'Pharmacie', 'Type', 'N° dossier / réf.', 'Vente', 'Rang', 'Montant HT', 'Assiette', 'Base', 'Taux %', 'Commission', 'Statut', 'Mois de paiement'].map(q).join(';'),
-    ...rows.map(r => [fmtD(r.date), r.c.pharma, r.a ? 'Add-on' : 'Robot', r.a ? r.a.notes || '' : r.c.numDossier || '', r.label, r.a ? '' : `${r.n} ${r.f}`, r.montant, r.assiette, r.base, r.taux, r.com.toFixed(2).replace('.', ','), COM_ST[r.statut][0], r.paid ? fmtMonth(r.paid) : ''].map(q).join(';'))];
+  const lines = [['Date de signature', 'Pharmacie', 'Type', 'N° dossier / réf.', 'Vente', 'Rang', 'Montant HT', 'Assiette', 'Base', 'Taux %', 'Commission', 'Statut', 'Pointée en', 'Mois du salaire'].map(q).join(';'),
+    ...rows.map(r => [fmtD(r.date), r.c.pharma, r.a ? 'Add-on' : 'Robot', r.a ? r.a.notes || '' : r.c.numDossier || '', r.label, r.a ? '' : `${r.n} ${r.f}`, r.montant, r.assiette, r.base, r.taux, r.com.toFixed(2).replace('.', ','), COM_ST[r.statut][0], r.paid ? fmtMonth(r.paid) : '', r.sal ? fmtMonth(r.sal) : ''].map(q).join(';'))];
   download(`commissions_${isoDay(new Date())}.csv`, '\uFEFF' + lines.join('\r\n'), 'text/csv;charset=utf-8'); toast('Export CSV réalisé');
 }
 function pfChal() {
