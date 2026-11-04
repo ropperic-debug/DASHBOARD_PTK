@@ -97,15 +97,15 @@
 #f-stage{display:none!important}
 .zlost{margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:11px;border:2px solid #DC2626;background:#FEF2F2;color:#B91C1C;font-weight:800;font-size:13.5px}.zlost:hover{background:#FEE2E2}
 /* V2.7 : curseur Fait, Ventes fixe, bandeau filtre, action compacte */
-.zsw{position:relative;display:inline-flex;align-items:center;width:92px;height:38px;border-radius:999px;background:#fff;border:2px solid #047857;box-sizing:border-box;flex:none;overflow:hidden;padding:0;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;transition:background .25s}
-.zsw .zkn{display:block;position:absolute;left:3px;top:3px;width:28px;height:28px;border-radius:50%;background:#fff;border:2.5px solid #047857;box-shadow:0 1px 3px rgba(0,0,0,.18);transition:transform .28s ease,border-color .25s}
-.zsw b{position:absolute;left:11px;color:#fff;font-size:13px;font-weight:800;opacity:0;transition:opacity .2s}
+.zsw{position:relative;display:inline-flex;align-items:center;width:64px;height:28px;border-radius:999px;background:#fff;border:2px solid #047857;box-sizing:border-box;flex:none;overflow:hidden;padding:0;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;transition:background .25s}
+.zsw .zkn{display:block;position:absolute;left:3px;top:2px;width:18px;height:18px;border-radius:50%;background:#fff;border:2px solid #047857;box-shadow:0 1px 3px rgba(0,0,0,.18);transition:transform .28s ease,border-color .25s}
+.zsw b{position:absolute;left:8px;color:#fff;font-size:11px;font-weight:800;opacity:0;transition:opacity .2s}
 .zsw.late{border-color:#EA580C;background:#FFF7ED;box-shadow:0 0 0 3px #FED7AA}.zsw.late .zkn{border-color:#EA580C}
-.zsw.on{background:#047857;box-shadow:none;border-color:#047857}.zsw.on .zkn{transform:translateX(56px);border-color:#fff}.zsw.on b{opacity:1}
+.zsw.on{background:#047857;box-shadow:none;border-color:#047857}.zsw.on .zkn{transform:translateX(36px);border-color:#fff}.zsw.on b{opacity:1}
 .zsw.zhint:not(.late):not(.on){box-shadow:0 0 0 3px #E3F4EB}
-.zsw.zhint:not(.on):after{content:"\203A\203A\203A";position:absolute;right:11px;top:50%;transform:translateY(-50%);color:#B9DECB;font-weight:800;letter-spacing:1px;font-size:15px}
+.zsw.zhint:not(.on):after{content:"\203A\203A\203A";position:absolute;right:8px;top:50%;transform:translateY(-50%);color:#B9DECB;font-weight:800;letter-spacing:1px;font-size:12px}
 .zsw.zhint:not(.on) .zkn{animation:zhint 4.4s infinite}
-@keyframes zhint{0%{transform:translateX(0);animation-timing-function:ease-in-out}36%{transform:translateX(20px);animation-timing-function:ease-in-out}59%,100%{transform:translateX(0)}}
+@keyframes zhint{0%{transform:translateX(0);animation-timing-function:ease-in-out}36%{transform:translateX(12px);animation-timing-function:ease-in-out}59%,100%{transform:translateX(0)}}
 @media (prefers-reduced-motion:reduce){.zsw.zhint:not(.on) .zkn{animation:none}}
 .vfade{position:relative}.vlist{max-height:102px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;padding:2px 6px 2px 0;margin-right:-6px;scrollbar-width:thin;scrollbar-color:#CBD5E1 transparent}
 .vlist::-webkit-scrollbar{width:6px}.vlist::-webkit-scrollbar-thumb{background:#CBD5E1;border-radius:6px}
@@ -910,15 +910,21 @@
 </dialog>
 
 <dialog id="dlg-real" class="!w-[min(460px,94vw)]">
-  <div class="px-5 py-4 border-b flex items-center gap-3"><span class="w-10 h-10 rounded-full inline-flex items-center justify-center bg-emerald-50 text-emerald-700"><i class="fas fa-circle-check text-lg"></i></span><div><h2 class="font-extrabold text-lg leading-tight">Action réalisée : confirmez la date</h2><p id="rl-sub" class="text-xs text-muted"></p></div></div>
+  <div class="px-5 py-4 border-b flex items-center gap-3"><span class="w-10 h-10 rounded-full inline-flex items-center justify-center bg-emerald-50 text-emerald-700"><i class="fas fa-circle-check text-lg"></i></span><div><h2 id="rl-h" class="font-extrabold text-lg leading-tight">Action réalisée : confirmez la date</h2><p id="rl-sub" class="text-xs text-muted"></p></div></div>
   <div class="idband hidden" data-idb></div>
-  <div class="p-5 flex flex-col gap-3">
+  <div id="rl-s1" class="p-5 hidden">
+    <div class="flex gap-2.5">
+      <button type="button" class="btn btn-ok flex-1 !h-auto !py-4 flex-col !gap-1 !text-[15px]" onclick="rlStep(2)"><span><i class="fas fa-check mr-1"></i>Réalisée</span><span class="text-[11.5px] font-normal opacity-90">J'ai eu la personne</span></button>
+      <button type="button" class="btn flex-1 !h-auto !py-4 flex-col !gap-1 !text-[15px]" style="border:2px solid #EA580C;background:#fff;color:#C2410C" onclick="rlNoResp()"><span><i class="fas fa-phone-slash mr-1"></i>Sans réponse</span><span class="text-[11.5px] font-normal">Réessayer plus tard</span></button>
+    </div>
+  </div>
+  <div id="rl-s2" class="p-5 flex flex-col gap-3">
     <label class="lbl flex justify-between items-center" for="rl-dt"><span>Date et heure de réalisation *</span><span class="flex gap-3"><button type="button" class="text-xs font-bold text-ptkd hover:underline" onclick="$('rl-dt').value=nowDT()">Maintenant</button><button type="button" id="rl-plan" class="text-xs font-bold text-ptkd hover:underline" onclick="$('rl-dt').value=ui.real.planned">Date prévue</button></span></label>
     <input type="datetime-local" id="rl-dt" class="inp !h-12 text-base">
     <p class="text-xs text-muted">Cliquez sur l'icône calendrier du champ pour choisir le jour et l'heure.</p>
     <div><label class="lbl" for="rl-note">Commentaire * <span class="text-[11.5px] font-normal text-muted">· ce qui s'est dit ou décidé (alimente l'historique de la fiche)</span></label><div class="mic-wrap"><textarea id="rl-note" rows="3" class="inp !h-auto py-2" placeholder="Ex. : Titulaire joint, souhaite revoir le devis la semaine prochaine…"></textarea><button type="button" class="mic !top-1 !w-9 !h-9" onclick="dictate('rl-note',this)" aria-label="Dicter le commentaire"><i class="fas fa-microphone"></i></button></div><p id="rl-err" class="hidden text-[12.5px] font-semibold mt-1" style="color:#B42318"><i class="fas fa-circle-exclamation mr-1"></i>Le commentaire est obligatoire pour enregistrer l'action dans l'historique.</p></div>
   </div>
-  <div class="px-5 py-4 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-real')">Annuler</button><button class="btn btn-ok" onclick="realOk()"><i class="fas fa-check"></i>Confirmer</button></div>
+  <div class="px-5 py-4 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-real')">Annuler</button><button id="rl-back" type="button" class="btn btn-g hidden" onclick="rlStep(1)"><i class="fas fa-arrow-left"></i>Retour</button><button id="rl-conf" class="btn btn-ok" onclick="realOk()"><i class="fas fa-check"></i>Confirmer</button></div>
 </dialog>
 <dialog id="dlg-trait" class="!w-[min(460px,94vw)]">
   <div class="px-5 py-4 border-b flex items-center gap-3"><span id="tr-ic" class="w-10 h-10 rounded-xl inline-flex items-center justify-center bg-orange-50 text-orange-700 shrink-0"></span><div class="min-w-0 flex-1"><h2 class="font-extrabold text-lg leading-tight">Traiter cette action</h2><p id="tr-sub" class="text-[13px] text-muted"></p></div><button class="dlg-x" onclick="closeDlg('dlg-trait')" aria-label="Fermer (Échap)"><i class="fas fa-xmark"></i></button></div>
@@ -926,10 +932,23 @@
   <div class="p-5 flex flex-col gap-2.5">
     <div id="tr-note" class="text-[13px] text-slate-700 rounded-xl bg-slate-50 border border-slate-200 px-3 py-2"></div>
     <button type="button" id="tr-done" class="btn btn-ok !h-12 !text-[15px]"><i class="fas fa-check"></i>Marquer comme réalisée</button>
+    <button type="button" id="tr-nr" class="btn !h-12 !text-[15px]" style="border:2px solid #EA580C;background:#FFF7ED;color:#9A3412"><i class="fas fa-phone-slash"></i>Sans réponse · réessayer plus tard</button>
     <button type="button" id="tr-replan" class="btn btn-g !h-12 !text-[15px]"><i class="far fa-calendar"></i>Replanifier ou modifier</button>
     <button type="button" id="tr-cancel" class="btn !h-12 !text-[15px]" style="border:1.5px solid #DC2626;color:#B42318;background:#fff"><i class="fas fa-ban"></i>Annuler cette action</button>
   </div>
   <div class="px-5 py-3 border-t bg-slate-50 flex justify-end"><button class="btn btn-g" onclick="closeDlg('dlg-trait')">Fermer</button></div>
+</dialog>
+<dialog id="dlg-noresp" class="!w-[min(460px,94vw)]">
+  <div class="px-5 py-4 border-b flex items-center gap-3"><span class="w-10 h-10 rounded-full inline-flex items-center justify-center shrink-0" style="background:#FFF7ED;color:#C2410C"><i class="fas fa-phone-slash text-lg"></i></span><div class="min-w-0 flex-1"><h2 class="font-extrabold text-lg leading-tight">Tentative sans réponse</h2><p id="nr-sub" class="text-[13px] text-muted"></p></div><button class="dlg-x" onclick="closeDlg('dlg-noresp')" aria-label="Fermer (Échap)"><i class="fas fa-xmark"></i></button></div>
+  <div class="idband hidden" data-idb></div>
+  <div class="p-5 flex flex-col gap-3">
+    <div><label class="lbl" for="nr-dt">Tentative effectuée le *</label><input type="datetime-local" id="nr-dt" class="inp !h-11" oninput="nrUpd()"></div>
+    <div><label class="lbl" for="nr-note">Commentaire *</label><div class="mic-wrap"><textarea id="nr-note" rows="2" class="inp !h-auto py-2" placeholder="Ce qui s'est passé (messagerie, occupé, pas de réponse…)"></textarea><button type="button" class="mic !top-1 !w-9 !h-9" onclick="dictate('nr-note',this)" aria-label="Dicter le commentaire"><i class="fas fa-microphone"></i></button></div></div>
+    <div><label class="lbl" for="nr-new" id="nr-newl">Nouvelle date et heure *</label><input type="datetime-local" id="nr-new" class="inp !h-11" oninput="nrUpd()"></div>
+    <p id="nr-err" class="hidden text-[12.5px] font-semibold" style="color:#B42318"></p>
+    <div class="rounded-xl p-3 text-[13px]" style="background:#F0FDF4;border:1.5px solid #86EFAC;color:#14532D"><div class="font-extrabold mb-1.5">Ce qui sera enregistré :</div><div id="nr-sum" class="flex flex-col gap-1.5"></div></div>
+  </div>
+  <div class="px-5 py-4 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-noresp')">Annuler</button><button class="btn btn-ok" onclick="nrOk()"><i class="fas fa-check"></i>Confirmer et replanifier</button></div>
 </dialog>
 <dialog id="dlg-confirm" class="!w-[min(460px,94vw)]">
   <div class="p-5 flex flex-col gap-3">
@@ -986,6 +1005,13 @@
 <li><b>Se déconnecter (V2.9)</b> : l'icône <b>porte avec flèche</b>, en haut à gauche à côté du logo, ferme la session et ramène à l'écran de connexion (le cadenas à droite fait de même). Les données restent chiffrées sur l'appareil.</li>
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
+<li><b>Curseur « Fait » en deux étapes (V3.3)</b> : pour un appel, une relance, un rappel ou une visio, le curseur (ou le bouton « Fait ») demande d'abord <b>« Que s'est-il passé ? »</b> : <b>Réalisée</b> (date + commentaire, puis Confirmer) ou <b>Sans réponse</b> (tentative, commentaire, nouvelle date : l'action est réalisée, dupliquée et replanifiée). « Retour » permet de changer de choix. Pour une visite ou un mail, on arrive directement sur « Réalisée ».</li>
+<li><b>V3.3</b> : curseur « Fait » en deux étapes avec « Sans réponse ».</li>
+<li><b>Clôture définitive (V3.2)</b> : une action clôturée (avec son commentaire) n'est plus remise « à faire » si vous quittez la fiche sans autre saisie : elle disparaît tout de suite du cadre « Prochaine action » et de « Ma journée ».</li>
+<li><b>Sans réponse · réessayer plus tard (V3.2)</b> : pour un appel, une relance, un rappel ou une visio, la fenêtre « Traiter cette action » propose ce bouton. Vous indiquez la date de la tentative, un <b>commentaire obligatoire</b> et la <b>nouvelle date et heure</b> : l'action est <b>réalisée</b> (tentative notée dans l'historique), <b>dupliquée</b> à l'identique et <b>replanifiée</b>. Elle s'affiche « 2e tentative », « 3e tentative »… Différence avec « Replanifier » : replanifier décale simplement l'heure, sans trace ; « Sans réponse » garde la preuve de l'essai.</li>
+<li><b>Traiter depuis « Ma journée » (V3.2)</b> : touchez la <b>pastille d'action</b> (rond avec l'icône appel, visite ou visio) ou l'heure de la prochaine action pour ouvrir « Traiter cette action ». Le nom de la pharmacie ouvre toujours la fiche.</li>
+<li><b>Curseur « Fait » plus petit (V3.2)</b> : même fonctionnement, plus discret.</li>
+<li><b>V3.2</b> : clôture définitive, bouton « Sans réponse », pastille d'action cliquable, curseur plus petit.</li>
 <li><b>Pharmacie, titulaire et téléphone sous les yeux (V3.1)</b> : toutes les fenêtres d'action (planifier une relance, un rappel, un appel, une visite, une visio ou un e-mail ; « Traiter cette action » ; clôture d'une action) affichent en haut un <b>bandeau orangé</b> avec le nom de la pharmacie, le titulaire et les numéros de téléphone (portable en vert, fixe en blanc), cliquables pour appeler depuis le téléphone. Sans numéro, le bandeau l'indique.</li>
 <li><b>V3.1</b> : bandeau pharmacie, titulaire et téléphone dans toutes les fenêtres d'action.</li>
 <li><b>Commentaire à la clôture d'une action (V3.0)</b> : quand vous marquez une action comme réalisée (bouton Réalisée, curseur « Fait » ou fenêtre « Traiter cette action »), la fenêtre demande la <b>date et l'heure de réalisation</b> et un <b>commentaire obligatoire</b> (à taper ou à dicter). Il est inscrit dans l'historique de la fiche avec la date de réalisation.</li>
@@ -1208,7 +1234,7 @@
 <h2 id="a-usage">3. Au quotidien</h2>
 <table>
 <tr><th>Moment</th><th>Ce que vous faites</th></tr>
-<tr><td><b>Valider une action</b></td><td>Dans « Ma journée », faites glisser le curseur vert vers la droite : il passe à « ✓ Fait » et vous confirmez la date, l'heure de réalisation et un commentaire (obligatoire : il alimente l'historique).</td></tr>
+<tr><td><b>Valider une action</b></td><td>Dans « Ma journée », touchez la pastille de l'action pour la traiter (réalisée, <b>sans réponse</b>, replanifier, annuler), ou faites glisser le curseur vert vers la droite (pour un appel : choisissez <b>Réalisée</b> ou <b>Sans réponse</b>, puis complétez) : il passe à « ✓ Fait » et vous confirmez la date, l'heure de réalisation et un commentaire (obligatoire : il alimente l'historique).</td></tr>
 <tr><td><b>Le matin</b></td><td>Rien : la synchro s'est faite à la dernière ouverture. En cas de doute, bouton <b>Synchro</b>.</td></tr>
 <tr><td><b>Chez le client</b></td><td>Ouvrez le dashboard sur le téléphone : consultez la fiche, ajoutez une note (micro du clavier pour dicter), changez l'étape, planifiez l'action suivante, saisissez le devis ou le montant, générez le PDF de synthèse.</td></tr>
 <tr><td><b>Au retour</b></td><td>Ouvrez le dashboard sur le PC : les fiches modifiées sur le téléphone sont déjà à jour. Vous voyez « N fiches reçues ».</td></tr>
@@ -1588,7 +1614,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '3.1';
+const APP_VERSION = '3.3';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2352,7 +2378,7 @@ function zswGo(b) {
 }
 document.addEventListener('pointerdown', e => {
   const b = e.target.closest('.zsw'); if (!b || b.classList.contains('on') || e.button > 0) return;
-  const k = b.querySelector('.zkn'), x0 = e.clientX, max = 56; let dx = 0, moved = false;
+  const k = b.querySelector('.zkn'), x0 = e.clientX, max = 36; let dx = 0, moved = false;
   try { b.setPointerCapture(e.pointerId); } catch (_) {}
   const mv = ev => { dx = Math.max(0, Math.min(max, ev.clientX - x0)); if (dx > 4) { moved = true; k.style.transition = 'none'; k.style.animation = 'none'; k.style.transform = `translateX(${dx}px)`; } };
   const up = () => { b.removeEventListener('pointermove', mv); b.removeEventListener('pointerup', up); b.removeEventListener('pointercancel', up);
@@ -2375,7 +2401,7 @@ function itemRow(x, i, opts = {}) {
   const can = x.rap ? !x.done : !x.done && c.nextDate && c.nextDate === x.dt;
   return `<li class="itr flex gap-3 items-center py-2.5 ${i ? 'border-t border-slate-100' : ''} ${opts.hl ? 'bg-orange-50/50 -mx-2 px-2 rounded-xl' : ''}">
     <span class="w-[52px] text-[17px] font-bold tabular-nums leading-none ${x.done ? 'text-slate-400' : late ? 'text-rose-700' : 'text-ink'}">${fmtHM(x.dt)}</span>
-    <span class="w-9 h-9 rounded-xl inline-flex items-center justify-center shrink-0" style="background:${x.done ? '#E8F5EE' : A.bg};color:${x.done ? '#14603F' : A.fg}" title="${A.label}">${ic(x.done ? 'check' : A.icon, 17)}</span>
+    <${can ? `button type="button" onclick="traiter('${x.rap ? 'rap' : 'next'}',${c.id}${x.rap ? ',' + x.rap : ''})"` : 'span'} class="w-9 h-9 rounded-xl inline-flex items-center justify-center shrink-0" style="background:${x.done ? '#E8F5EE' : A.bg};color:${x.done ? '#14603F' : A.fg}" title="${can ? 'Traiter cette action (réalisée, sans réponse, replanifier, annuler)' : A.label}">${ic(x.done ? 'check' : A.icon, 17)}</${can ? 'button' : 'span'}>
     <button class="flex-1 min-w-0 text-left" onclick="openClient(${c.id})"><span class="block text-[14px] font-bold truncate ${x.done ? 'text-slate-500' : ''}">${esc(c.pharma)}</span><span class="block text-xs text-muted truncate"><b class="font-semibold" style="color:${x.done ? '#64748B' : A.fg}">${sub}</b> · ${x.note ? esc(x.note) : esc(c.ville)}</span></button>
     <span class="hidden sm:inline-flex shrink-0">${st}</span>
     ${can ? `<span class="flex gap-1.5 shrink-0 items-center">${quickLink(c, x.type)}${zsw(c.id, x.rap, late, x === window.ZNEXT)}</span>` : '<span class="sm:hidden shrink-0">' + st + '</span>'}</li>`;
@@ -2387,7 +2413,7 @@ function ddCard(x, cur) {
   const who = [`${c.genre || ''} ${c.prenom || ''} ${c.nom || ''}`.replace(/\s+/g, ' ').trim(), tel].filter(Boolean).join(' · ');
   const mot = x.note || (x.type === 'suivi' && c.pending ? `${STEPS[c.pending.to].short} à fixer` : (c.acts || []).find(a => a.dt === x.dt)?.motif || '');
   return `<div class="dd-card ${x.done ? 'done' : ''} ${cur ? 'cur' : ''}"><div class="flex gap-3 items-start">
-    <div class="text-center w-[58px] shrink-0"><div class="text-[22px] font-extrabold tabular-nums leading-none ${late ? 'text-rose-700' : ''}">${fmtHM(x.dt)}</div><span class="dd-tag inline-block mt-1.5" style="background:${A.bg};color:${A.fg}">${A.label}</span></div>
+    <div class="text-center w-[58px] shrink-0"><div class="text-[22px] font-extrabold tabular-nums leading-none ${late ? 'text-rose-700' : ''}">${fmtHM(x.dt)}</div><${!x.done && (x.rap || (c.nextDate && c.nextDate === x.dt)) ? `button type="button" onclick="dayClose();traiter('${x.rap ? 'rap' : 'next'}',${c.id}${x.rap ? ',' + x.rap : ''})" title="Traiter cette action"` : 'span'} class="dd-tag inline-block mt-1.5" style="background:${A.bg};color:${A.fg}">${A.label}</${!x.done && (x.rap || (c.nextDate && c.nextDate === x.dt)) ? 'button' : 'span'}></div>
     <div class="flex-1 min-w-0"><div class="flex items-center gap-2 flex-wrap"><b class="text-[15px]">${esc(c.pharma)}</b>${x.done ? '<span class="pill bg-emerald-50 text-emerald-800">Fait</span>' : late ? '<span class="pill bg-rose-50 text-rose-700">En retard</span>' : ''}</div>
       <div class="text-[12px] text-muted">${esc(c.ville || '')}${isActive(c) ? ' · ' + STEPS[c.step].label : ''}${c.montant ? ' · ' + eur(c.montant) : ''}${x.type === 'visite' && dist(c) ? ' · ' + dist(c) : ''}</div>
       ${who ? `<div class="text-[12.5px] mt-1"><i class="fas fa-user text-slate-400 mr-1"></i>${esc(who)}</div>` : ''}${mot ? `<div class="text-[12.5px] mt-1 text-slate-700"><i class="fas fa-comment-dots text-slate-400 mr-1"></i>${esc(mot)}</div>` : ''}
@@ -2440,7 +2466,7 @@ function renderDay() {
     window.ZNEXT = next; const c = next.c, A = ACTIONS[next.type], mins = Math.round((parseD(next.dt) - now) / 60000);
     const when = mins > 0 ? (mins < 60 ? `dans ${mins} min` : `dans ${fmtMin(mins)}`) : 'heure passée · à confirmer';
     h += `<div class="rounded-xl border border-orange-200 bg-orange-50/60 px-3 py-2 flex items-center gap-3">
-      <span class="text-[20px] font-bold tabular-nums leading-none text-orange-800">${fmtHM(next.dt)}</span>
+      <button type="button" class="text-[20px] font-bold tabular-nums leading-none text-orange-800" title="Traiter cette action (réalisée, sans réponse, replanifier, annuler)" onclick="traiter('${next.rap ? 'rap' : 'next'}',${next.c.id}${next.rap ? ',' + next.rap : ''})">${fmtHM(next.dt)}</button>
       <button class="min-w-0 flex-1 text-left" onclick="openClient(${c.id})" title="Ouvrir la fiche"><span class="block text-[14px] font-bold truncate">${esc(c.pharma)}</span><span class="block text-[11.5px] text-slate-600 truncate">${A.label} · ${esc(c.ville)}${isActive(c) ? ' · ' + STEPS[c.step].label : ''}${next.type === 'visite' && dist(c) ? ' · ' + dist(c) : ''} · ${when}</span></button>
       <div class="flex gap-1.5 shrink-0">${next.type === 'visite' && opt('gps') ? `<a class="btn btn-g !h-9 !px-2.5" title="Itinéraire" target="_blank" rel="noopener" href="${mapsUrl(c)}">${ic('route', 15)}</a>` : ''}
         ${next.type === 'teams' && opt('teams') ? `<a class="btn btn-g !h-9 !px-2.5" title="Teams" style="color:${TEAMS}" target="_blank" rel="noopener" href="${teamsUrl(c, next.dt, 'Pharmathek — ' + c.pharma)}">${ic('video', 15)}</a>` : ''}
@@ -2594,9 +2620,16 @@ function idBand(c) {
   return `<span class="zid-i"><i class="fas fa-prescription-bottle-medical"></i></span><div class="zid-n"><b>${esc(c.pharma)}</b><span>${ti}</span></div><div class="zid-p">${t || '<span class="zid-no"><i class="fas fa-phone-slash"></i>Aucun numéro enregistré</span>'}</div>`;
 }
 function idbFill(dlg, c) { const el = document.querySelector(`#${dlg} [data-idb]`); if (!el) return; if (c) { el.innerHTML = idBand(c); el.classList.remove('hidden'); } else el.classList.add('hidden'); }
-function askReal(sub, planned, fn, c) {
+function rlStep(n) {
+  const nr = ui.real && ui.real.nr; $('rl-s1').classList.toggle('hidden', n !== 1); $('rl-s2').classList.toggle('hidden', n !== 2);
+  $('rl-conf').classList.toggle('hidden', n !== 2); $('rl-back').classList.toggle('hidden', !(n === 2 && nr));
+  $('rl-h').textContent = n === 1 ? "Que s'est-il passé ?" : 'Action réalisée : confirmez la date';
+  if (n === 2) setTimeout(() => $('rl-note').focus(), 50);
+}
+function rlNoResp() { const R = ui.real && ui.real.nr; if (!R) return; closeDlg('dlg-real'); noResp(R[0], R[1], R[2]); }
+function askReal(sub, planned, fn, c, nr) {
   idbFill('dlg-real', c);
-  ui.real = {fn, planned: planned || nowDT()}; $('rl-sub').innerHTML = sub; $('rl-dt').value = nowDT(); $('rl-note').value = ''; $('rl-err').classList.add('hidden'); $('rl-plan').classList.toggle('hidden', !planned); $('dlg-real').showModal();
+  ui.real = {fn, planned: planned || nowDT(), nr: nr || null}; rlStep(nr ? 1 : 2); $('rl-sub').innerHTML = sub; $('rl-dt').value = nowDT(); $('rl-note').value = ''; $('rl-err').classList.add('hidden'); $('rl-plan').classList.toggle('hidden', !planned); $('dlg-real').showModal();
 }
 function realOk() {
   const dt = $('rl-dt').value; if (!dt) return toast("Indiquez la date et l'heure de réalisation.", true);
@@ -2607,7 +2640,7 @@ function realOk() {
 function askDone(id) {
   const c = byId(id); if (!c?.nextDate) return;
   const A = ACTIONS[c.nextType] || ACTIONS.relance, past = isPast(c.nextDate);
-  askReal(`<b>${A.label}</b> · ${esc(c.pharma)} · prévu(e) ${fmtDT(c.nextDate)}`, c.nextDate, (dt, note) => doneTodo(id, dt, note), c);
+  askReal(`<b>${A.label}</b> · ${esc(c.pharma)} · prévu(e) ${fmtDT(c.nextDate)}`, c.nextDate, (dt, note) => doneTodo(id, dt, note), c, ['relance', 'teams', 'suivi'].includes(c.nextType) ? ['next', id] : null);
 }
 function commitDone() { ui.pendingDone = null; }
 function revertDone() {
@@ -2628,7 +2661,7 @@ function doneTodo(id, real, note) {
   const pend = c.nextType === 'suivi' && c.pending;
   c.nextDate = null; save();
   openClient(id);
-  ui.pendingDone = {id, prev, entry: c.history[0], dt: prev.nextDate};
+  ui.pendingDone = null; /* V3.2 : clôture définitive (le commentaire est déjà dans l'historique) */
   if (pend) { openStep(c.pending.to); return; }
   $('f-crcard').open = true; setPane('projet');
   setTimeout(() => $('f-cr').focus(), 300);
@@ -2756,11 +2789,11 @@ function renderRap(c) {
   let top = '', oth = [], cancel = '', done = '', replan = '', nxt = '', opn = '';
   if (act) {
     const A = ACTIONS[c.nextType] || ACTIONS.relance; nxt = c.nextDate; oth = R;
-    top = {fa: A.fa, t: `${A.label} · ${fmtDT(c.nextDate)}`, s: `${esc(c.pharma)} · ${STEPS[c.step].short}`};
+    top = {fa: A.fa, t: `${A.label} · ${fmtDT(c.nextDate)}${c.nextTryDt === c.nextDate && c.nextTry ? ' · ' + ordT(c.nextTry + 1) + ' tentative' : ''}`, s: `${esc(c.pharma)} · ${STEPS[c.step].short}`};
     done = `askDone(${c.id})`; replan = `gotoPlan(${c.id})`; cancel = `cancelNext(${c.id})`; opn = `traiter('next',${c.id})`;
   } else if (R.length) {
     const r = R[0], T = RAP_T[r.type] || RAP_T.rappel; nxt = r.dt; oth = R.slice(1);
-    top = {fa: T.fa, t: `${T.l} · ${fmtDT(r.dt)}`, s: `${esc(c.pharma)}${r.note ? ' · ' + esc(r.note) : ''}`};
+    top = {fa: T.fa, t: `${T.l} · ${fmtDT(r.dt)}${r.try ? ' · ' + ordT(r.try + 1) + ' tentative' : ''}`, s: `${esc(c.pharma)}${r.note ? ' · ' + esc(r.note) : ''}`};
     done = `doneRap(${c.id},${r.id})`; replan = `openRap('${r.type}',${r.id})`; cancel = `cancelRap(${c.id},${r.id})`; opn = `traiter('rap',${c.id},${r.id})`;
   }
   const dl = nxt ? Math.round((parseD(nxt) - now0) / 864e5) : null, late0 = nxt && parseD(nxt) < now0;
@@ -2800,15 +2833,54 @@ function rapType(k) {
   $('rp-ic').innerHTML = `<i class="fas ${RAP_T[k].fa} text-lg"></i>`;
   { const c = byId(ui.rap.cid), el = $('rp-tel'); if (el && c) { const on = k === 'appel'; el.classList.toggle('hidden', !on); el.innerHTML = on ? telBlock(c) : ''; } }
 }
+const ordT = n => n === 1 ? '1re' : n + 'e';
 function traiter(kind, cid, rid) {
-  const c = byId(cid); if (!c) return; let A, dt, note = '', done, replan, cancel;
-  if (kind === 'next') { if (!c.nextDate) return; A = {l: (ACTIONS[c.nextType] || ACTIONS.relance).label, fa: (ACTIONS[c.nextType] || ACTIONS.relance).fa}; dt = c.nextDate; done = () => askDone(cid); replan = () => gotoPlan(cid); cancel = () => cancelNext(cid); }
-  else { const r = (c.rappels || []).find(x => x.id === rid); if (!r) return; const T = RAP_T[r.type] || RAP_T.rappel; A = {l: T.l, fa: T.fa}; dt = r.dt; note = r.note || ''; done = () => doneRap(cid, rid); replan = () => openRap(r.type, rid); cancel = () => cancelRap(cid, rid); }
+  const c = byId(cid); if (!c) return; let A, dt, note = '', done, replan, cancel, contact = false;
+  if (kind === 'next') { if (!c.nextDate) return; const AA = ACTIONS[c.nextType] || ACTIONS.relance; A = {l: AA.label, fa: AA.fa}; dt = c.nextDate; contact = ['relance', 'teams', 'suivi'].includes(c.nextType || 'relance'); done = () => askDone(cid); replan = () => gotoPlan(cid); cancel = () => cancelNext(cid); }
+  else { const r = (c.rappels || []).find(x => x.id === rid); if (!r) return; const T = RAP_T[r.type] || RAP_T.rappel; A = {l: T.l, fa: T.fa}; dt = r.dt; note = r.note || ''; contact = ['relance', 'rappel', 'appel', 'visio'].includes(r.type); done = () => doneRap(cid, rid); replan = () => openAction(cid, T.a, null, {dt: r.dt, rap: {rid: r.id, kind: r.type}, motif: r.note}); cancel = () => cancelRap(cid, rid); }
   idbFill('dlg-trait', c); $('tr-ic').innerHTML = `<i class="fas ${A.fa}"></i>`; $('tr-sub').innerHTML = `<b>${A.l}</b> · ${esc(c.pharma)} · prévu(e) ${fmtDT(dt)}`;
   $('tr-note').style.display = note ? '' : 'none'; $('tr-note').innerHTML = `<i class="fas fa-comment-dots text-slate-400 mr-1"></i>${esc(note)}`;
   const go = f => () => { closeDlg('dlg-trait'); f(); };
   $('tr-done').onclick = go(done); $('tr-replan').onclick = go(replan); $('tr-cancel').onclick = go(cancel);
+  $('tr-nr').style.display = contact ? '' : 'none'; $('tr-nr').onclick = go(() => noResp(kind, cid, rid));
   $('dlg-trait').showModal();
+}
+/* ----- V3.2 : tentative sans réponse = action réalisée + dupliquée + replanifiée ----- */
+function noResp(kind, cid, rid) {
+  const c = byId(cid); if (!c) return; let lab, dt, n;
+  if (kind === 'next') { if (!c.nextDate) return; lab = (ACTIONS[c.nextType] || ACTIONS.relance).label; dt = c.nextDate; n = (c.nextTryDt === c.nextDate ? c.nextTry || 0 : 0) + 1; }
+  else { const r = (c.rappels || []).find(x => x.id === rid); if (!r) return; lab = (RAP_T[r.type] || RAP_T.rappel).l; dt = r.dt; n = (r.try || 0) + 1; }
+  const d = new Date(Date.now() + 36e5); d.setMinutes(Math.ceil(d.getMinutes() / 5) * 5, 0, 0);
+  ui.nr = {kind, cid, rid, lab, n}; idbFill('dlg-noresp', c);
+  $('nr-sub').innerHTML = `<b>${lab}</b> · prévu(e) ${fmtDT(dt)} · <b>${ordT(n)} tentative</b>`;
+  $('nr-dt').value = nowDT(); $('nr-note').value = ''; $('nr-new').value = isoDT(d).slice(0, 16); $('nr-newl').textContent = `Nouvelle date et heure de l'action *`; $('nr-err').classList.add('hidden'); nrUpd();
+  $('dlg-noresp').showModal();
+}
+function nrUpd() {
+  const N = ui.nr; if (!N) return; const a = $('nr-dt').value, nw = $('nr-new').value;
+  $('nr-sum').innerHTML = `<div class="flex gap-2 items-start"><i class="fas fa-circle-check mt-0.5"></i><span><b>Action réalisée</b> : « ${N.lab} sans réponse (${ordT(N.n)} tentative) »${a ? ' le ' + fmtDT(a) : ''}, avec votre commentaire, dans l'historique.</span></div>
+    <div class="flex gap-2 items-start"><i class="fas fa-clone mt-0.5"></i><span><b>Action dupliquée</b> : « ${N.lab} » identique créé(e) (${ordT(N.n + 1)} tentative).</span></div>
+    <div class="flex gap-2 items-start"><i class="fas fa-calendar-check mt-0.5"></i><span><b>Replanifiée</b> : ${nw ? fmtDT(nw) : 'date à choisir'}, visible dans « Prochaine action » et « Ma journée ».</span></div>`;
+}
+function nrOk() {
+  const N = ui.nr; if (!N) return; const c = byId(N.cid); if (!c) return;
+  const att = $('nr-dt').value, nw = $('nr-new').value, note = $('nr-note').value.trim(), er = $('nr-err');
+  const bad = !att ? 'Indiquez la date de la tentative.' : !note ? 'Le commentaire est obligatoire.' : !nw ? 'Indiquez la nouvelle date et heure.' : parseD(nw) <= parseD(att) ? 'La nouvelle date doit être postérieure à la tentative.' : parseD(att) > new Date(Date.now() + 36e5) ? 'La tentative ne peut pas être dans le futur.' : '';
+  if (bad) { er.textContent = bad; er.classList.remove('hidden'); return; }
+  const n = N.n, tt = `${N.lab} sans réponse (${ordT(n)} tentative)`;
+  if (N.kind === 'next') {
+    const old = c.nextDate, type = c.nextType || 'relance'; c.lastDoneBefore = c.lastDone || null; c.lastDone = {dt: att, type};
+    const a = (c.acts || []).find(x => x.dt === old); if (a) a.done = true; else (c.acts = c.acts || []).push({dt: old, type, motif: '', done: true});
+    log(c, tt, `Prévu(e) le ${fmtDT(old)}, tentative le ${fmtDT(att)}.\n${note}\nReplanifié(e) au ${fmtDT(nw)} (${ordT(n + 1)} tentative).`); c.history[0].date = att;
+    c.nextDate = nw; c.nextType = type; c.nextTry = n; c.nextTryDt = nw; (c.acts = c.acts || []).push({dt: nw, type, motif: '', done: false});
+  } else {
+    const r = (c.rappels || []).find(x => x.id === N.rid); if (!r) return;
+    r.done = true; r.doneAt = att; r.doneNote = note; log(c, tt, `Prévu(e) le ${fmtDT(r.dt)}, tentative le ${fmtDT(att)}.\n${note}\nReplanifié(e) au ${fmtDT(nw)} (${ordT(n + 1)} tentative).`); c.history[0].date = att;
+    c.rappels.push({id: Date.now(), dt: nw, type: r.type, note: r.note, done: false, try: n});
+  }
+  save(); closeDlg('dlg-noresp'); ui.nr = null;
+  if (ui.editId === c.id && !$('view-client').classList.contains('hidden')) { if ($('f-next')) $('f-next').value = c.nextDate || ''; renderRap(c); renderHistory(c); renderChrome(c); } refresh();
+  toast(`Tentative enregistrée : ${N.lab} replanifié(e) au ${fmtDT(nw)}`);
 }
 function openRap(type = 'rappel', rid = null) {
   const c = byId(ui.editId); if (!c) return;
@@ -2829,7 +2901,7 @@ function doneRap(cid, rid) {
   askReal(`<b>${RAP_T[r.type].l}</b> · ${esc(c.pharma)} · prévu(e) ${fmtDT(r.dt)}<br><i>« ${esc(r.note)} »</i>`, r.dt, (dt, note) => {
     r.done = true; r.doneAt = dt; r.doneNote = note || ''; log(c, `${RAP_T[r.type].l} réalisé(e)`, `${r.note}\nRéalisé le ${fmtDT(dt)}.${note ? '\n' + note : ''}`); c.history[0].date = dt; save();
     if (byId(ui.editId) === c) { renderRap(c); renderHistory(c); } $('dlg-rapl').open && closeDlg('dlg-rapl'); refresh(); toast('Rappel réalisé, noté dans l\'historique'); askBack(c, 'Rappel réalisé');
-  }, c);
+  }, c, ['relance', 'rappel', 'appel', 'visio'].includes(r.type) ? ['rap', cid, rid] : null);
 }
 function delRap(cid, rid) { const c = byId(cid); c.rappels = (c.rappels || []).filter(x => x.id !== rid); save(); renderRap(c); closeDlg('dlg-rapl'); if (rapOpen(c).length) rapList(); }
 function rapItems() { return clients.flatMap(c => (c.rappels || []).map(r => ({c, r}))); }
