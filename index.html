@@ -178,8 +178,17 @@
 .pf-box{border:2px solid #0F172A!important;border-radius:16px!important}
 /* Détail des commissions : une ligne = un cadre */
 .tbl-com{border-collapse:separate!important;border-spacing:0 8px!important}
-.tbl-com tbody td{border-top:2.5px dashed #0F172A!important;border-bottom:2.5px dashed #0F172A!important;border-left:0!important;border-right:0!important;padding-top:6px!important;padding-bottom:6px!important;background:#fff}
-.tbl-com tbody td:first-child{border-left:2.5px dashed #0F172A!important;border-radius:14px 0 0 14px}.tbl-com tbody td:last-child{border-right:2.5px dashed #0F172A!important;border-radius:0 14px 14px 0}
+.tbl-com tbody tr{--cb:#86CFA0;--cf:#fff}.tbl-com tbody tr.cr-add{--cb:#A5B4FC;--cf:#F5F7FF}.tbl-com tbody tr.cr-blk{--cb:#DC2626;--cf:#FEF2F2}
+.tbl-com tbody td{border-top:2px solid var(--cb)!important;border-bottom:2px solid var(--cb)!important;border-left:0!important;border-right:0!important;padding-top:6px!important;padding-bottom:6px!important;background:var(--cf)}
+.tbl-com tbody tr.cr-blk td{border-top-width:2.5px!important;border-bottom-width:2.5px!important}
+.tbl-com tbody td:first-child{border-left:9px solid var(--cb)!important;border-radius:14px 0 0 14px}.tbl-com tbody td:last-child{border-right:2px solid var(--cb)!important;border-radius:0 14px 14px 0}
+.tbl-com tbody tr.cr-blk td:last-child{border-right-width:2.5px!important}
+.ty{display:inline-flex;align-items:center;gap:5px;border-radius:8px;padding:3px 9px;font-weight:700;font-size:11.5px;letter-spacing:.4px;white-space:nowrap}
+.ty-rob{background:#E7F6EC;color:#2F7D4F;border:1.5px solid #A7DDBB}.ty-add{background:#E0E7FF;color:#4F46E5;border:1.5px solid #A5B4FC}
+.rec{border-collapse:collapse;font-size:13px}.rec th{font-size:11px;letter-spacing:.4px;color:#475569;background:#F1F5F9;padding:5px 12px;text-align:right}.rec th:first-child{text-align:left}
+.rec td{padding:7px 12px;border-top:1px solid #E2E8F0;text-align:right;white-space:nowrap}.rec td:first-child{text-align:left;font-weight:700;border-left:6px solid transparent}
+.rec tr.pa td:first-child{border-left-color:#16A34A}.rec tr.at td:first-child{border-left-color:#D97706}.rec tr.bl td:first-child{border-left-color:#DC2626;color:#991B1B}.rec tr.bl td{background:#FEF2F2}
+.rec tr.to td{background:#F8FAFC;font-weight:800;border-top:2px solid #0F172A}.rec .n{color:#64748B;font-weight:600;margin-right:6px}
 .tbl-com tfoot td{border:0!important}
 @media(max-width:640px){#view-dashboard #tiles>button.border-ptk{border-width:2px!important}#view-client .fz{border-width:2px;padding:10px 9px;border-radius:15px}.cz{padding:6px}}
 .ao-i{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:#fff;font-size:12px;background:#EA580C}
@@ -1031,6 +1040,8 @@
 <li><b>Se déconnecter (V2.9)</b> : l'icône <b>porte avec flèche</b>, en haut à gauche à côté du logo, ferme la session et ramène à l'écran de connexion (le cadenas à droite fait de même). Les données restent chiffrées sur l'appareil.</li>
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
+<li><b>Commissions : récapitulatif, types et réserves (V3.7)</b> : en haut du détail, un petit tableau donne, à la date du jour, pour les <b>payées</b>, les <b>en attente</b> et les <b>sous réserve</b> : le nombre de dossiers et le montant, séparés robots / add-ons, avec le total. Chaque ligne a un badge <b>TYPE</b> : <b>ROBOT</b> (cadre vert doux, tous modèles) ou <b>ADD-ON</b> (cadre bleu-violet doux). Un dossier <b>sous réserve</b> est entouré de rouge, avec un cadenas, la pastille « SOUS RÉSERVE » et l'état de la levée (« en attente » ou « envoyée le … ») ; il ne peut pas être pointé tant que la réserve n'est pas levée.</li>
+<li><b>V3.7</b> : récapitulatif des commissions, colonne TYPE avec cadres de couleur, dossiers sous réserve bien visibles.</li>
 <li><b>Commissions : double date (V3.6)</b> : quand vous pointez une commission (fenêtre « Payée… » ou case « Commission payée » de la fiche client), vous indiquez deux mois : <b>« Pointée en »</b> (le mois où vous constatez le paiement, par défaut le mois en cours) et <b>« Sur le salaire de »</b> (le bulletin concerné, par défaut le mois précédent, modifiable). Exemple : pointée en novembre, sur le salaire d'octobre. Les deux mois sont affichés dans le détail, l'historique et le CSV. Les commissions déjà pointées gardent leur mois, qui sert aussi de mois de salaire.</li>
 <li><b>Commissions : tableau sur 8 colonnes (V3.6)</b> : plus de défilement horizontal. La date de signature et le n° de dossier sont sous le nom de la pharmacie, le rang sous le modèle, et montant HT, assiette et base sont regroupés dans « Calcul ». Le statut et le bouton « Payée… » sont toujours visibles.</li>
 <li><b>Commissions : filtres pour le pointage (V3.6)</b> : au-dessus du détail, choisissez le statut (Tous, En attente, Payées, Bloquées), le type de vente (SINTESI, GENESI, Add-on), le modèle, le mois de signature, le <b>mois du salaire</b> (avec le total de chaque mois) ou tapez un nom de pharmacie / n° de dossier. Le bandeau indique le nombre de lignes et le total affichés ; « Tout sélectionner » ne coche que les lignes affichées ; le CSV exporte les lignes affichées ; « Réinitialiser » efface les filtres.</li>
@@ -1654,7 +1665,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '3.6';
+const APP_VERSION = '3.7';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2083,7 +2094,11 @@ function comRows() {
   return [...rob, ...add].sort((a, b) => a.date.localeCompare(b.date));
 }
 const COM_ST = {bloque: ['Bloquée · réserves', '#FDECEC', '#9F1C1C', 'fa-lock'], attente: ['En attente de paiement', '#FEF6E4', '#6B4607', 'fa-hourglass-half'], paye: ['Payée', '#E8F5EE', '#14603F', 'fa-circle-check']};
-const comPillS = r => { const [l, bg, fg, i] = COM_ST[r.statut], sh = {bloque: 'Bloquée · réserves', attente: 'En attente', paye: 'Payée'}[r.statut]; return `<span class="pill" style="background:${bg};color:${fg}"><i class="fas ${i}"></i>${sh}</span>${r.statut === 'paye' ? `<div class="text-[11.5px] text-muted mt-0.5 leading-snug">pointée ${fmtMonthS(r.paid)}<br>salaire ${fmtMonthS(r.sal)}</div>` : ''}`; };
+const comPillS = r => {
+  const [l, bg, fg, ic] = COM_ST[r.statut];
+  if (r.statut === 'bloque') return `<span class="pill" style="background:#DC2626;color:#fff"><i class="fas fa-lock"></i>SOUS RÉSERVE</span><div class="text-[11.5px] font-bold mt-1" style="color:${r.c.levSent ? '#9A3412' : '#991B1B'}">Levée : ${r.c.levSent ? 'envoyée le ' + fmtD(r.c.levSent) : 'en attente'}</div>`;
+  return `<span class="pill" style="background:${bg};color:${fg}"><i class="fas ${ic}"></i>${{attente: 'En attente', paye: 'Payée'}[r.statut]}</span>${r.statut === 'paye' ? `<div class="text-[11.5px] text-muted mt-0.5 leading-snug">pointée ${fmtMonthS(r.paid)}<br>salaire ${fmtMonthS(r.sal)}</div>` : ''}`;
+};
 const rk = n => n === 1 ? '1<sup>er</sup>' : `${n}<sup>e</sup>`;
 const comPill = r => { const [l, bg, fg, i] = COM_ST[r.statut]; return `<span class="pill" style="background:${bg};color:${fg}"><i class="fas ${i}"></i>${l}${r.statut === 'paye' ? ' · ' + fmtMonth(r.paid) : ''}</span>`; };
 const comRef = key => { const id = +key.slice(1); if (key[0] === 'c') return {c: byId(id)}; for (const c of clients) { const a = (c.addons || []).find(x => x.id === id); if (a) return {c, a}; } return {}; };
@@ -5930,6 +5945,17 @@ function comView(rows, skip) {
 function comSet(k, v) { comF()[k] = v; renderProfile(); }
 function comReset() { ui.comF = null; renderProfile(); }
 function comSearch(v) { comF().q = v; renderProfile(); const e = $('cf-q'); if (e) { e.focus(); e.setSelectionRange(e.value.length, e.value.length); } }
+function comRecap(rows) {
+  const g = (st, add) => { const x = rows.filter(r => r.statut === st && !!r.a === add); return {n: x.length, m: sum(x, r => r.com)}; };
+  const cell = o => `<span class="n">${o.n}</span>${eur2(o.m)}`;
+  const line = (cls, lab, st) => { const a = g(st, false), b = g(st, true), t = {n: a.n + b.n, m: a.m + b.m}; return `<tr class="${cls}"><td>${lab}</td><td>${cell(a)}</td><td>${cell(b)}</td><td>${cell(t)}</td></tr>`; };
+  const R = rows.filter(r => !r.a), A = rows.filter(r => r.a), T = {n: rows.length, m: sum(rows, r => r.com)};
+  return `<div class="px-5 py-3 border-b border-slate-200"><div class="inline-block rounded-xl overflow-hidden" style="border:1.5px solid #94A3B8"><div class="flex justify-between gap-8 px-3 py-1.5 text-[12.5px] font-extrabold bg-slate-900 text-white"><span>Récapitulatif des commissions</span><span class="font-medium opacity-80">au ${fmtD(isoDay(TODAY))}</span></div>
+    <table class="rec"><thead><tr><th></th><th>ROBOTS</th><th>ADD-ONS</th><th>TOTAL</th></tr></thead><tbody>
+    ${line('pa', '<i class="fas fa-circle-check text-emerald-600 mr-1"></i>Payées', 'paye')}${line('at', '<i class="fas fa-hourglass-half text-amber-600 mr-1"></i>En attente', 'attente')}${line('bl', '<i class="fas fa-lock mr-1"></i>Sous réserve', 'bloque')}
+    <tr class="to"><td>Total</td><td><span class="n">${R.length}</span>${eur2(sum(R, r => r.com))}</td><td><span class="n">${A.length}</span>${eur2(sum(A, r => r.com))}</td><td><span class="n">${T.n}</span>${eur2(T.m)}</td></tr></tbody></table></div>
+    <div class="text-[11.5px] text-muted mt-1">Petit chiffre = nombre de dossiers.</div></div>`;
+}
 function comBar(rows, vw) {
   const F = comF(), n = (skip, f) => comView(rows, skip).filter(f).length;
   const chip = (k, l, st) => { const c = comView(rows, 'st').filter(r => st === 'tous' || r.statut === st).length; return `<button type="button" class="cf-chip ${F.st === st ? 'on' : ''}" onclick="comSet('st','${st}')">${l}<i>${c}</i></button>`; };
@@ -5993,21 +6019,23 @@ function pfCom() {
         <h2 class="h2">Détail des commissions</h2>
         <div class="flex gap-2 flex-wrap"><button class="btn btn-ok !h-9" ${sel.size ? '' : 'disabled style="opacity:.45"'} onclick="openPay([...ui.paySel])"><i class="fas fa-circle-check"></i>Marquer comme payées (${sel.size})</button><button class="btn btn-g !h-9" onclick="exportCom()"><i class="fas fa-download"></i>CSV</button></div>
       </div>
+      ${comRecap(rows)}
       ${comBar(rows, vw)}
       <div class="cf-tot"><span><b>${vw.length} ligne${vw.length > 1 ? 's' : ''}</b> affichée${vw.length > 1 ? 's' : ''} sur ${rows.length} · commissions <b>${eur2(sum(vw, r => r.com))}</b></span>${att.length ? `<label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="w-4 h-4 accent-orange-700" ${att.every(r => sel.has(r.key)) ? 'checked' : ''} onchange="[${att.map(r => `'${r.key}'`).join(',')}].forEach(k=>this.checked?ui.paySel.add(k):ui.paySel.delete(k));renderProfile()"><b>Tout sélectionner</b> (${att.length} ligne${att.length > 1 ? 's' : ''} à pointer affichée${att.length > 1 ? 's' : ''})</label>` : ''}</div>
-      <div class="overflow-x-auto"><table class="tbl tbl-com w-full min-w-[940px]" style="table-layout:fixed"><colgroup><col style="width:40px"><col style="width:19%"><col style="width:16%"><col style="width:14%"><col style="width:6%"><col style="width:10%"><col style="width:17%"><col style="width:128px"></colgroup><thead><tr>
+      <div class="overflow-x-auto"><table class="tbl tbl-com w-full min-w-[940px]" style="table-layout:fixed"><colgroup><col style="width:40px"><col style="width:92px"><col style="width:19%"><col style="width:13%"><col style="width:12%"><col style="width:5%"><col style="width:9%"><col style="width:15%"><col style="width:128px"></colgroup><thead><tr>
         <th></th>
-        ${['Pharmacie', 'Vente', 'Calcul', 'Taux', 'Commission', 'Statut', ''].map(h => `<th class="${['Taux', 'Commission', 'Calcul'].includes(h) ? 'text-right' : ''}"><span class="block px-2.5 py-3">${h}</span></th>`).join('')}</tr></thead>
-        <tbody>${vw.length ? [...vw].reverse().map(r => `<tr>
-          <td class="!pl-4">${r.statut === 'attente' ? `<input type="checkbox" class="w-4 h-4 accent-orange-700" aria-label="Sélectionner" ${sel.has(r.key) ? 'checked' : ''} onchange="this.checked?ui.paySel.add('${r.key}'):ui.paySel.delete('${r.key}');renderProfile()">` : ''}</td>
-          <td><button class="font-semibold text-left hover:underline" onclick="openClient(${r.c.id})">${esc(r.c.pharma)}</button><div class="text-xs text-muted tabular-nums">${fmtD(r.date)}${(r.a ? r.a.notes : r.c.numDossier) ? ' · ' + esc(r.a ? r.a.notes : r.c.numDossier) : ''}</div></td>
+        ${['Type', 'Pharmacie', 'Vente', 'Calcul', 'Taux', 'Commission', 'Statut', ''].map(h => `<th class="${['Taux', 'Commission', 'Calcul'].includes(h) ? 'text-right' : ''}"><span class="block px-2.5 py-3">${h}</span></th>`).join('')}</tr></thead>
+        <tbody>${vw.length ? [...vw].reverse().map(r => `<tr class="${r.statut === 'bloque' ? 'cr-blk' : r.a ? 'cr-add' : 'cr-rob'}">
+          <td class="!pl-3">${r.statut === 'attente' ? `<input type="checkbox" class="w-4 h-4 accent-orange-700" aria-label="Sélectionner" ${sel.has(r.key) ? 'checked' : ''} onchange="this.checked?ui.paySel.add('${r.key}'):ui.paySel.delete('${r.key}');renderProfile()">` : r.statut === 'bloque' ? '<i class="fas fa-lock text-rose-700" title="Commission bloquée : réserve non levée"></i>' : ''}</td>
+          <td>${r.a ? '<span class="ty ty-add"><i class="fas fa-circle-plus"></i>ADD-ON</span>' : '<span class="ty ty-rob"><i class="fas fa-boxes-stacked"></i>ROBOT</span>'}</td>
+          <td><button class="font-semibold text-left hover:underline" onclick="openClient(${r.c.id})">${esc(r.c.pharma)}</button><div class="text-xs text-muted tabular-nums">${fmtD(r.date)}${(r.a ? r.a.notes : r.c.numDossier) ? ' · ' + esc(r.a ? r.a.notes : r.c.numDossier) : ''}${!r.a && r.c.hasReserves && r.c.leveeDate ? ' · réserve levée le ' + fmtD(r.c.leveeDate) : ''}</div></td>
           <td><span class="inline-flex items-center gap-2">${r.a ? (optIco(r.label, 28) || `<span class="pill bg-indigo-50 text-indigo-900">Add-on</span>`) : robotIco(r.label, 28)}<span>${esc(r.label)}</span></span>${r.a ? '' : `<div class="text-xs text-muted">${rk(r.n)} ${r.f}</div>`}</td>
           <td class="text-right whitespace-nowrap tabular-nums"><div class="text-[12.5px] text-muted">${eur(r.montant)}${r.assiette ? ' − ' + eur(r.assiette) : ''}</div><div class="font-semibold">= ${eur(r.base)}</div></td>
           <td class="text-right whitespace-nowrap">${r.taux.toLocaleString('fr-FR')} %</td><td class="text-right font-bold whitespace-nowrap">${eur2(r.com)}</td>
           <td>${comPillS(r)}</td>
           <td class="text-right !pr-4">${r.statut === 'attente' ? `<button class="btn btn-g !h-9 !px-3" onclick="openPay(['${r.key}'])">Payée…</button>` : r.statut === 'paye' ? `<button class="btn btn-g !h-9 !px-3" onclick="unpay('${r.key}')">Annuler</button>` : `<button class="btn btn-g !h-9 !px-2 !text-[12.5px]" onclick="openClient(${r.c.id})">Lever les réserves</button>`}</td></tr>`).join('')
-          : `<tr><td colspan="8" class="!py-12 text-center text-muted">${rows.length ? 'Aucune ligne ne correspond aux filtres.' : 'Aucune vente signée sur cette période'}</td></tr>`}</tbody>
-        ${vw.length ? `<tfoot><tr class="bg-slate-50 font-bold"><td></td><td colspan="2">Total · ${vw.filter(r => !r.a).length} robot${vw.filter(r => !r.a).length > 1 ? 's' : ''} · ${vw.filter(r => r.a).length} add-on${vw.filter(r => r.a).length > 1 ? 's' : ''}</td><td class="text-right whitespace-nowrap">= ${eur(sum(vw, r => r.base))}</td><td></td><td class="text-right">${eur2(sum(vw, r => r.com))}</td><td colspan="2"></td></tr></tfoot>` : ''}</table></div>
+          : `<tr><td colspan="9" class="!py-12 text-center text-muted">${rows.length ? 'Aucune ligne ne correspond aux filtres.' : 'Aucune vente signée sur cette période'}</td></tr>`}</tbody>
+        ${vw.length ? `<tfoot><tr class="bg-slate-50 font-bold"><td></td><td></td><td colspan="2">Total · ${vw.filter(r => !r.a).length} robot${vw.filter(r => !r.a).length > 1 ? 's' : ''} · ${vw.filter(r => r.a).length} add-on${vw.filter(r => r.a).length > 1 ? 's' : ''}</td><td class="text-right whitespace-nowrap">= ${eur(sum(vw, r => r.base))}</td><td></td><td class="text-right">${eur2(sum(vw, r => r.com))}</td><td colspan="2"></td></tr></tfoot>` : ''}</table></div>
       <p class="px-5 py-3 border-t border-slate-200 text-xs text-muted">Commission = (montant HT − assiette d'installation) × taux du palier. Chaque robot garde le taux de son rang dans l'année (pas de rattrapage). Les dossiers avec réserves non levées sont bloqués. Ventes additionnelles : ${(+settings.com.addon || 0).toLocaleString('fr-FR')} % du montant HT, sans assiette. Règles modifiables dans l'onglet « Paramétrage ».</p>
     </section>`;
 }
