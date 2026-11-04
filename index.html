@@ -101,6 +101,17 @@
 .zgo-b small{font-weight:500;font-size:10.5px;margin-top:1px}
 .zgo-b:hover{transform:translateY(-1px);box-shadow:0 4px 0 rgba(0,0,0,.16)}
 .zgo-g{border:2px solid #047857;color:#065F46;background:#ECFDF5}.zgo-b2{border:2px solid #1D4ED8;color:#1E3A8A;background:#EFF6FF}
+/* V3.5 : destinataires à pastilles */
+.mb-box{display:flex;flex-wrap:wrap;gap:6px;align-items:center;min-height:44px;border:1.5px solid #CBD5E1;border-radius:12px;padding:6px 8px;background:#fff;cursor:text}.mb-box:focus-within{border-color:#EA580C;box-shadow:0 0 0 3px #FED7AA}
+.mb-chip{display:inline-flex;align-items:center;gap:6px;background:#ECFDF5;border:1.5px solid #34D399;color:#065F46;border-radius:99px;padding:3px 5px 3px 10px;font-size:13px;font-weight:600;max-width:100%;overflow-wrap:anywhere}
+.mb-chip button{width:18px;height:18px;border-radius:50%;background:#065F46;color:#fff;font-size:10px;line-height:18px;flex:none;cursor:pointer}
+.mb-chip.bad{background:#FEF2F2;border-color:#F87171;color:#991B1B}.mb-chip.bad button{background:#991B1B}
+.mb-in{flex:1;min-width:150px;border:0;outline:0;font-size:14px;padding:4px;background:transparent}
+.mb-sug{border:1px solid #CBD5E1;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,.14);margin-top:4px;background:#fff;font-size:13px;overflow:hidden}.mb-sug.hidden{display:none}
+.mb-sug>div{padding:7px 10px;cursor:pointer;border-bottom:1px solid #F1F5F9}.mb-sug>div.on,.mb-sug>div:hover{background:#FFF7ED}.mb-sug small{color:#64748B;margin-left:6px}
+.mb-err{color:#B42318;font-size:12px;font-weight:600;margin-top:5px}
+.mb-foot{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-top:5px;font-size:11.5px;color:#64748B}
+.mb-cp{display:inline-flex;align-items:center;gap:5px;border:1.5px solid #CBD5E1;border-radius:8px;padding:3px 10px;font-weight:700;font-size:12px;color:#334155;background:#fff;cursor:pointer}.mb-cp:hover{border-color:#EA580C;color:#C2410C}
 /* V2.8 : fiche sans bloc Étape en cours, bouton Dossier perdu */
 #f-stage{display:none!important}
 .zlost{margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:11px;border:2px solid #DC2626;background:#FEF2F2;color:#B91C1C;font-weight:800;font-size:13.5px}.zlost:hover{background:#FEE2E2}
@@ -1014,6 +1025,8 @@
 <li><b>Se déconnecter (V2.9)</b> : l'icône <b>porte avec flèche</b>, en haut à gauche à côté du logo, ferme la session et ramène à l'écran de connexion (le cadenas à droite fait de même). Les données restent chiffrées sur l'appareil.</li>
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
+<li><b>Destinataires du fichier CRO à pastilles (V3.5)</b> : dans Paramètres › Envois et liens et dans la fenêtre « Prévisions », chaque adresse devient une pastille (✕ pour la retirer). Collez une adresse copiée depuis Outlook, par exemple « Emmanuel Zittoun » &lt;e.zittoun@pharmathek.com&gt; : seule l'adresse est gardée, le nom reste en infobulle. Une liste collée donne une pastille par adresse ; une adresse invalide passe en rouge et bloque l'envoi ; un doublon n'est pas ajouté. Des suggestions apparaissent en tapant (adresses déjà utilisées et fiches clients). Le bouton <b>Copier</b> met toutes les adresses d'un champ dans le presse-papiers, séparées par des points-virgules, pour un seul Ctrl+V dans Outlook.</li>
+<li><b>V3.5</b> : destinataires du fichier CRO à pastilles, collage « Nom » &lt;adresse&gt;, bouton Copier.</li>
 <li><b>Date de replanification en heures de travail (V3.4)</b> : dans « Sans réponse · réessayer plus tard », la nouvelle date proposée tombe toujours du lundi au vendredi, entre 8h30 et 12h00 ou entre 14h00 et 19h00 (pause de midi : 14h00 ; après 19h00 : 8h30 le jour ouvré suivant ; week-end : lundi 8h30). Vous pouvez la modifier librement.</li>
 <li><b>Cadre « Aller plus loin » (V3.4)</b> : sur le tableau de bord, <b>Prévisions</b> (vert, flèche ⬇ : génère le fichier Excel de suivi CRO) et <b>Stats</b> (bleu, flèche › : ouvre la page des statistiques) sont mis en évidence, à part des filtres de période.</li>
 <li><b>Fichier suivi CRO : colonne COMMENTAIRES (V3.4)</b> : le prix (offre, montant, remise) n'y figure plus. On y trouve, séparés par « · » : le type de projet (« Robotisation avec agencement », « sans agencement » ou « avec transfert ») puis « Robotisée : marque modèle (année) » si la fiche client indique un robot en place. Aucune colonne ni mise en forme du fichier n'est modifiée.</li>
@@ -1628,7 +1641,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '3.4';
+const APP_VERSION = '3.5';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -5738,16 +5751,15 @@ async function genCRO() {
   return wb.xlsx.writeBuffer();
 }
 function openPrev() {
-  const D = croData(), M = settings.mail;
+  const D = croData(), M = settings.mail; mbLoad();
   const t = (l, v) => `<div class="rounded-xl bg-slate-50 px-3 py-2.5"><div class="text-[11px] font-semibold text-muted">${l}</div><div class="text-lg font-bold">${v}</div></div>`;
   $('pv-sum').innerHTML = t(`Robots signés ${D.Y}`, D.rob.length) + t('Ventes additionnelles', D.add.length) + t('Projets en cours', D.act.length) + t('Perdus', D.lost.length);
-  const ok = !!M.to.trim();
-  $('pv-mail').innerHTML = ok ? `<span class="kicker">Envoi par e-mail</span><span><b>À :</b> ${esc(M.to)}</span>${M.cc ? `<span><b>Copie :</b> ${esc(M.cc)}</span>` : ''}<span><b>Objet :</b> ${esc(fillTpl(M.subject))}</span><span class="text-xs text-muted mt-1">Le fichier est téléchargé puis votre messagerie s'ouvre : glissez le fichier dans le message avant d'envoyer. <button class="text-ptkd font-semibold hover:underline" onclick="closeDlg('dlg-prev');ui.ptab='options';showView('profile')">Modifier</button></span>`
-    : `<span class="kicker">Envoi par e-mail</span><span>Aucun destinataire n'est paramétré.</span><button class="btn btn-g !h-9 self-start mt-1" onclick="closeDlg('dlg-prev');ui.ptab='options';showView('profile')"><i class="fas fa-sliders"></i>Paramétrer les destinataires</button>`;
-  $('pv-send').classList.toggle('hidden', !ok);
+  $('pv-mail').innerHTML = `<span class="kicker">Envoi par e-mail</span><div class="lbl">À</div><div class="mbw" data-k="to">${mbHtml('to')}</div><div class="lbl mt-1">Copie</div><div class="mbw" data-k="cc">${mbHtml('cc')}</div><span class="mt-1"><b>Objet :</b> ${esc(fillTpl(M.subject))}</span><span class="text-xs text-muted">Le fichier est téléchargé puis votre messagerie s'ouvre : glissez le fichier dans le message avant d'envoyer. Les adresses se modifient ici ; objet et message dans Paramètres › Envois et liens.</span>`;
+  mbSendState();
   $('dlg-prev').showModal();
 }
 async function dlCRO(mail) {
+  if (mail) { mbCommitAll(); if (ui.mb && [...ui.mb.to, ...ui.mb.cc].some(x => x.bad)) return toast('Une adresse e-mail est invalide : corrigez-la ou retirez-la.', true); }
   const M = settings.mail, link = mail ? `mailto:${M.to.split(/[;,\s]+/).filter(Boolean).join(',')}?${[M.cc && 'cc=' + enc(M.cc.split(/[;,\s]+/).filter(Boolean).join(',')), 'subject=' + enc(fillTpl(M.subject)), 'body=' + enc(withAddr(fillTpl(M.body)))].filter(Boolean).join('&')}` : null;
   try {
     toast('Génération du fichier…');
@@ -6146,10 +6158,10 @@ function pfBlocks() {
       <div class="grid md:grid-cols-2 gap-3">
         <div class="rounded-xl bg-slate-50 border border-slate-200 p-3"><label class="lbl" for="backmode">Après une action terminée</label><select id="backmode" class="inp" onchange="settings.backMode=this.value;saveSet();toast('Réglage enregistré')">${[['ask', 'Me proposer de revenir au portefeuille'], ['auto', 'Revenir automatiquement, sans demander'], ['stay', 'Toujours rester sur la fiche']].map(([k, l]) => `<option value="${k}" ${(settings.backMode || 'ask') === k ? 'selected' : ''}>${l}</option>`).join('')}</select></div>
         ${opt('agenda') ? `<div class="rounded-xl bg-slate-50 border border-slate-200 p-3"><label class="lbl" for="set-agenda">Agenda utilisé</label><select id="set-agenda" class="inp" onchange="settings.agenda=this.value;saveSet();toast('Agenda enregistré')">${[['google', "Google Agenda (événement pré-rempli)"], ['ics', 'Fichier .ics (Apple Calendrier, Outlook)']].map(([k, l]) => `<option value="${k}" ${settings.agenda === k ? 'selected' : ''}>${l}</option>`).join('')}</select><p class="text-[11px] text-muted mt-1">Titre : « 18 – Pharmacie Centrale – 10h00 », coordonnées et historique en description.</p></div>` : '<div></div>'}</div>`),
-    mail: sec('<i class="fas fa-paper-plane"></i>', 'fa-paper-plane', 'Envoi du fichier de suivi CRO', 'Destinataires du fichier généré par le bouton « Prévisions ». Séparez plusieurs adresses par une virgule.', `
+    mail: sec('<i class="fas fa-paper-plane"></i>', 'fa-paper-plane', 'Envoi du fichier de suivi CRO', 'Destinataires du fichier généré par le bouton « Prévisions ». Collez une adresse copiée depuis Outlook (« Nom » &lt;adresse&gt;) : seule l\'adresse est gardée.', `
       <div class="grid md:grid-cols-2 gap-3">
-        <div><label class="lbl" for="ml-to">À *</label><input id="ml-to" class="inp" value="${esc(settings.mail.to)}" placeholder="direction@pharmathek.fr"></div>
-        <div><label class="lbl" for="ml-cc">Copie</label><input id="ml-cc" class="inp" value="${esc(settings.mail.cc)}" placeholder="adv@pharmathek.fr"></div>
+        <div><div class="lbl">À *</div><div class="mbw" data-k="to">${(mbLoad(), mbHtml('to'))}</div></div>
+        <div><div class="lbl">Copie</div><div class="mbw" data-k="cc">${mbHtml('cc')}</div></div>
         <div class="md:col-span-2"><label class="lbl" for="ml-sub">Objet</label><input id="ml-sub" class="inp" value="${esc(settings.mail.subject)}"><p class="text-xs text-muted mt-1">Aperçu : <b>${esc(fillTpl(settings.mail.subject))}</b> · {date} = date du jour, {annee} = année en cours</p></div>
         <div class="md:col-span-2"><label class="lbl" for="ml-body">Message</label><textarea id="ml-body" rows="5" class="ta">${esc(settings.mail.body)}</textarea></div>
       </div>
@@ -6261,11 +6273,87 @@ function saveSocial() {
   const v = {}; for (const k of ['site', 'linkedin', 'facebook', 'instagram', 'youtube']) { const x = $('so-' + k).value.trim(); if (x && !/^https?:\/\/\S+\.\S+/.test(x)) return toast(`Lien ${k} invalide : il doit commencer par https://`, true); v[k] = x; }
   settings.social = v; saveSet(); toast('Liens enregistrés');
 }
+/* ===== V3.5 : destinataires à pastilles (fichier suivi CRO) ===== */
+const MB_RE = /[A-Za-z0-9._%+'\-]+@[A-Za-z0-9\-]+(?:\.[A-Za-z0-9\-]+)*\.[A-Za-z]{2,}/g, MB_OK = /^[A-Za-z0-9._%+'\-]+@[A-Za-z0-9\-]+(?:\.[A-Za-z0-9\-]+)*\.[A-Za-z]{2,}$/;
+function mbParse(txt, typed) {
+  txt = String(txt || ''); const out = [], clean = t => t.replace(/[<>"';“”]+/g, ' ').replace(/^[\s,]+|[\s,]+$/g, '').replace(/\s+/g, ' ');
+  const seg = t => { const toks = t.split(/[;,\s<>]+/).filter(x => x.includes('@')); toks.forEach(x => out.push({e: x.replace(/^['"]+|['"]+$/g, ''), n: '', bad: true})); let r = t; toks.forEach(x => { r = r.replace(x, ' '); }); return clean(r); };
+  let last = 0, m; MB_RE.lastIndex = 0;
+  while ((m = MB_RE.exec(txt))) { const n = seg(txt.slice(last, m.index)); out.push({e: m[0].toLowerCase(), n, bad: false}); last = m.index + m[0].length; }
+  seg(txt.slice(last));
+  if (!out.length && typed && txt.trim()) out.push({e: txt.trim(), n: '', bad: true});
+  return out;
+}
+function mbLoad() {
+  const nm = settings.mail.names || {}, ld = v => mbParse(v, false).filter(x => !x.bad).map(x => ({...x, n: nm[x.e] || x.n}));
+  ui.mb = {to: ld(settings.mail.to), cc: ld(settings.mail.cc)}; ui.mbSug = null;
+}
+function mbPersist() {
+  const L = ui.mb, ok = k => L[k].filter(x => !x.bad), nm = {}; [...ok('to'), ...ok('cc')].forEach(x => { if (x.n) nm[x.e] = x.n; });
+  const used = [...new Set([...(settings.mail.used || []), ...ok('to').map(x => x.e), ...ok('cc').map(x => x.e)])].slice(-60);
+  Object.assign(settings.mail, {to: ok('to').map(x => x.e).join(', '), cc: ok('cc').map(x => x.e).join(', '), names: nm, used}); saveSet(); mbSendState();
+}
+function mbSendState() { const b = $('pv-send'); if (!b || !ui.mb) return; const L = ui.mb; b.classList.toggle('hidden', !L.to.some(x => !x.bad) || [...L.to, ...L.cc].some(x => x.bad)); }
+function mbHtml(k) {
+  const L = ui.mb[k], bad = L.some(x => x.bad);
+  return `<div class="mb-box" onclick="this.querySelector('input').focus()">${L.map((x, i) => `<span class="mb-chip${x.bad ? ' bad' : ''}" title="${esc(x.bad ? 'Adresse invalide' : x.n ? x.n + ' <' + x.e + '>' : x.e)}">${esc(x.e)}<button type="button" aria-label="Retirer cette adresse" onclick="event.stopPropagation();mbDel('${k}',${i})">✕</button></span>`).join('')}<input class="mb-in" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="${L.length ? 'Ajouter…' : 'Ajouter une adresse…'}" aria-label="${k === 'to' ? 'Destinataires' : 'Copie'}" onkeydown="mbKey(event,'${k}')" oninput="mbSug('${k}')" onpaste="mbPaste(event,'${k}')" onblur="mbBlur('${k}')"></div><div class="mb-sug hidden" id="mb-sug-${k}"></div>${bad ? '<div class="mb-err">⚠ Une adresse est invalide : corrigez-la ou retirez-la (en rouge).</div>' : ''}<div class="mb-foot"><span>Collez une ou plusieurs adresses, ou tapez puis Entrée.</span><button type="button" class="mb-cp" onclick="mbCopy('${k}')" title="Copier toutes les adresses, prêtes à coller dans Outlook"><i class="far fa-copy"></i>Copier</button></div>`;
+}
+function mbRender(k, focus) {
+  document.querySelectorAll(`.mbw[data-k="${k}"]`).forEach(h => { const had = focus && h.contains(document.activeElement); h.innerHTML = mbHtml(k); if (had) h.querySelector('input').focus(); });
+}
+function mbAdd(k, items) {
+  const L = ui.mb; let dup = 0, ad = 0;
+  items.forEach(it => { const key = it.e.toLowerCase(); if ([...L.to, ...L.cc].some(x => x.e.toLowerCase() === key)) { const x = [...L.to, ...L.cc].find(y => y.e.toLowerCase() === key); if (!x.n && it.n) x.n = it.n; dup++; return; } L[k].push({e: it.bad ? it.e : key, n: it.n || '', bad: !!it.bad}); ad++; });
+  mbPersist(); mbRender(k, true);
+  if (dup) toast(dup > 1 ? `${dup} adresses déjà présentes : non ajoutées en double` : 'Adresse déjà présente : non ajoutée en double');
+  return ad;
+}
+function mbDel(k, i) { ui.mb[k].splice(i, 1); mbPersist(); mbRender(k, true); }
+function mbCommit(k, inp) { const v = inp.value.trim(); if (!v) return; inp.value = ''; mbSugHide(k); mbAdd(k, mbParse(v, true)); }
+function mbPaste(e, k) {
+  const t = (e.clipboardData || window.clipboardData)?.getData('text') || ''; if (!t.trim()) return; e.preventDefault();
+  const its = mbParse(t, false); if (!its.length) return toast("Aucune adresse e-mail trouvée dans le texte collé.", true);
+  const n = its.length; mbAdd(k, its); if (n > 1) toast(`${n} adresses ajoutées`);
+}
+function mbBlur(k) { setTimeout(() => { const inp = document.activeElement; document.querySelectorAll(`.mbw[data-k="${k}"] .mb-in`).forEach(i => { if (i !== inp && i.value.trim()) mbCommit(k, i); }); mbSugHide(k); }, 150); }
+function mbCommitAll() { ['to', 'cc'].forEach(k => document.querySelectorAll(`.mbw[data-k="${k}"] .mb-in`).forEach(i => mbCommit(k, i))); }
+function mbPool() {
+  const P = new Map(), add = (e, n, src) => { e = String(e || '').trim().toLowerCase(); if (!MB_OK.test(e) || P.has(e)) return; P.set(e, {e, n, src}); };
+  const nm = settings.mail.names || {}; (settings.mail.used || []).slice().reverse().forEach(e => add(e, nm[e] || '', 'déjà utilisée'));
+  clients.forEach(c => { add(c.email, c.pharma, 'fiche client'); (c.contacts || []).forEach(ct => add(ct.email, `${c.pharma} · ${[ct.prenom, ct.nom].filter(Boolean).join(' ')}`, 'fiche client')); });
+  return [...P.values()];
+}
+function mbSugHide(k) { const d = $('mb-sug-' + k); if (d) d.classList.add('hidden'); if (ui.mbSug?.k === k) ui.mbSug = null; }
+function mbSug(k) {
+  const inp = document.activeElement; if (!inp || !inp.classList.contains('mb-in')) return; const q = inp.value.trim().toLowerCase(); const d = inp.closest('.mbw').querySelector('.mb-sug');
+  if (q.length < 2) return mbSugHide(k);
+  const have = new Set([...ui.mb.to, ...ui.mb.cc].map(x => x.e.toLowerCase()));
+  const list = mbPool().filter(x => !have.has(x.e) && (x.e.includes(q) || (x.n || '').toLowerCase().includes(q))).sort((a, b) => (a.src === 'fiche client') - (b.src === 'fiche client')).slice(0, 6);
+  if (!list.length) return mbSugHide(k);
+  ui.mbSug = {k, list, i: 0, d}; mbSugPaint();
+}
+function mbSugPaint() { const S = ui.mbSug; if (!S) return; S.d.classList.remove('hidden'); S.d.innerHTML = S.list.map((x, i) => `<div class="${i === S.i ? 'on' : ''}" onmousedown="event.preventDefault();mbPick(${i})">${esc(x.e)}${x.n ? `<small>${esc(x.n)}</small>` : ''}<small>· ${x.src}</small></div>`).join(''); }
+function mbPick(i) { const S = ui.mbSug; if (!S) return; const x = S.list[i], k = S.k; S.d.closest('.mbw').querySelector('.mb-in').value = ''; mbSugHide(k); mbAdd(k, [{e: x.e, n: x.src === 'fiche client' ? '' : x.n, bad: false}]); }
+function mbKey(e, k) {
+  const inp = e.target, S = ui.mbSug && ui.mbSug.k === k ? ui.mbSug : null;
+  if (S && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) { e.preventDefault(); S.i = (S.i + (e.key === 'ArrowDown' ? 1 : S.list.length - 1)) % S.list.length; return mbSugPaint(); }
+  if (e.key === 'Escape') { mbSugHide(k); return; }
+  if (e.key === 'Enter') { e.preventDefault(); if (S) return mbPick(S.i); return mbCommit(k, inp); }
+  if (e.key === ',' || e.key === ';' || (e.key === ' ' && inp.value.includes('@'))) { e.preventDefault(); return mbCommit(k, inp); }
+  if (e.key === 'Tab' && inp.value.trim()) { mbCommit(k, inp); return; }
+  if (e.key === 'Backspace' && !inp.value && ui.mb[k].length) { ui.mb[k].pop(); mbPersist(); mbRender(k, true); }
+}
+function mbCopy(k) {
+  const L = ui.mb[k].filter(x => !x.bad); if (!L.length) return toast("Aucune adresse à copier.", true); const t = L.map(x => x.e).join('; ');
+  const ok = () => toast(`${L.length > 1 ? L.length + ' adresses copiées' : 'Adresse copiée'} : collez-les dans Outlook (Ctrl+V)`);
+  const fb = () => { const a = document.createElement('textarea'); a.value = t; a.style.cssText = 'position:fixed;opacity:0'; document.body.appendChild(a); a.select(); try { document.execCommand('copy'); ok(); } catch (_) { toast('Copie impossible : sélectionnez les adresses à la main.', true); } a.remove(); };
+  if (navigator.clipboard?.writeText) navigator.clipboard.writeText(t).then(ok, fb); else fb();
+}
 function saveMail() {
-  const list = v => v.split(/[;,\s]+/).filter(Boolean), bad = [...list($('ml-to').value), ...list($('ml-cc').value)].filter(x => !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(x));
-  if (!list($('ml-to').value).length) return toast('Renseignez au moins un destinataire.', true);
-  if (bad.length) return toast('Adresse invalide : ' + bad.join(', '), true);
-  Object.assign(settings.mail, {to: list($('ml-to').value).join(', '), cc: list($('ml-cc').value).join(', '), subject: $('ml-sub').value.trim() || DEFAULTS().mail.subject, body: $('ml-body').value});
+  mbCommitAll(); const L = ui.mb;
+  if (!L.to.some(x => !x.bad)) return toast('Renseignez au moins un destinataire.', true);
+  const bad = [...L.to, ...L.cc].filter(x => x.bad); if (bad.length) return toast('Adresse invalide : ' + bad.map(x => x.e).join(', '), true);
+  Object.assign(settings.mail, {subject: $('ml-sub').value.trim() || DEFAULTS().mail.subject, body: $('ml-body').value}); mbPersist();
   saveSet(); renderProfile(); toast('Paramètres d\'envoi enregistrés');
 }
 
