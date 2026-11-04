@@ -413,7 +413,7 @@ main{padding-top:14px!important}
 <header class="sticky top-0 z-30 bg-white/95 backdrop-blur border-b border-slate-200">
   <div class="max-w-[1360px] mx-auto px-4 sm:px-8 py-2 flex items-center gap-3">
     <button id="brand" onclick="showView('dashboard')" class="flex items-center gap-3 h-16 shrink-0" aria-label="Accueil"></button>
-    <button id="nav-logout" class="btn btn-g !px-3" onclick="SEC.on() ? SEC.logout() : toast('Aucun compte de connexion sur cet appareil.')" title="Se déconnecter" aria-label="Se déconnecter"><i class="fas fa-right-from-bracket"></i></button>
+    <button id="nav-logout" class="btn btn-g !px-3" onclick="SEC.on() ? $('dlg-logout').showModal() : toast('Aucun compte de connexion sur cet appareil.')" title="Se déconnecter" aria-label="Se déconnecter"><i class="fas fa-right-from-bracket"></i></button>
     <div id="gs-wrap" class="hidden">
       <span class="absolute left-3 top-1/2 -translate-y-1/2 text-muted pointer-events-none" id="gs-ic"></span>
       <input id="gs" type="search" autocomplete="off" class="inp !pl-10 !bg-slate-50 focus:!bg-white" placeholder="Rechercher : pharmacie, ville, titulaire, CIP, téléphone…" aria-label="Recherche globale" oninput="gsRun()" onfocus="gsRun()" onkeydown="gsKey(event)">
@@ -779,6 +779,10 @@ main{padding-top:14px!important}
   <div id="offcmp-body" class="p-4 overflow-auto"></div>
   <div class="px-5 py-3 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="offPdfCmp()"><i class="fas fa-file-pdf text-ptkd"></i>PDF comparatif</button><button class="btn btn-d" onclick="closeDlg('dlg-offcmp')">Fermer</button></div>
 </dialog>
+<dialog id="dlg-logout" class="!w-[min(420px,94vw)]">
+  <div class="px-5 py-4 border-b flex items-center gap-3"><span class="w-10 h-10 rounded-full inline-flex items-center justify-center bg-orange-50 text-ptkd"><i class="fas fa-right-from-bracket"></i></span><div><h2 class="font-extrabold text-lg leading-tight">Se déconnecter ?</h2><p class="text-xs text-muted">Vos données restent enregistrées. Il faudra se reconnecter pour y accéder.</p></div></div>
+  <div class="px-5 py-4 bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-logout')">Annuler</button><button id="lo-ok" class="btn btn-d" onclick="closeDlg('dlg-logout');SEC.logout()"><i class="fas fa-right-from-bracket"></i>Se déconnecter</button></div>
+</dialog>
 <dialog id="dlg-rap" class="!w-[min(460px,94vw)]">
   <div class="px-5 py-4 border-b flex items-center gap-3"><span id="rp-ic" class="w-10 h-10 rounded-full inline-flex items-center justify-center bg-orange-50 text-ptkd"></span><div><h2 id="rp-title" class="font-extrabold text-lg leading-tight">Nouveau rappel</h2><p id="rp-sub" class="text-xs text-muted"></p></div></div>
   <div class="p-5 flex flex-col gap-3">
@@ -1073,6 +1077,7 @@ main{padding-top:14px!important}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V3.9</b> : confirmation avant déconnexion ; « Ma journée » classe les actions en retard en tête puis par heure, et une action « sans réponse » replanifiée quitte sa place pour se replacer à sa nouvelle heure.</li>
 <li><b>V3.8</b> : mise en page compacte de la page des commissions et des menus du haut, sans changement de contenu.</li>
 <li><b>Commissions : récapitulatif, types et réserves (V3.7)</b> : en haut du détail, un petit tableau donne, à la date du jour, pour les <b>payées</b>, les <b>en attente</b> et les <b>sous réserve</b> : le nombre de dossiers et le montant, séparés robots / add-ons, avec le total. Chaque ligne a un badge <b>TYPE</b> : <b>ROBOT</b> (cadre vert doux, tous modèles) ou <b>ADD-ON</b> (cadre bleu-violet doux). Un dossier <b>sous réserve</b> est entouré de rouge, avec un cadenas, la pastille « SOUS RÉSERVE » et l'état de la levée (« en attente » ou « envoyée le … ») ; il ne peut pas être pointé tant que la réserve n'est pas levée.</li>
 <li><b>V3.7</b> : récapitulatif des commissions, colonne TYPE avec cadres de couleur, dossiers sous réserve bien visibles.</li>
@@ -1699,7 +1704,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '3.8';
+const APP_VERSION = '3.9';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2440,9 +2445,9 @@ function renderChart() {
 /* ----- Ma journée & ma semaine ----- */
 function dayItems() {
   const planned = clients.filter(c => c.nextDate && c.step !== 'Perdu' && sameDay(c.nextDate, TODAY)).map(c => ({c, dt: c.nextDate, type: c.nextType || 'relance', done: false}));
-  const done = clients.filter(c => c.lastDone && sameDay(c.lastDone.dt, TODAY)).map(c => ({c, dt: c.lastDone.dt, type: c.lastDone.type || 'relance', done: true}));
-  const rp = rapItems().filter(({r}) => r.done ? r.doneAt && sameDay(r.doneAt, TODAY) : sameDay(r.dt, TODAY)).map(({c, r}) => ({c, dt: r.done ? r.doneAt : r.dt, type: RAP_T[r.type].a, done: !!r.done, rap: r.id, note: r.note}));
-  return [...planned, ...done, ...rp].sort((a, b) => a.dt.localeCompare(b.dt));
+  const done = clients.filter(c => c.lastDone && !c.lastDone.nr && sameDay(c.lastDone.dt, TODAY)).map(c => ({c, dt: c.lastDone.dt, type: c.lastDone.type || 'relance', done: true}));
+  const rp = rapItems().filter(({r}) => r.done ? r.doneAt && !r.nr && sameDay(r.doneAt, TODAY) : sameDay(r.dt, TODAY)).map(({c, r}) => ({c, dt: r.done ? r.doneAt : r.dt, type: RAP_T[r.type].a, done: !!r.done, rap: r.id, note: r.note}));
+  return [...planned, ...done, ...rp].sort((a, b) => (a.done - b.done) || a.dt.localeCompare(b.dt));   // à faire d'abord (retards en tête, puis heure croissante), faites en bas
 }
 function weekBounds() { const mon = new Date(TODAY); mon.setDate(mon.getDate() - ((mon.getDay() + 6) % 7)); const sat = new Date(mon); sat.setDate(sat.getDate() + 5); return [mon, sat]; }
 function weekItems() {
@@ -2547,7 +2552,7 @@ function renderDay() {
     body.innerHTML = h; return;
   }
   const items = dayItems(), now = new Date();
-  const next = items.find(x => !x.done && parseD(x.dt) >= now) || items.find(x => !x.done); window.ZNEXT = next;
+  const next = items.find(x => !x.done); window.ZNEXT = next;
   const cnt = t => items.filter(x => x.type === t).length;
   const visits = items.filter(x => x.type === 'visite').map(x => ({c: x.c, dt: x.dt}));
   let h = '';
@@ -2971,13 +2976,13 @@ function nrOk() {
   if (bad) { er.textContent = bad; er.classList.remove('hidden'); return; }
   const n = N.n, tt = `${N.lab} sans réponse (${ordT(n)} tentative)`;
   if (N.kind === 'next') {
-    const old = c.nextDate, type = c.nextType || 'relance'; c.lastDoneBefore = c.lastDone || null; c.lastDone = {dt: att, type};
+    const old = c.nextDate, type = c.nextType || 'relance'; c.lastDoneBefore = c.lastDone || null; c.lastDone = {dt: att, type, nr: 1};
     const a = (c.acts || []).find(x => x.dt === old); if (a) a.done = true; else (c.acts = c.acts || []).push({dt: old, type, motif: '', done: true});
     log(c, tt, `Prévu(e) le ${fmtDT(old)}, tentative le ${fmtDT(att)}.\n${note}\nReplanifié(e) au ${fmtDT(nw)} (${ordT(n + 1)} tentative).`); c.history[0].date = att;
     c.nextDate = nw; c.nextType = type; c.nextTry = n; c.nextTryDt = nw; (c.acts = c.acts || []).push({dt: nw, type, motif: '', done: false});
   } else {
     const r = (c.rappels || []).find(x => x.id === N.rid); if (!r) return;
-    r.done = true; r.doneAt = att; r.doneNote = note; log(c, tt, `Prévu(e) le ${fmtDT(r.dt)}, tentative le ${fmtDT(att)}.\n${note}\nReplanifié(e) au ${fmtDT(nw)} (${ordT(n + 1)} tentative).`); c.history[0].date = att;
+    r.done = true; r.nr = 1; r.doneAt = att; r.doneNote = note; log(c, tt, `Prévu(e) le ${fmtDT(r.dt)}, tentative le ${fmtDT(att)}.\n${note}\nReplanifié(e) au ${fmtDT(nw)} (${ordT(n + 1)} tentative).`); c.history[0].date = att;
     c.rappels.push({id: Date.now(), dt: nw, type: r.type, note: r.note, done: false, try: n});
   }
   save(); closeDlg('dlg-noresp'); ui.nr = null;
