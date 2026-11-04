@@ -93,6 +93,14 @@
 .zid-n{min-width:0;flex:1 1 180px;display:flex;flex-direction:column}.zid-n b{font-weight:800;font-size:15px;line-height:1.15}.zid-n span{font-size:12.5px;color:#475569}
 .zid-p{display:flex;gap:6px;flex-wrap:wrap}.zid-t{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border-radius:10px;background:#fff;border:1px solid #CBD5E1;color:#0F172A;font-weight:700;font-size:13.5px;text-decoration:none}.zid-t.p{background:#047857;border-color:#047857;color:#fff;font-weight:800}.zid-t small{font-weight:600;opacity:.8}
 .zid-no{font-size:12.5px;font-weight:700;color:#9A3412;display:inline-flex;gap:6px;align-items:center}
+/* V3.4 : cadre « Aller plus loin » (Prévisions, Stats) */
+.zgo{position:relative;display:flex;gap:8px;align-items:center;border:2px dashed #94A3B8;border-radius:14px;padding:12px 9px 7px;margin-left:6px}
+.zgo-l{position:absolute;top:-8px;left:12px;background:#fff;padding:0 6px;font-size:10px;font-weight:800;color:#475569;letter-spacing:.5px;line-height:14px}
+.zgo-b{display:flex;flex-direction:column;align-items:flex-start;text-align:left;border-radius:12px;padding:5px 12px;min-width:132px;font-weight:800;font-size:13.5px;line-height:1.2;cursor:pointer;box-shadow:0 2px 0 rgba(0,0,0,.14);transition:transform .12s,box-shadow .12s}
+.zgo-b span{display:flex;justify-content:space-between;align-items:center;gap:10px;width:100%}.zgo-b i{font-size:13px}
+.zgo-b small{font-weight:500;font-size:10.5px;margin-top:1px}
+.zgo-b:hover{transform:translateY(-1px);box-shadow:0 4px 0 rgba(0,0,0,.16)}
+.zgo-g{border:2px solid #047857;color:#065F46;background:#ECFDF5}.zgo-b2{border:2px solid #1D4ED8;color:#1E3A8A;background:#EFF6FF}
 /* V2.8 : fiche sans bloc Étape en cours, bouton Dossier perdu */
 #f-stage{display:none!important}
 .zlost{margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:11px;border:2px solid #DC2626;background:#FEF2F2;color:#B91C1C;font-weight:800;font-size:13.5px}.zlost:hover{background:#FEE2E2}
@@ -386,8 +394,9 @@
       <div class="flex justify-between items-center gap-2 flex-wrap">
         <h2 id="sales-title" class="h2 !text-base ftitle"></h2>
         <div class="flex gap-1.5 flex-wrap items-center"><span id="sig-chips" class="flex gap-1.5 flex-wrap"></span>
-        <button class="btn btn-g !h-8 !px-3 !text-[13px]" onclick="openPrev()" title="Prévisions"><i class="fas fa-file-excel text-emerald-700"></i>Prévisions</button>
-        <button class="btn btn-g !h-8 !px-3 !text-[13px]" onclick="showView('stats')" title="Statistiques détaillées"><i class="fas fa-chart-simple text-ptkd"></i>Stats</button></div>
+        <div class="zgo"><span class="zgo-l">ALLER PLUS LOIN</span>
+        <button type="button" class="zgo-b zgo-g" onclick="openPrev()" title="Générer le fichier Excel de suivi CRO"><span>Prévisions<i class="fas fa-download"></i></span><small>Fichier Excel de suivi CRO</small></button>
+        <button type="button" class="zgo-b zgo-b2" onclick="showView('stats')" title="Ouvrir la page des statistiques détaillées"><span>Stats<i class="fas fa-chevron-right"></i></span><small>Page statistiques détaillées</small></button></div></div>
       </div>
       <div class="vfuse3"><div id="sales-top"></div><section class="sig2" id="sales-prob" aria-label="Signatures probables"></section>
         <div class="relative rounded-xl border border-slate-200 vchart"><div class="absolute inset-0 p-1.5"><canvas id="chart" role="img" aria-label="Ventes mensuelles, cumul et objectif"></canvas></div></div></div>
@@ -1005,6 +1014,11 @@
 <li><b>Se déconnecter (V2.9)</b> : l'icône <b>porte avec flèche</b>, en haut à gauche à côté du logo, ferme la session et ramène à l'écran de connexion (le cadenas à droite fait de même). Les données restent chiffrées sur l'appareil.</li>
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
+<li><b>Date de replanification en heures de travail (V3.4)</b> : dans « Sans réponse · réessayer plus tard », la nouvelle date proposée tombe toujours du lundi au vendredi, entre 8h30 et 12h00 ou entre 14h00 et 19h00 (pause de midi : 14h00 ; après 19h00 : 8h30 le jour ouvré suivant ; week-end : lundi 8h30). Vous pouvez la modifier librement.</li>
+<li><b>Cadre « Aller plus loin » (V3.4)</b> : sur le tableau de bord, <b>Prévisions</b> (vert, flèche ⬇ : génère le fichier Excel de suivi CRO) et <b>Stats</b> (bleu, flèche › : ouvre la page des statistiques) sont mis en évidence, à part des filtres de période.</li>
+<li><b>Fichier suivi CRO : colonne COMMENTAIRES (V3.4)</b> : le prix (offre, montant, remise) n'y figure plus. On y trouve, séparés par « · » : le type de projet (« Robotisation avec agencement », « sans agencement » ou « avec transfert ») puis « Robotisée : marque modèle (année) » si la fiche client indique un robot en place. Aucune colonne ni mise en forme du fichier n'est modifiée.</li>
+<li><b>Fichier suivi CRO : affichage corrigé (V3.4)</b> : les colonnes s'ajustent automatiquement au contenu (modèle, titulaire, région, totaux), les en-têtes sont entièrement lisibles, les dates ne s'affichent plus en « ##### » et les commentaires longs restent lisibles. Le fichier n'a plus besoin d'être retouché.</li>
+<li><b>V3.4</b> : replanification en heures de travail, cadre « Aller plus loin », commentaires CRO enrichis, affichage du fichier CRO corrigé.</li>
 <li><b>Curseur « Fait » en deux étapes (V3.3)</b> : pour un appel, une relance, un rappel ou une visio, le curseur (ou le bouton « Fait ») demande d'abord <b>« Que s'est-il passé ? »</b> : <b>Réalisée</b> (date + commentaire, puis Confirmer) ou <b>Sans réponse</b> (tentative, commentaire, nouvelle date : l'action est réalisée, dupliquée et replanifiée). « Retour » permet de changer de choix. Pour une visite ou un mail, on arrive directement sur « Réalisée ».</li>
 <li><b>V3.3</b> : curseur « Fait » en deux étapes avec « Sans réponse ».</li>
 <li><b>Clôture définitive (V3.2)</b> : une action clôturée (avec son commentaire) n'est plus remise « à faire » si vous quittez la fiche sans autre saisie : elle disparaît tout de suite du cadre « Prochaine action » et de « Ma journée ».</li>
@@ -1614,7 +1628,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '3.3';
+const APP_VERSION = '3.4';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2846,11 +2860,23 @@ function traiter(kind, cid, rid) {
   $('dlg-trait').showModal();
 }
 /* ----- V3.2 : tentative sans réponse = action réalisée + dupliquée + replanifiée ----- */
+function workSlot(d) {
+  d = new Date(d); const at = (x, h, m) => { const y = new Date(x); y.setHours(h, m, 0, 0); return y; }, nextDay = x => at(new Date(x.getFullYear(), x.getMonth(), x.getDate() + 1), 8, 30);
+  for (let i = 0; i < 10; i++) {
+    const w = d.getDay(); if (w === 0 || w === 6) { d = nextDay(d); continue; }
+    if (d < at(d, 8, 30)) return at(d, 8, 30);
+    if (d < at(d, 12, 0)) return d;
+    if (d < at(d, 14, 0)) return at(d, 14, 0);
+    if (d < at(d, 19, 0)) return d;
+    d = nextDay(d);
+  }
+  return d;
+}
 function noResp(kind, cid, rid) {
   const c = byId(cid); if (!c) return; let lab, dt, n;
   if (kind === 'next') { if (!c.nextDate) return; lab = (ACTIONS[c.nextType] || ACTIONS.relance).label; dt = c.nextDate; n = (c.nextTryDt === c.nextDate ? c.nextTry || 0 : 0) + 1; }
   else { const r = (c.rappels || []).find(x => x.id === rid); if (!r) return; lab = (RAP_T[r.type] || RAP_T.rappel).l; dt = r.dt; n = (r.try || 0) + 1; }
-  const d = new Date(Date.now() + 36e5); d.setMinutes(Math.ceil(d.getMinutes() / 5) * 5, 0, 0);
+  let d = new Date(Date.now() + 36e5); d.setMinutes(Math.ceil(d.getMinutes() / 5) * 5, 0, 0); d = workSlot(d);
   ui.nr = {kind, cid, rid, lab, n}; idbFill('dlg-noresp', c);
   $('nr-sub').innerHTML = `<b>${lab}</b> · prévu(e) ${fmtDT(dt)} · <b>${ordT(n)} tentative</b>`;
   $('nr-dt').value = nowDT(); $('nr-note').value = ''; $('nr-new').value = isoDT(d).slice(0, 16); $('nr-newl').textContent = `Nouvelle date et heure de l'action *`; $('nr-err').classList.add('hidden'); nrUpd();
@@ -5585,7 +5611,7 @@ function pdfLevee(id) {
 
 /* ================= PRÉVISIONS : FICHIER DE SUIVI CRO (Excel) ================= */
 const MOIS_XL = ['JANVIER', 'FEVRIER', 'MARS', 'AVRIL', 'MAI', 'JUIN', 'JUILLET', 'AOÛT', 'SEPTEMBRE', 'OCTOBRE', 'NOVEMBRE', 'DÉCEMBRE'];
-const xd = s => { const d = parseD(s); return d ? new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate(), 12)) : null; };
+const xd = s => { const d = parseD(s); if (!d || isNaN(d)) return null; const y = d.getFullYear(); if (y < 1990 || y > 2100) return null; return new Date(Date.UTC(y, d.getMonth(), d.getDate(), 12)); };
 const fillTpl = t => String(t || '').replace(/\{annee\}/g, CUR_YEAR).replace(/\{date\}/g, TODAY.toLocaleDateString('fr-FR')).replace(/\{prenom\}/g, settings.prenom).replace(/\{nom\}/g, settings.nom).replace(/\{fonction\}/g, settings.fonction);
 const titu = c => `${c.genre} ${(c.nom || '').toUpperCase()} ${c.prenom || ''}`.replace(/\s+/g, ' ').trim();
 const croName = () => `Fichier suivi CRO ${CUR_YEAR} - ${TODAY.toLocaleDateString('fr-FR').replace(/\//g, '-')}.xlsx`;
@@ -5605,7 +5631,8 @@ function croData() {
   return {Y, rob, add, act, lost, months};
 }
 function comment(c) {
-  return [c.opApplied === true ? 'Opération commerciale appliquée' : c.opApplied === false ? 'Opération commerciale non appliquée' : '', c.offre?.lignes?.length ? `Offre ${c.offre.ref || ''} : ${eur(offreCalc(c.offre).net)} HT${c.offre.remisePct ? ` (remise ${c.offre.remisePct} %)` : ''}`.replace('  ', ' ') : '', TYPES_PROJET[c.typeProjet] ? (c.typeProjet === 'seule' ? 'Robotisation' : 'Robotisation ' + TYPES_PROJET[c.typeProjet].toLowerCase()) : '', c.robotConc ? `remplace un robot ${c.robotConc.marque === 'Autre' ? c.robotConc.autre : c.robotConc.marque}${c.robotConc.annee ? ' (' + c.robotConc.annee + ')' : ''}` : '', c.besoins?.length ? 'Besoins : ' + c.besoins.join(', ') : '', c.pending ? `${STEPS[c.pending.to].short} à fixer : ${c.pending.raison}` : ''].filter(Boolean).join(' · ');
+  const rc = c.robotConc, rcN = rc ? [rc.marque === 'Autre' ? rc.autre : rc.marque, rc.modele].filter(Boolean).join(' ') : '';
+  return [c.opApplied === true ? 'Opération commerciale appliquée' : c.opApplied === false ? 'Opération commerciale non appliquée' : '', TYPES_PROJET[c.typeProjet] ? (c.typeProjet === 'seule' ? 'Robotisation sans agencement' : 'Robotisation ' + TYPES_PROJET[c.typeProjet].toLowerCase()) : '', rc ? `Robotisée${rcN || rc.annee ? ' : ' : ''}${rcN}${rc.annee ? ' (' + rc.annee + ')' : ''}` : '', c.besoins?.length ? 'Besoins : ' + c.besoins.join(', ') : '', c.pending ? `${STEPS[c.pending.to].short} à fixer : ${c.pending.raison}` : ''].filter(Boolean).join(' · ');
 }
 async function genCRO() {
   if (!window.ExcelJS) throw new Error('Générateur Excel indisponible (connexion Internet requise au premier chargement).');
@@ -5637,7 +5664,9 @@ async function genCRO() {
   for (let c = 1; c <= 6; c++) { const x = at.getCell(17, c); x.border = {...x.border, top: med}; const h = at.getCell(4, c); h.border = {...h.border, bottom: med}; }
   // ----- PROJETS -----
   const pj = wb.addWorksheet(`PROJETS ${Y}`, {views: [{zoomScale: 70, showGridLines: false}]});
-  const W = [11, 24, 46, 34, 22, 36, 9, 18, 14, 15.3, 14, 18, 14, 16, 13, 13, 13, 70];
+  const W = [12, 30, 46, 44, 30, 40, 12, 24, 14, 15.3, 14, 18, 14, 16, 14, 14, 14, 70], CAPW = [14, 40, 60, 56, 34, 44, 14, 28, 16, 16, 16, 20, 16, 22, 15, 15, 15, 120];
+  const mx = Array(18).fill(0);
+  const note = (k, v, bold) => { let n = 0; if (v == null || v === '') return; if (v instanceof Date) n = 10; else if (typeof v === 'number') n = v.toLocaleString('fr-FR').length + 2; else if (typeof v === 'string') n = v.length * (bold ? 1.12 : 1); else return; mx[k] = Math.max(mx[k], n); };
   const C = {name: 'Calibri', size: 11}, RH = 20;
   const setW = ws => { ws.columns = W.map(w => ({width: w})); };
   setW(pj);
@@ -5646,21 +5675,21 @@ async function genCRO() {
   Object.assign(pj.getCell('C2'), {value: `TABLEAU DE BORD ${settings.prenom.toUpperCase()} ${settings.nom.toUpperCase()} ${Y}`, font: {...C, size: 24, bold: true}, alignment: {horizontal: 'left', vertical: 'middle'}});
   Object.assign(pj.getCell('H2'), {value: `TABLEAU DE BORD ACTIVITE ROBOTISATION PHARMATHEK & BLIENT ${Y}`, font: {...C, size: 14, bold: true}, fill: solid('FFA6A6A6'), alignment: {horizontal: 'center', vertical: 'middle'}});
   frame(pj, 2, 8, 3, 17, med, med);
-  const head = (ws, r, cols) => { ws.getRow(r).height = 24; cols.forEach((h, i) => { const c = ws.getCell(r, i + 1); c.value = h; c.font = {...C, bold: true}; c.fill = solid('FFD9D9D9'); c.alignment = {horizontal: h === 'COMMENTAIRES' ? 'left' : 'center', vertical: 'middle', wrapText: true, indent: h === 'COMMENTAIRES' ? 1 : 0}; }); };
+  const head = (ws, r, cols) => { ws.getRow(r).height = 36; cols.forEach((h, i) => { mx[i] = Math.max(mx[i], Math.max(...String(h).split(/\s+/).map(w => w.length)) * 1.25); const c = ws.getCell(r, i + 1); c.value = h; c.font = {...C, bold: true}; c.fill = solid('FFD9D9D9'); c.alignment = {horizontal: h === 'COMMENTAIRES' ? 'left' : 'center', vertical: 'middle', wrapText: true, indent: h === 'COMMENTAIRES' ? 1 : 0}; }); };
   const section = (ws, r, txt, argb, size, n = 3) => { merge(ws, r, 1, r, n); const c = ws.getCell(r, 1); Object.assign(c, {value: txt, font: {...C, size, bold: true}, alignment: {horizontal: 'left', vertical: 'middle', indent: 1}}); if (argb) for (let k = 1; k <= n; k++) ws.getCell(r, k).fill = solid(argb); frame(ws, r, 1, r, n, med, med); ws.getRow(r).height = size >= 22 ? 30 : 28; };
   const signedBlock = (ws, r0, list, rowFn) => {
     const n = Math.max(list.length, 1);
     head(ws, r0, ['CIP', 'MODELE', 'PHARMACIE', 'TITULAIRE', 'Région', 'DATE SIGNATURE', 'LIVRAISON', 'MONTANT HT']);
     for (let i = 0; i < n; i++) {
       const r = r0 + 1 + i, v = list[i] ? rowFn(list[i]) : Array(8).fill(null); ws.getRow(r).height = RH;
-      v.forEach((val, k) => { const c = ws.getCell(r, k + 1); c.value = val; c.font = C; c.alignment = {horizontal: [0, 4, 5, 6, 7].includes(k) ? 'center' : 'left', vertical: 'middle', indent: [1, 2, 3].includes(k) ? 1 : 0}; });
+      v.forEach((val, k) => { note(k, val); const c = ws.getCell(r, k + 1); c.value = val; c.font = C; c.alignment = {horizontal: [0, 4, 5, 6, 7].includes(k) ? 'center' : 'left', vertical: 'middle', indent: [1, 2, 3].includes(k) ? 1 : 0}; });
       ws.getCell(r, 6).numFmt = 'dd/mm/yyyy'; ws.getCell(r, 7).numFmt = 'mmm-yy'; ws.getCell(r, 7).font = {...C, bold: true}; ws.getCell(r, 8).numFmt = EUR0;
     }
     frame(ws, r0, 1, r0 + n, 8, med, thin);
     for (let k = 1; k <= 8; k++) { const h = ws.getCell(r0, k); h.border = {...h.border, bottom: med}; }
     const tr = r0 + n + 1; ws.getRow(tr).height = 26;
     Object.assign(ws.getCell(tr, 7), {value: 'TOTAL :', font: {...C, bold: true}, alignment: {horizontal: 'center', vertical: 'middle'}});
-    Object.assign(ws.getCell(tr, 8), {value: list.length ? {formula: `SUM(H${r0 + 1}:H${r0 + list.length})`} : 0, font: {...C, size: 16, bold: true, color: {argb: 'FF4EA72E'}}, numFmt: EUR2R, alignment: {horizontal: 'center', vertical: 'middle'}});
+    Object.assign(ws.getCell(tr, 8), {value: list.length ? {formula: `SUM(H${r0 + 1}:H${r0 + list.length})`} : 0, font: {...C, size: 14, bold: true, color: {argb: 'FF4EA72E'}}, numFmt: EUR2R, alignment: {horizontal: 'center', vertical: 'middle'}});
     frame(ws, tr, 7, tr, 8, med, thin);
     return tr + 1;
   };
@@ -5678,12 +5707,12 @@ async function genCRO() {
     const n = Math.max(list.length, 1);
     for (let i = 0; i < n; i++) {
       const c = list[i], row = r0 + 1 + i; ws.getRow(row).height = RH;
-      const sd = k => c ? xd(c.stepDates?.[k] || stepDate(c, k)) : null;
+      const sd = k => { if (!c) return null; const raw = c.stepDates?.[k] || stepDate(c, k); return xd(raw) || (raw ? String(raw).slice(0, 10) : null); };
       const v = c ? [i + 1, null, +c.cip || c.cip || '', (c.pharma || '').toUpperCase(), (c.groupement || '').toUpperCase(), titu(c), +depOf(c) || depOf(c) || '', regionOf(c), c.devis?.statut === 'envoye' ? xd(c.devis.date) : null,
         xd(c.dateDecision), xd(c.livraisonDate), c.montant || null, lostMode ? (c.perduMotif === 'Perdu contre' ? 'PERDU' : 'ABANDON') : null, lostMode ? (c.perduConcurrent || 'AUTRE').toUpperCase() : null,
         sd('R1'), sd('R2'), sd('R3'), lostMode ? (c.perduObservation || '') : comment(c)] : Array(18).fill(null);
-      v.forEach((val, k) => { const cell = ws.getCell(row, k + 1); cell.value = val; cell.font = C; cell.alignment = {horizontal: [3, 4, 5, 17].includes(k) ? 'left' : 'center', vertical: 'middle', indent: [3, 4, 5, 17].includes(k) ? 1 : 0, shrinkToFit: k === 17}; });
-      if (c) { const ind = IND[c.indicateur], ic2 = ws.getCell(row, 2); if (ind) { ic2.value = ind[0]; ic2.fill = solid(ind[1]); ic2.font = {...C, bold: true, color: {argb: ind[2]}}; } else ic2.value = 'À renseigner'; }
+      v.forEach((val, k) => { if (k !== 17) note(k, val); else note(k, typeof val === 'string' ? val.length * 0.92 : 0); const cell = ws.getCell(row, k + 1); cell.value = val; cell.font = C; cell.alignment = {horizontal: [3, 4, 5, 17].includes(k) ? 'left' : 'center', vertical: 'middle', indent: [3, 4, 5, 17].includes(k) ? 1 : 0}; });
+      if (c) { const ind = IND[c.indicateur], ic2 = ws.getCell(row, 2); if (ind) { ic2.value = ind[0]; ic2.fill = solid(ind[1]); ic2.font = {...C, bold: true, color: {argb: ind[2]}}; } else ic2.value = 'À renseigner'; note(1, 'À renseigner', true); }
       [9, 15, 16, 17].forEach(k => ws.getCell(row, k).numFmt = 'dd/mm/yyyy');
       ws.getCell(row, 10).numFmt = 'mmm-yy'; ws.getCell(row, 10).font = {...C, bold: true, color: {argb: 'FFFF0000'}}; ws.getCell(row, 11).numFmt = 'mmm-yy'; ws.getCell(row, 12).numFmt = EUR0;
     }
@@ -5696,6 +5725,16 @@ async function genCRO() {
   const pe = wb.addWorksheet('PERDUS', {views: [{zoomScale: 70, showGridLines: false}]}); setW(pe);
   section(pe, 2, `PROJETS PERDUS / ABANDONNÉS - ${settings.prenom.toUpperCase()} ${settings.nom.toUpperCase()}`, null, 22, 6);
   projBlock(pe, 4, D.lost, true);
+  // Largeurs ajustées au contenu (aucune cellule coupée ni « ##### »), retour à la ligne si trop long
+  const wd = W.map((m, k) => k === 17 ? Math.min(CAPW[k], Math.max(m, Math.ceil(mx[k] + 3))) : Math.min(CAPW[k], Math.max(m, Math.ceil(mx[k] * 1.12 + 3))));
+  [pj, pe].forEach(ws => {
+    wd.forEach((w, k) => { ws.getColumn(k + 1).width = w; });
+    ws.eachRow(row => {
+      if (row.height !== RH) return; let lines = 1;
+      row.eachCell(cell => { const k = cell.col - 1; if (k === 17 || typeof cell.value !== 'string') return; const l = Math.ceil((cell.value.length * 1.12 + 3) / wd[k]); if (l > 1) { cell.alignment = {...cell.alignment, wrapText: true}; lines = Math.max(lines, l); } });
+      if (lines > 1) row.height = lines * 15 + 5;
+    });
+  });
   return wb.xlsx.writeBuffer();
 }
 function openPrev() {
