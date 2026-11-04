@@ -909,6 +909,7 @@
     <label class="lbl flex justify-between items-center" for="rl-dt"><span>Date et heure de réalisation *</span><span class="flex gap-3"><button type="button" class="text-xs font-bold text-ptkd hover:underline" onclick="$('rl-dt').value=nowDT()">Maintenant</button><button type="button" id="rl-plan" class="text-xs font-bold text-ptkd hover:underline" onclick="$('rl-dt').value=ui.real.planned">Date prévue</button></span></label>
     <input type="datetime-local" id="rl-dt" class="inp !h-12 text-base">
     <p class="text-xs text-muted">Cliquez sur l'icône calendrier du champ pour choisir le jour et l'heure.</p>
+    <div><label class="lbl" for="rl-note">Commentaire * <span class="text-[11.5px] font-normal text-muted">· ce qui s'est dit ou décidé (alimente l'historique de la fiche)</span></label><div class="mic-wrap"><textarea id="rl-note" rows="3" class="inp !h-auto py-2" placeholder="Ex. : Titulaire joint, souhaite revoir le devis la semaine prochaine…"></textarea><button type="button" class="mic !top-1 !w-9 !h-9" onclick="dictate('rl-note',this)" aria-label="Dicter le commentaire"><i class="fas fa-microphone"></i></button></div><p id="rl-err" class="hidden text-[12.5px] font-semibold mt-1" style="color:#B42318"><i class="fas fa-circle-exclamation mr-1"></i>Le commentaire est obligatoire pour enregistrer l'action dans l'historique.</p></div>
   </div>
   <div class="px-5 py-4 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-real')">Annuler</button><button class="btn btn-ok" onclick="realOk()"><i class="fas fa-check"></i>Confirmer</button></div>
 </dialog>
@@ -977,6 +978,8 @@
 <li><b>Se déconnecter (V2.9)</b> : l'icône <b>porte avec flèche</b>, en haut à gauche à côté du logo, ferme la session et ramène à l'écran de connexion (le cadenas à droite fait de même). Les données restent chiffrées sur l'appareil.</li>
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
+<li><b>Commentaire à la clôture d'une action (V3.0)</b> : quand vous marquez une action comme réalisée (bouton Réalisée, curseur « Fait » ou fenêtre « Traiter cette action »), la fenêtre demande la <b>date et l'heure de réalisation</b> et un <b>commentaire obligatoire</b> (à taper ou à dicter). Il est inscrit dans l'historique de la fiche avec la date de réalisation.</li>
+<li><b>V3.0</b> : commentaire obligatoire à la clôture de toute action.</li>
 <li><b>Traiter une action depuis la fiche (V2.9)</b> : cliquez sur la <b>prochaine action</b> (cadre orange) ou sur une ligne de « Autres actions prévues » : une fenêtre propose <b>Marquer comme réalisée</b>, <b>Replanifier ou modifier</b> et <b>Annuler cette action</b>. Les boutons directs du cadre restent disponibles.</li>
 <li><b>V2.9</b> : traitement d'une action en un clic depuis la fiche, icône de déconnexion, verrouillage automatique à 2 h, nouvelle photo de page de garde et de l'option PANNEAU TYPE A.</li>
 <li><b>Fiche client allégée (V2.8)</b> : le bloc « Étape en cours » (colonne de droite) a été supprimé. L'étape (Contact, R1, R2, R3) reste visible dans la frise de l'en-tête de la fiche ; « Prochaine action » et « Coordonnées » remontent à sa place.</li>
@@ -1195,7 +1198,7 @@
 <h2 id="a-usage">3. Au quotidien</h2>
 <table>
 <tr><th>Moment</th><th>Ce que vous faites</th></tr>
-<tr><td><b>Valider une action</b></td><td>Dans « Ma journée », faites glisser le curseur vert vers la droite : il passe à « ✓ Fait » et vous confirmez la date et l'heure de réalisation.</td></tr>
+<tr><td><b>Valider une action</b></td><td>Dans « Ma journée », faites glisser le curseur vert vers la droite : il passe à « ✓ Fait » et vous confirmez la date, l'heure de réalisation et un commentaire (obligatoire : il alimente l'historique).</td></tr>
 <tr><td><b>Le matin</b></td><td>Rien : la synchro s'est faite à la dernière ouverture. En cas de doute, bouton <b>Synchro</b>.</td></tr>
 <tr><td><b>Chez le client</b></td><td>Ouvrez le dashboard sur le téléphone : consultez la fiche, ajoutez une note (micro du clavier pour dicter), changez l'étape, planifiez l'action suivante, saisissez le devis ou le montant, générez le PDF de synthèse.</td></tr>
 <tr><td><b>Au retour</b></td><td>Ouvrez le dashboard sur le PC : les fiches modifiées sur le téléphone sont déjà à jour. Vous voyez « N fiches reçues ».</td></tr>
@@ -1575,7 +1578,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '2.9';
+const APP_VERSION = '3.0';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2575,17 +2578,18 @@ function pastGuard(dt, what, fn) {
   confirmBox("Date antérieure à aujourd'hui", `${what}<br><br>La date <b>${fmtDT(dt)}</b> est antérieure à aujourd'hui.<br>Confirmez-vous cette date ?`, 'Oui, confirmer', fn, {no: 'Corriger la date', icon: 'fa-calendar-xmark'});
 }
 function askReal(sub, planned, fn) {
-  ui.real = {fn, planned: planned || nowDT()}; $('rl-sub').innerHTML = sub; $('rl-dt').value = nowDT(); $('rl-plan').classList.toggle('hidden', !planned); $('dlg-real').showModal();
+  ui.real = {fn, planned: planned || nowDT()}; $('rl-sub').innerHTML = sub; $('rl-dt').value = nowDT(); $('rl-note').value = ''; $('rl-err').classList.add('hidden'); $('rl-plan').classList.toggle('hidden', !planned); $('dlg-real').showModal();
 }
 function realOk() {
   const dt = $('rl-dt').value; if (!dt) return toast("Indiquez la date et l'heure de réalisation.", true);
   if (parseD(dt) > new Date(Date.now() + 36e5)) return toast('La date de réalisation ne peut pas être dans le futur.', true);
-  const fn = ui.real.fn; closeDlg('dlg-real'); fn(dt);
+  const note = $('rl-note').value.trim(); if (!note) { $('rl-err').classList.remove('hidden'); $('rl-note').focus(); return; }
+  const fn = ui.real.fn; closeDlg('dlg-real'); fn(dt, note);
 }
 function askDone(id) {
   const c = byId(id); if (!c?.nextDate) return;
   const A = ACTIONS[c.nextType] || ACTIONS.relance, past = isPast(c.nextDate);
-  askReal(`<b>${A.label}</b> · ${esc(c.pharma)} · prévu(e) ${fmtDT(c.nextDate)}`, c.nextDate, dt => doneTodo(id, dt));
+  askReal(`<b>${A.label}</b> · ${esc(c.pharma)} · prévu(e) ${fmtDT(c.nextDate)}`, c.nextDate, (dt, note) => doneTodo(id, dt, note));
 }
 function commitDone() { ui.pendingDone = null; }
 function revertDone() {
@@ -2596,13 +2600,13 @@ function revertDone() {
   const a = (c.acts || []).find(x => x.dt === P.dt); if (a) a.done = false;
   save(); toast("Rien n'a été saisi : l'action reprend son statut d'origine");
 }
-function doneTodo(id, real) {
+function doneTodo(id, real, note) {
   const c = byId(id); if (!c?.nextDate) return;
   revertDone(); c.lastDoneBefore = c.lastDone || null;
   c.lastDone = {dt: real || c.nextDate, type: c.nextType || 'relance'};
   const a = (c.acts || []).find(x => x.dt === c.nextDate); if (a) a.done = true; else (c.acts = c.acts || []).push({dt: c.nextDate, type: c.nextType || 'relance', motif: '', done: true});
   const prev = {nextDate: c.nextDate, nextType: c.nextType, lastDone: c.lastDoneBefore};
-  log(c, `${(ACTIONS[c.nextType] || ACTIONS.relance).label} réalisée`, `Rendez-vous du ${fmtDT(c.nextDate)}${real ? `, réalisé le ${fmtDT(real)}` : ''}.`); if (real) c.history[0].date = real;
+  log(c, `${(ACTIONS[c.nextType] || ACTIONS.relance).label} réalisée`, `Rendez-vous du ${fmtDT(c.nextDate)}${real ? `, réalisé le ${fmtDT(real)}` : ''}.${note ? '\n' + note : ''}`); if (real) c.history[0].date = real;
   const pend = c.nextType === 'suivi' && c.pending;
   c.nextDate = null; save();
   openClient(id);
@@ -2804,8 +2808,8 @@ function saveRap() {
 }
 function doneRap(cid, rid) {
   const c = byId(cid), r = (c?.rappels || []).find(x => x.id === rid); if (!r) return;
-  askReal(`<b>${RAP_T[r.type].l}</b> · ${esc(c.pharma)} · prévu(e) ${fmtDT(r.dt)}<br><i>« ${esc(r.note)} »</i>`, r.dt, dt => {
-    r.done = true; r.doneAt = dt; log(c, `${RAP_T[r.type].l} réalisé(e)`, `${r.note}\nRéalisé le ${fmtDT(dt)}.`); c.history[0].date = dt; save();
+  askReal(`<b>${RAP_T[r.type].l}</b> · ${esc(c.pharma)} · prévu(e) ${fmtDT(r.dt)}<br><i>« ${esc(r.note)} »</i>`, r.dt, (dt, note) => {
+    r.done = true; r.doneAt = dt; r.doneNote = note || ''; log(c, `${RAP_T[r.type].l} réalisé(e)`, `${r.note}\nRéalisé le ${fmtDT(dt)}.${note ? '\n' + note : ''}`); c.history[0].date = dt; save();
     if (byId(ui.editId) === c) { renderRap(c); renderHistory(c); } $('dlg-rapl').open && closeDlg('dlg-rapl'); refresh(); toast('Rappel réalisé, noté dans l\'historique'); askBack(c, 'Rappel réalisé');
   });
 }
