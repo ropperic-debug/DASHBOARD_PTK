@@ -1059,6 +1059,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
   <div class="p-5 flex flex-col gap-2.5">
     <div class="rounded-xl border-2 px-3.5 py-2.5" style="border-color:#FDBA74;background:#FFF7ED"><div class="text-[11px] font-extrabold tracking-wide" style="color:#C2410C">ACTION À TRAITER</div><div id="tr-n" class="text-[18px] font-extrabold leading-tight"></div><div id="tr-sub" class="text-[13px] text-slate-600"></div></div>
     <div id="tr-note" class="text-[13px] text-slate-700 rounded-xl bg-slate-50 border border-slate-200 px-3 py-2"></div>
+    <div id="tr-ctx"></div>
     <button type="button" id="tr-done" class="v41-opt" style="border-color:#047857;background:#F0FDF4"><i style="background:#047857;color:#fff">✓</i><span><b id="tr-ok-t"></b><small id="tr-ok-s"></small></span></button>
     <button type="button" id="tr-nr" class="v41-opt" style="border-color:#FB923C"><i style="background:#FFEDD5;color:#C2410C"><span class="fas fa-phone-slash" style="font-size:12px"></span></i><span><b>Sans réponse</b><small>Je réessaie plus tard</small></span></button>
     <button type="button" id="tr-replan" class="v41-opt"><i style="background:#E2E8F0">↻</i><span><b id="tr-re-t"></b><small id="tr-re-s"></small></span></button>
@@ -1134,6 +1135,8 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.2 (fenêtres d'action)</b> : les fenêtres « Planifier une action » et « Traiter une action » affichent toujours deux blocs : <b>Actions prévues</b> (retards en rouge) et <b>Dernières actions réalisées</b> (à défaut, derniers événements de la fiche). Correctif : une fiche dont tout est déjà fait pour passer à l'étape suivante (ex. intérêt renseigné + visite planifiée) s'ouvrait mal ; elle s'ouvre et passe en étape suivante. Un message rouge explique désormais toute erreur d'ouverture.</li>
+<li><b>V4.2</b> : les statistiques d'activité comptent désormais aussi les actions créées avec « + Planifier » (appel, visite, visio, relance, rappel, e-mail) et traitées ; elles n'apparaissaient pas jusqu'ici.</li>
 <li><b>V4.1</b> : (1) <b>Traiter une action</b> : la fenêtre nomme l'action (visite, appel, visio, relance, rappel, e-mail), pose la question « Que s'est-il passé ? » avec des choix explicites (« La visite a eu lieu », « Je la décale », « Elle n'aura pas lieu », et « Sans réponse » pour appel/visio/relance/rappel) ; l'étape suivante s'appelle « Compte-rendu de la visite… » et le bouton final « Enregistrer la visite réalisée ». Dans la fiche, « Prochaine action » porte un bouton <b>Traiter ▸</b>. (2) <b>Passage automatique d'étape</b> : le bandeau « Pour passer en R1 / R2 / R3 : il reste N choses à faire » liste ce qui manque ; quand tout est fait <b>et qu'un nouveau rendez-vous (visite ou visio) est planifié</b>, le dossier passe tout seul à l'étape suivante (R3 : vous enregistrez le résultat). « Changer l'étape manuellement » reste possible. (3) <b>2ᵉ nom</b> (autre associé) dans Coordonnées, avec une case à cocher dans la zone de génération du PDF pour l'afficher ou non sur la synthèse (« M. Dupont et Mme Martin »). (4) <b>Coordonnées complètes</b> : la colonne de droite défile avec la page ; « Prochaine action » reste épinglée et se réduit à une ligne quand on descend.</li>
 <li><b>V4.0.2</b> : <b>plus aucun verrou</b> dans la fiche : modèle de robot, options, devis, type de projet, situation de l'officine et besoins restent toujours modifiables (plus de bouton « Modifier » / « Valider » à cliquer). Devis, argumentaire et implantation sont accessibles dès l'étape Contact.</li>
 <li><b>V4.0.1</b> : le bloc « Besoins » est désormais cliquable à toutes les étapes, y compris en Contact et sur une fiche neuve (il restait vide et inutilisable en Contact).</li>
@@ -1775,7 +1778,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.1';
+const APP_VERSION = '4.2';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -3030,7 +3033,7 @@ function traiter(kind, cid, rid) {
   idbFill('dlg-trait', c); const tk = kind === 'next' ? ACT_TK[c.nextType || 'relance'] : RAP_TK[(c.rappels.find(x => x.id === rid) || {}).type || 'rappel'], X = ACT_TXT[tk] || ACT_TXT.appel;
   $('tr-ic').innerHTML = `<i class="fas ${X.fa}"></i>`; $('tr-h').textContent = X.n; $('tr-n').textContent = X.n;
   $('tr-sub').innerHTML = `Prévue le <b>${fmtDT(dt)}</b><br>${esc(c.pharma)}${c.nom ? ' · ' + esc(nomComplet(c)) : ''}`;
-  $('tr-ok-t').textContent = X.ok[0]; $('tr-ok-s').textContent = X.ok[1]; $('tr-re-t').textContent = X.re[0]; $('tr-re-s').textContent = X.re[1]; $('tr-no-t').textContent = X.no[0]; $('tr-no-s').textContent = X.no[1];
+  $('tr-ctx').innerHTML = actCtxHtml(c, kind === 'next' ? {next: true} : {rid}); $('tr-ok-t').textContent = X.ok[0]; $('tr-ok-s').textContent = X.ok[1]; $('tr-re-t').textContent = X.re[0]; $('tr-re-s').textContent = X.re[1]; $('tr-no-t').textContent = X.no[0]; $('tr-no-s').textContent = X.no[1];
   $('tr-note').style.display = note ? '' : 'none'; $('tr-note').innerHTML = `<i class="fas fa-comment-dots text-slate-400 mr-1"></i>${esc(note)}`;
   const go = f => () => { closeDlg('dlg-trait'); f(); };
   $('tr-done').onclick = go(done); $('tr-replan').onclick = go(replan); $('tr-cancel').onclick = go(cancel);
@@ -3385,6 +3388,9 @@ function saRange() {
 function saActs(s, e) {
   const now = new Date(), out = [];
   clients.forEach(c => (c.acts || []).forEach(a => { const d = parseD(a.dt); if (d >= s && d < e && d <= now) out.push({c, ...a, d}); }));
+  /* V4.2 : les actions planifiées/traitées comme « rappels » (relance, rappel, appel, visite, visio, e-mail) comptent aussi */
+  const RA = {relance: 'suivi', rappel: 'suivi', appel: 'relance', visite: 'visite', visio: 'teams', mail: 'mail'};
+  clients.forEach(c => (c.rappels || []).forEach(r => { const d = parseD(r.done && r.doneAt ? r.doneAt : r.dt); if (d && d >= s && d < e && d <= now && RA[r.type]) out.push({c, dt: r.done && r.doneAt ? r.doneAt : r.dt, type: RA[r.type], motif: r.note || '', done: !!r.done, d}); }));
   return out.sort((a, b) => a.d - b.d);
 }
 const saHist = (s, e, rx) => sum(clients, c => (c.history || []).filter(h => { const d = parseD(h.date); return d >= s && d < e && rx.test(h.action); }).length);
@@ -3511,13 +3517,27 @@ function actHistHtml(c) {
   const rows = L.map(x => { const A = ACTIONS[x.k] || ACTIONS.relance; return `<div class="grid grid-cols-[26px_1fr_auto] gap-2 items-center py-1 border-t border-orange-100 first:border-0 text-[12px]"><span class="w-6 h-6 rounded-lg inline-flex items-center justify-center text-[11px]" style="background:${A.bg};color:${A.fg}"><i class="fas ${A.fa}"></i></span><span class="truncate"><b>${esc(x.l || A.label)}</b>${x.m ? ' · ' + esc(x.m) : ''}</span><span class="text-muted whitespace-nowrap">${fmtDT(x.dt)}</span></div>`; }).join('');
   return `<details class="rounded-xl border border-orange-200 bg-orange-50/70 px-3 py-2" ${window.innerWidth >= 640 ? 'open' : ''}><summary class="cursor-pointer flex justify-between items-center text-[11px] font-extrabold uppercase tracking-wide text-orange-900"><span><i class="fas fa-clock-rotate-left mr-1"></i>Dernières actions réalisées</span><span class="font-semibold normal-case tracking-normal text-muted">${L.length} sur ${all.length}</span></summary><div class="mt-1.5">${rows}</div></details>`;
 }
+function actCtxHtml(c, ex) {
+  ex = ex || {};
+  const now = new Date(), U = [];
+  if (c.nextDate && !ex.next) U.push({dt: c.nextDate, k: ACTIONS[c.nextType] ? c.nextType : 'relance', m: ''});
+  (c.rappels || []).filter(r => !r.done && !r.cancelled && r.id !== ex.rid).forEach(r => { const T = RAP_T[r.type] || RAP_T.rappel; U.push({dt: r.dt, k: T.a, m: r.note || '', l: T.l}); });
+  U.sort((a, b) => String(a.dt).localeCompare(String(b.dt)));
+  const row = (x, right) => { const A = ACTIONS[x.k] || ACTIONS.relance; return `<div class="grid grid-cols-[26px_1fr_auto] gap-2 items-center py-1 border-t border-orange-100 first:border-0 text-[12px]"><span class="w-6 h-6 rounded-lg inline-flex items-center justify-center text-[11px]" style="background:${A.bg};color:${A.fg}"><i class="fas ${A.fa}"></i></span><span class="truncate"><b>${esc(x.l || A.label)}</b>${x.m ? ' · ' + esc(x.m) : ''}</span>${right}</div>`; };
+  const upH = U.slice(0, 4).map(x => { const d = parseD(x.dt), late = d < now, dl = Math.round((d - now) / 864e5); return row(x, `<span class="whitespace-nowrap ${late ? 'text-rose-700 font-bold' : 'text-muted'}">${fmtDT(x.dt)}${late ? ' · en retard' : dl <= 0 ? " · aujourd'hui" : dl === 1 ? ' · demain' : ''}</span>`); }).join('');
+  const rec = actHistItems(c).slice(0, 4);
+  let recH = rec.map(x => row(x, `<span class="text-muted whitespace-nowrap">${fmtDT(x.dt)}</span>`)).join('');
+  if (!rec.length) recH = (c.history || []).slice(0, 4).map(h => `<div class="grid grid-cols-[1fr_auto] gap-2 items-center py-1 border-t border-slate-200 first:border-0 text-[12px]"><span class="truncate">${esc(h.action)}</span><span class="text-muted whitespace-nowrap">${fmtDT(h.date)}</span></div>`).join('');
+  return `<div class="rounded-xl border border-orange-200 bg-orange-50/70 px-3 py-2"><div class="text-[11px] font-extrabold uppercase tracking-wide text-orange-900"><i class="far fa-calendar mr-1"></i>Actions prévues${U.length ? ' · ' + U.length : ''}</div><div class="mt-1">${upH || '<div class="text-[12px] italic text-slate-400">Aucune action prévue</div>'}</div></div>
+  <div class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 mt-2"><div class="text-[11px] font-extrabold uppercase tracking-wide text-slate-600"><i class="fas fa-clock-rotate-left mr-1"></i>${rec.length ? 'Dernières actions réalisées' : 'Derniers événements de la fiche'}</div><div class="mt-1">${recH || '<div class="text-[12px] italic text-slate-400">Aucun historique</div>'}</div></div>`;
+}
 function openAction(cid, type = 'relance', aid = null, opts = {}) {
   const c = byId(cid); if (!c) return;
   if (!actKeys().includes(type)) type = 'relance';
   idbFill('dlg-action', c);
   ui.act = {cid, aid, type, prop: 0, advance: opts.advance || null, dtFixed: !!opts.dt, dtTouched: false, rap: opts.rap || null};
   $('act-ttl').textContent = opts.rap ? (opts.rap.rid ? 'Replanifier cette action' : 'Planifier une action') : 'Planifier une action';
-  $('act-dt-badge').classList.add('hidden'); $('act-hist').innerHTML = actHistHtml(c);
+  $('act-dt-badge').classList.add('hidden'); $('act-hist').innerHTML = actCtxHtml(c, {rid: opts && opts.rap ? opts.rap.rid : null});
   $('act-sub').textContent = `${c.pharma} — ${c.genre} ${c.prenom || ''} ${c.nom} (${c.ville})`;
   $('act-dt').value = opts.dt || (type === 'suivi' ? addDays(1, '10:00') : nowDT());
   $('act-next').checked = !!opts.dt || type === 'suivi';
@@ -3616,7 +3636,7 @@ function saveActionGo() {
 
 /* ================= FICHE CLIENT ================= */
 function newClient() { ui.editId = null; ui.formStep = 'Contact'; ui.coordEdit = true; fillForm(null); showView('client'); setPane('coord'); setTimeout(() => $('s-q').focus(), 300); }
-function openClient(id) { if (id !== ui.editId && guardLeave(() => openClient(id))) return; if (ui.pendingDone && ui.pendingDone.id !== id) revertDone(); const c = byId(id); if (!c) return; ui.editId = id; ui.coordEdit = false; fillForm(c); showView('client'); setPane('projet'); if (c.step === 'R1' && opt('qual') && !QUAL.seen.has(id)) { QUAL.seen.add(id); setTimeout(() => qualOpen(id), 350); } }
+function openClient(id) { if (id !== ui.editId && guardLeave(() => openClient(id))) return; if (ui.pendingDone && ui.pendingDone.id !== id) revertDone(); const c = byId(id); if (!c) return; delete c._rk; try { if (v41Auto(c)) save(); } catch (e) {} ui.editId = id; ui.coordEdit = false; try { fillForm(c); } catch (e) { console.error(e); toast('Fiche ouverte avec une erreur d\'affichage : ' + (e && e.message || e), true); } showView('client'); setPane('projet'); if (c.step === 'R1' && opt('qual') && !QUAL.seen.has(id)) { QUAL.seen.add(id); setTimeout(() => qualOpen(id), 350); } }
 function initSelects() {
   $('f-lgo').innerHTML = '<option value="">— Non renseigné —</option>' + LGOS.map(x => `<option>${x}</option>`).join('') + '<option>Autre</option>';
   $('f-rc-marque').innerHTML = ROBOTS_CONC.map(x => `<option>${x}</option>`).join('') + '<option>Pharmathek</option><option>Autre</option>';
@@ -4500,12 +4520,13 @@ function v4Facts(c, d) {
   return {int: !!d.indicateur && d.indicateur !== '-', bes: ((c && c.besoins) || d.besoins || []).length > 0, mod: rb.length > 0, one: rb.length === 1, mont: !!d.montant, dec: !!d.dateDecision,
     devis: !!dv.statut && dv.statut !== 'afaire', rdv: v41Rdv(c)};
 }
+const _RK = new WeakMap();
 function v41Rdv(c) {
   if (!c) return false;
   const k = [];
   if (c.nextDate && ['visite', 'teams'].includes(c.nextType)) k.push('n:' + c.nextDate);
   (c.rappels || []).forEach(r => { if (!r.done && ['visite', 'visio'].includes(r.type)) k.push('r:' + r.id); });
-  c._rk = k; return k.some(x => !(c.rdvSeen || []).includes(x));
+  _RK.set(c, k); return k.some(x => !(c.rdvSeen || []).includes(x));
 }
 function v4Items(step, c, d) {
   const F = v4Facts(c, d), nx = V4_NEXT[step], rd = nx && nx !== 'Signé' ? [['Rendez-vous ' + STEPS[nx].short + ' planifié', F.rdv, 'rdv', true]] : [];
@@ -4525,10 +4546,10 @@ function v41Auto(c) {
   _v41g = true;
   try {
     const nx = V4_NEXT[c.step], from = c.step;
-    c.rdvSeen = (c._rk || []).slice(); c.step = nx; c.stepDates = c.stepDates || {}; c.stepDates[nx] = isoDT(new Date()); delete c.pending;
+    c.rdvSeen = (_RK.get(c) || []).slice(); delete c._rk; c.step = nx; c.stepDates = c.stepDates || {}; c.stepDates[nx] = isoDT(new Date()); delete c.pending;
     log(c, `Étape franchie automatiquement : ${STEPS[nx].label}`, `Conditions remplies en ${STEPS[from].short} : ${it.map(x => x[0]).join(', ')}.`);
     toast(`✓ Rendez-vous ${STEPS[nx].short} planifié : le dossier est passé en ${STEPS[nx].short}`);
-    delete c._rk; return true;
+    return true;
   } finally { _v41g = false; }
 }
 /* Prêt pour l'étape suivante : tout ce qui est requis hors rendez-vous est fait */
@@ -4573,13 +4594,15 @@ function renderFormSteps(step) {
   }).join('');
   const chips = items.map(x => `<span class="chip ${x[1] ? 'k' : ''}">${x[1] ? '✓' : '○'} ${x[0]}</span>`).join('');
   const miss = items.filter(x => !x[1]);
-  const first = miss.find(x => !x[3]) || miss[0];
+  const first = miss.find(x => !x[3]) || miss[0] || [], allOk = !miss.length;
   const N = miss.length, green = !miss.some(x => !x[3]), nS = nx ? STEPS[nx].short : '';
   let kk, gt, gd, gb;
   if (step === 'R3') {
     kk = 'POUR SIGNER'; gt = N ? `Il reste ${N} chose${N > 1 ? 's' : ''} à faire` : 'Dernière étape';
     gd = `Enregistrez le résultat du rendez-vous R3 : <b>signé, à relancer ou perdu.</b>`;
     gb = N ? ['Compléter : ' + first[0].toLowerCase(), `v4Act('${first[2]}')`] : ["Enregistrer le résultat du R3", 'guideGo()'];
+  } else if (allOk) {
+    kk = 'TOUT EST PRÊT'; gt = `Passer en ${nS}`; gd = `Tout est fait : <b>le dossier passe en ${nS} dès l'enregistrement.</b>`; gb = [`Passer en ${nS}`, 'guideGo()'];
   } else {
     kk = 'POUR PASSER EN ' + nS.toUpperCase(); gt = `Il reste ${N} chose${N > 1 ? 's' : ''} à faire`;
     gd = (green ? `Planifiez le rendez-vous ${nS} dans « Prochaine action ». ` : `Complétez la fiche${step === 'Contact' ? '' : ', puis planifiez le rendez-vous ' + nS}. `) + `<b>${green ? 'Dès qu\'il est planifié' : 'Quand tout est coché'}, le dossier passe en ${nS} tout seul.</b>`;
