@@ -87,6 +87,33 @@
 .ao-w{display:flex;gap:5px;align-items:stretch}.ao-w .ao-r{flex:1;min-width:0}.ao-x{flex:none;width:32px;border-radius:9px;border:1.5px solid #F5B1B1;background:#fff;color:#B42318;font-size:13px}.ao-x:hover{background:#FEECEC;border-color:#DC2626}
 .ao-r{display:grid;grid-template-columns:28px 1fr auto;gap:8px;align-items:center;text-align:left;background:#fff;border:1px solid #F3E3D3;border-radius:9px;padding:4px 6px}.ao-r:hover{border-color:#FDBA74}.ao-r.late{border-color:#F5B1B1;background:#FFF5F5}
 
+/* V2.7 : curseur Fait, Ventes fixe, bandeau filtre, action compacte */
+.zsw{position:relative;display:inline-flex;align-items:center;width:92px;height:38px;border-radius:999px;background:#fff;border:2px solid #047857;box-sizing:border-box;flex:none;overflow:hidden;padding:0;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;transition:background .25s}
+.zsw .zkn{display:block;position:absolute;left:3px;top:3px;width:28px;height:28px;border-radius:50%;background:#fff;border:2.5px solid #047857;box-shadow:0 1px 3px rgba(0,0,0,.18);transition:transform .28s ease,border-color .25s}
+.zsw b{position:absolute;left:11px;color:#fff;font-size:13px;font-weight:800;opacity:0;transition:opacity .2s}
+.zsw.late{border-color:#EA580C;background:#FFF7ED;box-shadow:0 0 0 3px #FED7AA}.zsw.late .zkn{border-color:#EA580C}
+.zsw.on{background:#047857;box-shadow:none;border-color:#047857}.zsw.on .zkn{transform:translateX(56px);border-color:#fff}.zsw.on b{opacity:1}
+.zsw.zhint:not(.late):not(.on){box-shadow:0 0 0 3px #E3F4EB}
+.zsw.zhint:not(.on):after{content:"\203A\203A\203A";position:absolute;right:11px;top:50%;transform:translateY(-50%);color:#B9DECB;font-weight:800;letter-spacing:1px;font-size:15px}
+.zsw.zhint:not(.on) .zkn{animation:zhint 4.4s infinite}
+@keyframes zhint{0%{transform:translateX(0);animation-timing-function:ease-in-out}36%{transform:translateX(20px);animation-timing-function:ease-in-out}59%,100%{transform:translateX(0)}}
+@media (prefers-reduced-motion:reduce){.zsw.zhint:not(.on) .zkn{animation:none}}
+.vfade{position:relative}.vlist{max-height:102px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;padding:2px 6px 2px 0;margin-right:-6px;scrollbar-width:thin;scrollbar-color:#CBD5E1 transparent}
+.vlist::-webkit-scrollbar{width:6px}.vlist::-webkit-scrollbar-thumb{background:#CBD5E1;border-radius:6px}
+.vfade:after{content:"";position:absolute;left:0;right:6px;bottom:0;height:22px;background:linear-gradient(transparent,#fff);pointer-events:none}
+.vmore{text-align:center;font-size:11px;font-weight:700;color:#64748B}
+.zbar{display:flex;align-items:center;gap:12px;margin:12px 20px 0;padding:10px 14px;border:2px solid #EA580C;background:#FFF7ED;border-radius:14px;color:#7C2D12;font-size:13.5px;flex-wrap:wrap}
+.zbar b{font-weight:800}.zbar .zb{margin-left:auto;display:inline-flex;align-items:center;gap:7px;background:#0F172A;color:#fff;border-radius:10px;padding:8px 14px;font-weight:700;font-size:13px}
+.zbar .zi{width:30px;height:30px;border-radius:50%;background:#EA580C;color:#fff;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.zr{border:2px solid #EA580C;background:#FFF7ED;border-radius:16px;padding:10px 12px;display:flex;flex-direction:column;gap:9px}.zr.late{border-color:#DC2626;background:#FFF7F7}
+.zr .z1{display:flex;justify-content:space-between;align-items:center;font-size:10.5px;font-weight:800;letter-spacing:.06em;color:#9A3412;text-transform:uppercase}
+.zr .zb{background:#FFEDD5;border-radius:99px;padding:2px 9px;font-size:11px;text-transform:none;letter-spacing:0}.zr .zb.late{background:#FEE2E2;color:#B91C1C}
+.zr .z2{display:flex;gap:10px;align-items:center}.zr .zi{width:36px;height:36px;border-radius:11px;background:#fff;border:1.5px solid #FDBA74;color:#C2410C;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.zr .zt{font-weight:800;font-size:15px;line-height:1.15}.zr .zs{font-size:11.5px;color:#64748B;margin-top:1px}
+.zr .z3{display:flex;gap:6px}.zr .zbt{height:36px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;gap:7px;font-weight:700;font-size:13px;flex:1;border:1px solid #E2E8F0;background:#fff;color:#0F172A}
+.zr .zbt.g{background:#047857;border-color:#047857;color:#fff}.zr .zbt.x{flex:none;width:36px;color:#B42318;border-color:#F5B1B1}
+.zr .z4{display:flex;align-items:center;gap:5px}.zr .z4 .l{font-size:11px;font-weight:700;color:#64748B;margin-right:2px;white-space:nowrap}
+.zr .z4 .ch{width:34px;height:30px;border-radius:9px;border:1px solid #F5C9A6;background:#fff;color:#9A3412;display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex:1}.zr .z4 .ch:hover{background:#EA580C;color:#fff}
 /* V2.6 : cadres, Coordonnées, tuile sélectionnée, Ma journée, Paramètres, commissions */
 .dz{border:2.5px dashed #0F172A!important;border-radius:18px!important}
 .cz{padding:9px;background:#fff}
@@ -385,6 +412,7 @@
         <div id="tbl-title" class="text-sm font-semibold"></div>
         <div class="flex gap-2 items-center"><span id="tbl-filters"></span><button class="btn btn-g !h-9" onclick="exportCSV()"><i class="fas fa-download"></i>CSV</button></div>
       </div>
+      <div id="tbl-banner"></div>
       <div class="overflow-x-auto" id="tbl-wrap"><table class="tbl w-full min-w-[1060px]"><thead id="tbl-head"></thead><tbody id="tbl-body"></tbody></table></div>
       <div id="tbl-foot" class="flex justify-between flex-wrap gap-2 px-5 py-3 border-t border-slate-200 text-[13px] text-muted"></div>
     </div>
@@ -928,7 +956,15 @@
 <ul>
 <li><b>Créer une fiche</b> : recherchez la pharmacie par nom ou par n° CIP ; le téléphone, le SIRET et le titulaire se complètent depuis la base des pharmacies.</li>
 <li><b>Prochaine action et rappels</b> : à droite de chaque fiche (même signée ou perdue), le cadre orange reste visible quand vous faites défiler. Cliquez sur une icône (Relance, Rappel, Appel, Visite, Visio, E-mail), indiquez <b>la date, l'heure et un commentaire obligatoire</b>. Vous pouvez en poser plusieurs ; ils apparaissent dans « Ma journée », « Cette semaine » et « À relancer ». « Réalisée » les inscrit à l'historique avec votre commentaire.</li>
-<li><b>V2.6</b> : <b>annulation d'une action</b> depuis « Autres actions prévues » (icône ⛔) ou depuis la fenêtre de l'action (bouton rouge « Annuler cette action »), avec confirmation et trace dans l'historique ; bloc <b>Coordonnées</b> refondu (officine, contact principal, autres contacts, barre Appeler / E-mail / Itinéraire / Teams) ; <b>cadres</b> : pointillés noirs sur les sections de la fiche (la section en cours est en fond orangé), sur la tuile sélectionnée du tableau de bord, sur chaque action de « Ma journée et ma semaine » et sur chaque ligne du détail des commissions ; trait plein autour des blocs des Paramètres.</li>
+<li><b>Annuler une action</b> : dans « Autres actions prévues », cliquez sur l'icône <b>⛔</b> à droite de la ligne (cliquer sur la ligne elle-même ouvre l'action). Dans la fenêtre d'une action déjà planifiée, le bouton rouge <b>« Annuler cette action »</b> fait la même chose. Le dashboard demande toujours confirmation (« Non, la garder » / « Oui, annuler ») et inscrit l'annulation à l'historique. « Fermer » quitte la fenêtre sans rien changer.</li>
+<li><b>Coordonnées</b> (colonne de droite) : un seul cadre en trois parties. <b>Officine</b> (nom, groupement, CIP, LGO, adresse, distance depuis Bourges), <b>Contact principal</b> (téléphone avec bouton vert pour appeler, e-mail, puis la barre <b>Appeler / E-mail / Itinéraire / Teams</b>) et <b>Autres contacts</b> (agenceur, architecte… avec « + Ajouter »). Le bouton <b>Modifier</b>, en haut à droite du cadre, ouvre les champs à corriger ; il devient « Enregistrer ».</li>
+<li><b>Se repérer par les cadres</b> : les cinq sections de la fiche (Projet, Détail de l'officine, Besoins, Offre, Suivi) sont entourées de <b>pointillés noirs</b> ; la section où vous êtes (selon le défilement) prend un <b>fond orangé clair</b>. Sur l'accueil, seule la <b>tuile sélectionnée</b> (Portefeuille, Add-ons en cours, Robots signés, Add-ons signés, Perdus) est entourée, et chaque action de « Ma journée et ma semaine » a son cadre. Dans les Paramètres, les blocs sont entourés d'un <b>trait plein</b>.</li>
+<li><b>Curseur « Fait »</b> : dans « Ma journée et ma semaine », chaque action à faire porte un <b>curseur blanc bordé de vert</b>. Faites-le <b>glisser vers la droite</b> (ou cliquez dessus) : il devient vert plein avec « ✓ Fait » et la fenêtre de date et d'heure de réalisation s'ouvre. Si vous annulez cette fenêtre, le curseur revient à gauche et l'action reste à faire. Une action <b>en retard</b> a un curseur <b>orange</b>. Le curseur de la <b>première action à faire</b> bouge doucement tout seul pour vous inviter à la réaliser ; quand elle est faite, c'est le suivant qui prend le relais (animation coupée si votre système demande de réduire les animations).</li>
+<li><b>Ventes : taille fixe</b> : quelle que soit la période (3 mois, 6 mois, 12 mois, Année), la carte garde la même hauteur. « Ce mois-ci » reste en haut, les autres mois défilent dans une liste (« ↓ faites défiler ») et le total reste toujours visible.</li>
+<li><b>Filtre du portefeuille</b> : quand un filtre est actif (par exemple en cliquant sur une étape R1, R2 ou R3), un <b>bandeau orange</b> au-dessus du tableau l'indique (« Filtre actif : étape R1 · Qualification · 7 dossiers sur 20 ») avec le bouton <b>« Afficher tout le portefeuille »</b>. Un clic sur la tuile <b>Portefeuille</b> efface aussi tous les filtres. Les filtres ne sont pas conservés : ils disparaissent à l'actualisation de la page.</li>
+<li><b>Prochaine action compacte</b> : le cadre orange de la fiche est plus court : date et type, boutons <b>Réalisée</b>, <b>Replanifier</b> et <b>⛔ Annuler</b>, puis une rangée d'icônes <b>+ Planifier</b> (Relance, Rappel, Appel, Visite, Visio, E-mail ; survolez pour le nom) et la liste des autres actions prévues.</li>
+<li><b>V2.7</b> : curseur « Fait » (glisser pour valider, orange si en retard, animation d'invitation), carte Ventes à hauteur fixe, bandeau de filtre actif sur le portefeuille, bloc « Prochaine action » compact.</li>
+<li><b>V2.6</b> : annulation d'une action, bloc Coordonnées refondu, cadres de repérage (fiche, tuile sélectionnée, Ma journée, Paramètres, détail des commissions).</li>
 <li><b>V2.5</b> : écran de connexion reconnu par les navigateurs (<b>enregistrement et remplissage du mot de passe</b>) ; case <b>« Rester connecté »</b> : un rafraîchissement de la page ne redemande plus le mot de passe (session limitée à l'onglet et à la durée d'inactivité).</li>
 <li><b>V2.4</b> : <b>sécurité</b> (connexion e-mail + mot de passe fort, chiffrement des données, clé de récupération, verrouillage automatique, cadenas) ; <b>RGPD</b> (fiches à réviser après 3 ans sans action : supprimer, anonymiser, prolonger) ; fenêtre « Ma journée » <b>au centre de l'écran</b> ; <b>devis fusionné dans l'offre de robotisation</b> (une seule carte, date « Réalisé le » facultative, confirmation sur « Réalisé ») ; explication sous « Devis + maintenance » ; <b>GENESI</b> : 2 options seulement (Couleur, Plateau supérieur en verre) ; colonne gauche de la fiche compactée ; « Prochaine action » avec le type, le compte à rebours et la liste des <b>autres actions prévues</b>.</li>
 <li><b>V2.3</b> : dernière vente robot (date et montant) dans Ventes ; un seul modèle de robot par offre ; <b>offres multiples A / B / C</b> par prospect (onglets, étoile = offre privilégiée du pipeline, bouton « Comparer », PDF comparatif, choix de l'offre signée) ; message clair sur les pièces manquantes avant le PDF ; <b>commission affichée et pointable</b> dans la fiche (robot et add-ons signés) ; tableaux resserrés (indicateur couleur, échéance en fin de ligne) ; « Ma journée » : clic = panneau détaillé à droite + nombre d'actions du jour ; Synchro clignote en rouge si non reliée ; Paramètres en menu à gauche (Documents et Envois et liens à part, sélecteurs) ; export CSV de Mon secteur (LGPI, Prospects, les deux) ; fiche client plus compacte ; infobulles et confirmations avant annulation ou suppression.</li>
@@ -958,7 +994,7 @@
 <tr><td><b style="color:#2563EB">Bleu</b></td><td>Cette semaine</td></tr>
 <tr><td><b style="color:#6B7280">Gris</b></td><td>Plus tard</td></tr>
 <tr><td><b style="color:#7C3AED">Violet</b></td><td>Aucune action planifiée</td></tr></table>
-<p>Planifier une nouvelle action <b>remplace la précédente</b> : le dashboard vous le demande avant de valider. Cliquez « Fait » pour clôturer une action ; elle est inscrite à l'historique.</p>
+<p>Planifier une nouvelle <b>prochaine action</b> remplace la précédente : le dashboard vous le demande avant de valider. Cliquez « Fait » pour clôturer une action ; elle est inscrite à l'historique.</p>
 <h2 id="m-pdf">4. La synthèse PDF pour le pharmacien</h2>
 <p>Depuis une fiche, générez l'argumentaire PDF : le <b>mot de l'interlocuteur</b> (« Ce que vous nous avez dit ») figure en première page, suivi de la solution, des <b>options retenues pour cette offre</b> (par exemple Euclid3D, Pharmaload, QuickAir, <b>PANNEAU TYPE A</b>), de l'implantation avec photos et des liens Pharmathek. Seules les options cochées sont imprimées.</p>
 <h2 id="m-ventes">5. Les signatures probables</h2>
@@ -967,14 +1003,16 @@
 <li><b>Carte « période au choix »</b> : choisissez 3 mois, 6 mois, 12 mois, l'année ou « De date à date ». Le total € HT, le nombre de dossiers et la répartition par mois s'ajustent.</li>
 </ul>
 <h2 id="m-params">6. Les Paramètres</h2>
-<p>Six onglets, un sujet chacun, avec une ligne de synthèse colorée en tête :</p>
+<p>Huit onglets, un sujet chacun, avec une ligne de synthèse colorée en tête. Chaque bloc est entouré d'un trait plein pour bien séparer les réglages :</p>
 <ul>
-<li><b>Mon profil</b> : identité, adresse de départ des tournées, logo.</li>
-<li><b>Objectifs et commissions</b> : objectifs annuels, rythme des rappels, commissions, challenges.</li>
+<li><b>Profil</b> : identité, adresse de départ des tournées, logo, <b>sécurité du compte</b> (identifiant, mot de passe, verrouillage, clé de récupération) et conservation des données (RGPD).</li>
+<li><b>Objectifs et commissions</b> : paramétrage (objectifs, taux, rythme des rappels), <b>Mes commissions</b> (cartes de synthèse et <b>détail des commissions</b>, une ligne encadrée par vente, à pointer « payée ») et challenges.</li>
 <li><b>Mon secteur</b> : départements, base des pharmacies, assistant Fiabiliser.</li>
 <li><b>Synchronisation</b> : compte sécurisé, chiffrement, liaison du téléphone.</li>
 <li><b>Sauvegardes</b> : sauvegarde JSON, restauration, copies de secours, purge des fiches de démonstration.</li>
-<li><b>Options</b> : modules actifs, envoi du fichier CRO, liens Pharmathek, documents d'aide.</li>
+<li><b>Options</b> : modules actifs (tracé GPS, Teams, agenda, pharmacies à proximité, accès smartphone, commissions, challenges) et réglages de comportement.</li>
+<li><b>Documents</b> : mode d'emploi, note de sécurité et mode opératoire, à jour de la version installée.</li>
+<li><b>Envois et liens</b> : envoi du fichier de suivi CRO, site et réseaux sociaux Pharmathek.</li>
 </ul>
 <h2 id="m-tel">7. Le téléphone</h2>
 <p>Le téléphone ouvre le même dashboard. La synchronisation se fait <b>fiche par fiche</b> : à l'ouverture, au retour sur l'application, toutes les 90 secondes et à chaque modification. En cas de modification des deux côtés, <b>la plus récente l'emporte</b>. Le bouton « Synchroniser maintenant » force l'échange (Paramètres > Synchronisation).</p>
@@ -1100,7 +1138,7 @@
 
 <h3><span class="k">B</span>Relier le dashboard du PC</h3>
 <ol>
-<li>Ouvrez le dashboard avec <b>Chrome ou Edge</b> : <b>Paramètres > Sauvegardes > Synchronisation PC ⇄ téléphone</b>.</li>
+<li>Ouvrez le dashboard avec <b>Chrome ou Edge</b> : <b>Paramètres > Synchronisation</b>.</li>
 <li>Bloc <b>1 · Votre compte sécurisé</b> : collez l'<b>adresse de la base</b> et la <b>clé API Web</b>, saisissez votre e-mail et choisissez un <b>mot de passe d'au moins 12 caractères</b>, puis cliquez sur <b>Créer mon compte</b> (une seule fois ; ensuite « Se connecter »).</li>
 <li>Bloc <b>2 · Chiffrement</b> : saisissez une <b>phrase secrète</b> (4 ou 5 mots, 8 caractères minimum), puis <b>Activer / déverrouiller</b> et confirmez. <b>Notez-la dans un endroit sûr : elle ne peut pas être récupérée.</b></li>
 </ol>
@@ -1120,12 +1158,13 @@
 <ol>
 <li>Sur le PC, dans la même onglet Synchronisation, collez l'<b>adresse de l'application</b> dans « Adresse de l'application mobile », puis cliquez sur <b>Copier le lien de liaison</b>.</li>
 <li>Envoyez-vous ce lien (mail à vous-même, WhatsApp, Teams) et ouvrez-le <b>dans Chrome</b> sur le téléphone. Le téléphone s'ouvre sur Paramètres, relié à la base.</li>
+<li><b>Au tout premier lancement sur le téléphone</b>, le dashboard demande de <b>créer un compte de l'appareil</b> (e-mail et mot de passe fort) et affiche une <b>clé de récupération</b> : notez-la. Ce compte est propre à chaque appareil (le PC et le téléphone ne se partagent pas ce mot de passe) ; vous pouvez choisir le même e-mail et le même mot de passe sur les deux. Cochez <b>« Rester connecté »</b> pour que l'actualisation de la page ne le redemande pas.</li>
 <li>Saisissez votre <b>mot de passe</b> puis <b>Se connecter</b>, puis votre <b>phrase secrète</b> puis <b>Activer / déverrouiller</b>. Les fiches arrivent en quelques secondes. Le téléphone garde ensuite la session : vous ne ressaisissez rien.</li>
 </ol>
 <h3>Méthode manuelle (si le lien ne marche pas)</h3>
 <ol>
 <li>Sur le PC, cliquez sur <b>Copier le code</b> et envoyez-vous ce code.</li>
-<li>Sur le téléphone, ouvrez l'adresse de l'application dans Chrome > <b>Paramètres</b> (icône en haut à droite) > « Synchronisation PC ⇄ téléphone » > collez le code dans « Relier ce poste » > <b>Relier ce poste</b>, puis mot de passe et phrase secrète comme ci-dessus.</li>
+<li>Sur le téléphone, ouvrez l'adresse de l'application dans Chrome > <b>Paramètres</b> (icône en haut à droite) > « Synchronisation » > collez le code dans « Relier ce poste » > <b>Relier ce poste</b>, puis mot de passe et phrase secrète comme ci-dessus.</li>
 </ol>
 <ol start="3"><li>Facultatif mais conseillé : menu ⋮ de Chrome > <b>Installer l'application</b>. L'icône apparaît sur l'écran d'accueil et l'application s'ouvre plus vite, y compris sans réseau.</li></ol>
 <div class="see"><b>Vous devez voir :</b> vos fiches et votre tableau de bord sur le téléphone, et la ligne « Connecté · dernière synchro … » dans Paramètres.</div>
@@ -1133,6 +1172,7 @@
 <h2 id="a-usage">3. Au quotidien</h2>
 <table>
 <tr><th>Moment</th><th>Ce que vous faites</th></tr>
+<tr><td><b>Valider une action</b></td><td>Dans « Ma journée », faites glisser le curseur vert vers la droite : il passe à « ✓ Fait » et vous confirmez la date et l'heure de réalisation.</td></tr>
 <tr><td><b>Le matin</b></td><td>Rien : la synchro s'est faite à la dernière ouverture. En cas de doute, bouton <b>Synchro</b>.</td></tr>
 <tr><td><b>Chez le client</b></td><td>Ouvrez le dashboard sur le téléphone : consultez la fiche, ajoutez une note (micro du clavier pour dicter), changez l'étape, planifiez l'action suivante, saisissez le devis ou le montant, générez le PDF de synthèse.</td></tr>
 <tr><td><b>Au retour</b></td><td>Ouvrez le dashboard sur le PC : les fiches modifiées sur le téléphone sont déjà à jour. Vous voyez « N fiches reçues ».</td></tr>
@@ -1148,10 +1188,10 @@
 <tr><td><b style="color:#6B7280">Gris</b></td><td>Action plus tard</td></tr>
 <tr><td><b style="color:#7C3AED">Violet</b></td><td>Aucune action planifiée : à planifier</td></tr>
 </table>
-<p>Les mêmes couleurs se retrouvent partout : bandeau « Prochaine action » en haut de chaque fiche (boutons <b>Réalisée</b> et <b>Replanifier</b>), bloc « À faire maintenant » en haut du tableau de bord, colonne « Prochaine action » du portefeuille. Un dossier n'a <b>qu'une seule</b> prochaine action : en replanifier une remplace la précédente (le dashboard vous le dit avant).</p>
+<p>Les mêmes couleurs se retrouvent partout : bandeau « Prochaine action » en haut de chaque fiche (boutons <b>Réalisée</b> et <b>Replanifier</b>), bloc « À faire maintenant » en haut du tableau de bord, colonne « Prochaine action » du portefeuille. Un dossier a <b>une</b> prochaine action (cadre orange) ; replanifier la remplace (le dashboard vous le dit avant). Les <b>autres actions prévues</b> (rappels, visites, appels…) restent listées en dessous et peuvent être <b>annulées</b> (icône ⛔).</p>
 <h3>Fiabiliser mes fiches (adresse, téléphone, SIRET, titulaire)</h3>
 <ol>
-<li><b>Paramètres > Sauvegardes > Fiabiliser mes fiches</b> : choisissez les dossiers (en cours, signés, perdus) et lancez l'analyse.</li>
+<li><b>Paramètres > Mon secteur > Fiabiliser mes fiches</b> : choisissez les dossiers (en cours, signés, perdus) et lancez l'analyse.</li>
 <li>L'assistant compare chaque fiche à la base officielle des officines, puis à l'annuaire en ligne, et affiche un tableau « valeur actuelle → valeur proposée ».</li>
 <li>Par défaut, seuls les champs <b>vides</b> sont cochés. Un champ déjà saisi qui diffère est proposé mais décoché. Les cas ambigus (plusieurs pharmacies possibles) vous demandent de choisir.</li>
 <li>Rien ne change avant <b>Appliquer</b>. Une copie de secours est faite juste avant. Dans une fiche, la recherche d'annuaire fonctionne pareil : elle complète les champs vides et conserve le reste (bouton « Remplacer » si besoin).</li>
@@ -1192,6 +1232,7 @@
 <tr><td>« Code non valide »</td><td>Recopiez le code entier, qui commence par ptk2., sans espace ajouté</td></tr>
 <tr><td>Page « not found » sur Cloudflare</td><td>Le dossier glissé ne contient pas <code>index.html</code> à sa racine : ouvrez le dossier extrait et glissez celui qui contient index.html</td></tr>
 <tr><td>Le téléphone n'affiche aucune fiche</td><td>Cliquez sur <b>Synchro</b> sur le PC (les fiches doivent d'abord y être envoyées), puis sur <b>Synchro</b> sur le téléphone</td></tr>
+<tr><td>Le téléphone demande de créer un mot de passe</td><td>Normal au premier lancement : chaque appareil a son propre compte de connexion (étape D). Créez-le, puis notez la clé de récupération</td></tr>
 <tr><td>Une modification a disparu</td><td>La même fiche a été modifiée sur les deux appareils avant synchro : la plus récente a gagné. Récupérez l'ancienne version via une sauvegarde JSON</td></tr>
 <tr><td>Je veux repartir proprement sur le téléphone</td><td>Paramètres de Chrome > Paramètres du site > Effacer les données de l'adresse, puis relier à nouveau : les fiches reviennent depuis l'espace en ligne</td></tr>
 </table>
@@ -1509,7 +1550,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '2.6';
+const APP_VERSION = '2.7';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2178,7 +2219,7 @@ function renderSig() {
   const sc = $('sig-chips'); if (sc) sc.innerHTML = [['3m', '3 mois'], ['6m', '6 mois'], ['12m', '12 mois'], ['year', 'Année'], ['range', 'Dates ▾']].map(([k, l]) => `<button type="button" class="chip ${S.mode === k ? 'on' : ''}" onclick="sigSet('${k}')" title="Signatures probables : ${l}">${l}</button>`).join('');
   box.innerHTML = `<div class="sp"><div class="k">Signatures probables · ${S.mode === 'range' ? 'dates au choix' : ({'3m': '3 mois', '6m': '6 mois', '12m': '12 mois', year: 'année'})[S.mode] || ''}</div>
       ${S.mode === 'range' ? `<div class="dts">Du <input type="date" id="sig-du" value="${isoDay(P.d0)}" onchange="sigDates()"> au <input type="date" id="sig-au" value="${isoDay(P.d1)}" onchange="sigDates()"></div>` : ''}
-      ${curRow}${rows}
+      ${curRow}${rows ? `<div class="vfade"><div class="vlist">${rows}</div></div>` : ''}${Object.keys(G).filter(k => +k !== ck).length > 2 ? `<div class="vmore">↓ faites défiler : ${Object.keys(G).filter(k => +k !== ck).length} mois</div>` : ''}
       <div class="vtot" onclick="showList('probR')" title="Voir la liste"><span class="text-[13px]"><b>Total sur la période</b> · ${it.length} dossier${it.length > 1 ? 's' : ''} · <span class="text-ptkd font-semibold">Voir ›</span></span><span class="m">${eur(tot)} <small>HT</small></span></div></div>`;
 }
 function renderSales() {
@@ -2264,6 +2305,23 @@ function lateItems() {
   const rl = rapItems().filter(({r}) => !r.done && parseD(r.dt) < TODAY).map(({c, r}) => ({c, d: parseD(r.dt), why: `${RAP_T[r.type].l.toLowerCase()} du ${fmtD(r.dt)} : ${r.note}`}));
   return [...[...planned, ...rl].sort((a, b) => a.d - b.d), ...idle];
 }
+function zsw(cid, rid, late, first) { return `<button type="button" class="zsw ${late ? 'late' : ''} ${first ? 'zhint' : ''}" data-c="${cid}" data-r="${rid || 0}" title="Marquer comme fait · faire glisser vers la droite" aria-label="Marquer comme fait"><span class="zkn"></span><b>✓ Fait</b></button>`; }
+function zswGo(b) {
+  if (b.classList.contains('on')) return; b.classList.add('on');
+  const c = +b.dataset.c, r = +b.dataset.r;
+  setTimeout(() => { const dl = $('dlg-real'); const back = () => { dl.removeEventListener('close', back); setTimeout(() => b.classList.remove('on'), 30); };
+    dl.addEventListener('close', back); r ? doneRap(c, r) : askDone(c); if (!dl.open) { dl.removeEventListener('close', back); b.classList.remove('on'); } }, 300);
+}
+document.addEventListener('pointerdown', e => {
+  const b = e.target.closest('.zsw'); if (!b || b.classList.contains('on') || e.button > 0) return;
+  const k = b.querySelector('.zkn'), x0 = e.clientX, max = 56; let dx = 0, moved = false;
+  try { b.setPointerCapture(e.pointerId); } catch (_) {}
+  const mv = ev => { dx = Math.max(0, Math.min(max, ev.clientX - x0)); if (dx > 4) { moved = true; k.style.transition = 'none'; k.style.animation = 'none'; k.style.transform = `translateX(${dx}px)`; } };
+  const up = () => { b.removeEventListener('pointermove', mv); b.removeEventListener('pointerup', up); b.removeEventListener('pointercancel', up);
+    k.style.transition = ''; k.style.animation = ''; const ok = !moved || dx > max * .6; k.style.transform = ''; if (ok) zswGo(b); b.dataset.sup = '1'; setTimeout(() => delete b.dataset.sup, 400); };
+  b.addEventListener('pointermove', mv); b.addEventListener('pointerup', up); b.addEventListener('pointercancel', up);
+});
+document.addEventListener('click', e => { const b = e.target.closest('.zsw'); if (b && e.detail === 0) zswGo(b); });
 function setTodo(k) { ui.todo = k; renderDay(); }
 function quickLink(c, type) {
   if (type === 'visite') return opt('gps') ? `<a class="qb" target="_blank" rel="noopener" href="${mapsUrl(c)}" aria-label="Itinéraire" title="Itinéraire">${ic('route', 16)}</a>` : '';
@@ -2282,7 +2340,7 @@ function itemRow(x, i, opts = {}) {
     <span class="w-9 h-9 rounded-xl inline-flex items-center justify-center shrink-0" style="background:${x.done ? '#E8F5EE' : A.bg};color:${x.done ? '#14603F' : A.fg}" title="${A.label}">${ic(x.done ? 'check' : A.icon, 17)}</span>
     <button class="flex-1 min-w-0 text-left" onclick="openClient(${c.id})"><span class="block text-[14px] font-bold truncate ${x.done ? 'text-slate-500' : ''}">${esc(c.pharma)}</span><span class="block text-xs text-muted truncate"><b class="font-semibold" style="color:${x.done ? '#64748B' : A.fg}">${sub}</b> · ${x.note ? esc(x.note) : esc(c.ville)}</span></button>
     <span class="hidden sm:inline-flex shrink-0">${st}</span>
-    ${can ? `<span class="flex gap-1.5 shrink-0 items-center">${quickLink(c, x.type)}<button class="btn btn-ok !h-9 !px-3" aria-label="Marquer comme fait" onclick="${x.rap ? `doneRap(${c.id},${x.rap})` : `askDone(${c.id})`}">${ic('check', 15)}Fait</button></span>` : '<span class="sm:hidden shrink-0">' + st + '</span>'}</li>`;
+    ${can ? `<span class="flex gap-1.5 shrink-0 items-center">${quickLink(c, x.type)}${zsw(c.id, x.rap, late, x === window.ZNEXT)}</span>` : '<span class="sm:hidden shrink-0">' + st + '</span>'}</li>`;
 }
 function dayOpen(e) { if (e && e.target.closest('button,a,input,select,summary,details,li,textarea,label')) return; ui.dd = true; $('day-body').innerHTML = ''; if (!$('dlg-day').open) $('dlg-day').showModal(); renderDay(); }
 function dayClose() { ui.dd = false; if ($('dlg-day').open) $('dlg-day').close(); renderDay(); }
@@ -2297,7 +2355,7 @@ function ddCard(x, cur) {
       ${who ? `<div class="text-[12.5px] mt-1"><i class="fas fa-user text-slate-400 mr-1"></i>${esc(who)}</div>` : ''}${mot ? `<div class="text-[12.5px] mt-1 text-slate-700"><i class="fas fa-comment-dots text-slate-400 mr-1"></i>${esc(mot)}</div>` : ''}
       <div class="flex flex-wrap gap-1.5 mt-2">${tel ? `<a class="btn btn-g !h-8 !px-3 !text-[12px]" href="${telUrl(c)}"><i class="fas fa-phone"></i>Appeler</a>` : ''}${opt('gps') ? `<a class="btn btn-g !h-8 !px-3 !text-[12px]" target="_blank" rel="noopener" href="${mapsUrl(c)}"><i class="fas fa-route"></i>Itinéraire</a>` : ''}
         <button class="btn btn-g !h-8 !px-3 !text-[12px]" onclick="dayClose();openClient(${c.id})"><i class="fas fa-folder-open"></i>Fiche</button>
-        ${!x.done && (x.rap || (c.nextDate && c.nextDate === x.dt)) ? `<button class="btn btn-ok !h-8 !px-3 !text-[12px]" onclick="${x.rap ? `doneRap(${c.id},${x.rap})` : `askDone(${c.id})`}"><i class="fas fa-check"></i>Fait</button>` : ''}</div></div></div></div>`;
+        ${!x.done && (x.rap || (c.nextDate && c.nextDate === x.dt)) ? `${zsw(c.id, x.rap, late, x === window.ZNEXT)}` : ''}</div></div></div></div>`;
 }
 function renderDay() {
   const W = weekItems(), late = lateItems();
@@ -2335,13 +2393,13 @@ function renderDay() {
     body.innerHTML = h; return;
   }
   const items = dayItems(), now = new Date();
-  const next = items.find(x => !x.done && parseD(x.dt) >= now) || items.find(x => !x.done);
+  const next = items.find(x => !x.done && parseD(x.dt) >= now) || items.find(x => !x.done); window.ZNEXT = next;
   const cnt = t => items.filter(x => x.type === t).length;
   const visits = items.filter(x => x.type === 'visite').map(x => ({c: x.c, dt: x.dt}));
   let h = '';
   if (ui.dd && next) { /* détail : la prochaine action est surlignée dans la liste */ }
   else if (next) {
-    const c = next.c, A = ACTIONS[next.type], mins = Math.round((parseD(next.dt) - now) / 60000);
+    window.ZNEXT = next; const c = next.c, A = ACTIONS[next.type], mins = Math.round((parseD(next.dt) - now) / 60000);
     const when = mins > 0 ? (mins < 60 ? `dans ${mins} min` : `dans ${fmtMin(mins)}`) : 'heure passée · à confirmer';
     h += `<div class="rounded-xl border border-orange-200 bg-orange-50/60 px-3 py-2 flex items-center gap-3">
       <span class="text-[20px] font-bold tabular-nums leading-none text-orange-800">${fmtHM(next.dt)}</span>
@@ -2349,7 +2407,7 @@ function renderDay() {
       <div class="flex gap-1.5 shrink-0">${next.type === 'visite' && opt('gps') ? `<a class="btn btn-g !h-9 !px-2.5" title="Itinéraire" target="_blank" rel="noopener" href="${mapsUrl(c)}">${ic('route', 15)}</a>` : ''}
         ${next.type === 'teams' && opt('teams') ? `<a class="btn btn-g !h-9 !px-2.5" title="Teams" style="color:${TEAMS}" target="_blank" rel="noopener" href="${teamsUrl(c, next.dt, 'Pharmathek — ' + c.pharma)}">${ic('video', 15)}</a>` : ''}
         ${(c.telPort || c.telFixe) ? `<a class="btn btn-g !h-9 !px-2.5" title="Appeler" href="${telUrl(c)}">${ic('phone', 15)}</a>` : ''}
-        <button class="btn btn-ok !h-9 !px-2.5" title="Fait" onclick="askDone(${c.id})">${ic('check', 15)}</button></div></div>`;
+        ${zsw(c.id, next.rap, parseD(next.dt) < now, true)}</div></div>`;
   } else {
     const up = W.find(x => !x.done && parseD(x.dt) > now);
     h += `<div class="rounded-2xl border border-slate-200 bg-slate-50 p-4 text-sm"><b>${items.length ? 'Tous les rendez-vous du jour sont faits.' : "Aucun rendez-vous aujourd'hui."}</b>${up ? `<div class="text-xs text-muted mt-1">Prochain cette semaine : ${esc(up.c.pharma)} · ${fmtDT(up.dt)}</div>` : ''}</div>`;
@@ -2647,24 +2705,25 @@ function rapOne(c, r, big) {
 function renderRap(c) {
   const el = $('f-rap'); if (!el) return;
   if (!c || !ui.editId) { el.innerHTML = ''; return; }
-  const R = rapOpen(c), act = isActive(c) && c.nextDate;
-  let main = '', rest = R.length;
+  const R = rapOpen(c), act = isActive(c) && c.nextDate, now0 = new Date();
+  let top = '', oth = [], cancel = '', done = '', replan = '', nxt = '';
   if (act) {
-    const A = ACTIONS[c.nextType] || ACTIONS.relance, late = isPast(c.nextDate);
-    main = `<div class="flex gap-2.5 items-start"><span class="w-9 h-9 rounded-xl inline-flex items-center justify-center shrink-0 ${late ? 'bg-rose-100 text-rose-700' : 'bg-white text-orange-700'}" style="border:1.5px solid ${late ? '#FDA4AF' : '#FDBA74'}"><i class="fas ${A.fa}"></i></span>
-      <div class="min-w-0 flex-1"><div class="font-extrabold text-[15px] leading-tight">${A.label} · ${fmtDT(c.nextDate)}${late ? ' <span class="text-rose-700">· en retard</span>' : ''}</div><div class="text-[12px] text-muted">${esc(c.pharma)} · ${STEPS[c.step].short}</div></div></div>
-      <div class="grid grid-cols-2 gap-2"><button class="btn btn-ok !h-9" title="Marquer l'action comme réalisée" onclick="askDone(${c.id})"><i class="fas fa-check"></i>Réalisée</button><button class="btn btn-g !h-9" title="Changer la date de l'action" onclick="gotoPlan(${c.id})"><i class="fas fa-calendar-days"></i>Replanifier</button></div><button type="button" class="text-left text-[12.5px] font-bold text-rose-700 hover:underline" title="Annuler cette action (une confirmation vous sera demandée)" onclick="cancelNext(${c.id})"><i class="fas fa-ban mr-1"></i>Annuler l'action</button>`;
+    const A = ACTIONS[c.nextType] || ACTIONS.relance; nxt = c.nextDate; oth = R;
+    top = {fa: A.fa, t: `${A.label} · ${fmtDT(c.nextDate)}`, s: `${esc(c.pharma)} · ${STEPS[c.step].short}`};
+    done = `askDone(${c.id})`; replan = `gotoPlan(${c.id})`; cancel = `cancelNext(${c.id})`;
   } else if (R.length) {
-    const r = R[0]; rest = R.length - 1;
-    main = rapOne(c, r, true) + `<div class="grid grid-cols-2 gap-2"><button class="btn btn-ok !h-9" onclick="doneRap(${c.id},${r.id})"><i class="fas fa-check"></i>Réalisée</button><button class="btn btn-g !h-9" onclick="openRap('${r.type}',${r.id})"><i class="fas fa-calendar-days"></i>Replanifier</button></div><button type="button" class="text-left text-[12.5px] font-bold text-rose-700 hover:underline" title="Annuler cette action (une confirmation vous sera demandée)" onclick="cancelRap(${c.id},${r.id})"><i class="fas fa-ban mr-1"></i>Annuler l'action</button>`;
-  } else main = `<div class="text-[13px] text-slate-700 font-semibold"><i class="fas fa-bell-slash text-orange-700 mr-1"></i>Aucune action planifiée. Choisissez-en une :</div>`;
-  const tiles = Object.entries(RAP_T).map(([k, T]) => `<button class="rapt" onclick="openRap('${k}')" title="${T.l}" aria-label="${T.l}"><i class="fas ${T.fa} text-[15px]"></i>${T.l}</button>`).join('');
-  const oth = act ? R : R.slice(1), nxt = act ? c.nextDate : (R[0]?.dt || ''), dl = nxt ? Math.round((parseD(nxt) - new Date()) / 864e5) : null, late0 = nxt && parseD(nxt) < new Date();
-  const badge = !nxt ? '' : late0 ? `<span class="ao-b late">en retard</span>` : `<span class="ao-b">${dl <= 0 ? "aujourd'hui" : dl === 1 ? 'demain' : 'dans ' + dl + ' j'}</span>`;
-  el.innerHTML = `<section class="rounded-2xl p-3.5 flex flex-col gap-2.5" style="border:2px solid ${late0 ? '#DC2626' : '#EA580C'};background:${late0 ? '#FFF7F7' : '#FFF7ED'}">
-    <div class="font-extrabold uppercase tracking-wide text-[11px] flex items-center justify-between ${late0 ? 'text-rose-700' : 'text-orange-800'}"><span><i class="fas fa-flag mr-1"></i>Prochaine action</span>${badge}</div>${main}
-    <div class="grid grid-cols-6 gap-1.5">${tiles}</div>
-    ${oth.length ? `<div class="ao"><div class="ao-h"><span>Autres actions prévues · ${oth.length}</span><button type="button" onclick="rapList()" title="Voir toutes les actions prévues">tout voir</button></div>${oth.slice(0, 4).map(r => { const T = RAP_T[r.type] || RAP_T.rappel, d = parseD(r.dt), late = d < new Date(), soon = !late && (d - new Date()) < 7 * 864e5; return `<div class="ao-w"><button type="button" class="ao-r ${late ? 'late' : ''}" title="Ouvrir cette action (modifier, réaliser, annuler)" onclick="openRap('${r.type}',${r.id})"><span class="ao-i t-${r.type}"><i class="fas ${T.fa}"></i></span><span class="ao-t"><b>${T.l}</b><small>${esc(r.note || '')}</small></span><span class="ao-d ${late ? 'd1' : soon ? 'd2' : 'd3'}">${late ? 'en retard · ' : ''}${d.toLocaleDateString('fr-FR', {weekday: 'short', day: '2-digit', month: '2-digit'})}</span></button><button type="button" class="ao-x" title="Annuler cette action" aria-label="Annuler cette action" onclick="cancelRap(${c.id},${r.id})"><i class="fas fa-ban"></i></button></div>`; }).join('')}${oth.length > 4 ? `<button type="button" class="text-left text-[11.5px] font-bold text-orange-900 pt-1" onclick="rapList()">+ ${oth.length - 4} autre${oth.length - 4 > 1 ? 's' : ''} · Voir ›</button>` : ''}</div>` : ''}</section>`;
+    const r = R[0], T = RAP_T[r.type] || RAP_T.rappel; nxt = r.dt; oth = R.slice(1);
+    top = {fa: T.fa, t: `${T.l} · ${fmtDT(r.dt)}`, s: `${esc(c.pharma)}${r.note ? ' · ' + esc(r.note) : ''}`};
+    done = `doneRap(${c.id},${r.id})`; replan = `openRap('${r.type}',${r.id})`; cancel = `cancelRap(${c.id},${r.id})`;
+  }
+  const dl = nxt ? Math.round((parseD(nxt) - now0) / 864e5) : null, late0 = nxt && parseD(nxt) < now0;
+  const badge = !nxt ? '' : late0 ? `<span class="zb late">en retard</span>` : `<span class="zb">${dl <= 0 ? "aujourd'hui" : dl === 1 ? 'demain' : 'dans ' + dl + ' j'}</span>`;
+  const main = top ? `<div class="z2"><span class="zi"><i class="fas ${top.fa}"></i></span><div class="min-w-0"><div class="zt">${top.t}</div><div class="zs">${top.s}</div></div></div>
+    <div class="z3"><button type="button" class="zbt g" title="Marquer l'action comme réalisée" onclick="${done}"><i class="fas fa-check"></i>Réalisée</button><button type="button" class="zbt" title="Changer la date de l'action" onclick="${replan}"><i class="far fa-calendar"></i>Replanifier</button><button type="button" class="zbt x" title="Annuler cette action" aria-label="Annuler cette action" onclick="${cancel}"><i class="fas fa-ban"></i></button></div>`
+    : `<div class="text-[13px] text-slate-700 font-semibold"><i class="fas fa-bell-slash text-orange-700 mr-1"></i>Aucune action planifiée. Choisissez-en une :</div>`;
+  const tiles = Object.entries(RAP_T).map(([k, T]) => `<button type="button" class="ch" onclick="openRap('${k}')" title="${T.l}" aria-label="${T.l}"><i class="fas ${T.fa}"></i></button>`).join('');
+  const othH = oth.length ? `<div class="ao"><div class="ao-h"><span>Autres actions prévues · ${oth.length}</span><button type="button" onclick="rapList()" title="Voir toutes les actions prévues">tout voir</button></div>${oth.slice(0, 4).map(r => { const T = RAP_T[r.type] || RAP_T.rappel, d = parseD(r.dt), late = d < now0, soon = !late && (d - now0) < 7 * 864e5; return `<div class="ao-w"><button type="button" class="ao-r ${late ? 'late' : ''}" title="Ouvrir cette action (modifier, réaliser, annuler)" onclick="openRap('${r.type}',${r.id})"><span class="ao-i t-${r.type}"><i class="fas ${T.fa}"></i></span><span class="ao-t"><b>${T.l}</b><small>${esc(r.note || '')}</small></span><span class="ao-d ${late ? 'd1' : soon ? 'd2' : 'd3'}">${late ? 'en retard · ' : ''}${d.toLocaleDateString('fr-FR', {weekday: 'short', day: '2-digit', month: '2-digit'})}</span></button><button type="button" class="ao-x" title="Annuler cette action" aria-label="Annuler cette action" onclick="cancelRap(${c.id},${r.id})"><i class="fas fa-ban"></i></button></div>`; }).join('')}${oth.length > 4 ? `<button type="button" class="text-left text-[11.5px] font-bold text-orange-900 pt-1" onclick="rapList()">+ ${oth.length - 4} autre${oth.length - 4 > 1 ? 's' : ''} · Voir ›</button>` : ''}</div>` : '';
+  el.innerHTML = `<section class="zr ${late0 ? 'late' : ''}"><div class="z1"><span><i class="fas fa-flag mr-1"></i>Prochaine action</span>${badge}</div>${main}<div class="z4"><span class="l">+ Planifier</span>${tiles}</div>${othH}</section>`;
 }
 function actCancel() { const R = ui.act && ui.act.rap; if (!R || !R.rid) return; cancelRap(ui.act.cid, R.rid); }
 function cancelRap(cid, rid) {
@@ -2791,7 +2850,7 @@ function actTabHTML() {
   const ord = {late: 0, today: 1, none: 2}, L = act.filter(c => ord[actCat(c)] !== undefined).sort((a, b) => ord[actCat(a)] - ord[actCat(b)] || String(effNext(a).nextDate).localeCompare(String(effNext(b).nextDate)));
   const grp = (k, lab) => { const l = L.filter(c => actCat(c) === k); if (!l.length) return ''; return `<div class="font-extrabold uppercase tracking-wide mt-2 mb-1" style="font-size:11px;color:${ACAT[k].c}">${lab} · ${l.length}</div>` + l.map(c => `<div class="flex items-center gap-2 rounded-[10px] px-2 py-1.5 mb-1.5" style="border:1px solid #E2E8F0;border-left:5px solid ${ACAT[k].c};background:${k === 'none' ? ACAT[k].b : '#fff'}">${actDot(c, k, 30)}
     <button class="flex-1 min-w-0 text-left" onclick="openClient(${c.id})"><b class="block text-[12.5px] truncate">${esc(c.pharma)}</b><span class="text-[11px] text-muted">${k === 'none' ? 'À planifier · ' + STEPS[c.step].short : (ACTIONS[effNext(c).nextType] || ACTIONS.relance).label + ' · ' + fmtDT(effNext(c).nextDate).replace(' à ', ' ')}</span></button>
-    ${k === 'none' ? `<button class="w-[30px] h-[30px] rounded-lg bg-ptkd text-white" aria-label="Planifier" title="Planifier" onclick="gotoPlan(${c.id})"><i class="fas fa-calendar-plus"></i></button>` : `<button class="w-[30px] h-[30px] rounded-lg bg-emerald-700 text-white" aria-label="Réalisée" title="Réalisée" onclick="${effNext(c)._rap ? `doneRap(${c.id},${effNext(c)._rap.id})` : `askDone(${c.id})`}"><i class="fas fa-check"></i></button>`}</div>`).join(''); };
+    ${k === 'none' ? `<button class="w-[30px] h-[30px] rounded-lg bg-ptkd text-white" aria-label="Planifier" title="Planifier" onclick="gotoPlan(${c.id})"><i class="fas fa-calendar-plus"></i></button>` : `${zsw(c.id, effNext(c)._rap ? effNext(c)._rap.id : 0, k === 'late', false)}`}</div>`).join(''); };
   const h = grp('late', 'En retard') + grp('today', "Aujourd'hui") + grp('none', 'Sans action planifiée');
   return `<div class="flex gap-1.5">${chips}</div>${h || '<div class="text-center text-muted py-8"><i class="fas fa-circle-check text-emerald-700 text-2xl"></i><div class="mt-1 font-semibold">Rien d\'urgent : toutes vos actions sont à jour.</div></div>'}<div class="flex flex-wrap gap-x-3 gap-y-1 text-[11px] text-muted pt-2">${['late', 'today', 'week', 'later', 'none'].map(k => `<span><i class="inline-block rounded mr-1" style="width:9px;height:9px;background:${ACAT[k].c}"></i>${ACAT[k].l}</span>`).join('')}</div>`;
 }
@@ -2884,7 +2943,7 @@ function tableRows() {
   const T = TABLES[ui.tab], s = ui.sort[ui.tab] || T.sort;
   return filtered(ui.tab).sort((a, b) => cmp(T.cols[s.i].v(a), T.cols[s.i].v(b)) * (s.asc ? 1 : -1));
 }
-function setTab(k) { ui.tab = k; closeColPop(); renderTiles(); renderTable(); }
+function setTab(k) { if (k === 'portfolio') { ui.filters.portfolio = {}; renderPipeline(); } ui.tab = k; closeColPop(); renderTiles(); renderTable(); }
 function renderTiles() {
   $('tiles').innerHTML = Object.entries(TABLES).map(([k, T]) => { const on = ui.tab === k, rows = T.rows();
     return `<button role="tab" aria-selected="${on}" onclick="setTab('${k}')" title="${esc(T.desc(ui.year))}" class="text-left rounded-2xl border-2 flex flex-col transition ${on ? 'border-ptk bg-orange-50/60' : 'border-slate-200 bg-white hover:border-slate-300'}">
@@ -2900,7 +2959,9 @@ function renderTable() {
   $('tbl-body').innerHTML = rows.length ? rows.map(r => `<tr data-id="${(r.c || r).id}" ${ui.tab === 'portfolio' && isActive(r.c || r) ? `data-cat="${actCat(r.c || r)}"` : ''} class="hover:bg-orange-50/40 cursor-pointer">${T.cols.map(col => `<td class="${col.cls || ''}">${col.h ? col.h(r) : esc(cellText(col, r))}</td>`).join('')}</tr>`).join('')
     : `<tr><td colspan="${T.cols.length}" class="!py-12 text-center text-muted">Aucun dossier${Object.keys(F).length ? ' pour ces filtres' : ''}</td></tr>`;
   const fl = Object.keys(F).map(i => T.cols[i].l);
-  $('tbl-filters').innerHTML = fl.length ? `<button class="btn !h-9 !px-3 border-orange-200 bg-orange-50 text-orange-900" onclick="clearFilters()"><i class="fas fa-filter-circle-xmark"></i>Filtres : ${esc(fl.join(', '))} · effacer</button>` : '';
+  { const st = ui.tab === 'portfolio' && fl.length === 1 ? stepFilterOn() : null, tot = T.rows().length;
+    $('tbl-banner').innerHTML = fl.length ? `<div class="zbar"><span class="zi"><i class="fas fa-filter"></i></span><span>Filtre actif : ${st ? `étape <b>${esc(STEPS[st].label)}</b>` : `<b>${esc(fl.join(', '))}</b>`} · <b>${rows.length} dossier${rows.length > 1 ? 's' : ''} sur ${tot}</b></span><button type="button" class="zb" onclick="clearFilters()"><i class="fas fa-xmark"></i>Afficher tout le ${ui.tab === 'portfolio' ? 'portefeuille' : 'tableau'}</button></div>` : ''; }
+  if (false) $('tbl-filters').innerHTML = fl.length ? `<button class="btn !h-9 !px-3 border-orange-200 bg-orange-50 text-orange-900" onclick="clearFilters()"><i class="fas fa-filter-circle-xmark"></i>Filtres : ${esc(fl.join(', '))} · effacer</button>` : '';
   $('tbl-foot').innerHTML = `<span><b class="text-ink">${rows.length} ligne${rows.length > 1 ? 's' : ''}</b> · ${eur(T.total(rows))} HT</span><span>Cliquez une ligne pour ouvrir la fiche</span>`;
 }
 function clearFilters() { ui.filters[ui.tab] = {}; renderTable(); renderPipeline(); }
