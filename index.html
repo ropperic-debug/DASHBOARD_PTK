@@ -88,6 +88,11 @@
 .ao-r{display:grid;grid-template-columns:28px 1fr auto;gap:8px;align-items:center;text-align:left;background:#fff;border:1px solid #F3E3D3;border-radius:9px;padding:4px 6px}.ao-r:hover{border-color:#FDBA74}.ao-r.late{border-color:#F5B1B1;background:#FFF5F5}
 
 .zr button.z2{width:100%;text-align:left;background:none;border:0;padding:0;cursor:pointer;border-radius:10px}.zr button.z2:hover .zt{text-decoration:underline}.zr .zc{color:#C2410C;font-size:13px;flex:none;margin-left:auto}
+.idband{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:10px 20px;background:#FFF7ED;border-bottom:2px solid #EA580C}.idband.hidden{display:none}
+.zid-i{width:38px;height:38px;border-radius:11px;background:#fff;border:1.5px solid #FDBA74;color:#C2410C;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.zid-n{min-width:0;flex:1 1 180px;display:flex;flex-direction:column}.zid-n b{font-weight:800;font-size:15px;line-height:1.15}.zid-n span{font-size:12.5px;color:#475569}
+.zid-p{display:flex;gap:6px;flex-wrap:wrap}.zid-t{display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border-radius:10px;background:#fff;border:1px solid #CBD5E1;color:#0F172A;font-weight:700;font-size:13.5px;text-decoration:none}.zid-t.p{background:#047857;border-color:#047857;color:#fff;font-weight:800}.zid-t small{font-weight:600;opacity:.8}
+.zid-no{font-size:12.5px;font-weight:700;color:#9A3412;display:inline-flex;gap:6px;align-items:center}
 /* V2.8 : fiche sans bloc Étape en cours, bouton Dossier perdu */
 #f-stage{display:none!important}
 .zlost{margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:11px;border:2px solid #DC2626;background:#FEF2F2;color:#B91C1C;font-weight:800;font-size:13.5px}.zlost:hover{background:#FEE2E2}
@@ -739,6 +744,7 @@
     <div><h3 class="font-bold flex items-center gap-2"><i class="fas fa-bolt text-ptkd"></i><span id="act-ttl">Planifier une action</span></h3><p id="act-sub" class="text-xs text-muted mt-0.5"></p></div>
     <button class="dlg-x" onclick="closeDlg('dlg-action')" aria-label="Fermer (Échap)"><i class="fas fa-xmark"></i></button>
   </div>
+  <div class="idband hidden" data-idb></div>
   <div class="dlg-body p-5 flex flex-col gap-4">
     <label id="act-adv" class="hidden items-center gap-3 rounded-xl bg-orange-50 border border-orange-200 px-3 py-2.5 text-[13px] text-orange-950"><input type="checkbox" id="act-adv-cb" checked class="w-4 h-4 accent-orange-700"><span id="act-adv-txt"></span></label>
     <div id="act-hist"></div>
@@ -905,6 +911,7 @@
 
 <dialog id="dlg-real" class="!w-[min(460px,94vw)]">
   <div class="px-5 py-4 border-b flex items-center gap-3"><span class="w-10 h-10 rounded-full inline-flex items-center justify-center bg-emerald-50 text-emerald-700"><i class="fas fa-circle-check text-lg"></i></span><div><h2 class="font-extrabold text-lg leading-tight">Action réalisée : confirmez la date</h2><p id="rl-sub" class="text-xs text-muted"></p></div></div>
+  <div class="idband hidden" data-idb></div>
   <div class="p-5 flex flex-col gap-3">
     <label class="lbl flex justify-between items-center" for="rl-dt"><span>Date et heure de réalisation *</span><span class="flex gap-3"><button type="button" class="text-xs font-bold text-ptkd hover:underline" onclick="$('rl-dt').value=nowDT()">Maintenant</button><button type="button" id="rl-plan" class="text-xs font-bold text-ptkd hover:underline" onclick="$('rl-dt').value=ui.real.planned">Date prévue</button></span></label>
     <input type="datetime-local" id="rl-dt" class="inp !h-12 text-base">
@@ -915,6 +922,7 @@
 </dialog>
 <dialog id="dlg-trait" class="!w-[min(460px,94vw)]">
   <div class="px-5 py-4 border-b flex items-center gap-3"><span id="tr-ic" class="w-10 h-10 rounded-xl inline-flex items-center justify-center bg-orange-50 text-orange-700 shrink-0"></span><div class="min-w-0 flex-1"><h2 class="font-extrabold text-lg leading-tight">Traiter cette action</h2><p id="tr-sub" class="text-[13px] text-muted"></p></div><button class="dlg-x" onclick="closeDlg('dlg-trait')" aria-label="Fermer (Échap)"><i class="fas fa-xmark"></i></button></div>
+  <div class="idband hidden" data-idb></div>
   <div class="p-5 flex flex-col gap-2.5">
     <div id="tr-note" class="text-[13px] text-slate-700 rounded-xl bg-slate-50 border border-slate-200 px-3 py-2"></div>
     <button type="button" id="tr-done" class="btn btn-ok !h-12 !text-[15px]"><i class="fas fa-check"></i>Marquer comme réalisée</button>
@@ -978,6 +986,8 @@
 <li><b>Se déconnecter (V2.9)</b> : l'icône <b>porte avec flèche</b>, en haut à gauche à côté du logo, ferme la session et ramène à l'écran de connexion (le cadenas à droite fait de même). Les données restent chiffrées sur l'appareil.</li>
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
+<li><b>Pharmacie, titulaire et téléphone sous les yeux (V3.1)</b> : toutes les fenêtres d'action (planifier une relance, un rappel, un appel, une visite, une visio ou un e-mail ; « Traiter cette action » ; clôture d'une action) affichent en haut un <b>bandeau orangé</b> avec le nom de la pharmacie, le titulaire et les numéros de téléphone (portable en vert, fixe en blanc), cliquables pour appeler depuis le téléphone. Sans numéro, le bandeau l'indique.</li>
+<li><b>V3.1</b> : bandeau pharmacie, titulaire et téléphone dans toutes les fenêtres d'action.</li>
 <li><b>Commentaire à la clôture d'une action (V3.0)</b> : quand vous marquez une action comme réalisée (bouton Réalisée, curseur « Fait » ou fenêtre « Traiter cette action »), la fenêtre demande la <b>date et l'heure de réalisation</b> et un <b>commentaire obligatoire</b> (à taper ou à dicter). Il est inscrit dans l'historique de la fiche avec la date de réalisation.</li>
 <li><b>V3.0</b> : commentaire obligatoire à la clôture de toute action.</li>
 <li><b>Traiter une action depuis la fiche (V2.9)</b> : cliquez sur la <b>prochaine action</b> (cadre orange) ou sur une ligne de « Autres actions prévues » : une fenêtre propose <b>Marquer comme réalisée</b>, <b>Replanifier ou modifier</b> et <b>Annuler cette action</b>. Les boutons directs du cadre restent disponibles.</li>
@@ -1578,7 +1588,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '3.0';
+const APP_VERSION = '3.1';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2577,7 +2587,15 @@ function pastGuard(dt, what, fn) {
   if (!isPast(dt)) return fn();
   confirmBox("Date antérieure à aujourd'hui", `${what}<br><br>La date <b>${fmtDT(dt)}</b> est antérieure à aujourd'hui.<br>Confirmez-vous cette date ?`, 'Oui, confirmer', fn, {no: 'Corriger la date', icon: 'fa-calendar-xmark'});
 }
-function askReal(sub, planned, fn) {
+function idBand(c) {
+  const tel = (n, l, p) => `<a class="zid-t ${p ? 'p' : ''}" href="tel:${String(n).replace(/[^\d+]/g, '')}"><i class="fas ${p ? 'fa-phone' : 'fa-phone-volume'}"></i>${esc(n)} <small>${l}</small></a>`;
+  const civ = c.genre === 'Mme' ? 'Mme' : 'M.', nm = nomComplet(c), ti = nm && nm.trim() ? `${civ} ${esc(nm)}, titulaire` : 'Titulaire non renseigné';
+  const t = (c.telPort ? tel(c.telPort, 'portable', true) : '') + (c.telFixe ? tel(c.telFixe, 'fixe', !c.telPort) : '');
+  return `<span class="zid-i"><i class="fas fa-prescription-bottle-medical"></i></span><div class="zid-n"><b>${esc(c.pharma)}</b><span>${ti}</span></div><div class="zid-p">${t || '<span class="zid-no"><i class="fas fa-phone-slash"></i>Aucun numéro enregistré</span>'}</div>`;
+}
+function idbFill(dlg, c) { const el = document.querySelector(`#${dlg} [data-idb]`); if (!el) return; if (c) { el.innerHTML = idBand(c); el.classList.remove('hidden'); } else el.classList.add('hidden'); }
+function askReal(sub, planned, fn, c) {
+  idbFill('dlg-real', c);
   ui.real = {fn, planned: planned || nowDT()}; $('rl-sub').innerHTML = sub; $('rl-dt').value = nowDT(); $('rl-note').value = ''; $('rl-err').classList.add('hidden'); $('rl-plan').classList.toggle('hidden', !planned); $('dlg-real').showModal();
 }
 function realOk() {
@@ -2589,7 +2607,7 @@ function realOk() {
 function askDone(id) {
   const c = byId(id); if (!c?.nextDate) return;
   const A = ACTIONS[c.nextType] || ACTIONS.relance, past = isPast(c.nextDate);
-  askReal(`<b>${A.label}</b> · ${esc(c.pharma)} · prévu(e) ${fmtDT(c.nextDate)}`, c.nextDate, (dt, note) => doneTodo(id, dt, note));
+  askReal(`<b>${A.label}</b> · ${esc(c.pharma)} · prévu(e) ${fmtDT(c.nextDate)}`, c.nextDate, (dt, note) => doneTodo(id, dt, note), c);
 }
 function commitDone() { ui.pendingDone = null; }
 function revertDone() {
@@ -2786,7 +2804,7 @@ function traiter(kind, cid, rid) {
   const c = byId(cid); if (!c) return; let A, dt, note = '', done, replan, cancel;
   if (kind === 'next') { if (!c.nextDate) return; A = {l: (ACTIONS[c.nextType] || ACTIONS.relance).label, fa: (ACTIONS[c.nextType] || ACTIONS.relance).fa}; dt = c.nextDate; done = () => askDone(cid); replan = () => gotoPlan(cid); cancel = () => cancelNext(cid); }
   else { const r = (c.rappels || []).find(x => x.id === rid); if (!r) return; const T = RAP_T[r.type] || RAP_T.rappel; A = {l: T.l, fa: T.fa}; dt = r.dt; note = r.note || ''; done = () => doneRap(cid, rid); replan = () => openRap(r.type, rid); cancel = () => cancelRap(cid, rid); }
-  $('tr-ic').innerHTML = `<i class="fas ${A.fa}"></i>`; $('tr-sub').innerHTML = `<b>${A.l}</b> · ${esc(c.pharma)} · prévu(e) ${fmtDT(dt)}`;
+  idbFill('dlg-trait', c); $('tr-ic').innerHTML = `<i class="fas ${A.fa}"></i>`; $('tr-sub').innerHTML = `<b>${A.l}</b> · ${esc(c.pharma)} · prévu(e) ${fmtDT(dt)}`;
   $('tr-note').style.display = note ? '' : 'none'; $('tr-note').innerHTML = `<i class="fas fa-comment-dots text-slate-400 mr-1"></i>${esc(note)}`;
   const go = f => () => { closeDlg('dlg-trait'); f(); };
   $('tr-done').onclick = go(done); $('tr-replan').onclick = go(replan); $('tr-cancel').onclick = go(cancel);
@@ -2811,7 +2829,7 @@ function doneRap(cid, rid) {
   askReal(`<b>${RAP_T[r.type].l}</b> · ${esc(c.pharma)} · prévu(e) ${fmtDT(r.dt)}<br><i>« ${esc(r.note)} »</i>`, r.dt, (dt, note) => {
     r.done = true; r.doneAt = dt; r.doneNote = note || ''; log(c, `${RAP_T[r.type].l} réalisé(e)`, `${r.note}\nRéalisé le ${fmtDT(dt)}.${note ? '\n' + note : ''}`); c.history[0].date = dt; save();
     if (byId(ui.editId) === c) { renderRap(c); renderHistory(c); } $('dlg-rapl').open && closeDlg('dlg-rapl'); refresh(); toast('Rappel réalisé, noté dans l\'historique'); askBack(c, 'Rappel réalisé');
-  });
+  }, c);
 }
 function delRap(cid, rid) { const c = byId(cid); c.rappels = (c.rappels || []).filter(x => x.id !== rid); save(); renderRap(c); closeDlg('dlg-rapl'); if (rapOpen(c).length) rapList(); }
 function rapItems() { return clients.flatMap(c => (c.rappels || []).map(r => ({c, r}))); }
@@ -3205,7 +3223,7 @@ function exportStats() {
 /* ================= FENÊTRE ACTION ================= */
 const nowDT = () => isoDT(new Date());
 const telBlock = c => { const m = c.telPort, f = c.telFixe; if (!m && !f) return `<div class="rounded-xl bg-amber-50 border border-amber-200 px-3 py-2 text-[13px] text-amber-900"><i class="fas fa-phone-slash mr-1"></i>Aucun numéro enregistré sur cette fiche.</div>`; return `<div class="rounded-xl bg-emerald-50 border-2 border-emerald-300 px-4 py-3 flex flex-wrap gap-x-6 gap-y-1 items-center"><i class="fas fa-phone text-emerald-700 text-xl"></i>${[[m, 'portable'], [f, 'fixe']].filter(x => x[0]).map(([n, l]) => `<a href="tel:${esc(String(n).replace(/\s/g, ''))}" class="text-[22px] font-extrabold text-emerald-900 tracking-wide">${esc(n)}</a><span class="text-xs text-emerald-800 -ml-4">${l}</span>`).join('')}</div>`; };
-function actTelShow() { const c = byId(ui.act.cid), el = $('act-tel'); if (!el || !c) return; const on = ui.act.type === 'relance'; el.classList.toggle('hidden', !on); el.innerHTML = on ? telBlock(c) : ''; }
+function actTelShow() { const c = byId(ui.act.cid), el = $('act-tel'); if (!el || !c) return; el.classList.add('hidden'); el.innerHTML = ''; }
 function actHistItems(c) {
   const L = [];
   (c.acts || []).filter(a => a.done).forEach(a => L.push({dt: a.dt, k: ACTIONS[a.type] ? a.type : 'relance', m: a.motif || ''}));
@@ -3220,6 +3238,7 @@ function actHistHtml(c) {
 function openAction(cid, type = 'relance', aid = null, opts = {}) {
   const c = byId(cid); if (!c) return;
   if (!actKeys().includes(type)) type = 'relance';
+  idbFill('dlg-action', c);
   ui.act = {cid, aid, type, prop: 0, advance: opts.advance || null, dtFixed: !!opts.dt, dtTouched: false, rap: opts.rap || null};
   $('act-ttl').textContent = opts.rap ? (opts.rap.rid ? 'Replanifier cette action' : 'Planifier une action') : 'Planifier une action';
   $('act-dt-badge').classList.add('hidden'); $('act-hist').innerHTML = actHistHtml(c);
