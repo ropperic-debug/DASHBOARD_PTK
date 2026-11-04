@@ -149,6 +149,36 @@ main{padding-top:14px!important}
 .v38-s{font-size:10.5px;line-height:1.3;color:#64748b}.v38-s .pill{font-size:11px!important;padding:2px 8px!important;display:inline-block;margin-bottom:2px}.v38-s br{display:block}.v38-s>*:not(.pill){display:block}
 .v38-r button.btn{height:28px!important;font-size:12px!important;padding:0 8px!important;width:100%;white-space:nowrap}
 .v38-t{margin:6px 14px 4px;padding:10px 14px;background:#f8fafc;border-radius:10px;font-weight:800;font-size:13px}
+/* V4.0 : guide, avancement automatique, champs à pulser */
+.v4-need{animation:v4n 2.2s ease-in-out infinite;border-color:#EA580C!important}
+@keyframes v4n{0%,100%{box-shadow:0 0 0 0 rgba(234,88,12,.45)}50%{box-shadow:0 0 0 6px rgba(234,88,12,0)}}
+fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
+@media (prefers-reduced-motion:reduce){.v4-need,.v4-ap .cur .dt,.v4-gnum{animation:none!important}}
+.v4-ap{margin-top:12px;padding:0 6px}.v4-ap .ap-t{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;gap:10px;flex-wrap:wrap}.v4-ap .ap-t b{font-size:13px}.v4-ap .ap-t span{font-size:12px;color:#64748b}
+.v4-ap .ap-bar{display:flex;align-items:flex-start}.v4-ap .ap-s{flex:1;position:relative;text-align:center;font-size:11.5px}
+.v4-ap .dt{width:30px;height:30px;border-radius:50%;margin:0 auto;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:13px;position:relative;z-index:2;background:#E2E8F0;color:#64748b;border:3px solid #fff}
+.v4-ap .ok .dt{background:#047857;color:#fff}.v4-ap .cur .dt{background:#EA580C;color:#fff;animation:v4z 1.8s ease-in-out infinite}
+@keyframes v4z{0%,100%{box-shadow:0 0 0 0 rgba(234,88,12,.45)}50%{box-shadow:0 0 0 8px rgba(234,88,12,0)}}
+.v4-ap .ap-s:not(:first-child)::before{content:"";position:absolute;top:14px;left:-50%;right:50%;height:4px;background:#E2E8F0;z-index:1;border-radius:2px}
+.v4-ap .ap-s.ok:not(:first-child)::before{background:#047857}.v4-ap .ap-s.cur:not(:first-child)::before{background:linear-gradient(90deg,#047857,#EA580C)}
+.v4-ap .nm{margin-top:5px;font-weight:700}.v4-ap .sb{color:#64748b;font-size:10.5px}.v4-ap .cur .nm{color:#C2410C}
+.v4-ap .ap-c{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:6px}.v4-ap .chip{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:999px;background:#FFF1E7;color:#9A3412;border:1px solid #FDBA74}.v4-ap .chip.k{background:#E8F5EE;color:#14603F;border-color:#86CFA0}
+.v4-guide{display:flex;align-items:center;gap:14px;border:2px solid #FB923C;background:#FFF7ED;border-radius:16px;padding:12px 16px;margin-top:12px;flex-wrap:wrap}
+.v4-guide.g{border-color:#86CFA0;background:#F0FDF4}
+.v4-gnum{width:50px;height:50px;border-radius:50%;background:#EA580C;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;line-height:1;flex:none;animation:v4z 2s infinite}.v4-guide.g .v4-gnum{background:#047857;animation:none}
+.v4-gnum small{font-size:9px;font-weight:700;margin-bottom:2px}.v4-gnum span{font-size:20px}
+.v4-gt{flex:1;min-width:220px}.v4-gt .k{font-size:11px;font-weight:800;color:#C2410C;letter-spacing:.05em}.v4-guide.g .k{color:#047857}.v4-gt .t{font-size:17px;font-weight:800;margin-top:1px}.v4-gt .d{font-size:13px;color:#475569;margin-top:1px}
+.v4-gb{height:40px;padding:0 16px;border:0;border-radius:11px;background:#C2410C;color:#fff;font-weight:700;font-size:14px;cursor:pointer}.v4-guide.g .v4-gb{background:#047857}
+.v4-gq{height:40px;padding:0 13px;border:1.5px solid #FDBA74;border-radius:11px;background:#fff;color:#9A3412;font-weight:700;font-size:13.5px;cursor:pointer}
+.v4-man{font-size:12px;color:#64748b;text-decoration:underline;background:none;border:0;cursor:pointer;margin-top:6px}
+.v4-manrow{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}.v4-manrow button{height:30px;padding:0 12px;border-radius:9px;border:1.5px solid #CBD5E1;background:#fff;font-weight:700;font-size:12px}
+.v4-pg{display:flex;flex-direction:column;gap:3px;align-items:flex-start}.v4-pgp{font-size:11px;font-weight:800;padding:2px 9px;border-radius:999px;white-space:nowrap}
+.v4-pgd{display:flex;gap:3px;padding-left:2px}.v4-pgd i{width:11px;height:5px;border-radius:3px;background:#E2E8F0;display:block}.v4-pgd i.k{background:#047857}.v4-pgd i.c{background:#EA580C}
+.v4-pgp.rdy{background:#FFF7ED;color:#C2410C;border:1.5px solid #FB923C}
+.v4-recent{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:12px;color:#64748b;margin:-4px 0 10px}.v4-recent button{border:1px solid #E2E8F0;background:#fff;border-radius:999px;padding:3px 10px;font-weight:600;font-size:12px;color:#0f172a}
+.v4-miss li{list-style:none}.v4-miss button{width:100%;text-align:left;display:flex;gap:10px;align-items:center;padding:10px 12px;border:1.5px solid #FDBA74;background:#FFF7ED;border-radius:12px;font-weight:700;margin-bottom:8px}
+.v4-hp h4{margin:0 0 3px;font-size:12px;color:#C2410C;letter-spacing:.05em}.v4-hp p{margin:0 0 12px;font-size:14.5px;line-height:1.5}.v4-hp ul{list-style:none;padding:0;margin:0 0 12px}.v4-hp li{display:flex;gap:10px;align-items:center;padding:4px 0;font-size:14.5px}
+.v4-hp .o{width:20px;height:20px;border-radius:50%;border:2px solid #FB923C;flex:none}.v4-hp .v{width:20px;height:20px;border-radius:50%;background:#047857;color:#fff;font-size:11px;display:flex;align-items:center;justify-content:center;flex:none}
 /* V2.8 : fiche sans bloc Étape en cours, bouton Dossier perdu */
 #f-stage{display:none!important}
 .zlost{margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:11px;border:2px solid #DC2626;background:#FEF2F2;color:#B91C1C;font-weight:800;font-size:13.5px}.zlost:hover{background:#FEE2E2}
@@ -680,6 +710,15 @@ main{padding-top:14px!important}
             <div><label class="lbl" for="f-port">Portable</label><input id="f-port" type="tel" class="inp font-mono" oninput="fmtPhone(this)"></div>
           </div>
           <div><label class="lbl" for="f-email">E-mail</label><input id="f-email" type="email" class="inp"></div>
+          <div class="rounded-xl border border-slate-200 bg-slate-50/60 p-3 flex flex-col gap-2.5">
+            <div class="text-[12.5px] font-bold">Nom sur le devis <span class="font-normal text-muted">· co-titulaire, repreneur… (facultatif)</span></div>
+            <div><label class="lbl" for="f-devnom">Nom à faire figurer (laisser vide = le titulaire ci-dessus)</label><input id="f-devnom" class="inp" placeholder="Ex. : M. Jean DUPONT (repreneur)"></div>
+            <div class="grid grid-cols-2 gap-2.5"><div><label class="lbl" for="f-devmail">E-mail</label><input id="f-devmail" type="email" class="inp"></div><div><label class="lbl" for="f-devtel">Téléphone</label><input id="f-devtel" type="tel" class="inp font-mono" oninput="fmtPhone(this)"></div></div>
+          </div>
+          <div class="rounded-xl border border-slate-200 bg-slate-50/60 p-3 flex flex-col gap-2.5">
+            <div><label class="lbl" for="f-situ">Situation de la pharmacie</label><select id="f-situ" class="inp"><option value="">Normale</option><option value="cession">En cours de cession</option><option value="associe">Reprise par un associé</option><option value="creation">Ouverture / création</option></select></div>
+            <div><label class="lbl" for="f-situ-note">Détail (date de cession prévue, repreneur…)</label><input id="f-situ-note" class="inp"></div>
+          </div>
         </div>
         <div id="f-contacts" class="sc2"></div>
        </div>
@@ -782,6 +821,16 @@ main{padding-top:14px!important}
 <dialog id="dlg-logout" class="!w-[min(420px,94vw)]">
   <div class="px-5 py-4 border-b flex items-center gap-3"><span class="w-10 h-10 rounded-full inline-flex items-center justify-center bg-orange-50 text-ptkd"><i class="fas fa-right-from-bracket"></i></span><div><h2 class="font-extrabold text-lg leading-tight">Se déconnecter ?</h2><p class="text-xs text-muted">Vos données restent enregistrées. Il faudra se reconnecter pour y accéder.</p></div></div>
   <div class="px-5 py-4 bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-logout')">Annuler</button><button id="lo-ok" class="btn btn-d" onclick="closeDlg('dlg-logout');SEC.logout()"><i class="fas fa-right-from-bracket"></i>Se déconnecter</button></div>
+</dialog>
+<dialog id="dlg-miss" class="!w-[min(460px,94vw)]">
+  <div class="px-5 py-4 border-b flex items-center gap-3"><span class="w-10 h-10 rounded-full inline-flex items-center justify-center bg-orange-50 text-ptkd"><i class="fas fa-list-check"></i></span><div><h2 class="font-extrabold text-lg leading-tight">Pour continuer, complétez :</h2><p class="text-xs text-muted">Cliquez sur une ligne pour aller au champ.</p></div></div>
+  <ul id="miss-list" class="v4-miss p-5 pb-2"></ul>
+  <div class="px-5 py-4 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-miss')">Annuler</button><button class="btn btn-p" id="miss-go" onclick="missGo()">Compléter maintenant</button></div>
+</dialog>
+<dialog id="dlg-help" class="!w-[min(540px,94vw)]">
+  <div class="px-5 py-4 border-b flex items-center gap-3"><span class="w-10 h-10 rounded-full inline-flex items-center justify-center bg-orange-50 text-ptkd"><i class="fas fa-circle-question"></i></span><div><h2 id="help-t" class="font-extrabold text-lg leading-tight">Aide</h2><p class="text-xs text-muted">À quoi ça sert et quoi faire</p></div></div>
+  <div id="help-b" class="v4-hp p-5"></div>
+  <div class="px-5 py-4 border-t bg-slate-50 flex justify-end"><button class="btn btn-d" onclick="closeDlg('dlg-help')">J'ai compris</button></div>
 </dialog>
 <dialog id="dlg-rap" class="!w-[min(460px,94vw)]">
   <div class="px-5 py-4 border-b flex items-center gap-3"><span id="rp-ic" class="w-10 h-10 rounded-full inline-flex items-center justify-center bg-orange-50 text-ptkd"></span><div><h2 id="rp-title" class="font-extrabold text-lg leading-tight">Nouveau rappel</h2><p id="rp-sub" class="text-xs text-muted"></p></div></div>
@@ -1077,6 +1126,10 @@ main{padding-top:14px!important}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>Avancement automatique du dossier (V4.0)</b> : en haut de la fiche, une barre à 5 jalons (Contact, R1, R2, R3, Signé) se met à jour toute seule : ✓ vert = fait, rond orange = en cours, gris = à venir, avec un pourcentage d'avancement. Plus aucun clic obligatoire pour « valider » une étape. Sous la barre, des pastilles (✓ vert / ○ orange) montrent ce qui est fait ou reste à faire. Le bandeau <b>« À faire maintenant »</b> indique la prochaine action, avec un bouton <b>Aide</b> (à quoi ça sert, quoi faire, et ensuite) ; quand tout est prêt, il passe au vert (« Prêt pour R2 / R3 »). Le lien <b>« Changer l'étape manuellement »</b> permet de forcer une étape. Dans le portefeuille, la colonne Étape affiche l'étape, quatre points de progression et la pastille « Prêt pour R2 ».</li>
+<li><b>Champs obligatoires allégés (V4.0)</b> : seul le <b>nom de la pharmacie</b> est toujours obligatoire ; l'<b>échéance du projet</b> l'est à partir de la R1. Titulaire, ville, CIP, SIRET et e-mail ne bloquent plus (un format douteux affiche seulement un avertissement). S'il manque un champ, une fenêtre le liste ; cliquez sur la ligne pour y aller. Les champs à remplir (et le niveau d'intérêt) <b>clignotent doucement</b> jusqu'à leur saisie ; le clignotement s'arrête si votre appareil réduit les animations.</li>
+<li><b>Garde-fous de saisie (V4.0)</b> : une nouvelle fiche avec un nom de pharmacie est <b>enregistrée automatiquement</b> après quelques secondes (petit message en bas) ; la bande « Dernières fiches créées » de l'accueil permet de la rouvrir. Le bouton « Besoins » enregistre d'abord la fiche puis ouvre les besoins.</li>
+<li><b>Nom sur le devis et situation de la pharmacie (V4.0)</b> : dans Coordonnées, indiquez au besoin un <b>nom à faire figurer sur le devis</b> (co-titulaire, repreneur) avec e-mail et téléphone facultatifs : il remplace le titulaire dans « Offre remise à » du PDF. La <b>situation</b> (Normale, En cours de cession, Reprise par un associé, Ouverture / création) et son détail s'affichent en pastille sur la fiche et dans le portefeuille.</li>
 <li><b>V3.9</b> : confirmation avant déconnexion ; « Ma journée » classe les actions en retard en tête puis par heure, et une action « sans réponse » replanifiée quitte sa place pour se replacer à sa nouvelle heure.</li>
 <li><b>V3.8</b> : mise en page compacte de la page des commissions et des menus du haut, sans changement de contenu.</li>
 <li><b>Commissions : récapitulatif, types et réserves (V3.7)</b> : en haut du détail, un petit tableau donne, à la date du jour, pour les <b>payées</b>, les <b>en attente</b> et les <b>sous réserve</b> : le nombre de dossiers et le montant, séparés robots / add-ons, avec le total. Chaque ligne a un badge <b>TYPE</b> : <b>ROBOT</b> (cadre vert doux, tous modèles) ou <b>ADD-ON</b> (cadre bleu-violet doux). Un dossier <b>sous réserve</b> est entouré de rouge, avec un cadenas, la pastille « SOUS RÉSERVE » et l'état de la levée (« en attente » ou « envoyée le … ») ; il ne peut pas être pointé tant que la réserve n'est pas levée.</li>
@@ -1177,6 +1230,7 @@ main{padding-top:14px!important}
 <p>Trois protections se cumulent : <b>1)</b> une <b>connexion</b> (e-mail + mot de passe fort) à chaque ouverture, avec <b>chiffrement des fiches sur l'appareil</b> ; <b>2)</b> un <b>chiffrement avant envoi</b> vers l'espace en ligne, lisible uniquement avec votre phrase secrète ; <b>3)</b> un <b>compte personnel</b> qui réserve l'espace en ligne à vous seul.</p>
 <h2 id="s-connexion">Connexion et chiffrement sur l'appareil (V2.4)</h2>
 <ul>
+<li><b>V4.0</b> : aucun changement de sécurité (connexion, chiffrement, clé de récupération identiques). Les nouveaux champs (nom sur le devis, e-mail et téléphone du repreneur, situation) sont enregistrés comme les autres données de fiche, donc chiffrés sur l'appareil. L'enregistrement automatique d'une nouvelle fiche utilise le même stockage chiffré.</li>
 <li><b>Création du compte</b> au premier lancement : adresse e-mail (identifiant) et mot de passe fort (12 caractères minimum, majuscule, minuscule, chiffre, caractère spécial). Vos fiches existantes sont alors chiffrées, sans perte : une copie de secours est faite avant toute modification de version.</li>
 <li><b>Chiffrement</b> AES-256-GCM, clé dérivée du mot de passe (PBKDF2-SHA-256, 310 000 itérations). Les fiches, les réglages et les copies de secours du navigateur sont illisibles sans le mot de passe.</li>
 <li><b>Clé de récupération</b> (XXXX-XXXX-XXXX-XXXX), affichée <b>une seule fois</b> : imprimez-la ou rangez-la dans un gestionnaire de mots de passe. Elle réinitialise un mot de passe oublié (« Mot de passe oublié ? » sur l'écran de connexion), sans perte de données.</li>
@@ -1346,6 +1400,12 @@ main{padding-top:14px!important}
 <li>Par défaut, seuls les champs <b>vides</b> sont cochés. Un champ déjà saisi qui diffère est proposé mais décoché. Les cas ambigus (plusieurs pharmacies possibles) vous demandent de choisir.</li>
 <li>Rien ne change avant <b>Appliquer</b>. Une copie de secours est faite juste avant. Dans une fiche, la recherche d'annuaire fonctionne pareil : elle complète les champs vides et conserve le reste (bouton « Remplacer » si besoin).</li>
 </ol>
+<h3>Créer une fiche sans stress (V4.0)</h3>
+<ul>
+<li>Seul le nom de la pharmacie est obligatoire ; une nouvelle fiche est enregistrée automatiquement après quelques secondes. Si un champ manque, une fenêtre vous le montre.</li>
+<li>La barre d'avancement et le bandeau « À faire maintenant » vous guident ; le bouton « Aide » explique chaque étape.</li>
+<li>Rappel : sur le site HTTPS et dans le fichier local, les données sont séparées (chaque adresse a son propre stockage).</li>
+</ul>
 <h2 id="a-limites">4. Ce que vous pouvez faire ou non</h2>
 <table>
 <tr><th>Sur le téléphone aussi</th><th>Particularités</th></tr>
@@ -1704,7 +1764,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '3.9';
+const APP_VERSION = '4.0';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2258,6 +2318,7 @@ function showView(v) {
   if (v === 'dashboard') { renderDashboard(); syncDraw(); }
   if (v === 'stats') renderStats();
   if (v === 'profile') renderProfile();
+  if (v === 'client') { try { v4Need(); } catch (e) {} }
   window.scrollTo({top: 0, behavior: 'smooth'});
 }
 function refresh() {
@@ -2308,7 +2369,13 @@ function applyGsMobile() { const on = $('gs-wrap').classList.contains('gs-m'); [
 function renderDashboard() {
   $('today-label').textContent = cap1(new Date().toLocaleDateString('fr-FR', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'})) + ' · version ' + APP_VERSION;
   $('hello').textContent = `${new Date().getHours() < 18 ? 'Bonjour' : 'Bonsoir'} ${settings.prenom}`;
-  renderDashAlert(); renderYearSelect('year-sel'); renderSales(); renderChart(); renderDay(); renderPipeline(); renderTiles(); renderTable();
+  v4Recent(); renderDashAlert(); renderYearSelect('year-sel'); renderSales(); renderChart(); renderDay(); renderPipeline(); renderTiles(); renderTable();
+}
+function v4Recent() {
+  let el = $('v4-recent');
+  if (!el) { el = document.createElement('div'); el.id = 'v4-recent'; el.className = 'v4-recent'; const w = $('tbl-title').closest('section,div.card,div') ; $('hello').parentElement.insertAdjacentElement('afterend', el); }
+  const L = [...clients].filter(c => c.createdAt).sort((a, b) => (b.createdAt > a.createdAt ? 1 : -1)).slice(0, 5);
+  el.innerHTML = L.length ? `<span><i class="fas fa-clock-rotate-left mr-1"></i>Dernières fiches créées :</span>` + L.map(c => `<button onclick="openClient(${c.id})">${esc(c.pharma)}</button>`).join('') : '';
 }
 function yearsList() {
   const years = new Set([CUR_YEAR]);
@@ -2835,7 +2902,8 @@ function showList(k, arg) {
 
 /* ----- Tableaux ----- */
 const intCell = v => { const [l, col, , fg] = INTEREST[v || ''] || INTEREST['']; return `<span class="inline-flex items-center gap-1.5 font-semibold whitespace-nowrap" style="color:${fg}"><span class="w-2.5 h-2.5 rounded-full" style="background:${col}"></span>${l}</span>`; };
-const pharmaCell = c => `<div class="font-semibold whitespace-nowrap">${esc(c.pharma)}</div><div class="text-xs text-muted pc-a">${esc(addr(c))}</div>`;
+const SITU = {cession: 'En cours de cession', associe: 'Reprise par un associé', creation: 'Ouverture / création'};
+const pharmaCell = c => `<div class="font-semibold whitespace-nowrap">${esc(c.pharma)}${c.situation ? ` <span class="pill" style="background:#EEF2FC;color:#1E3A8A;font-size:10px;padding:1px 7px" title="${esc(SITU[c.situation])}">${c.situation === 'cession' ? 'Cession' : c.situation === 'associe' ? 'Associé' : 'Création'}</span>` : ''}</div><div class="text-xs text-muted pc-a">${esc(addr(c))}</div>`;
 const cipCell = c => `<span class="font-mono text-indigo-900">${esc(c.cip || '—')}</span>`;
 function agePill(n) {
   if (n == null) return '';
@@ -3118,7 +3186,7 @@ const TABLES = {
     cols: [
       {l: 'Indic.', v: c => ['fort', 'moyen', 'faible', ''].indexOf(c.indicateur || ''), t: c => INTEREST[c.indicateur || ''][0], h: c => { const [l, col] = INTEREST[c.indicateur || ''] || INTEREST['']; return `<span title="Intérêt : ${l}" class="inline-block rounded-full align-middle" style="width:14px;height:14px;background:${col}"></span>`; }, bo: ['Fort', 'Moyen', 'Faible', 'À renseigner']},
       {l: 'Pharmacie', v: c => c.pharma, t: c => `${c.pharma} — ${addr(c)}`, h: pharmaCell, b: c => c.pharma},
-      {l: 'Étape', v: c => ORDER.indexOf(c.step), t: c => STEPS[c.step].label, h: c => `<span class="inline-flex flex-wrap gap-1">${stepPill(c.step, true)}${pendPill(c)}</span>`, bo: ORDER.map(k => STEPS[k].label)},
+      {l: 'Étape', v: c => ORDER.indexOf(c.step), t: c => STEPS[c.step].label, h: c => stepProg(c) + pendPill(c), bo: ORDER.map(k => STEPS[k].label)},
       {l: 'Dernière action', v: c => daysSince(lastAction(c)) ?? 999, t: c => fmtD(lastAction(c)), h: c => lastCell(c), b: c => ageB(lastAction(c)), bo: AGE_B},
       {l: 'Prochaine action', v: c => effNext(c).nextDate || '9999', t: c => effNext(c).nextDate ? fmtDT(effNext(c).nextDate) : '', h: nextCell, b: nextB, bo: NEXT_B},
       {l: 'Modèle', v: c => (c.robots || []).join(', '), h: c => `<span class="inline-flex items-center gap-2">${cIco(c, 24)}<span class="text-[12.5px] whitespace-nowrap">${esc((c.robots || []).join(', ') || '—')}</span></span>`, b: c => (c.robots || []).join(', ') || '—'},
@@ -4271,7 +4339,7 @@ function fillForm(c) {
   const v = (id, val) => { $(id).value = val ?? ''; };
   v('f-cip', c?.cip); v('f-siret', c?.siret ? c.siret.replace(/^(\d{3})(\d{3})(\d{3})(\d{5})$/, '$1 $2 $3 $4') : ''); v('f-pharma', c?.pharma); v('f-grp', c?.groupement); $('f-genre').value = c?.genre || 'M.';
   v('f-nom', c?.nom); v('f-prenom', c?.prenom); v('f-rue', c?.rue); v('f-cp', c?.cp); v('f-ville', c?.ville);
-  v('f-tel', c?.telFixe); v('f-port', c?.telPort); v('f-email', c?.email);
+  v('f-tel', c?.telFixe); v('f-port', c?.telPort); v('f-email', c?.email); v('f-devnom', c?.devisNom); v('f-devmail', c?.devisMail); v('f-devtel', c?.devisTel); v('f-situ', c?.situation); v('f-situ-note', c?.situationNote);
   const lgoKnown = !c?.lgo || LGOS.includes(c.lgo) || c.lgo === 'Autre';
   $('f-lgo').value = lgoKnown ? (c?.lgo || '') : 'Autre'; v('f-lgo-autre', lgoKnown ? c?.lgoAutre : c.lgo); $('f-lgo-autre').classList.toggle('hidden', $('f-lgo').value !== 'Autre');
   v('f-montant', c?.montant || ''); v('f-decision', c?.dateDecision); $('f-opp').value = c?.opportunite || 'Lead interne';
@@ -4305,7 +4373,7 @@ function renderChrome(c) {
   const I = INTEREST[c?.indicateur || ''];
   $('f-badges').innerHTML = (signed ? '<span class="pill bg-emerald-700 text-white"><i class="fas fa-circle-check"></i>Signé</span>' : lost ? `<span class="pill bg-rose-700 text-white">${c.perduMotif === 'Perdu contre' ? 'Perdu' : 'Abandonné'}</span>` : '')
     + (c && active ? `<span class="pill" style="background:${I[2]};color:${I[3]}"><span class="w-2 h-2 rounded-full" style="background:${I[1]}"></span>${c.indicateur ? 'Intérêt ' + I[0].toLowerCase() : 'Intérêt à renseigner'}</span>` : '')
-    + (c?.robotConc ? '<span class="pill" style="background:#FFF1E7;color:#9A3412"><i class="fas fa-robot"></i>Déjà équipé</span>' : '') + (c ? pendPill(c) + devisPill(c) + secPill(c) : '');
+    + (c?.situation ? `<span class="pill" style="background:#EEF2FC;color:#1E3A8A"><i class="fas fa-key"></i>${esc(SITU[c.situation])}</span>` : '') + (c?.robotConc ? '<span class="pill" style="background:#FFF1E7;color:#9A3412"><i class="fas fa-robot"></i>Déjà équipé</span>' : '') + (c ? pendPill(c) + devisPill(c) + secPill(c) : '');
   $('f-sub').textContent = c ? [c.ville + (depOf(c) ? ` (${depOf(c)})` : ''), c.groupement && `Groupement ${c.groupement}`, c.cip && `CIP ${c.cip}`, c.lgo && `LGO ${c.lgo === 'Autre' ? c.lgoAutre || 'autre' : c.lgo}`, active && c.typeProjet && TYPES_PROJET[c.typeProjet], active && c.opportunite && `Origine : ${c.opportunite}`].filter(Boolean).join(' · ') : "Commencez par la recherche dans l'annuaire";
   const t = [];
   { const lb = $('f-lost1'); if (lb) { lb.style.display = c && active ? '' : 'none'; lb.onclick = () => c && openLost(c.id); } }
@@ -4318,6 +4386,7 @@ function renderChrome(c) {
   ['f-project', 'f-crcard', 'f-nextcard'].forEach(id => $(id).classList.toggle('hidden', !active));
   renderBanner(c); renderActBan(c);
   renderDevis(c); offreBox(c); opBox(c); renderBesoins(c); renderImpl(c); renderQual(c); renderArgBtn(c); renderOffTabs(c); renderCoord(); renderContacts(); renderAddonsList(c); renderHistory(c); renderMobileBar(); renderStage(); renderNextSum(c);
+  try { v4Need(); } catch (e) {}
 }
 /* ----- Commissions dans la fiche client ----- */
 const comTickUi = (r, big) => {
@@ -4395,17 +4464,107 @@ function resInd() {
     : lev ? `<span class="pill bg-emerald-700 text-white"><i class="fas fa-circle-check"></i>Réserves levées le ${fmtD(lev)} · plus aucune réserve</span>`
     : (byId(ui.editId)?.levSent ? `<span class="pill bg-amber-600 text-white"><i class="fas fa-paper-plane"></i>Réserves : retour client attendu${opt('com') ? ' · commission bloquée' : ''}</span>` : `<span class="pill bg-rose-700 text-white"><i class="fas fa-hourglass-half"></i>Réserves en cours${opt('com') ? ' · commission bloquée' : ''}</span>`);
 }
+function v4Facts(c, d) {
+  d = d || c || {};
+  const rb = d.robots || [], dv = d.devis || {};
+  return {int: !!d.indicateur && d.indicateur !== '-', bes: ((c && c.besoins) || d.besoins || []).length > 0, mod: rb.length > 0, one: rb.length === 1, mont: !!d.montant, dec: !!d.dateDecision,
+    devis: !!dv.statut && dv.statut !== 'afaire', rdv: !!(c && (c.pending || (c.nextDate && c.nextType && c.nextType !== 'suivi')))};
+}
+function v4Items(step, c, d) {
+  const F = v4Facts(c, d);
+  return {
+    Contact: [['Niveau d\'intérêt', F.int, 'f-ind-box'], ['Rendez-vous R1 en vue', F.rdv, 'f-next']],
+    R1: [['Niveau d\'intérêt', F.int, 'f-ind-box'], ['Besoins qualifiés', F.bes, 'besoins'], ['Modèle ciblé', F.mod, 'f-models-box'], ['Montant estimé', F.mont, 'f-montant'], ['Date de décision', F.dec, 'f-decision'], ['Devis réalisé', F.devis, 'f-devis-box']],
+    R2: [['Devis présenté', F.devis, 'f-devis-box'], ['Un seul modèle retenu', F.one, 'f-models-box'], ['Montant du devis', F.mont, 'f-montant'], ['Date de décision', F.dec, 'f-decision']],
+    R3: [['Prix négocié', F.mont, 'f-montant'], ['Date de décision', F.dec, 'f-decision']]
+  }[step] || [];
+}
+/* Prêt pour l'étape suivante : tout ce qui est requis hors rendez-vous est fait */
+function v4Ready(step, c, d) {
+  if (step === 'Contact') return false;
+  return v4Items(step, c, d).every(x => x[1]);
+}
+function v4Pct(c, d) {
+  const st = c.step;
+  if (st === 'Signé') return 100; if (st === 'Perdu') return 0;
+  if (st === 'Contact') return 5;
+  const r = v4Ready(st, c, d);
+  return {R1: r ? 35 : 20, R2: r ? 58 : 45, R3: 70}[st];
+}
+const V4_NEXT = {Contact: 'R1', R1: 'R2', R2: 'R3', R3: 'Signé'};
+function stepProg(c) {
+  if (!ORDER.includes(c.step)) return stepPill(c.step, true);
+  const i0 = ORDER.indexOf(c.step), S = STEPS[c.step], rdy = v4Ready(c.step, c);
+  const dots = ORDER.map((k, i) => `<i class="${i < i0 ? 'k' : i === i0 ? 'c' : ''}"></i>`).join('');
+  return `<span class="v4-pg"><span class="v4-pgp" style="background:${S.tint};color:${S.color}">${S.short}</span><span class="v4-pgd">${dots}</span>${rdy && c.step !== 'R3' ? `<span class="v4-pgp rdy">Prêt pour ${STEPS[V4_NEXT[c.step]].short}</span>` : rdy ? '<span class="v4-pgp rdy">Prêt à signer</span>' : ''}</span>`;
+}
+const V4_HELP = {
+  Contact: {t: 'Contact', why: "Premier échange avec la pharmacie. Le but : décrocher un rendez-vous de qualification (R1) et noter l'intérêt du titulaire.", next: "Une fois le rendez-vous R1 fixé, le dossier passe en R1."},
+  R1: {t: 'R1 · Qualification', why: "Comprendre le projet : besoins, budget, décideur. C'est ce qui permet de chiffrer une offre juste.", next: "Quand tout est coché, le dossier est « Prêt pour R2 » : il reste à fixer la présentation."},
+  R2: {t: 'R2 · Présentation', why: "Présenter l'offre (devis) et répondre aux objections. Un seul modèle doit être retenu.", next: "Quand le modèle, le montant et la date de décision sont renseignés, fixez la signature (R3)."},
+  R3: {t: 'R3 · Closing', why: "Valider le prix et le financement, puis obtenir la signature (ou programmer une relance).", next: "Enregistrez l'issue du R3 : signé, relance ou perdu."}
+};
+function v4Help(step) {
+  const c = ui.editId ? byId(ui.editId) : null, H = V4_HELP[step], it = v4Items(step, c, collectRaw());
+  $('help-t').textContent = 'Aide · Étape ' + H.t;
+  $('help-b').innerHTML = `<h4>À QUOI ÇA SERT</h4><p>${H.why}</p><h4>CE QU'IL FAUT FAIRE</h4><ul>${it.map(x => `<li>${x[1] ? '<span class="v"><i class="fas fa-check"></i></span>' : '<span class="o"></span>'}<span>${x[0]}</span></li>`).join('')}</ul><h4>ET ENSUITE ?</h4><p>${H.next}</p>`;
+  $('dlg-help').showModal();
+}
+function v4Act(id) { if (id === 'f-next') { fixField('f-next'); } else fixField(id); }
 function renderFormSteps(step) {
-  const c = ui.editId ? byId(ui.editId) : null, cur = ORDER.indexOf(step);
-  $('f-steps').innerHTML = `<ol class="flex items-start" aria-label="Parcours de vente">${ORDER.map((k, i) => {
-    const S = STEPS[k], done = i < cur, now = i === cur, d = c && done ? stepDate(c, k) : null;
-    const dot = done ? `<span class="dot bg-emerald-700 text-white">${ic('check', 20)}</span>` : now ? `<span class="dot dot-cur">${i + 1}</span>` : `<span class="dot bg-white border-2 border-slate-300 text-slate-400">${i + 1}</span>`;
-    const sub = done ? (d ? `fait le ${fmtD(d)}` : 'réalisée') : now ? (c?.pending ? `<span class="text-amber-800">${STEPS[c.pending.to].short} à fixer</span>` : 'en cours') : 'à venir';
-    return `<li class="flex-1 min-w-0 relative">${i < ORDER.length - 1 ? `<span class="absolute top-[18px] left-1/2 w-full h-1 rounded-full" style="background:${done ? '#1C7C54' : '#E2E8F0'}"></span>` : ''}
-      <button class="relative w-full flex flex-col items-center gap-1.5 text-center px-1" onclick="selectStep('${k}')" ${now ? 'aria-current="step"' : ''} title="${now ? 'Étape en cours' : done ? 'Étape réalisée' : 'Passer à cette étape'}">${dot}
-        <span class="text-[13px] font-bold leading-tight ${now ? 'text-ink' : done ? 'text-emerald-800' : 'text-muted'}">${S.label}</span><span class="text-[11px] ${done ? 'text-emerald-800' : 'text-muted'}">${sub}</span></button></li>`;
-  }).join('')}</ol>`;
+  const c = ui.editId ? byId(ui.editId) : null, cur = ORDER.indexOf(step), d = collectRaw(), items = v4Items(step, c, d), F = v4Facts(c, d);
+  const rdy = v4Ready(step, c, d), pct = c ? v4Pct({...c, step}, d) : 5, nx = V4_NEXT[step];
+  const sub = ['', 'Qualification', 'Présentation', 'Closing'];
+  const bar = ORDER.concat(['Signé']).map((k, i) => {
+    const ok = i < cur, now = i === cur, lab = k === 'Signé' ? 'Signé' : STEPS[k].short;
+    return `<li class="ap-s ${ok ? 'ok' : now ? 'cur' : ''}"><div class="dt">${ok ? '<i class="fas fa-check"></i>' : i + 1}</div><div class="nm">${lab}</div><div class="sb">${ok ? 'fait' : now ? 'en cours' : 'à venir'}</div></li>`;
+  }).join('');
+  const chips = items.map(x => `<span class="chip ${x[1] ? 'k' : ''}">${x[1] ? '✓' : '○'} ${x[0]}</span>`).join('');
+  const miss = items.filter(x => !x[1]);
+  const first = rdy ? null : (step === 'Contact' ? miss.find(x => x[2] === 'f-ind-box') : miss[0]);
+  const H = V4_HELP[step];
+  let gt, gd, gb, green = false;
+  if (step === 'R3') { green = rdy; gt = rdy ? 'Obtenir la signature' : 'Renseigner : ' + (miss[0] || [''])[0].toLowerCase(); gd = rdy ? 'Tout est prêt : enregistrez l\'issue du rendez-vous R3.' : 'Renseignez ces éléments pour être prêt à signer.'; gb = rdy ? ['Enregistrer l\'issue du R3', 'guideGo()'] : ['Compléter', `v4Act('${(miss[0] || [0, 0, 'f-montant'])[2]}')`]; }
+  else if (first) { gt = 'Renseigner : ' + first[0].toLowerCase(); gd = 'Il reste à renseigner : ' + miss.map(x => x[0].toLowerCase()).join(', ') + '.'; gb = ['Compléter', `v4Act('${first[2]}')`]; }
+  else { green = true; gt = `Fixer le rendez-vous ${STEPS[nx].short}`; gd = rdy ? `Dossier prêt pour ${STEPS[nx].short} : planifiez le rendez-vous.` : 'Programmez maintenant le prochain rendez-vous.'; gb = [`Passer en ${STEPS[nx].short}`, 'guideGo()']; }
+  $('f-steps').innerHTML = `<div class="v4-ap"><div class="ap-t"><b>Avancement du dossier · ${pct} %</b><span>se met à jour tout seul</span></div><ol class="ap-bar" aria-label="Parcours de vente">${bar}</ol>
+    <div class="ap-c">${chips}</div>
+    <div class="v4-guide ${green ? 'g' : ''}"><div class="v4-gnum"><small>ÉTAPE</small><span>${cur + 1}/5</span></div><div class="v4-gt"><div class="k">${green ? 'PROCHAINE ÉTAPE' : 'À FAIRE MAINTENANT'}</div><div class="t">${gt}</div><div class="d">${gd}</div></div>
+      <button class="v4-gq" onclick="v4Help('${step}')"><i class="fas fa-circle-question mr-1"></i>Aide</button><button class="v4-gb" onclick="${gb[1]}">${gb[0]}</button></div>
+    <button class="v4-man" onclick="v4Man()">Changer l'étape manuellement</button><div id="v4-manrow" class="v4-manrow hidden">${ORDER.map(k => `<button onclick="selectStep('${k}')">${STEPS[k].label}</button>`).join('')}</div></div>`;
   $('f-tip').innerHTML = `<i class="fas fa-lightbulb mr-1 text-amber-600"></i><b>Conseil ${STEPS[step].short} :</b> ${TIPS[step]}`;
+  v4Need();
+}
+function v4Man() { $('v4-manrow').classList.toggle('hidden'); }
+function v4Need() {
+  if ($('view-client').classList.contains('hidden')) return;
+  const step = ui.editId ? (byId(ui.editId)?.step) : ui.formStep, d = collectRaw();
+  const set = (id, on) => $(id)?.classList.toggle('v4-need', !!on);
+  set('f-pharma', !d.pharma);
+  const needEch = ORDER.indexOf(step) >= 1; set('f-ech', needEch && !d.echeance);
+  const l = document.querySelector('label[for=f-ech]'); if (l) l.textContent = 'Échéance du projet' + (needEch ? ' *' : '');
+  set('f-ind-box', !d.indicateur || d.indicateur === '-');
+}
+let _v4t;
+document.addEventListener('input', () => { clearTimeout(_v4t); _v4t = setTimeout(v4Refresh, 400); });
+document.addEventListener('change', () => { clearTimeout(_v4t); _v4t = setTimeout(v4Refresh, 150); });
+function v4Refresh() {
+  if ($('view-client').classList.contains('hidden')) return;
+  const step = ui.editId ? byId(ui.editId)?.step : ui.formStep;
+  if (ORDER.includes(step) && !$('f-steps').classList.contains('hidden') && !document.querySelector('#f-steps :focus')) renderFormSteps(step); else v4Need();
+  v4Auto();
+}
+/* Garde-fou : une nouvelle fiche avec un nom de pharmacie est enregistrée toute seule */
+let _v4a;
+function v4Auto() {
+  if (ui.editId || $('view-client').classList.contains('hidden')) return;
+  clearTimeout(_v4a);
+  if (!$('f-pharma').value.trim()) return;
+  _v4a = setTimeout(() => {
+    if (ui.editId || $('view-client').classList.contains('hidden') || !$('f-pharma').value.trim()) return;
+    const c = saveClient(false, true);
+    if (c) { renderChrome(c); toast('Fiche enregistrée automatiquement'); }
+  }, 3000);
 }
 function openBesoins(next = null) {
   const c = ensureSaved(); if (!c) return;
@@ -4469,13 +4628,7 @@ function openStep(target) {
   const c = ensureSaved(); if (!c || !ORDER.includes(c.step)) return;
   const from = c.step, i0 = ORDER.indexOf(from), i1 = ORDER.indexOf(target);
   if (i1 === i0) return;
-  if (i1 > i0 + 1) return toast(`Passez les étapes une par une : validez d'abord « ${STEPS[ORDER[i0 + 1]].label} ».`, true);
   const back = i1 < i0;
-  if (!back) {
-    if (!canReach(c, target)) return;
-    const miss = GUIDE[from].checks(collectRaw()).filter(x => !x[1]);
-    if (miss.length) { if (miss[0][2] === 'besoins') return openBesoins(target); toast('Avant de changer d\'étape, complétez : ' + miss.map(m => m[0]).join(', '), true); return fixField(miss[0][2]); }
-  }
   ui.st = {cid: c.id, from, to: target, back};
   $('st-sub').textContent = `${c.pharma} — ${c.ville}`;
   $('st-msg').innerHTML = back ? `Vous êtes actuellement à l'étape ${i0 + 1} : <b>${STEPS[from].label}</b>.<br>En validant, le dossier revient à l'étape ${i1 + 1} : <b>${STEPS[target].label}</b>.`
@@ -4557,7 +4710,7 @@ function collectRaw() {
   const g = id => ($(id)?.value || '').trim();
   const lgo = $('f-lgo').value;
   return {pharma: g('f-pharma'), cip: g('f-cip'), siret: siretOf(g('f-siret')), groupement: g('f-grp'), genre: $('f-genre').value, nom: g('f-nom'), prenom: g('f-prenom'), rue: g('f-rue'), cp: g('f-cp'), ville: g('f-ville'),
-    telFixe: g('f-tel'), telPort: g('f-port'), email: g('f-email'), lgo, lgoAutre: lgo === 'Autre' ? g('f-lgo-autre') : '',
+    telFixe: g('f-tel'), telPort: g('f-port'), email: g('f-email'), devisNom: g('f-devnom'), devisMail: g('f-devmail'), devisTel: g('f-devtel'), situation: $('f-situ').value, situationNote: g('f-situ-note'), lgo, lgoAutre: lgo === 'Autre' ? g('f-lgo-autre') : '',
     indicateur: document.querySelector('input[name=f-ind]:checked')?.value || '', robots: [...document.querySelectorAll('input[name=f-model]:checked')].map(x => x.value),
     options: [...mxGet().options], besoinsSol: [...(ui.mxSol || [])], positions: [...mxGet().positions], distCpt: mxGet().dc, pasJ: mxGet().pas, distJ: mxGet().dist, pasLong: mxGet().pasLong, ptk: (({postes, dossiers, boites, stock, use, bo, gainPct, args, comment}) => ({postes, dossiers, boites, stock, use: {...use}, bo: {...bo}, gainPct: gainPct || '', args: {...(args || {})}, comment: {text: '', on: true, ...(comment || {})}}))(mxGet()),
     montant: +$('f-montant').value || 0, dateDecision: $('f-decision').value, opportunite: $('f-opp').value, echeance: $('f-ech').value,
@@ -4607,7 +4760,7 @@ function miniSteps(c, cur) {
 }
 function fixField(id) {
   if (id === 'besoins') return openBesoins();
-  const coord = ['f-nom', 'f-port', 'f-cip', 'f-ville', 'f-pharma', 'f-email'].includes(id);
+  const coord = ['f-nom', 'f-port', 'f-cip', 'f-ville', 'f-pharma', 'f-email', 'f-devnom'].includes(id);
   if (coord) { if (!ui.coordEdit) { ui.coordEdit = true; renderCoord(); } setPane('coord'); } else setPane('projet');
   const el = $(id); if (!el) return;
   el.scrollIntoView({behavior: 'smooth', block: 'center'});
@@ -4655,6 +4808,8 @@ function renderCoord() {
       ${c.telPort ? ln('fa-phone', `<span class="tabular-nums">${esc(c.telPort)}</span> <small>portable</small>`, mini(`tel:${esc(c.telPort.replace(/\s/g, ''))}`, 'phone', 'Appeler', 'g')) : ''}
       ${c.telFixe ? ln('fa-phone-volume', `<span class="tabular-nums">${esc(c.telFixe)}</span> <small>fixe</small>`, mini(`tel:${esc(c.telFixe.replace(/\s/g, ''))}`, 'phone', 'Appeler le fixe', c.telPort ? '' : 'g')) : ''}
       ${c.email ? ln('fa-envelope', `<a class="block truncate" href="mailto:${esc(c.email)}">${esc(c.email)}</a>`, mini(mailUrl(c, 'Pharmathek — votre projet', ''), 'mail', 'Écrire')) : ''}
+      ${c.devisNom ? ln('fa-file-signature', `<b>Sur le devis :</b> ${esc(c.devisNom)}${c.devisMail ? ' · ' + esc(c.devisMail) : ''}${c.devisTel ? ' · ' + esc(c.devisTel) : ''}`, '') : ''}
+      ${c.situation ? ln('fa-key', `<b>${esc(SITU[c.situation])}</b>${c.situationNote ? ' · ' + esc(c.situationNote) : ''}`, '') : ''}
       <div class="cqs" style="grid-template-columns:repeat(${2 + opt('gps') + opt('teams')},minmax(0,1fr))">
         ${cq(tel ? telUrl(c) : '', 'phone', 'Appeler', '', '', 'p')}
         ${cq(c.email ? mailUrl(c, 'Pharmathek — votre projet', '') : '', 'mail', 'E-mail', 'color:#C2410C')}
@@ -4738,25 +4893,36 @@ function horizon(ds) {
 }
 
 /* ----- Enregistrement ----- */
-function collectForm() {
+function reqMissing(d, step) {
+  const m = [];
+  if (!d.pharma) m.push(['Nom de la pharmacie', 'f-pharma']);
+  if (ORDER.indexOf(step) >= 1 && !d.echeance) m.push(['Échéance du projet', 'f-ech']);
+  return m;
+}
+let _missIds = [];
+function showMiss(m) {
+  _missIds = m.map(x => x[1]);
+  $('miss-list').innerHTML = m.map(x => `<li><button onclick="closeDlg('dlg-miss');fixField('${x[1]}')"><i class="fas fa-circle-exclamation text-ptkd"></i>${x[0]}<i class="fas fa-arrow-right ml-auto text-muted"></i></button></li>`).join('');
+  $('dlg-miss').showModal();
+}
+function missGo() { closeDlg('dlg-miss'); if (_missIds[0]) fixField(_missIds[0]); }
+function collectForm(silent) {
   const d = collectRaw(), step = ui.editId ? byId(ui.editId).step : ui.formStep;
-  const miss = [];
-  if (!d.pharma) miss.push('nom de la pharmacie'); if (!d.nom) miss.push('nom du titulaire'); if (!d.ville) miss.push('ville');
-  if (d.cip && !/^\d{7}$/.test(d.cip)) miss.push('CIP à 7 chiffres');
-  if (d.siret && !/^\d{14}$/.test(d.siret)) miss.push('SIRET à 14 chiffres');
-  if (d.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)) miss.push('e-mail valide');
-  if (ORDER.includes(step) && !d.echeance) miss.push('échéance du projet');
-  if (miss.length) {
-    toast('À compléter : ' + miss.join(', '), true);
-    if (miss[0] === 'échéance du projet') fixField('f-ech'); else { if (!ui.coordEdit) { ui.coordEdit = true; renderCoord(); } setPane('coord'); }
-    return null;
+  const m = reqMissing(d, step);
+  if (m.length) { if (!silent) showMiss(m); return null; }
+  if (!silent) {
+    const w = [];
+    if (d.cip && !/^\d{7}$/.test(d.cip)) w.push('CIP (7 chiffres)');
+    if (d.siret && !/^\d{14}$/.test(d.siret)) w.push('SIRET (14 chiffres)');
+    if (d.email && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(d.email)) w.push('e-mail');
+    const dup = d.cip && clients.find(c => c.cip === d.cip && c.id !== ui.editId);
+    if (dup) w.push(`CIP déjà utilisé par ${dup.pharma}`);
+    if (w.length) toast('Enregistré. À vérifier : ' + w.join(' · '), true);
   }
-  const dup = d.cip && clients.find(c => c.cip === d.cip && c.id !== ui.editId);
-  if (dup) { toast(`CIP déjà utilisé par ${dup.pharma}`, true); return null; }
   return d;
 }
-function saveClient(back = true) {
-  const d = collectForm(); if (!d) return null;
+function saveClient(back = true, silent = false) {
+  const d = collectForm(silent); if (!d) return null;
   if (back) commitDone();
   let c;
   if (ui.editId) {
@@ -5361,7 +5527,7 @@ function genOffre(id, K0) {
   const c = byId(id), o = c?.offre; if (!o?.lignes?.length) return toast("Préparez d'abord l'offre.", true);
   if (!window.jspdf) return toast('Générateur PDF indisponible (connexion Internet requise au premier chargement).', true);
   const k = offreCalc(o), m = o.maint || {}, K = K0 || pdfKit(`Synthèse, projet de robotisation · ${c.pharma} · Réf. ${o.ref || '—'}`), doc = K.doc, M = K.M, CW = K.CW, W = K.W;
-  const civ = c.genre === 'Mme' ? 'Mme' : 'M.', tit = `${civ} ${(c.nom || '').toUpperCase()} ${c.prenom || ''}`.trim();
+  const civ = c.genre === 'Mme' ? 'Mme' : 'M.', tit = c.devisNom ? c.devisNom : `${civ} ${(c.nom || '').toUpperCase()} ${c.prenom || ''}`.trim();
   if (K0) { K.footRight = `Synthèse, projet de robotisation · ${c.pharma} · Réf. ${o.ref || '—'}`; if (!K0.solo) doc.addPage(); }
   const WH = [255, 255, 255], BD = [230, 219, 206], GRN = [28, 124, 84], GRNL = [233, 245, 238], rr = (x, y, w, h, r, fill) => { doc.setFillColor(...fill); doc.roundedRect(x, y, w, h, r, r, 'F'); };
   const card = (x, y, w, h, r = 3, bd = BD, lw = .25) => { doc.setFillColor(...WH); doc.setDrawColor(...bd); doc.setLineWidth(lw); doc.roundedRect(x, y, w, h, r, r, 'FD'); };
@@ -5380,7 +5546,7 @@ function genOffre(id, K0) {
   K.font(16, 'bold', PK.ink); const tl = doc.splitTextToSize(pdfTxt(`Votre offre ${o.robot || 'Robot SINTESI'}`), CW - pw - 20); doc.text(tl.slice(0, 2), M + 9, y0 + 19);
   K.font(8.2, 'normal', PK.mut); K.t(`Réf. ${o.ref || '—'}  ·  ${o.date || '—'}  ·  Validité ${o.validite || 30} jours`, M + 9, y0 + 19 + Math.min(tl.length, 2) * 6.6 + 2);
   const px = M + CW - pw - 4; rr(px, y0 + 4, pw, hh - 8, 3, [246, 247, 249]);
-  lab('Offre remise à', px + 4, y0 + 9, PK.ord, 5.4); K.font(8.6, 'bold', PK.ink); K.t(doc.splitTextToSize(pdfTxt(c.pharma || ''), pw - 8)[0], px + 4, y0 + 13.2); K.font(7.4, 'normal', PK.sub); K.t(doc.splitTextToSize(pdfTxt(tit + ', Titulaire'), pw - 8)[0], px + 4, y0 + 17); K.t(doc.splitTextToSize(pdfTxt([c.rue, `${c.cp || ''} ${c.ville || ''}`.trim()].filter(Boolean).join(', ')), pw - 8)[0], px + 4, y0 + 20.8);
+  lab('Offre remise à', px + 4, y0 + 9, PK.ord, 5.4); K.font(8.6, 'bold', PK.ink); K.t(doc.splitTextToSize(pdfTxt(c.pharma || ''), pw - 8)[0], px + 4, y0 + 13.2); K.font(7.4, 'normal', PK.sub); K.t(doc.splitTextToSize(pdfTxt(c.devisNom ? tit : tit + ', Titulaire'), pw - 8)[0], px + 4, y0 + 17); K.t(doc.splitTextToSize(pdfTxt([c.rue, `${c.cp || ''} ${c.ville || ''}`.trim()].filter(Boolean).join(', ')), pw - 8)[0], px + 4, y0 + 20.8);
   doc.setDrawColor(225, 228, 232); doc.setLineWidth(.2); doc.line(px + 4, y0 + 24, px + pw - 4, y0 + 24);
   lab('Votre interlocuteur', px + 4, y0 + 28, PK.ord, 5.4); K.font(8.6, 'bold', PK.ink); K.t(`${settings.prenom} ${settings.nom}`, px + 4, y0 + 32); K.font(7.4, 'normal', PK.sub); K.t(settings.tel || PTK_HQ.tel, px + 4, y0 + 35.8);
   K.y = y0 + hh + 4;
