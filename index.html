@@ -79,6 +79,7 @@
 #f-project .lbl{font-size:11px;margin-bottom:2px}
 #f-ind-box label>span.flex{height:36px!important}#f-ind-box .truncate{display:none!important}
 .det-grid .lbl{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.det-sw{width:36px;height:20px;border-radius:99px;background:#CBD5E1;position:relative;flex:none;transition:background .15s}.det-sw:after{content:'';position:absolute;left:2px;top:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:left .15s}input:checked+.det-sw{background:#16A34A}input:checked+.det-sw:after{left:18px}input:disabled+.det-sw{opacity:.45}input:focus-visible+.det-sw{outline:2px solid #FDBA74}
 .suivi-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start}.suivi-grid>details[open]{grid-column:1/-1}.suivi-grid>details>summary{padding:10px 14px!important}.suivi-grid .h2{font-size:14px}
 @media(max-width:640px){.suivi-grid{grid-template-columns:1fr}}
 /* V2.4 : autres actions prévues */
@@ -1231,6 +1232,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.1</b> : (1) <b>« Détail de l'officine » refait</b> : quatre blocs lisibles (A activité, B déplacements, C réception des commandes, D position du robot) ; chaque ligne indique ce qu'elle sert à calculer, avec un interrupteur « Oui / Non » (grisé « À renseigner » tant que la case est vide, coché automatiquement dès que vous saisissez une valeur) ; un bandeau en tête dit ce qui manque pour calculer les gains. (2) <b>Nouveau bloc « Réception des commandes (manuelle) »</b> : livraisons et boîtes reçues par jour, temps de réception manuelle, gain estimé avec le chargeur (60 % par défaut, à ajuster) ; l'application met en face la cadence du chargeur Pharmaload (300 boîtes/h) et le temps de personnel libéré, repris dans l'étude de productivité du PDF. (3) <b>PDF fusionné</b> : « Solution préconisée » et « Votre offre » commencent chacune en haut d'une nouvelle page ; les <b>trois piliers stratégiques</b> viennent après l'offre ; les conditions de paiement ne sont plus coupées ; « Restons connectés » ne reste plus seul sur une page.</li>
 <li><b>V4.5.0</b> : (1) <b>Remise sur le matériel</b> : dans la synthèse de l'offre, vous saisissez la remise <b>en pourcentage, en euros ou par le prix final net HT</b> (tapez dans un seul champ, les deux autres se calculent, arrondi à l'euro) ; trois cases choisissent ce que voit le client : le taux, le montant, les deux, ou aucune remise (net seulement). (2) <b>Nouveau besoin « Réception des commandes »</b> (chargeur automatique, grossistes et répartiteurs) avec son argumentaire. (3) <b>Votre commentaire devient un bloc de synthèse</b> dans le PDF (titre, constat, réponse, au quotidien), modifiable dans « Besoins et problématiques », avec « Régénérer ». (4) <b>Robot du concurrent facultatif</b> : case « Citer le robot actuel » ; décochée, le PDF écrit « votre robot actuel ». (5) <b>Contenu du PDF à cocher</b> : le bouton « Générer le PDF » ouvre la liste des sections (page de garde, besoins, solution, productivité, plan, piliers, QR codes, indicateurs, paiement, services, contrat, caractéristiques) ; vous lisez l'aperçu, vous pouvez revenir modifier les sections, puis générer ; la pagination est recalculée à chaque fois. (6) Compteur d'arguments affichés dans les réglages de l'argumentaire.</li>
 <li><b>V4.4.9</b> : (1) <b>Bouton « Générer le PDF »</b> : il se met à jour dès que vous cochez le robot ou les besoins (il restait grisé tant que la fiche n'était pas enregistrée) ; un clic sur le bouton grisé indique ce qu'il manque et mène au bon endroit. (2) Le <b>robot du devis</b> est coché automatiquement à l'enregistrement de la synthèse de l'offre si aucun robot n'est choisi. (3) <b>Ajouter ou dupliquer une offre</b> demande d'abord confirmation.</li>
 <li><b>V4.4.8</b> : (1) <b>Replanifier</b> fonctionne aussi pour les rappels (relances, appels, visites…) : même petite fenêtre avec <b>Valider la nouvelle date</b>, depuis l'accueil comme depuis la fiche. (2) Quand vous planifiez une <b>nouvelle</b> action sur un dossier qui a une action <b>en retard</b>, la fenêtre propose de la remplacer (case cochée par défaut) : elle quitte « Ma journée ». (3) Libellé corrigé dans vos fiches : « Relance après envoi du devis » devient « Relance après présentation du devis ».</li>
@@ -1900,7 +1902,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.0';
+const APP_VERSION = '4.5.1';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -1947,6 +1949,7 @@ const STEPS = {
 const ORDER = Object.keys(STEPS);
 const HYP_D = {delivMin: 9, gainPct: 30, jm: 24, ja: 300, kmh: 4, etp: 1607, bTrajet: 4, boGain: 50};
 const hyp = () => ({...HYP_D, ...(settings.hyp || {})});
+const PHARMALOAD_CAD = 300;
 const ptkOf = c => ({options: c?.options || [], positions: c?.positions || [], dc: c?.distCpt ?? '', dist: c?.distJ ?? '', pas: c?.pasJ ?? '', pasLong: c?.pasLong || PAS_M, postes: '', dossiers: '', boites: '', stock: '', use: {}, bo: {h: 2, taux: hyp().boGain, valid: false}, ...(c?.ptk || {})});
 function ptkCalc(P) {
   const H = {...hyp(), ...(+P.gainPct > 0 ? {gainPct: +P.gainPct} : {})}, n = x => +x || 0, U = P.use || {}, bo = P.bo || {h: 2, taux: H.boGain};
@@ -1957,8 +1960,10 @@ function ptkCalc(P) {
   const gBase = dos * H.delivMin * H.gainPct / 100, gCpt = Math.max(gBase, marche);
   const BT = [['rec', 'Réception des commandes', 'contrôle, rangement', .4], ['per', 'Périmés & péremptions', 'dates, retraits, contrôle', .36], ['lot', 'Retraits de lots', 'rappels, quarantaine', .24]], AR = P.args || {};
   const boAll = BT.map(([k, l, sb, r]) => { const t = (bo.t || {})[k], av = (t !== undefined && t !== '' && t !== null) ? n(t) : n(bo.h) * 60 * r, g = av * n(bo.taux) / 100; return {k, l, sb, av, ap: av - g, g, on: AR['bt_' + k] !== false}; });
-  const boAv0 = n(bo.h) * 60, gBo = U.bo ? boAv0 * n(bo.taux) / 100 : 0, boAv = U.bo ? boAv0 : 0, boT = gBo > 0.5 ? [{k: 'bo', l: 'Réception des commandes', sb: 'incluant périmés, péremptions et retraits de lots', av: boAv0, ap: boAv0 - gBo, g: gBo}] : [], gTot = gCpt + gBo;
-  return {dos, box, pst, stk, bpd, traj, distAuto, dist, pas, marche, gBase, gCpt, gBo, boT, boAv, boAll, gTot, gCollab: pst ? gCpt / pst : 0, gMois: gTot * H.jm / 60, gAn: gTot * H.ja / 60, etp: gTot * H.ja / 60 / H.etp,
+  const rc = P.rec || {}, recOn = !!U.rec && n(rc.h) > 0, rcT = rc.taux !== undefined && rc.taux !== '' ? n(rc.taux) : 60, recAv = recOn ? n(rc.h) * 60 : 0, gRec = recAv * rcT / 100;
+  const boAv0 = n(bo.h) * 60 * (recOn ? .6 : 1), gBo0 = U.bo ? boAv0 * n(bo.taux) / 100 : 0, gBo = gBo0 + gRec, boAv = (U.bo ? boAv0 : 0) + recAv,
+    boT = [...(recOn && gRec > .5 ? [{k: 'rec', l: 'Réception des commandes', sb: `manuelle${n(rc.box) ? ' · ' + Math.round(n(rc.box)).toLocaleString('fr-FR') + ' boîtes/jour' : ''} · chargeur automatique ${PHARMALOAD_CAD} boîtes/h`, av: recAv, ap: recAv - gRec, g: gRec}] : []), ...(gBo0 > .5 ? [{k: 'bo', l: recOn ? 'Périmés, péremptions et retraits de lots' : 'Réception des commandes', sb: recOn ? 'dates, retraits, contrôle' : 'incluant périmés, péremptions et retraits de lots', av: boAv0, ap: boAv0 - gBo0, g: gBo0}] : [])], gTot = gCpt + gBo;
+  return {dos, box, pst, stk, bpd, traj, distAuto, dist, pas, marche, gBase, gCpt, gBo, boT, boAv, boAll, recOn, recAv, gRec, rcT, rc, gTot, gCollab: pst ? gCpt / pst : 0, gMois: gTot * H.jm / 60, gAn: gTot * H.ja / 60, etp: gTot * H.ja / 60 / H.etp,
     kmAn: dist * H.ja / 1000, kmCollab: pst ? dist * H.ja / 1000 / pst : 0, pasCollab: pst ? pas / pst : 0, marcheMois: marche * H.jm / 60, bpj: box, H};
 }
 const hm = min => { const h = Math.floor(min / 60), m = Math.round(min % 60); return h ? `${h} h ${String(m).padStart(2, '0')}` : `${m} min`; };
@@ -3827,11 +3832,11 @@ const mxGet = () => ui.mx || (ui.mx = ptkOf(null));
 const mxNum = (id, k, l, ph, ex = '') => `<div><div class="flex items-center justify-between gap-2"><label class="lbl !mb-0" for="${id}">${l}</label><label class="flex items-center gap-1 text-[11.5px] font-semibold text-slate-600 cursor-pointer" title="Prise en compte dans les calculs de gains"><input type="checkbox" id="u-${k}" class="accent-orange-700" ${(mxGet().use || {})[k] ? 'checked' : ''} onchange="mxDist('auto')">compte</label></div><input type="number" min="0" ${ex} id="${id}" class="inp mt-1" value="${esc(mxGet()[k])}" oninput="mxDist('auto')" placeholder="${ph}"></div>`;
 function mxLoad(c) { ui.mx = ptkOf(c); ui.mx.options = [...(c?.options || [])]; ui.mx.positions = [...(c?.positions || [])]; ui.mx.use = {...(ui.mx.use || {})}; ui.mx.args = {...(ui.mx.args || {})}; ui.mx.comment = {text: '', on: true, ...(ui.mx.comment || {})}; ui.mxSol = [...(c?.besoinsSol || [])]; ui.cmTab = 0;
   if (!String(ui.mx.comment.text || '').trim() && c && ((c.besoinsNote || '').trim() || ui.mxSol.length)) { ui.mx.comment.text = cmAutoText(c, ui.mxSol); ui.mx.comment.auto = true; }
-  ui.mx.bo = {...ui.mx.bo}; ui.mx0 = JSON.stringify([ui.mx.bo.h, ui.mx.bo.taux]); }
+  ui.mx.rec = {...(ui.mx.rec || {})}; ui.mx.bo = {...ui.mx.bo}; ui.mx0 = JSON.stringify([ui.mx.bo.h, ui.mx.bo.taux]); }
 function mxRead() {
   const M = mxGet(), q = n => [...document.querySelectorAll(`input[name=${n}]:checked`)].map(x => x.value), v = id => $(id) ? $(id).value : undefined;
-  if ($('f-dc')) { M.positions = q('f-pos'); M.dc = v('f-dc'); M.pasLong = +v('f-pasl') || PAS_M; M.postes = v('f-postes'); M.dossiers = v('f-dossiers'); M.boites = v('f-boites'); M.stock = v('f-stock'); }
-  ['postes', 'dossiers', 'boites', 'stock', 'bo'].forEach(k => { if ($('u-' + k)) M.use[k] = $('u-' + k).checked; });
+  if ($('f-dc')) { M.positions = q('f-pos'); M.dc = v('f-dc'); M.pasLong = +v('f-pasl') || PAS_M; M.postes = v('f-postes'); M.dossiers = v('f-dossiers'); M.boites = v('f-boites'); M.stock = v('f-stock'); if ($('f-rec-h')) M.rec = {liv: v('f-rec-liv'), box: v('f-rec-box'), h: v('f-rec-h'), taux: v('f-rec-tx')}; }
+  ['postes', 'dossiers', 'boites', 'stock', 'bo', 'rec'].forEach(k => { if ($('u-' + k)) M.use[k] = $('u-' + k).checked; });
   if ($('f-opt-box')) { M.options = q('f-opt');
     M.args = {}; document.querySelectorAll('input[name=f-arg]').forEach(x => { if (x.value === 'plan') M.args.plan = x.checked; else if (!x.checked) M.args[x.value] = false; });
     if ($('f-cm')) M.comment = {text: $('f-cm').value, on: $('f-cmon') ? $('f-cmon').checked : true, auto: !!(M.comment && M.comment.auto) && !!$('f-cm').value.trim()};
@@ -3839,22 +3844,49 @@ function mxRead() {
     if ($('f-boh')) { M.bo = {h: +v('f-boh') || 0, taux: +v('f-botx') || 0, valid: M.bo.valid || JSON.stringify([+v('f-boh') || 0, +v('f-botx') || 0]) !== ui.mx0}; } }
 }
 
+const DET_IDS = {postes: 'f-postes', dossiers: 'f-dossiers', boites: 'f-boites', stock: 'f-stock', rec: 'f-rec-h'};
+function detBanHtml(C, M) {
+  const miss = []; if (!(+M.dossiers > 0)) miss.push('Dossiers par jour'); if (!(+M.dc > 0)) miss.push('Distance comptoirs → back-office');
+  if (C.gTot > 0) return `<div class="flex gap-3 items-center rounded-xl border border-emerald-300 bg-emerald-50 px-4 py-3 text-[13.5px] text-emerald-950"><i class="fas fa-circle-check text-xl text-emerald-600"></i><div><b>Gains calculés et intégrés au PDF.</b> Total : ${hm(C.gTot)}/jour. Un interrupteur sur « Non » exclut la donnée du calcul.</div></div>`;
+  return `<div class="flex gap-3 items-center rounded-xl border border-orange-300 bg-orange-50 px-4 py-3 text-[13.5px] text-orange-950"><i class="fas fa-triangle-exclamation text-xl text-orange-600"></i><div><b>Gains non calculables pour l'instant.</b>${miss.length ? ' Il manque : ' + miss.map(x => `<span class="inline-block rounded-full bg-rose-100 text-rose-800 text-[11.5px] font-bold px-2.5 py-0.5 mx-0.5">${x}</span>`).join('') : ''}<div class="text-[12.5px] mt-0.5">Sans ces chiffres, la page « Étude de productivité » du PDF client n'est pas créée.</div></div></div>`;
+}
+function detState() {
+  Object.entries(DET_IDS).forEach(([k, id]) => { const el = $(id), u = $('u-' + k), t = $('st-' + k); if (!el || !u) return; const has = +el.value > 0;
+    if (!has) u.checked = false; u.disabled = !has; if (t) { t.textContent = !has ? 'À renseigner' : u.checked ? 'Oui' : 'Non (exclu)'; t.className = 'det-st ' + (!has ? 'text-slate-400' : u.checked ? 'text-emerald-700' : 'text-slate-500'); } });
+  const M = mxGet(), C = ptkCalc(M); if ($('det-ban')) $('det-ban').innerHTML = detBanHtml(C, M);
+  if ($('det-rec-res')) { const bx = +$('f-rec-box')?.value || 0, h = +$('f-rec-h')?.value || 0, tx = $('f-rec-tx')?.value === '' ? 60 : +$('f-rec-tx')?.value || 0; const mach = bx ? bx / PHARMALOAD_CAD : 0;
+    $('det-rec-res').innerHTML = h || bx ? `<b>Avec le chargeur Pharmaload</b> (${PHARMALOAD_CAD} boîtes/h)${bx ? ` : ${Math.round(bx).toLocaleString('fr-FR')} boîtes se chargent en <b>${hm(mach * 60)}</b> de machine, sans mobiliser une personne` : ''}${h ? ` · temps de personnel libéré estimé : <b>${hm(h * 60 * tx / 100)}/jour</b> (${tx} % de ${hm(h * 60)})` : ''}.` : 'Renseignez le temps de réception manuelle pour comparer avec le chargeur automatique.'; }
+}
+function detIn(k) { const el = $(DET_IDS[k]), u = $('u-' + k); if (el && u && +el.value > 0 && !u.checked && !u.dataset.t) u.checked = true; detState(); mxDist('auto'); detState(); }
+function detUse(k) { const u = $('u-' + k); if (u) u.dataset.t = '1'; mxDist('auto'); detState(); }
 function renderDetail() {
-  const M = mxGet(), C = ptkCalc(M), H = hyp();
+  const M = mxGet(), C = ptkCalc(M), H = hyp(), U = M.use || {}, rc = M.rec || {};
+  const tg = k => `<label class="inline-flex items-center gap-2 cursor-pointer" title="Utiliser cette donnée dans le calcul des gains"><input type="checkbox" id="u-${k}" class="sr-only peer" ${U[k] ? 'checked' : ''} onchange="detUse('${k}')"><span class="det-sw"></span><span id="st-${k}" class="det-st text-[12.5px] font-bold"></span></label>`;
+  const num = (id, v, ph, oninput, extra = '') => `<input type="number" min="0" ${extra} id="${id}" class="inp !w-32 !h-10 font-bold" value="${esc(v ?? '')}" placeholder="${ph}" oninput="${oninput}">`;
+  const row = (lab, sub, inp, unit, right, sert) => `<tr class="border-t border-slate-100 align-middle"><td class="py-2 pr-3"><div class="font-bold text-[13.5px]">${lab}</div>${sub ? `<div class="text-[11.5px] text-muted">${sub}</div>` : ''}</td><td class="py-2 pr-3 whitespace-nowrap">${inp}<span class="text-[12.5px] text-muted ml-1.5">${unit}</span></td><td class="py-2 pr-3 whitespace-nowrap">${right}</td><td class="py-2 text-[12px] text-slate-600">${sert}</td></tr>`;
+  const head = (a, b, c, d) => `<thead><tr class="text-[11px] uppercase tracking-wide text-muted text-left"><th class="py-1.5 pr-3 w-[27%]">${a}</th><th class="py-1.5 pr-3 w-[27%]">${b}</th><th class="py-1.5 pr-3 w-[17%]">${c}</th><th class="py-1.5">${d}</th></tr></thead>`;
+  const card = (t, s, body) => `<div class="rounded-xl border border-slate-200 overflow-hidden"><div class="bg-slate-50 px-3.5 py-2 flex justify-between gap-2 flex-wrap"><span class="text-[12px] font-extrabold uppercase tracking-wide text-orange-800">${t}</span><span class="text-[11.5px] text-muted">${s}</span></div><div class="px-3.5 py-1 overflow-x-auto">${body}</div></div>`;
+  const pasV = M.dist ? M.pas : (C.distAuto ? Math.round(C.distAuto / M.pasLong) : ''), distV = M.dist || (C.distAuto ? Math.round(C.distAuto) : '');
   $('f-det-box').innerHTML = `<div class="flex flex-col gap-3">
-    <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-x-2.5 gap-y-2 det-grid">
-      <div><label class="lbl" for="f-lgo-d">Logiciel (LGO)</label><select id="f-lgo-d" class="inp" onchange="lgoSync('d')">${$('f-lgo').innerHTML}</select><input id="f-lgo-autre-d" class="inp hidden mt-1" placeholder="Nom du LGO" aria-label="Autre LGO" oninput="lgoSync('d')"></div>
-      ${mxNum('f-postes', 'postes', 'Postes en vente', 'ex. 4')}${mxNum('f-dossiers', 'dossiers', 'Dossiers / jour', 'ex. 220')}
-      ${mxNum('f-boites', 'boites', 'Boîtes délivrées / jour', 'ex. 680')}${mxNum('f-stock', 'stock', 'Produits en stock', 'ex. 21000')}</div>
-    <div><div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-x-2.5 gap-y-2 det-grid" title="Distance = dossiers/jour × trajets par dossier × 2 (aller-retour) × distance. Un trajet porte ${H.bTrajet} boîtes (modifiable dans les hypothèses).">
-      <div><label class="lbl" for="f-dc">Comptoirs → backoffice (m)</label><input type="number" min="0" step="0.5" id="f-dc" class="inp" value="${esc(M.dc)}" oninput="mxDist('auto')" placeholder="ex. 9"></div>
-      <div><label class="lbl" for="f-pasl">Longueur d'un pas (m)</label><input type="number" min="0.3" max="1.2" step="0.05" id="f-pasl" class="inp" value="${M.pasLong}" oninput="mxDist('auto')"></div>
-      <div><label class="lbl" for="f-pas">Parcours (pas / jour)</label><input type="number" min="0" step="100" id="f-pas" class="inp" value="${esc(M.dist ? M.pas : (C.distAuto ? Math.round(C.distAuto / M.pasLong) : ''))}" oninput="mxDist('pas')" placeholder="auto"></div>
-      <div><label class="lbl" for="f-dist">Parcours (m / jour)</label><input type="number" min="0" step="50" id="f-dist" class="inp" value="${esc(M.dist || (C.distAuto ? Math.round(C.distAuto) : ''))}" oninput="mxDist('dist')" placeholder="auto"></div></div>
-    </div>
-<div class="flex items-center flex-wrap gap-2"><span class="lbl !mb-0 mr-1">Positions du robot</span><div class="flex flex-wrap gap-1.5">${POSITIONS.map(o => `<label class="cursor-pointer"><input type="checkbox" name="f-pos" value="${esc(o)}" class="peer sr-only" ${M.positions.includes(o) ? 'checked' : ''} onchange="mxSync()"><span class="inline-flex items-center gap-1.5 h-8 px-3 rounded-full border-2 text-[12.5px] font-semibold border-slate-300 text-slate-700 bg-white hover:border-slate-400 peer-checked:bg-orange-600 peer-checked:border-orange-700 peer-checked:text-white peer-checked:font-bold peer-checked:shadow-md peer-focus-visible:ring-2 ring-orange-300 pos-chip"><i class="fas fa-location-dot text-[11px]"></i>${esc(o)}<i class="fas fa-check text-[11px] pos-ck"></i></span></label>`).join('')}</div></div>
+    <div id="det-ban">${detBanHtml(C, M)}</div>
+    ${card('A · L\'activité de l\'officine', 'Ce que vous demandez au client', `<table class="w-full">${head('Donnée', 'Valeur', 'Utilisée dans le calcul des gains ?', 'Sert à')}<tbody>
+      ${row('Logiciel (LGO)', '', `<select id="f-lgo-d" class="inp !w-44 !h-10" onchange="lgoSync('d')">${$('f-lgo').innerHTML}</select><input id="f-lgo-autre-d" class="inp hidden mt-1 !w-44" placeholder="Nom du LGO" aria-label="Autre LGO" oninput="lgoSync('d')">`, '', '<span class="text-slate-400 text-[12.5px] font-semibold">Pas concerné</span>', 'Compatibilité avec le robot')}
+      ${row('Postes de vente', 'Nombre de comptoirs de délivrance', num('f-postes', M.postes, 'ex. 4', "detIn('postes')"), 'postes', tg('postes'), 'Gain par poste de vente')}
+      ${row('Dossiers par jour', 'Ordonnances traitées en moyenne', num('f-dossiers', M.dossiers, 'ex. 220', "detIn('dossiers')"), 'dossiers', tg('dossiers'), 'Temps de délivrance gagné')}
+      ${row('Boîtes délivrées par jour', 'Boîtes sorties du robot', num('f-boites', M.boites, 'ex. 680', "detIn('boites')"), 'boîtes', tg('boites'), 'Cadence et trajets')}
+      ${row('Produits en stock', 'Boîtes à stocker', num('f-stock', M.stock, 'ex. 21000', "detIn('stock')"), 'boîtes', tg('stock'), 'Capacité du robot (page Solution)')}</tbody></table>`)}
+    ${card('B · Les déplacements', `Parcours = dossiers × trajets × 2 × distance (un trajet porte ${H.bTrajet} boîtes)`, `<table class="w-full">${head('Donnée', 'Valeur', 'Origine', 'Sert à')}<tbody>
+      ${row('Distance comptoirs → back-office', '', `<input type="number" min="0" step="0.5" id="f-dc" class="inp !w-32 !h-10 font-bold" value="${esc(M.dc)}" oninput="mxDist('auto');detState()" placeholder="ex. 9">`, 'mètres', '<span class="text-[12.5px] text-muted">Saisie par vous</span>', 'Pas et kilomètres évités')}
+      ${row('Longueur d\'un pas', '', `<input type="number" min="0.3" max="1.2" step="0.05" id="f-pasl" class="inp !w-32 !h-10 font-bold" value="${M.pasLong}" oninput="mxDist('auto')">`, 'mètre', '<span class="text-[12.5px] text-muted">0,75 par défaut</span>', 'Conversion mètres → pas')}
+      ${row('Parcours par jour', 'Calculé : vous pouvez le corriger', `<input type="number" min="0" step="100" id="f-pas" class="inp !w-28 !h-10 bg-slate-50" value="${esc(pasV)}" oninput="mxDist('pas')" placeholder="auto"><span class="text-[12.5px] text-muted mx-1.5">pas</span><input type="number" min="0" step="50" id="f-dist" class="inp !w-28 !h-10 bg-slate-50" value="${esc(distV)}" oninput="mxDist('dist')" placeholder="auto">`, 'm', '<span class="text-[12.5px] text-muted"><i class="fas fa-lock mr-1"></i>Automatique</span>', '« Kilomètres évités par an »')}</tbody></table>`)}
+    ${card('C · Réception des commandes (manuelle)', 'Mise en face du chargeur automatique', `<table class="w-full">${head('Donnée', 'Valeur', 'Utilisée dans le calcul des gains ?', 'Sert à')}<tbody>
+      ${row('Livraisons par jour', 'Grossistes et répartiteurs', num('f-rec-liv', rc.liv, 'ex. 3', 'mxDist(\'auto\')'), 'livraisons', '<span class="text-slate-400 text-[12.5px] font-semibold">Information</span>', 'Contexte du besoin « Réception »')}
+      ${row('Boîtes reçues par jour', 'À contrôler et ranger à la main', num('f-rec-box', rc.box, 'ex. 450', "mxDist('auto');detState()"), 'boîtes', '<span class="text-slate-400 text-[12.5px] font-semibold">Information</span>', `Temps de chargement (${PHARMALOAD_CAD} boîtes/h)`)}
+      ${row('Temps de réception manuelle', 'Contrôle, rangement, saisie', num('f-rec-h', rc.h, 'ex. 1,5', "detIn('rec')", 'step="0.25"'), 'h / jour', tg('rec'), 'Temps back-office actuel')}
+      ${row('Gain avec le chargeur', 'Estimation à ajuster avec le client', num('f-rec-tx', rc.taux, '60', "mxDist('auto');detState()", 'max="100" step="5"'), '%', '<span class="text-[12.5px] text-muted">Estimé : 60 % par défaut</span>', 'Temps de personnel libéré')}</tbody></table><div id="det-rec-res" class="rounded-lg bg-orange-50/70 border border-orange-200 px-3 py-2 my-2 text-[12.5px] text-orange-950"></div>`)}
+    ${card('D · Position du robot', 'Un ou plusieurs choix', `<div class="flex flex-wrap gap-1.5 py-2.5">${POSITIONS.map(o => `<label class="cursor-pointer"><input type="checkbox" name="f-pos" value="${esc(o)}" class="peer sr-only" ${M.positions.includes(o) ? 'checked' : ''} onchange="mxSync()"><span class="inline-flex items-center gap-1.5 h-8 px-3 rounded-full border-2 text-[12.5px] font-semibold border-slate-300 text-slate-700 bg-white hover:border-slate-400 peer-checked:bg-orange-600 peer-checked:border-orange-700 peer-checked:text-white peer-checked:font-bold peer-checked:shadow-md peer-focus-visible:ring-2 ring-orange-300 pos-chip"><i class="fas fa-location-dot text-[11px]"></i>${esc(o)}<i class="fas fa-check text-[11px] pos-ck"></i></span></label>`).join('')}</div>`)}
     <div id="f-det-res" class="rounded-xl bg-orange-50/60 border border-orange-200 p-3">${mxResHtml(C, M)}</div></div>`;
-  lgoSync('c'); secStat();
+  lgoSync('c'); detState(); secStat();
 }
 function lgoSync(from) {
   const a = from === 'c' ? ['f-lgo', 'f-lgo-autre'] : ['f-lgo-d', 'f-lgo-autre-d'], b = from === 'c' ? ['f-lgo-d', 'f-lgo-autre-d'] : ['f-lgo', 'f-lgo-autre'];
@@ -3909,7 +3941,7 @@ function mxDist(from) {
 function mxBo(el) { mxRead(); const M = mxGet(); if (el && el.type === 'range') $('f-boh').value = el.value; else if ($('f-bos')) $('f-bos').value = $('f-boh').value; mxRead(); mxRes(); }
 function mxRes() {
   const M = mxGet(), C = ptkCalc(M), h = mxResHtml(C, M);
-  if ($('f-det-res')) $('f-det-res').innerHTML = h;
+  if ($('f-det-res')) $('f-det-res').innerHTML = h; if ($('det-ban')) detState();
   if ($('f-mx-res')) $('f-mx-res').innerHTML = h; else if ($('f-models-box') && !ui.modUnlock && ui.editId !== undefined) renderModels(collectRaw().robots);
   secStat();
 }
@@ -4420,7 +4452,7 @@ async function genArgNew(id, merge, prev, sec) {
   }
   // ================= PAGE 2 : solution & productivité
   if (SX('sol')) {
-  K.need(80); sect('1. Solution préconisée pour votre officine', 'robot' in FAI ? 'robot' : 'star');
+  brk(); K.need(80); sect('1. Solution préconisée pour votre officine', 'robot' in FAI ? 'robot' : 'star');
   robots.slice(0, 2).forEach((m, ri) => {
     K.need(58);
     const k = robotKey(m), top = K.y + 1, imw = 62, tx = M + imw + 6, tw = CW - imw - 6;
@@ -4494,7 +4526,7 @@ async function genArgNew(id, merge, prev, sec) {
   }
   // ================= PAGE 3 : valeur & pérennité
   if (AO.plan === true || (AO.plan === undefined && IMG.length > 0)) K.y = 285;
-  if (SX('pil')) {
+  const drawPil = () => {
   K.need(100); K.y += 4; sect('3. Les 3 piliers stratégiques de votre investissement', 'award'); K.y += 1;
   const dimW = (T.dims || '').split(/\s*[x×]\s*/i)[0];
   const pil = [
@@ -4523,15 +4555,17 @@ async function genArgNew(id, merge, prev, sec) {
     K.y += 28; }
   if (String(A.extra || '').trim()) { const el = String(A.extra).split(/\n+/).map(t => t.trim()).filter(Boolean); K.font(8.4, 'normal', PK.ink); const XL = el.map(t => doc.splitTextToSize(pdfTxt(/^[A-ZÉa-z]/.test(t) ? '• ' + t : t), CW - 16)), xh = 15 + XL.reduce((a, l) => a + l.length, 0) * 4.1 + XL.length * .8; K.need(xh + 4);
     K.card(M, K.y, CW, xh, PK.cream, 'left'); bord(M, K.y, CW, xh, 2.6); K.font(10.4, 'bold', PK.ink); K.t('Éléments complémentaires', M + 8, K.y + 8.2); K.font(8.4, 'normal', PK.sub); let xy = K.y + 15; XL.forEach(l => { doc.text(l, M + 8, xy, {lineHeightFactor: 1.35}); xy += l.length * 4.1 + .8; }); K.y += xh + 4; }
-  }
+  };
+  if (SX('pil')) { if (merge && c.offre?.lignes?.length) K.deferPil = () => { if (K.y > 46) { K.foot(); doc.addPage(); K.head(); } drawPil(); }; else drawPil(); }
   const SOC = (!opt('social') || !on('social')) ? [] : [['Site Pharmathek', settings.social?.site, 'globe', [200, 90, 10], [232, 119, 34]], ['LinkedIn', settings.social?.linkedin, 'linkedin-in', [10, 102, 194], [10, 80, 160]], ['Facebook', settings.social?.facebook, 'facebook-f', [24, 90, 200], [24, 119, 242]], ['Instagram', settings.social?.instagram, 'instagram', [190, 40, 120], [235, 110, 40]], ['YouTube', settings.social?.youtube, 'youtube', [200, 0, 0], [140, 0, 0]]].filter(x => x[1]);
-  if (SOC.length) {
+  const drawSoc = () => { if (!SOC.length) return;
     K.need(26); const sy = K.y, sh = 25.5; rr(M, sy, CW, sh, 3, WH); bord(M, sy, CW, sh, 3); doc.setFillColor(...PK.or); doc.rect(M, sy + 3, 1.3, sh - 6, 'F');
     badge('qrcode', M + 9, sy + 8.2, 4.2); K.font(11, 'bold', PK.ink); K.t('Restons connectés', M + 16, sy + 9); K.font(7.2, 'normal', PK.sub); doc.text(doc.splitTextToSize(pdfTxt("Scannez avec l'appareil photo de votre smartphone : actualités, retours d'expérience, vidéos des robots en action."), 46), M + 5, sy + 16, {lineHeightFactor: 1.3});
     const n = SOC.length, x1 = M + 56, cw = (CW - 58) / n, qs = 15.5;
     SOC.forEach(([l, u, icn, col, colF], i) => { const x0 = x1 + i * cw; qrDraw(doc, u, x0 + (cw - qs) / 2, sy + 2.8, qs, col, colF, null); K.font(7.4, 'bold', PK.ink); doc.text(pdfTxt(l), x0 + cw / 2, sy + sh - 5, {align: 'center'}); K.font(5.4, 'normal', PK.mut); doc.text(pdfTxt(String(u).replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')).slice(0, 34), x0 + cw / 2, sy + sh - 1.8, {align: 'center'}); doc.link(x0, sy, cw, sh, {url: u}); });
     K.y = sy + sh;
-  }
+  };
+  if (merge && c.offre?.lignes?.length) K.deferSoc = drawSoc; else drawSoc();
   K.foot();
   if (merge && c.offre?.lignes?.length) { genOffre(id, K); K.save(`Synthese_projet_de_robotisation_${slug(c.pharma)}_${isoDay(TODAY)}.pdf`); }
   else K.save(`Synthese_${slug(c.pharma)}_${isoDay(TODAY)}.pdf`);
@@ -5050,7 +5084,7 @@ function collectRaw() {
   return {pharma: g('f-pharma'), cip: g('f-cip'), siret: siretOf(g('f-siret')), groupement: g('f-grp'), genre: $('f-genre').value, nom: g('f-nom'), prenom: g('f-prenom'), rue: g('f-rue'), cp: g('f-cp'), ville: g('f-ville'),
     telFixe: g('f-tel'), telPort: g('f-port'), email: g('f-email'), devisNom: g('f-devnom'), assoc: assocRead(), cession: cesRead(), nom2: '', nom2On: false, devisMail: g('f-devmail'), devisTel: g('f-devtel'), situation: $('f-situ').value, situationNote: g('f-situ-note'), lgo, lgoAutre: lgo === 'Autre' ? g('f-lgo-autre') : '',
     indicateur: document.querySelector('input[name=f-ind]:checked')?.value || '', robots: [...document.querySelectorAll('input[name=f-model]:checked')].map(x => x.value),
-    options: [...mxGet().options], besoinsSol: [...(ui.mxSol || [])], positions: [...mxGet().positions], distCpt: mxGet().dc, pasJ: mxGet().pas, distJ: mxGet().dist, pasLong: mxGet().pasLong, ptk: (({postes, dossiers, boites, stock, use, bo, gainPct, args, comment}) => ({postes, dossiers, boites, stock, use: {...use}, bo: {...bo}, gainPct: gainPct || '', args: {...(args || {})}, comment: {text: '', on: true, ...(comment || {})}}))(mxGet()),
+    options: [...mxGet().options], besoinsSol: [...(ui.mxSol || [])], positions: [...mxGet().positions], distCpt: mxGet().dc, pasJ: mxGet().pas, distJ: mxGet().dist, pasLong: mxGet().pasLong, ptk: (({postes, dossiers, boites, stock, use, bo, rec, gainPct, args, comment}) => ({postes, dossiers, boites, stock, use: {...use}, bo: {...bo}, rec: {...(rec || {})}, gainPct: gainPct || '', args: {...(args || {})}, comment: {text: '', on: true, ...(comment || {})}}))(mxGet()),
     montant: +$('f-montant').value || 0, dateDecision: $('f-decision').value, opportunite: $('f-opp').value, echeance: $('f-ech').value,
     typeProjet: document.querySelector('input[name=f-type]:checked')?.value || '',
     besoins: (ui.editId && byId(ui.editId)?.besoins) || [],
@@ -6079,7 +6113,7 @@ function genOffre(id, K0) {
     K.need(22); K.y += 3; rr(M, K.y, CW, 16, 3.2, PK.or); lab('Votre investissement', M + 7, K.y + 6.2, WH, 5.8, .4); K.font(10.5, 'bold', WH); K.t('TOTAL NET HT', M + 7, K.y + 11.6); K.font(19, 'bold', WH); K.t(eur(k.net), W - M - 7, K.y + 11.2, {align: 'right'}); K.y += 19; }
   // ===== Paiement
   if (SX('pay')) {
-  sect('Conditions de paiement', 'credit-card', 40);
+  sect('Conditions de paiement', 'credit-card', 62);
   { const pay = [['30 %', 'Acompte', 'À la signature'], ['50 %', 'Production', 'Au début de la production'], ['20 %', 'Mise en service', 'À la mise en service']], g = 4, cw = (CW - g * 2) / 3, h = 21;
     pay.forEach((x, i) => { const xx = M + i * (cw + g); card(xx, K.y, cw, h, 2.8); doc.setFillColor(...PK.or); doc.rect(xx + 3, K.y, cw - 6, .9, 'F'); K.font(16, 'bold', PK.ord); K.t(x[0], xx + 5, K.y + 9.4); lab(x[1], xx + 5, K.y + 14, PK.ink, 5.8, .3); K.font(7.8, 'normal', PK.sub); K.t(x[2], xx + 5, K.y + 18); });
     K.y += h + 3;
@@ -6123,6 +6157,9 @@ function genOffre(id, K0) {
     const ecoOn = ptkOf(c).args?.eco !== false; tr.forEach((x, i) => { const col = i % 3, eco = ecoOn && /^(Consommation|Absorption)/.test(x[0]); if (col === 0) K.need(h + 2); const xx = M + col * (cw + g), yy = K.y; card(xx, yy, cw, h, 2.6, eco ? [150, 205, 175] : BD); doc.setFillColor(...(eco ? [28, 124, 84] : PK.or)); doc.rect(xx + 3, yy, cw - 6, .9, 'F'); badge(x[2], xx + 6.5, yy + 6.6, 3.1, eco ? GRN : PK.or); if (eco) { K.font(5.2, 'bold', WH); const ew = doc.getTextWidth('ECO') + 5; rr(xx + cw - ew - 2, yy + 2, ew, 3.8, 1.9, GRN); K.t('ECO', xx + cw - ew / 2 - 2, yy + 4.7, {align: 'center'}); } lab(x[0], xx + 11.5, yy + 5.4, PK.ord, 4.9, .15); K.font(8.4, 'bold', PK.ink); doc.text(doc.splitTextToSize(pdfTxt(x[1]), cw - 14).slice(0, 1), xx + 11.5, yy + 9.8); if (col === 2 || i === tr.length - 1) K.y += h + 2; }); }
   }
   K.need(5); K.y += 3.2; K.font(7, 'italic', PK.mut); doc.text(doc.splitTextToSize(pdfTxt(`Prix hors taxes, soumis à la TVA en vigueur. Total net HT après remise : ${eur(k.net)}. Devis valable ${o.validite || 30} jours à compter du ${o.date || '—'}.`), CW), M, K.y);
+  if (K.deferSoc && K.y + 30 <= 280) { const f = K.deferSoc; K.deferSoc = null; K.y += 3; f(); }
+  if (K.deferPil) { const f = K.deferPil; K.deferPil = null; f(); }
+  if (K.deferSoc) { const f = K.deferSoc; K.deferSoc = null; K.y += 3; f(); }
   K.foot();
   if (K0) return;
   K.save(`Synthese_projet_de_robotisation_${slug(c.pharma)}_${slug(o.ref || isoDay(TODAY))}.pdf`);
