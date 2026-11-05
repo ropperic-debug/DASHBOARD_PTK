@@ -1212,6 +1212,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.4.6</b> : correctif « Replanifier » (suite) : l'ancienne action (par exemple aujourd'hui 10 h) restait dans la liste des actions de la semaine et dans les statistiques d'activité après avoir été replanifiée. Elle est maintenant remplacée, et les anciennes traces sont ignorées à l'affichage.</li>
 <li><b>V4.4.5</b> : correctif « Replanifier » : pour un dossier en étape R3 (Signature), la nouvelle date de la prochaine action n'était pas enregistrée (erreur silencieuse) et l'action restait à faire le jour même. C'est corrigé ; l'enregistrement et l'affichage de l'accueil sont vérifiés.</li>
 <li><b>V4.4.4</b> : sur la fiche, chaque étape de la barre indique ce qu'il reste à renseigner, et un bloc « Reste à faire » liste les points manquants ; un clic sur un point mène au champ. Le bouton « Nouveau client » devient « Nouvelle fiche ».</li>
 <li><b>V4.4.3</b> : les titulaires trouvés dans l'annuaire sont ajoutés automatiquement dès que vous cliquez sur la pharmacie (le 1<sup>er</sup> comme titulaire, les autres comme co-titulaires ; la croix de « Titulaires et associés » permet d'en retirer un). L'enregistrement automatique de la fiche attend désormais la fin de la recherche, ce qui supprimait parfois la liste au bout de quelques secondes.</li>
@@ -1871,7 +1872,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.4.5';
+const APP_VERSION = '4.4.6';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2635,7 +2636,7 @@ function weekBounds() { const mon = new Date(TODAY); mon.setDate(mon.getDate() -
 function weekItems() {
   const [mon, sat] = weekBounds(), seen = new Set(), out = [];
   const add = (c, dt, type, done) => { const k = c.id + dt; if (seen.has(k)) return; seen.add(k); const d = parseD(dt); if (d >= mon && d < sat) out.push({c, dt, type: type || 'relance', done}); };
-  clients.forEach(c => { if (c.step !== 'Perdu' && c.nextDate) add(c, c.nextDate, c.nextType, false); if (c.lastDone) add(c, c.lastDone.dt, c.lastDone.type, true); (c.acts || []).forEach(a => add(c, a.dt, a.type, parseD(a.dt) < new Date())); });
+  clients.forEach(c => { if (c.step !== 'Perdu' && c.nextDate) add(c, c.nextDate, c.nextType, false); if (c.lastDone) add(c, c.lastDone.dt, c.lastDone.type, true); (c.acts || []).forEach(a => { if (a.done === false && a.dt !== c.nextDate) return; add(c, a.dt, a.type, parseD(a.dt) < new Date()); }); });
   rapItems().forEach(({c, r}) => { const d = parseD(r.dt); if (d >= mon && d < sat) out.push({c, dt: r.dt, type: RAP_T[r.type].a, done: !!r.done, rap: r.id, note: r.note}); });
   return out.sort((a, b) => a.dt.localeCompare(b.dt));
 }
@@ -3490,7 +3491,7 @@ function saRange() {
 }
 function saActs(s, e) {
   const now = new Date(), out = [];
-  clients.forEach(c => (c.acts || []).forEach(a => { const d = parseD(a.dt); if (d >= s && d < e && d <= now) out.push({c, ...a, d}); }));
+  clients.forEach(c => (c.acts || []).forEach(a => { if (a.done === false && a.dt !== c.nextDate) return; const d = parseD(a.dt); if (d >= s && d < e && d <= now) out.push({c, ...a, d}); }));
   /* V4.2 : les actions planifiées/traitées comme « rappels » (relance, rappel, appel, visite, visio, e-mail) comptent aussi */
   const RA = {relance: 'suivi', rappel: 'suivi', appel: 'relance', visite: 'visite', visio: 'teams', mail: 'mail'};
   clients.forEach(c => (c.rappels || []).forEach(r => { const d = parseD(r.done && r.doneAt ? r.doneAt : r.dt); if (d && d >= s && d < e && d <= now && RA[r.type]) out.push({c, dt: r.done && r.doneAt ? r.doneAt : r.dt, type: RA[r.type], motif: r.note || '', done: !!r.done, d}); }));
@@ -3732,7 +3733,7 @@ function saveActionGo() {
   const doneNow = parseD(dt) <= new Date(Date.now() + 6e4);
   log(c, `${ACTIONS[type].label} ${doneNow ? 'réalisée' : 'planifiée'}${a ? ` (add-on : ${a.quoi})` : ''} — ${fmtDT(dt)}`, `${motif}\n${msg}`);
   if (a) a.lastActionDate = isoDay(new Date());
-  if ($('act-next').checked) { c.nextDate = dt; c.nextType = type; }
+  if ($('act-next').checked) { const old = c.nextDate; if (old && old !== dt) c.acts = (c.acts || []).filter(a => !(a.dt === old && !a.done)); c.nextDate = dt; c.nextType = type; }
   addAct(c, dt, type, motif); if (doneNow) { c.acts[c.acts.length - 1].done = true; c.lastDone = {dt, type}; }
   if (advance && $('act-adv-cb').checked && c.step !== advance) { c.step = advance; log(c, `Étape franchie : ${STEPS[advance].label}`); }
   save();
@@ -5323,6 +5324,7 @@ function planNext() {
   planNext2(c, dt);
 }
 function planNext2(c, dt) {
+  const old = c.nextDate; if (old && old !== dt) c.acts = (c.acts || []).filter(a => !(a.dt === old && !a.done));   /* V4.4.6 : l'ancienne action replanifiée ne reste plus dans l'historique des actions */
   c.nextDate = dt; c.nextType = ui.nextType; addAct(c, dt, ui.nextType);
   log(c, `${ACTIONS[ui.nextType].label} planifiée — ${fmtDT(dt)}`); save(); renderHistory(c); renderStage(); renderNextSum(c);
   if (opt('agenda')) { toast('Action planifiée'); askAgenda(c, dt, ui.nextType, '', `${ACTIONS[ui.nextType].label} planifiée`); }
