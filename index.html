@@ -1206,6 +1206,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.4.3</b> : les titulaires trouvés dans l'annuaire sont ajoutés automatiquement dès que vous cliquez sur la pharmacie (le 1<sup>er</sup> comme titulaire, les autres comme co-titulaires ; la croix de « Titulaires et associés » permet d'en retirer un). L'enregistrement automatique de la fiche attend désormais la fin de la recherche, ce qui supprimait parfois la liste au bout de quelques secondes.</li>
 <li><b>V4.4.2</b> : correctif de la fiche client : la liste des titulaires trouvés ne disparaît plus quelques secondes après le clic sur la pharmacie (une recherche plus ancienne, arrivée en retard, la remplaçait) et ne se referme plus quand on retire une personne avec la croix.</li>
 <li><b>V4.4.1</b> : (1) <b>Titulaires de l'annuaire</b> : reconnaissance élargie (section A des pharmaciens, fonction, genre d'activité, jamais les adjoints), rattachement à l'officine par FINESS, SIRET ou nom + ville, et <b>compte rendu à la fin de l'import</b> (lignes lues, pharmaciens, titulaires reconnus et rattachés) ; s'il n'y en a aucun, les valeurs rencontrées sont affichées pour m'aider à ajuster. (2) <b>Recherche en ligne automatique</b> : si la base n'a pas de titulaire, l'application interroge l'annuaire des entreprises avec le SIRET et remonte jusqu'aux personnes quand l'officine est détenue par une société (par exemple une société de participations), avec leur fonction affichée. (3) <b>« Utiliser ces personnes »</b> n'écrase plus un titulaire déjà saisi : les autres personnes sont ajoutées à « Titulaires et associés ». (4) <b>Nom de fichier</b> reconnu avec des tirets, des tirets bas ou des espaces ; fichier non reconnu : choix « pharmacies » ou « titulaires ».</li>
 <li><b>V4.4</b> : (1) <b>Annuaire plus simple</b> : dans la fiche, bouton <b>« Compléter depuis l'annuaire »</b> et bandeau d'état de la base (non installée, à jour, de plus de 3 mois). La fenêtre propose un essai automatique puis, si data.gouv.fr le refuse, le <b>glisser-déposer</b> des fichiers (pharmacies et titulaires, le .zip est lu directement, reconnu automatiquement). Plus besoin de passer par les Paramètres. (2) <b>Plusieurs titulaires</b> : l'annuaire propose toutes les personnes trouvées, avec un rôle au choix (Titulaire, Co-titulaire, Associé, Gérant) et une croix pour retirer ; la première devient le titulaire de la fiche, les autres vont dans « Titulaires et associés ». Le nombre de titulaires trouvés dépend de l'annuaire (parfois un seul, parfois aucun). (3) <b>Cession prévue</b> : interrupteur dans « Titulaires et associés » (futur titulaire, mois de cession, commentaire), pastille violette dans la fiche et le portefeuille, chiffre « Cessions prévues » à l'accueil, option de faire figurer le futur titulaire sur la synthèse et le devis, rappel automatique 1 mois avant, bouton « le futur titulaire prend la place » ; la pastille passe en orange quand la date est dépassée. (4) <b>Contrôle de doublon</b> à la création : alerte rouge (même SIRET), orange (même téléphone ou adresse) ou jaune (nom proche dans la même ville) sur toutes vos fiches, y compris signées et perdues, avec « Ouvrir la fiche existante » et « Créer quand même » ; rappel à l'enregistrement ; rien n'est bloqué. Limite : seules les fiches de cet appareil sont contrôlées. (5) <b>Bas de fiche</b> : « Abandonner et supprimer la fiche » (création non enregistrée) ou « Supprimer définitivement la fiche », avec confirmation.</li>
@@ -1862,7 +1863,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.4.2';
+const APP_VERSION = '4.4.3';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -4766,6 +4767,8 @@ function v4Auto() {
   if (!$('f-pharma').value.trim()) return;
   _v4a = setTimeout(() => {
     if (ui.editId || $('view-client').classList.contains('hidden') || !$('f-pharma').value.trim()) return;
+    /* V4.4.3 : pas d'enregistrement automatique tant que le choix des titulaires est en cours (panneau ouvert / recherche en ligne) */
+    const sr = $('s-res'); if ((sr && !sr.classList.contains('hidden') && sr.innerHTML.trim()) || $('tit-wait') || ui.coordEdit && document.activeElement && document.activeElement.id === 's-q') { v4Auto(); return; }
     const c = saveClient(false, true);
     if (c) { renderChrome(c); toast('Fiche enregistrée automatiquement'); }
   }, 3000);
@@ -5507,7 +5510,7 @@ function titAuto(p, siret) {
   const box = $('s-res'); box.insertAdjacentHTML('beforeend', '<div id="tit-wait" class="p-3 text-xs text-muted"><i class="fas fa-spinner fa-spin mr-1"></i>Recherche du titulaire dans l\'annuaire des entreprises…</div>'); box.classList.remove('hidden');
   titOnline(siret).then(L => {
     if (ui.curPick !== p) return; $('tit-wait')?.remove();
-    ui.titCand = L; if (L.length) { titRefresh(); $('s-res').classList.remove('hidden'); } else { titRefresh(); toast('Aucun titulaire trouvé en ligne : saisissez-le ou utilisez « + Ajouter une personne »'); }
+    ui.titCand = L; if (L.length) { titRefresh(); titApply(); } else { titRefresh(); toast('Aucun titulaire trouvé en ligne : saisissez-le ou utilisez « + Ajouter une personne »'); }
   });
 }
 /* Base des pharmacies : bouton dans la fiche + fenêtre */
@@ -5638,7 +5641,7 @@ function pickPharma(i) {
     renderHeaderLive();
     ui.titCand = (x.tits && x.tits.length ? x.tits : x.tit ? [x.tit] : []).map(t => ({civ: t.civ, prenom: t.prenom, nom: t.nom, src: 'Annuaire Santé'})); const tit = titHtml();
     $('s-res').innerHTML = keptHTML() + tit; if (!tit && !ui.kept.length) $('s-res').classList.add('hidden');
-    renderStage(); toast(ui.kept.length ? 'Champs vides complétés, le reste est conservé' : `Coordonnées pré-remplies${x.tel ? ' (téléphone et SIRET compris)' : ''} — complétez le CIP et l'e-mail`); titAuto(p, x.siret); return;
+    renderStage(); toast(ui.kept.length ? 'Champs vides complétés, le reste est conservé' : `Coordonnées pré-remplies${x.tel ? ' (téléphone et SIRET compris)' : ''} — complétez le CIP et l'e-mail`); if ((ui.titCand || []).length) titApply(); titAuto(p, x.siret); return;
   }
   const s = p.siege || {};
   ui.kept = fillKeep([['f-pharma', titleCase(s.liste_enseignes?.[0] || p.nom_complet), 'Nom'], ['f-rue', titleCase([s.numero_voie, s.indice_repetition, s.type_voie, s.libelle_voie].filter(Boolean).join(' ')), 'Adresse'], ['f-cp', s.code_postal || '', 'Code postal'], ['f-ville', titleCase(s.libelle_commune || ''), 'Ville'], ['f-siret', s.siret || '', 'SIRET', fmtSiret]]);
@@ -5646,7 +5649,7 @@ function pickPharma(i) {
   const dir = (p.dirigeants || []).filter(d => d.type_dirigeant === 'personne physique');
   ui.titCand = dir.map(d => ({civ: d.genre === '2' || d.genre === 'F' ? 'Mme' : 'M.', prenom: titleCase((d.prenoms || '').split(' ')[0]), nom: titleCase(d.nom || ''), src: 'Annuaire des entreprises'})); const dh = titHtml();
   $('s-res').innerHTML = keptHTML() + dh; if (!dir.length && !ui.kept.length) $('s-res').classList.add('hidden');
-  renderStage(); toast(ui.kept.length ? 'Champs vides complétés, le reste est conservé' : "Coordonnées pré-remplies (SIRET compris) — complétez le CIP et l'e-mail"); titAuto(p, s.siret);
+  renderStage(); toast(ui.kept.length ? 'Champs vides complétés, le reste est conservé' : "Coordonnées pré-remplies (SIRET compris) — complétez le CIP et l'e-mail"); if ((ui.titCand || []).length) titApply(); titAuto(p, s.siret);
 }
 function pickTit(i) { const t = ui.searchRes[i].loc.tit; $('f-nom').value = t.nom; $('f-prenom').value = t.prenom; $('f-genre').value = t.civ === 'Mme' ? 'Mme' : 'M.'; $('s-res').classList.add('hidden'); renderStage(); }
 function pickDir(i, k) {
