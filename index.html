@@ -958,6 +958,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
     <p class="text-xs text-muted -mt-2"><span id="act-dt-badge" class="hidden pill bg-blue-50 text-blue-900 mr-1"><i class="fas fa-wand-magic-sparkles"></i>Date détectée</span>Écrivez ou dictez « mardi à 14h30 », « le 12 novembre à 10h », « dans 15 jours »… la date se remplit seule.</p>
     <div><div class="flex items-center gap-2 flex-wrap mb-1"><label class="lbl !mb-0" for="act-msg">Message / synthèse *</label><span class="text-[11.5px] text-muted">Modèle :</span><div id="act-props" class="flex gap-1.5"></div></div><div class="mic-wrap"><textarea id="act-msg" rows="3" class="ta" oninput="actLink();actDetect(this.value)"></textarea><button type="button" class="mic" onclick="dictate('act-msg',this)" aria-label="Dicter le message"><i class="fas fa-microphone"></i></button></div></div>
     <div class="flex flex-col gap-1.5 text-[13px]">
+      <label id="act-rep-l" class="hidden items-start gap-2 rounded-xl bg-amber-50 border border-amber-200 px-3 py-2 text-[13px]"><input type="checkbox" id="act-rep" checked class="accent-orange-700 w-4 h-4 mt-0.5"><span id="act-rep-t"></span></label>
       <label class="flex items-center gap-2"><input type="checkbox" id="act-next" checked class="accent-orange-700 w-4 h-4">Définir comme prochaine action du dossier</label>
       <label class="flex items-center gap-2"><input type="checkbox" id="act-cal" class="accent-orange-700 w-4 h-4" onchange="ui.act.calTouched=true"><span id="act-cal-txt">Ajouter à mon agenda à l'enregistrement</span></label>
     </div>
@@ -1222,6 +1223,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.4.8</b> : (1) <b>Replanifier</b> fonctionne aussi pour les rappels (relances, appels, visites…) : même petite fenêtre avec <b>Valider la nouvelle date</b>, depuis l'accueil comme depuis la fiche. (2) Quand vous planifiez une <b>nouvelle</b> action sur un dossier qui a une action <b>en retard</b>, la fenêtre propose de la remplacer (case cochée par défaut) : elle quitte « Ma journée ». (3) Libellé corrigé dans vos fiches : « Relance après envoi du devis » devient « Relance après présentation du devis ».</li>
 <li><b>V4.4.7</b> : <b>Replanifier</b> (accueil ou fiche) ouvre une petite fenêtre : nouvelle date et heure (boutons Demain, Dans 1 semaine, Dans 2 semaines), puis bouton <b>Valider la nouvelle date</b>. La date est enregistrée tout de suite et l'action quitte « Ma journée » ; l'ajout à l'agenda reste facultatif. Plus besoin de passer par la fiche ni de valider ailleurs.</li>
 <li><b>V4.4.6</b> : correctif « Replanifier » (suite) : l'ancienne action (par exemple aujourd'hui 10 h) restait dans la liste des actions de la semaine et dans les statistiques d'activité après avoir été replanifiée. Elle est maintenant remplacée, et les anciennes traces sont ignorées à l'affichage.</li>
 <li><b>V4.4.5</b> : correctif « Replanifier » : pour un dossier en étape R3 (Signature), la nouvelle date de la prochaine action n'était pas enregistrée (erreur silencieuse) et l'action restait à faire le jour même. C'est corrigé ; l'enregistrement et l'affichage de l'accueil sont vérifiés.</li>
@@ -1883,7 +1885,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.4.7';
+const APP_VERSION = '4.4.8';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2254,6 +2256,11 @@ const SCHEMA = 1, MIGRATIONS = {/* 2: c => { … } : une fonction par évolution
   }
   if (!store.load('ptk_v14_mig', false)) {   // V14 : rééquilibrage des fiches de démo (jamais vos vraies fiches)
     demoRebalance(clients); store.save('ptk_v14_mig', true);
+  }
+  if (!store.load('ptk_v48_txt', false)) {   // V4.4.8 : « après envoi du devis » devient « après présentation du devis » (texte seulement ; copie de secours automatique au changement de version)
+    const re = /([Rr])elance après envoi du devis/g; let n = 0;
+    clients.forEach((c, i) => { const s = JSON.stringify(c); if (re.test(s)) { re.lastIndex = 0; try { clients[i] = JSON.parse(s.replace(re, (m, a) => { n++; return a + 'elance après présentation du devis'; })); } catch { } } re.lastIndex = 0; });
+    if (n) { try { store.save(K_DATA, clients); } catch { } } store.save('ptk_v48_txt', true);
   }
   if (!store.load('ptk_v24_mig', false)) {   // V2.4 : GENESI n'a plus que 2 options (les autres sont retirées des fiches GENESI ; copie de secours automatique au changement de version)
     const gOnly = r => (r || []).length > 0 && r.every(m => /GENESI/i.test(m)), fx = o => { if (gOnly(o.robots) && o.options) o.options = o.options.filter(x => OPTIONS_G.includes(x)); };
@@ -3091,7 +3098,7 @@ function renderRap(c) {
   } else if (R.length) {
     const r = R[0], T = RAP_T[r.type] || RAP_T.rappel; nxt = r.dt; oth = R.slice(1); tkTop = RAP_TK[r.type] || 'rappel';
     top = {fa: T.fa, t: `${T.l} · ${fmtDT(r.dt)}${r.try ? ' · ' + ordT(r.try + 1) + ' tentative' : ''}`, s: `${esc(c.pharma)}${r.note ? ' · ' + esc(r.note) : ''}`};
-    done = `doneRap(${c.id},${r.id})`; replan = `openRap('${r.type}',${r.id})`; cancel = `cancelRap(${c.id},${r.id})`; opn = `traiter('rap',${c.id},${r.id})`;
+    done = `doneRap(${c.id},${r.id})`; replan = `openReplan(${c.id},${r.id})`; cancel = `cancelRap(${c.id},${r.id})`; opn = `traiter('rap',${c.id},${r.id})`;
   }
   const dl = nxt ? Math.round((parseD(nxt) - now0) / 864e5) : null, late0 = nxt && parseD(nxt) < now0;
   const badge = !nxt ? '' : late0 ? `<span class="zb late">en retard</span>` : `<span class="zb">${dl <= 0 ? "aujourd'hui" : dl === 1 ? 'demain' : 'dans ' + dl + ' j'}</span>`;
@@ -3144,7 +3151,7 @@ const RAP_TK = {relance: 'relance', rappel: 'rappel', appel: 'appel', visite: 'v
 function traiter(kind, cid, rid) {
   const c = byId(cid); if (!c) return; let A, dt, note = '', done, replan, cancel, contact = false;
   if (kind === 'next') { if (!c.nextDate) return; const AA = ACTIONS[c.nextType] || ACTIONS.relance; A = {l: AA.label, fa: AA.fa}; dt = c.nextDate; contact = ['relance', 'teams', 'suivi'].includes(c.nextType || 'relance'); done = () => askDone(cid); replan = () => openReplan(cid); cancel = () => cancelNext(cid); }
-  else { const r = (c.rappels || []).find(x => x.id === rid); if (!r) return; const T = RAP_T[r.type] || RAP_T.rappel; A = {l: T.l, fa: T.fa}; dt = r.dt; note = r.note || ''; contact = ['relance', 'rappel', 'appel', 'visio'].includes(r.type); done = () => doneRap(cid, rid); replan = () => openAction(cid, T.a, null, {dt: r.dt, rap: {rid: r.id, kind: r.type}, motif: r.note}); cancel = () => cancelRap(cid, rid); }
+  else { const r = (c.rappels || []).find(x => x.id === rid); if (!r) return; const T = RAP_T[r.type] || RAP_T.rappel; A = {l: T.l, fa: T.fa}; dt = r.dt; note = r.note || ''; contact = ['relance', 'rappel', 'appel', 'visio'].includes(r.type); done = () => doneRap(cid, rid); replan = () => openReplan(cid, rid); cancel = () => cancelRap(cid, rid); }
   idbFill('dlg-trait', c); const tk = kind === 'next' ? ACT_TK[c.nextType || 'relance'] : RAP_TK[(c.rappels.find(x => x.id === rid) || {}).type || 'rappel'], X = ACT_TXT[tk] || ACT_TXT.appel;
   $('tr-ic').innerHTML = `<i class="fas ${X.fa}"></i>`; $('tr-h').textContent = X.n; $('tr-n').textContent = X.n;
   $('tr-sub').innerHTML = `Prévue le <b>${fmtDT(dt)}</b><br>${esc(c.pharma)}${c.nom ? ' · ' + esc(nomComplet(c)) : ''}`;
@@ -3205,12 +3212,13 @@ function nrOk() {
   toast(`Tentative enregistrée : ${N.lab} replanifié(e) au ${fmtDT(nw)}`);
 }
 /* V4.4.7 : « Replanifier » = petite fenêtre avec bouton Valider, enregistrement immédiat (plus de passage par la fiche) */
-let _rpn = null;
-function openReplan(cid) {
-  const c = byId(cid); if (!c || !c.nextDate) return gotoPlan(cid);
-  _rpn = cid; const A = ACTIONS[c.nextType] || ACTIONS.relance;
-  $('rpn-sub').innerHTML = `${esc(A.label)} · ${esc(c.pharma)}<br>Prévue le <b>${fmtDT(c.nextDate)}</b>`;
-  $('rpn-d').value = addDays(1); $('rpn-h').value = (c.nextDate.split('T')[1] || '10:00').slice(0, 5); $('rpn-cal').checked = !!opt('agenda'); $('rpn-err').classList.add('hidden');
+let _rpn = null, _rpr = null;
+function openReplan(cid, rid) {
+  const c = byId(cid), r = rid ? (c?.rappels || []).find(x => x.id === rid) : null;
+  if (!c || (!rid && !c.nextDate) || (rid && !r)) return rid ? openRap(r ? r.type : 'rappel', rid) : gotoPlan(cid);
+  _rpn = cid; _rpr = rid || null; const A = r ? {label: (RAP_T[r.type] || RAP_T.rappel).l} : (ACTIONS[c.nextType] || ACTIONS.relance), cur = r ? r.dt : c.nextDate;
+  $('rpn-sub').innerHTML = `${esc(A.label)} · ${esc(c.pharma)}<br>Prévue le <b>${fmtDT(cur)}</b>`;
+  $('rpn-d').value = addDays(1); $('rpn-h').value = (cur.split('T')[1] || '10:00').slice(0, 5); $('rpn-cal').checked = !!opt('agenda'); $('rpn-err').classList.add('hidden');
   $('dlg-replan').showModal();
 }
 function rpnQuick(n) { $('rpn-d').value = addDays(n); }
@@ -3218,6 +3226,13 @@ function rpnSave() {
   const c = byId(_rpn), d = $('rpn-d').value, h = $('rpn-h').value, er = $('rpn-err'); if (!c) return;
   const bad = !d || !h ? 'Indiquez la date et l\'heure.' : (parseD(`${d}T${h}`) < new Date(Date.now() - 6e4) ? 'Choisissez une date à venir.' : '');
   if (bad) { er.textContent = bad; er.classList.remove('hidden'); return; }
+  if (_rpr) {
+    const r = (c.rappels || []).find(x => x.id === _rpr); if (!r) return; const dt = `${d}T${h}`, old = r.dt, L = (RAP_T[r.type] || RAP_T.rappel).l;
+    if (dt !== old) { r.dt = dt; log(c, `${L} replanifié(e) du ${fmtDT(old)} au ${fmtDT(dt)}`, r.note || ''); }
+    save(); closeDlg('dlg-replan'); toast(`✓ ${L} replanifié(e) : ${fmtDT(dt)}`);
+    if (ui.editId === c.id && !$('view-client').classList.contains('hidden')) { try { renderRap(c); renderHistory(c); renderChrome(c); } catch { } } else refresh();
+    return;
+  }
   const dt = `${d}T${h}`, old = c.nextDate, type = c.nextType || 'relance', A = ACTIONS[type] || ACTIONS.relance;
   if (dt !== old) { c.acts = (c.acts || []).filter(a => !(a.dt === old && !a.done)); c.nextDate = dt; c.nextType = type; addAct(c, dt, type); log(c, `${A.label} replanifiée du ${fmtDT(old)} au ${fmtDT(dt)}`); }
   save(); closeDlg('dlg-replan');
@@ -3247,6 +3262,7 @@ function doneRap(cid, rid) {
   }, c, ['relance', 'rappel', 'appel', 'visio'].includes(r.type) ? ['rap', cid, rid] : null, RAP_TK[r.type]);
 }
 function delRap(cid, rid) { const c = byId(cid); c.rappels = (c.rappels || []).filter(x => x.id !== rid); save(); renderRap(c); closeDlg('dlg-rapl'); if (rapOpen(c).length) rapList(); }
+const rapLate = c => rapOpen(c).filter(r => parseD(r.dt) < new Date());   /* V4.4.8 : rappels en retard d'un dossier */
 function rapItems() { return clients.flatMap(c => (c.rappels || []).map(r => ({c, r}))); }
 
 /* ----- Enregistrement : barre fixe, modifications non enregistrées ----- */
@@ -3681,6 +3697,8 @@ function openAction(cid, type = 'relance', aid = null, opts = {}) {
   $('act-sub').textContent = `${c.pharma} — ${c.genre} ${c.prenom || ''} ${c.nom} (${c.ville})`;
   $('act-dt').value = opts.dt || (type === 'suivi' ? addDays(1, '10:00') : nowDT());
   $('act-next').checked = !!opts.dt || type === 'suivi';
+  { const L = opts.rap ? [] : rapLate(c), rl = $('act-rep-l'); rl.classList.toggle('hidden', !L.length); rl.classList.toggle('flex', !!L.length); $('act-rep').checked = true; if (L.length) $('act-next').checked = true;
+    $('act-rep-t').innerHTML = L.length ? `<b>Remplace l'action en retard</b> : ${L.map(r => `${esc((RAP_T[r.type] || RAP_T.rappel).l)} du ${fmtDT(r.dt)}`).join(', ')}<br><span class="text-slate-600">Elle est retirée de « Ma journée » (décochez pour la garder).</span>` : ''; }
   ui.act.calTouched = false; $('act-cal').checked = opt('agenda') && (type === 'visite' || type === 'teams'); $('act-cal').closest('label').classList.toggle('hidden', !opt('agenda'));
   $('act-cal-txt').textContent = `Ajouter à ${settings.agenda === 'ics' ? 'mon agenda (.ics)' : 'Google Agenda'} après l'enregistrement`;
   const adv = $('act-adv'); adv.classList.toggle('hidden', !opts.advance); adv.classList.toggle('flex', !!opts.advance);
@@ -3694,7 +3712,7 @@ function openAction(cid, type = 'relance', aid = null, opts = {}) {
 const actAddon = () => { const {cid, aid} = ui.act; return aid ? byId(cid).addons.find(a => a.id === aid) : null; };
 function setActType(type) {
   ui.act.type = type; ui.act.prop = 0;
-  if (!ui.act.dtFixed && !ui.act.dtTouched) { $('act-dt').value = type === 'suivi' ? addDays(1, '10:00') : nowDT(); if (!ui.act.rap) $('act-next').checked = type === 'suivi'; }
+  if (!ui.act.dtFixed && !ui.act.dtTouched) { $('act-dt').value = type === 'suivi' ? addDays(1, '10:00') : nowDT(); if (!ui.act.rap) $('act-next').checked = type === 'suivi' || !$('act-rep-l').classList.contains('hidden'); }
   if (!ui.act.calTouched) $('act-cal').checked = opt('agenda') && (type === 'visite' || type === 'teams');
   actTelShow();
   const a = actAddon();
@@ -3762,6 +3780,7 @@ function saveActionGo() {
     if ($('act-cal').checked) setTimeout(() => askAgenda(c, dt, type, motif, `${ACTIONS[type].label}${motif ? ' · ' + motif : ''}`), 50);
     if (ui.editId === cid && !$('view-client').classList.contains('hidden')) { renderRap(c); renderHistory(c); } refresh(); return;
   }
+  if ($('act-rep') && $('act-rep').checked && $('act-next').checked && !$('act-rep-l').classList.contains('hidden')) { const L = rapLate(c); if (L.length) { c.rappels = c.rappels.filter(x => !L.includes(x)); log(c, `Action en retard remplacée : ${L.map(r => `${(RAP_T[r.type] || RAP_T.rappel).l} du ${fmtDT(r.dt)}`).join(', ')}`, `Remplacée par une action le ${fmtDT(dt)}.`); } }
   const doneNow = parseD(dt) <= new Date(Date.now() + 6e4);
   log(c, `${ACTIONS[type].label} ${doneNow ? 'réalisée' : 'planifiée'}${a ? ` (add-on : ${a.quoi})` : ''} — ${fmtDT(dt)}`, `${motif}\n${msg}`);
   if (a) a.lastActionDate = isoDay(new Date());
@@ -5356,6 +5375,7 @@ function planNext() {
   planNext2(c, dt);
 }
 function planNext2(c, dt) {
+  { const L = rapLate(c); if (L.length) { c.rappels = c.rappels.filter(x => !L.includes(x)); log(c, `Action en retard remplacée : ${L.map(r => `${(RAP_T[r.type] || RAP_T.rappel).l} du ${fmtDT(r.dt)}`).join(', ')}`, `Remplacée par une action le ${fmtDT(dt)}.`); try { renderRap(c); } catch { } } }
   const old = c.nextDate; if (old && old !== dt) c.acts = (c.acts || []).filter(a => !(a.dt === old && !a.done));   /* V4.4.6 : l'ancienne action replanifiée ne reste plus dans l'historique des actions */
   c.nextDate = dt; c.nextType = ui.nextType; addAct(c, dt, ui.nextType);
   log(c, `${ACTIONS[ui.nextType].label} planifiée — ${fmtDT(dt)}`); save(); renderHistory(c); renderStage(); renderNextSum(c);
