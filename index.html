@@ -1212,6 +1212,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.4.5</b> : correctif « Replanifier » : pour un dossier en étape R3 (Signature), la nouvelle date de la prochaine action n'était pas enregistrée (erreur silencieuse) et l'action restait à faire le jour même. C'est corrigé ; l'enregistrement et l'affichage de l'accueil sont vérifiés.</li>
 <li><b>V4.4.4</b> : sur la fiche, chaque étape de la barre indique ce qu'il reste à renseigner, et un bloc « Reste à faire » liste les points manquants ; un clic sur un point mène au champ. Le bouton « Nouveau client » devient « Nouvelle fiche ».</li>
 <li><b>V4.4.3</b> : les titulaires trouvés dans l'annuaire sont ajoutés automatiquement dès que vous cliquez sur la pharmacie (le 1<sup>er</sup> comme titulaire, les autres comme co-titulaires ; la croix de « Titulaires et associés » permet d'en retirer un). L'enregistrement automatique de la fiche attend désormais la fin de la recherche, ce qui supprimait parfois la liste au bout de quelques secondes.</li>
 <li><b>V4.4.2</b> : correctif de la fiche client : la liste des titulaires trouvés ne disparaît plus quelques secondes après le clic sur la pharmacie (une recherche plus ancienne, arrivée en retard, la remplaçait) et ne se referme plus quand on retire une personne avec la croix.</li>
@@ -1870,7 +1871,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.4.4';
+const APP_VERSION = '4.4.5';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -4737,7 +4738,7 @@ function renderFormSteps(step) {
   const chips = items.map(x => `<span class="chip ${x[1] ? 'k' : ''}">${x[1] ? '✓' : '○'} ${x[0]}</span>`).join('');
   const miss = items.filter(x => !x[1]);
   const first = miss.find(x => !x[3]) || miss[0] || [], allOk = !miss.length;
-  const N = miss.length, green = !miss.some(x => !x[3]), nS = nx ? STEPS[nx].short : '';
+  const N = miss.length, green = !miss.some(x => !x[3]), nS = nx && STEPS[nx] ? STEPS[nx].short : '';
   let kk, gt, gd, gb;
   if (step === 'R3') {
     kk = 'POUR SIGNER'; gt = N ? `Il reste ${N} chose${N > 1 ? 's' : ''} à faire` : 'Dernière étape';
