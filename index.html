@@ -48,6 +48,13 @@
 .phe b{display:block;font-size:12.5px}.phe span{color:#5B6576;font-size:11.5px}
 .phe:before{content:"";position:absolute;left:9px;top:9px;width:14px;height:14px;border:2px solid #CBD5E1;border-radius:4px}
 .phe.on{border-color:#16A34A;background:#F0FDF4}.phe.on:before{background:#16A34A;border-color:#16A34A;content:"\2713";color:#fff;font-size:10px;line-height:10px;text-align:center}
+.agi{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:12px;border:1.5px solid #E2E8F0;background:#fff;cursor:pointer;text-align:left;width:100%}
+.agi.sel{border-color:#EA6A12;box-shadow:0 0 0 3px #FFEDD5}.agi.off{opacity:.6}.agi .n{width:24px;height:24px;border-radius:50%;background:#EA6A12;color:#fff;font-weight:700;font-size:12px;display:grid;place-items:center;flex:none}.agi.off .n{background:#CBD5E1}
+.agi .t{flex:1;font-weight:600;font-size:13px;line-height:1.25}
+.agsw{width:34px;height:20px;border-radius:10px;background:#CBD5E1;position:relative;flex:none;border:0;cursor:pointer}.agsw:after{content:"";position:absolute;left:2px;top:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.15s}.agsw.on{background:#EA6A12}.agsw.on:after{left:16px}
+.agpill{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;padding:3px 9px;border-radius:99px;margin-bottom:6px}
+.agsug{font-size:12px;font-weight:700;border:1.5px solid #FDBA74;color:#C2410C;background:#FFF7ED;border-radius:9px;padding:4px 10px;cursor:pointer}
+.phr.pop{flex-direction:column;flex-wrap:nowrap;background:#fff;border:1.5px solid #FDBA74;border-radius:12px;padding:8px;box-shadow:0 8px 22px #0002}
 .phr.ext{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
 .phm{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:6px}
 
@@ -1233,6 +1240,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.5</b> : <b>Relecture de la synthèse personnalisée repensée</b>. Un bandeau indique combien de priorités seront dans le PDF. À gauche, la liste des priorités avec un interrupteur par ligne (grisée = non imprimée). À droite, une seule priorité à la fois, présentée comme dans le PDF : titre, puis trois colonnes « Votre constat », « Notre réponse », « Au quotidien », directement modifiables ou dictables. Un bouton « Suggestions » sous chaque colonne ouvre les phrases proposées (cases à cocher, « Ma phrase » pour la vôtre). « Remettre le texte standard » rétablit les textes d'origine de la priorité. L'introduction, « Ce que vous nous avez dit », les éléments complémentaires et la ligne de contact sont regroupés dans « Textes généraux ».</li>
 <li><b>V4.5.4</b> : (1) <b>Note synthétique sur tous les champs de texte</b> : un lien « Note synthétique » (ou « Nettoyer le texte » pour les messages à envoyer) apparaît sous chaque zone de saisie ; une fenêtre montre votre texte et la proposition (hésitations retirées, phrases ponctuées, puces par thème), modifiable, que vous validez ou refusez. Aucune intelligence artificielle : ce sont des règles. (2) <b>Page de garde</b> : le bandeau de l'image n'indique plus que le modèle du robot (plus de « avec partie vitrée (type A) »). (3) <b>Titulaires</b> : les personnes cochées dans « Noms affichés sur la synthèse » figurent aussi sur la page de garde et dans « À l'attention de » de la synthèse personnalisée. (4) <b>Carte « Passez à la génération suivante »</b> : avec l'option Euclid3D, la réponse devient « Le robot SINTESI SLIM avec EUCLID 3D optimise et fluidifie la délivrance grâce à sa technologie brevetée », avec trois arguments en bas de carte. (5) <b>Correction</b> : la case du co-titulaire cochée avant la génération du PDF ne se décoche plus à l'enregistrement de la fiche. (6) <b>Correction</b> : un texte de besoins modifié après coup est bien repris dans le PDF (constat et « mot de l'interlocuteur » ne gardent plus l'ancienne version).</li>
 <li><b>V4.5.3</b> : (1) <b>Page « Solution préconisée » refaite</b> : le robot, puis ses options juste en dessous (avec une ligne « Pour vous »), quatre chiffres clés en anneaux, un tableau « votre besoin → notre réponse » et la liste de ce qui est inclus ; chaque bloc se règle dans « Arguments du PDF ». (2) <b>« Contenu du PDF » refait</b> : étape 1 « Quel document ? », étape 2 « Quelles pages ? » ; chaque page indique son contenu, son état (Prête / À compléter / Page non créée), la raison et un bouton pour la corriger ; le nombre réel de pages et la page de chaque partie s'affichent à droite ; vos choix sont mémorisés par fiche. (3) <b>« Arguments du PDF »</b> : les arguments sont classés par page du PDF, avec la valeur qui sera imprimée, grisés avec la raison s'il manque une donnée ; trois raccourcis (Tout afficher, Essentiel seulement, Réglage standard) ; enregistrement automatique. (4) <b>Aperçu et sauts de page</b> : pour chaque partie, choisissez « Automatique », « Nouvelle page » ou « Ne pas séparer du précédent » ; l'aperçu se recalcule et se place sur la partie modifiée ; réglages mémorisés par fiche, avec « Annuler le dernier réglage » et « Tout remettre en automatique ». (5) <b>Page de garde</b> : image aux coins arrondis.</li>
 <li><b>V4.5.2</b> : (1) <b>Remise maintenance lue automatiquement</b> : à l'import du contrat de service (ou du devis), la mention du type « 290 € HT les 36 premiers mois puis 450 € HT » est repérée ; le prix mensuel, la durée de la remise et le pourcentage correspondant sont remplis (vérifiez puis enregistrez). (2) <b>Texte des solutions modifiable</b> : dans « Besoins et problématiques », chaque solution cochée affiche son titre et sa description à corriger, avec « Rétablir le texte d'origine » ; le texte modifié est repris dans le PDF et le commentaire. (3) <b>Page de garde</b> : contour fin autour de l'image. (4) <b>Mise en page</b> : le bloc « Caractéristiques techniques » reste d'un seul tenant (il n'est plus coupé entre deux pages).</li>
@@ -1621,7 +1629,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
   <div class="dlg-body p-5 grid lg:grid-cols-[1fr_270px] gap-5"><div id="pa-body" class="flex flex-col gap-4"></div><aside id="pa-side" class="rounded-xl border border-slate-200 bg-slate-50 p-4 h-fit lg:sticky lg:top-0"></aside></div>
   <div class="px-5 py-4 border-t bg-slate-50 flex justify-between gap-2 flex-wrap items-center"><span id="pa-saved" class="text-[12px] text-emerald-700 font-semibold"></span><span class="flex gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-pdfarg');pdfSecOpen(ui.paId)"><i class="fas fa-list-check text-ptkd"></i>Contenu du PDF</button><button class="btn btn-p" onclick="closeDlg('dlg-pdfarg')">Terminé</button></span></div>
 </dialog>
-<dialog id="dlg-arg" class="!w-[min(820px,96vw)]">
+<dialog id="dlg-arg" class="!w-[min(1120px,97vw)]">
   <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start gap-2">
     <div><h3 class="font-bold flex items-center gap-2"><i class="fas fa-file-pen text-ptkd"></i>Synthèse personnalisée · relecture</h3><p id="ag-sub" class="text-xs text-muted mt-0.5"></p></div>
     <button class="dlg-x" onclick="closeDlg('dlg-arg')" aria-label="Fermer"><i class="fas fa-xmark"></i></button>
@@ -1921,7 +1929,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.4';
+const APP_VERSION = '4.5.5';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -4052,7 +4060,7 @@ function synOpen(id) { const t = $(id); if (!t) return; if (!t.value.trim()) ret
 function synDraw() { const t = $(ui.synId); if (!t) return; $('ns-out').value = synMake(t.value, ui.synMode); document.querySelectorAll('input[name=ns-mode]').forEach(x => x.checked = x.value === ui.synMode); }
 function synMode(m) { ui.synMode = m; synDraw(); }
 function synApply() { const t = $(ui.synId); if (t) { t.value = $('ns-out').value; t.dispatchEvent(new Event('input', {bubbles: true})); t.dispatchEvent(new Event('change', {bubbles: true})); } closeDlg('dlg-notesyn'); toast('Texte mis à jour'); }
-function synScan() { document.querySelectorAll('textarea[id]').forEach(t => { if (t.readOnly || t.id === 'f-cm' || t.id === 'ns-out' || !t.offsetParent) return; const host = t.closest('.mic-wrap') || t, nx = host.nextElementSibling; if (nx && nx.classList.contains('syn-row')) return; host.insertAdjacentHTML('afterend', `<div class="syn-row mt-1"><button type="button" class="lnk-edit" onclick="synOpen('${t.id}')"><i class="fas fa-wand-magic-sparkles text-[11px]"></i>${SYN_MSG.includes(t.id) ? 'Nettoyer le texte' : 'Note synthétique'}</button></div>`); }); }
+function synScan() { document.querySelectorAll('textarea[id]').forEach(t => { if (t.readOnly || t.id === 'f-cm' || t.id === 'ns-out' || /^ag-it-/.test(t.id) || !t.offsetParent) return; const host = t.closest('.mic-wrap') || t, nx = host.nextElementSibling; if (nx && nx.classList.contains('syn-row')) return; host.insertAdjacentHTML('afterend', `<div class="syn-row mt-1"><button type="button" class="lnk-edit" onclick="synOpen('${t.id}')"><i class="fas fa-wand-magic-sparkles text-[11px]"></i>${SYN_MSG.includes(t.id) ? 'Nettoyer le texte' : 'Note synthétique'}</button></div>`); }); }
 setInterval(synScan, 1200);
 function cmUndo() { if (cmPrev === null) return; $('f-cm').value = cmPrev; cmPrev = null; $('f-cm-undo').classList.add('hidden'); mxRead(); }
 function mxOne(el) { if (el.checked) document.querySelectorAll('input[name=f-model]').forEach(i => { if (i !== el) i.checked = false; }); }
@@ -4146,9 +4154,23 @@ function phAdd(tid) {
 }
 function phInit() {
   const ids = ['ag-intro', 'ag-dit', 'ag-extra', ...[...document.querySelectorAll('#ag-body textarea')].map(t => t.id).filter(id => /^ag-it-[prb]-/.test(id))];
-  ids.forEach(tid => { const t = $(tid); if (!t || $('ph-' + tid)) return; t.closest('.mic-wrap').insertAdjacentHTML('afterend', `<div class="phr ${tid === 'ag-extra' ? 'ext' : ''}" id="ph-${tid}"></div><div id="phm-${tid}"></div>`); phChips(tid); });
+  ids.forEach(tid => { const t = $(tid); if (!t) return; if ($('ph-' + tid)) { phChips(tid); return; } t.closest('.mic-wrap').insertAdjacentHTML('afterend', `<div class="phr ${tid === 'ag-extra' ? 'ext' : ''}" id="ph-${tid}"></div><div id="phm-${tid}"></div>`); phChips(tid); });
   $('ag-body').oninput = e => { if (e.target.tagName === 'TEXTAREA' && phKey(e.target.id)) phChips(e.target.id); };
 }
+function phToggle(tid) { const b = $('ph-' + tid); if (!b) return; const show = b.style.display === 'none'; document.querySelectorAll('#ag-body .phr.pop').forEach(x => x.style.display = 'none'); b.style.display = show ? 'flex' : 'none'; }
+function agCount() { let n = 0, m = 0; for (let i = 0; $('ag-it-' + i); i++) { m++; if ($('ag-it-on-' + i).checked) n++; } return [n, m]; }
+function agDraw() {
+  const [n, m] = agCount(), sel = ui.agSel, bar = $('ag-bar');
+  bar.className = 'rounded-xl px-4 py-2.5 text-[13.5px] font-semibold flex flex-wrap items-center gap-x-4 gap-y-1 ' + (n ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-amber-50 text-amber-800 border border-amber-200');
+  bar.innerHTML = `<span><i class="fas ${n ? 'fa-circle-check' : 'fa-triangle-exclamation'} mr-1.5"></i>${n ? `${n} priorité${n > 1 ? 's' : ''} sur ${m} ${n > 1 ? 'seront' : 'sera'} dans le PDF` : 'Aucune priorité ne sera dans le PDF'}</span><span class="ml-auto font-medium text-slate-600 text-[12.5px]">Ce que vous voyez à droite est ce qui s'imprime</span>`;
+  $('ag-side').innerHTML = Array.from({length: m}, (_, i) => { const on = $('ag-it-on-' + i).checked; return `<div class="agi ${sel === i ? 'sel' : ''} ${on ? '' : 'off'}" role="button" tabindex="0" onclick="agSel(${i})" onkeydown="if(event.key==='Enter')agSel(${i})"><span class="n">${on ? i + 1 : '–'}</span><span class="t">${esc($('ag-it-' + i).dataset.k)}</span><button type="button" class="agsw ${on ? 'on' : ''}" onclick="event.stopPropagation();agTog(${i})" aria-label="Dans le PDF : ${on ? 'oui' : 'non'}" title="${on ? 'Retirer du PDF' : 'Remettre dans le PDF'}"></button></div>`; }).join('');
+  $('ag-gen-btn').classList.toggle('sel', sel === 'gen');
+  $('ag-pane-gen').style.display = sel === 'gen' ? 'flex' : 'none'; $('ag-pane-items').style.display = sel === 'gen' ? 'none' : '';
+  for (let i = 0; i < m; i++) $('ag-it-' + i).style.display = i === sel ? '' : 'none';
+}
+function agSel(i) { ui.agSel = i; document.querySelectorAll('#ag-body .phr.pop').forEach(x => x.style.display = 'none'); agDraw(); }
+function agTog(i) { const k = $('ag-it-on-' + i); k.checked = !k.checked; agDraw(); }
+function argItReset(i) { const c = byId(ui.argId), k = $('ag-it-' + i).dataset.k, D = (argDefault(c, {}).items || []).find(x => x.k === k); if (!D) return toast('Pas de texte standard pour cette priorité.', true); $('ag-it-h-' + i).value = D.h || D.h0 || ''; ['p', 'r', 'b'].forEach(f => { $(`ag-it-${f}-${i}`).value = D[f] || ''; phChips(`ag-it-${f}-${i}`); }); toast('Texte standard rétabli'); }
 function openArg(id) {
   const c = byId(id); if (!c) return;
   if (!c.besoins?.length) return toast("Renseignez d'abord les besoins et problématiques.", true);
@@ -4156,17 +4178,26 @@ function openArg(id) {
   const inp = (k, l, v) => `<div><label class="lbl" for="ag-${k}">${l}</label><input id="ag-${k}" class="inp" value="${esc(v)}"></div>`;
   const ta = (k, l, v, rows = 3, ph = '') => `<div><label class="lbl" for="ag-${k}">${l}</label><div class="mic-wrap"><textarea id="ag-${k}" rows="${rows}" class="ta" placeholder="${esc(ph)}">${esc(v)}</textarea><button type="button" class="mic" onclick="dictate('ag-${k}',this)" aria-label="Dicter"><i class="fas fa-microphone"></i></button></div></div>`;
   $('ag-sub').textContent = `${c.pharma} — ${c.ville}${c.argDraft ? ' · brouillon enregistré' : ''}`;
-  $('ag-body').innerHTML = `<div class="grid sm:grid-cols-2 gap-3">${inp('title', 'Titre', d.title)}${inp('dest', "Formule d'appel", d.dest)}</div>
-    <div class="grid sm:grid-cols-2 gap-3 rounded-xl bg-orange-50/60 p-3">${inp('projet', 'Projet', d.projet)}${inp('solution', 'Solution étudiée', d.solution)}</div>
-    ${ta('intro', 'Introduction', d.intro, 2)}${ta('dit', 'Ce que vous nous avez dit (facultatif)', d.dit, 2, 'Reprend les précisions des besoins')}
-    <div class="flex flex-col gap-3"><span class="kicker">Vos priorités, nos réponses · ${d.items.length}</span>
-      ${d.items.map((it, i) => { const t2 = (f, l, v) => `<div class="grid sm:grid-cols-[120px_1fr] gap-x-3 gap-y-1 items-start"><label class="text-xs font-semibold text-muted sm:pt-2.5" for="ag-it-${f}-${i}">${l}</label><div class="mic-wrap"><textarea id="ag-it-${f}-${i}" rows="2" class="ta !text-[13px]">${esc(v)}</textarea><button type="button" class="mic" onclick="dictate('ag-it-${f}-${i}',this)" aria-label="Dicter"><i class="fas fa-microphone"></i></button></div></div>`;
-        return `<div class="rounded-xl border border-slate-200 border-l-4 !border-l-orange-500 p-3.5 flex flex-col gap-2.5" data-k="${esc(it.k)}" id="ag-it-${i}"><div class="flex items-center gap-2"><span class="w-6 h-6 rounded-full bg-ptk text-white text-xs font-bold inline-flex items-center justify-center shrink-0">${i + 1}</span><span class="kicker !text-ptkd">${esc(it.k)}</span><label class="ml-auto flex items-center gap-2 text-xs font-semibold">Dans le PDF<span class="sw"><input type="checkbox" id="ag-it-on-${i}" ${it.off ? '' : 'checked'}></span></label></div>
-          <div class="grid sm:grid-cols-[120px_1fr] gap-x-3 gap-y-1 items-center"><label class="text-xs font-semibold text-muted" for="ag-it-h-${i}">Accroche</label><input id="ag-it-h-${i}" class="inp !h-10 font-semibold" value="${esc(it.h)}"></div>
-          ${t2('p', 'Votre constat', it.p)}${t2('r', 'Notre réponse', it.r)}${t2('b', 'Au quotidien', it.b)}</div>`; }).join('')}
-      <p class="text-xs text-muted">Décochez « Dans le PDF » pour retirer un point. Mettez un passage en gras en l'entourant de **doubles astérisques**.</p></div>
-    ${ta('extra', 'Éléments complémentaires (facultatif)', d.extra, 3, 'Ex. : conditions de financement, délai d\'installation, référence d\'une officine équipée proche…')}
-    ${inp('contact', 'Ligne de contact', d.contact)}`;
+  const colT = (i, f, l, v, cls) => `<div class="min-w-0"><span class="agpill ${cls}">${l}</span><div class="mic-wrap"><textarea id="ag-it-${f}-${i}" rows="6" class="ta !text-[13px]${f === 'p' ? ' !italic' : ''}" aria-label="${l}">${esc(v)}</textarea><button type="button" class="mic" onclick="dictate('ag-it-${f}-${i}',this)" aria-label="Dicter"><i class="fas fa-microphone"></i></button></div><div class="mt-1.5"><button type="button" class="agsug" onclick="phToggle('ag-it-${f}-${i}')"><i class="fas fa-wand-magic-sparkles mr-1"></i>Suggestions ▾</button></div><div class="phr pop" id="ph-ag-it-${f}-${i}" style="display:none"></div><div id="phm-ag-it-${f}-${i}"></div></div>`;
+  $('ag-body').innerHTML = `<div id="ag-bar" class="rounded-xl px-4 py-2.5 text-[13.5px] font-semibold flex flex-wrap items-center gap-x-4 gap-y-1"></div>
+    <div class="grid md:grid-cols-[270px_1fr] gap-4 items-start">
+      <div class="flex flex-col gap-1.5 md:sticky md:top-0"><span class="kicker !mb-1">Priorités du client · dans le PDF</span><div id="ag-side" class="flex flex-col gap-1.5"></div>
+        <button type="button" id="ag-gen-btn" class="agi mt-2" onclick="agSel('gen')"><span class="t !font-semibold text-slate-600">Textes généraux<small class="block font-normal text-muted text-[11.5px]">Introduction, mot du client, complément, contact</small></span><span class="text-ptkd font-bold text-[12.5px]">Modifier</span></button></div>
+      <div class="min-w-0">
+        <div id="ag-pane-items">${d.items.map((it, i) => `<div class="ag-blk" id="ag-it-${i}" data-k="${esc(it.k)}" ${i ? 'style="display:none"' : ''}>
+          <input type="checkbox" id="ag-it-on-${i}" class="hidden" ${it.off ? '' : 'checked'}>
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-2"><b class="text-[15px]">Priorité ${i + 1} · ${esc(it.k)}</b><span class="text-xs text-muted">Cliquez dans un texte pour le modifier</span></div>
+          <div class="rounded-2xl border border-slate-200 border-l-[5px] !border-l-orange-500 bg-slate-50 p-4"><input id="ag-it-h-${i}" class="inp !h-11 !text-[16px] font-bold bg-white" value="${esc(it.h || it.h0 || '')}" aria-label="Titre de la priorité ${i + 1}" placeholder="Titre">
+            <div class="grid md:grid-cols-3 gap-3 mt-3">${colT(i, 'p', 'VOTRE CONSTAT', it.p, 'bg-slate-200 text-slate-600')}${colT(i, 'r', 'NOTRE RÉPONSE', it.r, 'bg-orange-100 text-orange-800')}${colT(i, 'b', 'AU QUOTIDIEN', it.b, 'bg-orange-600 text-white')}</div></div>
+          <p class="text-xs text-muted mt-2 flex flex-wrap gap-x-3"><button type="button" class="text-ptkd font-bold underline" onclick="argItReset(${i})"><i class="fas fa-rotate-left mr-1"></i>Remettre le texte standard</button><span>Gras : entourez un passage de **doubles astérisques**.</span></p></div>`).join('')}</div>
+        <div id="ag-pane-gen" class="flex flex-col gap-3" style="display:none"><b class="text-[15px]">Textes généraux du PDF</b>
+          <div class="grid sm:grid-cols-2 gap-3">${inp('title', 'Titre', d.title)}${inp('dest', "Formule d'appel", d.dest)}</div>
+          <div class="grid sm:grid-cols-2 gap-3 rounded-xl bg-orange-50/60 p-3">${inp('projet', 'Projet', d.projet)}${inp('solution', 'Solution étudiée', d.solution)}</div>
+          ${ta('intro', 'Introduction', d.intro, 2)}${ta('dit', 'Ce que vous nous avez dit (facultatif)', d.dit, 2, 'Reprend les précisions des besoins')}
+          ${ta('extra', 'Éléments complémentaires (facultatif)', d.extra, 3, "Ex. : conditions de financement, délai d'installation, référence d'une officine équipée proche…")}
+          ${inp('contact', 'Ligne de contact', d.contact)}</div>
+      </div></div>`;
+  ui.agSel = 0; agDraw();
   $('dlg-arg').showModal(); phInit();
 }
 function argRead() {
