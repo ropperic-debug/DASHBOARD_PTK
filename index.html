@@ -215,6 +215,25 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 .btn-d:hover{background:#556275!important}
 #toast{background:#64748B!important}
 #ptk-sec .key{background:#64748B}
+/* V4.4 */
+.bb{display:flex;gap:12px;align-items:center;border-radius:12px;padding:8px 12px;margin-top:8px;border:2px solid}.bb .i{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;flex:none}.bb b{display:block;font-size:13px}.bb small{color:#475569;font-size:12px}.bb>div{flex:1;min-width:0}
+.bb.or{border-color:#FB923C;background:#FFF7ED}.bb.or .i{background:#EA580C}.bb.ol{border-color:#F59E0B;background:#FFFBEB}.bb.ol .i{background:#D97706}
+.bb.gr{border:1px solid #D1E7DA;background:#F6FBF8;padding:6px 12px;font-size:12.5px;color:#14603F}.bb.gr a{color:#C2410C;font-weight:700;margin-left:auto;white-space:nowrap}
+.pbd-step{display:flex;gap:12px;align-items:flex-start;border:1px solid #E2E8F0;border-radius:12px;padding:10px 12px}.pbd-n{width:26px;height:26px;border-radius:50%;background:#EA580C;color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:12px;flex:none}.pbd-n.v{background:#047857}
+#pbd-state .pbd-n{background:#CBD5E1}#pbd-state .pbd-n.v{background:#047857}
+.pbd-drop{display:flex;flex-direction:column;align-items:center;gap:3px;border:2px dashed #94A3B8;border-radius:12px;padding:16px;background:#F8FAFC;cursor:pointer;color:#475569}.pbd-drop.on{background:#FFF7ED;border-color:#EA580C}
+.dupal{display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:center;border-radius:14px;padding:12px 14px;margin-top:10px;border:2px solid}.dupal .di{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff}.dupal b{font-size:14.5px;display:block}.dupal .ds{color:#475569;font-size:12.5px;margin-top:2px}.dupal .dm{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+.dupal.red{border-color:#DC2626;background:#FEF2F2}.dupal.red .di{background:#DC2626}.dupal.red b{color:#991B1B}
+.dupal.org{border-color:#FB923C;background:#FFF7ED}.dupal.org .di{background:#EA580C}.dupal.org b{color:#9A3412}
+.dupal.yel{border-color:#EAB308;background:#FEFCE8}.dupal.yel .di{background:#CA8A04}.dupal.yel b{color:#854D0E}
+@media(max-width:640px){.dupal{grid-template-columns:1fr}.dupal .di{display:none}}
+.ces{border:2px solid #7C3AED;background:#F5F3FF;border-radius:14px;padding:12px;margin-top:8px}.ces-t{display:flex;gap:8px;align-items:center;font-weight:800;color:#5B21B6;margin-bottom:8px}.ces-c{display:flex;gap:8px;align-items:center;font-size:13px;margin-top:7px}
+.ces-tg{appearance:none;width:40px;height:22px;border-radius:99px;background:#CBD5E1;position:relative;cursor:pointer;flex:none;transition:background .15s}.ces-tg:after{content:"";position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:left .15s}.ces-tg:checked{background:#7C3AED}.ces-tg:checked:after{left:21px}
+.ces-p{background:#EDE9FE;color:#5B21B6;border:1px solid #C4B5FD}.ces-p.late{background:#FFEDD5;color:#9A3412;border-color:#FDBA74}
+.tit-r{display:grid;grid-template-columns:30px 1fr 130px 34px;gap:8px;align-items:center;border:1px solid #E2E8F0;border-radius:10px;padding:6px 8px;background:#fff}.tit-a{width:28px;height:28px;border-radius:50%;background:#EEF2F7;color:#475569;font-size:11px;font-weight:800;display:inline-flex;align-items:center;justify-content:center}.tit-s{height:32px;border:1px solid #CBD5E1;border-radius:8px;font-size:12.5px;padding:0 6px;background:#fff}.tit-x{width:32px;height:32px;border-radius:8px;border:1px solid #FCA5A5;color:#B42318;background:#fff}
+.bb{flex-wrap:wrap}.bb>div{flex:1 1 170px}.bb.gr{flex-wrap:wrap}.bb .btn{margin-left:auto}
+.dupal{grid-template-columns:44px 1fr}.dupb{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap}.dupb .btn{flex:1 1 150px}
+@media(max-width:640px){.dupal{grid-template-columns:1fr}}
 /* V2.8 : fiche sans bloc Étape en cours, bouton Dossier perdu */
 #f-stage{display:none!important}
 .zlost{margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:11px;border:2px solid #DC2626;background:#FEF2F2;color:#B91C1C;font-weight:800;font-size:13.5px}.zlost:hover{background:#FEE2E2}
@@ -721,7 +740,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
             <p id="s-hint" class="text-xs text-blue-900 mt-1.5">Tapez le nom (inutile d'écrire « pharmacie ») et, si vous le connaissez, le n° de département.</p>
             <div id="s-res" class="hidden absolute z-20 left-3 right-3 mt-1 bg-white border border-slate-300 rounded-xl shadow-xl max-h-72 overflow-y-auto"></div>
           </div>
-          <div><label class="lbl" for="f-pharma">Pharmacie *</label><input id="f-pharma" class="inp font-semibold" oninput="renderHeaderLive();pharmaTyping()" autocomplete="off"></div>
+          <div><label class="lbl" for="f-pharma">Pharmacie *</label><input id="f-pharma" class="inp font-semibold" oninput="renderHeaderLive();pharmaTyping();dupSoon()" autocomplete="off"><button type="button" id="f-complete" class="btn btn-g !h-10 w-full mt-1.5" onclick="completeFromBase()"><i class="fas fa-wand-magic-sparkles text-ptkd"></i>Compléter depuis l'annuaire</button><div id="f-basebar"></div><div id="f-dup"></div></div>
           <div class="grid grid-cols-2 gap-2.5">
             <div><label class="lbl" for="f-cip">Code CIP (7 chiffres)</label><input id="f-cip" class="inp font-mono" inputmode="numeric" maxlength="9" oninput="this.value=this.value.replace(/\D/g,'').slice(0,7)"></div>
             <div><label class="lbl" for="f-grp">Groupement</label><input id="f-grp" class="inp" list="grp-list"><datalist id="grp-list"></datalist></div>
@@ -749,7 +768,14 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
           <div class="rounded-xl border border-slate-200 bg-slate-50/60 p-3 flex flex-col gap-2.5">
             <div class="text-[12.5px] font-bold">Nom sur le devis <span class="font-normal text-muted">· co-titulaire, repreneur… (facultatif)</span></div>
             <div><label class="lbl" for="f-devnom">Nom à faire figurer (laisser vide = le titulaire ci-dessus)</label><input id="f-devnom" class="inp" placeholder="Ex. : M. Jean DUPONT (repreneur)"></div>
-            <div class="sm:col-span-2"><label class="lbl">Titulaires et associés <span class="font-normal text-muted">· autres personnes de l'officine, à afficher sur la synthèse si vous cochez</span></label><div id="f-assoc" class="flex flex-col gap-1.5"></div><button type="button" class="lnk-edit mt-1" onclick="assocAdd()"><i class="fas fa-plus text-[11px]"></i>Ajouter une personne</button></div>
+            <div class="sm:col-span-2"><label class="lbl">Titulaires et associés <span class="font-normal text-muted">· autres personnes de l'officine, à afficher sur la synthèse si vous cochez</span></label><div id="f-assoc" class="flex flex-col gap-1.5"></div><button type="button" class="lnk-edit mt-1" onclick="assocAdd()"><i class="fas fa-plus text-[11px]"></i>Ajouter une personne</button>
+              <label class="flex items-center gap-2.5 mt-3 cursor-pointer"><input type="checkbox" id="f-ces-on" class="ces-tg" onchange="cesToggle()"><b class="text-[13px]">Cession de la pharmacie prévue</b><span class="text-xs text-muted">à activer si l'officine va être reprise par un nouveau titulaire</span></label>
+              <div id="f-ces-box" class="ces hidden"><div class="ces-t"><i class="fas fa-right-left"></i>Cession prévue</div>
+                <div class="grid grid-cols-1 gap-2.5"><div><label class="lbl" for="f-ces-futur">Futur titulaire (si connu)</label><input id="f-ces-futur" class="inp" placeholder="Ex. : Mme Sophie LEROY"></div><div><label class="lbl" for="f-ces-date">Mois de cession prévu</label><input id="f-ces-date" type="month" class="inp"></div><div><label class="lbl" for="f-ces-com">Commentaire</label><input id="f-ces-com" class="inp" placeholder="Ex. : acte chez le notaire en février"></div></div>
+                <label class="ces-c"><input type="checkbox" id="f-ces-contact" class="accent-violet-700 w-4 h-4">Le futur titulaire est le contact principal du projet (décideur)</label>
+                <label class="ces-c"><input type="checkbox" id="f-ces-devis" class="accent-violet-700 w-4 h-4">Faire figurer le futur titulaire sur la synthèse et le devis</label>
+                <label class="ces-c"><input type="checkbox" id="f-ces-rap" class="accent-violet-700 w-4 h-4">Me rappeler 1 mois avant la cession (action « Contacter le futur titulaire »)</label>
+                <button type="button" class="lnk-edit mt-1" onclick="cesApply()"><i class="fas fa-user-check text-[11px]"></i>Le futur titulaire prend la place du titulaire (cession faite)</button></div></div>
             <div class="grid grid-cols-2 gap-2.5"><div><label class="lbl" for="f-devmail">E-mail</label><input id="f-devmail" type="email" class="inp"></div><div><label class="lbl" for="f-devtel">Téléphone</label><input id="f-devtel" type="tel" class="inp font-mono" oninput="fmtPhone(this)"></div></div>
           </div>
           <div class="rounded-xl border border-slate-200 bg-slate-50/60 p-3 flex flex-col gap-2.5">
@@ -772,6 +798,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
     <span id="f-dirty" class="text-[13px] font-semibold text-slate-400">Aucune modification</span>
     <div class="flex gap-2"><button id="f-cancel" class="btn btn-g hidden" onclick="cancelEdits()">Annuler</button><button id="f-savebtn" class="btn !px-6 savebtn" onclick="saveClient()"><i class="fas fa-floppy-disk"></i>Enregistrer les modifications</button></div>
   </div>
+  <div id="f-bottom" class="flex flex-wrap items-center gap-3 px-1 pt-1"><button type="button" class="btn" style="border:1.5px solid #DC2626;color:#B42318;background:#fff" onclick="delOrAbandon()"><i class="fas fa-trash-can"></i><span id="f-del-t">Abandonner et supprimer la fiche</span></button><span id="f-del-n" class="text-xs text-muted">Rien n'est supprimé sans confirmation.</span></div>
 </section>
 
 <!-- ============ 3. STATISTIQUES ============ -->
@@ -1112,6 +1139,17 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
   </div>
   <div class="px-5 py-4 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-noresp')">Annuler</button><button class="btn btn-ok" onclick="nrOk()"><i class="fas fa-check"></i>Confirmer et replanifier</button></div>
 </dialog>
+<dialog id="dlg-base" class="!w-[min(720px,96vw)]">
+  <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start gap-2"><div><h3 class="font-bold flex items-center gap-2"><i class="fas fa-wand-magic-sparkles text-ptkd"></i>Base des pharmacies : téléphones et titulaires</h3><p class="text-xs text-muted mt-0.5">Connexion Internet requise · idéal sur PC · données publiques enregistrées uniquement sur cet appareil</p></div><button class="dlg-x" onclick="closeDlg('dlg-base')" aria-label="Fermer"><i class="fas fa-xmark"></i></button></div>
+  <div class="dlg-body p-5 flex flex-col gap-3.5">
+    <div id="pbd-state" class="flex flex-col gap-1.5 text-[13px]"></div>
+    <div class="pbd-step"><span class="pbd-n">1</span><div class="flex-1"><b>Téléchargement automatique</b><div class="text-xs text-muted">Essai de la mise à jour des pharmacies. Le site data.gouv.fr le refuse souvent : passez alors à l'étape 2.</div></div><button type="button" class="btn btn-p !h-10" onclick="pbaseAuto()"><i class="fas fa-cloud-arrow-down"></i>Essayer</button></div>
+    <div class="pbd-step"><span class="pbd-n">2</span><div class="flex-1"><b>Sinon : deux gestes</b><div class="text-xs text-muted">① Téléchargez le fichier des <b>pharmacies</b> (« etalab-cs1100507-stock », CSV) et, pour les titulaires, le fichier « PS_LibreAcces_Personne_activite » (.zip). ② Glissez-les un par un dans la zone ci-dessous : le .zip est lu directement, sans l'extraire.</div><div class="flex gap-2 flex-wrap mt-2"><a class="btn btn-g !h-9" target="_blank" rel="noopener" href="https://www.data.gouv.fr/fr/datasets/finess-extraction-du-fichier-des-etablissements/"><i class="fas fa-arrow-up-right-from-square"></i>Fichier des pharmacies</a><a class="btn btn-g !h-9" target="_blank" rel="noopener" href="https://www.data.gouv.fr/datasets/annuaire-sante-extractions-des-donnees-en-libre-acces-des-professionnels-intervenant-dans-le-systeme-de-sante-rpps"><i class="fas fa-arrow-up-right-from-square"></i>Fichier des titulaires</a></div></div></div>
+    <label id="pbd-drop" class="pbd-drop" ondragover="event.preventDefault();this.classList.add('on')" ondragleave="this.classList.remove('on')" ondrop="baseDrop(event)"><i class="fas fa-file-arrow-up text-xl"></i><b>Glissez le fichier ici</b><span class="text-xs text-muted">ou <u>parcourir</u> · .csv ou .zip · reconnu automatiquement</span><input type="file" class="hidden" accept=".csv,.zip,.txt" onchange="baseFile(this)"></label>
+    <div id="pbd-prog" class="hidden rounded-xl border border-blue-200 bg-blue-50 px-4 py-3 text-[13px] text-blue-950"></div>
+  </div>
+  <div class="px-5 py-3 border-t bg-slate-50 flex justify-end"><button class="btn btn-g" onclick="closeDlg('dlg-base')">Fermer</button></div>
+</dialog>
 <dialog id="dlg-confirm" class="!w-[min(460px,94vw)]">
   <div class="p-5 flex flex-col gap-3">
     <div class="flex items-start gap-3"><span id="cf-ic" class="w-10 h-10 rounded-full bg-orange-50 text-ptkd inline-flex items-center justify-center shrink-0"><i class="fas fa-circle-question text-lg"></i></span>
@@ -1168,6 +1206,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.4</b> : (1) <b>Annuaire plus simple</b> : dans la fiche, bouton <b>« Compléter depuis l'annuaire »</b> et bandeau d'état de la base (non installée, à jour, de plus de 3 mois). La fenêtre propose un essai automatique puis, si data.gouv.fr le refuse, le <b>glisser-déposer</b> des fichiers (pharmacies et titulaires, le .zip est lu directement, reconnu automatiquement). Plus besoin de passer par les Paramètres. (2) <b>Plusieurs titulaires</b> : l'annuaire propose toutes les personnes trouvées, avec un rôle au choix (Titulaire, Co-titulaire, Associé, Gérant) et une croix pour retirer ; la première devient le titulaire de la fiche, les autres vont dans « Titulaires et associés ». Le nombre de titulaires trouvés dépend de l'annuaire (parfois un seul, parfois aucun). (3) <b>Cession prévue</b> : interrupteur dans « Titulaires et associés » (futur titulaire, mois de cession, commentaire), pastille violette dans la fiche et le portefeuille, chiffre « Cessions prévues » à l'accueil, option de faire figurer le futur titulaire sur la synthèse et le devis, rappel automatique 1 mois avant, bouton « le futur titulaire prend la place » ; la pastille passe en orange quand la date est dépassée. (4) <b>Contrôle de doublon</b> à la création : alerte rouge (même SIRET), orange (même téléphone ou adresse) ou jaune (nom proche dans la même ville) sur toutes vos fiches, y compris signées et perdues, avec « Ouvrir la fiche existante » et « Créer quand même » ; rappel à l'enregistrement ; rien n'est bloqué. Limite : seules les fiches de cet appareil sont contrôlées. (5) <b>Bas de fiche</b> : « Abandonner et supprimer la fiche » (création non enregistrée) ou « Supprimer définitivement la fiche », avec confirmation.</li>
 <li><b>V4.3</b> : (1) <b>Ventes</b> : « CA signé » = ce qui est déjà vendu ; « <b>Potentiel à signer</b> » = dossiers dont la décision est prévue sur la période, avec « dont X € ce mois-ci » et « Voir la liste des N dossiers » ; montants avec espaces et axes du graphique nommés. (2) <b>Commissions de financement NANCEO</b> : case « financement NANCEO » sur la fiche signée, date d'installation prévisionnelle, case « commission payée » (payée le mois suivant l'installation), récapitulatif des commissions à pointer ; <b>Paramètres › Objectifs et commissions</b> : taux de financement et taux de rémunération (ex. 0,806 % arrondi à 0,81 %) ; un changement de taux ne concerne que les commissions non encore payées. (3) <b>Récapitulatif des commissions</b> refait : nombre de robots vendus séparé du montant. (4) <b>Période</b> des objectifs expliquée dans Paramètres (année civile par défaut). (5) <b>Bandeau d'étape</b> avec reflet discret, cadre orange (à faire) ou vert (prêt), grosse coche verte sur les étapes faites ; l'animation s'arrête si vous êtes en train de saisir ou si votre appareil réduit les animations. (6) <b>Titulaires et associés</b> : plusieurs personnes par fiche (Titulaire, Co-titulaire, Associé, Gérant), à cocher une par une pour la synthèse ; l'ancien « 2ᵉ nom » est repris automatiquement. Correctif : le PDF de la synthèse plantait quand un 2ᵉ nom était coché. (7) <b>Fenêtre « Planifier une action »</b> : listes « À faire » et « Terminées » (annulées comprises), pictogrammes homogènes (voiture pour la visite sur site), motifs en cartes condensées, nouveaux motifs « documents de financement (bilan) » ; l'option Agenda est toujours visible, cochée seulement pour une visite sur site ou une visio. Boutons téléphone en style blanc à pastille verte. (8) Plus de noir en aplat : bleu-gris doux. (9) <b>Téléphone</b> : un geste « retour » ferme d'abord la fenêtre ouverte, puis revient au tableau de bord, puis demande « Quitter l'application ? » (non garanti sur tous les iPhone : le geste de bord d'écran peut être géré par iOS).</li>
 <li><b>V4.2 (fenêtres d'action)</b> : les fenêtres « Planifier une action » et « Traiter une action » affichent toujours deux blocs : <b>Actions prévues</b> (retards en rouge) et <b>Dernières actions réalisées</b> (à défaut, derniers événements de la fiche). Correctif : une fiche dont tout est déjà fait pour passer à l'étape suivante (ex. intérêt renseigné + visite planifiée) s'ouvrait mal ; elle s'ouvre et passe en étape suivante. Un message rouge explique désormais toute erreur d'ouverture.</li>
 <li><b>V4.2</b> : les statistiques d'activité comptent désormais aussi les actions créées avec « + Planifier » (appel, visite, visio, relance, rappel, e-mail) et traitées ; elles n'apparaissaient pas jusqu'ici.</li>
@@ -1340,6 +1379,8 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 </ul>
 <div class="box"><b>À retenir :</b> notez la phrase secrète dans un endroit sûr (gestionnaire de mots de passe). C'est la seule clé de vos données en ligne.</div>
 <h3>Nouveautés V4.3 et sécurité</h3><p>La V4.3 n'ajoute aucun envoi de données : les commissions NANCEO, les titulaires/associés et les dates d'installation sont enregistrés dans le même stockage chiffré de l'appareil que le reste de la fiche, et sont inclus dans les sauvegardes et la synchronisation déjà configurées. Le geste « retour » du téléphone ne quitte plus l'application sans confirmation. Aucun nouveau service externe n'est appelé.</p>
+
+<h3>Nouveautés V4.4 et sécurité</h3><p>La base des pharmacies (FINESS et annuaire des professionnels de santé) est une donnée publique : elle est téléchargée par vous depuis data.gouv.fr et enregistrée uniquement sur l'appareil. Le seul appel en ligne à l'ouverture d'une recherche reste l'annuaire officiel des entreprises, qui reçoit le nom de la pharmacie tapé, jamais vos fiches. Le contrôle de doublon et la cession sont calculés sur l'appareil, sans envoi de données. La suppression de fiche demande toujours une confirmation ; sauvegardez avant.</p>
 </template>
 <template id="aide-tpl"><h2 id="a-principe">1. Le modèle de fonctionnement</h2>
 <p>Le <b>même dashboard</b> tourne sur le PC et sur le téléphone. Les deux appareils se synchronisent par Internet, <b>fiche par fiche</b>, dans les deux sens. Vous retrouvez sur le téléphone les fiches, les étapes, les montants, les robots, les devis, les statistiques, la carte et les PDF, avec l'affichage adapté à l'écran.</p>
@@ -1506,6 +1547,8 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 </ol>
 
 <h3>Nouveautés V4.3 à connaître pour la mise en place</h3><p>Dépôt sur Cloudflare : remplacez le zip (PTK_Dashboard_mobile.zip) puis rouvrez l'application ; le téléphone récupère la version 4.3 à la réouverture. Vos fiches ne sont pas touchées : les anciens « 2ᵉ nom » sont repris automatiquement dans « Titulaires et associés ». Dans <b>Paramètres › Objectifs et commissions</b>, vérifiez les taux NANCEO (financement et rémunération) et la période des objectifs.</p>
+
+<h3>Nouveautés V4.4 pour la mise en place</h3><p>Remplacez le zip sur Cloudflare puis rouvrez l'application. L'installation de la base des pharmacies se fait maintenant depuis une fiche : bouton « Compléter depuis l'annuaire » › « Installer la base ». Prévoyez environ 2 minutes, de préférence sur le PC, puis une mise à jour tous les 3 mois (le bandeau vous le rappelle).</p>
 </template>
 <dialog id="dlg-fiab" class="!w-[min(1040px,97vw)]">
   <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start gap-2"><div><h3 class="font-bold flex items-center gap-2"><i class="fas fa-wand-magic-sparkles text-ptkd"></i>Fiabiliser mes fiches</h3><p class="text-xs text-muted mt-0.5">Compléter et vérifier adresses, téléphones, SIRET et titulaires, sans rien écraser sans votre accord</p></div><button class="dlg-x" onclick="fiabClose()" aria-label="Fermer"><i class="fas fa-xmark"></i></button></div>
@@ -1817,7 +1860,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.3';
+const APP_VERSION = '4.4';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2907,7 +2950,8 @@ function renderPipeline() {
   const nPend = act.filter(c => c.pending).length, nIdle = act.filter(idle).length, nPlan = act.filter(c => c.nextDate && parseD(c.nextDate) >= TODAY && parseD(c.nextDate) < wk).length;
   $('pipe-stats').innerHTML = stat('Actifs', act.length, `dont ${act.filter(c => c.indicateur === 'fort').length} à intérêt fort`, '#0F172A', 'actifs')
     + stat('RDV 7 j', nPlan, 'rendez-vous / actions planifiées dans les 7 jours', '#0F172A', 'rdv7') + stat('RDV à fixer', nPend, 'prospects à rappeler', nPend ? '#9A3412' : '#0F172A', 'afixer')
-    + stat('Sans action > 30 j', nIdle, 'dossiers à relancer', nIdle ? '#B42318' : '#0F172A', 'idle');
+    + stat('Sans action > 30 j', nIdle, 'dossiers à relancer', nIdle ? '#B42318' : '#0F172A', 'idle')
+    + (act.some(c => c.cession?.on) ? stat('Cessions prévues', act.filter(c => c.cession?.on).length, 'pharmacies dont la reprise par un nouveau titulaire est prévue', '#5B21B6', 'cession') : '');
   const data = ORDER.map(k => { const l = act.filter(c => c.step === k); return {k, l, n: l.length}; });
   $('pipeline').innerHTML = data.map(({k, l, n}) => {
     const S = STEPS[k], sel = on === k, dim = on && !sel, fg = sel ? '#fff' : '#334155';
@@ -2938,6 +2982,7 @@ const LISTS = {
   actifs: () => ({t: 'Dossiers actifs', i: 'fa-briefcase', rows: clients.filter(isActive).map(c => ({c}))}),
   rdv7: () => { const wk = new Date(TODAY); wk.setDate(wk.getDate() + 8); return {t: 'Rendez-vous à 7 jours', i: 'fa-calendar-days', rows: clients.filter(c => isActive(c) && c.nextDate && parseD(c.nextDate) >= TODAY && parseD(c.nextDate) < wk).sort((a, b) => a.nextDate.localeCompare(b.nextDate)).map(c => ({c, info: `${(ACTIONS[c.nextType] || ACTIONS.relance).label} · ${fmtDT(c.nextDate)}`}))}; },
   afixer: () => ({t: 'Rendez-vous à fixer', i: 'fa-bell', rows: clients.filter(c => isActive(c) && c.pending).map(c => ({c, info: `${STEPS[c.pending.to].short} à fixer · rappeler le ${fmtDT(c.pending.rappel)}`}))}),
+  cession: () => ({t: 'Cessions prévues', i: 'fa-right-left', rows: clients.filter(c => isActive(c) && c.cession?.on).sort((a, b) => String(a.cession.date || '9').localeCompare(String(b.cession.date || '9'))).map(c => ({c, info: `Cession ${cesMois(c.cession.date) || 'à dater'}${c.cession.futur ? ' · futur titulaire : ' + c.cession.futur : ''}`}))}),
   idle: () => ({t: 'Sans action depuis plus de 30 jours', i: 'fa-hourglass-half', rows: clients.filter(c => isActive(c) && daysSince(lastAction(c)) > 30).sort((a, b) => daysSince(lastAction(b)) - daysSince(lastAction(a))).map(c => ({c, info: `${daysSince(lastAction(c))} jours sans action`}))}),
   prob: i => { const tM = TODAY.getFullYear() * 12 + TODAY.getMonth(), inB = ds => { const d = parseD(ds); if (!d) return false; const k = d.getFullYear() * 12 + d.getMonth() - tM; return (k <= 0 ? 0 : k <= 3 ? 1 : k <= 6 ? 2 : -1) === i; };
     return {t: `Signatures probables · ${['ce mois-ci', 'M+1 à M+3', 'M+4 à M+6'][i]}`, i: 'fa-pen-nib', rows: [...clients.filter(c => isActive(c) && inB(c.dateDecision)).map(c => ({c, info: `Décision le ${fmtD(c.dateDecision)}`})), ...clients.flatMap(c => c.addons.filter(a => a.statut !== 'signe' && inB(a.date)).map(a => ({c, info: `Add-on : ${a.quoi} · décision ${fmtD(a.date)}`, m: a.montant})))]}; },
@@ -2967,7 +3012,7 @@ function showList(k, arg) {
 /* ----- Tableaux ----- */
 const intCell = v => { const [l, col, , fg] = INTEREST[v || ''] || INTEREST['']; return `<span class="inline-flex items-center gap-1.5 font-semibold whitespace-nowrap" style="color:${fg}"><span class="w-2.5 h-2.5 rounded-full" style="background:${col}"></span>${l}</span>`; };
 const SITU = {cession: 'En cours de cession', associe: 'Reprise par un associé', creation: 'Ouverture / création'};
-const pharmaCell = c => `<div class="font-semibold whitespace-nowrap">${esc(c.pharma)}${c.situation ? ` <span class="pill" style="background:#EEF2FC;color:#1E3A8A;font-size:10px;padding:1px 7px" title="${esc(SITU[c.situation])}">${c.situation === 'cession' ? 'Cession' : c.situation === 'associe' ? 'Associé' : 'Création'}</span>` : ''}</div><div class="text-xs text-muted pc-a">${esc(addr(c))}</div>`;
+const pharmaCell = c => `<div class="font-semibold whitespace-nowrap">${esc(c.pharma)}${cesPill(c, 1)}${c.situation && !c.cession?.on ? ` <span class="pill" style="background:#EEF2FC;color:#1E3A8A;font-size:10px;padding:1px 7px" title="${esc(SITU[c.situation])}">${c.situation === 'cession' ? 'Cession' : c.situation === 'associe' ? 'Associé' : 'Création'}</span>` : ''}</div><div class="text-xs text-muted pc-a">${esc(addr(c))}</div>`;
 const cipCell = c => `<span class="font-mono text-indigo-900">${esc(c.cip || '—')}</span>`;
 function agePill(n) {
   if (n == null) return '';
@@ -4075,7 +4120,7 @@ const ASSOC_R = ['Titulaire', 'Co-titulaire', 'Associé', 'Gérant'];
 function assocOf(c) { if (!c) return []; if (!c.assoc && c.nom2) c.assoc = [{nom: c.nom2, role: 'Associé', on: !!c.nom2On}]; return (c.assoc || []).filter(a => a && a.nom); }
 function assocRow(a) { return `<div class="flex gap-1.5 items-center" data-as data-on="${a.on ? 1 : 0}"><input class="inp !h-9 flex-1" data-n value="${esc(a.nom || '')}" placeholder="Ex. : Mme Claire MARTIN"><select class="inp !h-9 !w-36" data-r>${ASSOC_R.map(r => `<option ${r === (a.role || 'Associé') ? 'selected' : ''}>${r}</option>`).join('')}</select><button type="button" class="btn btn-g !h-9 !px-2.5" onclick="this.closest('[data-as]').remove()" aria-label="Retirer"><i class="fas fa-xmark"></i></button></div>`; }
 function assocFill(c) { const b = $('f-assoc'); if (b) b.innerHTML = assocOf(c).map(assocRow).join(''); }
-function assocAdd() { $('f-assoc').insertAdjacentHTML('beforeend', assocRow({nom: '', role: 'Associé'})); }
+function assocAdd(a) { a = a && a.nom !== undefined ? a : {nom: '', role: 'Associé'}; $('f-assoc').insertAdjacentHTML('beforeend', assocRow(a)); }
 function assocRead() { return [...document.querySelectorAll('#f-assoc [data-as]')].map(r => ({nom: r.querySelector('[data-n]').value.trim(), role: r.querySelector('[data-r]').value, on: r.dataset.on === '1'})).filter(a => a.nom); }
 function assocTick(id, i, v) { const c = byId(id); if (!c) return; assocOf(c); c.assoc[i].on = !!v; c.maj = Date.now(); save(); }
 function nom2Tick() {}
@@ -4448,7 +4493,7 @@ function fillForm(c) {
   const v = (id, val) => { $(id).value = val ?? ''; };
   v('f-cip', c?.cip); v('f-siret', c?.siret ? c.siret.replace(/^(\d{3})(\d{3})(\d{3})(\d{5})$/, '$1 $2 $3 $4') : ''); v('f-pharma', c?.pharma); v('f-grp', c?.groupement); $('f-genre').value = c?.genre || 'M.';
   v('f-nom', c?.nom); v('f-prenom', c?.prenom); v('f-rue', c?.rue); v('f-cp', c?.cp); v('f-ville', c?.ville);
-  v('f-tel', c?.telFixe); v('f-port', c?.telPort); v('f-email', c?.email); v('f-devnom', c?.devisNom); assocFill(c); v('f-devmail', c?.devisMail); v('f-devtel', c?.devisTel); v('f-situ', c?.situation); v('f-situ-note', c?.situationNote);
+  v('f-tel', c?.telFixe); v('f-port', c?.telPort); v('f-email', c?.email); v('f-devnom', c?.devisNom); assocFill(c); cesFill(c); ui.dupIgnored = new Set(); try { dupShow(); baseBar(); } catch { } v('f-devmail', c?.devisMail); v('f-devtel', c?.devisTel); v('f-situ', c?.situation); v('f-situ-note', c?.situationNote);
   const lgoKnown = !c?.lgo || LGOS.includes(c.lgo) || c.lgo === 'Autre';
   $('f-lgo').value = lgoKnown ? (c?.lgo || '') : 'Autre'; v('f-lgo-autre', lgoKnown ? c?.lgoAutre : c.lgo); $('f-lgo-autre').classList.toggle('hidden', $('f-lgo').value !== 'Autre');
   v('f-montant', c?.montant || ''); v('f-decision', c?.dateDecision); $('f-opp').value = c?.opportunite || 'Lead interne';
@@ -4478,11 +4523,12 @@ function renderChrome(c) {
   const signed = c?.step === 'Signé', lost = c?.step === 'Perdu', active = !c || isActive(c);
   const step = c ? c.step : ui.formStep;
   $('f-title').textContent = c ? c.pharma : 'Nouveau client';
+  { const t = $('f-del-t'); if (t) t.textContent = c ? 'Supprimer définitivement la fiche' : 'Abandonner et supprimer la fiche'; }
   $('f-ico').innerHTML = c ? cIco(c, 44) : '';
   const I = INTEREST[c?.indicateur || ''];
   $('f-badges').innerHTML = (signed ? '<span class="pill bg-emerald-700 text-white"><i class="fas fa-circle-check"></i>Signé</span>' : lost ? `<span class="pill bg-rose-700 text-white">${c.perduMotif === 'Perdu contre' ? 'Perdu' : 'Abandonné'}</span>` : '')
     + (c && active ? `<span class="pill" style="background:${I[2]};color:${I[3]}"><span class="w-2 h-2 rounded-full" style="background:${I[1]}"></span>${c.indicateur ? 'Intérêt ' + I[0].toLowerCase() : 'Intérêt à renseigner'}</span>` : '')
-    + (c?.situation ? `<span class="pill" style="background:#EEF2FC;color:#1E3A8A"><i class="fas fa-key"></i>${esc(SITU[c.situation])}</span>` : '') + (c?.robotConc ? '<span class="pill" style="background:#FFF1E7;color:#9A3412"><i class="fas fa-robot"></i>Déjà équipé</span>' : '') + (c ? pendPill(c) + devisPill(c) + secPill(c) : '');
+    + cesPill(c) + (c?.situation && !c?.cession?.on ? `<span class="pill" style="background:#EEF2FC;color:#1E3A8A"><i class="fas fa-key"></i>${esc(SITU[c.situation])}</span>` : '') + (c?.robotConc ? '<span class="pill" style="background:#FFF1E7;color:#9A3412"><i class="fas fa-robot"></i>Déjà équipé</span>' : '') + (c ? pendPill(c) + devisPill(c) + secPill(c) : '');
   $('f-sub').textContent = c ? [c.ville + (depOf(c) ? ` (${depOf(c)})` : ''), c.groupement && `Groupement ${c.groupement}`, c.cip && `CIP ${c.cip}`, c.lgo && `LGO ${c.lgo === 'Autre' ? c.lgoAutre || 'autre' : c.lgo}`, active && c.typeProjet && TYPES_PROJET[c.typeProjet], active && c.opportunite && `Origine : ${c.opportunite}`].filter(Boolean).join(' · ') : "Commencez par la recherche dans l'annuaire";
   const t = [];
   { const lb = $('f-lost1'); if (lb) { lb.style.display = c && active ? '' : 'none'; lb.onclick = () => c && openLost(c.id); } }
@@ -4865,7 +4911,7 @@ function collectRaw() {
   const g = id => ($(id)?.value || '').trim();
   const lgo = $('f-lgo').value;
   return {pharma: g('f-pharma'), cip: g('f-cip'), siret: siretOf(g('f-siret')), groupement: g('f-grp'), genre: $('f-genre').value, nom: g('f-nom'), prenom: g('f-prenom'), rue: g('f-rue'), cp: g('f-cp'), ville: g('f-ville'),
-    telFixe: g('f-tel'), telPort: g('f-port'), email: g('f-email'), devisNom: g('f-devnom'), assoc: assocRead(), nom2: '', nom2On: false, devisMail: g('f-devmail'), devisTel: g('f-devtel'), situation: $('f-situ').value, situationNote: g('f-situ-note'), lgo, lgoAutre: lgo === 'Autre' ? g('f-lgo-autre') : '',
+    telFixe: g('f-tel'), telPort: g('f-port'), email: g('f-email'), devisNom: g('f-devnom'), assoc: assocRead(), cession: cesRead(), nom2: '', nom2On: false, devisMail: g('f-devmail'), devisTel: g('f-devtel'), situation: $('f-situ').value, situationNote: g('f-situ-note'), lgo, lgoAutre: lgo === 'Autre' ? g('f-lgo-autre') : '',
     indicateur: document.querySelector('input[name=f-ind]:checked')?.value || '', robots: [...document.querySelectorAll('input[name=f-model]:checked')].map(x => x.value),
     options: [...mxGet().options], besoinsSol: [...(ui.mxSol || [])], positions: [...mxGet().positions], distCpt: mxGet().dc, pasJ: mxGet().pas, distJ: mxGet().dist, pasLong: mxGet().pasLong, ptk: (({postes, dossiers, boites, stock, use, bo, gainPct, args, comment}) => ({postes, dossiers, boites, stock, use: {...use}, bo: {...bo}, gainPct: gainPct || '', args: {...(args || {})}, comment: {text: '', on: true, ...(comment || {})}}))(mxGet()),
     montant: +$('f-montant').value || 0, dateDecision: $('f-decision').value, opportunite: $('f-opp').value, echeance: $('f-ech').value,
@@ -4942,6 +4988,7 @@ function toggleCoord() {
   ui.coordEdit = !ui.coordEdit; renderCoord();
 }
 function renderCoord() {
+  try { baseBar(); dupShow(); } catch { }
   const edit = ui.coordEdit || !ui.editId;
   $('f-coord-edit').classList.toggle('hidden', !edit); $('f-coord-view').classList.toggle('hidden', edit);
   $('f-coord-toggle').innerHTML = edit ? '<i class="fas fa-check"></i> Enregistrer' : '<i class="fas fa-pen"></i> Modifier';
@@ -5079,6 +5126,7 @@ function collectForm(silent) {
 }
 function saveClient(back = true, silent = false) {
   const d = collectForm(silent); if (!d) return null;
+  if (!ui.editId && !silent) { const D = dupFind(d).filter(x => x.lvl <= 2 && !(ui.dupIgnored || new Set()).has(x.c.id)); if (D.length) { const x = D[0]; confirmBox('Doublon probable', `Cette pharmacie ressemble à la fiche existante <b>${esc(x.c.pharma)}</b> (${esc(x.why)}).<br>Voulez-vous quand même créer une nouvelle fiche ?`, '<i class="fas fa-check"></i>Enregistrer quand même', () => { (ui.dupIgnored = ui.dupIgnored || new Set()).add(x.c.id); saveClient(back, silent); }, {no: 'Ouvrir la fiche existante', onNo: () => { setDirty(false); openClient(x.c.id); }, icon: 'fa-triangle-exclamation'}); return null; } }
   if (back) commitDone();
   let c;
   if (ui.editId) {
@@ -5095,6 +5143,7 @@ function saveClient(back = true, silent = false) {
     c = {id: Date.now(), ...d, step: ui.formStep, addons: [], contacts: [], history: [], nextDate: null, nextType: null, createdAt: isoDT(new Date())};
     log(c, 'Fiche créée'); clients.unshift(c); ui.editId = c.id; ui.coordEdit = false;
   }
+  cesSync(c);
   save(); setDirty(false);
   if (back) { renderChrome(c); confirmBox('Dossier enregistré', `Les modifications de <b>${esc(c.pharma)}</b> sont enregistrées.<br><br>Que souhaitez-vous faire ?`, '<i class="fas fa-table-cells-large"></i>Retour au tableau de bord', () => showView('dashboard'), {no: '<i class="fas fa-pen-to-square"></i>Rester sur la fiche', icon: 'fa-circle-check', ok: true}); }
   return c;
@@ -5228,7 +5277,7 @@ function copyMail() {
 function openMail() { const c = byId(ui.editId); if (c) location.href = mailUrl(c, 'Votre projet de robotisation — Pharmathek', $('f-mail').value); }
 function deleteClient(id) {
   const c = byId(id); if (!c) return;
-  confirmBox('Supprimer cette fiche ?', `La fiche <b>${esc(c.pharma)}</b> sera supprimée définitivement, avec son historique.<br><span class="text-rose-700 font-semibold">Cette action est irréversible.</span>`, '<i class="fas fa-trash-can"></i>Oui, supprimer', () => {
+  confirmBox('Supprimer cette fiche ?', `La fiche <b>${esc(c.pharma)}</b> sera supprimée définitivement, avec son historique, ses actions et ses offres.<br><span class="text-rose-700 font-semibold">Cette action est irréversible.</span> <span class="text-amber-800 font-semibold">Pensez à sauvegarder avant.</span>`, '<i class="fas fa-trash-can"></i>Oui, supprimer', () => {
     clients = clients.filter(x => x.id !== id); (settings.tomb = settings.tomb || {})[id] = Date.now(); saveSet(); save(); ui.editId = null; toast('Fiche supprimée'); showView('dashboard');
   }, {no: 'Non, la garder', icon: 'fa-trash-can'});
 }
@@ -5381,6 +5430,130 @@ function detectDate(text) {
   renderRoute();
 }
 
+/* ================= V4.4 : annuaire multi-titulaires, base, cession, doublons, abandon de fiche ================= */
+const cesMois = m => { const [y, mo] = String(m || '').split('-'); return y && mo ? cap1(new Date(+y, +mo - 1, 1).toLocaleDateString('fr-FR', {month: 'long', year: 'numeric'})) : ''; };
+function cesShort(f) { const t = String(f || '').trim().split(/\s+/).filter(x => !/^(m|m\.|mr|mme|madame|monsieur|dr)$/i.test(x)); return t.length ? titleCase(t[t.length - 1]) : ''; }
+function cesPill(c, sm) {
+  const k = c && c.cession; if (!k || !k.on) return '';
+  const past = k.date && k.date < isoDay(TODAY).slice(0, 7), mois = cesMois(k.date);
+  if (past) return `<span class="pill ces-p late" title="La date de cession est passée : le futur titulaire a-t-il pris la place ?"><i class="fas fa-right-left"></i>Cession ${sm ? '' : 'passée : '}à mettre à jour</span>`;
+  return `<span class="pill ces-p" title="${esc(`Cession prévue ${mois}${k.futur ? ' · futur titulaire : ' + k.futur : ''}${k.com ? ' · ' + k.com : ''}`)}"><i class="fas fa-right-left"></i>${sm ? 'Cession' : 'Cession prévue'} ${esc(mois || '')}${!sm && k.futur ? ' · ' + esc(cesShort(k.futur)) : ''}</span>`;
+}
+function cesToggle() { const on = $('f-ces-on').checked; $('f-ces-box').classList.toggle('hidden', !on); const s = $('f-situ'); if (on && s && !s.value && [...s.options].some(o => o.value === 'cession')) s.value = 'cession'; }
+function cesRead() {
+  const e = $('f-ces-on'); if (!e) return {on: false};
+  return {on: e.checked, futur: $('f-ces-futur').value.trim(), date: $('f-ces-date').value, com: $('f-ces-com').value.trim(), contact: $('f-ces-contact').checked, devis: $('f-ces-devis').checked, rappel: $('f-ces-rap').checked};
+}
+function cesFill(c) {
+  const e = $('f-ces-on'); if (!e) return; const k = (c && c.cession) || {};
+  e.checked = !!k.on; $('f-ces-futur').value = k.futur || ''; $('f-ces-date').value = k.date || ''; $('f-ces-com').value = k.com || '';
+  $('f-ces-contact').checked = k.on ? !!k.contact : true; $('f-ces-devis').checked = k.on ? !!k.devis : true; $('f-ces-rap').checked = k.on ? !!k.rappel : true; cesToggle();
+}
+function cesApply() {
+  const k = cesRead(); if (!k.futur) { toast('Saisissez d\'abord le nom du futur titulaire', true); $('f-ces-futur').focus(); return; }
+  const t = k.futur.split(/\s+/).filter(Boolean); let civ = 'M.';
+  if (/^(mme|madame)$/i.test(t[0])) { civ = 'Mme'; t.shift(); } else if (/^(m|m\.|mr|monsieur|dr)$/i.test(t[0])) t.shift();
+  const pre = t.length > 1 ? t.shift() : '', nom = t.join(' ');
+  $('f-genre').value = civ; $('f-prenom').value = titleCase(pre); $('f-nom').value = titleCase(nom);
+  $('f-ces-on').checked = false; cesToggle(); try { renderHeaderLive(); } catch { } setDirty(true);
+  toast('Le futur titulaire est maintenant le titulaire de la fiche : vérifiez puis enregistrez');
+}
+function cesSync(c) {
+  c.rappels = (c.rappels || []).filter(r => !(r.ces && !r.done));
+  const k = c.cession; if (!k || !k.on || !k.rappel || !k.date) return;
+  const [y, m] = k.date.split('-').map(Number); if (!y || !m) return;
+  const d = new Date(y, m - 2, 1); let dt = isoDay(d) + 'T09:00'; if (d < TODAY) dt = addDays(1, '09:00');
+  c.rappels.push({id: Date.now() + 1, dt, type: 'appel', note: `Contacter ${k.futur || 'le futur titulaire'} : cession prévue en ${cesMois(k.date).toLowerCase()}`, done: false, ces: 1});
+}
+/* Titulaires trouvés dans l'annuaire : plusieurs personnes, rôle au choix, suppression */
+const TIT_ROLES = ['Titulaire', 'Co-titulaire', 'Associé', 'Gérant'];
+function titHtml() {
+  const L = ui.titCand || []; if (!L.length) return '';
+  L.forEach((t, k) => { if (!t.role) t.role = k === 0 ? 'Titulaire' : 'Co-titulaire'; });
+  return `<div class="p-3 flex flex-col gap-1.5"><div class="text-xs font-semibold text-muted">${L.length > 1 ? 'Titulaires trouvés' : 'Titulaire trouvé'} (${esc(L[0].src)}), à vérifier :</div>${L.map((t, k) => `<div class="tit-r"><span class="tit-a">${esc(((t.prenom || '')[0] || '') + ((t.nom || '')[0] || ''))}</span><b class="min-w-0 truncate">${esc([t.civ, t.prenom, t.nom].filter(Boolean).join(' '))}</b><select class="tit-s" onchange="titRole(${k},this.value)" aria-label="Rôle">${TIT_ROLES.map(r => `<option ${r === t.role ? 'selected' : ''}>${r}</option>`).join('')}</select><button type="button" class="tit-x" onclick="titDel(${k})" aria-label="Retirer cette personne" title="Retirer"><i class="fas fa-xmark"></i></button></div>`).join('')}<div class="flex gap-2 mt-1"><button type="button" class="btn btn-ok flex-1" onclick="titApply()"><i class="fas fa-check"></i>Utiliser ${L.length > 1 ? 'ces personnes' : 'cette personne'}</button><button type="button" class="btn btn-g" onclick="$('s-res').classList.add('hidden')">Aucun, je saisis</button></div></div>`;
+}
+function titRefresh() { const h = titHtml(); $('s-res').innerHTML = keptHTML() + h; if (!h && !(ui.kept || []).length) $('s-res').classList.add('hidden'); }
+function titRole(k, v) { if (ui.titCand && ui.titCand[k]) ui.titCand[k].role = v; }
+function titDel(k) { (ui.titCand || []).splice(k, 1); titRefresh(); }
+function titApply() {
+  const L = ui.titCand || []; if (!L.length) return; const t0 = L[0];
+  $('f-nom').value = t0.nom; $('f-prenom').value = t0.prenom; $('f-genre').value = t0.civ === 'Mme' ? 'Mme' : 'M.';
+  const have = new Set(assocRead().map(a => norm(a.nom)));
+  L.slice(1).forEach(t => { const nm = [t.civ, t.prenom, t.nom].filter(Boolean).join(' '); if (!have.has(norm(nm))) assocAdd({nom: nm, role: t.role || 'Co-titulaire'}); });
+  $('s-res').classList.add('hidden'); try { renderHeaderLive(); } catch { } renderStage(); setDirty(true);
+  toast(L.length > 1 ? `${L.length} personnes ajoutées à la fiche : vérifiez-les` : 'Titulaire renseigné : à vérifier');
+}
+/* Base des pharmacies : bouton dans la fiche + fenêtre */
+function baseBar() {
+  const el = $('f-basebar'), btn = $('f-complete'); if (!el) return;
+  const B = settings.pbase || {}, age = B.date ? daysSince(B.date) : null, old = age != null && age > PBASE_DAYS;
+  btn.classList.toggle('btn-p', !B.n || old); btn.classList.toggle('btn-g', !!B.n && !old);
+  el.innerHTML = !B.n
+    ? `<div class="bb or"><span class="i"><i class="fas fa-cloud-arrow-down"></i></span><div><b>Téléphones et titulaires : base non installée</b><small>Une seule fois, environ 2 minutes. Ensuite, votre fiche se remplit presque seule.</small></div><button type="button" class="btn btn-p !h-9" onclick="openBase()">Installer la base</button></div>`
+    : old ? `<div class="bb or ol"><span class="i"><i class="fas fa-clock-rotate-left"></i></span><div><b>Votre base date du ${fmtD(B.date)} (plus de 3 mois)</b><small>Des titulaires ou numéros ont pu changer. La mise à jour prend environ 2 minutes.</small></div><button type="button" class="btn btn-p !h-9" onclick="openBase()">Mettre à jour</button></div>`
+    : `<div class="bb gr"><i class="fas fa-circle-check"></i><span><b>Base du ${fmtD(B.date)}</b> · ${Number(B.n).toLocaleString('fr-FR')} pharmacies${B.tit ? `, ${Number(B.tit).toLocaleString('fr-FR')} avec titulaire` : ' (titulaires non importés)'}</span><a href="#" onclick="openBase();return false">Mettre à jour</a></div>`;
+}
+function completeFromBase() {
+  if (!settings.pbase?.n) { openBase(); return; }
+  const v = $('f-pharma').value.trim(); if (v.length < 3) { toast("Tapez d'abord le nom de la pharmacie", true); $('f-pharma').focus(); return; }
+  $('s-q').value = v; searchPharma();
+}
+function openBase() { baseRefresh(); $('pbd-prog').classList.add('hidden'); $('dlg-base').showModal(); }
+function baseRefresh(done) {
+  const B = settings.pbase || {}, el = $('pbd-state'); if (!el) return;
+  const row = (ok, t) => `<div class="flex items-center gap-2"><span class="pbd-n ${ok ? 'v' : ''}">${ok ? '<i class="fas fa-check"></i>' : '○'}</span><span>${t}</span></div>`;
+  el.innerHTML = row(!!B.n, B.n ? `<b>Pharmacies et téléphones</b> : ${Number(B.n).toLocaleString('fr-FR')} officines (${fmtD(B.date)})` : '<b>Pharmacies et téléphones</b> : à importer') + row(!!B.tit, B.tit ? `<b>Titulaires</b> : ${Number(B.tit).toLocaleString('fr-FR')} officines avec titulaire` : '<b>Titulaires</b> : à importer (facultatif mais recommandé)');
+  if (done) { const P = $('pbd-prog'); P.classList.remove('hidden'); P.innerHTML = '<span class="text-emerald-800 font-semibold"><i class="fas fa-circle-check mr-1.5"></i>Import terminé. Importez aussi le fichier des titulaires si ce n\'est pas fait.</span>'; }
+}
+function baseFile(inp) {
+  const f = inp.files && inp.files[0]; if (!f) return; const n = f.name || '';
+  const kind = /personne_activite|ps_libreacces|rpps/i.test(n) ? 'rpps' : /finess|cs1100507|etalab|structureet/i.test(n) ? 'finess' : null;
+  if (!kind) { const P = $('pbd-prog'); P.classList.remove('hidden'); P.innerHTML = '<span class="text-rose-700 font-semibold"><i class="fas fa-triangle-exclamation mr-1.5"></i>Fichier non reconnu (« ' + esc(n) + ' »). Attendu : « etalab-cs1100507-stock… » (pharmacies) ou « PS_LibreAcces_Personne_activite… » (titulaires).</span>'; try { inp.value = ''; } catch { } return; }
+  pbaseImport({files: [f], value: ''}, kind);
+  try { inp.value = ''; } catch { }
+}
+function baseDrop(e) { e.preventDefault(); $('pbd-drop').classList.remove('on'); baseFile({files: e.dataTransfer.files}); }
+/* Contrôle de doublon à la saisie */
+const DUP_STOP = new Set(['pharmacie', 'pharm', 'de', 'la', 'le', 'les', 'du', 'des', 'l', 'd', 'et', 'grande', 'nouvelle', 'ste', 'saint', 'sainte']);
+const nameTok = s => norm(s).replace(/[^a-z0-9 ]+/g, ' ').split(/\s+/).filter(t => t && !DUP_STOP.has(t));
+const digits = s => String(s || '').replace(/\D/g, '');
+function dupFind(d) {
+  d = d || collectRaw(); const out = [], tok = nameTok(d.pharma), siret = digits(d.siret), tels = [d.telFixe, d.telPort].map(digits).filter(t => t.length >= 9).map(t => t.slice(-9));
+  const rueK = x => norm(x).replace(/[^a-z0-9]+/g, ' ').trim(), rue = rueK(d.rue), cp = digits(d.cp), ville = norm(d.ville);
+  clients.forEach(c => {
+    if (c.id === ui.editId) return;
+    let lvl = 0, why = '';
+    if (siret.length === 14 && digits(c.siret) === siret) { lvl = 1; why = 'même SIRET'; }
+    else if (tels.length && [c.telFixe, c.telPort, c.devisTel].map(digits).filter(t => t.length >= 9).some(t => tels.includes(t.slice(-9)))) { lvl = 2; why = 'même téléphone'; }
+    else if (rue.length > 5 && cp && rueK(c.rue) === rue && digits(c.cp) === cp) { lvl = 2; why = 'même adresse'; }
+    else if (tok.length && (cp && digits(c.cp) === cp || ville && norm(c.ville) === ville)) {
+      const t2 = nameTok(c.pharma); if (t2.length) { const A = new Set(tok), B = new Set(t2), inter = [...A].filter(x => B.has(x)).length, uni = new Set([...A, ...B]).size; if (inter && (inter / uni >= .6 || inter === Math.min(A.size, B.size))) { lvl = 3; why = 'nom proche dans la même ville'; } }
+    }
+    if (lvl) out.push({c, lvl, why});
+  });
+  return out.sort((a, b) => a.lvl - b.lvl);
+}
+let _dupT; function dupSoon() { clearTimeout(_dupT); _dupT = setTimeout(() => { try { dupShow(); } catch { } }, 350); }
+function dupShow() {
+  const el = $('f-dup'); if (!el) return; if (ui.editId) { el.innerHTML = ''; return; }
+  const ign = ui.dupIgnored || (ui.dupIgnored = new Set()), L = dupFind().filter(x => !ign.has(x.c.id)).slice(0, 2);
+  if (!L.length) { el.innerHTML = ''; return; }
+  el.innerHTML = L.map(({c, lvl, why}) => {
+    const cls = ['', 'red', 'org', 'yel'][lvl], ic2 = ['', 'fa-ban', 'fa-triangle-exclamation', 'fa-circle-question'][lvl];
+    const ttl = lvl === 1 ? 'Cette pharmacie existe déjà dans votre portefeuille' : lvl === 2 ? 'Une fiche semble correspondre' : "Nom proche d'une fiche existante";
+    const lost = c.step === 'Perdu', chips = [lost ? `Dossier perdu${lastAction(c) ? ' en ' + String(lastAction(c)).slice(0, 4) : ''}` : c.step === 'Signé' ? 'Client signé' : `Étape ${STEPS[c.step]?.short || c.step}`, lost && c.perduMotif ? 'Motif : ' + c.perduMotif : lastAction(c) ? 'Dernière action : ' + fmtD(lastAction(c)) : '', (c.robots || []).join(', ')].filter(Boolean);
+    return `<div class="dupal ${cls}"><span class="di"><i class="fas ${ic2}"></i></span><div class="min-w-0"><b>${ttl}</b><div class="ds">${esc(why[0].toUpperCase() + why.slice(1))} · ${esc(c.pharma)}${c.ville ? ', ' + esc(c.ville) : ''}</div><div class="dm">${chips.map(x => `<span class="pill bg-white border border-slate-300 text-slate-700">${esc(x)}</span>`).join('')}</div></div><div class="dupb"><button type="button" class="btn btn-p !h-9" onclick="dupOpen(${c.id})"><i class="fas fa-folder-open"></i>${lvl === 3 ? 'Voir la fiche' : 'Ouvrir la fiche existante'}</button><button type="button" class="btn btn-g !h-9" onclick="dupIgnore(${c.id})">${lvl === 3 ? "C'est une autre pharmacie" : 'Créer quand même'}</button></div></div>`;
+  }).join('');
+}
+function dupIgnore(id) { (ui.dupIgnored = ui.dupIgnored || new Set()).add(id); dupShow(); }
+function dupOpen(id) { setDirty(false); openClient(id); }
+/* Abandon / suppression depuis le bas de la fiche */
+function delOrAbandon() {
+  if (ui.editId) { deleteClient(ui.editId); return; }
+  const nm = ($('f-pharma').value || '').trim();
+  confirmBox('Abandonner cette fiche ?', `${nm ? '« ' + esc(nm) + ' »' : 'Cette fiche'} n'a pas encore été enregistrée. Tout ce que vous avez saisi sera perdu.`, '<i class="fas fa-trash-can"></i>Abandonner et supprimer', () => { setDirty(false); ui.editId = null; fillForm(null); showView('dashboard'); toast('Fiche abandonnée'); }, {no: 'Continuer la saisie', icon: 'fa-trash-can'});
+}
+
 /* ----- Annuaire (recherche-entreprises.api.gouv.fr, code NAF 47.73Z) ----- */
 let searchT;
 function pharmaTyping() { const v = $('f-pharma').value.trim(), q = $('s-q'); if (!q || v.length < 3) return; q.value = v; if (!ui.coordEdit && ui.editId && typeof toggleCoord === 'function') { try { toggleCoord(); } catch { } } searchPharma(); }
@@ -5406,11 +5579,11 @@ function searchPharma() {
     ui.searchRes = [...loc.map(x => ({loc: x})), ...api];
     const badge = (t, cls) => `<span class="pill !py-0.5 ${cls}">${t}</span>`;
     box.innerHTML = ui.searchRes.length ? (loc.length ? '<div class="px-3 pt-2 pb-1 text-[11px] font-semibold uppercase tracking-wide text-emerald-800">Base officielle importée</div>' : '') + ui.searchRes.map((p, i) => {
-      if (p.loc) { const x = p.loc; return `<button class="w-full text-left px-3 py-2.5 border-b border-slate-100 hover:bg-orange-50" onclick="pickPharma(${i})"><div class="text-sm font-semibold">${esc(x.nom)}</div><div class="text-xs text-muted">${esc([x.rue, x.cp + ' ' + x.ville].filter(Boolean).join(', '))}</div><div class="flex flex-wrap gap-1 mt-1">${x.tel ? badge('<i class="fas fa-phone"></i>' + esc(x.tel), 'bg-slate-100 text-slate-700') : ''}${x.siret ? badge('SIRET', 'bg-slate-100 text-slate-700') : ''}${x.tit ? badge('<i class="fas fa-user"></i>' + esc(x.tit.nom), 'bg-emerald-50 text-emerald-900') : ''}</div></button>`; }
+      if (p.loc) { const x = p.loc; return `<button class="w-full text-left px-3 py-2.5 border-b border-slate-100 hover:bg-orange-50" onclick="pickPharma(${i})"><div class="text-sm font-semibold">${esc(x.nom)}</div><div class="text-xs text-muted">${esc([x.rue, x.cp + ' ' + x.ville].filter(Boolean).join(', '))}</div><div class="flex flex-wrap gap-1 mt-1">${x.tel ? badge('<i class="fas fa-phone"></i>' + esc(x.tel), 'bg-slate-100 text-slate-700') : ''}${x.siret ? badge('SIRET', 'bg-slate-100 text-slate-700') : ''}${x.tit ? badge('<i class="fas fa-user"></i>' + esc(x.tit.nom) + (x.tits && x.tits.length > 1 ? ' + ' + (x.tits.length - 1) : ''), 'bg-emerald-50 text-emerald-900') : ''}</div></button>`; }
       const s = p.siege || {};
       return `${i === loc.length && loc.length ? '<div class="px-3 pt-2 pb-1 text-[11px] font-semibold uppercase tracking-wide text-blue-900">Annuaire des entreprises (en ligne)</div>' : ''}<button class="w-full text-left px-3 py-2.5 border-b border-slate-100 hover:bg-orange-50" onclick="pickPharma(${i})"><div class="text-sm font-semibold">${esc(titleCase(s.liste_enseignes?.[0] || p.nom_complet))}</div><div class="text-xs text-muted">${esc(titleCase(s.adresse || ''))}</div></button>`; }).join('')
       : `<div class="p-3 text-xs text-muted">Aucun résultat${depOk ? '' : ' — précisez le n° de département'}.</div>`;
-    if (!settings.pbase?.n) box.insertAdjacentHTML('beforeend', `<div class="p-3 text-xs text-muted bg-slate-50">Téléphone et titulaire : importez la base officielle dans <button class="font-semibold text-ptkd hover:underline" onclick="ui.ptab='secteur';showView('profile')">Paramètres</button>.</div>`);
+    if (!settings.pbase?.n) box.insertAdjacentHTML('beforeend', `<div class="p-3 text-xs text-muted bg-slate-50">Téléphone et titulaire : <button class="font-semibold text-ptkd hover:underline" onclick="openBase()">installer la base des pharmacies</button> (2 minutes, une seule fois).</div>`);
   }, 350);
 }
 /* Recherche dans la fiche : par défaut, on complète les champs VIDES et on conserve ce qui est déjà saisi (bouton pour remplacer). */
@@ -5429,9 +5602,7 @@ function pickPharma(i) {
     const x = p.loc;
     ui.kept = fillKeep([['f-pharma', x.nom, 'Nom'], ['f-rue', x.rue, 'Adresse'], ['f-cp', x.cp, 'Code postal'], ['f-ville', x.ville, 'Ville'], ['f-tel', x.tel, 'Téléphone', fmtPhone], ['f-siret', x.siret, 'SIRET', fmtSiret]]);
     renderHeaderLive();
-    const tit = x.tit ? `<div class="p-3 flex flex-col gap-1.5"><div class="text-xs font-semibold text-muted">Titulaire (Annuaire Santé) — à vérifier :</div>
-      <button class="btn btn-g w-full !justify-between" onclick="pickTit(${i})"><span>${esc(x.tit.civ + ' ' + x.tit.prenom + ' ' + x.tit.nom)}</span><span class="text-ptkd">Utiliser ce titulaire</span></button>
-      <button class="btn btn-g w-full" onclick="$('s-res').classList.add('hidden')">Aucun, je saisis</button></div>` : '';
+    ui.titCand = (x.tits && x.tits.length ? x.tits : x.tit ? [x.tit] : []).map(t => ({civ: t.civ, prenom: t.prenom, nom: t.nom, src: 'Annuaire Santé'})); const tit = titHtml();
     $('s-res').innerHTML = keptHTML() + tit; if (!tit && !ui.kept.length) $('s-res').classList.add('hidden');
     renderStage(); toast(ui.kept.length ? 'Champs vides complétés, le reste est conservé' : `Coordonnées pré-remplies${x.tel ? ' (téléphone et SIRET compris)' : ''} — complétez le CIP et l'e-mail`); return;
   }
@@ -5439,9 +5610,7 @@ function pickPharma(i) {
   ui.kept = fillKeep([['f-pharma', titleCase(s.liste_enseignes?.[0] || p.nom_complet), 'Nom'], ['f-rue', titleCase([s.numero_voie, s.indice_repetition, s.type_voie, s.libelle_voie].filter(Boolean).join(' ')), 'Adresse'], ['f-cp', s.code_postal || '', 'Code postal'], ['f-ville', titleCase(s.libelle_commune || ''), 'Ville'], ['f-siret', s.siret || '', 'SIRET', fmtSiret]]);
   renderHeaderLive();
   const dir = (p.dirigeants || []).filter(d => d.type_dirigeant === 'personne physique');
-  const dh = dir.length ? `<div class="p-3 flex flex-col gap-1.5"><div class="text-xs font-semibold text-muted">Titulaire(s) déclaré(s) — à vérifier :</div>${dir.map((d, k) =>
-    `<button class="btn btn-g w-full !justify-between" onclick="pickDir(${i},${k})"><span>${esc(titleCase((d.prenoms || '').split(' ')[0]) + ' ' + titleCase(d.nom || ''))}</span><span class="text-ptkd">Utiliser ce titulaire</span></button>`).join('')}
-    <button class="btn btn-g w-full" onclick="$('s-res').classList.add('hidden')">Aucun, je saisis</button></div>` : '';
+  ui.titCand = dir.map(d => ({civ: d.genre === '2' || d.genre === 'F' ? 'Mme' : 'M.', prenom: titleCase((d.prenoms || '').split(' ')[0]), nom: titleCase(d.nom || ''), src: 'Annuaire des entreprises'})); const dh = titHtml();
   $('s-res').innerHTML = keptHTML() + dh; if (!dir.length && !ui.kept.length) $('s-res').classList.add('hidden');
   renderStage(); toast(ui.kept.length ? 'Champs vides complétés, le reste est conservé' : "Coordonnées pré-remplies (SIRET compris) — complétez le CIP et l'e-mail");
 }
@@ -5683,7 +5852,7 @@ function genOffre(id, K0) {
   const c = byId(id), o = c?.offre; if (!o?.lignes?.length) return toast("Préparez d'abord l'offre.", true);
   if (!window.jspdf) return toast('Générateur PDF indisponible (connexion Internet requise au premier chargement).', true);
   const k = offreCalc(o), m = o.maint || {}, K = K0 || pdfKit(`Synthèse, projet de robotisation · ${c.pharma} · Réf. ${o.ref || '—'}`), doc = K.doc, M = K.M, CW = K.CW, W = K.W;
-  const civ = c.genre === 'Mme' ? 'Mme' : 'M.', tit0 = c.devisNom ? c.devisNom : `${civ} ${(c.nom || '').toUpperCase()} ${c.prenom || ''}`.trim(), noms = [tit0].concat(assocOf(c).filter(a => a.on).map(a => a.nom)), tit = noms.length > 1 ? noms.slice(0, -1).join(', ') + ' et ' + noms[noms.length - 1] : tit0;
+  const civ = c.genre === 'Mme' ? 'Mme' : 'M.', tit0 = c.devisNom ? c.devisNom : `${civ} ${(c.nom || '').toUpperCase()} ${c.prenom || ''}`.trim(), noms = [tit0].concat(assocOf(c).filter(a => a.on).map(a => a.nom), c.cession?.on && c.cession.devis && c.cession.futur ? [c.cession.futur] : []), tit = noms.length > 1 ? noms.slice(0, -1).join(', ') + ' et ' + noms[noms.length - 1] : tit0;
   if (K0) { K.footRight = `Synthèse, projet de robotisation · ${c.pharma} · Réf. ${o.ref || '—'}`; if (!K0.solo) doc.addPage(); }
   const WH = [255, 255, 255], BD = [230, 219, 206], GRN = [28, 124, 84], GRNL = [233, 245, 238], rr = (x, y, w, h, r, fill) => { doc.setFillColor(...fill); doc.roundedRect(x, y, w, h, r, r, 'F'); };
   const card = (x, y, w, h, r = 3, bd = BD, lw = .25) => { doc.setFillColor(...WH); doc.setDrawColor(...bd); doc.setLineWidth(lw); doc.roundedRect(x, y, w, h, r, r, 'FD'); };
@@ -5821,7 +5990,32 @@ async function pbaseSearch(q, dep) {
 const VOIE = {R: 'Rue', AV: 'Avenue', BD: 'Boulevard', PL: 'Place', RTE: 'Route', CHE: 'Chemin', ALL: 'Allée', IMP: 'Impasse', QU: 'Quai', QUA: 'Quai', FG: 'Faubourg', CRS: 'Cours', SQ: 'Square', PRO: 'Promenade', PROM: 'Promenade', ESP: 'Esplanade', RPT: 'Rond-point', VC: 'Voie communale', LD: 'Lieu-dit', CTRE: 'Centre', CC: 'Centre commercial', GR: 'Grande Rue', HAM: 'Hameau', RES: 'Résidence', PAS: 'Passage', ZA: 'ZA', ZAC: 'ZAC', ZI: 'ZI'};
 const titleFr = s => titleCase(s).replace(/(?<=[\s-])(De|Du|Des|La|Le|Les|Et|Sur|En|Sous|Aux|Au|Lès|Lez)(?=[\s-])/g, m => m.toLowerCase()).replace(/(?<=[\s-])(D|L)'/g, m => m.toLowerCase());
 const cleanTel = t => { const d = String(t || '').replace(/\D/g, ''); return d.length === 10 ? d.replace(/(\d{2})(?=\d)/g, '$1 ') : ''; };
+async function zipEntry(file) {
+  const tail = new DataView(await file.slice(Math.max(0, file.size - 70000)).arrayBuffer()); let e = -1;
+  for (let i = tail.byteLength - 22; i >= 0; i--) if (tail.getUint32(i, true) === 0x06054b50) { e = i; break; }
+  if (e < 0) throw new Error('Fichier .zip illisible : extrayez-le (clic droit › Extraire tout) puis importez le .csv.');
+  const cdOff = tail.getUint32(e + 16, true), cd = new DataView(await file.slice(cdOff, cdOff + 4096).arrayBuffer());
+  if (cd.getUint32(0, true) !== 0x02014b50) throw new Error('Fichier .zip non reconnu.');
+  const meth = cd.getUint16(10, true), csz = cd.getUint32(20, true), lho = cd.getUint32(42, true);
+  const lh = new DataView(await file.slice(lho, lho + 30).arrayBuffer()), start = lho + 30 + lh.getUint16(26, true) + lh.getUint16(28, true);
+  return {meth, csz, start};
+}
+async function readLinesZip(file, onLine, onProg) {
+  const z = await zipEntry(file); if (z.meth !== 0 && z.meth !== 8) throw new Error('Compression .zip non prise en charge : extrayez le fichier puis importez le .csv.');
+  let stream = file.slice(z.start, z.start + z.csz).stream(); if (z.meth === 8) stream = stream.pipeThrough(new DecompressionStream('deflate-raw'));
+  const rd = stream.getReader(); let dec = null, rest = '', got = 0, first = true;
+  for (;;) {
+    const {done, value} = await rd.read(); if (done) break;
+    if (!dec) { let enc = 'utf-8'; try { new TextDecoder('utf-8', {fatal: true}).decode(value.slice(0, Math.max(0, Math.min(value.length, 1 << 16) - 4))); } catch { enc = 'windows-1252'; } dec = new TextDecoder(enc); }
+    got += value.length; const lines = (rest + dec.decode(value, {stream: true})).split(/\r?\n/); rest = lines.pop();
+    for (const l of lines) if (onLine(l) === false) { try { rd.cancel(); } catch { } return; }
+    onProg(Math.min(99, Math.round(got / (z.csz * (z.meth === 8 ? 5 : 1)) * 100)));
+    if (first) first = false;
+  }
+  if (rest) onLine(rest); onProg(100);
+}
 async function readLines(file, onLine, onProg) {
+  const mg = new Uint8Array(await file.slice(0, 4).arrayBuffer()); if (mg[0] === 0x50 && mg[1] === 0x4b && typeof DecompressionStream !== 'undefined') return readLinesZip(file, onLine, onProg);
   const head = new Uint8Array(await file.slice(0, 1 << 20).arrayBuffer());
   let enc = 'utf-8'; try { new TextDecoder('utf-8', {fatal: true}).decode(head.slice(0, head.length - 4)); } catch { enc = 'windows-1252'; }
   const dec = new TextDecoder(enc), CH = 4 << 20; let rest = '', pos = 0;
@@ -5836,7 +6030,7 @@ async function readLines(file, onLine, onProg) {
 }
 async function pbaseImport(input, kind) {
   const f = input.files[0]; input.value = ''; if (!f) return;
-  const P = $('pb-prog'); P.classList.remove('hidden');
+  const P = pbProg(); P.classList.remove('hidden');
   const prog = (t, pct) => { P.innerHTML = `<div class="flex justify-between font-semibold"><span><i class="fas fa-spinner fa-spin mr-1.5"></i>${t}</span><span>${pct} %</span></div><div class="h-2 rounded-full bg-blue-100 mt-2 overflow-hidden"><div class="h-2 bg-blue-700 rounded-full" style="width:${pct}%"></div></div>`; };
   const deps = settings.pbaseSect !== false ? new Set([...settings.secteur.lgpi, ...settings.secteur.prospect]) : null;
   try {
@@ -5873,8 +6067,8 @@ async function pbaseImport(input, kind) {
         if (!H) { H = F.map(h => norm(h)); ci = {civ: col(/^libelle civilite d.exercice/), nom: col(/^nom d.exercice/), pre: col(/^prenom d.exercice/), prof: col(/^libelle profession/), sect: col(/section tableau pharmaciens/) >= 0 ? H.findIndex(h => /^libelle section tableau/.test(h)) : -1, role: col(/^libelle role/), fin: col(/^numero finess site/), sir: col(/^numero siret site/), tel: col(/^telephone \(coord/)}; if (ci.nom < 0 || (ci.fin < 0 && ci.sir < 0)) throw new Error("Colonnes introuvables : vérifiez le fichier « PS_LibreAcces_Personne_activite »."); return; }
         if (ci.prof >= 0 && !/pharmacien/i.test(F[ci.prof] || '')) return;
         const tit = /titulaire/i.test(F[ci.sect] || '') || /titulaire/i.test(F[ci.role] || ''); if (!tit) return;
-        const x = byF.get(F[ci.fin]) || byS.get(siretOf(F[ci.sir])); if (!x || x.tit) return;
-        x.tit = {civ: /mme|madame/i.test(F[ci.civ] || '') ? 'Mme' : 'M.', nom: titleCase(F[ci.nom] || ''), prenom: titleCase(F[ci.pre] || '')};
+        const x = byF.get(F[ci.fin]) || byS.get(siretOf(F[ci.sir])); if (!x) return;
+        const t = {civ: /mme|madame/i.test(F[ci.civ] || '') ? 'Mme' : 'M.', nom: titleCase(F[ci.nom] || ''), prenom: titleCase(F[ci.pre] || '')}; x.tits = x.tits || []; if (x.tits.some(u => norm(u.nom + u.prenom) === norm(t.nom + t.prenom))) return; x.tits.push(t); if (x.tits.length > 6) x.tits.pop(); if (x.tit) return; x.tit = t;
         if (!x.tel && ci.tel >= 0) x.tel = cleanTel(F[ci.tel]);
         n++;
       }, p => prog(`Lecture de l'Annuaire Santé · ${n} titulaires rattachés`, p));
@@ -5882,11 +6076,12 @@ async function pbaseImport(input, kind) {
       settings.pbase = {...settings.pbase, tit: B.filter(x => x.tit).length, date: isoDay(TODAY)}; saveSet();
       toast(`${n.toLocaleString('fr-FR')} titulaires rattachés`);
     }
-    renderProfile();
+    renderProfile(); try { baseRefresh(true); baseBar(); } catch { }
   } catch (e) { P.innerHTML = `<span class="text-rose-700 font-semibold"><i class="fas fa-triangle-exclamation mr-1.5"></i>${esc(e.message || "Import impossible dans ce navigateur.")}</span>`; }
 }
+const pbProg = () => document.getElementById('dlg-base')?.open ? $('pbd-prog') : $('pb-prog');
 async function pbaseAuto() {
-  const P = $('pb-prog'); P.classList.remove('hidden'); P.innerHTML = '<i class="fas fa-spinner fa-spin mr-1.5"></i>Recherche du dernier fichier FINESS sur data.gouv.fr…';
+  const P = pbProg(); P.classList.remove('hidden'); P.innerHTML = '<i class="fas fa-spinner fa-spin mr-1.5"></i>Recherche du dernier fichier FINESS sur data.gouv.fr…';
   try {
     const r = await fetch('https://www.data.gouv.fr/api/1/datasets/finess-extraction-du-fichier-des-etablissements/'); if (!r.ok) throw 0;
     const res = ((await r.json()).resources || []).filter(x => /cs1100507-stock/i.test((x.title || '') + (x.url || '')) && /csv/i.test((x.format || '') + (x.url || ''))).sort((a, b) => String(b.last_modified || '').localeCompare(String(a.last_modified || '')))[0];
@@ -5896,7 +6091,7 @@ async function pbaseAuto() {
     const blob = await f.blob();
     await pbaseImport({files: [blob], value: ''}, 'finess');
   } catch {
-    P.innerHTML = `<span class="text-amber-900"><i class="fas fa-triangle-exclamation mr-1.5"></i><b>Le site data.gouv.fr n'autorise pas le téléchargement automatique depuis ce navigateur.</b> Cliquez « Télécharger », puis « Importer » et choisissez le fichier dans Téléchargements.</span>`;
+    P.innerHTML = `<span class="text-amber-900"><i class="fas fa-triangle-exclamation mr-1.5"></i><b>Le site data.gouv.fr n'autorise pas le téléchargement automatique depuis ce navigateur.</b> ${document.getElementById('dlg-base')?.open ? 'Passez à l\'étape 2 : « Ouvrir data.gouv.fr », téléchargez le fichier, puis glissez-le dans la zone.' : 'Cliquez « Télécharger », puis « Importer » et choisissez le fichier dans Téléchargements.'}</span>`;
   }
 }
 async function pbaseClear() { confirmBox('Supprimer la base des pharmacies', 'La base importée sera supprimée de ce navigateur. Vos fiches clients ne sont pas touchées.', 'Supprimer', async () => { try { await PDB.set('base', []); } catch { } PBASE = []; delete settings.pbase; saveSet(); renderProfile(); toast('Base supprimée'); }); }
