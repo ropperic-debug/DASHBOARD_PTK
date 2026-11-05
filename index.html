@@ -163,7 +163,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 .v4-ap .ap-s.ok:not(:first-child)::before{background:#047857}.v4-ap .ap-s.cur:not(:first-child)::before{background:linear-gradient(90deg,#047857,#EA580C)}
 .v4-ap .nm{margin-top:5px;font-weight:700}.v4-ap .sb{color:#64748b;font-size:10.5px}.v4-ap .cur .nm{color:#C2410C}
 .v4-ap .ap-c{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:6px}.v4-ap .chip{font-size:10.5px;font-weight:700;padding:2px 8px;border-radius:999px;background:#FFF1E7;color:#9A3412;border:1px solid #FDBA74}.v4-ap .chip.k{background:#E8F5EE;color:#14603F;border-color:#86CFA0}
-.v4-guide{display:flex;align-items:center;gap:14px;border:2px solid #FB923C;background:#FFF7ED;border-radius:16px;padding:12px 16px;margin-top:12px;flex-wrap:wrap}
+.v4-guide{position:relative;overflow:hidden;display:flex;align-items:center;gap:14px;border:2px solid #FB923C;background:#FFF7ED;border-radius:16px;padding:12px 16px;margin-top:12px;flex-wrap:wrap}
 .v4-guide.g{border-color:#86CFA0;background:#F0FDF4}
 .v4-gnum{width:50px;height:50px;border-radius:50%;background:#EA580C;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;line-height:1;flex:none;animation:v4z 2s infinite}.v4-guide.g .v4-gnum{background:#047857;animation:none}
 .v4-gnum small{font-size:9px;font-weight:700;margin-bottom:2px}.v4-gnum span{font-size:20px}
@@ -184,6 +184,37 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 .v41-opt b{display:block;font-size:14.5px}.v41-opt small{display:block;color:#64748b;font-size:12px;margin-top:1px}.v41-opt:hover{filter:brightness(.97)}
 .v41-mini .zr .z3,.v41-mini .zr .z4,.v41-mini .zr .ao{display:none}.v41-mini .zr{gap:4px;padding:6px 10px}
 .v41-tr{background:#C2410C;color:#fff;border-radius:9px;padding:6px 10px;font-weight:800;font-size:12.5px;white-space:nowrap}
+/* V4.3 : NANCEO, récapitulatif, période */
+.v43-nan{border:2px solid #0E7490;background:#ECFEFF;border-radius:12px;padding:10px 12px}
+.v43-nan-add{display:flex;gap:9px;align-items:center;font-size:12.5px;border:1.5px dashed #67E8F9;border-radius:10px;padding:7px 10px;background:#fff;cursor:pointer}
+.v43-chip{font-size:11.5px;font-weight:700;border-radius:99px;padding:2px 10px;background:#CFFAFE;color:#155E75}
+.ty-nan{display:inline-flex;gap:5px;align-items:center;font-size:9.5px;font-weight:800;line-height:1.15;border-radius:8px;padding:3px 7px;background:#CFFAFE;color:#155E75}
+.cr-nan{background:#F0FDFF}
+.rec2 th.g,.rec2 td.g{border-left:2px solid #CBD5E1}.rec2 th{text-align:center}.rec2 th:first-child{text-align:left}
+.rec2 td.rn{text-align:center;color:#475569;font-weight:700;min-width:44px}.rec2 td.rm{text-align:right;font-weight:800;min-width:108px}
+.rec2 thead tr:first-child th{background:#E2E8F0}.rec2 th.tt{background:#CBD5E1}
+.rec2 tr.to td{background:#F1F5F9;border-top:2px solid #64748B;font-weight:800}
+.v38-top{flex-wrap:wrap}.v38-top>div:first-child{flex:0 0 auto!important}
+.v43-per{display:flex;flex-direction:column;gap:12px}.v43-lb{font-size:11px;font-weight:800;letter-spacing:.4px;color:#64748B;margin-bottom:4px}.v43-lb span{font-weight:400}
+.v43-h{font-size:11.5px;color:#64748B;margin-top:5px;line-height:1.4}.v43-sep{width:1px;background:#E2E8F0;align-self:stretch}
+.v43-cur{display:flex;flex-wrap:wrap;gap:10px;align-items:center;border-top:1px solid #F1F5F9;padding-top:10px;font-size:13px}
+.v43-ok{background:#ECFDF5;border:1px solid #A7F3D0;color:#047857;border-radius:99px;padding:3px 11px;font-weight:700;font-size:12px}
+.v43-warn{background:#FFF7ED;border:1px solid #FDBA74;color:#9A3412;border-radius:99px;padding:3px 11px;font-weight:700;font-size:12px}
+.mcard{display:flex;align-items:center;gap:8px;text-align:left;padding:5px 8px;border:1px solid #E2E8F0;border-radius:10px;background:#fff;font-size:12px;font-weight:600;color:#334155;line-height:1.2}.mcard:hover{background:#FFF7ED;border-color:#FDBA74}.mc-i{width:22px;height:22px;border-radius:7px;display:inline-flex;align-items:center;justify-content:center;flex:none}.mc-i .ic{fill:none;stroke:currentColor;stroke-width:1.8}
+.zid-t.p{background:#fff!important;border-color:#86C9A8!important;color:#065F46!important}.zid-t.p i{background:#DDF3E8;color:#047857;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:11px}
+.tel3{display:flex;flex-wrap:wrap;gap:8px 20px;align-items:center;padding:10px 14px;border:1px solid #86C9A8;border-radius:12px;background:#fff}.tel3 .tp{width:34px;height:34px;border-radius:50%;background:#DDF3E8;color:#047857;display:inline-flex;align-items:center;justify-content:center}
+/* V4.3 : bandeau d'étape, reflet discret (effet D) */
+.v4-guide:after{content:"";position:absolute;top:0;bottom:0;width:140px;left:-160px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.85),transparent);animation:v4d 5s ease-in-out infinite;pointer-events:none}
+@keyframes v4d{0%{left:-160px}45%,100%{left:110%}}
+.v4-guide:focus-within:after{animation-play-state:paused;opacity:0}
+.v4-ap .ok .dt{font-size:17px;width:34px;height:34px;margin-top:-2px}
+.v4-ap .ap-s:not(:first-child)::before{top:15px}
+@media (prefers-reduced-motion:reduce){.v4-guide:after{animation:none;display:none}}
+/* V4.3 : plus de noir en aplat, bleu-gris doux #64748B */
+.btn-d,.ptab-on,.zbar .zb,.cc-h,.pc .av,.pin.home,#hd-ava,#mb-act,.bg-ink{background:#64748B!important;border-color:#64748B!important;color:#fff!important}
+.btn-d:hover{background:#556275!important}
+#toast{background:#64748B!important}
+#ptk-sec .key{background:#64748B}
 /* V2.8 : fiche sans bloc Étape en cours, bouton Dossier perdu */
 #f-stage{display:none!important}
 .zlost{margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:11px;border:2px solid #DC2626;background:#FEF2F2;color:#B91C1C;font-weight:800;font-size:13.5px}.zlost:hover{background:#FEE2E2}
@@ -718,7 +749,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
           <div class="rounded-xl border border-slate-200 bg-slate-50/60 p-3 flex flex-col gap-2.5">
             <div class="text-[12.5px] font-bold">Nom sur le devis <span class="font-normal text-muted">· co-titulaire, repreneur… (facultatif)</span></div>
             <div><label class="lbl" for="f-devnom">Nom à faire figurer (laisser vide = le titulaire ci-dessus)</label><input id="f-devnom" class="inp" placeholder="Ex. : M. Jean DUPONT (repreneur)"></div>
-            <div><label class="lbl" for="f-nom2">2ᵉ nom (autre associé) <span class="font-normal text-muted">· à afficher sur la synthèse si vous cochez l'option</span></label><input id="f-nom2" class="inp" placeholder="Ex. : Mme Claire MARTIN"></div>
+            <div class="sm:col-span-2"><label class="lbl">Titulaires et associés <span class="font-normal text-muted">· autres personnes de l'officine, à afficher sur la synthèse si vous cochez</span></label><div id="f-assoc" class="flex flex-col gap-1.5"></div><button type="button" class="lnk-edit mt-1" onclick="assocAdd()"><i class="fas fa-plus text-[11px]"></i>Ajouter une personne</button></div>
             <div class="grid grid-cols-2 gap-2.5"><div><label class="lbl" for="f-devmail">E-mail</label><input id="f-devmail" type="email" class="inp"></div><div><label class="lbl" for="f-devtel">Téléphone</label><input id="f-devtel" type="tel" class="inp font-mono" oninput="fmtPhone(this)"></div></div>
           </div>
           <div class="rounded-xl border border-slate-200 bg-slate-50/60 p-3 flex flex-col gap-2.5">
@@ -878,14 +909,14 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
     <div class="grid sm:grid-cols-[1.5fr_1fr] gap-3 items-start">
       <div><label class="lbl" for="act-motif">Motif *</label>
         <div class="mic-wrap"><input id="act-motif" class="inp" oninput="actDetect(this.value);actGen()"><button type="button" class="mic !top-1 !w-9 !h-9" onclick="dictate('act-motif',this)" aria-label="Dicter le motif"><i class="fas fa-microphone"></i></button></div>
-        <div id="act-chips" class="flex flex-wrap gap-1.5 mt-2"></div></div>
+        <div id="act-chips" class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 mt-2"></div></div>
       <div><label class="lbl flex justify-between items-center" for="act-dt"><span>Date & heure *</span><button type="button" class="text-xs font-bold text-ptkd hover:underline" onclick="$('act-dt').value=nowDT();ui.act.dtTouched=true;actGen()">Maintenant</button></label><input type="datetime-local" id="act-dt" class="inp" onchange="ui.act.dtTouched=true;actGen();$('act-dt-badge').classList.add('hidden')"></div>
     </div>
     <p class="text-xs text-muted -mt-2"><span id="act-dt-badge" class="hidden pill bg-blue-50 text-blue-900 mr-1"><i class="fas fa-wand-magic-sparkles"></i>Date détectée</span>Écrivez ou dictez « mardi à 14h30 », « le 12 novembre à 10h », « dans 15 jours »… la date se remplit seule.</p>
     <div><div class="flex items-center gap-2 flex-wrap mb-1"><label class="lbl !mb-0" for="act-msg">Message / synthèse *</label><span class="text-[11.5px] text-muted">Modèle :</span><div id="act-props" class="flex gap-1.5"></div></div><div class="mic-wrap"><textarea id="act-msg" rows="3" class="ta" oninput="actLink();actDetect(this.value)"></textarea><button type="button" class="mic" onclick="dictate('act-msg',this)" aria-label="Dicter le message"><i class="fas fa-microphone"></i></button></div></div>
     <div class="flex flex-col gap-1.5 text-[13px]">
       <label class="flex items-center gap-2"><input type="checkbox" id="act-next" checked class="accent-orange-700 w-4 h-4">Définir comme prochaine action du dossier</label>
-      <label class="flex items-center gap-2"><input type="checkbox" id="act-cal" class="accent-orange-700 w-4 h-4"><span id="act-cal-txt">Ajouter à mon agenda à l'enregistrement</span></label>
+      <label class="flex items-center gap-2"><input type="checkbox" id="act-cal" class="accent-orange-700 w-4 h-4" onchange="ui.act.calTouched=true"><span id="act-cal-txt">Ajouter à mon agenda à l'enregistrement</span></label>
     </div>
   </div>
   <div class="px-5 py-4 border-t bg-slate-50 flex flex-wrap justify-between gap-2">
@@ -913,6 +944,8 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
       <span class="lbl !mb-0">Réserves suspensives (clauses) ?</span>
       <div class="flex gap-5 text-sm"><label><input type="radio" name="r3-res" value="non" checked> Non</label><label class="text-rose-800"><input type="radio" name="r3-res" value="oui"> Oui</label></div>
       <p class="text-xs text-emerald-900">Tant que les réserves ne sont pas levées, la commission reste bloquée.</p>
+      <div class="v43-nan" style="background:#fff"><label class="font-extrabold flex items-center gap-2 cursor-pointer text-[14px]"><input type="checkbox" id="r3-nan" class="w-5 h-5" style="accent-color:#0E7490" onchange="r3Nan()">Financement leasing NANCEO</label>
+        <div id="r3-nan-d" class="hidden mt-2"><label class="lbl" for="r3-nan-date">Date d’installation prévisionnelle</label><input type="date" id="r3-nan-date" class="inp !w-48" oninput="r3Nan()"><p class="text-[12px] mt-1.5" style="color:#155E75">Commission de financement NANCEO : <b>payée le mois suivant l’installation</b> <span id="r3-nan-pm"></span>.</p></div></div>
     </div>
     <div id="r3-report" class="hidden flex-col gap-3 bg-slate-100 rounded-xl p-4">
       <div><label class="lbl" for="r3-reason">Motif du report *</label><select id="r3-reason" class="inp"><option>Accord bancaire en attente</option><option>Décision co-titulaire / associés</option><option>Négociation financière</option><option>Attente validation plan agenceur</option></select></div>
@@ -1119,7 +1152,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <template id="doc-mode-tpl"><h2 id="m-ecran">1. Se repérer dans le dashboard</h2>
 <p>L'écran d'accueil réunit trois zones :</p>
 <ul>
-<li><b>Ventes</b> : le chiffre d'affaires signé, l'avancement vers l'objectif et les <b>signatures probables</b> (carte jaune « Ce mois-ci » et carte « période au choix »).</li>
+<li><b>Ventes</b> : le chiffre d'affaires signé, l'avancement vers l'objectif et les <b>potentiel à signer</b> (carte jaune « Ce mois-ci » et carte « période au choix »).</li>
 <li><b>Ma journée et ma semaine</b> : vos rendez-vous et relances, en quatre onglets : <b>Aujourd'hui</b>, <b>Ma semaine</b>, <b>À relancer</b> et <b>À faire</b> (onglet rouge : actions en retard ou sans date).</li>
 <li><b>Les fiches clients</b> : tableau filtrable par étape, avec la prochaine action de chaque dossier.</li>
 </ul>
@@ -1135,6 +1168,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.3</b> : (1) <b>Ventes</b> : « CA signé » = ce qui est déjà vendu ; « <b>Potentiel à signer</b> » = dossiers dont la décision est prévue sur la période, avec « dont X € ce mois-ci » et « Voir la liste des N dossiers » ; montants avec espaces et axes du graphique nommés. (2) <b>Commissions de financement NANCEO</b> : case « financement NANCEO » sur la fiche signée, date d'installation prévisionnelle, case « commission payée » (payée le mois suivant l'installation), récapitulatif des commissions à pointer ; <b>Paramètres › Objectifs et commissions</b> : taux de financement et taux de rémunération (ex. 0,806 % arrondi à 0,81 %) ; un changement de taux ne concerne que les commissions non encore payées. (3) <b>Récapitulatif des commissions</b> refait : nombre de robots vendus séparé du montant. (4) <b>Période</b> des objectifs expliquée dans Paramètres (année civile par défaut). (5) <b>Bandeau d'étape</b> avec reflet discret, cadre orange (à faire) ou vert (prêt), grosse coche verte sur les étapes faites ; l'animation s'arrête si vous êtes en train de saisir ou si votre appareil réduit les animations. (6) <b>Titulaires et associés</b> : plusieurs personnes par fiche (Titulaire, Co-titulaire, Associé, Gérant), à cocher une par une pour la synthèse ; l'ancien « 2ᵉ nom » est repris automatiquement. Correctif : le PDF de la synthèse plantait quand un 2ᵉ nom était coché. (7) <b>Fenêtre « Planifier une action »</b> : listes « À faire » et « Terminées » (annulées comprises), pictogrammes homogènes (voiture pour la visite sur site), motifs en cartes condensées, nouveaux motifs « documents de financement (bilan) » ; l'option Agenda est toujours visible, cochée seulement pour une visite sur site ou une visio. Boutons téléphone en style blanc à pastille verte. (8) Plus de noir en aplat : bleu-gris doux. (9) <b>Téléphone</b> : un geste « retour » ferme d'abord la fenêtre ouverte, puis revient au tableau de bord, puis demande « Quitter l'application ? » (non garanti sur tous les iPhone : le geste de bord d'écran peut être géré par iOS).</li>
 <li><b>V4.2 (fenêtres d'action)</b> : les fenêtres « Planifier une action » et « Traiter une action » affichent toujours deux blocs : <b>Actions prévues</b> (retards en rouge) et <b>Dernières actions réalisées</b> (à défaut, derniers événements de la fiche). Correctif : une fiche dont tout est déjà fait pour passer à l'étape suivante (ex. intérêt renseigné + visite planifiée) s'ouvrait mal ; elle s'ouvre et passe en étape suivante. Un message rouge explique désormais toute erreur d'ouverture.</li>
 <li><b>V4.2</b> : les statistiques d'activité comptent désormais aussi les actions créées avec « + Planifier » (appel, visite, visio, relance, rappel, e-mail) et traitées ; elles n'apparaissaient pas jusqu'ici.</li>
 <li><b>V4.1</b> : (1) <b>Traiter une action</b> : la fenêtre nomme l'action (visite, appel, visio, relance, rappel, e-mail), pose la question « Que s'est-il passé ? » avec des choix explicites (« La visite a eu lieu », « Je la décale », « Elle n'aura pas lieu », et « Sans réponse » pour appel/visio/relance/rappel) ; l'étape suivante s'appelle « Compte-rendu de la visite… » et le bouton final « Enregistrer la visite réalisée ». Dans la fiche, « Prochaine action » porte un bouton <b>Traiter ▸</b>. (2) <b>Passage automatique d'étape</b> : le bandeau « Pour passer en R1 / R2 / R3 : il reste N choses à faire » liste ce qui manque ; quand tout est fait <b>et qu'un nouveau rendez-vous (visite ou visio) est planifié</b>, le dossier passe tout seul à l'étape suivante (R3 : vous enregistrez le résultat). « Changer l'étape manuellement » reste possible. (3) <b>2ᵉ nom</b> (autre associé) dans Coordonnées, avec une case à cocher dans la zone de génération du PDF pour l'afficher ou non sur la synthèse (« M. Dupont et Mme Martin »). (4) <b>Coordonnées complètes</b> : la colonne de droite défile avec la page ; « Prochaine action » reste épinglée et se réduit à une ligne quand on descend.</li>
@@ -1304,7 +1338,9 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>3 copies de secours automatiques</b> dans le navigateur (changement de version, quotidienne, avant opérations de masse), avec le bouton « Revenir ».</li>
 <li><b>Sauvegarde JSON</b> manuelle : à conserver hors du navigateur. Elle contient vos données <b>en clair</b> : rangez-la dans un espace protégé.</li>
 </ul>
-<div class="box"><b>À retenir :</b> notez la phrase secrète dans un endroit sûr (gestionnaire de mots de passe). C'est la seule clé de vos données en ligne.</div></template>
+<div class="box"><b>À retenir :</b> notez la phrase secrète dans un endroit sûr (gestionnaire de mots de passe). C'est la seule clé de vos données en ligne.</div>
+<h3>Nouveautés V4.3 et sécurité</h3><p>La V4.3 n'ajoute aucun envoi de données : les commissions NANCEO, les titulaires/associés et les dates d'installation sont enregistrés dans le même stockage chiffré de l'appareil que le reste de la fiche, et sont inclus dans les sauvegardes et la synchronisation déjà configurées. Le geste « retour » du téléphone ne quitte plus l'application sans confirmation. Aucun nouveau service externe n'est appelé.</p>
+</template>
 <template id="aide-tpl"><h2 id="a-principe">1. Le modèle de fonctionnement</h2>
 <p>Le <b>même dashboard</b> tourne sur le PC et sur le téléphone. Les deux appareils se synchronisent par Internet, <b>fiche par fiche</b>, dans les deux sens. Vous retrouvez sur le téléphone les fiches, les étapes, les montants, les robots, les devis, les statistiques, la carte et les PDF, avec l'affichage adapté à l'écran.</p>
 <div class="flow"><div><b>PC</b>Dashboard (fichier ou site)</div><span class="ar">⇄</span><div><b>Espace en ligne</b>Boîte aux lettres privée Firebase, gratuite</div><span class="ar">⇄</span><div><b>Téléphone</b>Même dashboard, installé comme une application</div></div>
@@ -1468,6 +1504,8 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Au premier lancement</b>, le dashboard fait une <b>copie de secours</b> et adapte au besoin la structure de vos données (migration). En cas de souci : Paramètres > Sauvegardes > <b>Revenir</b>.</li>
 <li><b>Téléphone</b> : extrayez le zip, ouvrez votre projet dans Cloudflare, cliquez <b>Create deployment</b> et glissez le dossier extrait. L'adresse, le compte et le code de liaison ne changent pas.</li>
 </ol>
+
+<h3>Nouveautés V4.3 à connaître pour la mise en place</h3><p>Dépôt sur Cloudflare : remplacez le zip (PTK_Dashboard_mobile.zip) puis rouvrez l'application ; le téléphone récupère la version 4.3 à la réouverture. Vos fiches ne sont pas touchées : les anciens « 2ᵉ nom » sont repris automatiquement dans « Titulaires et associés ». Dans <b>Paramètres › Objectifs et commissions</b>, vérifiez les taux NANCEO (financement et rémunération) et la période des objectifs.</p>
 </template>
 <dialog id="dlg-fiab" class="!w-[min(1040px,97vw)]">
   <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start gap-2"><div><h3 class="font-bold flex items-center gap-2"><i class="fas fa-wand-magic-sparkles text-ptkd"></i>Fiabiliser mes fiches</h3><p class="text-xs text-muted mt-0.5">Compléter et vérifier adresses, téléphones, SIRET et titulaires, sans rien écraser sans votre accord</p></div><button class="dlg-x" onclick="fiabClose()" aria-label="Fermer"><i class="fas fa-xmark"></i></button></div>
@@ -1767,6 +1805,7 @@ const fmtHM = s => { const d = parseD(s); return d ? `${pad(d.getHours())}:${pad
 const fmtMin = m => m < 60 ? `${Math.round(m)} min` : `${Math.floor(m / 60)} h ${pad(Math.round(m % 60))}`;
 const fmtMonthS = ym => { if (!ym) return ''; return parseD(ym + '-01').toLocaleDateString('fr-FR', {month: 'short', year: 'numeric'}); };
 const prevMonth = () => { const d = new Date(TODAY.getFullYear(), TODAY.getMonth() - 1, 1); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0'); };
+const addMonthYM = (ym, k) => { const [y, m] = ym.split('-').map(Number), d = new Date(y, m - 1 + k, 1); return d.getFullYear() + '-' + pad(d.getMonth() + 1); };
 const fmtMonth = ym => { if (!ym) return ''; const d = parseD(ym + '-01'); return d.toLocaleDateString('fr-FR', {month: 'long', year: 'numeric'}); };
 const daysSince = s => { const d = parseD(s); return d ? Math.round((TODAY - new Date(d.getFullYear(), d.getMonth(), d.getDate())) / 864e5) : null; };
 const sameDay = (s, d) => { const x = parseD(s); return !!x && x.getFullYear() === d.getFullYear() && x.getMonth() === d.getMonth() && x.getDate() === d.getDate(); };
@@ -1778,13 +1817,13 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.2';
+const APP_VERSION = '4.3';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
   save(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); return true; } catch { return false; } }
 };
-function toast(msg, err = false) { const t = $('toast'); t.textContent = msg; t.style.background = err ? '#B42318' : '#0F172A'; t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 3600); }
+function toast(msg, err = false) { const t = $('toast'); t.textContent = msg; t.style.background = err ? '#B42318' : '#64748B'; t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 3600); }
 function fmtSiret(i) { const d = i.value.replace(/\D/g, '').slice(0, 14); i.value = d.replace(/^(\d{3})(\d{0,3})(\d{0,3})(\d{0,5}).*/, (m, a, b, c2, e) => [a, b, c2, e].filter(Boolean).join(' ')); }
 const siretOf = v => String(v || '').replace(/\D/g, '');
 function fmtDossier(i) {
@@ -1803,6 +1842,7 @@ const SV = {
   mail: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/>',
   route: '<circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h8.5a3.5 3.5 0 0 0 0-7h-9a3.5 3.5 0 0 1 0-7H16"/>',
   video: '<rect x="2" y="6" width="14" height="12" rx="2"/><path d="m22 8-6 4 6 4z"/>',
+  car: '<path d="M5 17h14M3 13l2-6h14l2 6v4H3zM7 17v2M17 17v2"/><circle cx="7.5" cy="13.5" r=".6"/><circle cx="16.5" cy="13.5" r=".6"/>',
   pin: '<path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/>',
   check: '<path d="M20 6 9 17l-5-5"/>',
   plus: '<path d="M12 5v14M5 12h14"/>',
@@ -1857,11 +1897,11 @@ const TYPES_PROJET = {seule: 'Robotisation seule', agencement: 'Avec agencement'
 const ECH_ORDER = ['court', 'moyen', 'long'];
 const INTEREST = {fort: ['Fort', '#1C7C54', '#E8F5EE', '#14603F'], moyen: ['Moyen', '#D97706', '#FEF6E4', '#6B4607'], faible: ['Faible', '#DC2626', '#FDECEC', '#9F1C1C'], '': ['À renseigner', '#94A3B8', '#F1F3F6', '#475569']};
 const ACTIONS = {
-  visite: {label: 'Visite sur site', short: 'Visite', icon: 'pin', fa: 'fa-location-dot', fg: '#C2410C', bg: '#FFF1E7', dur: 90, motifs: ['Qualification du projet (R1)', "Présentation de l'offre et démonstration (R2)", 'Signature du contrat (R3)', "Visite d'une officine équipée"]},
-  teams: {label: 'Visio Teams', short: 'Visio', icon: 'video', fa: 'fa-video', fg: TEAMS, bg: '#EEF0FB', dur: 60, motifs: ['Présentation visio 3D & chiffrage', "Point technique avec l'agenceur", 'Revue financière du dossier', 'Échange préparatoire avant signature']},
+  visite: {label: 'Visite sur site', short: 'Visite', icon: 'car', fa: 'fa-car-side', fg: '#C2410C', bg: '#FFF1E7', dur: 90, motifs: ['Qualification du projet (R1)', "Présentation de l'offre et démonstration (R2)", 'Signature du contrat (R3)', "Visite d'une officine équipée"]},
+  teams: {label: 'Visio Teams', short: 'Visio', icon: 'video', fa: 'fa-video', fg: TEAMS, bg: '#EEF0FB', dur: 60, motifs: ['Présentation visio 3D & chiffrage', "Point technique avec l'agenceur", 'Revue financière du dossier', 'Bilan et documents de financement', 'Échange préparatoire avant signature']},
   relance: {label: 'Appel', short: 'Appel', icon: 'phone', fa: 'fa-phone', fg: '#7A5208', bg: '#FEF6E4', dur: 15, motifs: ['Point sur la date de décision', "Suivi de l'accord bancaire", 'Validation du devis', 'Point face à la concurrence']},
-  mail: {label: 'E-mail', short: 'E-mail', icon: 'mail', fa: 'fa-envelope', fg: '#2F5BD3', bg: '#EEF2FC', dur: 15, motifs: ["Transmission de l'étude financière et ROI", 'Confirmation de rendez-vous', "Envoi des plans d'agencement", "Compte-rendu d'échange"]},
-  suivi: {label: 'Relance', short: 'Relance', icon: 'bell', fa: 'fa-bell', fg: '#9A3412', bg: '#FDF1E6', dur: 15, motifs: ['Rappeler pour fixer le rendez-vous', 'Relance après présentation du devis', 'Relance décision', 'Relance accord bancaire']}
+  mail: {label: 'E-mail', short: 'E-mail', icon: 'mail', fa: 'fa-envelope', fg: '#2F5BD3', bg: '#EEF2FC', dur: 15, motifs: ["Transmission de l'étude financière et ROI", 'Confirmation de rendez-vous', "Envoi des plans d'agencement", 'Demande des documents de financement (bilan)', "Compte-rendu d'échange"]},
+  suivi: {label: 'Relance', short: 'Relance', icon: 'bell', fa: 'fa-bell', fg: '#9A3412', bg: '#FDF1E6', dur: 15, motifs: ['Rappeler pour fixer le rendez-vous', 'Relance après présentation du devis', 'Relance décision', 'Relance accord bancaire', 'Relance documents de financement (bilan)']}
 };
 const BESOINS = [['Rapidité de délivrance', 'fa-bolt'], ['Accompagnement patient', 'fa-user-nurse'], ['Gain de temps et confort', 'fa-clock'], ["Optimisation de l'espace", 'fa-up-right-and-down-left-from-center'], ['Sécurisation de la délivrance', 'fa-shield-halved'], ['Sérialisation | E-Prescription', 'fa-barcode'], ['Optimisation des stocks', 'fa-boxes-stacked'], ['Démarque inconnue', 'fa-magnifying-glass-dollar'], ['Image innovante et modernisation', 'fa-wand-magic-sparkles'], ['Effectif tendu', 'fa-users'], ['Maximiser le panier moyen et le conseil associé', 'fa-basket-shopping']];
 /* Argumentaire : pour chaque besoin, une accroche, le constat dans les mots du pharmacien, la réponse du robot, le bénéfice au quotidien (aucun chiffre inventé) */
@@ -1911,7 +1951,7 @@ const DEFAULTS = () => ({backMode: 'ask', levBody: '', prenom: 'Eric', nom: 'R.'
   echeances: {court: {label: 'Court terme', duree: 'moins de 6 mois', rappel: 14}, moyen: {label: 'Moyen terme', duree: '6 à 12 mois', rappel: 30}, long: {label: 'Long terme', duree: 'plus de 12 mois', rappel: 90}},
   secteur: {lgpi: ['03','08','10','18','19','21','23','25','28','36','37','41','45','51','52','54','55','57','58','63','67','68','70','71','72','75','77','86','87','88','89','90','91','94'],
     prospect: ['08','10','25','39','51','52','54','55','57','67','68','70','88','90']},
-  com: {addon: 2.5, assiette: {SINTESI: 17500, GENESI: 12500}, paliers: {SINTESI: [{de: 1, taux: 2.5}, {de: 10, taux: 3}, {de: 15, taux: 3.5}], GENESI: [{de: 1, taux: 2.5}, {de: 3, taux: 3}, {de: 5, taux: 3.5}]}},
+  com: {addon: 2.5, nanceo: 0.806, assiette: {SINTESI: 17500, GENESI: 12500}, paliers: {SINTESI: [{de: 1, taux: 2.5}, {de: 10, taux: 3}, {de: 15, taux: 3.5}], GENESI: [{de: 1, taux: 2.5}, {de: 3, taux: 3}, {de: 5, taux: 3.5}]}},
   operations: [],
   challenges: [{id: 1, nom: `Challenge fin d'année ${CUR_YEAR} (exemple)`, du: `${CUR_YEAR}-09-01`, au: `${CUR_YEAR}-12-31`, famille: 'SINTESI', objectif: 14, prime: 1500}]
 });
@@ -2204,17 +2244,24 @@ function comRows() {
     const base = a.montant || 0, com = Math.round(base * tA) / 100;
     return {key: 'a' + a.id, c, a, f: 'Add-on', n: null, y: +a.date.slice(0, 4), date: a.date, montant: base, label: a.quoi, taux: tA, assiette: 0, base, com, statut: a.commissionPaid ? 'paye' : 'attente', paid: a.commissionPaid, sal: a.commissionPaid ? (a.commissionSalary || a.commissionPaid) : ''};
   }));
-  return [...rob, ...add].sort((a, b) => a.date.localeCompare(b.date));
+  const nanT = +settings.com.nanceo || 0, curM = isoDay(TODAY).slice(0, 7);
+  const nan = clients.filter(c => c.step === 'Signé' && c.signatureDate && c.nanceo && c.nanceo.on).map(c => {
+    const n = c.nanceo, taux = n.commissionPaid && n.tauxFige != null ? n.tauxFige : nanT, base = c.montant || 0, com = Math.round(base * taux) / 100, inst = n.instReel || n.instPrev || '', pm = inst ? addMonthYM(inst.slice(0, 7), 1) : '';
+    const phase = n.commissionPaid ? 'paye' : (inst && pm <= curM ? 'apointer' : 'avenir');
+    return {key: 'n' + c.id, c, a: n, nan: true, f: 'Financement NANCEO', n: null, y: +c.signatureDate.slice(0, 4), date: c.signatureDate, montant: base, label: 'Financement NANCEO', taux, assiette: 0, base, com, statut: n.commissionPaid ? 'paye' : 'attente', paid: n.commissionPaid, sal: n.commissionPaid ? (n.commissionSalary || n.commissionPaid) : '', inst, pm, phase, instReel: !!n.instReel};
+  });
+  return [...rob, ...add, ...nan].sort((a, b) => a.date.localeCompare(b.date));
 }
 const COM_ST = {bloque: ['Bloquée · réserves', '#FDECEC', '#9F1C1C', 'fa-lock'], attente: ['En attente de paiement', '#FEF6E4', '#6B4607', 'fa-hourglass-half'], paye: ['Payée', '#E8F5EE', '#14603F', 'fa-circle-check']};
 const comPillS = r => {
   const [l, bg, fg, ic] = COM_ST[r.statut];
   if (r.statut === 'bloque') return `<span class="pill" style="background:#DC2626;color:#fff"><i class="fas fa-lock"></i>SOUS RÉSERVE</span><div class="text-[11.5px] font-bold mt-1" style="color:${r.c.levSent ? '#9A3412' : '#991B1B'}">Levée : ${r.c.levSent ? 'envoyée le ' + fmtD(r.c.levSent) : 'en attente'}</div>`;
-  return `<span class="pill" style="background:${bg};color:${fg}"><i class="fas ${ic}"></i>${{attente: 'En attente', paye: 'Payée'}[r.statut]}</span>${r.statut === 'paye' ? `<div class="text-[11.5px] text-muted mt-0.5 leading-snug">pointée ${fmtMonthS(r.paid)}<br>salaire ${fmtMonthS(r.sal)}</div>` : ''}`;
+  const nv = r.nan && r.statut === 'attente', lab = nv ? (r.phase === 'apointer' ? 'À pointer' : 'Installation à venir') : {attente: 'En attente', paye: 'Payée'}[r.statut], bg2 = nv && r.phase !== 'apointer' ? '#CFFAFE' : bg, fg2 = nv && r.phase !== 'apointer' ? '#155E75' : fg;
+  return `<span class="pill" style="background:${bg2};color:${fg2}"><i class="fas ${nv && r.phase !== 'apointer' ? 'fa-truck' : ic}"></i>${lab}</span>${r.statut === 'paye' ? `<div class="text-[11.5px] text-muted mt-0.5 leading-snug">pointée ${fmtMonthS(r.paid)}<br>salaire ${fmtMonthS(r.sal)}</div>` : ''}`;
 };
 const rk = n => n === 1 ? '1<sup>er</sup>' : `${n}<sup>e</sup>`;
 const comPill = r => { const [l, bg, fg, i] = COM_ST[r.statut]; return `<span class="pill" style="background:${bg};color:${fg}"><i class="fas ${i}"></i>${l}${r.statut === 'paye' ? ' · ' + fmtMonth(r.paid) : ''}</span>`; };
-const comRef = key => { const id = +key.slice(1); if (key[0] === 'c') return {c: byId(id)}; for (const c of clients) { const a = (c.addons || []).find(x => x.id === id); if (a) return {c, a}; } return {}; };
+const comRef = key => { const id = +key.slice(1); if (key[0] === 'c') return {c: byId(id)}; if (key[0] === 'n') { const c = byId(id); return c && c.nanceo ? {c, a: c.nanceo} : {}; } for (const c of clients) { const a = (c.addons || []).find(x => x.id === id); if (a) return {c, a}; } return {}; };
 function tierInfo(f, n) {
   const tiers = [...settings.com.paliers[f]].sort((a, b) => a.de - b.de);
   const cur = tiers.filter(t => n + 1 >= t.de).pop() || tiers[0], nxt = tiers.find(t => t.de > n + 1);
@@ -2457,10 +2504,10 @@ function renderSig() {
   const rows = Object.keys(G).map(Number).filter(k => k !== ck).sort((a, b) => a - b).map(k => `<button type="button" class="vm" onclick="showList('probR')" title="Voir la liste"><span class="mo">${mlab(k)}</span><span class="nm">${names(G[k])}<small>${G[k].length} dossier${G[k].length > 1 ? 's' : ''}</small></span><span class="am">${eur(sum(G[k], x => x.m))}</span></button>`).join('');
   const curRow = `<button type="button" class="vm cur" onclick="showList('prob',0)" title="Voir la liste"><span class="mo"><small>CE MOIS-CI</small>${mlab(ck)}</span><span class="nm">${cur.length ? `<b>${names(cur)}</b><small>${cur.length} dossier${cur.length > 1 ? 's' : ''} · décision prévue ce mois</small>` : 'Aucune décision prévue ce mois-ci'}</span><span class="am">${eur(curT)}</span></button>`;
   const sc = $('sig-chips'); if (sc) sc.innerHTML = [['3m', '3 mois'], ['6m', '6 mois'], ['12m', '12 mois'], ['year', 'Année'], ['range', 'Dates ▾']].map(([k, l]) => `<button type="button" class="chip ${S.mode === k ? 'on' : ''}" onclick="sigSet('${k}')" title="Signatures probables : ${l}">${l}</button>`).join('');
-  box.innerHTML = `<div class="sp"><div class="k">Signatures probables · ${S.mode === 'range' ? 'dates au choix' : ({'3m': '3 mois', '6m': '6 mois', '12m': '12 mois', year: 'année'})[S.mode] || ''}</div>
+  box.innerHTML = `<div class="sp"><div class="k">Potentiel à signer · ${S.mode === 'range' ? 'dates au choix' : ({'3m': '3 mois', '6m': '6 mois', '12m': '12 mois', year: 'année'})[S.mode] || ''}</div>
       ${S.mode === 'range' ? `<div class="dts">Du <input type="date" id="sig-du" value="${isoDay(P.d0)}" onchange="sigDates()"> au <input type="date" id="sig-au" value="${isoDay(P.d1)}" onchange="sigDates()"></div>` : ''}
       ${curRow}${rows ? `<div class="vfade"><div class="vlist">${rows}</div></div>` : ''}${Object.keys(G).filter(k => +k !== ck).length > 2 ? `<div class="vmore">↓ faites défiler : ${Object.keys(G).filter(k => +k !== ck).length} mois</div>` : ''}
-      <div class="vtot" onclick="showList('probR')" title="Voir la liste"><span class="text-[13px]"><b>Total sur la période</b> · ${it.length} dossier${it.length > 1 ? 's' : ''} · <span class="text-ptkd font-semibold">Voir ›</span></span><span class="m">${eur(tot)} <small>HT</small></span></div></div>`;
+      <div class="vtot" onclick="showList('probR')" title="Voir la liste"><span class="text-[13px]"><b>Potentiel à signer sur la période</b><br><small class="text-muted">Montants HT des dossiers dont la décision est prévue sur la période${cur.length ? ' · dont <b>' + eur(curT) + '</b> ce mois-ci' : ''}</small><br><span class="text-ptkd font-semibold">Voir la liste des ${it.length} dossier${it.length > 1 ? 's' : ''} ›</span></span><span class="m">${eur(tot)} <small>HT</small></span></div></div>`;
 }
 function renderSales() {
   const {rob, add, lost} = yearData();
@@ -2474,7 +2521,7 @@ function renderSales() {
   let cum = 0; const {r, a} = monthly(); r.forEach((v, i) => { if (!isCur || i <= TODAY.getMonth()) cum += v + a[i]; });
   const od = objToDate(), gap = cum - od;
   const last = [...rob].sort((p, q) => q.signatureDate.localeCompare(p.signatureDate))[0];
-  $('sales-top').innerHTML = `<button class="num-btn text-left w-full" onclick="showList('signes')" title="Voir la liste"><div class="kicker">CA signé</div><div class="text-[21px] font-bold tracking-tight leading-none mt-0.5">${eur(tot)} <span class="text-[11px] font-medium text-muted">HT</span></div>
+  $('sales-top').innerHTML = `<button class="num-btn text-left w-full" onclick="showList('signes')" title="Voir la liste"><div class="kicker">CA signé · ${ui.year} (déjà vendu)</div><div class="text-[21px] font-bold tracking-tight leading-none mt-0.5">${eur(tot)} <span class="text-[11px] font-medium text-muted">HT</span></div>
       <div class="text-[11.5px] text-slate-700 mt-1">${rob.length} robot${rob.length > 1 ? 's' : ''} · ${add.length} add-on${add.length > 1 ? 's' : ''}</div>
       ${last ? `<button type="button" class="block text-left text-[10.5px] text-slate-700 hover:underline max-w-full leading-[1.2]" style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" onclick="openClient(${last.id})" title="Dernière vente robot : ouvrir la fiche">Dernière vente : <b>${esc(last.pharma)}</b> · ${fmtD(last.signatureDate)} · ${eur(last.montant)}</button>` : '<div class="text-[11.5px] text-muted mt-0.5">Dernière vente : —</div>'}
       <div class="mt-1 flex flex-col text-[11.5px] text-slate-700">${dl('#C2410C', nS + ' SINTESI', caS)}${dl('#0F766E', nG + ' GENESI', caG)}${nX > 0 ? dl('#94A3B8', nX + ' autre' + (nX > 1 ? 's' : ''), caX) : ''}${dl('#6366F1', add.length + ' add-on' + (add.length > 1 ? 's' : ''), caA)}</div></button>
@@ -2518,8 +2565,8 @@ function renderChart() {
     options: {responsive: true, maintainAspectRatio: false, interaction: {mode: 'index', intersect: false},
       plugins: {legend: {position: 'bottom', labels: {boxWidth: 8, boxHeight: 8, usePointStyle: true, padding: 8, font: {...font, size: 10}}}, tooltip: {callbacks: {label: i => `${i.dataset.label} : ${eur(i.raw)}`}}},
       scales: {x: {stacked: true, grid: {display: false}, ticks: {font, color: ctx => isCur && ctx.index === mNow ? '#0F172A' : '#5B6576'}},
-        y: {stacked: true, beginAtZero: true, grid: {color: '#EEF0F3'}, border: {display: false}, ticks: {font, color: '#5B6576', callback: v => keur(v)}},
-        y1: {position: 'right', beginAtZero: true, grid: {display: false}, border: {display: false}, ticks: {font, color: '#5B6576', callback: v => keur(v)}}}}
+        y: {stacked: true, beginAtZero: true, grid: {color: '#EEF0F3'}, border: {display: false}, title: {display: true, text: 'Ventes du mois (k€)', font: {...font, size: 10}, color: '#5B6576'}, ticks: {font, color: '#5B6576', callback: v => keur(v)}},
+        y1: {position: 'right', beginAtZero: true, grid: {display: false}, border: {display: false}, title: {display: true, text: 'Cumul signé (k€)', font: {...font, size: 10}, color: '#5B6576'}, ticks: {font, color: '#5B6576', callback: v => keur(v)}}}}
   });
 }
 
@@ -2953,7 +3000,7 @@ function gotoPlan(id) { openClient(id); const d = $('f-nextcard'); d.open = true
 /* ================= RAPPELS & PROCHAINE ACTION (colonne de droite) ================= */
 const RAP_T = {
   relance: {l: 'Relance', fa: 'fa-rotate-right', a: 'suivi'}, rappel: {l: 'Rappel', fa: 'fa-bell', a: 'suivi'}, appel: {l: 'Appel', fa: 'fa-phone', a: 'relance'},
-  visite: {l: 'Visite', fa: 'fa-location-dot', a: 'visite'}, visio: {l: 'Visio', fa: 'fa-video', a: 'teams'}, mail: {l: 'E-mail', fa: 'fa-envelope', a: 'mail'}
+  visite: {l: 'Visite', fa: 'fa-car-side', a: 'visite'}, visio: {l: 'Visio', fa: 'fa-video', a: 'teams'}, mail: {l: 'E-mail', fa: 'fa-envelope', a: 'mail'}
 };
 const rapOpen = c => (c?.rappels || []).filter(r => !r.done).sort((a, b) => a.dt.localeCompare(b.dt));
 function rapOne(c, r, big) {
@@ -3017,7 +3064,7 @@ function rapType(k) {
 }
 const ordT = n => n === 1 ? '1re' : n + 'e';
 const ACT_TXT = {
-  visite: {n: 'Visite sur site', fa: 'fa-location-dot', ok: ['La visite a eu lieu', 'Je saisis le compte-rendu'], cr: 'Compte-rendu de la visite', rec: 'Visite sur site réalisée', save: 'Enregistrer la visite réalisée', re: ['Je la décale', 'Replanifier la visite à une autre date'], no: ["Elle n'aura pas lieu", 'Annuler la visite (elle sort du planning)']},
+  visite: {n: 'Visite sur site', fa: 'fa-car-side', ok: ['La visite a eu lieu', 'Je saisis le compte-rendu'], cr: 'Compte-rendu de la visite', rec: 'Visite sur site réalisée', save: 'Enregistrer la visite réalisée', re: ['Je la décale', 'Replanifier la visite à une autre date'], no: ["Elle n'aura pas lieu", 'Annuler la visite (elle sort du planning)']},
   visio: {n: 'Visio Teams', fa: 'fa-video', ok: ['La visio a eu lieu', 'Je saisis le compte-rendu'], cr: 'Compte-rendu de la visio', rec: 'Visio réalisée', save: 'Enregistrer la visio réalisée', re: ['Je la décale', 'Replanifier la visio à une autre date'], no: ["Elle n'aura pas lieu", 'Annuler la visio (elle sort du planning)'], nr: 1},
   appel: {n: 'Appel', fa: 'fa-phone', ok: ["J'ai eu la personne", "Je saisis le compte-rendu de l'appel"], cr: "Compte-rendu de l'appel", rec: 'Appel réalisé', save: "Enregistrer l'appel réalisé", re: ['Je le décale', "Replanifier l'appel à une autre date"], no: ["Il n'aura pas lieu", "Annuler l'appel (il sort du planning)"], nr: 1},
   relance: {n: 'Relance', fa: 'fa-bell', ok: ['Relance faite', 'Je saisis le compte-rendu'], cr: 'Compte-rendu de la relance', rec: 'Relance réalisée', save: 'Enregistrer la relance faite', re: ['Je la décale', 'Replanifier la relance à une autre date'], no: ["Elle n'aura pas lieu", 'Annuler la relance (elle sort du planning)'], nr: 1},
@@ -3504,7 +3551,7 @@ function exportStats() {
 
 /* ================= FENÊTRE ACTION ================= */
 const nowDT = () => isoDT(new Date());
-const telBlock = c => { const m = c.telPort, f = c.telFixe; if (!m && !f) return `<div class="rounded-xl bg-amber-50 border border-amber-200 px-3 py-2 text-[13px] text-amber-900"><i class="fas fa-phone-slash mr-1"></i>Aucun numéro enregistré sur cette fiche.</div>`; return `<div class="rounded-xl bg-emerald-50 border-2 border-emerald-300 px-4 py-3 flex flex-wrap gap-x-6 gap-y-1 items-center"><i class="fas fa-phone text-emerald-700 text-xl"></i>${[[m, 'portable'], [f, 'fixe']].filter(x => x[0]).map(([n, l]) => `<a href="tel:${esc(String(n).replace(/\s/g, ''))}" class="text-[22px] font-extrabold text-emerald-900 tracking-wide">${esc(n)}</a><span class="text-xs text-emerald-800 -ml-4">${l}</span>`).join('')}</div>`; };
+const telBlock = c => { const m = c.telPort, f = c.telFixe; if (!m && !f) return `<div class="rounded-xl bg-amber-50 border border-amber-200 px-3 py-2 text-[13px] text-amber-900"><i class="fas fa-phone-slash mr-1"></i>Aucun numéro enregistré sur cette fiche.</div>`; return `<div class="tel3"><span class="tp"><i class="fas fa-phone"></i></span>${[[m, 'portable'], [f, 'fixe']].filter(x => x[0]).map(([n, l]) => `<a href="tel:${esc(String(n).replace(/\s/g, ''))}" class="text-[22px] font-extrabold text-emerald-900 tracking-wide">${esc(n)}</a><span class="text-xs text-emerald-800 -ml-4">${l}</span>`).join('')}</div>`; };
 function actTelShow() { const c = byId(ui.act.cid), el = $('act-tel'); if (!el || !c) return; el.classList.add('hidden'); el.innerHTML = ''; }
 function actHistItems(c) {
   const L = [];
@@ -3528,8 +3575,12 @@ function actCtxHtml(c, ex) {
   const rec = actHistItems(c).slice(0, 4);
   let recH = rec.map(x => row(x, `<span class="text-muted whitespace-nowrap">${fmtDT(x.dt)}</span>`)).join('');
   if (!rec.length) recH = (c.history || []).slice(0, 4).map(h => `<div class="grid grid-cols-[1fr_auto] gap-2 items-center py-1 border-t border-slate-200 first:border-0 text-[12px]"><span class="truncate">${esc(h.action)}</span><span class="text-muted whitespace-nowrap">${fmtDT(h.date)}</span></div>`).join('');
-  return `<div class="rounded-xl border border-orange-200 bg-orange-50/70 px-3 py-2"><div class="text-[11px] font-extrabold uppercase tracking-wide text-orange-900"><i class="far fa-calendar mr-1"></i>Actions prévues${U.length ? ' · ' + U.length : ''}</div><div class="mt-1">${upH || '<div class="text-[12px] italic text-slate-400">Aucune action prévue</div>'}</div></div>
-  <div class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 mt-2"><div class="text-[11px] font-extrabold uppercase tracking-wide text-slate-600"><i class="fas fa-clock-rotate-left mr-1"></i>${rec.length ? 'Dernières actions réalisées' : 'Derniers événements de la fiche'}</div><div class="mt-1">${recH || '<div class="text-[12px] italic text-slate-400">Aucun historique</div>'}</div></div>`;
+  const canc = (c.rappels || []).filter(r => r.cancelled).map(r => { const T = RAP_T[r.type] || RAP_T.rappel; return {dt: r.doneAt || r.dt, k: T.a, m: r.note || '', l: T.l, x: 1}; });
+  const rec2 = rec.concat(canc).sort((a, b) => String(b.dt).localeCompare(String(a.dt))).slice(0, 5);
+  const rowT = x => row(x, `<span class="text-muted whitespace-nowrap">${x.x ? '<span class="text-rose-700 font-semibold mr-1">Annulée</span>' : '<span class="text-emerald-700 font-semibold mr-1">✓</span>'}${fmtDT(x.dt)}</span>`);
+  const recH2 = rec.length || canc.length ? rec2.map(rowT).join('') : recH;
+  return `<div class="rounded-xl border border-orange-200 bg-orange-50/70 px-3 py-2"><div class="text-[11px] font-extrabold uppercase tracking-wide text-orange-900">À faire${U.length ? ' · ' + U.length : ''}</div><div class="mt-1">${upH || '<div class="text-[12px] italic text-slate-400">Aucune action prévue</div>'}</div></div>
+  <div class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-2 mt-2"><div class="text-[11px] font-extrabold uppercase tracking-wide text-slate-600">${rec.length || canc.length ? 'Terminées' : 'Derniers événements de la fiche'}${rec.length ? ' · ' + rec.length : ''}</div><div class="mt-1">${recH2 || '<div class="text-[12px] italic text-slate-400">Aucun historique</div>'}</div></div>`;
 }
 function openAction(cid, type = 'relance', aid = null, opts = {}) {
   const c = byId(cid); if (!c) return;
@@ -3541,8 +3592,8 @@ function openAction(cid, type = 'relance', aid = null, opts = {}) {
   $('act-sub').textContent = `${c.pharma} — ${c.genre} ${c.prenom || ''} ${c.nom} (${c.ville})`;
   $('act-dt').value = opts.dt || (type === 'suivi' ? addDays(1, '10:00') : nowDT());
   $('act-next').checked = !!opts.dt || type === 'suivi';
-  $('act-cal').checked = opt('agenda') && (!!opts.dt || type === 'suivi'); $('act-cal').closest('label').classList.toggle('hidden', !opt('agenda'));
-  $('act-cal-txt').textContent = `Proposer l'ajout à ${settings.agenda === 'ics' ? 'mon agenda (.ics)' : 'Google Agenda'} après l'enregistrement`;
+  ui.act.calTouched = false; $('act-cal').checked = opt('agenda') && (type === 'visite' || type === 'teams'); $('act-cal').closest('label').classList.toggle('hidden', !opt('agenda'));
+  $('act-cal-txt').textContent = `Ajouter à ${settings.agenda === 'ics' ? 'mon agenda (.ics)' : 'Google Agenda'} après l'enregistrement`;
   const adv = $('act-adv'); adv.classList.toggle('hidden', !opts.advance); adv.classList.toggle('flex', !!opts.advance);
   if (opts.advance) { $('act-adv-cb').checked = true; $('act-adv-txt').innerHTML = `Passer le dossier à l'étape <b>${STEPS[opts.advance].label}</b> à l'enregistrement`; }
   if (opts.rap) $('act-next').checked = false; $('act-next').closest('label').classList.toggle('hidden', !!opts.rap);
@@ -3554,11 +3605,12 @@ function openAction(cid, type = 'relance', aid = null, opts = {}) {
 const actAddon = () => { const {cid, aid} = ui.act; return aid ? byId(cid).addons.find(a => a.id === aid) : null; };
 function setActType(type) {
   ui.act.type = type; ui.act.prop = 0;
-  if (!ui.act.dtFixed && !ui.act.dtTouched) { $('act-dt').value = type === 'suivi' ? addDays(1, '10:00') : nowDT(); if (!ui.act.rap) $('act-next').checked = type === 'suivi'; $('act-cal').checked = opt('agenda') && type === 'suivi'; }
+  if (!ui.act.dtFixed && !ui.act.dtTouched) { $('act-dt').value = type === 'suivi' ? addDays(1, '10:00') : nowDT(); if (!ui.act.rap) $('act-next').checked = type === 'suivi'; }
+  if (!ui.act.calTouched) $('act-cal').checked = opt('agenda') && (type === 'visite' || type === 'teams');
   actTelShow();
   const a = actAddon();
   $('act-types').innerHTML = actKeys().map(k => [k, ACTIONS[k]]).map(([k, A]) => `<button class="btn ${k === type ? '' : 'btn-g'}" style="${k === type ? `background:${A.bg};color:${A.fg};border-color:${A.fg}` : ''}" onclick="setActType('${k}')">${ic(A.icon, 16)}${A.label}</button>`).join('');
-  $('act-chips').innerHTML = ACTIONS[type].motifs.map((m, i) => `<button class="pill !font-semibold !text-xs bg-slate-100 text-slate-700 hover:bg-orange-100 !py-1.5" onclick="actMotif(${i})">${esc(m)}</button>`).join('');
+  $('act-chips').innerHTML = ACTIONS[type].motifs.map((m, i) => `<button class="mcard" onclick="actMotif(${i})"><span class="mc-i" style="background:${ACTIONS[type].bg};color:${ACTIONS[type].fg}">${ic(ACTIONS[type].icon, 13)}</span><span>${esc(m)}</span></button>`).join('');
   $('act-motif').value = ACTIONS[type].motifs[0] + (a ? ` — ${a.quoi}` : '');
   actGen();
 }
@@ -4017,9 +4069,16 @@ function renderArgBtn(c) {
     ? `<div class="rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 p-3.5 flex flex-wrap items-center gap-4"><button type="button" class="btn !h-12 text-[15px] font-bold !bg-slate-200 !border-slate-200 !text-slate-500 cursor-not-allowed" disabled title="Complétez les éléments ci-contre pour activer le bouton"><i class="fas fa-file-pdf text-lg"></i>${lab}</button>
       <div class="flex-1 min-w-[260px] flex flex-col gap-1 text-[13px]"><b class="text-orange-900">Il manque ${miss.length} élément${miss.length > 1 ? 's' : ''} pour générer le PDF :</b>${miss.map(m => `<div class="flex items-center gap-2"><span class="w-4 h-4 rounded-full border-2 border-slate-300 inline-block"></span><span>${esc(lbl[m] || m)}</span><button type="button" class="ml-auto font-bold text-[12px] text-ptkd underline" onclick="document.getElementById('${tgt[m]}')?.scrollIntoView({block:'center',behavior:'smooth'})">${go[m] || 'Renseigner →'}</button></div>`).join('')}</div></div>`
     : `<div class="flex flex-col gap-1.5"><button type="button" class="btn btn-p w-full !h-12 text-[15px] font-bold shadow-md" onclick="pdfArg(${c.id})"><i class="fas fa-file-pdf text-lg"></i>${lab}</button><p class="text-[12.5px] text-emerald-800 text-center font-semibold"><i class="fas fa-circle-check mr-1"></i>Tout est prêt : besoins, robot, devis + maintenance · ${esc(c.pharma)}</p><div class="flex justify-center gap-4"><button type="button" class="btn btn-g !h-10" onclick="prevArg(${c.id})"><i class="fas fa-eye text-ptkd"></i>Lire avant de générer</button><button type="button" class="lnk-edit" onclick="openArg(${c.id})"><i class="fas fa-pen text-[11px]"></i>Personnaliser les textes</button></div></div>`;
-  box.insertAdjacentHTML('beforeend', `<label class="flex items-center gap-2 text-[13px] mt-2 ${c.nom2 ? 'cursor-pointer' : 'text-slate-400'}"><input type="checkbox" class="w-4 h-4 accent-emerald-700" ${c.nom2On && c.nom2 ? 'checked' : ''} ${c.nom2 ? '' : 'disabled'} onchange="nom2Tick(${c.id},this.checked)">Afficher aussi le 2ᵉ nom sur la synthèse ${c.nom2 ? '<b>(' + esc(c.nom2) + ')</b>' : '(à saisir dans Coordonnées)'}</label>`);
+  { const A = assocOf(c); box.insertAdjacentHTML('beforeend', `<div class="mt-2 text-[13px]"><div class="font-bold text-slate-700 mb-1">Noms affichés sur la synthèse</div><div class="flex items-center gap-2 text-slate-600"><input type="checkbox" checked disabled class="w-4 h-4 accent-emerald-700">${esc(c.devisNom || [c.genre, c.prenom, c.nom].filter(Boolean).join(' '))} <span class="text-muted">· Titulaire</span></div>${A.map((a, i) => `<label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="w-4 h-4 accent-emerald-700" ${a.on ? 'checked' : ''} onchange="assocTick(${c.id},${i},this.checked)">${esc(a.nom)} <span class="text-muted">· ${esc(a.role)}</span></label>`).join('') || '<div class="text-muted text-[12px]">Autres noms : à saisir dans Coordonnées (« Titulaires et associés »).</div>'}</div>`); }
 }
-function nom2Tick(id, v) { const c = byId(id); if (!c) return; c.nom2On = !!v; save(); }
+const ASSOC_R = ['Titulaire', 'Co-titulaire', 'Associé', 'Gérant'];
+function assocOf(c) { if (!c) return []; if (!c.assoc && c.nom2) c.assoc = [{nom: c.nom2, role: 'Associé', on: !!c.nom2On}]; return (c.assoc || []).filter(a => a && a.nom); }
+function assocRow(a) { return `<div class="flex gap-1.5 items-center" data-as data-on="${a.on ? 1 : 0}"><input class="inp !h-9 flex-1" data-n value="${esc(a.nom || '')}" placeholder="Ex. : Mme Claire MARTIN"><select class="inp !h-9 !w-36" data-r>${ASSOC_R.map(r => `<option ${r === (a.role || 'Associé') ? 'selected' : ''}>${r}</option>`).join('')}</select><button type="button" class="btn btn-g !h-9 !px-2.5" onclick="this.closest('[data-as]').remove()" aria-label="Retirer"><i class="fas fa-xmark"></i></button></div>`; }
+function assocFill(c) { const b = $('f-assoc'); if (b) b.innerHTML = assocOf(c).map(assocRow).join(''); }
+function assocAdd() { $('f-assoc').insertAdjacentHTML('beforeend', assocRow({nom: '', role: 'Associé'})); }
+function assocRead() { return [...document.querySelectorAll('#f-assoc [data-as]')].map(r => ({nom: r.querySelector('[data-n]').value.trim(), role: r.querySelector('[data-r]').value, on: r.dataset.on === '1'})).filter(a => a.nom); }
+function assocTick(id, i, v) { const c = byId(id); if (!c) return; assocOf(c); c.assoc[i].on = !!v; c.maj = Date.now(); save(); }
+function nom2Tick() {}
 /* ----- Implantation : plan & photos (stockés dans ce navigateur, IndexedDB) ----- */
 const IMPL = {id: null, imgs: []};
 async function implGet(id) { try { return (await PDB.get('impl_' + id)) || []; } catch { return []; } }
@@ -4389,7 +4448,7 @@ function fillForm(c) {
   const v = (id, val) => { $(id).value = val ?? ''; };
   v('f-cip', c?.cip); v('f-siret', c?.siret ? c.siret.replace(/^(\d{3})(\d{3})(\d{3})(\d{5})$/, '$1 $2 $3 $4') : ''); v('f-pharma', c?.pharma); v('f-grp', c?.groupement); $('f-genre').value = c?.genre || 'M.';
   v('f-nom', c?.nom); v('f-prenom', c?.prenom); v('f-rue', c?.rue); v('f-cp', c?.cp); v('f-ville', c?.ville);
-  v('f-tel', c?.telFixe); v('f-port', c?.telPort); v('f-email', c?.email); v('f-devnom', c?.devisNom); v('f-nom2', c?.nom2); v('f-devmail', c?.devisMail); v('f-devtel', c?.devisTel); v('f-situ', c?.situation); v('f-situ-note', c?.situationNote);
+  v('f-tel', c?.telFixe); v('f-port', c?.telPort); v('f-email', c?.email); v('f-devnom', c?.devisNom); assocFill(c); v('f-devmail', c?.devisMail); v('f-devtel', c?.devisTel); v('f-situ', c?.situation); v('f-situ-note', c?.situationNote);
   const lgoKnown = !c?.lgo || LGOS.includes(c.lgo) || c.lgo === 'Autre';
   $('f-lgo').value = lgoKnown ? (c?.lgo || '') : 'Autre'; v('f-lgo-autre', lgoKnown ? c?.lgoAutre : c.lgo); $('f-lgo-autre').classList.toggle('hidden', $('f-lgo').value !== 'Autre');
   v('f-montant', c?.montant || ''); v('f-decision', c?.dateDecision); $('f-opp').value = c?.opportunite || 'Lead interne';
@@ -4440,20 +4499,35 @@ function renderChrome(c) {
 }
 /* ----- Commissions dans la fiche client ----- */
 const comTickUi = (r, big) => {
-  const lock = r.statut === 'bloque', on = r.statut === 'paye', m = on ? r.paid : isoDay(TODAY).slice(0, 7), sm = on ? (r.sal || r.paid) : prevMonth();
+  const lock = r.statut === 'bloque', on = r.statut === 'paye', m = on ? r.paid : (r.nan && r.pm ? r.pm : isoDay(TODAY).slice(0, 7)), sm = on ? (r.sal || r.paid) : prevMonth();
   return `<label class="flex flex-wrap items-center gap-2 rounded-xl border-2 ${lock ? 'border-slate-200 bg-slate-50 text-slate-400' : on ? 'border-emerald-500 bg-emerald-50 text-emerald-900' : 'border-emerald-300 bg-white text-emerald-900'} ${big ? 'px-3 py-2' : 'px-2 py-1'} font-bold ${lock ? '' : 'cursor-pointer'}" title="${lock ? 'Bloquée : les réserves ne sont pas encore levées' : on ? 'Décocher pour annuler le paiement' : 'Cocher quand la commission est payée'}">
-    <input type="checkbox" class="${big ? 'w-5 h-5' : 'w-4 h-4'} accent-emerald-700" ${on ? 'checked' : ''} ${lock ? 'disabled' : ''} onchange="comTick('${r.key}',this.checked)">${big ? 'Commission payée' : 'Payée'}
+    <input type="checkbox" class="${big ? 'w-5 h-5' : 'w-4 h-4'} accent-emerald-700" ${on ? 'checked' : ''} ${lock ? 'disabled' : ''} onchange="comTick('${r.key}',this.checked)">${big ? (r.nan ? 'Commission de financement NANCEO payée' : 'Commission payée') : 'Payée'}
     ${lock ? '' : `<span class="text-xs font-medium text-muted">pointée en : <input type="month" class="inp !h-7 !w-36 !text-xs !py-0" id="cm-${r.key}" value="${esc(m)}" onclick="event.stopPropagation()" onchange="comMonth('${r.key}',this.value)" title="Mois où la commission est pointée"></span><span class="text-xs font-medium text-muted">sur le salaire de : <input type="month" class="inp !h-7 !w-36 !text-xs !py-0" id="cs-${r.key}" value="${esc(sm)}" onclick="event.stopPropagation()" onchange="comSal('${r.key}',this.value)" title="Mois du bulletin de salaire"></span>`}</label>`;
 };
 function comTick(key, on) {
   const {c, a} = comRef(key); if (!c) return; const t = a || c, mEl = $('cm-' + key), m = (mEl && mEl.value) || isoDay(TODAY).slice(0, 7), sEl = $('cs-' + key), sm = (sEl && sEl.value) || prevMonth();
   const done = () => { save(); refreshComFiche(c); if (ui.ptab === 'objectifs' && !$('view-profile')?.classList.contains('hidden')) renderProfile(); };
-  if (on) { t.commissionPaid = m; t.commissionSalary = sm; log(c, a ? `Commission add-on payée : ${a.quoi} (pointée en ${fmtMonth(m)} · salaire de ${fmtMonth(sm)})` : `Commission payée (pointée en ${fmtMonth(m)} · salaire de ${fmtMonth(sm)})`); done(); toast(`Commission pointée : ${fmtMonth(m)} · salaire de ${fmtMonth(sm)}`); }
-  else confirmBox('Annuler le paiement ?', `La commission ${a ? "de l'add-on <b>" + esc(a.quoi) + '</b>' : 'du robot'} repassera « en attente de paiement ».`, '<i class="fas fa-rotate-left"></i>Oui, annuler', () => { t.commissionPaid = ''; t.commissionSalary = ''; log(c, 'Paiement de commission annulé'); done(); toast('Paiement annulé'); }, {no: 'Non, garder', icon: 'fa-circle-question', onNo: () => refreshComFiche(c)});
+  if (on) { t.commissionPaid = m; t.commissionSalary = sm; if (key[0] === 'n') t.tauxFige = +settings.com.nanceo || 0; log(c, a ? `Commission ${key[0] === 'n' ? 'de financement NANCEO' : 'add-on'} payée${key[0] === 'n' ? '' : ' : ' + a.quoi} (pointée en ${fmtMonth(m)} · salaire de ${fmtMonth(sm)})` : `Commission payée (pointée en ${fmtMonth(m)} · salaire de ${fmtMonth(sm)})`); done(); toast(`Commission pointée : ${fmtMonth(m)} · salaire de ${fmtMonth(sm)}`); }
+  else confirmBox('Annuler le paiement ?', `La commission ${a ? (key[0] === 'n' ? 'de <b>financement NANCEO</b>' : "de l'add-on <b>" + esc(a.quoi) + '</b>') : 'du robot'} repassera « en attente de paiement ».`, '<i class="fas fa-rotate-left"></i>Oui, annuler', () => { t.commissionPaid = ''; t.commissionSalary = ''; log(c, 'Paiement de commission annulé'); done(); toast('Paiement annulé'); }, {no: 'Non, garder', icon: 'fa-circle-question', onNo: () => refreshComFiche(c)});
 }
 function comSal(key, m) { const {c, a} = comRef(key); if (!c || !m) return; const t = a || c; if (t.commissionPaid) { t.commissionSalary = m; save(); refreshComFiche(c); if (ui.ptab === 'objectifs' && !$('view-profile')?.classList.contains('hidden')) renderProfile(); } }
 function comMonth(key, m) { const {c, a} = comRef(key); if (!c || !m) return; const t = a || c; if (t.commissionPaid) { t.commissionPaid = m; save(); refreshComFiche(c); } }
 function refreshComFiche(c) { if ($('f-com')) $('f-com').outerHTML = comFicheBox(c); renderAddonsList(c); if (ui.editId === c.id) renderHistory(c); }
+const nanTxt = r => r.inst ? `Commission de financement NANCEO payée le mois suivant l'installation → à pointer en <b>${fmtMonth(r.pm)}</b>` : "Commission de financement NANCEO payée le mois suivant l'installation : indiquez la date d'installation.";
+const nanBlock = (c, r) => { const n = c.nanceo; return `<div class="v43-nan"><div class="flex flex-wrap items-center justify-between gap-2"><label class="font-extrabold flex items-center gap-2 cursor-pointer text-[14px]"><input type="checkbox" class="w-5 h-5" style="accent-color:#0E7490" checked onchange="nanToggle(${c.id},this.checked)">Commission de financement leasing NANCEO</label>
+    <span class="flex items-center gap-2"><b class="text-[18px] tabular-nums">${eur2(r.com)}</b><span class="v43-chip">${n.instReel ? 'Installée le ' + fmtD(n.instReel) : r.inst ? 'Installation prévue le ' + fmtD(r.inst) : 'Date d’installation à renseigner'}</span></span></div>
+    <div class="flex flex-wrap gap-4 items-end mt-2"><div><label class="lbl" for="nan-prev">Installation prévisionnelle</label><input type="date" id="nan-prev" class="inp !w-44" value="${esc(n.instPrev || '')}" onchange="nanSet(${c.id},'instPrev',this.value)"></div>
+      <div><label class="lbl" for="nan-reel">Installation réelle (quand faite)</label><input type="date" id="nan-reel" class="inp !w-44" value="${esc(n.instReel || '')}" onchange="nanSet(${c.id},'instReel',this.value)"></div>
+      <p class="text-[12px] flex-1 min-w-[220px]" style="color:#155E75">${nanTxt(r)}<br><span class="text-muted">${eur(r.base)} HT × ${r.taux.toLocaleString('fr-FR')} %</span></p></div>
+    <div class="mt-2">${comTickUi(r, true)}</div></div>`; };
+const nanAdd = c => `<label class="v43-nan-add"><input type="checkbox" class="w-4 h-4" style="accent-color:#0E7490" onchange="nanToggle(${c.id},this.checked)"><span><b>Financement leasing NANCEO</b> <span class="text-muted">· commission payée le mois suivant l'installation</span></span></label>`;
+function nanToggle(id, on) {
+  const c = byId(id); if (!c) return; const n = c.nanceo || {};
+  if (!on && n.commissionPaid) { toast('Commission déjà pointée : annulez d’abord le paiement.', true); return refreshComFiche(c); }
+  c.nanceo = Object.assign(n, {on: !!on}); if (on && !n.instPrev && c.livraisonDate) n.instPrev = c.livraisonDate;
+  log(c, on ? 'Financement leasing NANCEO ajouté' : 'Financement leasing NANCEO retiré'); save(); refreshComFiche(c); if (ui.ptab === 'objectifs' && !$('view-profile')?.classList.contains('hidden')) renderProfile();
+}
+function nanSet(id, f, v) { const c = byId(id); if (!c || !c.nanceo) return; c.nanceo[f] = v; save(); refreshComFiche(c); }
 function comFicheBox(c) {
   if (!opt('com') || c?.step !== 'Signé') return '<div id="f-com"></div>';
   const R = comRows().filter(r => r.c.id === c.id), rob = R.find(r => !r.a); if (!rob) return '<div id="f-com"></div>';
@@ -4465,6 +4539,7 @@ function comFicheBox(c) {
       <b class="text-[22px] tabular-nums">${eur2(rob.com)}</b>
       <span class="flex-1 min-w-[200px] text-[12px] text-slate-600">Robot ${esc(rob.label)} · ${eur(rob.montant)} − assiette ${eur(rob.assiette)} = ${eur(rob.base)} × ${rob.taux.toLocaleString('fr-FR')} % · ${rob.n}<sup>e</sup> ${rob.f} ${rob.y}</span>
       ${comPill(rob)}${comTickUi(rob, true)}</div>
+    ${R.find(r => r.nan) ? nanBlock(c, R.find(r => r.nan)) : nanAdd(c)}
     ${rob.statut === 'bloque' ? '<p class="text-xs text-rose-800"><i class="fas fa-lock mr-1"></i>Commission bloquée tant que la réserve n\'est pas retournée signée (date de levée à renseigner, puis enregistrer).</p>' : ''}
     <p class="text-[11.5px] text-muted">Calcul automatique actif (Paramètres › Options). Case cochée = commission payée : elle est reprise dans « Objectifs et commissions ».</p></div>`;
 }
@@ -4790,7 +4865,7 @@ function collectRaw() {
   const g = id => ($(id)?.value || '').trim();
   const lgo = $('f-lgo').value;
   return {pharma: g('f-pharma'), cip: g('f-cip'), siret: siretOf(g('f-siret')), groupement: g('f-grp'), genre: $('f-genre').value, nom: g('f-nom'), prenom: g('f-prenom'), rue: g('f-rue'), cp: g('f-cp'), ville: g('f-ville'),
-    telFixe: g('f-tel'), telPort: g('f-port'), email: g('f-email'), devisNom: g('f-devnom'), nom2: g('f-nom2'), devisMail: g('f-devmail'), devisTel: g('f-devtel'), situation: $('f-situ').value, situationNote: g('f-situ-note'), lgo, lgoAutre: lgo === 'Autre' ? g('f-lgo-autre') : '',
+    telFixe: g('f-tel'), telPort: g('f-port'), email: g('f-email'), devisNom: g('f-devnom'), assoc: assocRead(), nom2: '', nom2On: false, devisMail: g('f-devmail'), devisTel: g('f-devtel'), situation: $('f-situ').value, situationNote: g('f-situ-note'), lgo, lgoAutre: lgo === 'Autre' ? g('f-lgo-autre') : '',
     indicateur: document.querySelector('input[name=f-ind]:checked')?.value || '', robots: [...document.querySelectorAll('input[name=f-model]:checked')].map(x => x.value),
     options: [...mxGet().options], besoinsSol: [...(ui.mxSol || [])], positions: [...mxGet().positions], distCpt: mxGet().dc, pasJ: mxGet().pas, distJ: mxGet().dist, pasLong: mxGet().pasLong, ptk: (({postes, dossiers, boites, stock, use, bo, gainPct, args, comment}) => ({postes, dossiers, boites, stock, use: {...use}, bo: {...bo}, gainPct: gainPct || '', args: {...(args || {})}, comment: {text: '', on: true, ...(comment || {})}}))(mxGet()),
     montant: +$('f-montant').value || 0, dateDecision: $('f-decision').value, opportunite: $('f-opp').value, echeance: $('f-ech').value,
@@ -4888,7 +4963,7 @@ function renderCoord() {
       ${c.telPort ? ln('fa-phone', `<span class="tabular-nums">${esc(c.telPort)}</span> <small>portable</small>`, mini(`tel:${esc(c.telPort.replace(/\s/g, ''))}`, 'phone', 'Appeler', 'g')) : ''}
       ${c.telFixe ? ln('fa-phone-volume', `<span class="tabular-nums">${esc(c.telFixe)}</span> <small>fixe</small>`, mini(`tel:${esc(c.telFixe.replace(/\s/g, ''))}`, 'phone', 'Appeler le fixe', c.telPort ? '' : 'g')) : ''}
       ${c.email ? ln('fa-envelope', `<a class="block truncate" href="mailto:${esc(c.email)}">${esc(c.email)}</a>`, mini(mailUrl(c, 'Pharmathek — votre projet', ''), 'mail', 'Écrire')) : ''}
-      ${c.nom2 ? ln('fa-user-group', `<b>2ᵉ nom :</b> ${esc(c.nom2)}`, '') : ''}
+      ${assocOf(c).length ? ln('fa-user-group', assocOf(c).map(a => `${esc(a.nom)} <small>${esc(a.role)}</small>`).join(' · '), '') : ''}
       ${c.devisNom ? ln('fa-file-signature', `<b>Sur le devis :</b> ${esc(c.devisNom)}${c.devisMail ? ' · ' + esc(c.devisMail) : ''}${c.devisTel ? ' · ' + esc(c.devisTel) : ''}`, '') : ''}
       ${c.situation ? ln('fa-key', `<b>${esc(SITU[c.situation])}</b>${c.situationNote ? ' · ' + esc(c.situationNote) : ''}`, '') : ''}
       <div class="cqs" style="grid-template-columns:repeat(${2 + opt('gps') + opt('teams')},minmax(0,1fr))">
@@ -4949,7 +5024,7 @@ function histIcon(h) {
   const a = norm(h.action);
   if (/signe|contrat|levee/.test(a)) return ['fa-file-signature', '#14603F', '#E8F5EE'];
   if (/perdu|abandon/.test(a)) return ['fa-circle-xmark', '#B42318', '#FDECEC'];
-  if (/visite/.test(a)) return ['fa-location-dot', '#C2410C', '#FFF1E7'];
+  if (/visite/.test(a)) return ['fa-car-side', '#C2410C', '#FFF1E7'];
   if (/visio|teams/.test(a)) return ['fa-video', TEAMS, '#EEF0FB'];
   if (/appel|relance|contact client/.test(a)) return ['fa-phone', '#7A5208', '#FEF6E4'];
   if (/e-mail|mail/.test(a)) return ['fa-envelope', '#2F5BD3', '#EEF2FC'];
@@ -5608,7 +5683,7 @@ function genOffre(id, K0) {
   const c = byId(id), o = c?.offre; if (!o?.lignes?.length) return toast("Préparez d'abord l'offre.", true);
   if (!window.jspdf) return toast('Générateur PDF indisponible (connexion Internet requise au premier chargement).', true);
   const k = offreCalc(o), m = o.maint || {}, K = K0 || pdfKit(`Synthèse, projet de robotisation · ${c.pharma} · Réf. ${o.ref || '—'}`), doc = K.doc, M = K.M, CW = K.CW, W = K.W;
-  const civ = c.genre === 'Mme' ? 'Mme' : 'M.', tit = c.devisNom ? c.devisNom : `${civ} ${(c.nom || '').toUpperCase()} ${c.prenom || ''}`.trim(), duo = !!(c.nom2On && c.nom2); if (duo) tit = `${tit} et ${c.nom2}`;
+  const civ = c.genre === 'Mme' ? 'Mme' : 'M.', tit0 = c.devisNom ? c.devisNom : `${civ} ${(c.nom || '').toUpperCase()} ${c.prenom || ''}`.trim(), noms = [tit0].concat(assocOf(c).filter(a => a.on).map(a => a.nom)), tit = noms.length > 1 ? noms.slice(0, -1).join(', ') + ' et ' + noms[noms.length - 1] : tit0;
   if (K0) { K.footRight = `Synthèse, projet de robotisation · ${c.pharma} · Réf. ${o.ref || '—'}`; if (!K0.solo) doc.addPage(); }
   const WH = [255, 255, 255], BD = [230, 219, 206], GRN = [28, 124, 84], GRNL = [233, 245, 238], rr = (x, y, w, h, r, fill) => { doc.setFillColor(...fill); doc.roundedRect(x, y, w, h, r, r, 'F'); };
   const card = (x, y, w, h, r = 3, bd = BD, lw = .25) => { doc.setFillColor(...WH); doc.setDrawColor(...bd); doc.setLineWidth(lw); doc.roundedRect(x, y, w, h, r, r, 'FD'); };
@@ -5627,7 +5702,7 @@ function genOffre(id, K0) {
   K.font(16, 'bold', PK.ink); const tl = doc.splitTextToSize(pdfTxt(`Votre offre ${o.robot || 'Robot SINTESI'}`), CW - pw - 20); doc.text(tl.slice(0, 2), M + 9, y0 + 19);
   K.font(8.2, 'normal', PK.mut); K.t(`Réf. ${o.ref || '—'}  ·  ${o.date || '—'}  ·  Validité ${o.validite || 30} jours`, M + 9, y0 + 19 + Math.min(tl.length, 2) * 6.6 + 2);
   const px = M + CW - pw - 4; rr(px, y0 + 4, pw, hh - 8, 3, [246, 247, 249]);
-  lab('Offre remise à', px + 4, y0 + 9, PK.ord, 5.4); K.font(8.6, 'bold', PK.ink); K.t(doc.splitTextToSize(pdfTxt(c.pharma || ''), pw - 8)[0], px + 4, y0 + 13.2); K.font(7.4, 'normal', PK.sub); K.t(doc.splitTextToSize(pdfTxt(c.devisNom ? tit : tit + (duo ? ', Titulaires' : ', Titulaire')), pw - 8)[0], px + 4, y0 + 17); K.t(doc.splitTextToSize(pdfTxt([c.rue, `${c.cp || ''} ${c.ville || ''}`.trim()].filter(Boolean).join(', ')), pw - 8)[0], px + 4, y0 + 20.8);
+  lab('Offre remise à', px + 4, y0 + 9, PK.ord, 5.4); K.font(8.6, 'bold', PK.ink); K.t(doc.splitTextToSize(pdfTxt(c.pharma || ''), pw - 8)[0], px + 4, y0 + 13.2); K.font(7.4, 'normal', PK.sub); K.t(doc.splitTextToSize(pdfTxt(c.devisNom ? tit : tit + (noms.length > 1 ? ', Titulaires' : ', Titulaire')), pw - 8)[0], px + 4, y0 + 17); K.t(doc.splitTextToSize(pdfTxt([c.rue, `${c.cp || ''} ${c.ville || ''}`.trim()].filter(Boolean).join(', ')), pw - 8)[0], px + 4, y0 + 20.8);
   doc.setDrawColor(225, 228, 232); doc.setLineWidth(.2); doc.line(px + 4, y0 + 24, px + pw - 4, y0 + 24);
   lab('Votre interlocuteur', px + 4, y0 + 28, PK.ord, 5.4); K.font(8.6, 'bold', PK.ink); K.t(`${settings.prenom} ${settings.nom}`, px + 4, y0 + 32); K.font(7.4, 'normal', PK.sub); K.t(settings.tel || PTK_HQ.tel, px + 4, y0 + 35.8);
   K.y = y0 + hh + 4;
@@ -6092,8 +6167,9 @@ function openR3(id) {
   document.querySelector('input[name=r3][value=signe]').checked = true; r3Toggle();
   document.querySelector('input[name=r3-res][value=non]').checked = true;
   $('r3-date').value = isoDay(new Date()); $('r3-montant').value = c.montant || ''; $('r3-next').value = addDays(7, '10:00'); $('r3-dossier').value = c.numDossier || '';
-  offSignUi(c); $('dlg-r3').showModal();
+  offSignUi(c); $('r3-nan').checked = !!(c.nanceo && c.nanceo.on); $('r3-nan-date').value = (c.nanceo && c.nanceo.instPrev) || c.livraisonDate || ''; r3Nan(); $('dlg-r3').showModal();
 }
+function r3Nan() { const on = $('r3-nan').checked; $('r3-nan-d').classList.toggle('hidden', !on); const d = $('r3-nan-date').value; $('r3-nan-pm').textContent = on && d ? '→ à pointer en ' + fmtMonth(addMonthYM(d.slice(0, 7), 1)) : ''; }
 function r3Toggle() { const s = document.querySelector('input[name=r3]:checked').value === 'signe'; $('r3-signe').classList.toggle('hidden', !s); $('r3-report').classList.toggle('hidden', s); $('r3-report').classList.toggle('flex', !s); }
 function confirmR3() {
   const c = byId(ui.r3Id); if (!c) return;
@@ -6102,6 +6178,7 @@ function confirmR3() {
     const res = document.querySelector('input[name=r3-res]:checked').value === 'oui';
     offSignApply(c);
     Object.assign(c, {step: 'Signé', signatureDate: d, montant: m, numDossier: $('r3-dossier').value.trim(), hasReserves: res, leveeDate: '', commissionPaid: '', commissionSalary: '', nextDate: null, nextType: null});
+    if ($('r3-nan').checked) { c.nanceo = {on: true, instPrev: $('r3-nan-date').value, instReel: '', commissionPaid: '', commissionSalary: ''}; log(c, 'Financement leasing NANCEO coché', $('r3-nan-date').value ? `Installation prévue le ${fmtD($('r3-nan-date').value)}` : ''); } else if (c.nanceo) c.nanceo.on = false;
     log(c, `Contrat robot signé : ${(c.robots || []).join(', ')} (${eur(m)} HT)`, res ? `Avec réserves : ${c.reservesText}` : 'Sans réserve.');
     toast(res ? 'Contrat signé — commission bloquée jusqu’à la levée des réserves' : 'Contrat signé enregistré — bravo !');
   } else {
@@ -6232,16 +6309,18 @@ function comView(rows, skip) {
 function comSet(k, v) { comF()[k] = v; renderProfile(); }
 function comReset() { ui.comF = null; renderProfile(); }
 function comSearch(v) { comF().q = v; renderProfile(); const e = $('cf-q'); if (e) { e.focus(); e.setSelectionRange(e.value.length, e.value.length); } }
+const cnt3 = rows => { const nr = rows.filter(r => !r.a).length, na = rows.filter(r => r.a && !r.nan).length, nn = rows.filter(r => r.nan).length; return `${nr} robot${nr > 1 ? 's' : ''} · ${na} add-on${na > 1 ? 's' : ''}${nn ? ` · ${nn} financement${nn > 1 ? 's' : ''}` : ''}`; };
 function comRecap(rows) {
-  const g = (st, add) => { const x = rows.filter(r => r.statut === st && !!r.a === add); return {n: x.length, m: sum(x, r => r.com)}; };
-  const cell = o => `<span class="n">${o.n}</span>${eur2(o.m)}`;
-  const line = (cls, lab, st) => { const a = g(st, false), b = g(st, true), t = {n: a.n + b.n, m: a.m + b.m}; return `<tr class="${cls}"><td>${lab}</td><td>${cell(a)}</td><td>${cell(b)}</td><td>${cell(t)}</td></tr>`; };
-  const R = rows.filter(r => !r.a), A = rows.filter(r => r.a), T = {n: rows.length, m: sum(rows, r => r.com)};
-  return `<div class="px-5 py-3 border-b border-slate-200"><div class="inline-block rounded-xl overflow-hidden" style="border:1.5px solid #94A3B8"><div class="flex justify-between gap-8 px-3 py-1.5 text-[12.5px] font-extrabold bg-slate-900 text-white"><span>Récapitulatif des commissions</span><span class="font-medium opacity-80">au ${fmtD(isoDay(TODAY))}</span></div>
-    <table class="rec"><thead><tr><th></th><th>ROBOTS</th><th>ADD-ONS</th><th>TOTAL</th></tr></thead><tbody>
+  const kind = r => r.nan ? 'n' : r.a ? 'a' : 'r';
+  const g = (st, k) => { const x = rows.filter(r => (st === '*' || r.statut === st) && (k === '*' || kind(r) === k)); return {n: x.length, m: sum(x, r => r.com)}; };
+  const cell = o => `<td class="rn g">${o.n}</td><td class="rm">${eur2(o.m)}</td>`;
+  const line = (cls, lab, st) => `<tr class="${cls}"><td class="rl">${lab}</td>${['r', 'a', 'n', '*'].map(k => cell(g(st, k))).join('')}</tr>`;
+  const sub = ['r', 'a', 'n', '*'].map(() => '<th class="g">Nb</th><th>Commission</th>').join('');
+  return `<div class="px-5 py-3 border-b border-slate-200"><div class="inline-block rounded-xl overflow-hidden" style="border:1.5px solid #94A3B8"><div class="flex justify-between gap-8 px-3 py-1.5 text-[12.5px] font-extrabold text-white" style="background:#64748B"><span>Récapitulatif des commissions</span><span class="font-medium opacity-90">au ${fmtD(isoDay(TODAY))}</span></div>
+    <table class="rec rec2"><thead><tr><th rowspan="2"></th><th colspan="2" class="g">ROBOTS</th><th colspan="2" class="g">ADD-ONS</th><th colspan="2" class="g">FINANCEMENT NANCEO</th><th colspan="2" class="g tt">TOTAL</th></tr><tr>${sub}</tr></thead><tbody>
     ${line('pa', '<i class="fas fa-circle-check text-emerald-600 mr-1"></i>Payées', 'paye')}${line('at', '<i class="fas fa-hourglass-half text-amber-600 mr-1"></i>En attente', 'attente')}${line('bl', '<i class="fas fa-lock mr-1"></i>Sous réserve', 'bloque')}
-    <tr class="to"><td>Total</td><td><span class="n">${R.length}</span>${eur2(sum(R, r => r.com))}</td><td><span class="n">${A.length}</span>${eur2(sum(A, r => r.com))}</td><td><span class="n">${T.n}</span>${eur2(T.m)}</td></tr></tbody></table></div>
-    <div class="text-[11.5px] text-muted mt-1">Petit chiffre = nombre de dossiers.</div></div>`;
+    ${line('to', 'Total', '*')}</tbody></table></div>
+    <div class="text-[11.5px] text-muted mt-1">Nb = nombre de dossiers · Commission = montant en euros.</div></div>`;
 }
 function comBar(rows, vw) {
   const F = comF(), n = (skip, f) => comView(rows, skip).filter(f).length;
@@ -6253,7 +6332,7 @@ function comBar(rows, vw) {
   const fld = (l, h) => `<div class="flex flex-col gap-1"><span class="text-[10.5px] font-extrabold tracking-wide text-slate-500">${l}</span>${h}</div>`;
   return `<div class="cf-bar"><div class="flex flex-wrap gap-1.5">${chip('st', 'Tous', 'tous')}${chip('st', 'En attente', 'attente')}${chip('st', 'Payées', 'paye')}${chip('st', 'Bloquées', 'bloque')}</div>
     <div class="flex flex-wrap gap-2.5 items-end">
-      ${fld('TYPE DE VENTE', opts('typ', 'typ', types, v => `${v === 'Add-on' ? 'Add-on' : 'Robot ' + v} · ${cnt('typ', r => r.f === v)}`, 'Tous les types'))}
+      ${fld('TYPE DE VENTE', opts('typ', 'typ', types, v => `${v === 'Add-on' || v === 'Financement NANCEO' ? v : 'Robot ' + v} · ${cnt('typ', r => r.f === v)}`, 'Tous les types'))}
       ${fld('MODÈLE', opts('mod', 'mod', mods, v => `${esc(v)} · ${cnt('mod', r => r.label === v)}`, 'Tous les modèles'))}
       ${fld('MOIS DE SIGNATURE', opts('ms', 'ms', mss, v => `${fmtMonth(v)} · ${cnt('ms', r => r.date.slice(0, 7) === v)}`, 'Tous'))}
       ${fld('MOIS DU SALAIRE', opts('sal', 'sal', sals, v => `${fmtMonth(v)} · ${cnt('sal', r => r.sal === v)} · ${eur2(sum(base('sal').filter(r => r.sal === v), r => r.com))}`, 'Tous'))}
@@ -6276,13 +6355,13 @@ function pfCom() {
   const subTabs = objSub();
   const nA = rows.filter(r => r.a).length, nR = rows.length - nA;
   $('pf-body').innerHTML = `<div class="v38-r1">${subTabs}</div>
-    <section class="card p-4 flex flex-wrap items-end gap-3 v38-per">
-      <div><label class="lbl" for="cp-year">Année des objectifs</label><select id="cp-year" class="inp !w-32" onchange="ui.comP={mode:'year',year:+this.value,du:'',au:''};renderProfile()">${years.map(y => `<option ${P.mode === 'year' && P.year === y ? 'selected' : ''}>${y}</option>`).join('')}</select></div>
-      <span class="text-[13px] text-muted pb-3">ou période :</span>
-      <div><label class="lbl" for="cp-du">Du</label><input type="date" id="cp-du" class="inp" value="${P.mode === 'range' ? P.du : ''}"></div>
-      <div><label class="lbl" for="cp-au">Au</label><input type="date" id="cp-au" class="inp" value="${P.mode === 'range' ? P.au : ''}"></div>
-      <button class="btn btn-d" onclick="ui.comP={mode:'range',year:${CUR_YEAR},du:$('cp-du').value,au:$('cp-au').value};renderProfile()">Appliquer la période</button>
-      <span class="ml-auto text-[13px] font-semibold pb-3">${P.mode === 'year' ? `Année ${P.year}` : `Du ${P.du ? fmtD(P.du) : '…'} au ${P.au ? fmtD(P.au) : '…'}`} · ${nR} robot${nR > 1 ? 's' : ''} · ${nA} add-on${nA > 1 ? 's' : ''}</span>
+    <section class="card p-4 v43-per">
+      <div class="flex flex-wrap gap-6 items-start">
+        <div><div class="v43-lb">ANNÉE DES OBJECTIFS</div><select id="cp-year" class="inp !w-32" onchange="ui.comP={mode:'year',year:+this.value,du:'',au:''};renderProfile()" aria-label="Année des objectifs">${years.map(y => `<option ${P.mode === 'year' && P.year === y ? 'selected' : ''}>${y}</option>`).join('')}</select><div class="v43-h">Année civile : du 1er janvier au 31 décembre.<br>C’est le réglage normal, rien d’autre à faire.</div></div>
+        <div class="v43-sep"></div>
+        <div><div class="v43-lb">PÉRIODE PERSONNALISÉE <span>(facultatif)</span></div><div class="flex flex-wrap gap-2 items-center"><span class="text-muted">Du</span><input type="date" lang="fr-FR" id="cp-du" class="inp !w-40" aria-label="Début de période" value="${P.mode === 'range' ? P.du : ''}"><span class="text-muted">au</span><input type="date" lang="fr-FR" id="cp-au" class="inp !w-40" aria-label="Fin de période" value="${P.mode === 'range' ? P.au : ''}"><button class="btn btn-d" onclick="ui.comP={mode:'range',year:${CUR_YEAR},du:$('cp-du').value,au:$('cp-au').value};renderProfile()">Appliquer</button></div><div class="v43-h">À utiliser seulement pour isoler une période (trimestre, challenge…).<br>Laissez vide pour garder l’année civile.</div></div>
+      </div>
+      <div class="v43-cur"><span class="text-muted">Affichage actuel :</span>${P.mode === 'year' ? `<span class="v43-ok">✔ Année civile ${P.year} · 01/01 → 31/12</span>` : `<span class="v43-warn">⚠ Période personnalisée · ${P.du ? fmtD(P.du) : '…'} → ${P.au ? fmtD(P.au) : '…'}</span>`}<b>${cnt3(rows)}</b>${P.mode === 'year' ? '' : `<button class="btn btn-g !h-9 ml-auto" onclick="ui.comP={mode:'year',year:${CUR_YEAR},du:'',au:''};renderProfile()"><i class="fas fa-rotate-left"></i>Revenir à l’année civile</button>`}</div>
     </section>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 v38-tiles">
       ${tile('Commissions acquises', eur2(tot('attente') + tot('paye')), 'hors dossiers bloqués', '#F1F3F6', '#0F172A', '#CBD5E1')}
@@ -6310,17 +6389,17 @@ function pfCom() {
       <div class="cf-tot"><span><b>${vw.length} ligne${vw.length > 1 ? 's' : ''}</b> affichée${vw.length > 1 ? 's' : ''} sur ${rows.length} · commissions <b>${eur2(sum(vw, r => r.com))}</b></span>${att.length ? `<label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="w-4 h-4 accent-orange-700" ${att.every(r => sel.has(r.key)) ? 'checked' : ''} onchange="[${att.map(r => `'${r.key}'`).join(',')}].forEach(k=>this.checked?ui.paySel.add(k):ui.paySel.delete(k));renderProfile()"><b>Tout sélectionner</b> (${att.length} ligne${att.length > 1 ? 's' : ''} à pointer affichée${att.length > 1 ? 's' : ''})</label>` : ''}</div>
       <div class="tbl-com v38g">
         <div class="v38-grid v38-h"><span></span><span>Type</span><span>Pharmacie</span><span>Vente</span><span style="text-align:right">Calcul</span><span class="v38-n">Taux</span><span class="v38-n">Commission</span><span>Statut</span><span></span></div>
-        ${vw.length ? [...vw].reverse().map(r => `<div class="v38-grid v38-r ${r.statut === 'bloque' ? 'cr-blk' : r.a ? 'cr-add' : 'cr-rob'}">
+        ${vw.length ? [...vw].reverse().map(r => `<div class="v38-grid v38-r ${r.statut === 'bloque' ? 'cr-blk' : r.nan ? 'cr-nan' : r.a ? 'cr-add' : 'cr-rob'}">
           <span>${r.statut === 'attente' ? `<input type="checkbox" class="w-4 h-4 accent-orange-700" aria-label="Sélectionner" ${sel.has(r.key) ? 'checked' : ''} onchange="this.checked?ui.paySel.add('${r.key}'):ui.paySel.delete('${r.key}');renderProfile()">` : r.statut === 'bloque' ? '<i class="fas fa-lock text-rose-700" title="Commission bloquée : réserve non levée"></i>' : ''}</span>
-          <span>${r.a ? '<span class="ty ty-add"><i class="fas fa-circle-plus"></i>ADD-ON</span>' : '<span class="ty ty-rob"><i class="fas fa-boxes-stacked"></i>ROBOT</span>'}</span>
-          <div class="v38-ph"><button class="font-semibold text-left hover:underline" onclick="openClient(${r.c.id})">${esc(r.c.pharma)}</button><small>${fmtD(r.date)}${(r.a ? r.a.notes : r.c.numDossier) ? ' · ' + esc(r.a ? r.a.notes : r.c.numDossier) : ''}${!r.a && r.c.hasReserves && r.c.leveeDate ? ' · réserve levée le ' + fmtD(r.c.leveeDate) : ''}</small></div>
-          <div class="v38-v">${r.a ? (optIco(r.label, 26) || '') : robotIco(r.label, 26)}<span>${esc(r.label)}${r.a ? '' : `<small>${rk(r.n)} ${r.f}</small>`}</span></div>
+          <span>${r.nan ? '<span class="ty ty-nan" title="Financement leasing NANCEO"><i class="fas fa-building-columns"></i>FINANCEMENT NANCEO</span>' : r.a ? '<span class="ty ty-add"><i class="fas fa-circle-plus"></i>ADD-ON</span>' : '<span class="ty ty-rob"><i class="fas fa-boxes-stacked"></i>ROBOT</span>'}</span>
+          <div class="v38-ph"><button class="font-semibold text-left hover:underline" onclick="openClient(${r.c.id})">${esc(r.c.pharma)}</button><small>${fmtD(r.date)}${(r.a && !r.nan ? r.a.notes : r.c.numDossier) ? ' · ' + esc(r.a && !r.nan ? r.a.notes : r.c.numDossier) : ''}${!r.a && r.c.hasReserves && r.c.leveeDate ? ' · réserve levée le ' + fmtD(r.c.leveeDate) : ''}</small></div>
+          <div class="v38-v">${r.nan ? '<i class="fas fa-building-columns" style="font-size:20px;color:#0E7490;width:26px;text-align:center"></i>' : r.a ? (optIco(r.label, 26) || '') : robotIco(r.label, 26)}<span>${esc(r.label)}${r.nan ? `<small>${r.inst ? (r.instReel ? 'Installé le ' : 'Install. prévue ') + fmtD(r.inst) + ' · pointer en ' + fmtMonthS(r.pm) : 'Installation à renseigner'}</small>` : r.a ? '' : `<small>${rk(r.n)} ${r.f}</small>`}</span></div>
           <div class="v38-c"><i>${eur(r.montant)}${r.assiette ? ' − ' + eur(r.assiette) : ''}</i><b>= ${eur(r.base)}</b></div>
-          <div class="v38-n">${r.taux.toLocaleString('fr-FR')} %</div><div class="v38-n v38-bd">${eur2(r.com)}</div>
+          <div class="v38-n">${r.taux.toLocaleString('fr-FR', r.nan ? {maximumFractionDigits: 2} : undefined)} %</div><div class="v38-n v38-bd">${eur2(r.com)}</div>
           <div class="v38-s">${comPillS(r)}</div>
           <div>${r.statut === 'attente' ? `<button class="btn btn-g" onclick="openPay(['${r.key}'])">Payée…</button>` : r.statut === 'paye' ? `<button class="btn btn-g" onclick="unpay('${r.key}')">Annuler</button>` : `<button class="btn btn-g" onclick="openClient(${r.c.id})">Lever les réserves</button>`}</div></div>`).join('')
           : `<div class="py-12 text-center text-muted">${rows.length ? 'Aucune ligne ne correspond aux filtres.' : 'Aucune vente signée sur cette période'}</div>`}
-        ${vw.length ? `<div class="v38-grid v38-t"><span></span><span></span><span style="grid-column:3/5">Total · ${vw.filter(r => !r.a).length} robot${vw.filter(r => !r.a).length > 1 ? 's' : ''} · ${vw.filter(r => r.a).length} add-on${vw.filter(r => r.a).length > 1 ? 's' : ''}</span><span class="v38-c"><b>= ${eur(sum(vw, r => r.base))}</b></span><span></span><span class="v38-n v38-bd" style="grid-column:7">${eur2(sum(vw, r => r.com))}</span></div>` : ''}
+        ${vw.length ? `<div class="v38-grid v38-t"><span></span><span></span><span style="grid-column:3/5">Total · ${cnt3(vw)}</span><span class="v38-c"><b>= ${eur(sum(vw, r => r.base))}</b></span><span></span><span class="v38-n v38-bd" style="grid-column:7">${eur2(sum(vw, r => r.com))}</span></div>` : ''}
       </div>
       <p class="px-5 py-3 border-t border-slate-200 text-xs text-muted">Commission = (montant HT − assiette d'installation) × taux du palier. Chaque robot garde le taux de son rang dans l'année (pas de rattrapage). Les dossiers avec réserves non levées sont bloqués. Ventes additionnelles : ${(+settings.com.addon || 0).toLocaleString('fr-FR')} % du montant HT, sans assiette. Règles modifiables dans l'onglet « Paramétrage ».</p>
     </section>`;
@@ -6328,14 +6407,14 @@ function pfCom() {
 function openPay(keys) {
   if (!keys.length) return; ui.payIds = keys;
   const rows = comRows().filter(r => keys.includes(r.key));
-  $('pay-sub').innerHTML = `${rows.length} commission${rows.length > 1 ? 's' : ''} · <b>${eur2(sum(rows, r => r.com))}</b><br><span class="text-xs text-muted">${esc(rows.map(r => r.c.pharma + (r.a ? ' (add-on)' : '')).join(', '))}</span>`;
+  $('pay-sub').innerHTML = `${rows.length} commission${rows.length > 1 ? 's' : ''} · <b>${eur2(sum(rows, r => r.com))}</b><br><span class="text-xs text-muted">${esc(rows.map(r => r.c.pharma + (r.nan ? ' (financement NANCEO)' : r.a ? ' (add-on)' : '')).join(', '))}</span>`;
   $('pay-month').value = isoDay(TODAY).slice(0, 7); $('pay-sal').value = prevMonth();
   $('dlg-pay').showModal();
 }
 function confirmPay() {
   const m = $('pay-month').value, sm = $('pay-sal').value; if (!m) return toast('Indiquez le mois de pointage.', true); if (!sm) return toast('Indiquez le mois du salaire.', true);
   const lab = `pointée en ${fmtMonth(m)} · salaire de ${fmtMonth(sm)}`;
-  ui.payIds.forEach(k => { const {c, a} = comRef(k); if (!c) return; if (a) { a.commissionPaid = m; a.commissionSalary = sm; log(c, `Commission add-on payée : ${a.quoi} (${lab})`); } else { c.commissionPaid = m; c.commissionSalary = sm; log(c, `Commission payée (${lab})`); } ui.paySel.delete(k); });
+  ui.payIds.forEach(k => { const {c, a} = comRef(k); if (!c) return; if (a) { a.commissionPaid = m; a.commissionSalary = sm; if (k[0] === 'n') a.tauxFige = +settings.com.nanceo || 0; log(c, k[0] === 'n' ? `Commission de financement NANCEO payée (${lab})` : `Commission add-on payée : ${a.quoi} (${lab})`); } else { c.commissionPaid = m; c.commissionSalary = sm; log(c, `Commission payée (${lab})`); } ui.paySel.delete(k); });
   save(); closeDlg('dlg-pay'); renderProfile(); toast(`Paiement enregistré : ${lab}`);
 }
 function unpay(k) { const {c, a} = comRef(k); if (!c || !confirm('Annuler le paiement de cette commission ?')) return; (a || c).commissionPaid = ''; (a || c).commissionSalary = ''; save(); renderProfile(); }
@@ -6343,7 +6422,7 @@ function exportCom() {
   const rows = comView(comFiltered()); if (!rows.length) return toast('Aucune donnée.', true);
   const q = v => `"${String(v).replace(/"/g, '""')}"`;
   const lines = [['Date de signature', 'Pharmacie', 'Type', 'N° dossier / réf.', 'Vente', 'Rang', 'Montant HT', 'Assiette', 'Base', 'Taux %', 'Commission', 'Statut', 'Pointée en', 'Mois du salaire'].map(q).join(';'),
-    ...rows.map(r => [fmtD(r.date), r.c.pharma, r.a ? 'Add-on' : 'Robot', r.a ? r.a.notes || '' : r.c.numDossier || '', r.label, r.a ? '' : `${r.n} ${r.f}`, r.montant, r.assiette, r.base, r.taux, r.com.toFixed(2).replace('.', ','), COM_ST[r.statut][0], r.paid ? fmtMonth(r.paid) : '', r.sal ? fmtMonth(r.sal) : ''].map(q).join(';'))];
+    ...rows.map(r => [fmtD(r.date), r.c.pharma, r.nan ? 'Financement NANCEO' : r.a ? 'Add-on' : 'Robot', r.a && !r.nan ? r.a.notes || '' : r.c.numDossier || '', r.label, r.a ? '' : `${r.n} ${r.f}`, r.montant, r.assiette, r.base, r.taux, r.com.toFixed(2).replace('.', ','), COM_ST[r.statut][0], r.paid ? fmtMonth(r.paid) : '', r.sal ? fmtMonth(r.sal) : ''].map(q).join(';'))];
   download(`commissions_${isoDay(new Date())}.csv`, '\uFEFF' + lines.join('\r\n'), 'text/csv;charset=utf-8'); toast('Export CSV réalisé');
 }
 function pfChal() {
@@ -6617,7 +6696,8 @@ function paramsHTML(withCom) {
       <div class="rounded-2xl border border-slate-200 p-4 flex flex-col gap-3"><h3 class="text-sm font-bold">Objectifs ${CUR_YEAR}</h3>${fld('set-obj', 'Robots SINTESI à vendre (tous modèles)', settings.objectif, 'number', 'min="1"')}${fld('set-objca', "Chiffre d'affaires (€ HT)", settings.objectifCA, 'number', 'min="0" step="1000"')}</div>
       ${withCom ? `<div class="rounded-2xl border border-slate-200 p-4 flex flex-col gap-3"><h3 class="text-sm font-bold flex items-center gap-2">${robotIco('SINTESI XL', 30)}Commissions SINTESI</h3>${fld('com-as-S', "Assiette d'installation déduite (€)", C.assiette.SINTESI, 'number', 'min="0" step="500"')}${tier('SINTESI')}</div>
       <div class="rounded-2xl border border-slate-200 p-4 flex flex-col gap-3"><h3 class="text-sm font-bold flex items-center gap-2">${robotIco('GENESI', 30)}Commissions GENESI</h3>${fld('com-as-G', "Assiette d'installation déduite (€)", C.assiette.GENESI, 'number', 'min="0" step="500"')}${tier('GENESI')}</div>
-      <div class="rounded-2xl border border-slate-200 p-4 flex flex-col gap-3 lg:col-span-3 lg:flex-row lg:items-end lg:gap-6"><div class="lg:flex-1"><h3 class="text-sm font-bold">Commissions ventes additionnelles (add-ons)</h3><p class="text-xs text-muted mt-1">Appliqué au montant HT total de chaque add-on signé, sans assiette déduite.</p></div><div class="lg:w-56">${fld('com-addon', 'Taux (%)', settings.com.addon, 'number', 'step="0.1" min="0"')}</div></div>` : ''}
+      <div class="rounded-2xl border border-slate-200 p-4 flex flex-col gap-3 lg:col-span-3 lg:flex-row lg:items-end lg:gap-6"><div class="lg:flex-1"><h3 class="text-sm font-bold">Commissions ventes additionnelles (add-ons)</h3><p class="text-xs text-muted mt-1">Appliqué au montant HT total de chaque add-on signé, sans assiette déduite.</p></div><div class="lg:w-56">${fld('com-addon', 'Taux (%)', settings.com.addon, 'number', 'step="0.1" min="0"')}</div></div>
+      <div class="rounded-2xl border-2 p-4 flex flex-col gap-3 lg:col-span-3" style="border-color:#67E8F9;background:#ECFEFF"><h3 class="text-sm font-bold"><i class="fas fa-building-columns mr-1.5" style="color:#0E7490"></i>Commission de financement leasing NANCEO</h3><div class="flex flex-wrap gap-6 items-end"><div class="w-56">${fld('com-nanceo', 'Taux de rémunération (%)', settings.com.nanceo, 'number', 'step="0.001" min="0"')}</div><p class="text-xs flex-1 min-w-[260px]" style="color:#155E75">Appliqué au montant HT du robot. <b>Payée le mois suivant la date d’installation.</b><br>Exemple : robot à 91 000 € HT × ${(+settings.com.nanceo || 0).toLocaleString('fr-FR')} % = <b>${eur2(Math.round(91000 * (+settings.com.nanceo || 0)) / 100)}</b> · affiché « ${(+settings.com.nanceo || 0).toLocaleString('fr-FR', {maximumFractionDigits: 2})} % » dans les listes.</p></div><p class="text-xs text-muted">Modifiable à tout moment : le nouveau taux s’applique aux commissions non encore pointées ; celles déjà pointées gardent leur taux.</p></div>` : ''}
     </div>
     <div class="flex flex-col gap-2"><h3 class="text-sm font-bold">Échéance des projets et rythme des rappels</h3><p class="text-xs text-muted">L'échéance est demandée à la création de la fiche. Sans action planifiée, le dossier passe dans « À relancer » une fois le délai écoulé.</p>
       <div class="grid md:grid-cols-3 gap-4">${ECH_ORDER.map(k => `<div class="rounded-xl bg-slate-50 p-4 flex flex-col gap-2.5">${fld(`ech-${k}-label`, 'Libellé', E[k].label)}${fld(`ech-${k}-duree`, 'Durée', E[k].duree)}${fld(`ech-${k}-rappel`, 'Rappel tous les (jours)', E[k].rappel, 'number', 'min="1"')}</div>`).join('')}</div></div>
@@ -6627,6 +6707,7 @@ function saveReg() {
   settings.objectif = Math.max(1, +$('set-obj').value || 18); settings.objectifCA = Math.max(0, +$('set-objca').value || 0);
   ECH_ORDER.forEach(k => { const e = settings.echeances[k]; e.label = $(`ech-${k}-label`).value.trim() || e.label; e.duree = $(`ech-${k}-duree`).value.trim(); e.rappel = Math.max(1, +$(`ech-${k}-rappel`).value || e.rappel); });
   if ($('com-addon')) settings.com.addon = Math.max(0, +$('com-addon').value || 0);
+  if ($('com-nanceo')) settings.com.nanceo = Math.max(0, +$('com-nanceo').value || 0);
   if ($('com-as-S')) { settings.com.assiette.SINTESI = +$('com-as-S').value || 0; settings.com.assiette.GENESI = +$('com-as-G').value || 0;
   ['SINTESI', 'GENESI'].forEach(f => settings.com.paliers[f].forEach((t, i) => { t.de = i === 0 ? 1 : Math.max(2, +$(`pal-${f}-${i}-de`).value || t.de); t.taux = +$(`pal-${f}-${i}-taux`).value || 0; })); }
   saveSet(); renderProfile(); toast('Paramètres enregistrés');
@@ -7097,6 +7178,20 @@ snapStart();
 window.__fbReady = true;
 (function () { const m = /#ptk=(ptk[12]\.[A-Za-z0-9+\/=_-]+)/.exec(location.hash); if (m) { try { history.replaceState(null, '', location.pathname + location.search); } catch { } if (fbLink(m[1])) { if (fbOK()) { toast('Téléphone relié : synchronisation en cours…'); setTimeout(() => fbSync(), 600); } else { ui.ptab = 'reglages'; showView('profile'); fbAfterLink(); } } else toast('Lien de liaison non valide', true); } })();
 if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) navigator.serviceWorker.register('sw.js').catch(() => { });
+
+/* V4.3 : geste « retour » du téléphone = fermer la fenêtre ouverte, revenir au tableau de bord, puis demander confirmation avant de quitter */
+(function () {
+  if (!/^https?:$/.test(location.protocol) && location.protocol !== 'file:') return;
+  try { history.pushState({ptk: 1}, ''); } catch { return; }
+  window.addEventListener('popstate', () => {
+    try { history.pushState({ptk: 1}, ''); } catch { }
+    const d = document.querySelector('dialog[open]');
+    if (d) { try { d.close(); } catch { } return; }
+    const cv = $('view-client'); if (cv && !cv.classList.contains('hidden') && ui.editId !== undefined) { try { showView('dashboard'); } catch { } return; }
+    const dv = $('view-dashboard'); if (dv && dv.classList.contains('hidden')) { try { showView('dashboard'); } catch { } return; }
+    confirmBox('Quitter l\'application ?', 'Vous êtes sur le tableau de bord. Un nouveau retour vous fait sortir de Pharmathek.', 'Quitter', () => { try { history.go(-2); } catch { } }, {no: 'Rester'});
+  });
+})();
 
 setTimeout(() => { try { const n = rgpdDue().length; if (n) toast(`${n} fiche${n > 1 ? 's' : ''} à réviser (RGPD) : Mon profil › Conservation des données`); } catch { } }, 4500);
 </script>
