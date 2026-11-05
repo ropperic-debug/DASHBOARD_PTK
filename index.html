@@ -234,6 +234,11 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 .bb{flex-wrap:wrap}.bb>div{flex:1 1 170px}.bb.gr{flex-wrap:wrap}.bb .btn{margin-left:auto}
 .dupal{grid-template-columns:44px 1fr}.dupb{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap}.dupb .btn{flex:1 1 150px}
 @media(max-width:640px){.dupal{grid-template-columns:1fr}}
+/* V4.4.4 : reste à faire par étape */
+.v44-mq{display:flex;flex-wrap:wrap;gap:3px;margin-top:2px}.v44-mq i{font-style:normal;font-size:10.5px;font-weight:600;background:#fff7ed;border:1px solid #fdba74;color:#9a3412;border-radius:5px;padding:0 5px;white-space:nowrap}.v44-mq i.v44-mo{background:#ffedd5;border-style:dashed}
+.v44-todo{margin-top:8px;background:#fff;border:1px solid #fed7aa;border-left:4px solid #ea580c;border-radius:12px;padding:10px 14px}.v44-th{font-weight:700;font-size:13px;margin-bottom:4px}.v44-th span{font-weight:400;color:#64748b;font-size:12px}
+.v44-tr{display:flex;gap:10px;align-items:center;padding:5px 0;border-top:1px solid #f1f5f9}.v44-tr:first-of-type{border-top:0}.v44-n{flex:none;width:20px;height:20px;border-radius:50%;background:#ea580c;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}.v44-tr b{width:150px;flex:none;font-size:12.5px}.v44-tc{display:flex;gap:6px;flex-wrap:wrap}.v44-tc a{font-size:12px;background:#fff7ed;border:1px solid #fdba74;color:#9a3412;border-radius:99px;padding:2px 10px;font-weight:600;text-decoration:none}.v44-tc a:before{content:"○ "}.v44-tr em{margin-left:auto;font-size:11.5px;color:#64748b;font-style:normal}
+@media(max-width:640px){.v44-tr{flex-wrap:wrap}.v44-tr b{width:auto}.v44-tr em{display:none}.v44-todo{padding:8px 10px}}
 /* V2.8 : fiche sans bloc Étape en cours, bouton Dossier perdu */
 #f-stage{display:none!important}
 .zlost{margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:11px;border:2px solid #DC2626;background:#FEF2F2;color:#B91C1C;font-weight:800;font-size:13.5px}.zlost:hover{background:#FEE2E2}
@@ -509,7 +514,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
       <button id="nav-dashboard" class="btn btn-d" onclick="showView('dashboard')"><i class="fas fa-table-cells-large"></i><span class="hidden xl:inline">Tableau de bord</span></button>
       <button class="btn btn-g" onclick="openAide()" title="Aide · mode opératoire" aria-label="Aide"><i class="fas fa-circle-question"></i><span class="hidden xl:inline">Aide</span></button>
       <button id="nav-od" class="btn btn-g" onclick="syncNow()" title="Synchroniser PC et téléphone" aria-live="polite"><i class="fas fa-rotate"></i></button>
-      <button class="btn btn-p" onclick="newClient()"><i class="fas fa-plus"></i><span class="hidden sm:inline">Nouveau client</span></button>
+      <button class="btn btn-p" onclick="newClient()"><i class="fas fa-plus"></i><span class="hidden sm:inline">Nouvelle fiche</span></button>
       <button id="nav-lock" class="btn btn-g !px-3" onclick="SEC.on() ? SEC.lock() : SEC.startCreate()" title="Verrouiller l'application" aria-label="Verrouiller l'application"><i class="fas fa-lock"></i></button>
       <button id="nav-profile" onclick="showView('profile')" class="flex items-center gap-2.5 h-11 pl-1.5 pr-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50" aria-label="Mon profil commercial">
         <span id="hd-ava" class="w-8 h-8 rounded-full bg-ink text-white inline-flex items-center justify-center text-xs font-bold"></span>
@@ -609,6 +614,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
       <div id="f-banner"></div>
 
       <nav id="f-secnav" aria-label="Sections de la fiche" class="sticky top-[118px] lg:top-[62px] z-20 bg-white/95 backdrop-blur border border-slate-200 rounded-2xl p-1 shadow-sm flex gap-1 overflow-x-auto"></nav>
+      <div id="f-todo"></div>
       <section id="f-project" class="flex flex-col gap-4">
         <div class="fz flex flex-col gap-4" data-zone="1">
         <div id="sec-1" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">1</span><h2 class="h2">Projet</h2><span id="f-horizon"></span><span id="sst-1" class="text-xs font-semibold"></span><button type="button" id="f-lost1" class="zlost" title="Déclarer ce dossier perdu ou abandonné"><i class="fas fa-circle-xmark"></i>Dossier perdu ou abandonné</button></div>
@@ -1206,6 +1212,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.4.4</b> : sur la fiche, chaque étape de la barre indique ce qu'il reste à renseigner, et un bloc « Reste à faire » liste les points manquants ; un clic sur un point mène au champ. Le bouton « Nouveau client » devient « Nouvelle fiche ».</li>
 <li><b>V4.4.3</b> : les titulaires trouvés dans l'annuaire sont ajoutés automatiquement dès que vous cliquez sur la pharmacie (le 1<sup>er</sup> comme titulaire, les autres comme co-titulaires ; la croix de « Titulaires et associés » permet d'en retirer un). L'enregistrement automatique de la fiche attend désormais la fin de la recherche, ce qui supprimait parfois la liste au bout de quelques secondes.</li>
 <li><b>V4.4.2</b> : correctif de la fiche client : la liste des titulaires trouvés ne disparaît plus quelques secondes après le clic sur la pharmacie (une recherche plus ancienne, arrivée en retard, la remplaçait) et ne se referme plus quand on retire une personne avec la croix.</li>
 <li><b>V4.4.1</b> : (1) <b>Titulaires de l'annuaire</b> : reconnaissance élargie (section A des pharmaciens, fonction, genre d'activité, jamais les adjoints), rattachement à l'officine par FINESS, SIRET ou nom + ville, et <b>compte rendu à la fin de l'import</b> (lignes lues, pharmaciens, titulaires reconnus et rattachés) ; s'il n'y en a aucun, les valeurs rencontrées sont affichées pour m'aider à ajuster. (2) <b>Recherche en ligne automatique</b> : si la base n'a pas de titulaire, l'application interroge l'annuaire des entreprises avec le SIRET et remonte jusqu'aux personnes quand l'officine est détenue par une société (par exemple une société de participations), avec leur fonction affichée. (3) <b>« Utiliser ces personnes »</b> n'écrase plus un titulaire déjà saisi : les autres personnes sont ajoutées à « Titulaires et associés ». (4) <b>Nom de fichier</b> reconnu avec des tirets, des tirets bas ou des espaces ; fichier non reconnu : choix « pharmacies » ou « titulaires ».</li>
@@ -1863,7 +1870,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.4.3';
+const APP_VERSION = '4.4.4';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -3800,9 +3807,20 @@ function secDraw() {
     3: [(d.besoins || []).length > 0],
     4: [(d.robots || []).length > 0, !!(d.devis && d.devis.statut), !!(c && c.offre && c.offre.lignes && c.offre.lignes.length)],
     5: [!!(c && ((c.history || []).length || (c.notes || '').trim()))]};
+  /* V4.4.4 : ce qu'il reste à faire, étape par étape (libellé, champ à atteindre) */
+  const SL = {
+    1: [['Échéance', 'f-ech'], ['Date de décision', 'f-decision'], ['Montant', 'f-montant'], ['Type de projet', 'f-type-box'], ['Indicateur', 'f-ind-box']],
+    2: [['LGO', 'f-lgo'], ['Postes', 'sec-2'], ['Dossiers', 'sec-2'], ['Boîtes / jour', 'sec-2'], ['Dispensations (DC)', 'f-dc'], ['Positions', 'sec-2']],
+    3: [['Cocher au moins un besoin', 'f-besoins-box']],
+    4: [['Choisir un robot', 'f-models-box'], ['Statut du devis', 'f-devis-box'], ["Chiffrer l'offre", 'sec-4']],
+    5: [['Une note ou un échange', 'sec-5']]};
+  const MISS = n => S[n].map((v, i) => v ? null : SL[n][i]).filter(Boolean);
+  const goto = id => `(document.getElementById('${id}')||document.getElementById('sec-2')).scrollIntoView({behavior:'smooth',block:'center'})`;
+  const todo = SEC_NAMES.filter(([n]) => MISS(n).length);
+  if ($('f-todo')) $('f-todo').innerHTML = todo.length ? `<div class="v44-todo"><div class="v44-th">Reste à faire <span>· cliquez sur un point pour aller au champ</span></div>${todo.map(([n, t]) => { const m = MISS(n); return `<div class="v44-tr"><span class="v44-n">${n}</span><b>${t}</b><div class="v44-tc">${m.map(x => `<a href="#" onclick="${goto(x[1])};return false">${x[0]}</a>`).join('')}</div><em>${m.length}</em></div>`; }).join('')}</div>` : '';
   $('f-secnav').innerHTML = SEC_NAMES.map(([n, t]) => { const a = S[n], k = a.filter(Boolean).length, st = k === a.length ? 'complet' : k === 0 ? 'à renseigner' : `${k} sur ${a.length}`, col = k === a.length ? 'text-emerald-700' : k === 0 ? 'text-slate-500' : 'text-amber-700';
     const t2 = $('sst-' + n); if (t2) { t2.textContent = st; t2.className = 'ml-auto text-xs font-semibold ' + col; }
-    return `<button type="button" class="shrink-0 flex items-center gap-2 h-11 px-3 rounded-xl hover:bg-slate-50 text-left" onclick="document.getElementById('sec-${n}').scrollIntoView({behavior:'smooth',block:'start'})"><span class="w-6 h-6 rounded-full ${k === a.length ? 'bg-emerald-600' : 'bg-orange-600'} text-white text-xs font-bold flex items-center justify-center">${k === a.length ? '✓' : n}</span><span class="leading-tight"><b class="block text-[12.5px] text-ink">${t}</b><span class="block text-[11px] font-semibold ${col}">${st}</span></span></button>`; }).join('');
+    return `<button type="button" class="shrink-0 flex items-center gap-2 min-h-11 py-1.5 px-3 rounded-xl hover:bg-slate-50 text-left" onclick="document.getElementById('sec-${n}').scrollIntoView({behavior:'smooth',block:'start'})"><span class="w-6 h-6 rounded-full ${k === a.length ? 'bg-emerald-600' : 'bg-orange-600'} text-white text-xs font-bold flex items-center justify-center">${k === a.length ? '✓' : n}</span><span class="leading-tight"><b class="block text-[12.5px] text-ink">${t}</b><span class="block text-[11px] font-semibold ${col}">${st}</span>${(() => { const m = MISS(n); return m.length ? `<span class="v44-mq">${m.slice(0, 2).map(x => `<i>${x[0]}</i>`).join('')}${m.length > 2 ? `<i class="v44-mo">+${m.length - 2}</i>` : ''}</span>` : ''; })()}</span></button>`; }).join('');
   const ic = (d.robots || []).map(m => robotIco(m, 26)).join('');
   if ($('sec-offre-ico')) $('sec-offre-ico').innerHTML = ic || '<i class="fas fa-robot text-slate-300 text-lg" aria-hidden="true"></i>';
 }
