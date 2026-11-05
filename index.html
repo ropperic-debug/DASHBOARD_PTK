@@ -1223,6 +1223,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.4.9</b> : (1) <b>Bouton « Générer le PDF »</b> : il se met à jour dès que vous cochez le robot ou les besoins (il restait grisé tant que la fiche n'était pas enregistrée) ; un clic sur le bouton grisé indique ce qu'il manque et mène au bon endroit. (2) Le <b>robot du devis</b> est coché automatiquement à l'enregistrement de la synthèse de l'offre si aucun robot n'est choisi. (3) <b>Ajouter ou dupliquer une offre</b> demande d'abord confirmation.</li>
 <li><b>V4.4.8</b> : (1) <b>Replanifier</b> fonctionne aussi pour les rappels (relances, appels, visites…) : même petite fenêtre avec <b>Valider la nouvelle date</b>, depuis l'accueil comme depuis la fiche. (2) Quand vous planifiez une <b>nouvelle</b> action sur un dossier qui a une action <b>en retard</b>, la fenêtre propose de la remplacer (case cochée par défaut) : elle quitte « Ma journée ». (3) Libellé corrigé dans vos fiches : « Relance après envoi du devis » devient « Relance après présentation du devis ».</li>
 <li><b>V4.4.7</b> : <b>Replanifier</b> (accueil ou fiche) ouvre une petite fenêtre : nouvelle date et heure (boutons Demain, Dans 1 semaine, Dans 2 semaines), puis bouton <b>Valider la nouvelle date</b>. La date est enregistrée tout de suite et l'action quitte « Ma journée » ; l'ajout à l'agenda reste facultatif. Plus besoin de passer par la fiche ni de valider ailleurs.</li>
 <li><b>V4.4.6</b> : correctif « Replanifier » (suite) : l'ancienne action (par exemple aujourd'hui 10 h) restait dans la liste des actions de la semaine et dans les statistiques d'activité après avoir été replanifiée. Elle est maintenant remplacée, et les anciennes traces sont ignorées à l'affichage.</li>
@@ -1885,7 +1886,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.4.8';
+const APP_VERSION = '4.4.9';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -4119,17 +4120,21 @@ function renderOffTabs(c) {
   const box = $('f-off-tabs'); if (!box) return;
   if (!c || !ui.editId || !['Contact', 'R1', 'R2', 'R3'].includes(c.step)) { box.innerHTML = ''; return; }
   const L = offList(c);
-  if (L.length < 2) { box.innerHTML = `<div class="flex justify-end"><button type="button" class="btn btn-g !h-8 !px-3 !text-[12.5px]" onclick="offAdd()" title="Proposer une seconde offre de robotisation (autre modèle, autres options)"><i class="fas fa-plus text-ptkd"></i>Ajouter une offre alternative</button></div>`; return; }
+  if (L.length < 2) { box.innerHTML = `<div class="flex justify-end"><button type="button" class="btn btn-g !h-8 !px-3 !text-[12.5px]" onclick="offAsk('add')" title="Proposer une seconde offre de robotisation (autre modèle, autres options)"><i class="fas fa-plus text-ptkd"></i>Ajouter une offre alternative</button></div>`; return; }
   const a = c.offres.find(o => o.id === c.offreAct) || L[0];
   box.innerHTML = `<div class="flex flex-wrap items-end gap-1.5 border-b-2 border-slate-200 pt-1">${L.map(o => offTabHtml(c, o)).join('')}
-    <button type="button" class="rounded-t-xl border border-dashed border-orange-300 text-orange-800 font-bold text-[12.5px] px-3 self-stretch hover:bg-orange-50" onclick="offAdd()" title="Ajouter une offre"><i class="fas fa-plus mr-1"></i>Ajouter une offre</button>
+    <button type="button" class="rounded-t-xl border border-dashed border-orange-300 text-orange-800 font-bold text-[12.5px] px-3 self-stretch hover:bg-orange-50" onclick="offAsk('add')" title="Ajouter une offre"><i class="fas fa-plus mr-1"></i>Ajouter une offre</button>
     <span class="ml-auto pb-1.5 flex gap-1.5"><button type="button" class="btn btn-g !h-8 !px-3 !text-[12.5px]" onclick="offCompare()" title="Comparer les offres côte à côte"><i class="fas fa-table-columns"></i>Comparer</button></span></div>
     <div class="flex flex-wrap items-center gap-2 text-[12.5px] pt-1"><b>Offre ${esc(a.nom)}</b>${a.id === c.offrePriv ? '<span class="pill bg-amber-50 text-amber-900"><i class="fas fa-star"></i>Offre privilégiée · alimente le pipeline</span>' : '<span class="pill bg-slate-100 text-slate-700">Offre alternative</span>'}
-      <span class="ml-auto text-muted"><button type="button" class="underline" onclick="offRename(${a.id})">Renommer</button> · <button type="button" class="underline" onclick="offDup()">Dupliquer</button> · <button type="button" class="underline text-rose-700" onclick="offDel(${a.id})">Supprimer</button></span></div>`;
+      <span class="ml-auto text-muted"><button type="button" class="underline" onclick="offRename(${a.id})">Renommer</button> · <button type="button" class="underline" onclick="offAsk('dup')">Dupliquer</button> · <button type="button" class="underline text-rose-700" onclick="offDel(${a.id})">Supprimer</button></span></div>`;
 }
 function offPre() { const c = byId(ui.editId); if (!c) return null; const r = saveClient(false); return r === null ? null : (byId(ui.editId) || c); }
 function offRefill(c) { save(); ui.modUnlock = false; ui.devisUnlock = false; fillForm(c); renderOffTabs(c); }
 function offGo(id) { const c0 = byId(ui.editId); if (!c0 || id === c0.offreAct) return; const c = offPre(); if (!c) return; offSwitch(c, id); offRefill(c); }
+function offAsk(k) {
+  const c = byId(ui.editId); if (!c) return;
+  confirmBox(k === 'dup' ? 'Dupliquer cette offre ?' : 'Créer une offre alternative ?', `Le dossier <b>${esc(c.pharma)}</b> aura <b>deux offres</b>${k === 'dup' ? ' (copie de celle-ci)' : ' (la nouvelle part de zéro : il faudra choisir son robot)'}. L'offre actuelle est conservée ; vous pourrez supprimer l'une des deux.`, '<i class="fas fa-plus"></i>Oui, créer', () => (k === 'dup' ? offDup() : offAdd()), {no: 'Non, rester avec une seule offre', icon: 'fa-rotate-left'});
+}
 function offAdd() {
   const c = offPre(); if (!c) return; offEnsure(c); const id = Math.max(...c.offres.map(o => o.id)) + 1, nom = offNext(c);
   c.offres.push({id, nom, robots: [], options: [], montant: 0, devis: {statut: '', date: ''}}); offSwitch(c, id); log(c, `Offre ${nom} ajoutée`); offRefill(c); toast(`Offre ${nom} créée : choisissez son modèle de robot`);
@@ -4177,15 +4182,17 @@ function offSignUi(c) {
 }
 function offSignPick(cid) { const c = byId(cid), id = +$('r3-offre').value, d = offData(c, id); if (d?.montant) $('r3-montant').value = d.montant; }
 function offSignApply(c) { if (offList(c).length < 2) return; const id = +$('r3-offre').value; offSwitch(c, id); c.offrePriv = id; c.offres.forEach(o => { if (o.id !== id) o.nonretenue = true; }); log(c, `Offre ${c.offres.find(o => o.id === id).nom} retenue`, 'Les autres offres sont conservées en « non retenues ».'); }
+const argLive = c => { if (c && ui.editId === c.id && !$('view-client').classList.contains('hidden')) { try { const d = collectRaw(); return {...c, robots: d.robots, besoins: d.besoins}; } catch { } } return c; };
+function argHelp() { const c = byId(ui.editId); if (!c) return; const m = argMiss(argLive(c)); if (!m.length) return renderArgBtn(c); toast(`À renseigner d'abord : ${m.join(', ')}.`, true); const t = {'Besoins et problématiques': 'f-besoins-box', "Construction de l'offre (modèle)": 'f-models-box', "Synthèse de l'offre": 'f-offre-box'}[m[0]]; $(t)?.scrollIntoView({block: 'center', behavior: 'smooth'}); }
 function renderArgBtn(c) {
   const box = $('f-arg-box'); if (!box) return;
   if (!c || c.step === 'Perdu') { box.innerHTML = ''; return; }
-  const miss = argMiss(c);
+  const miss = argMiss(argLive(c));
   const act = c.offres?.length > 1 ? c.offres.find(o => o.id === c.offreAct) : null, lab = act ? `Générer le PDF de l'offre ${esc(act.nom)}` : 'Générer le PDF : synthèse et offre commerciale';
   const tgt = {'Besoins et problématiques': 'f-besoins-box', "Construction de l'offre (modèle)": 'f-models-box', "Synthèse de l'offre": 'f-offre-box'}, go = {'Besoins et problématiques': 'Renseigner →', "Construction de l'offre (modèle)": 'Choisir →', "Synthèse de l'offre": 'Importer →'};
   const lbl = {"Construction de l'offre (modèle)": 'Robot retenu (construction de l\'offre)', "Synthèse de l'offre": "Devis + contrat de maintenance (synthèse de l'offre)"};
   box.innerHTML = miss.length
-    ? `<div class="rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 p-3.5 flex flex-wrap items-center gap-4"><button type="button" class="btn !h-12 text-[15px] font-bold !bg-slate-200 !border-slate-200 !text-slate-500 cursor-not-allowed" disabled title="Complétez les éléments ci-contre pour activer le bouton"><i class="fas fa-file-pdf text-lg"></i>${lab}</button>
+    ? `<div class="rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 p-3.5 flex flex-wrap items-center gap-4"><button type="button" class="btn !h-12 text-[15px] font-bold !bg-slate-200 !border-slate-200 !text-slate-500 cursor-not-allowed" aria-disabled="true" onclick="argHelp()" title="Complétez les éléments ci-contre pour activer le bouton"><i class="fas fa-file-pdf text-lg"></i>${lab}</button>
       <div class="flex-1 min-w-[260px] flex flex-col gap-1 text-[13px]"><b class="text-orange-900">Il manque ${miss.length} élément${miss.length > 1 ? 's' : ''} pour générer le PDF :</b>${miss.map(m => `<div class="flex items-center gap-2"><span class="w-4 h-4 rounded-full border-2 border-slate-300 inline-block"></span><span>${esc(lbl[m] || m)}</span><button type="button" class="ml-auto font-bold text-[12px] text-ptkd underline" onclick="document.getElementById('${tgt[m]}')?.scrollIntoView({block:'center',behavior:'smooth'})">${go[m] || 'Renseigner →'}</button></div>`).join('')}</div></div>`
     : `<div class="flex flex-col gap-1.5"><button type="button" class="btn btn-p w-full !h-12 text-[15px] font-bold shadow-md" onclick="pdfArg(${c.id})"><i class="fas fa-file-pdf text-lg"></i>${lab}</button><p class="text-[12.5px] text-emerald-800 text-center font-semibold"><i class="fas fa-circle-check mr-1"></i>Tout est prêt : besoins, robot, devis + maintenance · ${esc(c.pharma)}</p><div class="flex justify-center gap-4"><button type="button" class="btn btn-g !h-10" onclick="prevArg(${c.id})"><i class="fas fa-eye text-ptkd"></i>Lire avant de générer</button><button type="button" class="lnk-edit" onclick="openArg(${c.id})"><i class="fas fa-pen text-[11px]"></i>Personnaliser les textes</button></div></div>`;
   { const A = assocOf(c); box.insertAdjacentHTML('beforeend', `<div class="mt-2 text-[13px]"><div class="font-bold text-slate-700 mb-1">Noms affichés sur la synthèse</div><div class="flex items-center gap-2 text-slate-600"><input type="checkbox" checked disabled class="w-4 h-4 accent-emerald-700">${esc(c.devisNom || [c.genre, c.prenom, c.nom].filter(Boolean).join(' '))} <span class="text-muted">· Titulaire</span></div>${A.map((a, i) => `<label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="w-4 h-4 accent-emerald-700" ${a.on ? 'checked' : ''} onchange="assocTick(${c.id},${i},this.checked)">${esc(a.nom)} <span class="text-muted">· ${esc(a.role)}</span></label>`).join('') || '<div class="text-muted text-[12px]">Autres noms : à saisir dans Coordonnées (« Titulaires et associés »).</div>'}</div>`); }
@@ -4826,6 +4833,7 @@ document.addEventListener('input', () => { clearTimeout(_v4t); _v4t = setTimeout
 document.addEventListener('change', () => { clearTimeout(_v4t); _v4t = setTimeout(v4Refresh, 150); });
 function v4Refresh() {
   if ($('view-client').classList.contains('hidden')) return;
+  if (ui.editId) { const c0 = byId(ui.editId); if (c0) try { renderArgBtn(c0); } catch { } }
   const step = ui.editId ? byId(ui.editId)?.step : ui.formStep;
   if (ORDER.includes(step) && !$('f-steps').classList.contains('hidden') && !document.querySelector('#f-steps :focus')) renderFormSteps(step); else v4Need();
   v4Auto();
@@ -5943,6 +5951,7 @@ function offreSave(pdf) {
   const c = byId(ui.ofId); if (!c) return; const o = offreRead();
   if (!o.lignes.length) return toast('Ajoutez au moins une ligne au budget.', true);
   const k = offreCalc(o); c.offre = o; ui.ofDraft = null;
+  if (!(c.robots || []).length) { const m = [...MODELS].sort((a, b) => b.length - a.length).find(x => norm(o.robot || '').includes(norm(x))); if (m) { c.robots = [m]; log(c, 'Robot sélectionné d\'après le devis', m); } }
   if ($('of-opapp')) { const was = c.opApplied; c.opApplied = $('of-opapp').checked ? true : (was === true ? false : was); }
   const old = c.montant; c.montant = Math.round(k.net); if ($("f-montant")) $("f-montant").value = c.montant;
   log(c, `Synthèse de l'offre ${o.ref ? o.ref + ' ' : ''}enregistrée`, `Total net HT ${eur(k.net)}${o.remisePct ? ` (remise ${o.remisePct} %)` : ''}${o.maint.mensuel ? ` · maintenance ${eur(o.maint.remPct ? k.mRem : o.maint.mensuel)}/mois` : ''}`);
