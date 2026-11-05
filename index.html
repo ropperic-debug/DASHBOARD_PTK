@@ -1108,6 +1108,14 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
     <div><label class="lbl" for="bs-note">Précisions (facultatif)</label><div class="mic-wrap"><textarea id="bs-note" rows="2" class="ta" placeholder="Ex. : 2 préparateurs à temps partiel, réserve saturée…"></textarea><button type="button" class="mic" onclick="dictate('bs-note',this)" aria-label="Dicter"><i class="fas fa-microphone"></i></button></div>
       <div class="flex flex-wrap items-center gap-2 mt-2"><button type="button" class="btn btn-p !h-9" onclick="bsSuggest()"><i class="fas fa-lightbulb"></i>Suggérer des solutions</button><button type="button" class="btn btn-g !h-9" onclick="bsRef()"><i class="fas fa-wand-magic-sparkles text-ptkd"></i>Reformuler</button><button type="button" class="btn btn-g !h-9" onclick="bsSyn()"><i class="fas fa-list-check text-ptkd"></i>Note synthétique</button><button type="button" id="bs-undo" class="btn btn-g !h-9 hidden" onclick="bsUndo()"><i class="fas fa-rotate-left"></i>Annuler</button><label class="flex items-center gap-2 ml-auto text-[12.5px] font-semibold"><input type="checkbox" id="bs-on" class="w-4 h-4 accent-orange-700" checked>Afficher dans la synthèse</label></div></div>
     <div id="bs-sug" class="hidden rounded-xl border border-orange-200 bg-orange-50/40 p-3"></div>
+    <div id="bs-prob" class="rounded-xl border border-slate-200 p-3 flex flex-col gap-2">
+      <div class="flex items-center justify-between gap-2 flex-wrap"><span class="kicker">Bloc « Votre problématique » dans le PDF</span><label class="flex items-center gap-2 text-[12.5px] font-semibold"><input type="checkbox" id="bs-pon" class="w-4 h-4 accent-orange-700" checked>Afficher dans le PDF</label></div>
+      <p class="text-[12px] text-muted -mt-1">Construit à partir du commentaire ci-dessus, avec la même présentation que les besoins. Modifiable.</p>
+      <div><label class="lbl" for="bs-pt">Titre</label><input id="bs-pt" class="inp" oninput="ui.bsProbAuto=false"></div>
+      <div class="grid md:grid-cols-3 gap-2"><div><label class="lbl" for="bs-pp">Votre constat</label><textarea id="bs-pp" rows="5" class="ta" oninput="ui.bsProbAuto=false"></textarea></div><div><label class="lbl" for="bs-pr">Notre réponse</label><textarea id="bs-pr" rows="5" class="ta" oninput="ui.bsProbAuto=false"></textarea></div><div><label class="lbl" for="bs-pb">Au quotidien</label><textarea id="bs-pb" rows="5" class="ta" oninput="ui.bsProbAuto=false"></textarea></div></div>
+      <div class="flex flex-wrap items-center gap-3"><button type="button" class="btn btn-g !h-9" onclick="bsProbGen()"><i class="fas fa-rotate text-ptkd"></i>Régénérer à partir du commentaire</button>
+        <label id="bs-rc-w" class="hidden flex items-center gap-2 text-[12.5px] font-semibold"><input type="checkbox" id="bs-rc" class="w-4 h-4 accent-orange-700">Citer le robot actuel (<span id="bs-rc-n"></span>) · décoché : « votre robot actuel »</label></div>
+    </div>
   </div>
   <div class="px-5 py-4 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-besoins')">Annuler</button><button id="bs-ok" class="btn btn-ok" onclick="saveBesoins()">Enregistrer</button></div>
 </dialog>
@@ -1223,6 +1231,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.0</b> : (1) <b>Remise sur le matériel</b> : dans la synthèse de l'offre, vous saisissez la remise <b>en pourcentage, en euros ou par le prix final net HT</b> (tapez dans un seul champ, les deux autres se calculent, arrondi à l'euro) ; trois cases choisissent ce que voit le client : le taux, le montant, les deux, ou aucune remise (net seulement). (2) <b>Nouveau besoin « Réception des commandes »</b> (chargeur automatique, grossistes et répartiteurs) avec son argumentaire. (3) <b>Votre commentaire devient un bloc de synthèse</b> dans le PDF (titre, constat, réponse, au quotidien), modifiable dans « Besoins et problématiques », avec « Régénérer ». (4) <b>Robot du concurrent facultatif</b> : case « Citer le robot actuel » ; décochée, le PDF écrit « votre robot actuel ». (5) <b>Contenu du PDF à cocher</b> : le bouton « Générer le PDF » ouvre la liste des sections (page de garde, besoins, solution, productivité, plan, piliers, QR codes, indicateurs, paiement, services, contrat, caractéristiques) ; vous lisez l'aperçu, vous pouvez revenir modifier les sections, puis générer ; la pagination est recalculée à chaque fois. (6) Compteur d'arguments affichés dans les réglages de l'argumentaire.</li>
 <li><b>V4.4.9</b> : (1) <b>Bouton « Générer le PDF »</b> : il se met à jour dès que vous cochez le robot ou les besoins (il restait grisé tant que la fiche n'était pas enregistrée) ; un clic sur le bouton grisé indique ce qu'il manque et mène au bon endroit. (2) Le <b>robot du devis</b> est coché automatiquement à l'enregistrement de la synthèse de l'offre si aucun robot n'est choisi. (3) <b>Ajouter ou dupliquer une offre</b> demande d'abord confirmation.</li>
 <li><b>V4.4.8</b> : (1) <b>Replanifier</b> fonctionne aussi pour les rappels (relances, appels, visites…) : même petite fenêtre avec <b>Valider la nouvelle date</b>, depuis l'accueil comme depuis la fiche. (2) Quand vous planifiez une <b>nouvelle</b> action sur un dossier qui a une action <b>en retard</b>, la fenêtre propose de la remplacer (case cochée par défaut) : elle quitte « Ma journée ». (3) Libellé corrigé dans vos fiches : « Relance après envoi du devis » devient « Relance après présentation du devis ».</li>
 <li><b>V4.4.7</b> : <b>Replanifier</b> (accueil ou fiche) ouvre une petite fenêtre : nouvelle date et heure (boutons Demain, Dans 1 semaine, Dans 2 semaines), puis bouton <b>Valider la nouvelle date</b>. La date est enregistrée tout de suite et l'action quitte « Ma journée » ; l'ajout à l'agenda reste facultatif. Plus besoin de passer par la fiche ni de valider ailleurs.</li>
@@ -1584,7 +1593,12 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <dialog id="dlg-pdfprev" class="!w-[min(980px,97vw)]">
   <div class="px-5 py-3 border-b bg-slate-50 flex justify-between items-center gap-2"><div><h3 class="font-bold flex items-center gap-2"><i class="fas fa-eye text-ptkd"></i>Lecture avant génération</h3><p id="pv-title" class="text-xs text-muted mt-0.5"></p></div><button class="dlg-x" onclick="closePrev()" aria-label="Fermer"><i class="fas fa-xmark"></i></button></div>
   <iframe id="pv-frame" title="Aperçu de la synthèse" class="w-full bg-slate-200" style="height:min(74vh,820px);border:0"></iframe>
-  <div class="px-5 py-3 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closePrev()">Fermer</button><button class="btn btn-p" onclick="prevGen()"><i class="fas fa-file-pdf"></i>Générer le PDF</button></div>
+  <div class="px-5 py-3 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closePrev()">Fermer</button><button class="btn btn-g" onclick="closePrev();pdfSecOpen(ui.pvId)"><i class="fas fa-list-check text-ptkd"></i>Modifier les sections</button><button class="btn btn-p" onclick="prevGen()"><i class="fas fa-file-pdf"></i>Générer le PDF</button></div>
+</dialog>
+<dialog id="dlg-pdfsec" class="!w-[min(640px,96vw)]">
+  <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start gap-2"><div><h3 class="font-bold flex items-center gap-2"><i class="fas fa-list-check text-ptkd"></i>Contenu du PDF</h3><p class="text-xs text-muted mt-0.5">Cochez ce qui sera créé, lisez l'aperçu, puis générez.</p></div><button class="dlg-x" onclick="closeDlg('dlg-pdfsec')" aria-label="Fermer"><i class="fas fa-xmark"></i></button></div>
+  <div id="ps-body" class="dlg-body p-5 flex flex-col gap-3"></div>
+  <div class="px-5 py-4 border-t bg-slate-50 flex justify-end gap-2 flex-wrap"><button class="btn btn-g" onclick="closeDlg('dlg-pdfsec')">Annuler</button><button class="btn btn-g" onclick="pdfSecGo(true)"><i class="fas fa-eye"></i>Aperçu</button><button class="btn btn-p" onclick="pdfSecGo(false)"><i class="fas fa-file-pdf"></i>Générer le PDF</button></div>
 </dialog>
 <dialog id="dlg-arg" class="!w-[min(820px,96vw)]">
   <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start gap-2">
@@ -1886,7 +1900,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.4.9';
+const APP_VERSION = '4.5.0';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -1972,9 +1986,10 @@ const ACTIONS = {
   mail: {label: 'E-mail', short: 'E-mail', icon: 'mail', fa: 'fa-envelope', fg: '#2F5BD3', bg: '#EEF2FC', dur: 15, motifs: ["Transmission de l'étude financière et ROI", 'Confirmation de rendez-vous', "Envoi des plans d'agencement", 'Demande des documents de financement (bilan)', "Compte-rendu d'échange"]},
   suivi: {label: 'Relance', short: 'Relance', icon: 'bell', fa: 'fa-bell', fg: '#9A3412', bg: '#FDF1E6', dur: 15, motifs: ['Rappeler pour fixer le rendez-vous', 'Relance après présentation du devis', 'Relance décision', 'Relance accord bancaire', 'Relance documents de financement (bilan)']}
 };
-const BESOINS = [['Rapidité de délivrance', 'fa-bolt'], ['Accompagnement patient', 'fa-user-nurse'], ['Gain de temps et confort', 'fa-clock'], ["Optimisation de l'espace", 'fa-up-right-and-down-left-from-center'], ['Sécurisation de la délivrance', 'fa-shield-halved'], ['Sérialisation | E-Prescription', 'fa-barcode'], ['Optimisation des stocks', 'fa-boxes-stacked'], ['Démarque inconnue', 'fa-magnifying-glass-dollar'], ['Image innovante et modernisation', 'fa-wand-magic-sparkles'], ['Effectif tendu', 'fa-users'], ['Maximiser le panier moyen et le conseil associé', 'fa-basket-shopping']];
+const BESOINS = [['Rapidité de délivrance', 'fa-bolt'], ['Accompagnement patient', 'fa-user-nurse'], ['Gain de temps et confort', 'fa-clock'], ["Optimisation de l'espace", 'fa-up-right-and-down-left-from-center'], ['Sécurisation de la délivrance', 'fa-shield-halved'], ['Sérialisation | E-Prescription', 'fa-barcode'], ['Optimisation des stocks', 'fa-boxes-stacked'], ['Démarque inconnue', 'fa-magnifying-glass-dollar'], ['Image innovante et modernisation', 'fa-wand-magic-sparkles'], ['Effectif tendu', 'fa-users'], ['Maximiser le panier moyen et le conseil associé', 'fa-basket-shopping'], ['Réception des commandes', 'fa-boxes-packing']];
 /* Argumentaire : pour chaque besoin, une accroche, le constat dans les mots du pharmacien, la réponse du robot, le bénéfice au quotidien (aucun chiffre inventé) */
 const ARG = {
+  'Réception des commandes': {h: 'Les commandes se rangent sans mobiliser votre back-office', p: 'La réception des commandes des grossistes et répartiteurs mobilise une personne du back-office, souvent aux heures où le comptoir a besoin de monde.', r: 'Un chargeur automatique reçoit les bacs des grossistes et répartiteurs et range les boîtes dans le robot, sans saisie ni manipulation une à une.', b: 'Le temps du back-office est rendu au conseil et à la gestion des stocks, et les produits sont disponibles au comptoir dès leur réception.'},
   'Rapidité de délivrance': {h: 'Le patient est servi pendant que vous lui parlez', p: "Aux heures de pointe, la file d'attente s'allonge et l'équipe court entre le comptoir et les tiroirs.", r: 'Le robot Pharmathek délivre les boîtes au comptoir en quelques secondes, à la demande, pendant que vous restez face au patient.', b: 'Des patients mieux servis et un conseil dispensé par le professionnel de santé de meilleure qualité, pour un meilleur suivi.'},
   'Accompagnement patient': {h: 'Plus de temps pour écouter, conseiller et accompagner', p: 'Vous souhaitez développer les entretiens, la vaccination ou les bilans de médication, mais le temps manque.', r: "Les déplacements et les recherches de boîtes disparaissent : le temps libéré au comptoir est rendu à l'équipe.", b: "Des patients mieux suivis et une officine pleinement engagée dans ses nouvelles missions."},
   'Gain de temps et confort': {h: "Moins de pas, plus de sérénité pour toute l'équipe", p: "Les allers-retours, le rangement des commandes et le port des caisses fatiguent l'équipe.", r: 'Le robot range les commandes et délivre les boîtes à votre place : fini les allers-retours et les ports de charge.', b: 'Une équipe moins fatiguée, plus disponible, et des journées mieux organisées, au comptoir comme en back-office.'},
@@ -3928,7 +3943,7 @@ function mxView(locked, sel = []) {
   return `<div id="f-opt-box" class="flex flex-col gap-3 mt-3 pt-3 border-t border-slate-200">
     ${noOpt ? '<p class="text-[12.5px] text-muted italic">GENESI : aucune option disponible pour le moment.</p>' : `<div><span class="lbl">Options technologiques &amp; périphériques</span><div class="optframe"><div class="optcap"><i class="fas fa-circle-check"></i>Options retenues pour cette offre <em>· cliquez sur une carte pour l'ajouter ou la retirer</em></div><div class="optgrid">${OPL.map(o => { const k = optKey(o); return `<label class="optc"><input type="checkbox" name="f-opt" value="${esc(o)}" class="sr-only" ${M.options.includes(o) ? 'checked' : ''} onchange="mxSync()"><div class="o"><div class="im">${k ? `<img class="${/euclid|pharmaload|vitrees|panneaua/.test(k) ? '' : 'c'}" src="${OPT_ICO[k]}" alt="">` : ''}</div><div class="t">${esc(o)}<small>${esc(OPT_SHORT[o] || '')}</small></div><div class="st"><span class="a">Ajouter à l'offre</span><span class="s">Dans l'argumentaire</span></div></div></label>`; }).join('')}</div></div></div>`}
     <p class="text-[12px] text-muted"><i class="fas fa-arrow-up"></i> Postes, dossiers, distances et positions du robot : voir la section 2 « Détail de l'officine » (mêmes données).</p>
-    <details class="rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-2"><summary class="cursor-pointer text-[13px] font-bold text-slate-700">Réglages de l'argumentaire <span class="font-normal text-muted">· arguments, commentaire, back-office, gains</span></summary><div class="flex flex-col gap-3 mt-3"><div><span class="lbl">Arguments affichés dans l'argumentaire</span><div class="argrid">${ARGS_DEF.map(([k, t, sb, ic]) => `<label class="argrow"><i class="fas fa-${ic}"></i><div><b>${t}</b><small>${sb}</small></div><span class="sw"><input type="checkbox" name="f-arg" value="${k}" ${(k === 'plan' ? ((M.args || {}).plan ?? (IMPL.imgs.length > 0)) : (M.args || {})[k] !== false) ? 'checked' : ''} onchange="mxRead()"></span></label>`).join('')}</div></div>
+    <details class="rounded-xl border border-slate-200 bg-slate-50/50 px-3 py-2"><summary class="cursor-pointer text-[13px] font-bold text-slate-700">Réglages de l'argumentaire <span class="font-normal text-muted">· ${ARGS_DEF.filter(x => (M.args || {})[x[0]] !== false).length} arguments affichés sur ${ARGS_DEF.length} · commentaire, back-office, gains</span></summary><div class="flex flex-col gap-3 mt-3"><div><span class="lbl">Arguments affichés dans l'argumentaire</span><div class="argrid">${ARGS_DEF.map(([k, t, sb, ic]) => `<label class="argrow"><i class="fas fa-${ic}"></i><div><b>${t}</b><small>${sb}</small></div><span class="sw"><input type="checkbox" name="f-arg" value="${k}" ${(k === 'plan' ? ((M.args || {}).plan ?? (IMPL.imgs.length > 0)) : (M.args || {})[k] !== false) ? 'checked' : ''} onchange="mxRead()"></span></label>`).join('')}</div></div>
     <div><span class="lbl">Commentaire complémentaire</span><div id="f-cm-ban" class="mb-2">${cmBan(M)}</div><div class="rounded-xl border border-slate-200 p-3"><div class="mic-wrap"><textarea id="f-cm" rows="4" class="ta" oninput="mxRead()" placeholder="Ex. : le titulaire souhaite une livraison avant l'été, la zone de réception est étroite…">${esc((M.comment || {}).text || '')}</textarea><button type="button" class="mic" onclick="dictate('f-cm',this)" aria-label="Dicter"><i class="fas fa-microphone"></i></button></div>
       <div class="flex flex-wrap items-center gap-2 mt-2.5"><button type="button" class="btn btn-g !h-9" onclick="cmRef()"><i class="fas fa-wand-magic-sparkles text-ptkd"></i>Reformuler</button><button type="button" class="btn btn-g !h-9" onclick="cmSyn()"><i class="fas fa-list-check text-ptkd"></i>Note synthétique</button><button type="button" id="f-cm-undo" class="btn btn-g !h-9 hidden" onclick="cmUndo()"><i class="fas fa-rotate-left"></i>Annuler</button>
       <label class="argrow !py-1.5 ml-auto"><b class="!text-[12.5px]">Afficher dans l'argumentaire</b><span class="sw"><input type="checkbox" id="f-cmon" ${(M.comment || {}).on === false ? '' : 'checked'} onchange="mxRead()"></span></label></div></div>
@@ -4272,17 +4287,29 @@ function showPrev(doc, name, id, merge) {
   $('pv-title').textContent = name.replace(/\.pdf$/, '').replace(/_/g, ' '); $('pv-frame').src = prevUrl; ui.pvId = id; ui.pvMerge = merge; $('dlg-pdfprev').showModal();
 }
 function closePrev() { $('dlg-pdfprev').close(); $('pv-frame').src = 'about:blank'; try { if (prevUrl) URL.revokeObjectURL(prevUrl); } catch { } prevUrl = null; }
-function prevGen() { const id = ui.pvId, m = ui.pvMerge; closePrev(); genArgNew(id, m); }
+let PSEC = {}; const SX = k => PSEC[k] !== false;
+function prevGen() { const id = ui.pvId, m = ui.pvMerge; closePrev(); genArgNew(id, m, false, ui.pdfSec); }
+const PSEC_LIST = [['Synthèse personnalisée', [['cover', 'Page de garde'], ['need', 'Ce que vous nous avez dit (problématique et besoins)'], ['sol', 'Solution préconisée'], ['prod', 'Étude de productivité'], ['plan', "Plan d'implantation et photos"], ['pil', 'Les 3 piliers de votre investissement'], ['soc', 'Restons connectés (QR codes)']]], ["Synthèse de l'offre (devis + maintenance)", [['kpi', 'Indicateurs clés'], ['pay', 'Conditions de paiement'], ['srv', 'Services inclus'], ['ctr', 'Contrat de service'], ['tech', 'Caractéristiques techniques']]]];
+function pdfSecOpen(id) {
+  const c = ensureSaved(); if (!c) return; const miss = argMiss(c);
+  if (miss.length) return toast(`À renseigner d'abord : ${miss.join(', ')}.`, true);
+  const same = ui.pdfSecId === c.id; ui.pdfId = c.id; ui.pdfSec = same && ui.pdfSec ? ui.pdfSec : {}; ui.pdfMerge = same && ui.pdfMerge != null ? ui.pdfMerge : !!c.offre?.lignes?.length; ui.pdfSecId = c.id; pdfSecDraw(); $('dlg-pdfsec').showModal();
+}
+function pdfSecDraw() {
+  const c = byId(ui.pdfId); if (!c) return; const hasO = !!c.offre?.lignes?.length, mg = hasO && ui.pdfMerge, S = ui.pdfSec || {};
+  const noProd = !(ptkCalc(ptkOf(c)).gTot > 0);
+  $('ps-body').innerHTML = `${hasO ? `<div class="grid grid-cols-2 gap-2"><label class="rounded-xl border-2 ${mg ? 'border-orange-500 bg-orange-50' : 'border-slate-200'} px-3 py-2.5 text-[13px] font-bold flex items-center gap-2 cursor-pointer"><input type="radio" name="ps-mode" ${mg ? 'checked' : ''} onchange="ui.pdfMerge=true;pdfSecRead();pdfSecDraw()">Fusionner avec la synthèse de l'offre</label><label class="rounded-xl border-2 ${!mg ? 'border-orange-500 bg-orange-50' : 'border-slate-200'} px-3 py-2.5 text-[13px] font-bold flex items-center gap-2 cursor-pointer"><input type="radio" name="ps-mode" ${!mg ? 'checked' : ''} onchange="ui.pdfMerge=false;pdfSecRead();pdfSecDraw()">Synthèse personnalisée seule</label></div>` : ''}
+    ${PSEC_LIST.map(([t, L], gi) => (gi === 1 && !mg) ? '' : `<div class="rounded-xl border border-slate-200 p-3"><div class="kicker mb-1">${t}</div>${L.map(([k, l]) => { const dis = k === 'prod' && noProd; return `<label class="flex items-center gap-2 text-[13.5px] font-semibold py-1 ${dis ? 'opacity-50' : ''}"><input type="checkbox" name="ps-k" value="${k}" class="w-4 h-4 accent-orange-700" ${dis ? 'disabled' : S[k] === false ? '' : 'checked'}>${l}${dis ? ' <span class="font-normal text-muted">(données du poste de travail à renseigner)</span>' : ''}</label>`; }).join('')}</div>`).join('')}
+    <p class="text-[12px] text-muted">Le budget (décomposition et remise) figure toujours dans la synthèse de l'offre. La mise en page est recalculée à chaque génération : décochez une section, les pages se réorganisent.</p>`;
+}
+function pdfSecRead() { ui.pdfSec = ui.pdfSec || {}; document.querySelectorAll('input[name=ps-k]').forEach(x => { if (x.disabled) return; if (x.checked) delete ui.pdfSec[x.value]; else ui.pdfSec[x.value] = false; }); }
+function pdfSecGo(prev) { pdfSecRead(); const c = byId(ui.pdfId); if (!c) return; closeDlg('dlg-pdfsec'); genArgNew(c.id, !!(c.offre?.lignes?.length && ui.pdfMerge), !!prev, {...ui.pdfSec}); }
 function prevArg(id) {
   const c = ensureSaved(); if (!c) return; const miss = argMiss(c);
   if (miss.length) return toast(`À renseigner d'abord : ${miss.join(', ')}.`, true);
-  genArgNew(c.id, !!c.offre?.lignes?.length, true);
+  genArgNew(c.id, !!c.offre?.lignes?.length, true, ui.pdfSecId === c.id ? ui.pdfSec : null);
 }
-function pdfArg(id) {
-  const c = ensureSaved(); if (!c) return; const miss = argMiss(c);
-  if (miss.length) return toast(`À renseigner d'abord : ${miss.join(', ')}.`, true);
-  confirmBox("Fusionner avec la synthèse de l'offre ?", `La synthèse de <b>${esc(c.pharma)}</b> est prête à être générée.<br><br>Souhaitez-vous le <b>fusionner avec la synthèse de l'offre</b> dans un seul PDF ?`, '<i class="fas fa-file-circle-plus"></i>Oui, fusionner', () => genArgNew(c.id, true), {no: 'Synthèse seule', icon: 'fa-file-pdf', onNo: () => genArgNew(c.id, false)});
-}
+function pdfArg(id) { pdfSecOpen(id); }
 const OPT_DESC = {'Hélice et hélicoïdal': "Descente hélicoïdale : les boîtes glissent jusqu'au comptoir, le robot reste visible depuis l'officine.", 'PANNEAU TYPE A': "Façade vitrée blanche : le robot reste visible depuis l'officine, avec les postes de délivrance intégrés au panneau.", 'Euclid3D': 'Préhension brevetée : multipicking jusqu\'à 15 boîtes, cadence jusqu\'à 520 boîtes/h.', 'Pharmaload': 'Chargement automatique à fort rendement (300 boîtes/h), contrôle FMD, péremptions et lots suivis.', 'QuickAir': 'Transitique pneumatique : acheminement direct des produits jusqu\'au comptoir.', 'QuickPick24': 'Borne de retrait automatisée, accessible 24 h/24 en façade.', 'Parties vitrées': 'Façades vitrées : le robot devient un élément de visibilité en officine.', "Étagères d'exposition": "Étagères d'exposition intégrées : valorisez vos produits sur le robot.", 'Transitique tapis': 'Convoyeur en plafond : acheminement des boîtes jusqu\'aux postes de vente.', 'Double bras': 'Deux bras de préhension Euclid3D dans le robot : deux commandes préparées en parallèle, cadence et disponibilité accrues.'};
 const firstSent = s => { s = String(s || '').trim(); const m = s.match(/^.*?[.!?](\s|$)/); return (m ? m[0] : s).trim(); };
 function qrDraw(doc, text, x, y, size, col, colF, bg) {
@@ -4317,7 +4344,8 @@ function coverPage(K, c, o) {
   col(150, 40, 'Solution', String(mm[1] || rb).toUpperCase(), [mm[2] ? cap1(mm[2]) : '', `Étude valable ${o.validite || 30} jours`]);
   K.font(6.8, 'normal', PK.mut); doc.text(pdfTxt(PTK_ADDR), 22, 287); doc.text('Automation Technologies', W - 22, 287, {align: 'right'});
 }
-async function genArgNew(id, merge, prev) {
+async function genArgNew(id, merge, prev, sec) {
+  PSEC = sec || {};
   const IMG = await implGet(id);
   const c = byId(id); if (!c) return; if (!window.jspdf) return toast('Générateur PDF indisponible (connexion Internet requise au premier chargement).', true);
   const P = ptkOf(c), C = ptkCalc(P), A = argDefault(c, c.argDraft || {}), H = C.H, T = c.offre?.tech || {};
@@ -4337,15 +4365,15 @@ async function genArgNew(id, merge, prev) {
   const sect = (title, icn) => { K.need(40); K.y += 3; badge(icn, M + 4.8, K.y + 3.4, 4.8); K.font(13, 'bold', PK.ink); K.t(title, M + 12.5, K.y + 5); doc.setDrawColor(...PK.or); doc.setLineWidth(.9); doc.line(M + 12.5, K.y + 7.8, M + 28, K.y + 7.8); K.y += 11; };
   const bico = Object.fromEntries(BESOINS.map(b => [b[0], b[1].replace('fa-', '')]));
   const ss = s => firstSent(s);
-  const AO = P.args || {}, on = k => AO[k] !== false;
-  const CMT = P.comment && P.comment.on !== false && String(P.comment.text || '').trim() ? String(P.comment.text).trim() : '';
+  const AO = {...(P.args || {})}; if (PSEC.plan === false) AO.plan = false; if (PSEC.soc === false) AO.social = false; const on = k => AO[k] !== false;
+  const CMT = P.comment && P.comment.on !== false && String(P.comment.text || '').trim() ? concTxt(c, String(P.comment.text).trim()) : '';
   const bord = (x, y, w, h, r = 2.6) => { doc.setDrawColor(...PK.line); doc.setLineWidth(.25); doc.roundedRect(x, y, w, h, r, r, 'S'); };
-  const rcM = c.robotConc ? ((c.robotConc.marque === 'Autre' ? (c.robotConc.autre || 'actuel') : c.robotConc.marque) + (c.robotConc.modele ? ' ' + c.robotConc.modele : '')) : '', rcP = c.robotConc?.projet || 'remplacement', rcA = c.robotConc?.annee ? ` (installé en ${c.robotConc.annee})` : '';
+  const rcCite = !!c.robotConc?.cite, rcM = c.robotConc ? (rcCite ? ((c.robotConc.marque === 'Autre' ? (c.robotConc.autre || 'actuel') : c.robotConc.marque) + (c.robotConc.modele ? ' ' + c.robotConc.modele : '')) : 'actuel') : '', rcP = c.robotConc?.projet || 'remplacement', rcA = c.robotConc?.annee && rcCite ? ` (installé en ${c.robotConc.annee})` : '';
   const eqItem = !c.robotConc ? null : rcP === 'extension' ? {k: 'equipe', h: 'Votre robot actuel grandit avec vous', p: `Votre robot ${rcM}${rcA} répond bien, mais l'activité de l'officine a évolué.`, r: "Nous étendons votre installation et la complétons, sans repartir de zéro.", b: 'Plus de capacité et de cadence, avec une interruption de service limitée.'}
     : rcP === 'peripheriques' ? {k: 'equipe', h: 'Allez plus loin avec votre robot', p: `Votre robot ${rcM}${rcA} fonctionne, mais certaines étapes restent manuelles.`, r: "Nous ajoutons les périphériques qui automatisent ces étapes : chargement, transitique, borne.", b: 'Moins de manipulations et un flux de bout en bout, du stock au comptoir.'}
     : {k: 'equipe', h: 'Passez à la génération suivante', p: `Votre robot ${rcM}${rcA} atteint ses limites : cadence, évolutivité, service.`, r: `Le robot ${robots[0] || 'Pharmathek'} reprend vos produits et vos habitudes de travail, avec un accompagnement dédié pour la transition.`, b: "Une équipe plus rapide dès les premiers jours, et un robot qui évolue avec l'officine."};
   // ================= PAGE 1 : accroche
-  { const mg = merge && c.offre?.lignes?.length; coverPage(K, c, {label: mg ? 'Synthèse, projet de robotisation' : 'Synthèse personnalisée', t1: 'Votre projet', t2: 'de robotisation', validite: c.offre?.validite}); doc.addPage(); }
+  if (SX('cover')) { const mg = merge && c.offre?.lignes?.length; coverPage(K, c, {label: mg ? 'Synthèse, projet de robotisation' : 'Synthèse personnalisée', t1: 'Votre projet', t2: 'de robotisation', validite: c.offre?.validite}); doc.addPage(); }
   K.head();
   const y0 = K.y + 3; pill('Votre projet de robotisation', M, y0, PK.or, WH, 6.2);
   { let ty0 = y0 + 15;
@@ -4368,8 +4396,10 @@ async function genArgNew(id, merge, prev) {
   const L2 = [`${settings.prenom} ${settings.nom}`, settings.fonction, `Tél. : ${settings.tel}`, {mail: settings.email}, 'Pharmathek France SAS'].filter(Boolean);
   const bh = 13 + 5.5 + (Math.max(L1.length, L2.length) - 1) * 4.6 + 3;
   K.addrBox(M, by, bw, bh, 'Étude remise à', L1); K.addrBox(M + bw + 6, by, bw, bh, 'Votre interlocuteur', L2); K.y = by + bh;
+  if (SX('need')) {
   sect('Ce que vous nous avez dit, ce que le robot change', 'comments');
   const cwn = (CW - 14 - 6) / 3; let shown = 0;
+  const PROB = (() => { if (c.besoinsNoteOn === false || (c.prob && c.prob.on === false)) return null; const Q = c.prob && c.prob.auto === false ? c.prob : probGen(c); return Q && Q.p ? {k: Q.k || 'prob', full: true, h: concTxt(c, Q.h), p: concTxt(c, Q.p), r: concTxt(c, Q.r), b: concTxt(c, Q.b)} : null; })();
   { const NOTE = String(c.besoinsNote || A.dit || '').trim();
     const SL = (c.besoinsSol || []).map(solById).filter(Boolean);
     const mergedCm = !!(P.comment && P.comment.auto && CMT);
@@ -4377,17 +4407,19 @@ async function genArgNew(id, merge, prev) {
       K.font(8.8, 'italic', PK.ink); const LL = paras.flatMap(t => doc.splitTextToSize(pdfTxt(t), CW - 18)), ch = 18 + LL.length * 4.2; K.need(ch + 4);
       K.card(M, K.y, CW, ch, WH, 'left'); bord(M, K.y, CW, ch, 2.6); badge('comments', M + 9, K.y + 7.2, 3.8); K.font(10.4, 'bold', PK.ink); K.t(`Le mot de ${who || 'votre interlocuteur'}`, M + 15, K.y + 8.2); K.font(8.8, 'italic', PK.ink); doc.text(LL, M + 8, K.y + 15, {lineHeightFactor: 1.35}); K.y += ch + 3; shown++; }
     if (SL.length && c.besoinsNoteOn !== false && !mergedCm) { const ls = SL.map(x => md(`• **${x.t}** : ${x.d}`)), hs = ls.map(l => K.richH(l, CW - 16, 8.4, 4.1) + 1), sh = sum(hs, v => v) + 13; K.need(sh + 3); K.card(M, K.y, CW, sh, [243, 249, 245], 'left'); pill('Solutions retenues pour vos problématiques', M + 8, K.y + 4, [30, 142, 78], WH, 5.8); let ly = K.y + 13; ls.forEach((l, i) => { K.rich(l, M + 8, ly, CW - 16, 8.4, 4.1, PK.ink); ly += hs[i]; }); K.y += sh + 3; shown++; }
-    if (NOTE && c.besoinsNoteOn !== false && !mergedCm) { const nl = md(NOTE), nh = K.richH(nl, CW - 16, 8.6, 4.2) + 15; K.need(nh + 3); K.card(M, K.y, CW, nh, PK.cream, 'left'); pill('Vos précisions', M + 8, K.y + 4, PK.or, WH, 5.8); K.rich(nl, M + 8, K.y + 13.5, CW - 16, 8.6, 4.2, PK.ink); K.y += nh + 3; shown++; } }
+    if (NOTE && c.besoinsNoteOn !== false && !mergedCm && !PROB) { const nl = md(NOTE), nh = K.richH(nl, CW - 16, 8.6, 4.2) + 15; K.need(nh + 3); K.card(M, K.y, CW, nh, PK.cream, 'left'); pill('Vos précisions', M + 8, K.y + 4, PK.or, WH, 5.8); K.rich(nl, M + 8, K.y + 13.5, CW - 16, 8.6, 4.2, PK.ink); K.y += nh + 3; shown++; } }
   if (c.argDraft && c.argDraft.intro && c.argDraft.intro.trim() && c.argDraft.intro.trim() !== argDefault(c, {}).intro.trim()) { const il = md(c.argDraft.intro.trim()), ih = K.richH(il, CW, 8.8, 4.3); K.need(ih + 6); K.rich(il, M, K.y + 3, CW, 8.8, 4.3, PK.sub); K.y += ih + 3; }
-  [...(eqItem ? [eqItem] : []), ...A.items].slice(0, 4).forEach(it => {
-    const cols = [['Votre constat', md(ss(it.p)).map(x => ({...x, i: true})), PK.grey, PK.sub, null], ['Notre réponse', md(ss(it.r)), PK.cream, PK.ord, null], ['Au quotidien', md(ss(it.b)), PK.or, WH, 'bolt']];
+  [...(PROB ? [PROB] : []), ...(eqItem ? [eqItem] : []), ...A.items].slice(0, PROB ? 5 : 4).forEach(it => {
+    const sf = x => it.full ? x : ss(x), cols = [['Votre constat', md(sf(it.p)).map(x => ({...x, i: true})), PK.grey, PK.sub, null], ['Notre réponse', md(sf(it.r)), PK.cream, PK.ord, null], ['Au quotidien', md(sf(it.b)), PK.or, WH, 'bolt']];
     const hs = cols.map(x => x[1].length ? K.richH(x[1], cwn, 8.2, 3.9) : 0), h = 19.5 + Math.max(...hs) + 2;
     K.need(h + 3); shown++; K.card(M, K.y, CW, h, [250, 250, 251], 'left'); doc.setDrawColor(...PK.line); doc.setLineWidth(.2); doc.rect(M, K.y, CW, h, 'S');
     badge(bico[it.k] && FAI[bico[it.k]] ? bico[it.k] : 'star', M + 9, K.y + 7.5, 4.3); K.font(10.4, 'bold', PK.ink); K.t(it.h, M + 16, K.y + 8.2);
     cols.forEach((x, i) => { const xx = M + 8 + i * (cwn + 3); pill(x[0], xx, K.y + 12.2, x[2], x[3], 5.8); if (x[1].length) K.rich(x[1], xx, K.y + 21, cwn, 8.2, 3.9, i === 2 ? PK.ink : PK.sub); });
     K.y += h + 2.5;
   });
+  }
   // ================= PAGE 2 : solution & productivité
+  if (SX('sol')) {
   K.need(80); sect('1. Solution préconisée pour votre officine', 'robot' in FAI ? 'robot' : 'star');
   robots.slice(0, 2).forEach((m, ri) => {
     K.need(58);
@@ -4414,7 +4446,8 @@ async function genArgNew(id, merge, prev) {
       K.font(7, 'normal', PK.sub); doc.text(doc.splitTextToSize(pdfTxt(OPT_DESC[o] || ''), ow - 8).slice(0, 3), xx + 4, yy + 35.2, {lineHeightFactor: 1.2});
       if (i % 3 === 2 || i === opts.length - 1) K.y += OH + 4; });
   }
-  if (C.gTot > 0) {
+  }
+  if (C.gTot > 0 && SX('prod')) {
     K.need(100); sect('2. Étude de productivité officinale', 'chart-line');
     if (on('p_vente') && C.gCpt > .5) {
     const by2 = K.y; rr(M, by2, CW, 32, 2.5, WH); doc.setDrawColor(...PK.line); doc.setLineWidth(.3); doc.roundedRect(M, by2, CW, 32, 2.5, 2.5, 'S'); ic('stopwatch', M + 4, by2 + 2.6, 4.2); lab('Côté vente · temps moyen de délivrance par dossier', M + 10, by2 + 5.8, PK.ord, 6.8);
@@ -4461,6 +4494,7 @@ async function genArgNew(id, merge, prev) {
   }
   // ================= PAGE 3 : valeur & pérennité
   if (AO.plan === true || (AO.plan === undefined && IMG.length > 0)) K.y = 285;
+  if (SX('pil')) {
   K.need(100); K.y += 4; sect('3. Les 3 piliers stratégiques de votre investissement', 'award'); K.y += 1;
   const dimW = (T.dims || '').split(/\s*[x×]\s*/i)[0];
   const pil = [
@@ -4489,9 +4523,10 @@ async function genArgNew(id, merge, prev) {
     K.y += 28; }
   if (String(A.extra || '').trim()) { const el = String(A.extra).split(/\n+/).map(t => t.trim()).filter(Boolean); K.font(8.4, 'normal', PK.ink); const XL = el.map(t => doc.splitTextToSize(pdfTxt(/^[A-ZÉa-z]/.test(t) ? '• ' + t : t), CW - 16)), xh = 15 + XL.reduce((a, l) => a + l.length, 0) * 4.1 + XL.length * .8; K.need(xh + 4);
     K.card(M, K.y, CW, xh, PK.cream, 'left'); bord(M, K.y, CW, xh, 2.6); K.font(10.4, 'bold', PK.ink); K.t('Éléments complémentaires', M + 8, K.y + 8.2); K.font(8.4, 'normal', PK.sub); let xy = K.y + 15; XL.forEach(l => { doc.text(l, M + 8, xy, {lineHeightFactor: 1.35}); xy += l.length * 4.1 + .8; }); K.y += xh + 4; }
+  }
   const SOC = (!opt('social') || !on('social')) ? [] : [['Site Pharmathek', settings.social?.site, 'globe', [200, 90, 10], [232, 119, 34]], ['LinkedIn', settings.social?.linkedin, 'linkedin-in', [10, 102, 194], [10, 80, 160]], ['Facebook', settings.social?.facebook, 'facebook-f', [24, 90, 200], [24, 119, 242]], ['Instagram', settings.social?.instagram, 'instagram', [190, 40, 120], [235, 110, 40]], ['YouTube', settings.social?.youtube, 'youtube', [200, 0, 0], [140, 0, 0]]].filter(x => x[1]);
   if (SOC.length) {
-    K.need(30); const sy = K.y, sh = 29; rr(M, sy, CW, sh, 3, WH); bord(M, sy, CW, sh, 3); doc.setFillColor(...PK.or); doc.rect(M, sy + 3, 1.3, sh - 6, 'F');
+    K.need(26); const sy = K.y, sh = 25.5; rr(M, sy, CW, sh, 3, WH); bord(M, sy, CW, sh, 3); doc.setFillColor(...PK.or); doc.rect(M, sy + 3, 1.3, sh - 6, 'F');
     badge('qrcode', M + 9, sy + 8.2, 4.2); K.font(11, 'bold', PK.ink); K.t('Restons connectés', M + 16, sy + 9); K.font(7.2, 'normal', PK.sub); doc.text(doc.splitTextToSize(pdfTxt("Scannez avec l'appareil photo de votre smartphone : actualités, retours d'expérience, vidéos des robots en action."), 46), M + 5, sy + 16, {lineHeightFactor: 1.3});
     const n = SOC.length, x1 = M + 56, cw = (CW - 58) / n, qs = 15.5;
     SOC.forEach(([l, u, icn, col, colF], i) => { const x0 = x1 + i * cw; qrDraw(doc, u, x0 + (cw - qs) / 2, sy + 2.8, qs, col, colF, null); K.font(7.4, 'bold', PK.ink); doc.text(pdfTxt(l), x0 + cw / 2, sy + sh - 5, {align: 'center'}); K.font(5.4, 'normal', PK.mut); doc.text(pdfTxt(String(u).replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')).slice(0, 34), x0 + cw / 2, sy + sh - 1.8, {align: 'center'}); doc.link(x0, sy, cw, sh, {url: u}); });
@@ -4852,13 +4887,31 @@ function v4Auto() {
     if (c) { renderChrome(c); toast('Fiche enregistrée automatiquement'); }
   }, 3000);
 }
+function concTxt(c, t) {
+  t = String(t || ''); const rc = c && c.robotConc; if (rc && rc.cite) return t;
+  const names = [...new Set([...ROBOTS_CONC, rc && (rc.marque === 'Autre' ? rc.autre : rc.marque)].filter(x => x && x !== 'Autre'))].map(x => x.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')).join('|');
+  if (!names) return t;
+  return t.replace(new RegExp("(\\b(?:du|de|le|ce|cet)\\s+)?(?:robot\\s+)?(?:" + names + ")\\b(?:\\s+[A-Za-z]*\\d[\\w-]*)?", 'gi'), (m, p) => (p && /^(du|de)\s/i.test(p) ? 'de ' : '') + 'votre robot actuel');
+}
+function probGen(c) {
+  const note = String(c.besoinsNote || '').replace(/\s*\n+\s*/g, ' ').trim(); if (!note) return null;
+  let k = /command|réception|chargeur|grossiste|répartiteur|rangement/i.test(note) ? 'Réception des commandes' : null;
+  if (!k) k = (c.besoins || []).find(b => ARG[b]) || null; const D = ARG[k] || {};
+  let p = note.charAt(0).toUpperCase() + note.slice(1); if (!/[.!?…]$/.test(p)) p += '.';
+  return {on: true, auto: true, k, h: D.h || 'Votre problématique', p, r: D.r || '', b: D.b || ''};
+}
+function bsProbFill(P) { P = P || {}; $('bs-pt').value = P.h || ''; $('bs-pp').value = P.p || ''; $('bs-pr').value = P.r || ''; $('bs-pb').value = P.b || ''; $('bs-pon').checked = P.on !== false; }
+function bsProbGen() {
+  const c = byId(ui.editId); if (!c) return; const t = {besoinsNote: $('bs-note').value, besoins: [...document.querySelectorAll('input[name=bs-item]:checked')].map(x => x.value)};
+  const P = probGen(t); if (!P) return toast("Écrivez d'abord le commentaire du client ci-dessus.", true); bsProbFill(P); ui.bsProbAuto = true; toast('Bloc régénéré à partir du commentaire');
+}
 function openBesoins(next = null) {
   const c = ensureSaved(); if (!c) return;
   ui.bsNext = next; const cur = c.besoins || []; ui.bsUnlock = true;
   $('bs-sub').textContent = `${c.pharma} — ${c.ville}`;
   $('bs-msg').innerHTML = next ? `La R1 est réalisée : avant de passer à l'étape <b>${STEPS[next].label}</b>, cochez les besoins et problématiques exprimés par le client. Ils serviront pour vos relances et vos propositions.` : 'Cochez les besoins et problématiques exprimés par le client. Ils serviront pour vos relances et vos propositions.';
   renderBsItems(cur);
-  $('bs-note').value = c.besoinsNote || ''; $('bs-on').checked = c.besoinsNoteOn !== false; { const bx = $('bs-sug'); bx.classList.add('hidden'); bx.innerHTML = ''; if ((c.besoinsSol || []).length) bsSuggest(true); } $('bs-undo').classList.add('hidden'); bsPrev = null;
+  $('bs-note').value = c.besoinsNote || ''; $('bs-on').checked = c.besoinsNoteOn !== false; ui.bsProbAuto = !c.prob || c.prob.auto !== false; bsProbFill(ui.bsProbAuto ? (probGen(c) ? {...probGen(c), on: c.prob ? c.prob.on !== false : true} : null) : c.prob); { const rc = c.robotConc; $('bs-rc-w').classList.toggle('hidden', !rc); if (rc) { $('bs-rc').checked = !!rc.cite; $('bs-rc-n').textContent = [rc.marque === 'Autre' ? rc.autre : rc.marque, rc.modele].filter(Boolean).join(' '); } } { const bx = $('bs-sug'); bx.classList.add('hidden'); bx.innerHTML = ''; if ((c.besoinsSol || []).length) bsSuggest(true); } $('bs-undo').classList.add('hidden'); bsPrev = null;
   $('bs-ok').textContent = next ? 'Enregistrer et continuer' : 'Enregistrer';
   $('dlg-besoins').showModal();
 }
@@ -4895,7 +4948,7 @@ function saveBesoins() {
   const items = [...document.querySelectorAll('input[name=bs-item]:checked')].map(x => x.value);
   if (!items.length) return toast('Cochez au moins un besoin.', true);
   const changed = items.join('|') !== (c.besoins || []).join('|');
-  c.besoins = items; c.besoinsNote = $('bs-note').value.trim(); c.besoinsNoteOn = $('bs-on').checked; if ($('bs-sug') && !$('bs-sug').classList.contains('hidden')) c.besoinsSol = [...document.querySelectorAll('input[name=bs-sol]:checked')].map(x => x.value); if (changed || !c.besoinsDate) c.besoinsDate = isoDay(TODAY);
+  c.besoins = items; c.besoinsNote = $('bs-note').value.trim(); c.besoinsNoteOn = $('bs-on').checked; if (c.robotConc) c.robotConc.cite = $('bs-rc').checked; c.prob = ui.bsProbAuto ? {on: $('bs-pon').checked, auto: true} : {on: $('bs-pon').checked, auto: false, h: $('bs-pt').value.trim(), p: $('bs-pp').value.trim(), r: $('bs-pr').value.trim(), b: $('bs-pb').value.trim(), k: (probGen({besoinsNote: c.besoinsNote, besoins: items}) || {}).k || null}; if ($('bs-sug') && !$('bs-sug').classList.contains('hidden')) c.besoinsSol = [...document.querySelectorAll('input[name=bs-sol]:checked')].map(x => x.value); if (changed || !c.besoinsDate) c.besoinsDate = isoDay(TODAY);
   if (changed) log(c, 'Besoins et problématiques renseignés', items.join(', ') + (c.besoinsNote ? `\n${c.besoinsNote}` : ''));
   save(); closeDlg('dlg-besoins'); renderChrome(c); if (ui.mx && ui.editId === c.id) { ui.mxSol = [...(c.besoinsSol || [])]; cmDraw(); }
   if (ui.bsNext) { const n = ui.bsNext; ui.bsNext = null; openStep(n); } else toast('Besoins enregistrés');
@@ -5804,13 +5857,13 @@ function parseContrat(L) {
 }
 const PTK_HQ = {nom: 'Pharmathek France SAS', rue: '214 Chemin Vallon Rouge – ZA Bertoire II – 13410 Lambesc – France', tel: '+33 04 42 62 77 08', mail: 'france@pharmathek.com'};
 const offreNew = c => ({ref: '', date: new Date().toLocaleDateString('fr-FR'), validite: 30, robot: 'Robot ' + (famOf(c) || 'SINTESI'), lignes: [], remisePct: 0, maint: {formule: 'Maintenance ProActive', mensuel: 0, remPct: 0, mois: 36, ans: 7}, tech: {}});
-const offreCalc = o => { const brut = sum(o.lignes, x => +x.m || 0), rem = Math.round(brut * (+o.remisePct || 0) / 100), net = brut - rem, m = o.maint || {}, mRem = Math.round((+m.mensuel || 0) * (1 - (+m.remPct || 0) / 100)); return {brut, rem, net, mRem}; };
+const offreCalc = o => { const brut = sum(o.lignes, x => +x.m || 0), md = o.remMode || 'pct'; let rem = md === 'eur' ? Math.round(+o.remEur || 0) : md === 'net' ? (o.remNet === '' || o.remNet == null ? 0 : brut - Math.round(+o.remNet)) : Math.round(brut * (+o.remisePct || 0) / 100); rem = Math.max(0, Math.min(rem, Math.max(brut, 0))); const net = brut - rem, pct = brut > 0 ? Math.round(rem / brut * 10000) / 100 : 0, m = o.maint || {}, mRem = Math.round((+m.mensuel || 0) * (1 - (+m.remPct || 0) / 100)); return {brut, rem, net, pct, mRem}; };
 function offreBox(c) {
   const box = $('f-offre-box');
   if (!c || !ui.editId) { box.innerHTML = ''; return; }
   const o = c.offre, k = o?.lignes?.length ? offreCalc(o) : null;
   box.innerHTML = `<div class="fbox ${k ? 'ok' : 'none'}">${fboxHead('Devis + maintenance', !!k, k ? `${editBtn(`openOffre(${c.id})`, 'Modifier l\'offre')}<button class="lnk-edit !text-emerald-800" onclick="genOffre(${c.id})"><i class="fas fa-file-pdf text-[11px]"></i>Générer le PDF</button><button class="lnk-edit" onclick="printOffre(${c.id})"><i class="fas fa-print text-[11px]"></i>Imprimer la synthèse seule</button>` : '', '(devis + contrat de maintenance · alimente le PDF de l\'offre)')}
-    ${k ? `<div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-[13px]">${[['Devis', esc(o.ref || '—'), o.date || ''], ['Total brut', eur(k.brut), `${o.lignes.length} poste${o.lignes.length > 1 ? 's' : ''}`], ['Remise', o.remisePct ? `${(+o.remisePct).toLocaleString('fr-FR')} %` : 'Aucune', o.remisePct ? '− ' + eur(k.rem) : ''], ['Total net HT', `<span class="text-ptkd">${eur(k.net)}</span>`, o.maint?.mensuel ? `maintenance ${eur(o.maint.remPct ? k.mRem : o.maint.mensuel)}/mois` : '']].map(([l, v, s2]) => `<div class="rounded-lg bg-slate-50 px-3 py-2"><div class="text-[11px] font-semibold text-muted">${l}</div><div class="font-bold">${v}</div><div class="text-[11px] text-muted truncate">${s2}</div></div>`).join('')}</div>`
+    ${k ? `<div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-[13px]">${[['Devis', esc(o.ref || '—'), o.date || ''], ['Total brut', eur(k.brut), `${o.lignes.length} poste${o.lignes.length > 1 ? 's' : ''}`], ['Remise', k.rem ? `${k.pct.toLocaleString('fr-FR')} %` : 'Aucune', k.rem ? '− ' + eur(k.rem) : ''], ['Total net HT', `<span class="text-ptkd">${eur(k.net)}</span>`, o.maint?.mensuel ? `maintenance ${eur(o.maint.remPct ? k.mRem : o.maint.mensuel)}/mois` : '']].map(([l, v, s2]) => `<div class="rounded-lg bg-slate-50 px-3 py-2"><div class="text-[11px] font-semibold text-muted">${l}</div><div class="font-bold">${v}</div><div class="text-[11px] text-muted truncate">${s2}</div></div>`).join('')}</div>`
       : `<label class="w-full rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 px-3 py-3 text-[13px] font-semibold text-slate-700 flex items-center gap-2 cursor-pointer hover:border-orange-300"><i class="fas fa-file-import text-ptkd"></i><span title="L'application lit le devis et le contrat (PDF) et remplit l'offre : lignes, remise, maintenance mensuelle">Importer le devis et le contrat (PDF)</span><input type="file" accept="application/pdf,.pdf" multiple class="hidden" onchange="offreImport(this)"></label>
         <button class="text-xs text-muted hover:underline mt-1.5" title="Saisissez vous-même chaque poste, la remise et la maintenance : utile sans PDF ou si la lecture échoue" onclick="openOffre(${c.id})">ou saisir les lignes manuellement</button>
         <p class="text-[11.5px] leading-snug text-muted mt-1.5 mb-0"><b>Importer le devis et le contrat (PDF)</b> : l'application lit vos deux documents et remplit l'offre automatiquement (lignes du devis, remise, maintenance mensuelle). Vous vérifiez avant de valider. <b>Saisir les lignes manuellement</b> : à utiliser sans PDF, ou si la lecture échoue. Vous entrez chaque poste (désignation, montant HT), la remise et la maintenance ; le total se calcule seul. Dans les deux cas, ces informations alimentent le PDF « Synthèse et offre commerciale ».</p>`}</div>`;
@@ -5914,7 +5967,13 @@ function openOffre(id, draft) {
       <p class="text-xs text-muted">Les petites flèches à gauche changent l'ordre des postes. La ligne de remise est calculée à partir du taux choisi en 3.</p></section>
     <section class="grid md:grid-cols-[1fr_1fr] gap-4">
       <div class="rounded-xl border border-slate-200 p-4 flex flex-col gap-3"><span class="kicker">3 · Remise commerciale</span>
-        <div class="grid grid-cols-2 gap-3"><div><label class="lbl" for="of-rpct">Taux de remise (%)</label><input id="of-rpct" type="number" min="0" max="100" step="0.5" class="inp font-bold" value="${o.remisePct || 0}" oninput="offreTot('pct')"></div><div><label class="lbl" for="of-reur">Montant de la remise (€)</label><input id="of-reur" type="number" min="0" step="100" class="inp" oninput="offreTot('eur')"></div></div>
+        <p class="text-[12.5px] text-muted -mt-1">Tapez dans <b>un seul</b> des trois champs : les deux autres se calculent (arrondi à l'euro).</p>
+        <div class="grid grid-cols-3 gap-3"><div><label class="lbl" for="of-rpct">Taux (%)</label><input id="of-rpct" type="number" min="0" max="100" step="any" class="inp font-bold" value="${o.remisePct || ''}" oninput="offreTot('pct')"></div><div><label class="lbl" for="of-reur">Montant de la remise (€)</label><input id="of-reur" type="number" min="0" step="1" class="inp font-bold" value="${o.remEur ?? ''}" oninput="offreTot('eur')"></div><div><label class="lbl" for="of-rnet">ou prix final net HT (€)</label><input id="of-rnet" type="number" min="0" step="1" class="inp font-bold" value="${o.remNet ?? ''}" oninput="offreTot('net')"></div></div>
+        <div id="of-rmode" class="text-[11.5px] text-muted"></div>
+        <div class="rounded-lg border border-slate-200 px-3 py-2"><div class="text-[11.5px] font-bold text-slate-600 uppercase tracking-wide mb-1">Ce qui s'affiche sur le PDF au client</div>
+          <label class="flex items-center gap-2 text-[13px] font-semibold py-1"><input type="checkbox" id="of-sp" class="w-4 h-4 accent-orange-700" ${o.remShowP !== false ? 'checked' : ''} onchange="offreShow('p')">Afficher le taux (%)</label>
+          <label class="flex items-center gap-2 text-[13px] font-semibold py-1"><input type="checkbox" id="of-se" class="w-4 h-4 accent-orange-700" ${o.remShowE !== false ? 'checked' : ''} onchange="offreShow('e')">Afficher le montant (€)</label>
+          <label class="flex items-center gap-2 text-[13px] font-semibold py-1"><input type="checkbox" id="of-sn" class="w-4 h-4 accent-orange-700" ${o.remShowP === false && o.remShowE === false ? 'checked' : ''} onchange="offreShow('n')">Ne pas afficher la remise (net seulement)</label></div>
         ${op ? `<div class="rounded-lg bg-orange-50 border border-orange-200 px-3 py-2 text-[13px] text-orange-950 flex flex-wrap items-center justify-between gap-2"><span><b><i class="fas fa-tags mr-1"></i>${esc(op.nom)}</b> · ${esc(opLines(op)[0] || '')}</span>${op.pct != null || op.maintRem ? '<button class="lnk-edit !text-orange-900" onclick="offreApplyOp()"><i class="fas fa-wand-magic-sparkles text-[11px]"></i>Appliquer</button>' : ''}</div>` : ''}
         <div id="of-tot" class="rounded-lg bg-slate-50 px-3 py-2.5 text-[13px] grid grid-cols-3 gap-2"></div></div>
       <div class="rounded-xl border border-slate-200 p-4 flex flex-col gap-3"><span class="kicker">4 · Contrat de maintenance</span>
@@ -5923,7 +5982,7 @@ function openOffre(id, draft) {
     </section>
     <section class="flex flex-col gap-3"><span class="kicker">5 · Caractéristiques techniques</span><div class="grid grid-cols-2 md:grid-cols-4 gap-3">${[['capacite', 'Capacité de stockage'], ['dims', 'Dimensions robot'], ['poids', 'Poids à vide'], ['poidsM2', 'Poids au m² à vide'], ['conso', 'Consommation électrique'], ['absorption', 'Absorption maximale'], ['bruit', 'Niveau sonore maximal'], ['alim', 'Alimentation'], ['finition', 'Finition']].map(([k, l]) => f('of-t-' + k, l, o.tech?.[k])).join('')}</div></section>
     ${op ? `<label class="flex items-center gap-2 text-[13px] font-semibold rounded-xl bg-orange-50/60 border border-orange-200 px-4 py-3"><input type="checkbox" id="of-opapp" class="w-4 h-4 accent-orange-700" ${c.opApplied ? 'checked' : ''}>Opération commerciale « ${esc(op.nom)} » appliquée à cette offre</label>` : ''}`;
-  offreTot(); $('dlg-offre').showModal();
+  ui.ofMode = o.remMode || 'pct'; offreTot(); $('dlg-offre').showModal();
 }
 const offreRowHTML = (x = {t: '', m: 0}) => `<div class="of-row grid grid-cols-[1fr_140px_40px] gap-2 items-start"><div class="flex gap-1 items-start"><span class="flex flex-col"><button class="w-6 h-5 text-muted hover:text-ink" aria-label="Monter" onclick="const r=this.closest('.of-row');r.previousElementSibling?.before(r)"><i class="fas fa-caret-up"></i></button><button class="w-6 h-5 text-muted hover:text-ink" aria-label="Descendre" onclick="const r=this.closest('.of-row');r.nextElementSibling?.after(r)"><i class="fas fa-caret-down"></i></button></span><textarea rows="2" class="ta !text-[13px] of-t flex-1" placeholder="Libellé du poste" aria-label="Libellé du poste">${esc(x.t)}</textarea></div><input type="number" step="0.01" class="inp text-right font-semibold of-m" value="${x.m ?? 0}" aria-label="Montant HT" oninput="offreTot()"><button class="qb !w-10 !h-10 text-rose-700" aria-label="Supprimer la ligne" onclick="this.closest('.of-row').remove();offreTot()"><i class="fas fa-trash-can text-xs"></i></button></div>`;
 function offreRow(x) { $('of-rows').insertAdjacentHTML('beforeend', offreRowHTML(x)); $('of-rows').lastElementChild.querySelector('textarea').focus(); offreTot(); }
@@ -5931,15 +5990,20 @@ function offreRead() {
   const v = id => $(id)?.value?.trim() ?? '';
   const lignes = [...document.querySelectorAll('#of-rows .of-row')].map(r => ({t: r.querySelector('.of-t').value.trim(), m: +r.querySelector('.of-m').value || 0})).filter(x => x.t || x.m);
   const prev = ui.ofDraft || byId(ui.ofId)?.offre || {};
-  return {...prev, remiseLabel: v('of-rlab') || 'Remise commerciale', ref: v('of-ref'), date: v('of-date'), validite: +v('of-val') || 30, robot: v('of-robot') || 'Robot SINTESI', lignes, remisePct: +v('of-rpct') || 0,
+  return {...prev, remiseLabel: v('of-rlab') || 'Remise commerciale', ref: v('of-ref'), date: v('of-date'), validite: +v('of-val') || 30, robot: v('of-robot') || 'Robot SINTESI', lignes, remisePct: +v('of-rpct') || 0, remMode: ui.ofMode || 'pct', remEur: v('of-reur') === '' ? '' : +v('of-reur'), remNet: v('of-rnet') === '' ? '' : +v('of-rnet'), remShowP: $('of-sp') ? $('of-sp').checked : true, remShowE: $('of-se') ? $('of-se').checked : true,
     maint: {formule: v('of-mf'), mensuel: +v('of-mm') || 0, remPct: +v('of-mp') || 0, mois: +v('of-mn') || 36, ans: +v('of-ma') || 7},
     tech: Object.fromEntries(['capacite', 'dims', 'poids', 'poidsM2', 'conso', 'absorption', 'bruit', 'alim', 'finition'].map(k => [k, v('of-t-' + k)]))};
 }
+function offreShow(k) { const p = $('of-sp'), e = $('of-se'), n = $('of-sn'); if (k === 'n') { if (n.checked) p.checked = e.checked = false; else p.checked = e.checked = true; } else if (p.checked || e.checked) n.checked = false; else n.checked = true; offreTot(); }
 function offreTot(src) {
   const brut = sum([...document.querySelectorAll('#of-rows .of-m')], i => +i.value || 0);
-  if (src === 'eur') $('of-rpct').value = brut ? Math.round((+$('of-reur').value || 0) / brut * 10000) / 100 : 0;
-  const pct = +$('of-rpct').value || 0, rem = Math.round(brut * pct / 100); if (src !== 'eur') $('of-reur').value = rem;
-  $('of-tot').innerHTML = [['Total brut', eur(brut)], ['Remise', '− ' + eur(rem)], ['Total net HT', `<span class="text-ptkd">${eur(brut - rem)}</span>`]].map(([l, x]) => `<div><div class="text-[11px] text-muted font-semibold">${l}</div><div class="font-bold">${x}</div></div>`).join('');
+  if (src === 'pct' || src === 'eur' || src === 'net') ui.ofMode = src; const md = ui.ofMode || 'pct';
+  let rem = md === 'eur' ? Math.round(+$('of-reur').value || 0) : md === 'net' ? ($('of-rnet').value === '' ? 0 : brut - Math.round(+$('of-rnet').value || 0)) : Math.round(brut * (+$('of-rpct').value || 0) / 100);
+  rem = Math.max(0, Math.min(rem, Math.max(brut, 0))); const pct = brut > 0 ? Math.round(rem / brut * 10000) / 100 : 0;
+  if (md !== 'pct') $('of-rpct').value = rem ? pct : ''; if (md !== 'eur') $('of-reur').value = rem || ''; if (md !== 'net') $('of-rnet').value = brut ? brut - rem : '';
+  if ($('of-rmode')) $('of-rmode').textContent = brut && (md === 'net' && +$('of-rnet').value > brut) ? 'Le prix final dépasse le total brut : aucune remise.' : '';
+  const sp = $('of-sp')?.checked !== false, se = $('of-se')?.checked !== false, shown = rem && (sp || se), rl = (sp && rem ? pct.toLocaleString('fr-FR') + ' %' : '') + (sp && se && rem ? ' · ' : '') + (se && rem ? '− ' + eur(rem) : '');
+  $('of-tot').innerHTML = (shown ? [['Total brut', eur(brut)], ['Remise', rl], ['Total net HT', `<span class="text-ptkd">${eur(brut - rem)}</span>`]] : rem ? [['Total brut', eur(brut)], ['Remise', '<span class="text-muted">non citée</span>'], ['Total net HT', `<span class="text-ptkd">${eur(brut - rem)}</span>`]] : [['Total brut', eur(brut)], ['Remise', 'Aucune'], ['Total net HT', `<span class="text-ptkd">${eur(brut)}</span>`]]).map(([l, x]) => `<div><div class="text-[11px] text-muted font-semibold">${l}</div><div class="font-bold">${x}</div></div>`).join('');
   if (src === 'me') { const mm0 = +$('of-mm').value || 0; $('of-mp').value = mm0 ? Math.round((+$('of-me').value || 0) / mm0 * 1000) / 10 : 0; }
   else if ($('of-me')) $('of-me').value = Math.round((+$('of-mm').value || 0) * (+$('of-mp').value || 0) / 100) || '';
   const mm = +$('of-mm').value || 0, mp = +$('of-mp').value || 0, mn = +$('of-mn').value || 36, mr = Math.round(mm * (1 - mp / 100));
@@ -5954,7 +6018,7 @@ function offreSave(pdf) {
   if (!(c.robots || []).length) { const m = [...MODELS].sort((a, b) => b.length - a.length).find(x => norm(o.robot || '').includes(norm(x))); if (m) { c.robots = [m]; log(c, 'Robot sélectionné d\'après le devis', m); } }
   if ($('of-opapp')) { const was = c.opApplied; c.opApplied = $('of-opapp').checked ? true : (was === true ? false : was); }
   const old = c.montant; c.montant = Math.round(k.net); if ($("f-montant")) $("f-montant").value = c.montant;
-  log(c, `Synthèse de l'offre ${o.ref ? o.ref + ' ' : ''}enregistrée`, `Total net HT ${eur(k.net)}${o.remisePct ? ` (remise ${o.remisePct} %)` : ''}${o.maint.mensuel ? ` · maintenance ${eur(o.maint.remPct ? k.mRem : o.maint.mensuel)}/mois` : ''}`);
+  log(c, `Synthèse de l'offre ${o.ref ? o.ref + ' ' : ''}enregistrée`, `Total net HT ${eur(k.net)}${k.rem ? ` (remise ${k.pct.toLocaleString('fr-FR')} % = ${eur(k.rem)})` : ''}${o.maint.mensuel ? ` · maintenance ${eur(o.maint.remPct ? k.mRem : o.maint.mensuel)}/mois` : ''}`);
   save(); closeDlg('dlg-offre'); renderChrome(c);
   toast(old !== k.net ? `Offre enregistrée · montant du dossier mis à jour : ${eur(k.net)}` : 'Offre enregistrée');
   if (pdf) genOffre(c.id);
@@ -5962,12 +6026,13 @@ function offreSave(pdf) {
 function printOffre(id) {
   const c = byId(id), o = c?.offre; if (!o?.lignes?.length) return toast("Préparez d'abord l'offre.", true);
   if (!window.jspdf) return toast('Générateur PDF indisponible (connexion Internet requise au premier chargement).', true);
-  const K = pdfKit(`Synthèse, projet de robotisation · ${c.pharma} · Réf. ${o.ref || '—'}`); K.solo = true; genOffre(id, K);
+  PSEC = {}; const K = pdfKit(`Synthèse, projet de robotisation · ${c.pharma} · Réf. ${o.ref || '—'}`); K.solo = true; genOffre(id, K);
   try { K.doc.autoPrint(); } catch { }
   const u = K.doc.output('bloburl'), w = window.open(u, '_blank');
   if (!w) { K.doc.save(`Synthese_seule_${slug(c.pharma)}_${slug(o.ref || isoDay(TODAY))}.pdf`); toast('Fenêtre bloquée : le PDF a été téléchargé, ouvrez-le pour l\'imprimer.'); }
 }
 function genOffre(id, K0) {
+  if (!K0) PSEC = {};
   const c = byId(id), o = c?.offre; if (!o?.lignes?.length) return toast("Préparez d'abord l'offre.", true);
   if (!window.jspdf) return toast('Générateur PDF indisponible (connexion Internet requise au premier chargement).', true);
   const k = offreCalc(o), m = o.maint || {}, K = K0 || pdfKit(`Synthèse, projet de robotisation · ${c.pharma} · Réf. ${o.ref || '—'}`), doc = K.doc, M = K.M, CW = K.CW, W = K.W;
@@ -5995,32 +6060,41 @@ function genOffre(id, K0) {
   lab('Votre interlocuteur', px + 4, y0 + 28, PK.ord, 5.4); K.font(8.6, 'bold', PK.ink); K.t(`${settings.prenom} ${settings.nom}`, px + 4, y0 + 32); K.font(7.4, 'normal', PK.sub); K.t(settings.tel || PTK_HQ.tel, px + 4, y0 + 35.8);
   K.y = y0 + hh + 4;
   // ===== Indicateurs clés
+  if (SX('kpi')) {
   sect('Indicateurs clés', 'chart-line', 40);
   { const kp = [['euro-sign', 'Total net HT', eur(k.net) + ' HT', true], ['boxes-stacked', 'Capacité', o.tech?.capacite || '—'], ['ruler-combined', 'Dimensions', o.tech?.dims || '—'], ['weight-hanging', 'Poids à vide', [o.tech?.poids, o.tech?.poidsM2].filter(Boolean).join(' · ') || '—'], ['headset', 'Contrat de service', m.mensuel ? `${eur(promo ? k.mRem : m.mensuel)} HT/mois` : '—']], g = 3, cw = (CW - g * 4) / 5, h = 25;
     kp.forEach((x, i) => { const xx = M + i * (cw + g); card(xx, K.y, cw, h, 2.8, x[3] ? PK.or : BD, x[3] ? .6 : .25); badge(x[0], xx + 6, K.y + 6.4, 3.2); lab(x[1], xx + 3.2, K.y + 13.4, PK.ord, 5, .2);
       K.font(x[3] ? 11 : 8.4, 'bold', PK.ink); doc.text(doc.splitTextToSize(pdfTxt(x[2]), cw - 5.4).slice(0, 2), xx + 3.2, K.y + 18);
       if (i === 4 && promo) { K.font(5.8, 'normal', PK.mut); doc.text(doc.splitTextToSize(pdfTxt(`pendant ${mois} mois (${eur(m.mensuel - k.mRem)} HT de remise par mois), puis ${eur(m.mensuel)} HT/mois`), cw - 5.4).slice(0, 3), xx + 3.2, K.y + 21.2, {lineHeightFactor: 1.2}); } });
     K.y += h + 2; }
+  }
   // ===== Budget
   sect('Décomposition du budget', 'euro-sign', 40);
   { const lw = CW - 40; K.need(14); lab('Poste', M + 4, K.y + 3.4, PK.ord, 5.8); { const tx = 'MONTANT HT'; K.font(5.8, 'bold', PK.ord); doc.text(tx, W - M - 4 - doc.getTextWidth(tx) - tx.length * .35, K.y + 3.4, {charSpace: .35}); } doc.text('', 0, 0); K.y += 5; doc.setDrawColor(...PK.or); doc.setLineWidth(.4); doc.line(M, K.y, W - M, K.y);
     o.lignes.forEach((x, i) => { K.font(9.2, 'normal', PK.ink); const ls = doc.splitTextToSize(pdfTxt(x.t), lw), h = Math.max(9.4, ls.length * 4.2 + 4.4); K.need(h);
       doc.setDrawColor(234, 226, 216); doc.setLineWidth(.2); doc.line(M, K.y + h, W - M, K.y + h); K.font(9.2, 'normal', PK.ink); doc.text(ls, M + 4, K.y + h / 2 + 1.2 - (ls.length - 1) * 2.1); K.font(10, 'bold', PK.ink); K.t(eur(x.m), W - M - 4, K.y + h / 2 + 1.3, {align: 'right'}); K.y += h; });
-    if (k.rem) { K.need(12); const lbl = `${o.remiseLabel || 'Remise commerciale'}`; rr(M, K.y + .4, CW, 10.6, 1.6, GRNL); K.font(9.2, 'bold', GRN); K.t(lbl, M + 4, K.y + 7.2); if (o.remisePct) { const w0 = doc.getTextWidth(pdfTxt(lbl)), t = `- ${(+o.remisePct).toLocaleString('fr-FR')} %`; K.font(6.8, 'bold', WH); const pw2 = doc.getTextWidth(t) + 5; rr(M + 7 + w0, K.y + 3.2, pw2, 4.6, 2.3, GRN); K.t(t, M + 7 + w0 + pw2 / 2, K.y + 6.4, {align: 'center'}); } K.font(10, 'bold', GRN); K.t('- ' + eur(k.rem), W - M - 4, K.y + 7.3, {align: 'right'}); K.y += 12; }
+    { const sP = o.remShowP !== false, sE = o.remShowE !== false;
+      if (k.rem && (sP || sE)) { K.need(12); const lbl = `${o.remiseLabel || 'Remise commerciale'}`; rr(M, K.y + .4, CW, 10.6, 1.6, GRNL); K.font(9.2, 'bold', GRN); K.t(lbl, M + 4, K.y + 7.2); if (sP) { const w0 = doc.getTextWidth(pdfTxt(lbl)), t = `- ${k.pct.toLocaleString('fr-FR')} %`; K.font(6.8, 'bold', WH); const pw2 = doc.getTextWidth(t) + 5; rr(M + 7 + w0, K.y + 3.2, pw2, 4.6, 2.3, GRN); K.t(t, M + 7 + w0 + pw2 / 2, K.y + 6.4, {align: 'center'}); } if (sE) { K.font(10, 'bold', GRN); K.t('- ' + eur(k.rem), W - M - 4, K.y + 7.3, {align: 'right'}); } K.y += 12; }
+      else if (k.rem) { K.need(12); K.font(9.2, 'bold', PK.ink); K.t('Total des postes', M + 4, K.y + 7.2); K.font(10, 'bold', PK.ink); K.t(eur(k.brut), W - M - 4, K.y + 7.3, {align: 'right'}); K.y += 12; } }
     K.need(22); K.y += 3; rr(M, K.y, CW, 16, 3.2, PK.or); lab('Votre investissement', M + 7, K.y + 6.2, WH, 5.8, .4); K.font(10.5, 'bold', WH); K.t('TOTAL NET HT', M + 7, K.y + 11.6); K.font(19, 'bold', WH); K.t(eur(k.net), W - M - 7, K.y + 11.2, {align: 'right'}); K.y += 19; }
   // ===== Paiement
+  if (SX('pay')) {
   sect('Conditions de paiement', 'credit-card', 40);
   { const pay = [['30 %', 'Acompte', 'À la signature'], ['50 %', 'Production', 'Au début de la production'], ['20 %', 'Mise en service', 'À la mise en service']], g = 4, cw = (CW - g * 2) / 3, h = 21;
     pay.forEach((x, i) => { const xx = M + i * (cw + g); card(xx, K.y, cw, h, 2.8); doc.setFillColor(...PK.or); doc.rect(xx + 3, K.y, cw - 6, .9, 'F'); K.font(16, 'bold', PK.ord); K.t(x[0], xx + 5, K.y + 9.4); lab(x[1], xx + 5, K.y + 14, PK.ink, 5.8, .3); K.font(7.8, 'normal', PK.sub); K.t(x[2], xx + 5, K.y + 18); });
     K.y += h + 3;
     const nt = doc.splitTextToSize("En cas de financement par leasing ou par crédit, il sera demandé à la pharmacie un chèque de caution d'un montant de 30 % du prix total. Ce chèque de caution sera rendu ou détruit lorsque le financement sera validé.", CW - 14), nh = nt.length * 3.7 + 5; K.need(nh);
     rr(M, K.y, CW, nh, 2.4, [243, 244, 246]); badge('shield-halved', M + 5, K.y + nh / 2, 2.8, PK.sub); K.font(7.8, 'italic', PK.sub); doc.text(nt, M + 11, K.y + 4.4); K.y += nh + 2; }
+  }
   // ===== Services inclus
+  if (SX('srv')) {
   sect('Services inclus', 'gears', 40);
   { const sv = [['wand-magic-sparkles', 'Conception et étude préalable'], ['truck', 'Transport dédié avec déchargement'], ['screwdriver-wrench', 'Installation (lun.–ven., 8h30–18h30)'], ['plug', 'Configuration et connexion au logiciel de gestion'], ['circle-check', 'Tests et validation'], ['user-group', 'Formation et assistance au démarrage']], g = 4, cw = (CW - g * 2) / 3, h = 12.5;
     sv.forEach((x, i) => { const xx = M + (i % 3) * (cw + g), yy = K.y + Math.floor(i / 3) * (h + 2.5); card(xx, yy, cw, h, 2.6); badge(x[0], xx + 6.4, yy + h / 2, 3.3); K.font(7.8, 'bold', PK.ink); const ls = doc.splitTextToSize(pdfTxt(x[1]), cw - 16); doc.text(ls.slice(0, 2), xx + 12.2, yy + h / 2 + (ls.length > 1 ? -.6 : 1)); });
     K.y += 2 * h + 5; }
+  }
   // ===== Contrat de service
+  if (SX('ctr')) {
   sect('Contrat de service', 'shield-halved', 70);
   { const h = 27; card(M, K.y, CW, h, 3); rr(M, K.y, 3, h, 1.5, PK.or); doc.setFillColor(...WH); doc.rect(M + 1.6, K.y + .3, 1.6, h - .6, 'F');
     badge('shield-halved', M + 12, K.y + h / 2, 5.4); lab('Formule', M + 21, K.y + 6.4, PK.ord, 5.6); K.font(13, 'bold', PK.ord); const fn = m.formule || 'Maintenance ProActive'; K.t(fn, M + 21, K.y + 12.6); const fw = doc.getTextWidth(pdfTxt(fn));
@@ -6041,10 +6115,13 @@ function genOffre(id, K0) {
       for (let r = 0; r < 3; r++) { const L2 = [items[r * 2], items[r * 2 + 1]].map(t => doc.splitTextToSize(pdfTxt(t), cw2 - 5)), hh2 = Math.max(L2[0].length, L2[1].length) * 3.5 + 1.8; K.need(hh2);
         L2.forEach((ls, j) => { const x0 = M + j * (cw2 + 6); doc.setFillColor(...PK.or); doc.circle(x0 + 1.4, K.y + 2.3, .8, 'F'); doc.text(ls, x0 + 4, K.y + 3); }); K.y += hh2; } }
     K.y += 2; }
+  }
   // ===== Caractéristiques techniques
+  if (SX('tech')) {
   const T = o.tech || {}, tr = [['Capacité de stockage', T.capacite, 'boxes-stacked'], ['Dimensions robot', T.dims, 'ruler-combined'], ['Poids à vide', T.poids, 'weight-hanging'], ['Poids au m² à vide', T.poidsM2, 'weight-hanging'], ['Consommation électrique', T.conso, 'bolt'], ['Absorption électrique maximale', T.absorption, 'plug'], ['Niveau sonore maximal', T.bruit, 'volume-low'], ['Alimentation', T.alim, 'plug'], ['Finition', T.finition, 'paintbrush']].filter(x => x[1]);
   if (tr.length) { sect('Caractéristiques techniques', 'robot', 40); const g = 3, cw = (CW - g * 2) / 3, h = 12.2;
     const ecoOn = ptkOf(c).args?.eco !== false; tr.forEach((x, i) => { const col = i % 3, eco = ecoOn && /^(Consommation|Absorption)/.test(x[0]); if (col === 0) K.need(h + 2); const xx = M + col * (cw + g), yy = K.y; card(xx, yy, cw, h, 2.6, eco ? [150, 205, 175] : BD); doc.setFillColor(...(eco ? [28, 124, 84] : PK.or)); doc.rect(xx + 3, yy, cw - 6, .9, 'F'); badge(x[2], xx + 6.5, yy + 6.6, 3.1, eco ? GRN : PK.or); if (eco) { K.font(5.2, 'bold', WH); const ew = doc.getTextWidth('ECO') + 5; rr(xx + cw - ew - 2, yy + 2, ew, 3.8, 1.9, GRN); K.t('ECO', xx + cw - ew / 2 - 2, yy + 4.7, {align: 'center'}); } lab(x[0], xx + 11.5, yy + 5.4, PK.ord, 4.9, .15); K.font(8.4, 'bold', PK.ink); doc.text(doc.splitTextToSize(pdfTxt(x[1]), cw - 14).slice(0, 1), xx + 11.5, yy + 9.8); if (col === 2 || i === tr.length - 1) K.y += h + 2; }); }
+  }
   K.need(5); K.y += 3.2; K.font(7, 'italic', PK.mut); doc.text(doc.splitTextToSize(pdfTxt(`Prix hors taxes, soumis à la TVA en vigueur. Total net HT après remise : ${eur(k.net)}. Devis valable ${o.validite || 30} jours à compter du ${o.date || '—'}.`), CW), M, K.y);
   K.foot();
   if (K0) return;
