@@ -1108,7 +1108,8 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
     <fieldset><legend class="lbl">Qu'est-ce qui compte pour le client ? <span class="font-normal">(au moins un choix)</span></legend><div id="bs-items" class="grid sm:grid-cols-2 gap-2"></div></fieldset>
     <div><label class="lbl" for="bs-note">Précisions (facultatif)</label><div class="mic-wrap"><textarea id="bs-note" rows="2" class="ta" placeholder="Ex. : 2 préparateurs à temps partiel, réserve saturée…"></textarea><button type="button" class="mic" onclick="dictate('bs-note',this)" aria-label="Dicter"><i class="fas fa-microphone"></i></button></div>
       <div class="flex flex-wrap items-center gap-2 mt-2"><button type="button" class="btn btn-p !h-9" onclick="bsSuggest()"><i class="fas fa-lightbulb"></i>Suggérer des solutions</button><button type="button" class="btn btn-g !h-9" onclick="bsRef()"><i class="fas fa-wand-magic-sparkles text-ptkd"></i>Reformuler</button><button type="button" class="btn btn-g !h-9" onclick="bsSyn()"><i class="fas fa-list-check text-ptkd"></i>Note synthétique</button><button type="button" id="bs-undo" class="btn btn-g !h-9 hidden" onclick="bsUndo()"><i class="fas fa-rotate-left"></i>Annuler</button><label class="flex items-center gap-2 ml-auto text-[12.5px] font-semibold"><input type="checkbox" id="bs-on" class="w-4 h-4 accent-orange-700" checked>Afficher dans la synthèse</label></div></div>
-    <div id="bs-sug" class="hidden rounded-xl border border-orange-200 bg-orange-50/40 p-3"></div>
+    <div id="bs-sug" class="hidden rounded-xl border border-orange-200 bg-orange-50/40 p-3" onchange="bsSolEdit()"></div>
+    <div id="bs-solx" class="hidden rounded-xl border border-slate-200 p-3 flex flex-col gap-2"></div>
     <div id="bs-prob" class="rounded-xl border border-slate-200 p-3 flex flex-col gap-2">
       <div class="flex items-center justify-between gap-2 flex-wrap"><span class="kicker">Bloc « Votre problématique » dans le PDF</span><label class="flex items-center gap-2 text-[12.5px] font-semibold"><input type="checkbox" id="bs-pon" class="w-4 h-4 accent-orange-700" checked>Afficher dans le PDF</label></div>
       <p class="text-[12px] text-muted -mt-1">Construit à partir du commentaire ci-dessus, avec la même présentation que les besoins. Modifiable.</p>
@@ -1232,6 +1233,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.2</b> : (1) <b>Remise maintenance lue automatiquement</b> : à l'import du contrat de service (ou du devis), la mention du type « 290 € HT les 36 premiers mois puis 450 € HT » est repérée ; le prix mensuel, la durée de la remise et le pourcentage correspondant sont remplis (vérifiez puis enregistrez). (2) <b>Texte des solutions modifiable</b> : dans « Besoins et problématiques », chaque solution cochée affiche son titre et sa description à corriger, avec « Rétablir le texte d'origine » ; le texte modifié est repris dans le PDF et le commentaire. (3) <b>Page de garde</b> : contour fin autour de l'image. (4) <b>Mise en page</b> : le bloc « Caractéristiques techniques » reste d'un seul tenant (il n'est plus coupé entre deux pages).</li>
 <li><b>V4.5.1</b> : (1) <b>« Détail de l'officine » refait</b> : quatre blocs lisibles (A activité, B déplacements, C réception des commandes, D position du robot) ; chaque ligne indique ce qu'elle sert à calculer, avec un interrupteur « Oui / Non » (grisé « À renseigner » tant que la case est vide, coché automatiquement dès que vous saisissez une valeur) ; un bandeau en tête dit ce qui manque pour calculer les gains. (2) <b>Nouveau bloc « Réception des commandes (manuelle) »</b> : livraisons et boîtes reçues par jour, temps de réception manuelle, gain estimé avec le chargeur (60 % par défaut, à ajuster) ; l'application met en face la cadence du chargeur Pharmaload (300 boîtes/h) et le temps de personnel libéré, repris dans l'étude de productivité du PDF. (3) <b>PDF fusionné</b> : « Solution préconisée » et « Votre offre » commencent chacune en haut d'une nouvelle page ; les <b>trois piliers stratégiques</b> viennent après l'offre ; les conditions de paiement ne sont plus coupées ; « Restons connectés » ne reste plus seul sur une page.</li>
 <li><b>V4.5.0</b> : (1) <b>Remise sur le matériel</b> : dans la synthèse de l'offre, vous saisissez la remise <b>en pourcentage, en euros ou par le prix final net HT</b> (tapez dans un seul champ, les deux autres se calculent, arrondi à l'euro) ; trois cases choisissent ce que voit le client : le taux, le montant, les deux, ou aucune remise (net seulement). (2) <b>Nouveau besoin « Réception des commandes »</b> (chargeur automatique, grossistes et répartiteurs) avec son argumentaire. (3) <b>Votre commentaire devient un bloc de synthèse</b> dans le PDF (titre, constat, réponse, au quotidien), modifiable dans « Besoins et problématiques », avec « Régénérer ». (4) <b>Robot du concurrent facultatif</b> : case « Citer le robot actuel » ; décochée, le PDF écrit « votre robot actuel ». (5) <b>Contenu du PDF à cocher</b> : le bouton « Générer le PDF » ouvre la liste des sections (page de garde, besoins, solution, productivité, plan, piliers, QR codes, indicateurs, paiement, services, contrat, caractéristiques) ; vous lisez l'aperçu, vous pouvez revenir modifier les sections, puis générer ; la pagination est recalculée à chaque fois. (6) Compteur d'arguments affichés dans les réglages de l'argumentaire.</li>
 <li><b>V4.4.9</b> : (1) <b>Bouton « Générer le PDF »</b> : il se met à jour dès que vous cochez le robot ou les besoins (il restait grisé tant que la fiche n'était pas enregistrée) ; un clic sur le bouton grisé indique ce qu'il manque et mène au bon endroit. (2) Le <b>robot du devis</b> est coché automatiquement à l'enregistrement de la synthèse de l'offre si aucun robot n'est choisi. (3) <b>Ajouter ou dupliquer une offre</b> demande d'abord confirmation.</li>
@@ -1902,7 +1904,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.1';
+const APP_VERSION = '4.5.2';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -3998,8 +4000,9 @@ const cmClean = t => t.replace(/(?<![\p{L}])(euh+|ben|bah|en fait|du coup|voilà
 const cmSents = t => cmClean(t).split(/(?<=[.!?])\s+|\n+/).map(x => x.trim()).filter(Boolean).map(x => x[0].toUpperCase() + x.slice(1)).map(x => /[.!?]$/.test(x) ? x : x + '.');
 let cmPrev = null;
 const cmLine = x => `• ${x[1]} : ${x[2]}`, CM_HDR = 'Solutions proposées :';
+const solOv = (c, id) => { const x = solRow(id); if (!x) return null; const o = (c && c.solTxt || {})[id]; return o ? [x[0], o.t || x[1], o.d || x[2], x[3]] : x; };
 const solRow = id => { for (const g of SOLS) for (const x of g.s) if (x[0] === id) return x; return null; };
-function cmAutoText(c, sol) { const n = String((c && c.besoinsNote) || '').trim(), L = (sol || []).map(solRow).filter(Boolean).map(cmLine); return n + (L.length ? (n ? '\n\n' : '') + CM_HDR + '\n' + L.join('\n') : ''); }
+function cmAutoText(c, sol) { const n = String((c && c.besoinsNote) || '').trim(), L = (sol || []).map(i => solOv(c, i)).filter(Boolean).map(cmLine); return n + (L.length ? (n ? '\n\n' : '') + CM_HDR + '\n' + L.join('\n') : ''); }
 function cmBan(M) { const c = byId(ui.editId) || {}, has = (c.besoinsNote || '').trim() || (ui.mxSol || []).length; if (!has) return '<p class="text-[11.5px] text-muted">Renseignez les besoins du client : leur note et les solutions retenues s\'insèrent ici automatiquement.</p>';
   return `<div class="flex items-center gap-2 rounded-xl bg-emerald-50 border border-emerald-200 px-3 py-1.5 text-[12px] text-emerald-900"><i class="fas fa-link"></i><span>${(M.comment || {}).auto ? '<b>Repris automatiquement</b> des besoins et problématiques du client' : 'Note des besoins disponible'} · ${(ui.mxSol || []).length} solution${(ui.mxSol || []).length > 1 ? 's' : ''}</span><button type="button" class="ml-auto font-bold text-emerald-800 inline-flex items-center gap-1.5" onclick="cmResync()"><i class="fas fa-rotate"></i>${(M.comment || {}).auto ? 'Resynchroniser' : 'Reprendre'}</button></div>`; }
 function cmSolHtml() { const c = byId(ui.editId) || {}, note = c.besoinsNote || '', tab = ui.cmTab || 0, sel = ui.mxSol || [];
@@ -4008,7 +4011,7 @@ function cmSolHtml() { const c = byId(ui.editId) || {}, note = c.besoinsNote || 
   return `<div class="flex flex-wrap gap-1.5 mb-2">${tabs}</div><div class="grid sm:grid-cols-2 gap-2">${g.s.map(x => `<label class="relative flex gap-2 items-start rounded-lg border-2 p-2 cursor-pointer ${sel.includes(x[0]) ? 'border-green-600 bg-green-50' : 'border-slate-200'}"><input type="checkbox" class="mt-0.5 w-4 h-4 accent-green-700" ${sel.includes(x[0]) ? 'checked' : ''} onchange="cmSolTg('${x[0]}')"><span><b class="block text-[12.5px]">${esc(x[1])}</b><span class="text-[11.5px] text-muted">${esc(x[2])}</span></span>${hit && x[3] ? '<span class="absolute right-2 bottom-1.5 text-[9px] font-extrabold text-emerald-800 bg-emerald-100 rounded px-1.5">Suggéré</span>' : ''}</label>`).join('')}</div>`; }
 function cmDraw() { if ($('f-cm-sol')) $('f-cm-sol').innerHTML = cmSolHtml(); if ($('f-cm-ban')) $('f-cm-ban').innerHTML = cmBan(mxGet()); }
 function cmSolTg(id) {
-  const x = solRow(id); if (!x) return; const t = $('f-cm'), sel = ui.mxSol || (ui.mxSol = []), line = cmLine(x), has = sel.includes(id);
+  const x = solOv(byId(ui.editId), id); if (!x) return; const t = $('f-cm'), sel = ui.mxSol || (ui.mxSol = []), line = cmLine(x), has = sel.includes(id);
   if (has) { ui.mxSol = sel.filter(v => v !== id); let L = t.value.split('\n').filter(l => l.trim() !== line); if (!L.some(l => l.trim().startsWith('• '))) L = L.filter(l => l.trim() !== CM_HDR); t.value = L.join('\n').replace(/\n{3,}/g, '\n\n').trim(); }
   else { sel.push(id); const base = t.value.trimEnd(); t.value = !base ? CM_HDR + '\n' + line : base.includes(CM_HDR) ? base + '\n' + line : base + '\n\n' + CM_HDR + '\n' + line; }
   mxGet().comment.auto = !!t.value.trim(); mxRead(); cmDraw();
@@ -4366,7 +4369,7 @@ function coverPage(K, c, o) {
   doc.setFillColor(...PK.or); doc.rect(22, 58, 16, .9, 'F');
   K.font(34, 'bold', [31, 35, 40]); doc.text(pdfTxt(o.t1), 22, 76); doc.text(pdfTxt(o.t2), 22, 89.5);
   K.font(12, 'normal', PK.mut); doc.text(pdfTxt(`${c.pharma}${c.ville ? ' · ' + c.ville : ''}`), 22, 102);
-    try { const w = 166, h = w / ROBOT_COVER_AR, by = 108 + h - 11; doc.addImage(ROBOT_COVER, 'JPEG', (W - w) / 2, 108, w, h);
+    try { const w = 166, h = w / ROBOT_COVER_AR, by = 108 + h - 11; doc.addImage(ROBOT_COVER, 'JPEG', (W - w) / 2, 108, w, h); doc.setDrawColor(190, 195, 202); doc.setLineWidth(.45); doc.rect((W - w) / 2, 108, w, h, 'S');
     doc.setGState(new doc.GState({opacity: .55})); doc.setFillColor(31, 35, 40); doc.rect(22, by, w, 11, 'F'); doc.setGState(new doc.GState({opacity: 1})); doc.setFillColor(...PK.or); doc.rect(22, by, 3, 11, 'F');
     K.font(10, 'bold', [255, 255, 255]); doc.text('SINTESI SLIM', 30, by + 7); const tw = doc.getTextWidth('SINTESI SLIM'); K.font(9, 'normal', [255, 255, 255]); doc.text('avec partie vitrée (type A)', 30 + tw + 3, by + 7); } catch { }
   doc.setDrawColor(213, 216, 221); doc.setLineWidth(.3); doc.line(22, 238, W - 22, 238);
@@ -4433,7 +4436,7 @@ async function genArgNew(id, merge, prev, sec) {
   const cwn = (CW - 14 - 6) / 3; let shown = 0;
   const PROB = (() => { if (c.besoinsNoteOn === false || (c.prob && c.prob.on === false)) return null; const Q = c.prob && c.prob.auto === false ? c.prob : probGen(c); return Q && Q.p ? {k: Q.k || 'prob', full: true, h: concTxt(c, Q.h), p: concTxt(c, Q.p), r: concTxt(c, Q.r), b: concTxt(c, Q.b)} : null; })();
   { const NOTE = String(c.besoinsNote || A.dit || '').trim();
-    const SL = (c.besoinsSol || []).map(solById).filter(Boolean);
+    const SL = (c.besoinsSol || []).map(i => { const x = solOv(c, i); return x ? {t: x[1], d: x[2]} : null; }).filter(Boolean);
     const mergedCm = !!(P.comment && P.comment.auto && CMT);
     if (CMT) { const who = `${settings.prenom || ''} ${settings.nom || ''}`.trim(), paras = CMT.split(/\n+/).map(t => t.trim()).filter(Boolean).map((t, i, a) => (i === 0 ? '« ' : '') + t + (i === a.length - 1 ? ' »' : ''));
       K.font(8.8, 'italic', PK.ink); const LL = paras.flatMap(t => doc.splitTextToSize(pdfTxt(t), CW - 18)), ch = 18 + LL.length * 4.2; K.need(ch + 4);
@@ -4969,7 +4972,14 @@ function bsSuggest(keep) {
   let G = SOLS.filter(g => g.re.test(txt)); const box = $('bs-sug'); if (!box) return; const none = !G.length; if (none) G = SOLS;
   box.innerHTML = `<div class="flex items-center gap-2 mb-2"><span class="w-7 h-7 rounded-full bg-ptk text-white inline-flex items-center justify-center"><i class="fas fa-lightbulb text-xs"></i></span><div><b class="text-[13.5px]">${none ? 'Aucun mot-clé repéré : toutes les solutions sont proposées' : `${G.length} problématique${G.length > 1 ? 's' : ''} repérée${G.length > 1 ? 's' : ''} · solutions suggérées`}</b><div class="text-[11.5px] text-muted">Cochez celles à présenter : elles alimentent la synthèse.</div></div></div>`
     + G.map(g => `<div class="rounded-xl border border-slate-200 bg-white p-2.5 mb-2"><div class="flex items-center gap-2 font-bold text-[13px]">${esc(g.t)}<span class="ml-auto text-[10px] font-extrabold rounded-md bg-amber-100 text-amber-900 px-2 py-0.5">${g.tag}</span></div><div class="grid sm:grid-cols-2 gap-2 mt-2">${g.s.map(x => `<label class="flex gap-2 items-start rounded-lg border-2 border-slate-200 p-2 cursor-pointer has-[:checked]:border-green-600 has-[:checked]:bg-green-50"><input type="checkbox" name="bs-sol" value="${x[0]}" class="mt-0.5 w-4 h-4 accent-green-700" ${(saved ? saved.includes(x[0]) : x[3]) ? 'checked' : ''}><span><b class="block text-[12.5px]">${esc(x[1])}</b><span class="text-[11.5px] text-muted">${esc(x[2])}</span></span></label>`).join('')}</div></div>`).join('');
-  box.classList.remove('hidden'); box.scrollIntoView({behavior: 'smooth', block: 'nearest'});
+  box.classList.remove('hidden'); box.scrollIntoView({behavior: 'smooth', block: 'nearest'}); bsSolEdit();
+}
+function bsSolEdit() {
+  const box = $('bs-solx'); if (!box) return; const c = byId(ui.editId) || {}, ids = [...document.querySelectorAll('input[name=bs-sol]:checked')].map(x => x.value), live = {};
+  ids.forEach(id => { const t = $('bsx-t-' + id), d = $('bsx-d-' + id); if (t) live[id] = {t: t.value, d: d.value}; });
+  box.classList.toggle('hidden', !ids.length); if (!ids.length) { box.innerHTML = ''; return; }
+  const M = {solTxt: {...(c.solTxt || {}), ...live}};
+  box.innerHTML = '<div class="kicker">Texte des solutions retenues · modifiable avant le PDF</div>' + ids.map(id => { const x = solOv(M, id), o = solRow(id); if (!x) return ''; return `<div class="rounded-lg bg-slate-50 border border-slate-200 p-2.5 flex flex-col gap-1.5"><input id="bsx-t-${id}" class="inp !h-9 font-bold" value="${esc(x[1])}" aria-label="Titre de la solution"><textarea id="bsx-d-${id}" rows="2" class="ta" aria-label="Description de la solution">${esc(x[2])}</textarea><button type="button" class="lnk-edit self-start" onclick="$('bsx-t-${id}').value=${esc(JSON.stringify(o[1])).replace(/&quot;/g, '&quot;')};$('bsx-d-${id}').value=${esc(JSON.stringify(o[2]))}"><i class="fas fa-rotate-left text-[11px]"></i>Rétablir le texte d'origine</button></div>`; }).join('');
 }
 let bsPrev = null;
 function bsApply(fn) { const t = $('bs-note'); if (!t.value.trim()) return; bsPrev = t.value; t.value = fn(t.value); $('bs-undo').classList.remove('hidden'); }
@@ -4982,7 +4992,7 @@ function saveBesoins() {
   const items = [...document.querySelectorAll('input[name=bs-item]:checked')].map(x => x.value);
   if (!items.length) return toast('Cochez au moins un besoin.', true);
   const changed = items.join('|') !== (c.besoins || []).join('|');
-  c.besoins = items; c.besoinsNote = $('bs-note').value.trim(); c.besoinsNoteOn = $('bs-on').checked; if (c.robotConc) c.robotConc.cite = $('bs-rc').checked; c.prob = ui.bsProbAuto ? {on: $('bs-pon').checked, auto: true} : {on: $('bs-pon').checked, auto: false, h: $('bs-pt').value.trim(), p: $('bs-pp').value.trim(), r: $('bs-pr').value.trim(), b: $('bs-pb').value.trim(), k: (probGen({besoinsNote: c.besoinsNote, besoins: items}) || {}).k || null}; if ($('bs-sug') && !$('bs-sug').classList.contains('hidden')) c.besoinsSol = [...document.querySelectorAll('input[name=bs-sol]:checked')].map(x => x.value); if (changed || !c.besoinsDate) c.besoinsDate = isoDay(TODAY);
+  c.besoins = items; c.besoinsNote = $('bs-note').value.trim(); c.besoinsNoteOn = $('bs-on').checked; if (c.robotConc) c.robotConc.cite = $('bs-rc').checked; c.prob = ui.bsProbAuto ? {on: $('bs-pon').checked, auto: true} : {on: $('bs-pon').checked, auto: false, h: $('bs-pt').value.trim(), p: $('bs-pp').value.trim(), r: $('bs-pr').value.trim(), b: $('bs-pb').value.trim(), k: (probGen({besoinsNote: c.besoinsNote, besoins: items}) || {}).k || null}; if ($('bs-sug') && !$('bs-sug').classList.contains('hidden')) c.besoinsSol = [...document.querySelectorAll('input[name=bs-sol]:checked')].map(x => x.value); { const so = c.solTxt || (c.solTxt = {}); document.querySelectorAll('input[name=bs-sol]:checked').forEach(i => { const id = i.value, t = $('bsx-t-' + id), d = $('bsx-d-' + id), x = solRow(id); if (!t || !x) return; if (t.value.trim() === x[1] && d.value.trim() === x[2]) delete so[id]; else so[id] = {t: t.value.trim(), d: d.value.trim()}; }); } if (changed || !c.besoinsDate) c.besoinsDate = isoDay(TODAY);
   if (changed) log(c, 'Besoins et problématiques renseignés', items.join(', ') + (c.besoinsNote ? `\n${c.besoinsNote}` : ''));
   save(); closeDlg('dlg-besoins'); renderChrome(c); if (ui.mx && ui.editId === c.id) { ui.mxSol = [...(c.besoinsSol || [])]; cmDraw(); }
   if (ui.bsNext) { const n = ui.bsNext; ui.bsNext = null; openStep(n); } else toast('Besoins enregistrés');
@@ -5880,6 +5890,12 @@ function parseDevis(L) {
   o.tech.finition = /RAL9010/.test(T) ? 'Blanc standard RAL9010' : '';
   return o;
 }
+function maintPromo(T) {
+  const t = String(T || '').replace(/[\u00A0\u202F]/g, ' '), num = s => numFr(String(s).replace(/\s/g, ''));
+  let m = t.match(/(\d[\d\s.]*(?:,\d{1,2})?)\s*€\s*(?:HT)?\s*(?:\/\s*mois)?\s*(?:pendant|durant|les|pour les)\s*(?:les\s*)?(\d{1,3})\s*(?:premiers\s*)?mois[\s,;.]*(?:puis|ensuite|et)\s*(\d[\d\s.]*(?:,\d{1,2})?)\s*€/i);
+  if (!m) return null; const promo = num(m[1]), mois = +m[2], std = num(m[3]);
+  return promo > 0 && std > promo && mois > 0 ? {promo, mois, std} : null;
+}
 function parseContrat(L) {
   const T = L.join('\n'), o = {};
   o.refContrat = (T.match(/R[ÉE]F[ÉE]RENCE DEVIS N°\s*:?\s*(\S+)/i) || [])[1] || '';
@@ -5981,6 +5997,7 @@ async function offreImport(input, inDlg) {
         if (d.maint.mensuel) Object.assign(o.maint, {formule: 'Contrat de service', mensuel: d.maint.mensuel, ans: d.maint.ans || o.maint.ans}); got.push(`ancien devis${ocr ? ' (lu par reconnaissance de texte)' : ''}, supprimez les options non retenues`); if (d.notes.length) setTimeout(() => toast('Versions au choix : ' + d.notes.join(' · ')), 3500); }
       else if (/CONTRAT DE SERVICE|Prix du Service/i.test(T) && !/Prix Total Hors Taxes/i.test(T)) { const k = parseContrat(L); Object.assign(o.maint, {formule: k.formule, mensuel: k.mensuel || o.maint.mensuel, ans: k.ans || o.maint.ans}); o.refContrat = k.refContrat; got.push('contrat de maintenance'); }
       else { const d = parseDevis(L); if (!d.lignes.length) throw 0; Object.assign(o, {ref: d.ref || o.ref, date: d.date || o.date, lignes: d.lignes, tech: {...o.tech, ...d.tech}, src: {pharma: d.pharma, titulaire: d.titulaire, ville: d.ville, rue: d.rue, cp: d.cp, total: d.totalDevis}}); got.push('devis'); }
+      { const pr = maintPromo(T); if (pr) { Object.assign(o.maint, {mensuel: pr.std, remPct: Math.round((1 - pr.promo / pr.std) * 10000) / 100, mois: pr.mois}); got.push(`remise maintenance (${Math.round(pr.promo).toLocaleString('fr-FR')} € HT les ${pr.mois} premiers mois, puis ${Math.round(pr.std).toLocaleString('fr-FR')} €)`); } }
     } catch { toast(`Document non reconnu : ${f.name}`, true); }
   }
   if (!got.length) return;
@@ -6153,7 +6170,7 @@ function genOffre(id, K0) {
   // ===== Caractéristiques techniques
   if (SX('tech')) {
   const T = o.tech || {}, tr = [['Capacité de stockage', T.capacite, 'boxes-stacked'], ['Dimensions robot', T.dims, 'ruler-combined'], ['Poids à vide', T.poids, 'weight-hanging'], ['Poids au m² à vide', T.poidsM2, 'weight-hanging'], ['Consommation électrique', T.conso, 'bolt'], ['Absorption électrique maximale', T.absorption, 'plug'], ['Niveau sonore maximal', T.bruit, 'volume-low'], ['Alimentation', T.alim, 'plug'], ['Finition', T.finition, 'paintbrush']].filter(x => x[1]);
-  if (tr.length) { sect('Caractéristiques techniques', 'robot', 40); const g = 3, cw = (CW - g * 2) / 3, h = 12.2;
+  if (tr.length) { sect('Caractéristiques techniques', 'robot', 16 + Math.ceil(tr.length / 3) * 14.4 + 8); const g = 3, cw = (CW - g * 2) / 3, h = 12.2;
     const ecoOn = ptkOf(c).args?.eco !== false; tr.forEach((x, i) => { const col = i % 3, eco = ecoOn && /^(Consommation|Absorption)/.test(x[0]); if (col === 0) K.need(h + 2); const xx = M + col * (cw + g), yy = K.y; card(xx, yy, cw, h, 2.6, eco ? [150, 205, 175] : BD); doc.setFillColor(...(eco ? [28, 124, 84] : PK.or)); doc.rect(xx + 3, yy, cw - 6, .9, 'F'); badge(x[2], xx + 6.5, yy + 6.6, 3.1, eco ? GRN : PK.or); if (eco) { K.font(5.2, 'bold', WH); const ew = doc.getTextWidth('ECO') + 5; rr(xx + cw - ew - 2, yy + 2, ew, 3.8, 1.9, GRN); K.t('ECO', xx + cw - ew / 2 - 2, yy + 4.7, {align: 'center'}); } lab(x[0], xx + 11.5, yy + 5.4, PK.ord, 4.9, .15); K.font(8.4, 'bold', PK.ink); doc.text(doc.splitTextToSize(pdfTxt(x[1]), cw - 14).slice(0, 1), xx + 11.5, yy + 9.8); if (col === 2 || i === tr.length - 1) K.y += h + 2; }); }
   }
   K.need(5); K.y += 3.2; K.font(7, 'italic', PK.mut); doc.text(doc.splitTextToSize(pdfTxt(`Prix hors taxes, soumis à la TVA en vigueur. Total net HT après remise : ${eur(k.net)}. Devis valable ${o.validite || 30} jours à compter du ${o.date || '—'}.`), CW), M, K.y);
