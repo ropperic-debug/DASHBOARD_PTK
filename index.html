@@ -1240,6 +1240,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.7</b> : (1) <b>Page « Solution préconisée » refaite</b> pour remplir toute la page : grande photo du robot avec six indicateurs lisibles, options en cartes pleine largeur avec photo, « Inclus dans votre projet » en liste à deux colonnes. (2) <b>Euclid3D</b> : « Ordonnance complète servie en un seul cycle », avec en petit « Possibilité de délivrer la ligne d'ordonnance complète ». (3) <b>« Restons connectés »</b> est désormais tout en bas de la dernière page du PDF.</li>
 <li><b>V4.5.6</b> : (1) <b>Relecture de la synthèse</b> : le brouillon s'enregistre automatiquement à la fermeture de la fenêtre si vous avez modifié un texte. (2) <b>« Ce que vous nous avez dit »</b> : citation soignée (grand guillemet orange, texte normal, solution retenue en pastille), sans signature. (3) <b>Page de l'offre</b> : les conditions de paiement (30 % / 50 % / 20 %, avec les montants en euros) sont dans le bloc « Votre offre » ; la décomposition du budget devient « Votre offre chiffrée », encadrée, avec la photo du robot et des options, la remise en vert discret et le total net en noir sur fond crème ; la mise en page se resserre automatiquement jusqu'à environ 6 lignes. (4) <b>Couverture</b> : la barre sombre sous la photo n'a plus de texte.</li>
 <li><b>V4.5.5</b> : <b>Relecture de la synthèse personnalisée repensée</b>. Un bandeau indique combien de priorités seront dans le PDF. À gauche, la liste des priorités avec un interrupteur par ligne (grisée = non imprimée). À droite, une seule priorité à la fois, présentée comme dans le PDF : titre, puis trois colonnes « Votre constat », « Notre réponse », « Au quotidien », directement modifiables ou dictables. Un bouton « Suggestions » sous chaque colonne ouvre les phrases proposées (cases à cocher, « Ma phrase » pour la vôtre). « Remettre le texte standard » rétablit les textes d'origine de la priorité. L'introduction, « Ce que vous nous avez dit », les éléments complémentaires et la ligne de contact sont regroupés dans « Textes généraux ».</li>
 <li><b>V4.5.4</b> : (1) <b>Note synthétique sur tous les champs de texte</b> : un lien « Note synthétique » (ou « Nettoyer le texte » pour les messages à envoyer) apparaît sous chaque zone de saisie ; une fenêtre montre votre texte et la proposition (hésitations retirées, phrases ponctuées, puces par thème), modifiable, que vous validez ou refusez. Aucune intelligence artificielle : ce sont des règles. (2) <b>Page de garde</b> : le bandeau de l'image n'indique plus que le modèle du robot (plus de « avec partie vitrée (type A) »). (3) <b>Titulaires</b> : les personnes cochées dans « Noms affichés sur la synthèse » figurent aussi sur la page de garde et dans « À l'attention de » de la synthèse personnalisée. (4) <b>Carte « Passez à la génération suivante »</b> : avec l'option Euclid3D, la réponse devient « Le robot SINTESI SLIM avec EUCLID 3D optimise et fluidifie la délivrance grâce à sa technologie brevetée », avec trois arguments en bas de carte. (5) <b>Correction</b> : la case du co-titulaire cochée avant la génération du PDF ne se décoche plus à l'enregistrement de la fiche. (6) <b>Correction</b> : un texte de besoins modifié après coup est bien repris dans le PDF (constat et « mot de l'interlocuteur » ne gardent plus l'ancienne version).</li>
@@ -1930,7 +1931,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.6';
+const APP_VERSION = '4.5.7';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -4480,7 +4481,8 @@ function prevArg(id) {
   genArgNew(c.id, !!c.offre?.lignes?.length, true, ui.pdfSecId === c.id ? ui.pdfSec : null);
 }
 function pdfArg(id) { pdfSecOpen(id); }
-const OPT_BEN = {'Euclid3D': "Ordonnances complètes servies d'un seul cycle", 'Pharmaload': 'Réception des commandes plus rapide, sans erreur', 'QuickAir': 'Moins de trajets entre le robot et le comptoir', 'QuickPick24': 'Retrait 24 h/24, sans attendre au comptoir', 'Parties vitrées': 'Le robot valorise votre officine', 'PANNEAU TYPE A': "Une façade soignée, intégrée à l'officine", 'Hélice et hélicoïdal': 'Boîtes livrées au comptoir sans effort', "Étagères d'exposition": 'Vos produits mis en valeur', 'Transitique tapis': 'Postes éloignés servis sans déplacement', 'Double bras': 'Cadence supérieure aux heures de pointe'};
+const OPT_BEN = {'Euclid3D': "Ordonnance complète servie en un seul cycle", 'Pharmaload': 'Réception des commandes plus rapide, sans erreur', 'QuickAir': 'Moins de trajets entre le robot et le comptoir', 'QuickPick24': 'Retrait 24 h/24, sans attendre au comptoir', 'Parties vitrées': 'Le robot valorise votre officine', 'PANNEAU TYPE A': "Une façade soignée, intégrée à l'officine", 'Hélice et hélicoïdal': 'Boîtes livrées au comptoir sans effort', "Étagères d'exposition": 'Vos produits mis en valeur', 'Transitique tapis': 'Postes éloignés servis sans déplacement', 'Double bras': 'Cadence supérieure aux heures de pointe'};
+const OPT_SUB = {'Euclid3D': "Possibilité de délivrer la ligne d'ordonnance complète"};
 const OPT_DESC = {'Hélice et hélicoïdal': "Descente hélicoïdale : les boîtes glissent jusqu'au comptoir, le robot reste visible depuis l'officine.", 'PANNEAU TYPE A': "Façade vitrée blanche : le robot reste visible depuis l'officine, avec les postes de délivrance intégrés au panneau.", 'Euclid3D': 'Préhension brevetée : multipicking jusqu\'à 15 boîtes, cadence jusqu\'à 520 boîtes/h.', 'Pharmaload': 'Chargement automatique à fort rendement (300 boîtes/h), contrôle FMD, péremptions et lots suivis.', 'QuickAir': 'Transitique pneumatique : acheminement direct des produits jusqu\'au comptoir.', 'QuickPick24': 'Borne de retrait automatisée, accessible 24 h/24 en façade.', 'Parties vitrées': 'Façades vitrées : le robot devient un élément de visibilité en officine.', "Étagères d'exposition": "Étagères d'exposition intégrées : valorisez vos produits sur le robot.", 'Transitique tapis': 'Convoyeur en plafond : acheminement des boîtes jusqu\'aux postes de vente.', 'Double bras': 'Deux bras de préhension Euclid3D dans le robot : deux commandes préparées en parallèle, cadence et disponibilité accrues.'};
 const firstSent = s => { s = String(s || '').trim(); const m = s.match(/^.*?[.!?](\s|$)/); return (m ? m[0] : s).trim(); };
 function qrDraw(doc, text, x, y, size, col, colF, bg) {
@@ -4610,29 +4612,32 @@ async function genArgNew(id, merge, prev, sec) {
   if (PBR.sol !== 'join') brk(); K.need(80); sect('1. Solution préconisée pour votre officine', 'robot' in FAI ? 'robot' : 'star'); PGM.sol = doc.getNumberOfPages();
   robots.slice(0, 2).forEach((m, ri) => {
     K.need(58);
-    const k = robotKey(m), top = K.y + 1, imw = 62, tx = M + imw + 6, tw = CW - imw - 6;
-    rr(M + .8, top + .8, imw, 52, 3.5, [225, 227, 230]); rr(M, top, imw, 52, 3.5, WH); doc.setDrawColor(30, 142, 78); doc.setLineWidth(.9); doc.roundedRect(M, top, imw, 52, 3.5, 3.5, 'S'); if (k) fit(ROBOT_ICO[k], ROBOT_AR[k], M + 3, top + 4, imw - 6, 44);
-    pill('Choix idéal pour votre officine', tx, top + .5, [30, 142, 78], WH, 6, 'check' in FAI ? 'check' : undefined); K.font(15, 'bold', PK.ink); K.t(m, tx, top + 13); let ty = top + 15;
+    const k = robotKey(m), HH = ri === 0 ? 76 : 52; K.need(HH + 6); const top = K.y + 1, imw = ri === 0 ? 76 : 62, tx = M + imw + 6, tw = CW - imw - 6;
+    rr(M + .8, top + .8, imw, HH, 3.5, [225, 227, 230]); rr(M, top, imw, HH, 3.5, WH); doc.setDrawColor(30, 142, 78); doc.setLineWidth(.9); doc.roundedRect(M, top, imw, HH, 3.5, 3.5, 'S'); if (k) fit(ROBOT_ICO[k], ROBOT_AR[k], M + 3, top + 4, imw - 6, HH - 8);
+    pill('Choix idéal pour votre officine', tx, top + .5, [30, 142, 78], WH, 6, 'check' in FAI ? 'check' : undefined); K.font(ri === 0 ? 17 : 15, 'bold', PK.ink); K.t(m, tx, top + 14); let ty = top + 15;
     if (ri === 0) {
       const sol = [{t: 'Solution dimensionnée pour '}, {t: c.pharma, b: true}];
       if (C.dos) sol.push({t: ' afin d\'automatiser '}, {t: `${fr(C.dos)} dossiers/jour`, b: true}, ...(C.box ? [{t: ' ('}, {t: `${fr(C.box)} boîtes/jour`, b: true}, {t: ')'}] : []));
       if (C.pst) sol.push({t: ' sur vos '}, {t: `${C.pst} postes de vente`, b: true}); sol.push({t: '.'});
-      ty = K.rich(sol, tx, ty + 2, tw, 8.6, 4.2, PK.sub) + .5;
-      const sp = [['boxes-stacked', 'Capacité', T.capacite], ['ruler-combined', 'Dimensions', T.dims], ['shield-halved', 'Couverture stock', cap && C.stk ? (cap >= C.stk ? '100 %' : Math.round(cap / C.stk * 100) + ' %') + ` (${fr(C.stk)} b.)` : ''], ['location-dot', 'Implantation', pos.join(', ')], ['gears', 'Interfaçage LGO', lgo], ['bolt', 'Faible consommation', T.conso], ['warehouse', 'Poids au m²', T.poidsM2]].filter(x => x[2]);
-      const sw = (tw - 4) / 3; sp.slice(0, 6).forEach((x, i) => { const xx = tx + (i % 3) * (sw + 2), yy = ty + Math.floor(i / 3) * 11.5; if (yy + 10.5 > top + 54) return; const eco = x[0] === 'bolt'; if (eco) rr(xx, yy, sw, 10.5, 1.6, [226, 242, 232]); else { rr(xx, yy, sw, 10.5, 1.6, WH); bord(xx, yy, sw, 10.5, 1.6); } if (eco) badge('bolt', xx + 4.2, yy + 5.2, 2.6, [28, 124, 84]); else ic(x[0], xx + 2, yy + 3.2, 4.2); lab(x[1], xx + 7.6, yy + 4, eco ? [28, 124, 84] : PK.mut, 5.4, .25); K.font(7.8, 'bold', PK.ink); K.t(String(x[2]).slice(0, 18), xx + 7.6, yy + 8.4); });
+      ty = K.rich(sol, tx, ty + 5, tw, 8.6, 4.2, PK.sub) + .5;
+      const sp = [['boxes-stacked', 'Capacité', T.capacite], ['ruler-combined', 'Dimensions', T.dims], ['shield-halved', 'Couverture stock', cap && C.stk ? (cap >= C.stk ? '100 %' : Math.round(cap / C.stk * 100) + ' %') + ` (${fr(C.stk)} b.)` : ''], ['location-dot', 'Implantation', pos.join(', ')], ['gears', 'Interfaçage LGO', lgo], ['bolt', 'Faible consommation', T.conso], ['warehouse', 'Poids au m²', T.poidsM2]].filter(x => x[2]).slice(0, 6);
+      const sw = (tw - 2.4) / 2, th = 12.6, stp = 14.2, rows = Math.ceil(sp.length / 2), y00 = Math.max(ty + 1, top + HH - 1 - rows * stp);
+      sp.forEach((x, i) => { const xx = tx + (i % 2) * (sw + 2.4), yy = y00 + Math.floor(i / 2) * stp, eco = x[0] === 'bolt'; if (eco) { rr(xx, yy, sw, th, 2, [226, 242, 232]); doc.setDrawColor(134, 239, 172); doc.setLineWidth(.3); doc.roundedRect(xx, yy, sw, th, 2, 2, 'S'); } else { rr(xx, yy, sw, th, 2, WH); bord(xx, yy, sw, th, 2); }
+        if (eco) badge('bolt', xx + 4.2, yy + 4, 2.4, [28, 124, 84]); else ic(x[0], xx + 2, yy + 1.8, 4); lab(x[1], xx + 7.4, yy + 4.2, eco ? [28, 124, 84] : PK.ord, 5.4, .25); K.font(9.6, 'bold', PK.ink); K.t(String(x[2]).slice(0, 22), xx + 3, yy + 10.2); });
     }
-    K.y = top + 52;
+    K.y = top + HH;
   });
   if (opts.length) {
-    sub('A', 'Options technologiques associées au robot', 66); const ow = (CW - 8) / 3, OKPI = {'Euclid3D': ['520', 'boîtes/h'], 'Pharmaload': ['300', 'boîtes/h'], 'QuickAir': ['0', "pas pour l'équipe"], 'QuickPick24': ['24 h/24', 'retrait en façade']}, OH = 51;
-    opts.forEach((o, i) => { if (i % 3 === 0) K.need(OH + 4); const xx = M + (i % 3) * (ow + 4), yy = K.y, k = optKey(o); rr(xx, yy, ow, OH, 3, WH); bord(xx, yy, ow, OH, 3); doc.setFillColor(...PK.or); doc.rect(xx + 3, yy, ow - 6, .9, 'F');
-      if (k) fit(OPT_ICO[k], OPT_AR[k], xx + 3, yy + 2.8, ow - 6, 21); else badge(OPT_ICN[o] || 'star', xx + ow / 2, yy + 13, 7);
-      doc.setDrawColor(...PK.line); doc.setLineWidth(.2); doc.line(xx + 3, yy + 25, xx + ow - 3, yy + 25);
-      K.font(9.6, 'bold', PK.ink); K.t(o, xx + 4, yy + 30.6);
-      if (OKPI[o]) { K.font(6.4, 'normal', PK.mut); const lw = doc.getTextWidth(pdfTxt(OKPI[o][1])); K.t(OKPI[o][1], xx + ow - 3.5 - lw, yy + 30.6); K.font(11, 'bold', PK.or); const nw = doc.getTextWidth(pdfTxt(OKPI[o][0])); K.t(OKPI[o][0], xx + ow - 5 - lw - nw, yy + 30.6); }
-      K.font(7, 'normal', PK.sub); doc.text(doc.splitTextToSize(pdfTxt(OPT_DESC[o] || ''), ow - 8).slice(0, 3), xx + 4, yy + 34.4, {lineHeightFactor: 1.15});
-      if (OPT_BEN[o]) { doc.setDrawColor(243, 185, 160); doc.setLineWidth(.3); doc.setLineDashPattern([1, 1], 0); doc.line(xx + 4, yy + OH - 9.4, xx + ow - 4, yy + OH - 9.4); doc.setLineDashPattern([], 0); tick(xx + 5.6, yy + OH - 5.2); K.font(6.8, 'bold', [154, 52, 18]); doc.text(doc.splitTextToSize(pdfTxt(OPT_BEN[o]), ow - 14).slice(0, 2), xx + 9.5, yy + OH - 6, {lineHeightFactor: 1.15}); }
-      if (i % 3 === 2 || i === opts.length - 1) K.y += OH + 4; });
+    sub('A', 'Options technologiques associées au robot', 34); const OKPI = {'Euclid3D': ['520', 'boîtes/h'], 'Pharmaload': ['300', 'boîtes/h'], 'QuickAir': ['0', "pas pour l'équipe"], 'QuickPick24': ['24 h/24', 'retrait en façade']};
+    opts.forEach(o => { const k = optKey(o), SB = OPT_SUB[o] || '', OH = 26.5 + (SB ? 3.2 : 0); K.need(OH + 3); const xx = M, yy = K.y, tx2 = xx + 47, tw2 = CW - 47 - 5;
+      rr(xx, yy, CW, OH, 3, WH); bord(xx, yy, CW, OH, 3); doc.setFillColor(...PK.or); doc.rect(xx + 3, yy, CW - 6, .9, 'F');
+      rr(xx + 4, yy + 3.4, 38, OH - 6.8, 2, [248, 249, 251]); if (k) fit(OPT_ICO[k], OPT_AR[k], xx + 4.6, yy + 4, 36.8, OH - 8); else badge(OPT_ICN[o] || 'star', xx + 23, yy + OH / 2, 7);
+      K.font(11.5, 'bold', PK.ink); K.t(o, tx2, yy + 8.4);
+      if (OKPI[o]) { K.font(7, 'normal', PK.mut); const lw = doc.getTextWidth(pdfTxt(OKPI[o][1])); K.t(OKPI[o][1], xx + CW - 5 - lw, yy + 8.4); K.font(13, 'bold', PK.or); const nw = doc.getTextWidth(pdfTxt(OKPI[o][0])); K.t(OKPI[o][0], xx + CW - 6.5 - lw - nw, yy + 8.4); }
+      K.font(7.8, 'normal', PK.sub); doc.text(doc.splitTextToSize(pdfTxt(OPT_DESC[o] || ''), tw2).slice(0, 2), tx2, yy + 13.4, {lineHeightFactor: 1.2});
+      if (OPT_BEN[o]) { rr(tx2, yy + 18.2, tw2, 6.4, 2, [255, 247, 237]); tick(tx2 + 3.2, yy + 21.4, PK.or, 1.1); K.font(7.8, 'bold', [154, 52, 18]); K.t(OPT_BEN[o], tx2 + 6.6, yy + 22.6); }
+      if (SB) { K.font(6, 'normal', PK.mut); K.t(SB, tx2 + 1, yy + 27.3); }
+      K.y += OH + 3; });
   }
   if (on('sol_kpi')) { const KP = [];
     if (cap && C.stk) KP.push([cap >= C.stk ? '100' : String(Math.round(cap / C.stk * 100)), '%', 'de votre stock tient dans le robot']);
@@ -4655,8 +4660,8 @@ async function genArgNew(id, merge, prev, sec) {
         let iy = y0 + 1.5; its.forEach(q => { K.font(8.6, 'bold', [154, 52, 18]); K.t(q.t, M + 82, iy + 4.2); K.font(7.8, 'normal', PK.sub); doc.text(q.dl, M + 82, iy + 8.2, {lineHeightFactor: 1.2}); iy += 4.8 + q.dl.length * 3.6 + 1; }); K.y += rh + .5; }); } }
   if (on('sol_incl')) { const TXT = [...(c.offre?.lignes || []).map(l => [l.t, l.k, ...(l.items || []).map(it => typeof it === 'string' ? it : (it && (it.t || it.k)) || '')].join(' ')), String(c.offre?.maint?.formule || '')].join(' ').toLowerCase(), IN = [];
     if (lgo) IN.push('Interfaçage avec votre LGO (' + lgo + ')'); if (/install|mise en service/.test(TXT)) IN.push('Installation et mise en service'); if (/formation/.test(TXT)) IN.push("Formation de l'équipe"); if (/chargement|mise en stock/.test(TXT)) IN.push('Chargement initial du stock'); if (/maintenance|assistance|t[ée]l[ée]maintenance/.test(TXT)) IN.push('Maintenance et assistance'); if (AO.plan === true || (AO.plan === undefined && IMG.length > 0)) IN.push("Plan d'implantation dédié");
-    if (IN.length >= 2) { sub('D', 'Inclus dans votre projet', 14); let px = M, py = K.y; K.font(7.8, 'bold', WH);
-      IN.forEach(t => { const tw = doc.getTextWidth(pdfTxt(t)) + 12; if (px + tw > M + CW) { px = M; py += 8; } rr(px, py, tw, 6.2, 3.1, PK.or); tick(px + 3.6, py + 3, WH, 1.1); K.font(7.8, 'bold', WH); doc.text(pdfTxt(t), px + 7.2, py + 4.2); px += tw + 2.4; }); K.y = py + 9; } }
+    if (IN.length >= 2) { const rws = Math.ceil(IN.length / 2), bh = rws * 7.4 + 5; sub('D', 'Inclus dans votre projet', bh + 12); rr(M, K.y, CW, bh, 3, [250, 250, 251]); bord(M, K.y, CW, bh, 3);
+      IN.forEach((t, i) => { const xx = M + 6 + (i % 2) * (CW / 2), yy = K.y + 5.4 + Math.floor(i / 2) * 7.4; doc.setFillColor(...PK.or); doc.circle(xx + 2.2, yy - 1.2, 2.2, 'F'); tick(xx + 2.2, yy - 1.1, WH, 1); K.font(8.8, 'bold', PK.ink); doc.text(pdfTxt(t), xx + 6.5, yy); }); K.y += bh + 3; } }
   }
   if (C.gTot > 0 && SX('prod')) {
     if (PBR.prod === 'new') brk(); K.need(100); sect('2. Étude de productivité officinale', 'chart-line'); PGM.prod = doc.getNumberOfPages();
@@ -4738,11 +4743,11 @@ async function genArgNew(id, merge, prev, sec) {
   if (SX('pil')) { if (merge && c.offre?.lignes?.length) K.deferPil = () => { if (K.y > 46 && PBR.pil !== 'join') { K.foot(); doc.addPage(); K.head(); } drawPil(); }; else drawPil(); }
   const SOC = (!opt('social') || !on('social')) ? [] : [['Site Pharmathek', settings.social?.site, 'globe', [200, 90, 10], [232, 119, 34]], ['LinkedIn', settings.social?.linkedin, 'linkedin-in', [10, 102, 194], [10, 80, 160]], ['Facebook', settings.social?.facebook, 'facebook-f', [24, 90, 200], [24, 119, 242]], ['Instagram', settings.social?.instagram, 'instagram', [190, 40, 120], [235, 110, 40]], ['YouTube', settings.social?.youtube, 'youtube', [200, 0, 0], [140, 0, 0]]].filter(x => x[1]);
   const drawSoc = () => { if (!SOC.length) return;
-    K.need(26); const sy = K.y, sh = 25.5; rr(M, sy, CW, sh, 3, WH); bord(M, sy, CW, sh, 3); doc.setFillColor(...PK.or); doc.rect(M, sy + 3, 1.3, sh - 6, 'F');
-    badge('qrcode', M + 9, sy + 8.2, 4.2); K.font(11, 'bold', PK.ink); K.t('Restons connectés', M + 16, sy + 9); K.font(7.2, 'normal', PK.sub); doc.text(doc.splitTextToSize(pdfTxt("Scannez avec l'appareil photo de votre smartphone : actualités, retours d'expérience, vidéos des robots en action."), 46), M + 5, sy + 16, {lineHeightFactor: 1.3});
+    const sh = 25.5; if (K.y + 3 > 279 - sh) { K.foot(); doc.addPage(); K.head(); } const sy = 279 - sh; rr(M, sy, CW, sh, 3, WH); bord(M, sy, CW, sh, 3); doc.setFillColor(...PK.or); doc.rect(M, sy + 3, 1.3, sh - 6, 'F');
+    badge('qrcode', M + 9, sy + 8.2, 4.2); K.font(11, 'bold', PK.ink); K.t('Restons connectés', M + 16, sy + 9); K.font(7.2, 'normal', PK.sub); doc.text(doc.splitTextToSize(pdfTxt("Scannez avec l'appareil photo de votre smartphone : actualités, retours d'expérience, vidéos des robots en action."), 50), M + 5, sy + 15, {lineHeightFactor: 1.25});
     const n = SOC.length, x1 = M + 56, cw = (CW - 58) / n, qs = 15.5;
     SOC.forEach(([l, u, icn, col, colF], i) => { const x0 = x1 + i * cw; qrDraw(doc, u, x0 + (cw - qs) / 2, sy + 2.8, qs, col, colF, null); K.font(7.4, 'bold', PK.ink); doc.text(pdfTxt(l), x0 + cw / 2, sy + sh - 5, {align: 'center'}); K.font(5.4, 'normal', PK.mut); doc.text(pdfTxt(String(u).replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')).slice(0, 34), x0 + cw / 2, sy + sh - 1.8, {align: 'center'}); doc.link(x0, sy, cw, sh, {url: u}); });
-    K.y = sy + sh;
+    K.y = 279;
   };
   if (merge && c.offre?.lignes?.length) K.deferSoc = drawSoc; else drawSoc();
   K.foot();
@@ -6371,9 +6376,8 @@ function genOffre(id, K0) {
     const ecoOn = ptkOf(c).args?.eco !== false; tr.forEach((x, i) => { const col = i % 3, eco = ecoOn && /^(Consommation|Absorption)/.test(x[0]); if (col === 0) K.need(h + 2); const xx = M + col * (cw + g), yy = K.y; card(xx, yy, cw, h, 2.6, eco ? [150, 205, 175] : BD); doc.setFillColor(...(eco ? [28, 124, 84] : PK.or)); doc.rect(xx + 3, yy, cw - 6, .9, 'F'); badge(x[2], xx + 6.5, yy + 6.6, 3.1, eco ? GRN : PK.or); if (eco) { K.font(5.2, 'bold', WH); const ew = doc.getTextWidth('ECO') + 5; rr(xx + cw - ew - 2, yy + 2, ew, 3.8, 1.9, GRN); K.t('ECO', xx + cw - ew / 2 - 2, yy + 4.7, {align: 'center'}); } lab(x[0], xx + 11.5, yy + 5.4, PK.ord, 4.9, .15); K.font(8.4, 'bold', PK.ink); doc.text(doc.splitTextToSize(pdfTxt(x[1]), cw - 14).slice(0, 1), xx + 11.5, yy + 9.8); if (col === 2 || i === tr.length - 1) K.y += h + 2; }); }
   }
   K.need(5); K.y += 3.2; K.font(7, 'italic', PK.mut); doc.text(doc.splitTextToSize(pdfTxt(`Prix hors taxes, soumis à la TVA en vigueur. Total net HT après remise : ${eur(k.net)}. Devis valable ${o.validite || 30} jours à compter du ${o.date || '—'}.`), CW), M, K.y);
-  if (K.deferSoc && K.y + 30 <= 280) { const f = K.deferSoc; K.deferSoc = null; K.y += 3; f(); }
   if (K.deferPil) { const f = K.deferPil; K.deferPil = null; f(); }
-  if (K.deferSoc) { const f = K.deferSoc; K.deferSoc = null; K.y += 3; f(); }
+  if (K.deferSoc) { const f = K.deferSoc; K.deferSoc = null; f(); }
   K.foot();
   if (K0) return;
   K.save(`Synthese_projet_de_robotisation_${slug(c.pharma)}_${slug(o.ref || isoDay(TODAY))}.pdf`);
