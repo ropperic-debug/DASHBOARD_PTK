@@ -49,7 +49,11 @@
 .phe:before{content:"";position:absolute;left:9px;top:9px;width:14px;height:14px;border:2px solid #CBD5E1;border-radius:4px}
 .phe.on{border-color:#16A34A;background:#F0FDF4}.phe.on:before{background:#16A34A;border-color:#16A34A;content:"\2713";color:#fff;font-size:10px;line-height:10px;text-align:center}
 .agi{display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:12px;border:1.5px solid #E2E8F0;background:#fff;cursor:pointer;text-align:left;width:100%}
-.agi.sel{border-color:#EA6A12;box-shadow:0 0 0 3px #FFEDD5}.agi.off{opacity:.6}.agi .n{width:24px;height:24px;border-radius:50%;background:#EA6A12;color:#fff;font-weight:700;font-size:12px;display:grid;place-items:center;flex:none}.agi.off .n{background:#CBD5E1}
+.agi.sel{border-color:#EA6A12;box-shadow:0 0 0 3px #FFEDD5}.agi.off{opacity:.6}
+.prep-tabs{display:flex;gap:4px;padding:8px 20px 0;border-bottom:1px solid #E2E8F0;background:#fff;flex-wrap:wrap}.ptab{padding:8px 14px;border-radius:10px 10px 0 0;font-weight:700;font-size:13px;color:#64748B;display:inline-flex;gap:7px;align-items:center;border:1px solid transparent;border-bottom:0;cursor:pointer;background:transparent}.ptab:hover{background:#F8FAFC}.ptab.a{background:#FFF7ED;color:#9A3412;border-color:#FDBA74}
+.s4{display:flex;gap:6px;flex-wrap:wrap;margin:2px 0 10px}.s4 div{flex:1;min-width:150px;border-radius:10px;padding:7px 10px;font-size:12.5px;font-weight:700;display:flex;gap:7px;align-items:center}.s4 .ok{background:#ECFDF5;color:#047857;border:1px solid #A7F3D0}.s4 .cur{background:#FFF7ED;color:#9A3412;border:1.5px solid #EA6A12}.s4 .todo{background:#F8FAFC;color:#64748B;border:1px solid #E2E8F0}
+.pbox{border:2px solid #EA6A12;border-radius:14px;overflow:hidden;background:#fff}.pbox .hd{display:flex;align-items:center;gap:10px;padding:10px 14px;background:#FFF7ED;font-weight:800;font-size:14.5px}.pbox .hd i.n{width:22px;height:22px;border-radius:50%;background:#EA6A12;color:#fff;display:grid;place-items:center;font:800 11px Arial;font-style:normal}.pbox .hd .r{margin-left:auto;font-weight:600;font-size:12px;color:#6B7280}
+.ppills{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px}.ppill{border:1px solid #E2E8F0;border-radius:10px;padding:8px 10px;font-size:12.5px;display:flex;gap:7px;align-items:center;background:#fff;cursor:pointer;text-align:left}.ppill:hover{border-color:#EA6A12}.ppill i{color:#EA6A12}.ppill b{margin-left:auto;color:#047857;font-size:11.5px}.agi .n{width:24px;height:24px;border-radius:50%;background:#EA6A12;color:#fff;font-weight:700;font-size:12px;display:grid;place-items:center;flex:none}.agi.off .n{background:#CBD5E1}
 .agi .t{flex:1;font-weight:600;font-size:13px;line-height:1.25}
 .agsw{width:34px;height:20px;border-radius:10px;background:#CBD5E1;position:relative;flex:none;border:0;cursor:pointer}.agsw:after{content:"";position:absolute;left:2px;top:2px;width:16px;height:16px;border-radius:50%;background:#fff;transition:.15s}.agsw.on{background:#EA6A12}.agsw.on:after{left:16px}
 .agpill{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;padding:3px 9px;border-radius:99px;margin-bottom:6px}
@@ -667,6 +671,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
         <div class="fz flex flex-col gap-3" data-zone="4"><div id="sec-4" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">4</span><h2 class="h2">Offre de robotisation</h2><span id="sec-offre-ico" class="inline-flex items-center gap-1"></span><span id="sst-4" class="ml-auto text-xs font-semibold"></span></div>
         <div id="f-off-tabs"></div>
         <div class="offer-card">
+        <div id="f-strip"></div>
         <div id="f-models-box"></div>
         <div id="f-devis-box"></div>
         <div id="f-offre-box"></div>
@@ -1240,6 +1245,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.12</b> : <b>étape 4 « Offre de robotisation » réorganisée</b> : (1) un bandeau de progression « 1 · Choisi, 2 · Chiffré, 3 · PDF à préparer » ; (2) un seul bloc « Préparer et générer le PDF » avec quatre pastilles (Contenu, Textes, Noms, Implantation) qui indiquent l'état et ouvrent le bon réglage, puis les boutons « Préparer le PDF… », « Aperçu » et « Générer le PDF » ; (3) les fenêtres de préparation (Contenu, Pages, Textes, Noms) partagent la même barre d'onglets pour passer de l'une à l'autre ; (4) « Noms affichés sur la synthèse » passe dans la fenêtre « Noms ».</li>
 <li><b>V4.5.11</b> : <b>relecture de la synthèse corrigée</b> : (1) une priorité décochée n'est plus imprimée dans le PDF (elle l'était encore) ; (2) la carte du haut de « Ce que vous nous avez dit » (la problématique) est maintenant la première priorité de la relecture, avec ses trois colonnes modifiables ; (3) chaque priorité indique « Dans le PDF » ou « Retirée du PDF » ; (4) « Textes généraux » ne propose plus que les champs qui s'impriment (titre d'en-tête, introduction, éléments complémentaires).</li>
 <li><b>V4.5.10</b> : option Euclid3D (page Solution) : le petit libellé devient « Possibilité de délivrance en mode global (en une fois) ou à la ligne ».</li>
 <li><b>V4.5.9</b> : <b>un seul bloc « besoin / réponse »</b> dans « Ce que vous nous avez dit » (la carte en double de la V4.5.8 est supprimée) : trois colonnes <b>Votre besoin</b>, <b>Notre réponse</b> et <b>Solution retenue</b> (fond crème, filet orange), puis une ligne <b>Au quotidien</b>. Le texte parasite « Équipe : Solution : … » n'est plus recopié dans le besoin. Textes modifiables dans la fiche (carte Besoins) et dans la relecture de la synthèse.</li>
@@ -1617,6 +1623,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 </dialog>
 <dialog id="dlg-pdfsec" class="!w-[min(1080px,97vw)]">
   <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start gap-2"><div><h3 class="font-bold flex items-center gap-2"><i class="fas fa-list-check text-ptkd"></i>Contenu du PDF</h3><p class="text-xs text-muted mt-0.5">Deux étapes : le document, puis les pages. Vos choix sont mémorisés pour cette fiche.</p></div><button class="dlg-x" onclick="closeDlg('dlg-pdfsec')" aria-label="Fermer"><i class="fas fa-xmark"></i></button></div>
+  <div class="prep-tabs" data-k="sec"></div>
   <div class="dlg-body p-5 grid lg:grid-cols-[1fr_290px] gap-5"><div id="ps-body" class="flex flex-col gap-3"></div><aside id="ps-info" class="rounded-xl border border-slate-200 bg-slate-50 p-4 h-fit lg:sticky lg:top-0"></aside></div>
   <div class="px-5 py-4 border-t bg-slate-50 flex justify-between gap-2 flex-wrap items-center"><span id="ps-saved" class="text-[12px] text-muted"></span><span class="flex gap-2 flex-wrap"><button class="btn btn-g" onclick="closeDlg('dlg-pdfsec')">Annuler</button><button class="btn btn-g" onclick="pdfSecGo(true)"><i class="fas fa-eye"></i>Aperçu et sauts de page</button><button class="btn btn-p" onclick="pdfSecGo(false)"><i class="fas fa-file-pdf"></i>Générer le PDF</button></span></div>
 </dialog>
@@ -1632,14 +1639,22 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <dialog id="dlg-pdfarg" class="!w-[min(1020px,97vw)]">
   <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start gap-2"><div><h3 class="font-bold flex items-center gap-2"><i class="fas fa-sliders text-ptkd"></i>Arguments du PDF</h3><p class="text-xs text-muted mt-0.5">Classés par page du PDF. Chaque ligne montre la valeur qui sera imprimée. Enregistrement automatique.</p></div><button class="dlg-x" onclick="closeDlg('dlg-pdfarg')" aria-label="Fermer"><i class="fas fa-xmark"></i></button></div>
   <div class="px-5 pt-4 flex flex-wrap gap-2 items-center"><span class="text-[12.5px] font-bold text-slate-600">Raccourcis :</span><button class="btn btn-g !h-9" onclick="pdfArgPreset('all')">Tout afficher</button><button class="btn btn-g !h-9" onclick="pdfArgPreset('ess')">Essentiel seulement</button><button class="btn btn-g !h-9" onclick="pdfArgPreset('std')">Réglage standard</button></div>
+  <div class="prep-tabs" data-k="arg"></div>
   <div class="dlg-body p-5 grid lg:grid-cols-[1fr_270px] gap-5"><div id="pa-body" class="flex flex-col gap-4"></div><aside id="pa-side" class="rounded-xl border border-slate-200 bg-slate-50 p-4 h-fit lg:sticky lg:top-0"></aside></div>
   <div class="px-5 py-4 border-t bg-slate-50 flex justify-between gap-2 flex-wrap items-center"><span id="pa-saved" class="text-[12px] text-emerald-700 font-semibold"></span><span class="flex gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-pdfarg');pdfSecOpen(ui.paId)"><i class="fas fa-list-check text-ptkd"></i>Contenu du PDF</button><button class="btn btn-p" onclick="closeDlg('dlg-pdfarg')">Terminé</button></span></div>
+</dialog>
+<dialog id="dlg-names" class="!w-[min(720px,97vw)]">
+  <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start gap-2"><div><h3 class="font-bold flex items-center gap-2"><i class="fas fa-user-group text-ptkd"></i>Noms affichés sur la synthèse</h3><p class="text-xs text-muted mt-0.5">Cochez les personnes à citer dans le PDF.</p></div><button class="dlg-x" onclick="closeDlg('dlg-names')" aria-label="Fermer"><i class="fas fa-xmark"></i></button></div>
+  <div class="prep-tabs" data-k="nom"></div>
+  <div id="nm-body" class="dlg-body p-5 flex flex-col gap-2 text-[14px]"></div>
+  <div class="px-5 py-4 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-p" onclick="closeDlg('dlg-names')">Terminé</button></div>
 </dialog>
 <dialog id="dlg-arg" class="!w-[min(1120px,97vw)]">
   <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start gap-2">
     <div><h3 class="font-bold flex items-center gap-2"><i class="fas fa-file-pen text-ptkd"></i>Synthèse personnalisée · relecture</h3><p id="ag-sub" class="text-xs text-muted mt-0.5"></p></div>
     <button class="dlg-x" onclick="closeDlg('dlg-arg')" aria-label="Fermer"><i class="fas fa-xmark"></i></button>
   </div>
+  <div class="prep-tabs" data-k="txt"></div>
   <div id="ag-body" class="dlg-body p-5 flex flex-col gap-4"></div>
   <div class="px-5 py-4 border-t bg-slate-50 flex flex-wrap justify-between gap-2">
     <button class="btn btn-ko" onclick="argReset()"><i class="fas fa-rotate-left"></i>Réinitialiser</button>
@@ -1935,7 +1950,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.11';
+const APP_VERSION = '4.5.12';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -4318,8 +4333,12 @@ function renderArgBtn(c) {
   box.innerHTML = miss.length
     ? `<div class="rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 p-3.5 flex flex-wrap items-center gap-4"><button type="button" class="btn !h-12 text-[15px] font-bold !bg-slate-200 !border-slate-200 !text-slate-500 cursor-not-allowed" aria-disabled="true" onclick="argHelp()" title="Complétez les éléments ci-contre pour activer le bouton"><i class="fas fa-file-pdf text-lg"></i>${lab}</button>
       <div class="flex-1 min-w-[260px] flex flex-col gap-1 text-[13px]"><b class="text-orange-900">Il manque ${miss.length} élément${miss.length > 1 ? 's' : ''} pour générer le PDF :</b>${miss.map(m => `<div class="flex items-center gap-2"><span class="w-4 h-4 rounded-full border-2 border-slate-300 inline-block"></span><span>${esc(lbl[m] || m)}</span><button type="button" class="ml-auto font-bold text-[12px] text-ptkd underline" onclick="document.getElementById('${tgt[m]}')?.scrollIntoView({block:'center',behavior:'smooth'})">${go[m] || 'Renseigner →'}</button></div>`).join('')}</div></div>`
-    : `<div class="flex flex-col gap-1.5"><button type="button" class="btn btn-p w-full !h-12 text-[15px] font-bold shadow-md" onclick="pdfArg(${c.id})"><i class="fas fa-file-pdf text-lg"></i>${lab}</button><p class="text-[12.5px] text-emerald-800 text-center font-semibold"><i class="fas fa-circle-check mr-1"></i>Tout est prêt : besoins, robot, devis + maintenance · ${esc(c.pharma)}</p><div class="flex justify-center gap-4"><button type="button" class="btn btn-g !h-10" onclick="prevArg(${c.id})"><i class="fas fa-eye text-ptkd"></i>Lire avant de générer</button><button type="button" class="lnk-edit" onclick="openArg(${c.id})"><i class="fas fa-pen text-[11px]"></i>Personnaliser les textes</button></div></div>`;
-  { const A = assocOf(c); box.insertAdjacentHTML('beforeend', `<div class="mt-2 text-[13px]"><div class="font-bold text-slate-700 mb-1">Noms affichés sur la synthèse</div><div class="flex items-center gap-2 text-slate-600"><input type="checkbox" checked disabled class="w-4 h-4 accent-emerald-700">${esc(c.devisNom || [c.genre, c.prenom, c.nom].filter(Boolean).join(' '))} <span class="text-muted">· Titulaire</span></div>${A.map((a, i) => `<label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="w-4 h-4 accent-emerald-700" ${a.on ? 'checked' : ''} onchange="assocTick(${c.id},${i},this.checked)">${esc(a.nom)} <span class="text-muted">· ${esc(a.role)}</span></label>`).join('') || '<div class="text-muted text-[12px]">Autres noms : à saisir dans Coordonnées (« Titulaires et associés »).</div>'}</div>`); }
+    : (() => { const [na, nt] = argCountLive(c), A2 = assocOf(c), nn = 1 + A2.filter(x => x.on).length;
+      return `<div class="pbox"><div class="hd"><i class="n">3</i>Préparer et générer le PDF<span class="r">${c.offre?.lignes?.length ? 'Synthèse + offre' : 'Synthèse'}</span></div><div class="p-3.5 flex flex-col gap-3">
+      <div class="ppills"><button type="button" class="ppill" onclick="prepGo('arg')"><i class="fas fa-list-check"></i>Contenu<b>${na}/${nt}</b></button><button type="button" class="ppill" onclick="prepGo('txt')"><i class="fas fa-pen-to-square"></i>Textes<b>${c.argDraft ? 'modifiés' : 'standard'}</b></button><button type="button" class="ppill" onclick="prepGo('nom')"><i class="fas fa-user-group"></i>Noms<b>${nn}</b></button><button type="button" class="ppill" onclick="document.getElementById('f-impl-box')?.scrollIntoView({block:'center',behavior:'smooth'})"><i class="fas fa-map-location-dot"></i>Implantation<b>plan et photos</b></button></div>
+      <div class="flex flex-wrap items-center gap-2"><button type="button" class="btn btn-g !h-11" onclick="prepGo('txt')"><i class="fas fa-sliders text-ptkd"></i>Préparer le PDF…</button><button type="button" class="btn btn-g !h-11" onclick="prevArg(${c.id})"><i class="fas fa-eye text-ptkd"></i>Aperçu</button><button type="button" class="btn btn-p !h-12 text-[15px] font-bold shadow-md ml-auto" onclick="pdfArg(${c.id})"><i class="fas fa-file-pdf text-lg"></i>${lab}</button></div>
+      <p class="text-[12.5px] text-emerald-800 font-semibold m-0"><i class="fas fa-circle-check mr-1"></i>Tout est prêt : besoins, robot, devis + maintenance · ${esc(c.pharma)}</p></div></div>`; })();
+  renderStrip(c, miss);
 }
 const ASSOC_R = ['Titulaire', 'Co-titulaire', 'Associé', 'Gérant'];
 function assocOf(c) { if (!c) return []; if (!c.assoc && c.nom2) c.assoc = [{nom: c.nom2, role: 'Associé', on: !!c.nom2On}]; return (c.assoc || []).filter(a => a && a.nom); }
@@ -4329,6 +4348,16 @@ function assocAdd(a) { a = a && a.nom !== undefined ? a : {nom: '', role: 'Assoc
 function assocRead() { return [...document.querySelectorAll('#f-assoc [data-as]')].map(r => ({nom: r.querySelector('[data-n]').value.trim(), role: r.querySelector('[data-r]').value, on: r.dataset.on === '1'})).filter(a => a.nom); }
 function assocTick(id, i, v) { const c = byId(id); if (!c) return; assocOf(c); c.assoc[i].on = !!v; const rw = document.querySelectorAll('#f-assoc [data-as]')[i]; if (rw) rw.dataset.on = v ? '1' : '0'; c.maj = Date.now(); save(); }
 function nom2Tick() {}
+const PREP = [['arg', 'Contenu', 'list-check'], ['sec', 'Pages', 'copy'], ['txt', 'Textes', 'pen-to-square'], ['nom', 'Noms', 'user-group'], ['prev', 'Aperçu', 'eye']];
+const prepTabs = a => PREP.map(([k, l, i]) => `<button type="button" class="ptab ${k === a ? 'a' : ''}" onclick="prepGo('${k}')"><i class="fas fa-${i}"></i>${l}</button>`).join('');
+function prepFill() { document.querySelectorAll('.prep-tabs').forEach(e => { e.innerHTML = prepTabs(e.dataset.k); }); }
+function prepGo(k) { const id = ui.argId || ui.paId || ui.pdfId || ui.editId; ['dlg-arg', 'dlg-pdfsec', 'dlg-pdfarg', 'dlg-names'].forEach(d => { if ($(d).open) closeDlg(d); });
+  if (!byId(id)) return; if (k === 'arg') pdfArgOpen(id); else if (k === 'sec') pdfSecOpen(id); else if (k === 'txt') openArg(id); else if (k === 'nom') namesOpen(id); else if (k === 'prev') prevArg(id); }
+function namesDraw(c) { const A = assocOf(c); $('nm-body').innerHTML = `<div class="flex items-center gap-2 text-slate-600"><input type="checkbox" checked disabled class="w-4 h-4 accent-emerald-700">${esc(c.devisNom || [c.genre, c.prenom, c.nom].filter(Boolean).join(' '))} <span class="text-muted">· Titulaire</span></div>${A.map((a, i) => `<label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="w-4 h-4 accent-emerald-700" ${a.on ? 'checked' : ''} onchange="assocTick(${c.id},${i},this.checked);renderArgBtn(byId(${c.id}))">${esc(a.nom)} <span class="text-muted">· ${esc(a.role)}</span></label>`).join('') || '<div class="text-muted text-[12.5px]">Autres noms : à saisir dans Coordonnées (« Titulaires et associés »).</div>'}`; }
+function namesOpen(id) { const c = ensureSaved() || byId(id); if (!c) return; ui.argId = c.id; namesDraw(c); $('dlg-names').showModal(); }
+function argCountLive(c) { const AR = ptkOf(c).args || {}; let n = 0, t = 0; try { PA_GROUPS.forEach(([, , ks]) => ks.forEach(k => { const [v] = paLive(c, k); if (v === null) return; t++; if (k === 'plan' ? (AR.plan ?? false) : AR[k] !== false) n++; })); } catch { } return [n, t]; }
+function renderStrip(c, miss) { const b = $('f-strip'); if (!b) return; const L = argLive(c), ch = !!(L.robots || []).length, ci = !!c.offre?.lignes?.length, pdf = ch && ci;
+  b.innerHTML = c.step === 'Perdu' ? '' : `<div class="s4"><div class="${ch ? 'ok' : 'cur'}"><i class="fas fa-${ch ? 'circle-check' : 'pen'}"></i>1 · ${ch ? 'Choisi' : 'Choisir le robot'}</div><div class="${ci ? 'ok' : ch ? 'cur' : 'todo'}"><i class="fas fa-${ci ? 'circle-check' : 'pen'}"></i>2 · ${ci ? 'Chiffré' : 'Chiffrer l\'offre'}</div><div class="${pdf ? 'cur' : 'todo'}"><i class="fas fa-${pdf ? 'pen' : 'circle'}"></i>3 · PDF à préparer</div></div>`; }
 /* ----- Implantation : plan & photos (stockés dans ce navigateur, IndexedDB) ----- */
 const IMPL = {id: null, imgs: []};
 async function implGet(id) { try { return (await PDB.get('impl_' + id)) || []; } catch { return []; } }
@@ -7682,6 +7711,7 @@ function syncDraw() {
 function syncNow() { fbSync(false); }
 (function tipAuto() { const fix = r => (r || document).querySelectorAll('button:not([title]),a:not([title])').forEach(e => { const l = e.getAttribute('aria-label'); if (l) e.title = l; }); fix(); new MutationObserver(() => { clearTimeout(tipAuto.t); tipAuto.t = setTimeout(() => fix(), 150); }).observe(document.body, {childList: true, subtree: true}); })();
 addEventListener('online', syncDraw); addEventListener('offline', syncDraw); syncDraw();
+prepFill();
 { let ch = false; clients.forEach(c => { if (c.offres?.length && c.offreAct !== c.offrePriv) { offNormalize(c); ch = true; } }); if (ch) save(); }
 cryLoad().then(fbStatus); setTimeout(() => fbSync(true), 2500);
 document.addEventListener('visibilitychange', () => { if (!document.hidden) fbSync(true); });
