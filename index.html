@@ -1245,6 +1245,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.13</b> : <b>suggestions de phrases adaptées à la fiche</b> (relecture de la synthèse) : les phrases proposées tiennent compte du dossier. Les phrases propres au dossier passent en premier (robot retenu, options, LGO, dossiers par jour, temps rendu à l'équipe, maintenance), les phrases de la bibliothèque qui ne correspondent pas au dossier sont masquées (par exemple le chargeur si Pharmaload n'est pas dans l'offre), et celles qui parlent du besoin de la priorité affichée remontent en tête. « Ma phrase » reste disponible. La correction orthographique du navigateur est activée sur les zones de texte.</li>
 <li><b>V4.5.12</b> : <b>étape 4 « Offre de robotisation » réorganisée</b> : (1) un bandeau de progression « 1 · Choisi, 2 · Chiffré, 3 · PDF à préparer » ; (2) un seul bloc « Préparer et générer le PDF » avec quatre pastilles (Contenu, Textes, Noms, Implantation) qui indiquent l'état et ouvrent le bon réglage, puis les boutons « Préparer le PDF… », « Aperçu » et « Générer le PDF » ; (3) les fenêtres de préparation (Contenu, Pages, Textes, Noms) partagent la même barre d'onglets pour passer de l'une à l'autre ; (4) « Noms affichés sur la synthèse » passe dans la fenêtre « Noms ».</li>
 <li><b>V4.5.11</b> : <b>relecture de la synthèse corrigée</b> : (1) une priorité décochée n'est plus imprimée dans le PDF (elle l'était encore) ; (2) la carte du haut de « Ce que vous nous avez dit » (la problématique) est maintenant la première priorité de la relecture, avec ses trois colonnes modifiables ; (3) chaque priorité indique « Dans le PDF » ou « Retirée du PDF » ; (4) « Textes généraux » ne propose plus que les champs qui s'impriment (titre d'en-tête, introduction, éléments complémentaires).</li>
 <li><b>V4.5.10</b> : option Euclid3D (page Solution) : le petit libellé devient « Possibilité de délivrance en mode global (en une fois) ou à la ligne ».</li>
@@ -1950,7 +1951,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.12';
+const APP_VERSION = '4.5.13';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -4146,18 +4147,29 @@ const PH = {
   extra: ["Planning d'installation : durée d'arrêt de l'activité réduite au minimum.", "Reprise de l'ancien matériel.", "Formation de l'équipe, puis suivi après installation.", "Contrat de service et télémaintenance.", "Visite d'une officine équipée proche de la vôtre.", "Plan d'implantation et simulation 3D.", "Aides et solutions de financement.", "Disponibilité du SAV et délai d'intervention."]
 };
 const phSep = k => (k === 'dit' || k === 'extra') ? '\n' : ' ';
-const phAll = k => [...(PH[k] || []), ...(((settings.phrases || {})[k]) || [])];
+const PH_REQ = {"Rangement automatique des commandes, sans manipulation.": X => X.has(/pharmaload|chargeur/), "Les nouvelles commandes se rangent pendant que l'équipe conseille.": X => X.has(/pharmaload|chargeur/), "Le rangement des commandes mobilise l'équipe aux heures de pointe.": X => X.has(/pharmaload|chargeur/) || /command|réception/i.test(X.bes), "Reprise de l'ancien matériel.": X => false, "Compatibilité avec votre LGO, sans ressaisie.": X => !X.c.lgo};
+function phCtx(tid) { const c = byId(ui.argId); if (!c) return null; const P = ptkOf(c), C = ptkCalc(P), ops = (P.options || []).map(o => String(o).toLowerCase()), m = tid && /^ag-it-[prb]-(\d+)$/.exec(tid), blk = m ? $('ag-it-' + m[1]) : null; return {c, P, C, has: re => ops.some(o => re.test(o)), robot: (c.robots || [])[0] || '', bes: blk ? (blk.dataset.l || blk.dataset.k || '') : ''}; }
+function phData(k, X) { const c = X.c, C = X.C, fr = n => Math.round(n).toLocaleString('fr-FR'), L = [], m = c.offre?.maint;
+  if (k === 'intro' && X.robot) L.push(`Suite à notre rencontre, voici notre proposition pour ${c.pharma} : ${X.robot}.`);
+  if (k === 'p' && C.dos && C.pst) L.push(`${fr(C.dos)} dossiers par jour sont délivrés par ${C.pst} postes de vente.`);
+  if (k === 'r') { if (X.robot) L.push(`Le ${X.robot} délivre les boîtes au comptoir en quelques secondes, à la demande.`); if (X.has(/pharmaload|chargeur/)) L.push('Le chargeur automatique Pharmaload range les commandes à 300 boîtes par heure, sans manipulation.'); if (X.has(/euclid/)) L.push("Euclid3D : une ordonnance complète servie en un seul cycle, jusqu'à 520 boîtes par heure."); if (X.has(/quickair/)) L.push('La transitique QuickAir achemine les produits directement jusqu\'au comptoir.'); if (X.has(/quickpick/)) L.push('QuickPick24 : retrait 24 h/24 en façade, sans attendre au comptoir.'); if (c.lgo) L.push(`Interfaçage avec votre LGO (${c.lgo}), sans ressaisie.`); }
+  if (k === 'b') { if (C.gTot > .5) L.push(`Environ ${hm(C.gTot)} par jour rendues à l'équipe pour le conseil.`); if (C.gMois > 1) L.push(`${fr(C.gMois)} heures gagnées chaque mois sur l'ensemble de l'officine.`); if (C.kmAn > 0) L.push(`${fr(C.kmAn)} km de marche évités chaque année.`); }
+  if (k === 'extra') { if (m && m.mensuel) { const pr = m.remPct ? Math.round(m.mensuel * (1 - m.remPct / 100)) : 0; L.push(pr ? `Contrat de service ${m.formule || 'ProActive'} : ${fr(pr)} € HT/mois pendant ${m.mois || 36} mois, puis ${fr(m.mensuel)} € HT/mois.` : `Contrat de service ${m.formule || 'ProActive'} : ${fr(m.mensuel)} € HT/mois.`); } if (c.robotConc) L.push('Reprise de votre robot actuel.'); }
+  return L; }
+const phAll = (k, tid) => { const X = phCtx(tid), mine = ((settings.phrases || {})[k]) || []; let lib = PH[k] || [], dat = [];
+  if (X) { lib = lib.filter(x => !PH_REQ[x] || PH_REQ[x](X)); dat = phData(k, X); if ('prb'.includes(k) && k.length === 1 && X.bes) { const W = X.bes.toLowerCase().split(/[^a-zàâçéèêëîïôûùüÿœ]+/).filter(x => x.length >= 5).map(x => x.slice(0, 5)), sc = s => W.filter(x => s.toLowerCase().includes(x)).length; lib = lib.map((x, i) => [x, i]).sort((a, b) => sc(b[0]) - sc(a[0]) || a[1] - b[1]).map(x => x[0]); } }
+  return [...new Set([...dat, ...lib, ...mine])]; };
 const phKey = tid => tid === 'ag-intro' ? 'intro' : tid === 'ag-dit' ? 'dit' : tid === 'ag-extra' ? 'extra' : (tid.match(/^ag-it-([prb])-/) || [])[1];
 function phChips(tid) {
   const t = $(tid), k = phKey(tid), box = $('ph-' + tid); if (!t || !k || !box) return;
-  const L = phAll(k), v = t.value, open = box.dataset.open === '1', all = k === 'extra';
+  const L = phAll(k, tid), v = t.value, open = box.dataset.open === '1', all = k === 'extra';
   box.innerHTML = L.map((x, i) => { const on = v.includes(x); if (!(open || all || i < 4 || on)) return '';
     return all ? `<button type="button" class="phe ${on ? 'on' : ''}" onclick="phTg('${tid}',${i})"><span>${esc(x)}</span></button>` : `<button type="button" class="phc ${on ? 'on' : ''}" onclick="phTg('${tid}',${i})">${esc(x)}</button>`; }).join('')
     + (!all && L.length > 4 ? `<button type="button" class="phc more" onclick="phMore('${tid}')">${open ? 'Moins de choix' : 'Autre choix'}</button>` : '')
     + `<button type="button" class="phc more" onclick="phMine('${tid}')">Ma phrase</button>`;
 }
 function phTg(tid, i) {
-  const t = $(tid), k = phKey(tid), x = phAll(k)[i]; if (x == null) return;
+  const t = $(tid), k = phKey(tid), x = phAll(k, tid)[i]; if (x == null) return;
   if (t.value.includes(x)) t.value = t.value.replace(x, '').replace(/[ \t]{2,}/g, ' ').replace(/\n{2,}/g, '\n').trim();
   else t.value = (t.value.trim() ? t.value.trimEnd() + phSep(k) : '') + x;
   phChips(tid);
@@ -4170,7 +4182,7 @@ function phMine(tid) {
 }
 function phAdd(tid) {
   const k = phKey(tid), v = ($('phi-' + tid).value || '').trim(); if (!v) return;
-  if ($('phs-' + tid).checked && !phAll(k).includes(v)) { (settings.phrases ||= {})[k] = [...(settings.phrases[k] || []), v]; saveSet(); }
+  if ($('phs-' + tid).checked && !phAll(k, tid).includes(v)) { (settings.phrases ||= {})[k] = [...(settings.phrases[k] || []), v]; saveSet(); }
   const t = $(tid); t.value = (t.value.trim() ? t.value.trimEnd() + phSep(k) : '') + v;
   $('phm-' + tid).innerHTML = ''; phChips(tid);
 }
@@ -4201,9 +4213,9 @@ function openArg(id) {
     ui.probIn = QP && QP.p ? {h: concTxt(c, QP.h), p: concTxt(c, QP.p), r: concTxt(c, QP.r), b: concTxt(c, QP.b), k: QP.k || 'prob'} : null;
     if (ui.probIn) d.items = [{k: '__prob', l: 'Problématique du client', h: ui.probIn.h, p: ui.probIn.p, r: ui.probIn.r, b: ui.probIn.b, off: ui.probOff}, ...d.items]; }
   const inp = (k, l, v) => `<div><label class="lbl" for="ag-${k}">${l}</label><input id="ag-${k}" class="inp" value="${esc(v)}"></div>`;
-  const ta = (k, l, v, rows = 3, ph = '') => `<div><label class="lbl" for="ag-${k}">${l}</label><div class="mic-wrap"><textarea id="ag-${k}" rows="${rows}" class="ta" placeholder="${esc(ph)}">${esc(v)}</textarea><button type="button" class="mic" onclick="dictate('ag-${k}',this)" aria-label="Dicter"><i class="fas fa-microphone"></i></button></div></div>`;
+  const ta = (k, l, v, rows = 3, ph = '') => `<div><label class="lbl" for="ag-${k}">${l}</label><div class="mic-wrap"><textarea id="ag-${k}" rows="${rows}" spellcheck="true" lang="fr" class="ta" placeholder="${esc(ph)}">${esc(v)}</textarea><button type="button" class="mic" onclick="dictate('ag-${k}',this)" aria-label="Dicter"><i class="fas fa-microphone"></i></button></div></div>`;
   $('ag-sub').textContent = `${c.pharma} — ${c.ville}${c.argDraft ? ' · brouillon enregistré' : ''}`;
-  const colT = (i, f, l, v, cls) => `<div class="min-w-0"><span class="agpill ${cls}">${l}</span><div class="mic-wrap"><textarea id="ag-it-${f}-${i}" rows="6" class="ta !text-[13px]${f === 'p' ? ' !italic' : ''}" aria-label="${l}">${esc(v)}</textarea><button type="button" class="mic" onclick="dictate('ag-it-${f}-${i}',this)" aria-label="Dicter"><i class="fas fa-microphone"></i></button></div><div class="mt-1.5"><button type="button" class="agsug" onclick="phToggle('ag-it-${f}-${i}')"><i class="fas fa-wand-magic-sparkles mr-1"></i>Suggestions ▾</button></div><div class="phr pop" id="ph-ag-it-${f}-${i}" style="display:none"></div><div id="phm-ag-it-${f}-${i}"></div></div>`;
+  const colT = (i, f, l, v, cls) => `<div class="min-w-0"><span class="agpill ${cls}">${l}</span><div class="mic-wrap"><textarea id="ag-it-${f}-${i}" rows="6" spellcheck="true" lang="fr" class="ta !text-[13px]${f === 'p' ? ' !italic' : ''}" aria-label="${l}">${esc(v)}</textarea><button type="button" class="mic" onclick="dictate('ag-it-${f}-${i}',this)" aria-label="Dicter"><i class="fas fa-microphone"></i></button></div><div class="mt-1.5"><button type="button" class="agsug" onclick="phToggle('ag-it-${f}-${i}')"><i class="fas fa-wand-magic-sparkles mr-1"></i>Suggestions ▾</button></div><div class="phr pop" id="ph-ag-it-${f}-${i}" style="display:none"></div><div id="phm-ag-it-${f}-${i}"></div></div>`;
   $('ag-body').innerHTML = `<div id="ag-bar" class="rounded-xl px-4 py-2.5 text-[13.5px] font-semibold flex flex-wrap items-center gap-x-4 gap-y-1"></div>
     <div class="grid md:grid-cols-[270px_1fr] gap-4 items-start">
       <div class="flex flex-col gap-1.5 md:sticky md:top-0"><span class="kicker !mb-1">Priorités du client · dans le PDF</span><div id="ag-side" class="flex flex-col gap-1.5"></div>
