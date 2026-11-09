@@ -860,11 +860,12 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
       <button class="btn btn-d" onclick="ui.sa={k:'custom',du:$('sa-du').value,au:$('sa-au').value};renderActivity()">Appliquer</button>
     </div>
     <div id="sa-kpis" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-2.5"></div>
+    <div id="sa-rdv"></div>
     <div class="grid lg:grid-cols-[2fr_1fr] gap-4">
       <div class="flex flex-col gap-1 rounded-2xl border border-slate-200 p-3"><h3 class="text-sm font-bold">Répartition des actions · jour par jour</h3><div class="h-52"><canvas id="sa-c1" role="img" aria-label="Actions réalisées par période"></canvas></div></div>
       <div id="sa-gps"></div>
     </div>
-    <div id="sa-more" class="grid grid-cols-2 md:grid-cols-4 gap-2.5"></div>
+    <div id="sa-more" class="grid grid-cols-2 md:grid-cols-5 gap-2.5"></div>
   </section>
 
   <section id="st-pane-v" class="hidden card frame p-5 sm:p-6 flex flex-col gap-5">
@@ -1272,6 +1273,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.43</b> : <b>Statistiques › Activité commerciale</b> : nouveau bloc <b>« Prises de rendez-vous »</b> : chaque visite sur site ou visio Teams est comptée automatiquement le jour où vous la planifiez (même prévue dans 15 jours), avec le détail (pharmacie, type, date prévue) et l'écart avec la période précédente ; un compteur « RDV pris » s'ajoute aussi en bas de page. Une replanification ne compte pas deux fois.</li>
 <li><b>V4.5.42</b> : <b>« X j sans action »</b> : le calcul prend maintenant l'action la plus récente de l'historique (une fiche avec des actions faites aujourd'hui n'affiche plus des centaines de jours sans action).</li>
 <li><b>V4.5.41</b> : <b>Ma journée, onglet « À faire »</b> : les actions réalisées aujourd'hui y sont maintenant listées (« Faites aujourd'hui »), et une fiche dont l'action vient d'être faite est marquée « Action faite aujourd'hui · à planifier ».</li>
 <li><b>V4.5.40</b> : <b>Ma journée</b> : une action traitée aujourd'hui apparaît dans « Faites aujourd'hui » à sa date de réalisation, même si elle était prévue un autre jour (et même si plusieurs actions de la même fiche sont traitées le même jour).</li>
@@ -2051,7 +2053,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.42';
+const APP_VERSION = '4.5.43';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -3786,6 +3788,17 @@ function saActs(s, e) {
   return out.sort((a, b) => a.d - b.d);
 }
 const saHist = (s, e, rx) => sum(clients, c => (c.history || []).filter(h => { const d = parseD(h.date); return d >= s && d < e && rx.test(h.action); }).length);
+/* V4.5.43 : prises de rendez-vous = visites / visios planifiées, comptées le jour de la planification (lu dans l'historique des fiches) */
+function rdvList(s, e) {
+  const out = [], DT = /(?:[a-zéû]{3,5}\. )?\d{2}\/\d{2} à \d{2}h\d{2}/;
+  clients.forEach(c => (c.history || []).forEach(h => {
+    const d = parseD(h.date); if (!d || d < s || d >= e) return; const a = String(h.action || ''), det = String(h.details || ''); let m, t, txt = a;
+    if ((m = a.match(/^(Visite sur site|Visio Teams|Visite|Visio) planifié/))) t = /^Visio/.test(m[1]) ? 'teams' : 'visite';
+    else if (/^Étape franchie/.test(a) && (m = det.match(/fixé .*\((Visite sur site|Visio Teams)\)/))) { t = /^Visio/.test(m[1]) ? 'teams' : 'visite'; txt = det; }
+    if (!t) return; out.push({c, d, type: t, prevu: (txt.match(DT) || [''])[0]});
+  }));
+  return out.sort((a, b) => b.d - a.d);
+}
 function renderActivity() {
   const P = ui.sa || {k: 'week'};
   $('sa-period').innerHTML = SA_P.map(([k, l]) => `<button class="h-9 px-3 rounded-lg text-[13px] font-semibold ${P.k === k ? 'bg-white text-ink shadow-sm' : 'text-muted hover:text-ink'}" onclick="ui.sa={k:'${k}',du:'${P.du || ''}',au:'${P.au || ''}'};renderActivity()">${l}</button>`).join('');
@@ -3799,6 +3812,12 @@ function renderActivity() {
   const card = (icon, fg, bg, l, n, p, sub) => `<div class="rounded-xl border border-slate-200 bg-white px-3 py-2" style="border-left:4px solid ${fg}"><div class="kicker !text-[10.5px]">${l}</div><div class="flex items-baseline gap-1.5"><span class="text-[22px] font-bold leading-tight">${n}</span>${delta(n, p)}</div>${sub ? `<div class="text-[10.5px] text-muted">${sub}</div>` : ''}</div>`;
   $('sa-kpis').innerHTML = card(`<i class="fas fa-layer-group"></i>`, '#0F172A', '#F1F3F6', 'Total des actions', A.length, B.length, 'vs période précédente')
     + types.map(t => card(ic(ACTIONS[t].icon, 16), ACTIONS[t].fg, ACTIONS[t].bg, ({visite: 'Visites sur site', teams: 'Visios Teams', relance: 'Appels', suivi: 'Relances', mail: 'E-mails'})[t], A.filter(a => a.type === t).length, B.filter(a => a.type === t).length)).join('');
+  { const R = rdvList(s, e), RB = rdvList(ps, pe), nv = R.filter(x => x.type === 'visite').length, nt = R.length - nv, d = R.length - RB.length;
+    const k2 = (l, n, col) => `<div class="rounded-xl border border-slate-200 bg-white px-3 py-2 flex-1" style="border-left:4px solid ${col}"><div class="kicker !text-[10.5px]">${l}</div><div class="text-[22px] font-bold leading-tight">${n}</div></div>`;
+    ui._rdvN = R.length; ui._rdvB = RB.length;
+    $('sa-rdv').innerHTML = `<div class="rounded-2xl p-4 flex flex-col gap-3" style="border:2px solid #6D28D9;background:#F5F3FF"><div class="flex items-baseline gap-2 flex-wrap"><h3 class="text-[15px] font-extrabold" style="color:#5B21B6"><i class="fas fa-calendar-plus mr-1.5"></i>Prises de rendez-vous</h3><span class="text-xs text-muted">rendez-vous créés sur la période (visite sur site ou visio), comptés le jour où vous les planifiez</span></div>
+      <div class="flex gap-2.5 flex-wrap"><div class="rounded-xl border bg-white px-3 py-2 flex-[1.3] min-w-[150px]" style="border-left:4px solid #6D28D9;border-color:#DDD6FE"><div class="kicker !text-[10.5px]">RDV pris</div><div class="flex items-baseline gap-1.5"><span class="text-[30px] font-extrabold leading-tight" style="color:#5B21B6">${R.length}</span>${delta(R.length, RB.length)}</div><div class="text-[10.5px] text-muted">vs période précédente</div></div>${k2('Visites sur site', nv, '#C2410C')}${k2('Visios Teams', nt, '#6366F1')}</div>
+      ${R.length ? `<div class="overflow-auto max-h-56"><table class="w-full text-[12.5px]"><thead><tr class="text-left text-[10.5px] text-muted uppercase"><th class="py-1">Pris le</th><th>Pharmacie</th><th>Type</th><th>RDV prévu</th></tr></thead><tbody>${R.slice(0, 40).map(x => `<tr class="border-t border-violet-100 cursor-pointer" onclick="openClient(${x.c.id})"><td class="py-1.5 tabular-nums whitespace-nowrap">${x.d.toLocaleDateString('fr-FR', {day: '2-digit', month: '2-digit'})} ${pad(x.d.getHours())}:${pad(x.d.getMinutes())}</td><td class="font-bold">${esc(x.c.pharma)}</td><td><span class="pill" style="background:${x.type === 'teams' ? '#E0E7FF;color:#3730A3' : '#FFEDD5;color:#9A3412'}">${x.type === 'teams' ? 'Visio' : 'Visite'}</span></td><td>${esc(x.prevu || '—')}</td></tr>`).join('')}</tbody></table>${R.length > 40 ? `<p class="text-[11px] text-muted mt-1">… et ${R.length - 40} autres</p>` : ''}</div>` : '<p class="text-[12.5px] text-muted">Aucun rendez-vous pris sur cette période.</p>'}</div>`; }
   const more = (l, n, p) => `<div class="rounded-xl bg-slate-50 px-4 py-3"><div class="text-xs font-semibold text-muted">${l}</div><div class="text-xl font-bold">${n}</div><div class="text-[11px]">${delta(n, p)}</div></div>`;
   const inR = (ds, a, b) => { const d = parseD(ds); return d && d >= a && d < b; };
   const sub = (l, n, p, txt, ic, bg, fg) => `<div class="rounded-xl border border-slate-200 bg-white px-3 py-2 flex items-center gap-2.5" style="${ic === 'fa-triangle-exclamation' && n ? 'border-color:#FCA5A5;background:#FEF2F2' : ''}"><span class="w-8 h-8 rounded-lg inline-flex items-center justify-center shrink-0" style="background:${bg};color:${fg}"><i class="fas ${ic}"></i></span><span class="text-[22px] font-bold leading-none">${n}</span><span class="text-[12px] text-slate-600 leading-tight">${txt}</span></div>`;
@@ -3808,6 +3827,7 @@ function renderActivity() {
   $('sa-more').innerHTML = sub('Pharmacies visitées', phs, visB.length, `pharmacie${phs > 1 ? 's' : ''} visitée${phs > 1 ? 's' : ''} · ${nbj ? (vis.length / nbj).toFixed(1).replace('.', ',') : '0'} / jour ouvré`, 'fa-location-dot', '#FFEDD5', '#C2410C')
     + sub('Sans déplacement', sans.length, sansB.length, 'sans déplacement (appels, relances, visios)', 'fa-headset', '#E0F2FE', '#0369A1')
     + sub('Actions traitées', A.filter(a => a.done !== false).length, B.filter(a => a.done !== false).length, 'actions traitées', 'fa-circle-check', '#E8F5EE', '#14603F')
+    + sub('RDV pris', ui._rdvN || 0, ui._rdvB || 0, 'RDV pris (visites et visios planifiées)', 'fa-calendar-plus', '#EDE9FE', '#5B21B6')
     + sub('Actions en retard', lateN, null, lateN ? 'en retard · à traiter' : 'rien en retard', 'fa-triangle-exclamation', lateN ? '#FEE2E2' : '#F1F3F6', lateN ? '#B42318' : '#475569');
   // graphique
   if (typeof Chart !== 'undefined') {
