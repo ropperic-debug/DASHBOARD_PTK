@@ -1271,6 +1271,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.23</b> : <b>PDF fusionné (synthèse + offre) corrigé</b> : titre de l'offre = « Offre pour <i>nom de la pharmacie</i> », plus de page quasi vide en fin de document, bloc « Indicateurs clés » retiré du PDF fusionné (il répétait l'offre), lignes du devis sur 2 lignes au lieu d'être coupées, chiffres incohérents des 3 piliers masqués (« 0 min », « 6,50 » sans unité), bandeau « Faible consommation » supprimé (déjà dans les caractéristiques), « m² » écrit « m2 » dans le PDF, titre du document PDF renseigné.</li>
 <li><b>V4.5.22</b> : (1) <b>Synthèse PDF sans page vide</b> : le bloc « Étude remise à / Votre interlocuteur » n'est plus répété en page 2 (il figure sur la page de garde) ; (2) <b>3 arguments au maximum</b> dans « Ce que vous nous avez dit » ; (3) <b>image de la gamme</b> (SINTESI SLIM / XL / GENESI) sur la dernière page utile, avant les QR codes, si la place le permet ; (4) <b>offre chiffrée</b> : les cases « Indicateurs clés » vides (capacité, dimensions, poids, contrat) sont masquées, et la section disparaît s'il ne reste que le total.</li>
 <li><b>V4.5.21</b> : (1) <b>Retour</b> : depuis une fiche, le bouton Retour (et le geste retour du téléphone) ramène à l'écran d'origine (onglet, filtres et position conservés : commissions, statistiques, Ma journée…) ; (2) <b>Chance de signature unique</b> 25 / 50 / 75 % : remplace Fort / Moyen / Faible, renseignée dès le départ, confirmée d'un clic après « Offre présentée » ; la pastille du tableau de bord affiche ce pourcentage (gris 25, orange 50, vert 75) ; les anciennes fiches sont converties (Faible 25, Moyen 50, Fort 75) ; (3) <b>Statistiques compactes</b> : indicateurs fins, graphique limité à aujourd'hui, Ventes avec 6 indicateurs et graphiques réorganisés, abandons affichés en gris « non compté » ; (4) <b>Ma journée</b> : une seule liste (en retard en rouge avec le nombre de jours, puis aujourd'hui), nom complet de la pharmacie, type d'action en pastille, trois onglets Aujourd'hui / Semaine / En retard, barre « faites », « Voir les autres », « À faire » déplacé en haut.</li>
 <li><b>V4.5.20</b> : <b>fichier suivi CRO</b> : (1) tableau ATTERRISSAGE : tous les mois sont renseignés, y compris les mois à venir (0 et 0 € quand rien n'est prévu) au lieu de cases vides ; le tableau suit vos fiches à chaque génération ; (2) colonne COMMENTAIRES : le texte long passe à la ligne et la ligne s'agrandit, plus de texte qui dépasse du cadre.</li>
@@ -2002,7 +2003,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.22';
+const APP_VERSION = '4.5.23';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -4891,9 +4892,9 @@ async function genArgNew(id, merge, prev, sec) {
   if (AO.plan === true || (AO.plan === undefined && IMG.length > 0)) K.y = 285;
   const drawPil = () => {
   if (PBR.pil === 'new') brk(); K.need(100); K.y += 4; sect('3. Les 3 piliers stratégiques de votre investissement', 'award'); PGM.pil = doc.getNumberOfPages(); K.y += 1;
-  const dimW = (T.dims || '').split(/\s*[x×]\s*/i)[0];
+  const dimW = (() => { const t0 = String(T.dims || '').trim(), f = t0.split(/\s*[x×]\s*/i)[0], u = (t0.match(/[a-zA-Z]+\s*$/) || [''])[0].trim(); return !f ? '' : (/[a-zA-Z]/.test(f) ? f : f + (u ? ' ' + u : '')); })(), gc = C.pst && C.gCollab > 0;
   const pil = [
-    ['Patient & conseil', 'user-nurse', C.pst ? `${hm(C.gCollab)}/j/poste` : '', [`${C.pst ? `**${hm(C.gCollab)}/jour** gagnées par collaborateur : ` : `**${H.gainPct} % de temps gagné** par délivrance : `}disponibilité immédiate pour l'écoute et les nouvelles missions.`, '**Proximité patient** : plus de temps d\'écoute, donc des patients fidélisés, un bouche-à-oreille positif et une fréquentation en hausse.', opts.includes('Euclid3D') ? `**Délivrance en un seul cycle** : multipicking Euclid3D, jusqu'à 15 boîtes${on('ligne') ? " (possibilité de délivrer à la ligne aussi, option paramétrable par l'utilisateur)" : ''}.` : '**Délivrance directe** : les produits arrivent au comptoir, sans déplacement.']],
+    ['Patient & conseil', 'user-nurse', gc ? `${hm(C.gCollab)}/j/poste` : '', [...(gc ? [`**${hm(C.gCollab)}/jour** gagnées par collaborateur : disponibilité immédiate pour l'écoute et les nouvelles missions.`] : (+H.gainPct > 0 ? [`**${H.gainPct} % de temps gagné** par délivrance : disponibilité immédiate pour l'écoute et les nouvelles missions.`] : [])), '**Proximité patient** : plus de temps d\'écoute, donc des patients fidélisés, un bouche-à-oreille positif et une fréquentation en hausse.', opts.includes('Euclid3D') ? `**Délivrance en un seul cycle** : multipicking Euclid3D, jusqu'à 15 boîtes${on('ligne') ? " (possibilité de délivrer à la ligne aussi, option paramétrable par l'utilisateur)" : ''}.` : '**Délivrance directe** : les produits arrivent au comptoir, sans déplacement.']],
     ['Espace & merchandising', 'up-right-and-down-left-from-center', dimW, ["**Haute densité de stockage** : un maximum d'espace utile libéré.", '**Surface de vente valorisée** : plus de proximité patient, moins de démarque inconnue.', `**Robot ${pos.length ? pos.join(', ').toLowerCase() : 'sur mesure'}**${opts.includes('Transitique tapis') ? ", transitique tapis jusqu'aux postes de vente" : " : implantation adaptée à l'officine"}.`]],
     ['Stock & FMD', 'shield-halved', cap ? `${fr(cap)} boîtes` : '', [cap && C.stk ? `**${cap >= C.stk ? '100 %' : Math.round(cap / C.stk * 100) + ' %'} du stock couvert** (${fr(C.stk)} boîtes), stock juste permanent.` : '**Stock juste permanent**, inventaire automatique.', opts.includes('Pharmaload') ? `**Pharmaload** : zéro erreur de rangement${C.gBo ? `, ~${hm(C.gBo)}/jour gagnés en back-office` : ''}.` : `**Rangement automatique** : zéro erreur${C.gBo ? `, ~${hm(C.gBo)}/jour gagnés en back-office` : ''}.`, '**Traçabilité & FMD** : lots et péremptions suivis, sans scan manuel.']]];
   const HD = 17, pw = (CW - 8) / 3, ph = pil.map(p => p[3].map(t => K.richH(md(t), pw - 14, 7.6, 3.7) + 2.4)), bodyH = Math.max(...ph.map(a => sum(a, x => x))) + 4;
@@ -4901,7 +4902,7 @@ async function genArgNew(id, merge, prev, sec) {
     ic(p[1], xx + 3, yy + 2.8, 5.4, true); K.font(7.4, 'bold', WH); doc.text(pdfTxt(p[0].toUpperCase()), xx + 10.5, yy + 6, {charSpace: .25}); if (p[2]) { K.font(14.5, 'bold', WH); K.t(p[2], xx + 4, yy + 13.6); }
     let ly = yy + HD + 4; p[3].forEach((t, j) => { doc.setFillColor(...PK.or); doc.circle(xx + 5.2, ly + 1.3, 2, 'F'); K.font(6.4, 'bold', WH); K.t(String(j + 1), xx + 5.2, ly + 2.1, {align: 'center'}); K.rich(md(t), xx + 9.5, ly + 1.6, pw - 13, 7.6, 3.7, PK.sub); ly += ph[i][j]; }); });
   K.y += HD + bodyH + 5;
-  if (T.conso && on('conso')) { K.need(18); rr(M, K.y, CW, 12, 2.8, [226, 242, 232]); doc.setDrawColor(150, 205, 175); doc.setLineWidth(.3); doc.roundedRect(M, K.y, CW, 12, 2.8, 2.8, 'S'); badge('bolt', M + 7, K.y + 6, 3.8, [28, 124, 84]); K.font(10, 'bold', [20, 98, 66]); K.t(`Faible consommation électrique : ${T.conso}`, M + 14, K.y + 5.4); K.font(7.4, 'normal', [52, 90, 72]); K.t('Un robot performant, sobre et durable : sans impact notable sur votre facture d\'énergie.', M + 14, K.y + 9.4); K.y += 15; }
+  if (false && T.conso && on('conso')) { K.need(18); rr(M, K.y, CW, 12, 2.8, [226, 242, 232]); doc.setDrawColor(150, 205, 175); doc.setLineWidth(.3); doc.roundedRect(M, K.y, CW, 12, 2.8, 2.8, 'S'); badge('bolt', M + 7, K.y + 6, 3.8, [28, 124, 84]); K.font(10, 'bold', [20, 98, 66]); K.t(`Faible consommation électrique : ${T.conso}`, M + 14, K.y + 5.4); K.font(7.4, 'normal', [52, 90, 72]); K.t('Un robot performant, sobre et durable : sans impact notable sur votre facture d\'énergie.', M + 14, K.y + 9.4); K.y += 15; }
   if (on('obso')) {
   const ob = [['truck-moving', 'Transfert pharmacie', "Démontable, transportable et réinstallable lors d'un transfert.", 'Mobilité patrimoniale'], ['ruler-combined', 'Dimensions modifiables', 'Rallongement a posteriori par ajout de colonnes.', 'Extension sur site']];
   if (dbl) ob.push(['hands', 'Évolution 1 à 2 bras', 'Passage ultérieur au double bras Euclid3D pour doubler la cadence.', 'Cadence doublée']);
@@ -6503,7 +6504,7 @@ function genOffre(id, K0) {
   const payOn = SX('pay'); K.font(6.2, 'normal', PK.mut); const pnt = doc.splitTextToSize(pdfTxt('Financement par leasing ou crédit : chèque de caution de 30 % du prix total, rendu ou détruit à la validation du financement.'), CW - 18), y0 = K.y + 1, hh = payOn ? 64.5 + (pnt.length - 1) * 2.7 : 42, pw = 62;
   rr(M, y0, CW, hh, 3.5, PK.or); card(M + 2.4, y0, CW - 2.4, hh, 3.5);
   pill('Synthèse, projet de robotisation', M + 9, y0 + 6, PK.or, WH);
-  K.font(16, 'bold', PK.ink); const tl = doc.splitTextToSize(pdfTxt(`Votre offre ${o.robot || 'Robot SINTESI'}`), CW - pw - 20); doc.text(tl.slice(0, 2), M + 9, y0 + 19);
+  K.font(16, 'bold', PK.ink); const tl = doc.splitTextToSize(pdfTxt(c.pharma ? `Offre pour ${c.pharma}` : `Votre offre ${o.robot || 'Robot SINTESI'}`), CW - pw - 20); doc.text(tl.slice(0, 2), M + 9, y0 + 19);
   K.font(8.2, 'normal', PK.mut); K.t(`Réf. ${o.ref || '—'}  ·  ${o.date || '—'}  ·  Validité ${o.validite || 30} jours`, M + 9, y0 + 19 + Math.min(tl.length, 2) * 6.6 + 2);
   const px = M + CW - pw - 4; rr(px, y0 + 4, pw, 34, 3, [246, 247, 249]);
   lab('Offre remise à', px + 4, y0 + 9, PK.ord, 5.4); K.font(8.6, 'bold', PK.ink); K.t(doc.splitTextToSize(pdfTxt(c.pharma || ''), pw - 8)[0], px + 4, y0 + 13.2); K.font(7.4, 'normal', PK.sub); K.t(doc.splitTextToSize(pdfTxt(c.devisNom ? tit : tit + (noms.length > 1 ? ', Titulaires' : ', Titulaire')), pw - 8)[0], px + 4, y0 + 17); K.t(doc.splitTextToSize(pdfTxt([c.rue, `${c.cp || ''} ${c.ville || ''}`.trim()].filter(Boolean).join(', ')), pw - 8)[0], px + 4, y0 + 20.8);
@@ -6517,7 +6518,7 @@ function genOffre(id, K0) {
     K.font(6.2, 'normal', PK.mut); doc.text(pnt, M + 9, y0 + 62.6, {lineHeightFactor: 1.2}); }
   K.y = y0 + hh + 4;
   // ===== Indicateurs clés
-  if (SX('kpi') && (o.tech?.capacite || o.tech?.dims || o.tech?.poids || o.tech?.poidsM2 || m.mensuel)) {
+  if (!K0 && SX('kpi') && (o.tech?.capacite || o.tech?.dims || o.tech?.poids || o.tech?.poidsM2 || m.mensuel)) {
   sect('Indicateurs clés', 'chart-line', 40, 'offre');
   { const kp = [['euro-sign', 'Total net HT', eur(k.net) + ' HT', true], ['boxes-stacked', 'Capacité', o.tech?.capacite || '—'], ['ruler-combined', 'Dimensions', o.tech?.dims || '—'], ['weight-hanging', 'Poids à vide', [o.tech?.poids, o.tech?.poidsM2].filter(Boolean).join(' · ') || '—'], ['headset', 'Contrat de service', m.mensuel ? `${eur(promo ? k.mRem : m.mensuel)} HT/mois` : '—']].filter((x, i) => !i || x[2] !== '—'), g = 3, cw = (CW - g * (kp.length - 1)) / kp.length, h = 25;
     kp.forEach((x, i) => { const xx = M + i * (cw + g); card(xx, K.y, cw, h, 2.8, x[3] ? PK.or : BD, x[3] ? .6 : .25); badge(x[0], xx + 5.4, K.y + 5.2, 2.6); lab(x[1], xx + 9.6, K.y + 6.2, PK.ord, 4.8, .15);
@@ -6535,7 +6536,7 @@ function genOffre(id, K0) {
       if (rk) { img = ROBOT_ICO[rk]; ar = ROBOT_AR[rk]; } else if (ok && OPT_ICO[ok]) { img = OPT_ICO[ok]; ar = OPT_AR[ok] || 1; }
       return {ti, de, m: x.m, img, ar, ico: /logisti|livraison|transport/i.test(ti) ? 'truck' : 'circle-check'}; });
     const MD = [{rh: 21, pw: 24, ph: 17, ts: 10.4, ds: 7.6, as: 12.4, sh: 11.5, gap: 1.8}, {rh: 16.5, pw: 19, ph: 13.5, ts: 9.6, ds: 7, as: 11.4, sh: 10, gap: 1.5}, {rh: 13.6, pw: 15, ph: 11, ts: 9, ds: 6.6, as: 10.4, sh: 8.8, gap: 1.2}];
-    const rowH = (x, d) => { const big = !!x.img, tw = CW - 7 - 3 - 4 - (big ? d.pw + 4 : 12) - 36; K.font(d.ds, 'normal', PK.mut); x.dl = x.de ? doc.splitTextToSize(pdfTxt(x.de), tw).slice(0, 2) : []; return (big ? d.rh : d.sh) + Math.max(0, x.dl.length - 1) * d.ds * .42; };
+    const rowH = (x, d) => { const big = !!x.img, tw = CW - 7 - 3 - 4 - (big ? d.pw + 4 : 12) - 36; K.font(big ? d.ts : d.ts - 1.2, 'bold', PK.ink); x.tl = doc.splitTextToSize(pdfTxt(x.ti), CW - 50 - (big ? d.pw : 0)).slice(0, 2); const ex = (x.tl.length - 1) * (big ? d.ts : d.ts - 1.2) * .42; K.font(d.ds, 'normal', PK.mut); x.dl = x.de ? doc.splitTextToSize(pdfTxt(x.de), tw).slice(0, 2) : []; return (big ? d.rh : d.sh) + Math.max(0, x.dl.length - 1) * d.ds * .42 + ex; };
     const HB = d => 3.5 + 12.5 + LN.reduce((a2, x) => a2 + rowH(x, d) + d.gap, 0) + (k.rem ? (remOn ? 5 + 12.3 : 9) : 0) + 19 + 5.5 + 3;
     let di = MD.findIndex(d => HB(d) <= 280 - K.y); if (di < 0) { K.foot(); doc.addPage(); K.head(); di = MD.findIndex(d => HB(d) <= 280 - K.y); }
     const framed = di >= 0; if (!framed) di = 2; const d = MD[di], top = K.y; let cy = top + (framed ? 3.5 : 0), ix = framed ? M + 3.5 : M, iw = framed ? CW - 7 : CW;
@@ -6544,8 +6545,8 @@ function genOffre(id, K0) {
     LN.forEach(x => { const big = !!x.img, h = rowH(x, d); if (!framed) { K.y = cy; K.need(h + 2); cy = K.y; }
       doc.setFillColor(...(big ? [250, 250, 251] : WH)); doc.setDrawColor(...BD); doc.setLineWidth(.25); doc.roundedRect(ix, cy, iw, h, 2.6, 2.6, 'FD'); rr(ix, cy, 2.6, h, 1.3, big ? PK.or : FAM); doc.setFillColor(...(big ? [250, 250, 251] : WH)); doc.rect(ix + 1.5, cy + .35, 1.4, h - .7, 'F');
       let tx = ix + 9; if (big) { const py = cy + (h - d.ph) / 2; doc.setFillColor(...WH); doc.setDrawColor(...BD); doc.setLineWidth(.2); doc.roundedRect(ix + 5, py, d.pw, d.ph, 1.8, 1.8, 'FD'); fit2(x.img, x.ar, ix + 6, py + 1, d.pw - 2, d.ph - 2); tx = ix + 5 + d.pw + 4; } else { badge(x.ico, ix + 9.8, cy + h / 2, 3.2, [148, 155, 164]); tx = ix + 16; }
-      const bh = 4.2 + (x.dl.length ? x.dl.length * 3.1 + .6 : 0), sy = cy + (h - bh) / 2 + 3.2; K.font(big ? d.ts : d.ts - 1.2, 'bold', PK.ink); doc.text(pdfTxt(doc.splitTextToSize(pdfTxt(x.ti), CW - 50 - (big ? d.pw : 0))[0]), tx, sy);
-      if (x.dl.length) { K.font(d.ds, 'normal', PK.mut); doc.text(x.dl, tx, sy + 4.2, {lineHeightFactor: 1.15}); }
+      const tlh = (big ? d.ts : d.ts - 1.2) * .42, bh = 4.2 + (x.tl.length - 1) * tlh + (x.dl.length ? x.dl.length * 3.1 + .6 : 0), sy = cy + (h - bh) / 2 + 3.2; K.font(big ? d.ts : d.ts - 1.2, 'bold', PK.ink); doc.text(x.tl, tx, sy, {lineHeightFactor: 1.05});
+      if (x.dl.length) { K.font(d.ds, 'normal', PK.mut); doc.text(x.dl, tx, sy + 4.2 + (x.tl.length - 1) * tlh, {lineHeightFactor: 1.15}); }
       K.font(big ? d.as : d.as - 2, 'bold', PK.ink); K.t(eur(x.m), ix + iw - 5, cy + h / 2 + 1.6, {align: 'right'}); cy += h + d.gap; });
     if (k.rem) { if (!framed) { K.y = cy; K.need(24); cy = K.y; }
       if (remOn) { K.font(7.6, 'normal', PK.mut); K.t('Total brut HT', ix + 4, cy + 3.4); K.t(eur(k.brut), ix + iw - 5, cy + 3.4, {align: 'right'}); cy += 5;
@@ -6801,7 +6802,7 @@ function renderDashAlert() {
 
 /* ================= PDF : CONFIRMATION DE LEVÉE DES RÉSERVES ================= */
 const pharLoc = c => { const nz = x => String(x || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(), p = String(c.pharma || '').replace(/\s+/g, ' ').trim(), v = String(c.ville || '').trim(); return v && !nz(p).includes(nz(v)) ? `${p} · ${v}` : p; };
-const pdfTxt = s => String(s ?? '').replace(/[\u202f\u00a0]/g, ' ').replace(/[–—]/g, '-').replace(/[’‘]/g, "'").replace(/[«»]/g, '"').replace(/…/g, '...').replace(/≈/g, 'env.').replace(/ {2,}/g, ' ');
+const pdfTxt = s => String(s ?? '').replace(/[\u202f\u00a0]/g, ' ').replace(/[–—]/g, '-').replace(/[’‘]/g, "'").replace(/[«»]/g, '"').replace(/…/g, '...').replace(/≈/g, 'env.').replace(/²/g, '2').replace(/³/g, '3').replace(/ {2,}/g, ' ');
 /* ================= PDF : CHARTE PHARMATHEK (levée des réserves, argumentaire) ================= */
 const PK = {or: [232, 119, 34], ord: [184, 74, 8], ink: [43, 43, 43], mut: [95, 99, 104], sub: [60, 64, 67], grey: [244, 244, 245], cream: [255, 243, 234], line: [191, 195, 200]};
 const PTK_ADM = {nom: 'Pharmathek France SAS', rue: '214 Chemin Vallon Rouge – ZA Bertoire II', ville: '13410 Lambesc – France', mail: 'administration@pharmathek.com'};
@@ -6811,7 +6812,7 @@ const titNoms = c => { const first = `${c.genre === 'Mme' ? 'Mme' : 'M.'} ${nomC
 const md = s => String(s || '').split(/(\*\*[^*]+\*\*)/).filter(Boolean).map(p => p.startsWith('**') ? {t: p.slice(2, -2), b: true} : {t: p});
 function pdfKit(footRight) {
   const {jsPDF} = window.jspdf, doc = new jsPDF({unit: 'mm', format: 'a4'}), W = 210, M = 20, CW = W - 2 * M;
-  const K = {doc, W, M, CW, y: 0};
+  const K = {doc, W, M, CW, y: 0}; try { doc.setProperties({title: String(footRight || 'Pharmathek').replace(/^Synthèse ·/, 'Synthèse du projet de robotisation ·'), author: 'Pharmathek France'}); } catch { }
   K.col = (c, fill) => fill ? doc.setFillColor(...c) : doc.setTextColor(...c);
   K.t = (s, x, y, o) => doc.text(pdfTxt(s), x, y, o);
   K.font = (size, style = 'normal', color = PK.ink) => { doc.setFont('helvetica', style); doc.setFontSize(size); doc.setTextColor(...color); };
