@@ -1272,6 +1272,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.19</b> : synthèse PDF : (1) page de couverture sans répétition du lieu (« Pharmacie d'Arconnay · Arconnay » devient « Pharmacie d'Arconnay ») et espaces doubles supprimés ; (2) <b>offre chiffrée</b> : miniature de l'option dès qu'une image existe, y compris quand l'option est citée dans le détail (ex. « Option bras robotisé · Euclid3D ») ; (3) plus de « stockage temporaire » ni de « upgrade » devant Euclid3D ; (4) l'argumentaire n'affiche plus deux fois le même titre (problématique du client et besoin identique).</li>
 <li><b>V4.5.18</b> : (0) <b>Plus de R1 / R2 / R3 à l'écran</b> : le tableau de bord (bandeau et colonne « Avancement ») et la fiche affichent les jalons ; (1) <b>Taux de transformation</b> = robots signés ÷ (robots signés + dossiers perdus face à un concurrent) ; les abandons n'en font plus partie ; (2) <b>fiche client</b> en 4 blocs : « Projet et officine » (fusionnés), « Besoins et argumentaire », « Offre », « Notes et prochaine action » ; fin du bandeau « Reste à faire » et des pastilles de navigation ; (3) <b>Avancement du dossier</b> par jalons (Projet et officine, Besoins et argumentaire, Devis réalisé, Offre présentée, Contrat signé) avec pourcentage ; (4) bouton « Offre présentée au client » : une fenêtre demande la <b>chance de signature</b> (25 % faible, 50 % moyen, 75 % transformable) ; elle colore la pastille du tableau de bord et pondère le « Potentiel à signer » (10 % tant que l'offre n'est pas présentée).</li>
 <li><b>V4.5.17</b> : (1) <b>Ventes</b> : colonne « Potentiel à signer » plus étroite, graphique plus large et plus lisible ; (2) <b>Ma journée et ma semaine</b> : actions à faire (cadre pointillé orange), en retard (rouge) et faites (vert, repliées sous « Faites aujourd'hui ») avec barre de progression ; (3) <b>Statistiques</b> en 3 onglets (Activité commerciale, Ventes, Détail mensuel), cartes « Mes déplacements », « Visites sur site », « Sans déplacement » ; (4) <b>Commissions</b> : un clic sur une carte ou une ligne du récapitulatif ouvre la liste des dossiers (CSV, « Marquer payées ») ; (5) <b>fiche signée</b> simplifiée (plus de « Reste à faire » ni de « Suivi », bandeau « À compléter ») ; (6) action déjà faite = ne reste plus « à faire » ; (7) replanification : week-ends et jours fériés français ignorés ; (8) message de confirmation en quittant une fiche modifiée.</li>
 <li><b>V4.5.16</b> : <b>présentation des prix de l'offre</b>. Dans « Votre investissement », le total est affiché <b>net hors taxes</b> en gros, avec en tout petit « TVA au taux de 20 % en sus » ; il n'y a plus de ligne TVA ni de total TTC dans le détail de l'offre. L'indicateur clé affiche le total net HT, avec en petit le montant de la TVA et le total TTC ; l'indicateur du contrat de service rappelle la remise (par exemple 290 € HT/mois pendant 36 mois, puis 450 € HT/mois). Les conditions de paiement (30 % / 50 % / 20 %) restent calculées sur le TTC, « TVA incluse ». La remise maintenance n'apparaît que si elle est renseignée dans l'offre.</li>
@@ -1999,7 +2000,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.18';
+const APP_VERSION = '4.5.19';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -4643,7 +4644,7 @@ function coverPage(K, c, o) {
   K.font(7, 'bold', PK.ord); { const lb = pdfTxt(o.label.toUpperCase()); doc.text(lb, W - 20 - doc.getTextWidth(lb) - lb.length * .7, 24, {charSpace: .7}); } K.font(8.5, 'normal', PK.mut); doc.text(new Date().toLocaleDateString('fr-FR', {day: 'numeric', month: 'long', year: 'numeric'}), W - 20, 29.5, {align: 'right'});
   doc.setFillColor(...PK.or); doc.rect(22, 58, 16, .9, 'F');
   K.font(34, 'bold', [31, 35, 40]); doc.text(pdfTxt(o.t1), 22, 76); doc.text(pdfTxt(o.t2), 22, 89.5);
-  K.font(12, 'normal', PK.mut); doc.text(pdfTxt(`${c.pharma}${c.ville ? ' · ' + c.ville : ''}`), 22, 102);
+  K.font(12, 'normal', PK.mut); doc.text(pdfTxt(pharLoc(c)), 22, 102);
     try { const w = 166, h = w / ROBOT_COVER_AR, x0 = (W - w) / 2, by = 108 + h - 11, rd = 4.5;
     doc.saveGraphicsState(); doc.roundedRect(x0, 108, w, h, rd, rd, null); doc.clip(); doc.discardPath();
     doc.addImage(ROBOT_COVER, 'JPEG', x0, 108, w, h);
@@ -4906,10 +4907,10 @@ async function genArgNew(id, merge, prev, sec) {
 function genArg() {
   const c = byId(ui.argId); if (!c) return;
   if (!window.jspdf) return toast('Générateur PDF indisponible (connexion Internet requise au premier chargement).', true);
-  argSave(true); const A = c.argDraft, items = A.items.filter(i => i.h && i.k !== '__prob');
+  argSave(true); const A = c.argDraft, PRB = A.items.find(i => i.k === '__prob'), nzh = x => String(x || '').toLowerCase().replace(/[^a-zà-ÿ0-9]+/g, ' ').trim(), items = A.items.filter(i => i.h && i.k !== '__prob' && !(PRB && PRB.h && !PRB.off && nzh(i.h) === nzh(PRB.h)));
   const K = pdfKit(`Synthèse · ${c.pharma}`), doc = K.doc, M = K.M, CW = K.CW;
   K.head();
-  K.h1('Argumentaire personnalisé', A.title || 'Votre projet de robotisation', [{t: `${c.pharma} · ${c.ville} · `}, {t: new Date().toLocaleDateString('fr-FR', {day: 'numeric', month: 'long', year: 'numeric'})}]);
+  K.h1('Argumentaire personnalisé', A.title || 'Votre projet de robotisation', [{t: `${pharLoc(c)} · `}, {t: new Date().toLocaleDateString('fr-FR', {day: 'numeric', month: 'long', year: 'numeric'})}]);
   const bw = (CW - 6) / 2, by = K.y + 1, bh = 35;
   K.addrBox(M, by, bw, bh, 'Client', [c.pharma, `${c.genre} ${nomComplet(c)}`, c.rue, `${c.cp || ''} ${c.ville || ''}`.trim(), (c.telFixe || c.telPort) ? `Tél. : ${c.telFixe || c.telPort}` : '']);
   K.addrBox(M + bw + 6, by, bw, bh, 'Votre projet', [A.solution || 'Robot Pharmathek', A.projet]);
@@ -6217,7 +6218,7 @@ function parseDevis(L) {
     blk = []; });
 
   o.lignes.forEach(x => { const n = norm(x.k), I = x.items || [], has = re => I.some(i => re.test(i)); let t = OFFRE_LBL[n] || x.k;
-    if (n === 'option bras robotise') t = 'Option bras robotisé (' + [has(/Euclid3D/i) && 'upgrade Euclid3D, stockage temporaire', has(/second bras/i) && 'prédisposition second bras'].filter(Boolean).join(', ') + ')';
+    if (n === 'option bras robotise') t = 'Option bras robotisé (' + [has(/Euclid3D/i) && 'Euclid3D', has(/second bras/i) && 'prédisposition second bras'].filter(Boolean).join(', ') + ')';
     if (n === 'systeme de transport' || n === 'quickair') { const nh = I.filter(i => /HeliPharma/i.test(i)).length; t = 'Système de transport (' + [nh && `${nh} descente${nh > 1 ? 's' : ''} HeliPharma`, has(/QuickAir pour deux/i) ? 'QuickAir pour 2 points de livraison' : has(/QuickAir/i) && 'QuickAir'].filter(Boolean).join(' + ') + ')'; }
     if (n === 'autres options' && I.length) t = 'Autres options (' + I.map(i => lc1(i.replace(/\.$/, ''))).join(', ') + ')';
     if (n === 'services logistiques supplementaires') { const a = I.find(i => /Stationnement/i.test(i)); if (a) t = 'Services logistiques (' + lc1(a) + ')'; }
@@ -6477,7 +6478,7 @@ function genOffre(id, K0) {
     const splitT = t => { let dp = 0; for (let i = 0; i < t.length; i++) { const ch = t[i]; if (ch === '(') dp++; else if (ch === ')') dp = Math.max(0, dp - 1); else if (!dp && (ch === ',' || (/[-–—]/.test(ch) && t[i - 1] === ' ' && t[i + 1] === ' '))) return [t.slice(0, i).trim(), t.slice(i + 1).trim()]; } const mp = t.match(/^(.*?)\s*\((.+)\)\s*$/); return mp ? [mp[1].trim(), mp[2].trim()] : [t, '']; };
     const fit2 = (src, ar, x, y, bw, bh) => { let w2 = bw, h2 = bw / ar; if (h2 > bh) { h2 = bh; w2 = bh * ar; } try { doc.addImage(src, 'JPEG', x + (bw - w2) / 2, y + (bh - h2) / 2, w2, h2); } catch { } };
     const LN = o.lignes.map(x => { const t = String(x.t || '').trim(), [ti0, de0] = splitT(t), ti = ti0 || t, de = de0 ? de0.charAt(0).toUpperCase() + de0.slice(1) : '';
-      let img = null, ar = 1; const rk = /(^|\s)(robot|sintesi|genesi)/i.test(ti) ? robotKey(ti) : null, ok = optKey(ti) || (/chargeur/i.test(ti) ? 'pharmaload' : null);
+      let img = null, ar = 1; const rk = /(^|\s)(robot|sintesi|genesi)/i.test(ti) ? robotKey(ti) : null, ok = optKey(ti) || (/chargeur/i.test(ti) ? 'pharmaload' : null) || optKey(de0 || '');
       if (rk) { img = ROBOT_ICO[rk]; ar = ROBOT_AR[rk]; } else if (ok && OPT_ICO[ok]) { img = OPT_ICO[ok]; ar = OPT_AR[ok] || 1; }
       return {ti, de, m: x.m, img, ar, ico: /logisti|livraison|transport/i.test(ti) ? 'truck' : 'circle-check'}; });
     const MD = [{rh: 21, pw: 24, ph: 17, ts: 10.4, ds: 7.6, as: 12.4, sh: 11.5, gap: 1.8}, {rh: 16.5, pw: 19, ph: 13.5, ts: 9.6, ds: 7, as: 11.4, sh: 10, gap: 1.5}, {rh: 13.6, pw: 15, ph: 11, ts: 9, ds: 6.6, as: 10.4, sh: 8.8, gap: 1.2}];
@@ -6745,7 +6746,8 @@ function renderDashAlert() {
 }
 
 /* ================= PDF : CONFIRMATION DE LEVÉE DES RÉSERVES ================= */
-const pdfTxt = s => String(s ?? '').replace(/[\u202f\u00a0]/g, ' ').replace(/[–—]/g, '-').replace(/[’‘]/g, "'").replace(/[«»]/g, '"').replace(/…/g, '...').replace(/≈/g, 'env.');
+const pharLoc = c => { const nz = x => String(x || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim(), p = String(c.pharma || '').replace(/\s+/g, ' ').trim(), v = String(c.ville || '').trim(); return v && !nz(p).includes(nz(v)) ? `${p} · ${v}` : p; };
+const pdfTxt = s => String(s ?? '').replace(/[\u202f\u00a0]/g, ' ').replace(/[–—]/g, '-').replace(/[’‘]/g, "'").replace(/[«»]/g, '"').replace(/…/g, '...').replace(/≈/g, 'env.').replace(/ {2,}/g, ' ');
 /* ================= PDF : CHARTE PHARMATHEK (levée des réserves, argumentaire) ================= */
 const PK = {or: [232, 119, 34], ord: [184, 74, 8], ink: [43, 43, 43], mut: [95, 99, 104], sub: [60, 64, 67], grey: [244, 244, 245], cream: [255, 243, 234], line: [191, 195, 200]};
 const PTK_ADM = {nom: 'Pharmathek France SAS', rue: '214 Chemin Vallon Rouge – ZA Bertoire II', ville: '13410 Lambesc – France', mail: 'administration@pharmathek.com'};
