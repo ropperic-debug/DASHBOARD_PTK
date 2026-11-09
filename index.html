@@ -1272,7 +1272,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
-<li><b>V4.5.29</b> : <b>Fichier de suivi CRO</b> : toutes les lignes des tableaux ont maintenant la même hauteur (plus de lignes décalées), les commentaires restent sur une seule ligne et les colonnes s'ajustent au contenu.</li>\n<li><b>V4.5.28</b> : <b>Leads à recontacter</b>. « Nouvelle fiche » propose désormais « Projet robot » ou « Lead à recontacter » (pharmacie, origine, motif, première action). Un lead est <b>hors portefeuille, prévisions et statistiques</b> : il est dans la tuile violette « Prospection non aboutie » (onglets À recontacter / Sans suite). Sa première action apparaît dans « Ma journée ». Boutons « Créer le projet » (passe au portefeuille sans ressaisie), « Classer sans suite » et « Réactiver ». L'historique est toujours conservé.</li>
+<li><b>V4.5.31</b> : <b>Envoi du fichier CRO par e-mail</b> : les destinataires sont séparés par des points-virgules (au lieu de virgules), ce qui évite l'erreur « Vérification des noms » d'Outlook. Même correction pour l'e-mail de levée des réserves.</li>\n<li><b>V4.5.30</b> : <b>Fichier de suivi CRO</b> : une pharmacie présente en double (même code CIP) parmi les projets en cours n'apparaît plus qu'une fois : la fiche la plus avancée est gardée. Vos fiches ne sont pas modifiées.</li>\n<li><b>V4.5.29</b> : <b>Fichier de suivi CRO</b> : toutes les lignes des tableaux ont maintenant la même hauteur (plus de lignes décalées), les commentaires restent sur une seule ligne et les colonnes s'ajustent au contenu.</li>\n<li><b>V4.5.28</b> : <b>Leads à recontacter</b>. « Nouvelle fiche » propose désormais « Projet robot » ou « Lead à recontacter » (pharmacie, origine, motif, première action). Un lead est <b>hors portefeuille, prévisions et statistiques</b> : il est dans la tuile violette « Prospection non aboutie » (onglets À recontacter / Sans suite). Sa première action apparaît dans « Ma journée ». Boutons « Créer le projet » (passe au portefeuille sans ressaisie), « Classer sans suite » et « Réactiver ». L'historique est toujours conservé.</li>
 <li><b>V4.5.27</b> : (1) <b>Fiche réorganisée</b> : la carte « Préparer et générer le PDF » est maintenant la dernière étape de « Offre de robotisation » (robot → devis → plan → PDF), avec une barre de progression à 4 étapes. (2) <b>Remplacer le devis</b> : bouton orange bien visible dans « Devis + maintenance » ; vous importez le nouveau PDF, une fenêtre compare l'ancien et le nouveau (total, écart, lignes ajoutées, supprimées ou modifiées), puis vous validez. L'ancien devis est conservé dans l'historique de la fiche.</li>
 <li><b>V4.5.26</b> : <b>Mise en page automatique du PDF</b> : avant de créer le PDF, le logiciel fait des essais invisibles et ajuste seul pour éviter une dernière page quasi vide : bloc « Éléments complémentaires » placé en page 3 s'il y a de la place, bandeau « Restons connectés » compact, espaces resserrés, puis en dernier recours retrait de « c'est aussi… » puis de la garantie. Un message indique ce qui a été ajusté (fenêtre de génération et confirmation). Un PDF qui passe déjà bien ne change pas.</li>
 <li><b>V4.5.25</b> : <b>Offre : lignes à 0 € = « Inclus »</b>. Dans le PDF (offre seule et fusionné), toute ligne du devis à 0 € quitte la liste chiffrée et apparaît dans un bloc vert « Inclus dans votre offre » avec une pastille « Inclus » ; les totaux ne changent pas. Dans l'écran de l'offre, un message vert prévient quand une ligne est à 0 (pour repérer un prix oublié).</li>
@@ -2039,7 +2039,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.29';
+const APP_VERSION = '4.5.31';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -3516,7 +3516,7 @@ function levMail(c) {
 function levSend() {
   const c = byId(ui.lev.id), to = $('lv-to').value.trim();
   if (!to) { toast("Renseignez l'adresse e-mail du client", true); $('lv-to').focus(); return; }
-  location.href = `mailto:${to}?subject=${enc(`Levée des réserves – Contrat n° ${c.numDossier} – ${c.pharma}`)}&body=${enc($('lv-msg').value)}`;
+  location.href = `mailto:${to.split(/[;,\s]+/).filter(Boolean).join(';')}?subject=${enc(`Levée des réserves – Contrat n° ${c.numDossier} – ${c.pharma}`)}&body=${enc($('lv-msg').value)}`;
   const dly = Math.max(1, Math.min(60, +$('lv-delay').value || 7)); if (settings.levDelay !== dly) { settings.levDelay = dly; saveSet(); }
   c.levSent = isoDay(TODAY);
   c.rappels = c.rappels || []; c.rappels = c.rappels.filter(r => !(r.lev && !r.done));
@@ -7077,16 +7077,20 @@ function croData() {
   const Y = CUR_YEAR, inY = s => s && parseD(s).getFullYear() === Y;
   const rob = clients.filter(c => c.step === 'Signé' && inY(c.signatureDate)).sort((a, b) => a.signatureDate.localeCompare(b.signatureDate));
   const add = clients.flatMap(c => c.addons.filter(a => a.statut === 'signe' && inY(a.date)).map(a => ({c, a}))).sort((x, y) => x.a.date.localeCompare(y.a.date));
-  const act = clients.filter(isActive).sort((a, b) => String(createdOf(a)).localeCompare(String(createdOf(b))));
+  /* V4.5.30 : une pharmacie (même CIP) en double parmi les projets en cours n'apparaît qu'une fois : on garde la fiche la plus avancée, puis la plus récente */
+  const rk = c => ORDER.indexOf(c.step) * 1e14 + (Date.parse(c.history?.[0]?.date) || 0), best = new Map();
+  clients.filter(isActive).forEach(c => { if (!c.cip) return; const o = best.get(c.cip); if (!o || rk(c) > rk(o)) best.set(c.cip, c); });
+  const dupOut = new Set(clients.filter(c => isActive(c) && c.cip && best.get(c.cip) !== c).map(c => c.id));
+  const act = clients.filter(c => isActive(c) && !dupOut.has(c.id)).sort((a, b) => String(createdOf(a)).localeCompare(String(createdOf(b))));
   const lost = clients.filter(c => c.step === 'Perdu').sort((a, b) => String(a.perduDate).localeCompare(String(b.perduDate)));
   const months = MOIS_XL.map((l, m) => {
     const start = new Date(Y, m, 1), end = new Date(Y, m + 1, 1), past = start <= TODAY;
-    const alive = clients.filter(c => { const cr = parseD(createdOf(c)); if (!cr || cr >= end) return false; const close = parseD(c.signatureDate || c.perduDate); return !close || close >= start || !['Signé', 'Perdu'].includes(c.step); });
+    const alive = clients.filter(c => !dupOut.has(c.id)).filter(c => { const cr = parseD(createdOf(c)); if (!cr || cr >= end) return false; const close = parseD(c.signatureDate || c.perduDate); return !close || close >= start || !['Signé', 'Perdu'].includes(c.step); });
     const prev = [...act.filter(c => { const d = parseD(c.dateDecision); return d && d >= start && d < end; }), ...rob.filter(c => { const d = parseD(c.signatureDate); return d >= start && d < end; })];
     const sig = rob.filter(c => { const d = parseD(c.signatureDate); return d >= start && d < end; });
     return {l, nb: past || m === TODAY.getMonth() ? alive.length : act.length, prev: prev.length, ca: sum(prev, c => c.montant), sig: sig.length, caSig: sum(sig, c => c.montant), past: start <= TODAY};
   });
-  return {Y, rob, add, act, lost, months};
+  return {Y, rob, add, act, lost, months, dupOut};
 }
 function comment(c) {
   const rc = c.robotConc, rcN = rc ? [rc.marque === 'Autre' ? rc.autre : rc.marque, rc.modele].filter(Boolean).join(' ') : '';
@@ -7205,7 +7209,7 @@ function openPrev() {
 }
 async function dlCRO(mail) {
   if (mail) { mbCommitAll(); if (ui.mb && [...ui.mb.to, ...ui.mb.cc].some(x => x.bad)) return toast('Une adresse e-mail est invalide : corrigez-la ou retirez-la.', true); }
-  const M = settings.mail, link = mail ? `mailto:${M.to.split(/[;,\s]+/).filter(Boolean).join(',')}?${[M.cc && 'cc=' + enc(M.cc.split(/[;,\s]+/).filter(Boolean).join(',')), 'subject=' + enc(fillTpl(M.subject)), 'body=' + enc(withAddr(fillTpl(M.body)))].filter(Boolean).join('&')}` : null;
+  const M = settings.mail, link = mail ? `mailto:${M.to.split(/[;,\s]+/).filter(Boolean).join(';')}?${[M.cc && 'cc=' + enc(M.cc.split(/[;,\s]+/).filter(Boolean).join(';')), 'subject=' + enc(fillTpl(M.subject)), 'body=' + enc(withAddr(fillTpl(M.body)))].filter(Boolean).join('&')}` : null;
   try {
     toast('Génération du fichier…');
     const buf = await genCRO();
