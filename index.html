@@ -1272,6 +1272,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.42</b> : <b>« X j sans action »</b> : le calcul prend maintenant l'action la plus récente de l'historique (une fiche avec des actions faites aujourd'hui n'affiche plus des centaines de jours sans action).</li>
 <li><b>V4.5.41</b> : <b>Ma journée, onglet « À faire »</b> : les actions réalisées aujourd'hui y sont maintenant listées (« Faites aujourd'hui »), et une fiche dont l'action vient d'être faite est marquée « Action faite aujourd'hui · à planifier ».</li>
 <li><b>V4.5.40</b> : <b>Ma journée</b> : une action traitée aujourd'hui apparaît dans « Faites aujourd'hui » à sa date de réalisation, même si elle était prévue un autre jour (et même si plusieurs actions de la même fiche sont traitées le même jour).</li>
 <li><b>V4.5.39</b> : <b>Replanifier un rappel</b> (visite, appel…) depuis la fiche propose maintenant l'ajout à l'agenda, comme les autres actions.</li>
@@ -2050,7 +2051,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.41';
+const APP_VERSION = '4.5.42';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2453,7 +2454,10 @@ const ui = {year: CUR_YEAR, tab: 'portfolio', todo: 'today', sort: {}, filters: 
 const save = () => { try { const ce = ui.editId && byId(ui.editId); if (ce && !$('view-client').classList.contains('hidden') && v41Auto(ce)) setTimeout(() => { if (byId(ui.editId) === ce) renderChrome(ce); }, 0); } catch (e) {} const now = Date.now(); clients.forEach(c => { const h = cHash(c); if (c._h !== h) { c._h = h; c.maj = now; } }); const ok = store.save(K_DATA, clients); fbSoon(); return ok; };
 const byId = id => clients.find(c => c.id === id);
 const isActive = c => ORDER.includes(c.step);
-const lastAction = (c, a) => a?.lastActionDate || c.history[0]?.date || null;
+/* V4.5.42 : dernière action = la plus récente (et non la première ligne de l'historique, parfois plus ancienne) */
+const lastAction = (c, a) => { if (a?.lastActionDate) return a.lastActionDate; let b = null, bt = -1; const T = s => { const d = s && parseD(s); return d && !isNaN(d) ? +d : -1; };
+  const cand = [...(c.history || []).map(h => h.date), c.lastDone && !c.lastDone.nr ? c.lastDone.dt : null, ...(c.rappels || []).filter(r => r.done).map(r => r.doneAt)];
+  cand.forEach(s => { const t = T(s); if (t > bt && t <= Date.now() + 36e5) { bt = t; b = s; } }); return b || c.history[0]?.date || null; };
 const createdOf = c => c.createdAt || c.history[c.history.length - 1]?.date || null;
 const ECH = c => settings.echeances[c.echeance] || null;
 function addAct(c, dt, type, motif = '') { if (!dt) return; c.acts = c.acts || []; c.acts.push({dt, type, motif, done: false}); }
