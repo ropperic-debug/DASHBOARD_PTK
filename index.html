@@ -1271,6 +1271,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.25</b> : <b>Offre : lignes à 0 € = « Inclus »</b>. Dans le PDF (offre seule et fusionné), toute ligne du devis à 0 € quitte la liste chiffrée et apparaît dans un bloc vert « Inclus dans votre offre » avec une pastille « Inclus » ; les totaux ne changent pas. Dans l'écran de l'offre, un message vert prévient quand une ligne est à 0 (pour repérer un prix oublié).</li>
 <li><b>V4.5.24</b> : <b>Relier le téléphone en 3 étapes</b> (Paramètres › Synchronisation) : un seul écran à la fois avec barre de progression. Étape 1 : code de l'appareil (ancien « compte de l'appareil »). Étape 2 : mot de passe de synchronisation. Étape 3 : phrase secrète. Sur l'ordinateur, un seul bouton « Copier le lien pour mon téléphone » (plus d'adresse de base, de clé API ni de code à coller). Le lien ouvre maintenant directement l'onglet Synchronisation (avant, il pouvait ouvrir un onglet inexistant).</li>
 <li><b>V4.5.23</b> : <b>PDF fusionné (synthèse + offre) corrigé</b> : titre de l'offre = « Offre pour <i>nom de la pharmacie</i> », plus de page quasi vide en fin de document, bloc « Indicateurs clés » retiré du PDF fusionné (il répétait l'offre), lignes du devis sur 2 lignes au lieu d'être coupées, chiffres incohérents des 3 piliers masqués (« 0 min », « 6,50 » sans unité), bandeau « Faible consommation » supprimé (déjà dans les caractéristiques), « m² » écrit « m2 » dans le PDF, titre du document PDF renseigné.</li>
 <li><b>V4.5.22</b> : (1) <b>Synthèse PDF sans page vide</b> : le bloc « Étude remise à / Votre interlocuteur » n'est plus répété en page 2 (il figure sur la page de garde) ; (2) <b>3 arguments au maximum</b> dans « Ce que vous nous avez dit » ; (3) <b>image de la gamme</b> (SINTESI SLIM / XL / GENESI) sur la dernière page utile, avant les QR codes, si la place le permet ; (4) <b>offre chiffrée</b> : les cases « Indicateurs clés » vides (capacité, dimensions, poids, contrat) sont masquées, et la section disparaît s'il ne reste que le total.</li>
@@ -2004,7 +2005,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.24';
+const APP_VERSION = '4.5.25';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -6448,6 +6449,8 @@ function offreRead() {
 }
 function offreShow(k) { const p = $('of-sp'), e = $('of-se'), n = $('of-sn'); if (k === 'n') { if (n.checked) p.checked = e.checked = false; else p.checked = e.checked = true; } else if (p.checked || e.checked) n.checked = false; else n.checked = true; offreTot(); }
 function offreTot(src) {
+  document.querySelectorAll('#of-rows .of-row').forEach(r => { const z = !(+r.querySelector('.of-m').value), h = r.querySelector('.of-hint'), t = (r.querySelector('.of-t').value || '').trim();
+    if (z && t && !h) r.insertAdjacentHTML('beforeend', '<div class="of-hint col-span-3 -mt-1 text-[12px] font-semibold text-emerald-800"><i class="fas fa-circle-check"></i> Montant à 0 : cette ligne sera affichée dans « Inclus dans votre offre ». Si c\'est un oubli, saisissez le prix.</div>'); else if ((!z || !t) && h) h.remove(); });
   const brut = sum([...document.querySelectorAll('#of-rows .of-m')], i => +i.value || 0);
   if (src === 'pct' || src === 'eur' || src === 'net') ui.ofMode = src; const md = ui.ofMode || 'pct';
   let rem = md === 'eur' ? Math.round(+$('of-reur').value || 0) : md === 'net' ? ($('of-rnet').value === '' ? 0 : brut - Math.round(+$('of-rnet').value || 0)) : Math.round(brut * (+$('of-rpct').value || 0) / 100);
@@ -6536,19 +6539,26 @@ function genOffre(id, K0) {
       let img = null, ar = 1; const rk = /(^|\s)(robot|sintesi|genesi)/i.test(ti) ? robotKey(ti) : null, ok = optKey(ti) || (/chargeur/i.test(ti) ? 'pharmaload' : null) || optKey(de0 || '');
       if (rk) { img = ROBOT_ICO[rk]; ar = ROBOT_AR[rk]; } else if (ok && OPT_ICO[ok]) { img = OPT_ICO[ok]; ar = OPT_AR[ok] || 1; }
       return {ti, de, m: x.m, img, ar, ico: /logisti|livraison|transport/i.test(ti) ? 'truck' : 'circle-check'}; });
+    const LP = LN.filter(x => +x.m), LI = LN.filter(x => !+x.m), incH = LI.length ? 7.5 + LI.reduce((a2, x) => a2 + (x.de ? 11 : 8.4), 0) + 2.5 : 0;
     const MD = [{rh: 21, pw: 24, ph: 17, ts: 10.4, ds: 7.6, as: 12.4, sh: 11.5, gap: 1.8}, {rh: 16.5, pw: 19, ph: 13.5, ts: 9.6, ds: 7, as: 11.4, sh: 10, gap: 1.5}, {rh: 13.6, pw: 15, ph: 11, ts: 9, ds: 6.6, as: 10.4, sh: 8.8, gap: 1.2}];
     const rowH = (x, d) => { const big = !!x.img, tw = CW - 7 - 3 - 4 - (big ? d.pw + 4 : 12) - 36; K.font(big ? d.ts : d.ts - 1.2, 'bold', PK.ink); x.tl = doc.splitTextToSize(pdfTxt(x.ti), CW - 50 - (big ? d.pw : 0)).slice(0, 2); const ex = (x.tl.length - 1) * (big ? d.ts : d.ts - 1.2) * .42; K.font(d.ds, 'normal', PK.mut); x.dl = x.de ? doc.splitTextToSize(pdfTxt(x.de), tw).slice(0, 2) : []; return (big ? d.rh : d.sh) + Math.max(0, x.dl.length - 1) * d.ds * .42 + ex; };
-    const HB = d => 3.5 + 12.5 + LN.reduce((a2, x) => a2 + rowH(x, d) + d.gap, 0) + (k.rem ? (remOn ? 5 + 12.3 : 9) : 0) + 19 + 5.5 + 3;
+    const HB = d => 3.5 + 12.5 + LP.reduce((a2, x) => a2 + rowH(x, d) + d.gap, 0) + incH + (k.rem ? (remOn ? 5 + 12.3 : 9) : 0) + 19 + 5.5 + 3;
     let di = MD.findIndex(d => HB(d) <= 280 - K.y); if (di < 0) { K.foot(); doc.addPage(); K.head(); di = MD.findIndex(d => HB(d) <= 280 - K.y); }
     const framed = di >= 0; if (!framed) di = 2; const d = MD[di], top = K.y; let cy = top + (framed ? 3.5 : 0), ix = framed ? M + 3.5 : M, iw = framed ? CW - 7 : CW;
     if (!framed) K.need(14);
     badge('receipt', ix + 4.4, cy + 4.6, 4.2); K.font(13, 'bold', PK.ink); K.t('Votre offre chiffrée', ix + 11.5, cy + 5.6); doc.setDrawColor(...PK.or); doc.setLineWidth(.9); doc.line(ix + 11.5, cy + 8.3, ix + 22, cy + 8.3); K.font(6.8, 'normal', PK.mut); K.t('Détail du devis · montants en € HT', ix + iw - 1, cy + 5.6, {align: 'right'}); cy += 12.5;
-    LN.forEach(x => { const big = !!x.img, h = rowH(x, d); if (!framed) { K.y = cy; K.need(h + 2); cy = K.y; }
+    LP.forEach(x => { const big = !!x.img, h = rowH(x, d); if (!framed) { K.y = cy; K.need(h + 2); cy = K.y; }
       doc.setFillColor(...(big ? [250, 250, 251] : WH)); doc.setDrawColor(...BD); doc.setLineWidth(.25); doc.roundedRect(ix, cy, iw, h, 2.6, 2.6, 'FD'); rr(ix, cy, 2.6, h, 1.3, big ? PK.or : FAM); doc.setFillColor(...(big ? [250, 250, 251] : WH)); doc.rect(ix + 1.5, cy + .35, 1.4, h - .7, 'F');
       let tx = ix + 9; if (big) { const py = cy + (h - d.ph) / 2; doc.setFillColor(...WH); doc.setDrawColor(...BD); doc.setLineWidth(.2); doc.roundedRect(ix + 5, py, d.pw, d.ph, 1.8, 1.8, 'FD'); fit2(x.img, x.ar, ix + 6, py + 1, d.pw - 2, d.ph - 2); tx = ix + 5 + d.pw + 4; } else { badge(x.ico, ix + 9.8, cy + h / 2, 3.2, [148, 155, 164]); tx = ix + 16; }
       const tlh = (big ? d.ts : d.ts - 1.2) * .42, bh = 4.2 + (x.tl.length - 1) * tlh + (x.dl.length ? x.dl.length * 3.1 + .6 : 0), sy = cy + (h - bh) / 2 + 3.2; K.font(big ? d.ts : d.ts - 1.2, 'bold', PK.ink); doc.text(x.tl, tx, sy, {lineHeightFactor: 1.05});
       if (x.dl.length) { K.font(d.ds, 'normal', PK.mut); doc.text(x.dl, tx, sy + 4.2 + (x.tl.length - 1) * tlh, {lineHeightFactor: 1.15}); }
       K.font(big ? d.as : d.as - 2, 'bold', PK.ink); K.t(eur(x.m), ix + iw - 5, cy + h / 2 + 1.6, {align: 'right'}); cy += h + d.gap; });
+    if (LI.length) { if (!framed) { K.y = cy; K.need(incH + 2); cy = K.y; }
+      doc.setFillColor(240, 253, 244); doc.setDrawColor(134, 239, 172); doc.setLineWidth(.35); doc.setLineDashPattern([1.6, 1.2], 0); doc.roundedRect(ix, cy, iw, incH, 2.6, 2.6, 'FD'); doc.setLineDashPattern([], 0);
+      lab('Inclus dans votre offre', ix + 5, cy + 5, GRN, 5.4, .5); let iy = cy + 7.5;
+      LI.forEach(x => { const rh = x.de ? 11 : 8.4; badge('circle-check', ix + 8.4, iy + rh / 2, 2.9, GRN); K.font(8.6, 'bold', PK.ink); K.t(doc.splitTextToSize(pdfTxt(x.ti), iw - 50)[0], ix + 14.5, iy + (x.de ? 4.6 : rh / 2 + 1.2)); if (x.de) { K.font(7, 'normal', PK.mut); K.t(doc.splitTextToSize(pdfTxt(x.de), iw - 50)[0], ix + 14.5, iy + 8.2); }
+        const pw2 = 16; rr(ix + iw - pw2 - 5, iy + rh / 2 - 2.8, pw2, 5.6, 2.8, GRN); K.font(6.8, 'bold', WH); doc.text('Inclus', ix + iw - 5 - pw2 / 2, iy + rh / 2 + 1.1, {align: 'center'}); iy += rh; });
+      cy += incH + 1.8; }
     if (k.rem) { if (!framed) { K.y = cy; K.need(24); cy = K.y; }
       if (remOn) { K.font(7.6, 'normal', PK.mut); K.t('Total brut HT', ix + 4, cy + 3.4); K.t(eur(k.brut), ix + iw - 5, cy + 3.4, {align: 'right'}); cy += 5;
         doc.setFillColor(...GRNL); doc.setDrawColor(134, 239, 172); doc.setLineWidth(.35); doc.roundedRect(ix, cy, iw, 10.6, 2.4, 2.4, 'FD'); badge('tag', ix + 7, cy + 5.3, 3, GRN); K.font(8.6, 'bold', [20, 83, 45]); K.t(`${o.remiseLabel || 'Remise commerciale'}`, ix + 12.5, cy + (sP ? 4.6 : 6.4));
