@@ -202,6 +202,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 .v43-chip{font-size:11.5px;font-weight:700;border-radius:99px;padding:2px 10px;background:#CFFAFE;color:#155E75}
 .ty-nan{display:inline-flex;gap:5px;align-items:center;font-size:9.5px;font-weight:800;line-height:1.15;border-radius:8px;padding:3px 7px;background:#CFFAFE;color:#155E75}
 .cr-nan{background:#F0FDFF}
+.cd-click{cursor:pointer}.cd-click:hover{filter:brightness(.96);box-shadow:0 0 0 2px #94A3B8 inset}.rec2 td.cd-click:hover{background:#E2E8F0}
 .rec2 th.g,.rec2 td.g{border-left:2px solid #CBD5E1}.rec2 th{text-align:center}.rec2 th:first-child{text-align:left}
 .rec2 td.rn{text-align:center;color:#475569;font-weight:700;min-width:44px}.rec2 td.rm{text-align:right;font-weight:800;min-width:108px}
 .rec2 thead tr:first-child th{background:#E2E8F0}.rec2 th.tt{background:#CBD5E1}
@@ -263,6 +264,17 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 .zsw.zhint:not(.late):not(.on){box-shadow:0 0 0 3px #E3F4EB}
 .zsw.zhint:not(.on):after{content:"\203A\203A\203A";position:absolute;right:8px;top:50%;transform:translateY(-50%);color:#B9DECB;font-weight:800;letter-spacing:1px;font-size:12px}
 .zsw.zhint:not(.on) .zkn{animation:zhint 4.4s infinite}
+/* V4.5.17 : le curseur à glisser devient un rond à cocher ; pointillés = reste à faire, trait plein vert = fait */
+.zsw{width:32px!important;height:32px!important;border-radius:50%!important;border:2.5px solid #EA580C!important;background:#fff!important;box-shadow:none!important;cursor:pointer!important;overflow:visible!important;justify-content:center}
+.zsw .zkn{display:none!important}.zsw b{display:none!important}.zsw:after,.zsw.zhint:not(.on):after{content:""!important;display:none!important}
+.zsw:before{content:"\2713";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#EA580C;font-weight:800;font-size:15px;opacity:0;transition:opacity .15s}.zsw:hover:before{opacity:.9}
+.zsw.late{border-color:#DC2626!important}.zsw.late:before{color:#DC2626}
+.zsw.on{background:#10B981!important;border-color:#10B981!important}.zsw.on:before{color:#fff;opacity:1}
+.itr2{border-radius:14px;padding:8px 10px!important;margin-bottom:8px}
+.itr2.todo{border:2px dashed #EA580C;background:#FFFAF5}.itr2.late{border:2px dashed #DC2626;background:#FFF7F7}
+.itr2.done{border:1.5px solid #BBF7D0;background:#F8FAFC;padding:5px 10px!important;margin-bottom:5px}.itr2.done .font-bold{text-decoration:line-through;font-weight:700}
+.dfold{border:1.5px solid #A7F3D0;background:#ECFDF5;color:#047857;border-radius:10px;padding:7px 10px;font-size:12px;font-weight:800;display:flex;justify-content:space-between;cursor:pointer;list-style:none;margin:6px 0}.dfold::-webkit-details-marker{display:none}
+.dprog{height:6px;background:#E2E8F0;border-radius:6px;overflow:hidden;margin:0 0 8px}.dprog i{display:block;height:6px;background:#10B981;border-radius:6px}
 @keyframes zhint{0%{transform:translateX(0);animation-timing-function:ease-in-out}36%{transform:translateX(12px);animation-timing-function:ease-in-out}59%,100%{transform:translateX(0)}}
 @media (prefers-reduced-motion:reduce){.zsw.zhint:not(.on) .zkn{animation:none}}
 .vfade{position:relative}.vlist{max-height:102px;overflow-y:auto;display:flex;flex-direction:column;gap:6px;padding:2px 6px 2px 0;margin-right:-6px;scrollbar-width:thin;scrollbar-color:#CBD5E1 transparent}
@@ -307,6 +319,10 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 #view-dashboard #tiles>button.border-ptk{border:2.5px dashed #0F172A!important;border-radius:16px!important;background:#FFF7ED!important}
 /* Ma journée : une action = un cadre */
 #day-body>div.rounded-xl,#day-body ol>li,#day-body details{border:2.5px dashed #0F172A!important;border-radius:16px!important}
+ #day-body ol>li.itr2.todo,#day-body>div.border-orange-200{border:2px dashed #EA580C!important;border-radius:14px!important}
+#day-body ol>li.itr2.late{border:2px dashed #DC2626!important;border-radius:14px!important}
+#day-body ol>li.itr2.done{border:1.5px solid #BBF7D0!important;border-radius:10px!important}
+#day-body details.dfd{border:0!important;padding:0!important}
 #day-body ol>li{margin:0 0 8px!important;padding:7px 8px!important;gap:8px!important}#day-body ol>li .pill{display:none!important}
 /* Paramètres : fenêtres entourées d'un trait plein */
 .pf-box{border:2px solid #0F172A!important;border-radius:16px!important}
@@ -454,15 +470,15 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
   .sigc.hl{background:#FFF1E7;border:3px solid #E87722;padding:12px 14px;box-shadow:0 4px 14px rgba(232,119,34,.25)}.sigc.hl .p,.sigc.hl .m{color:#9A3412}.sigc.hl .d{color:#7C2D12}.sigc.hl .d b{color:#7C2D12}
   /* V2.2 : accueil compact */
   .vwrap{container-type:inline-size}
-  .vfuse3{display:grid;grid-template-columns:175px minmax(0,1.35fr) minmax(190px,.8fr);gap:10px;align-items:stretch}
+  .vfuse3{display:grid;grid-template-columns:175px minmax(220px,.62fr) minmax(0,1.6fr);gap:12px;align-items:stretch}
   .vfuse3 #sales-top{border-right:1px solid #E2E8F0;padding-right:12px}
   .vfuse3 .sig2{display:block}.vfuse3 .sig2 .sp{background:none;border:0;padding:0}.vfuse3 .sig2 .k{font-size:10.5px}
   .vchart{min-height:190px}#sig-chips .chip{padding:3px 10px;border-radius:999px;font-size:12px;font-weight:700;border:1.5px solid #E5E7EB;background:#fff;color:#334155;cursor:pointer}#sig-chips .chip:hover{border-color:#F2C9A5}#sig-chips .chip.on{background:#C2410C;border-color:#C2410C;color:#fff}
-  @container (max-width:600px){.vfuse3{grid-template-columns:175px minmax(0,1fr)}.vfuse3 .vchart{grid-column:1/-1;min-height:170px}}
+  @container (max-width:600px){.vfuse3 #sales-top *{white-space:nowrap}.vfuse3{grid-template-columns:175px minmax(0,1fr)}.vfuse3 .vchart{grid-column:1/-1;min-height:170px}}
   @container (max-width:470px){.vfuse3{grid-template-columns:1fr}.vfuse3 #sales-top{border-right:0;padding-right:0}}
-  .vfuse3 .vm{grid-template-columns:62px minmax(0,1fr) auto;padding:4px 8px;margin-top:4px;gap:6px;border-radius:10px}.vfuse3 .vm .mo{font-size:12px}.vfuse3 .vm .nm{font-size:11.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.vfuse3 .vm .nm small{display:none}.vfuse3 .vm .am{font-size:13px}
+  .vfuse3 .vm{grid-template-columns:minmax(0,1fr) auto;padding:5px 9px;margin-top:5px;gap:1px 6px;border-radius:10px}.vfuse3 .vm .nm{grid-column:1/-1;font-size:11px}.vfuse3 .vm .mo{font-size:12.5px;font-weight:800}.vfuse3 .vm .am{grid-column:2;grid-row:1}.vfuse3 .vm .mo{font-size:12px}.vfuse3 .vm .nm{font-size:11.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.vfuse3 .vm .nm small{display:none}.vfuse3 .vm .am{font-size:13px}
   .vfuse3 .vm.cur{padding:5px 8px}.vfuse3 .vm.cur .am{font-size:16px}.vfuse3 .vm.cur .mo small{font-size:8.5px}
-  .vfuse3 .vtot{margin-top:6px;padding-top:4px;border-top-width:2px}.vfuse3 .vtot .m{font-size:17px}.vfuse3 .vtot .text-\[13px\]{font-size:11.5px}
+  .vfuse3 .vtot{margin-top:6px;padding-top:4px;border-top-width:2px}.vfuse3 .vtot .m{font-size:19px}.vfuse3 .vtot .text-\[13px\]{font-size:11.5px}
   .vfuse3 .dts{margin-bottom:2px;font-size:11.5px}.vfuse3 .dts input{padding:2px 6px;font-size:12px}
   .vchips{display:flex;flex-wrap:wrap;gap:6px}.vchips #sales-keys,.vchips #sales-foot,.vchips #sales-foot>div{display:contents!important}
   .vk{display:inline-flex;align-items:baseline;gap:6px;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:9px;padding:3px 9px;font-size:11.5px;color:#6B7280;font-weight:700;text-align:left;cursor:default}.vk b{color:#0F172A;font-size:12.5px;font-weight:800}
@@ -827,7 +843,8 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
       <div><p class="text-[13px] text-muted">Tableau de bord</p><h1 class="text-2xl font-bold tracking-tight">Statistiques détaillées</h1></div></div>
   </div>
 
-  <section class="card frame p-5 sm:p-6 flex flex-col gap-5">
+  <nav id="st-tabs" class="flex gap-1.5 overflow-x-auto bg-white border border-slate-200 rounded-2xl p-1.5 w-fit max-w-full" aria-label="Sections des statistiques"></nav>
+  <section id="st-pane-a" class="card frame p-5 sm:p-6 flex flex-col gap-5">
     <div class="flex flex-wrap justify-between items-center gap-3">
       <div><h2 class="h2 !text-lg ftitle">Activité commerciale</h2><p id="sa-range" class="text-xs text-muted mt-0.5 ml-[14px]"></p></div>
       <div id="sa-period" class="flex flex-wrap gap-1.5 bg-slate-100 rounded-xl p-1"></div>
@@ -845,21 +862,24 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
     <div id="sa-more" class="grid grid-cols-2 md:grid-cols-4 gap-3"></div>
   </section>
 
-  <section class="card frame p-5 sm:p-6 flex flex-col gap-5">
+  <section id="st-pane-v" class="hidden card frame p-5 sm:p-6 flex flex-col gap-5">
     <div class="flex flex-wrap justify-between items-center gap-3">
       <h2 id="st-title" class="h2 !text-lg ftitle"></h2>
       <div class="flex gap-2 items-center"><label class="flex items-center gap-2 text-[13px] text-muted">Année <select id="st-year" class="h-11 border border-slate-300 rounded-xl px-3 font-semibold text-ink bg-white" onchange="ui.year=+this.value;renderStats()"></select></label>
         <button class="btn btn-g" onclick="exportStats()"><i class="fas fa-download"></i>CSV</button></div>
     </div>
     <div id="st-kpis" class="grid grid-cols-2 md:grid-cols-4 gap-3"></div>
-    <div class="grid lg:grid-cols-2 gap-5">
-      <div class="flex flex-col gap-2 lg:col-span-2 rounded-2xl border border-slate-200 p-4"><h3 class="text-sm font-bold">Chiffre d'affaires signé par mois</h3><div class="h-72"><canvas id="st-c1"></canvas></div></div>
-      <div class="flex flex-col gap-2 rounded-2xl border border-slate-200 p-4"><h3 class="text-sm font-bold">Robots signés par modèle</h3><div class="h-60"><canvas id="st-c2"></canvas></div></div>
+    <div class="grid lg:grid-cols-2 gap-5" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))">
+      <div class="flex flex-col gap-2 lg:col-span-1 rounded-2xl border border-slate-200 p-4"><h3 class="text-sm font-bold">Chiffre d'affaires signé par mois</h3><div class="h-72"><canvas id="st-c1"></canvas></div></div>
+      <div class="flex flex-col gap-2 rounded-2xl border border-slate-200 p-4"><h3 class="text-sm font-bold">Robots signés par modèle</h3><div class="h-72"><canvas id="st-c2"></canvas></div></div>
       <div class="flex flex-col gap-2 rounded-2xl border border-slate-200 p-4"><h3 class="text-sm font-bold">Origine des projets</h3><div class="h-60"><canvas id="st-c3"></canvas></div></div>
       <div class="flex flex-col gap-2 rounded-2xl border border-slate-200 p-4"><h3 class="text-sm font-bold">Dossiers perdus par concurrent</h3><div class="h-60"><canvas id="st-c4"></canvas></div></div>
       <div class="flex flex-col gap-2 rounded-2xl border border-slate-200 p-4"><h3 class="text-sm font-bold">Portefeuille par échéance</h3><div class="h-60"><canvas id="st-c5"></canvas></div></div>
     </div>
-    <div class="rounded-2xl border border-slate-200 overflow-hidden"><div class="px-5 py-3 border-b border-slate-200 bg-slate-50"><h3 class="text-sm font-bold">Détail mensuel</h3></div><div class="overflow-x-auto"><table class="tbl w-full min-w-[720px]" id="st-table"></table></div></div>
+  </section>
+  <section id="st-pane-m" class="hidden card frame p-5 sm:p-6 flex flex-col gap-4">
+    <div class="flex flex-wrap justify-between items-center gap-3"><h2 id="st-title2" class="h2 !text-lg ftitle"></h2><button class="btn btn-g" onclick="exportStats()"><i class="fas fa-download"></i>CSV</button></div>
+    <div class="rounded-2xl border border-slate-200 overflow-hidden"><div class="overflow-x-auto"><table class="tbl w-full min-w-[720px]" id="st-table"></table></div></div>
   </section>
 </section>
 
@@ -1245,6 +1265,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.17</b> : (1) <b>Ventes</b> : colonne « Potentiel à signer » plus étroite, graphique plus large et plus lisible ; (2) <b>Ma journée et ma semaine</b> : actions à faire (cadre pointillé orange), en retard (rouge) et faites (vert, repliées sous « Faites aujourd'hui ») avec barre de progression ; (3) <b>Statistiques</b> en 3 onglets (Activité commerciale, Ventes, Détail mensuel), cartes « Mes déplacements », « Visites sur site », « Sans déplacement » ; (4) <b>Commissions</b> : un clic sur une carte ou une ligne du récapitulatif ouvre la liste des dossiers (CSV, « Marquer payées ») ; (5) <b>fiche signée</b> simplifiée (plus de « Reste à faire » ni de « Suivi », bandeau « À compléter ») ; (6) action déjà faite = ne reste plus « à faire » ; (7) replanification : week-ends et jours fériés français ignorés ; (8) message de confirmation en quittant une fiche modifiée.</li>
 <li><b>V4.5.16</b> : <b>présentation des prix de l'offre</b>. Dans « Votre investissement », le total est affiché <b>net hors taxes</b> en gros, avec en tout petit « TVA au taux de 20 % en sus » ; il n'y a plus de ligne TVA ni de total TTC dans le détail de l'offre. L'indicateur clé affiche le total net HT, avec en petit le montant de la TVA et le total TTC ; l'indicateur du contrat de service rappelle la remise (par exemple 290 € HT/mois pendant 36 mois, puis 450 € HT/mois). Les conditions de paiement (30 % / 50 % / 20 %) restent calculées sur le TTC, « TVA incluse ». La remise maintenance n'apparaît que si elle est renseignée dans l'offre.</li>
 <li><b>V4.5.15</b> : <b>devis en TTC</b>. Dans la synthèse de l'offre, le bloc « Votre investissement » affiche maintenant le total net HT, la TVA à 20 % puis le <b>total TTC</b>. Les acomptes (30 % / 50 % / 20 %) sont calculés sur le TTC et marqués « TVA incluse », et l'indicateur clé affiche le total TTC. La mensualité du contrat de service reste exprimée HT, avec la mention « TVA 20 % en sus ». Le montant du dossier dans le tableau de bord reste en HT.</li>
 <li><b>V4.5.14</b> : <b>relecture plus confortable</b>. La fenêtre est presque plein écran, les zones de texte sont plus hautes et les suggestions de phrases sont affichées d'emblée sous chaque texte (le bouton « Suggestions » les replie). Nouveau bouton <b>« Corriger »</b> sous chaque texte : ponctuation et espaces à la française, majuscules en début de phrase, accents oubliés sur les mots courants. Il fonctionne sans internet et se défait avec « Annuler la correction ». Il ne reformule pas le texte.</li>
@@ -1678,6 +1699,15 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
   </div>
 </dialog>
 
+<dialog id="dlg-comdet" class="!w-[min(1040px,96vw)]">
+  <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start gap-2">
+    <div><h3 id="cd-title" class="font-bold flex items-center gap-2"></h3><p id="cd-sub" class="text-xs text-muted mt-0.5"></p></div>
+    <button class="dlg-x" onclick="closeDlg('dlg-comdet')" aria-label="Fermer"><i class="fas fa-xmark"></i></button>
+  </div>
+  <div id="cd-body" class="dlg-body !p-0"></div>
+  <div class="px-5 py-3 border-t bg-slate-50 flex flex-wrap justify-between items-center gap-2"><span id="cd-tot" class="font-bold"></span><div class="flex gap-2"><button id="cd-pay" class="btn btn-d hidden" onclick="comDetPay()"><i class="fas fa-check"></i>Marquer payées…</button><button class="btn btn-g" onclick="comDetCsv()"><i class="fas fa-download"></i>CSV</button><button class="btn btn-g" onclick="closeDlg('dlg-comdet')">Fermer</button></div></div>
+</dialog>
+
 <dialog id="dlg-list" class="!w-[min(1080px,96vw)]">
   <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start gap-2">
     <div><h3 id="ls-title" class="font-bold flex items-center gap-2"></h3><p id="ls-sub" class="text-xs text-muted mt-0.5"></p></div>
@@ -1954,7 +1984,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.16';
+const APP_VERSION = '4.5.17';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2661,7 +2691,7 @@ function renderSales() {
   const obj = Math.max(1, +settings.objectif || 18), nS = rob.filter(c => famOf(c) === 'SINTESI').length, nG = rob.filter(c => famOf(c) === 'GENESI').length;
   const pct = Math.min(100, nS / obj * 100), isCur = ui.year === CUR_YEAR;
   const caS = sum(rob.filter(c => famOf(c) === 'SINTESI'), c => c.montant), caG = sum(rob.filter(c => famOf(c) === 'GENESI'), c => c.montant), nX = rob.length - nS - nG, caX = caR - caS - caG;
-  const dl = (col, lab, v) => `<div class="flex justify-between gap-5"><span><i class="inline-block w-2.5 h-2.5 rounded-sm mr-1.5 align-[-1px]" style="background:${col}"></i>${lab}</span><b>${eur(v)}</b></div>`;
+  const dl = (col, lab, v) => `<div class="flex justify-between gap-1.5 whitespace-nowrap text-[11px]"><span><i class="inline-block w-2.5 h-2.5 rounded-sm mr-1 align-[-1px]" style="background:${col}"></i>${lab}</span><b>${eur(v)}</b></div>`;
   $('sales-title').textContent = `Ventes ${ui.year}`;
   renderSig();
   let cum = 0; const {r, a} = monthly(); r.forEach((v, i) => { if (!isCur || i <= TODAY.getMonth()) cum += v + a[i]; });
@@ -2669,7 +2699,7 @@ function renderSales() {
   const last = [...rob].sort((p, q) => q.signatureDate.localeCompare(p.signatureDate))[0];
   $('sales-top').innerHTML = `<button class="num-btn text-left w-full" onclick="showList('signes')" title="Voir la liste"><div class="kicker">CA signé · ${ui.year} (déjà vendu)</div><div class="text-[21px] font-bold tracking-tight leading-none mt-0.5">${eur(tot)} <span class="text-[11px] font-medium text-muted">HT</span></div>
       <div class="text-[11.5px] text-slate-700 mt-1">${rob.length} robot${rob.length > 1 ? 's' : ''} · ${add.length} add-on${add.length > 1 ? 's' : ''}</div>
-      ${last ? `<button type="button" class="block text-left text-[10.5px] text-slate-700 hover:underline max-w-full leading-[1.2]" style="display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden" onclick="openClient(${last.id})" title="Dernière vente robot : ouvrir la fiche">Dernière vente : <b>${esc(last.pharma)}</b> · ${fmtD(last.signatureDate)} · ${eur(last.montant)}</button>` : '<div class="text-[11.5px] text-muted mt-0.5">Dernière vente : —</div>'}
+      ${last ? `<button type="button" class="block text-left text-[10.5px] text-slate-700 hover:underline max-w-full leading-[1.2]" style="display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden" onclick="openClient(${last.id})" title="Dernière vente robot : ouvrir la fiche">Dernière vente : <b>${esc(last.pharma)}</b> · ${fmtD(last.signatureDate)} · ${eur(last.montant)}</button>` : '<div class="text-[11.5px] text-muted mt-0.5">Dernière vente : —</div>'}
       <div class="mt-1 flex flex-col text-[11.5px] text-slate-700">${dl('#C2410C', nS + ' SINTESI', caS)}${dl('#0F766E', nG + ' GENESI', caG)}${nX > 0 ? dl('#94A3B8', nX + ' autre' + (nX > 1 ? 's' : ''), caX) : ''}${dl('#6366F1', add.length + ' add-on' + (add.length > 1 ? 's' : ''), caA)}</div></button>
     <button class="num-btn text-left w-full mt-1.5" onclick="showList('sintesi')" title="Voir la liste"><div class="flex justify-between items-baseline text-[12px]"><span><b class="text-[14px]">${nS}</b><span class="text-muted">/${obj} SINTESI</span></span><span class="font-semibold">${Math.round(pct)} %</span></div>
       <div class="h-2 rounded-full bg-slate-100 overflow-hidden mt-1"><div class="h-2 rounded-full bg-emerald-700" style="width:${pct}%"></div></div>
@@ -2700,19 +2730,24 @@ function renderChart() {
   if (typeof Chart === 'undefined') return;
   if (ui.chart) ui.chart.destroy();
   const font = {family: 'Inter', size: 11};
+  const lastI = (() => { let k = -1; cumul.forEach((v, i) => { if (v != null) k = i; }); return k; })(), tops = m.map((v, i) => v), bestI = tops.indexOf(Math.max(...tops));
+  const lblPlug = {id: 'ptkLbl', afterDatasetsDraw(ch) { const x = ch.ctx, d0 = ch.getDatasetMeta(0), P = d0.data[lastI]; x.save(); x.textAlign = 'center'; x.font = '700 12px Inter, sans-serif';
+    if (P && cumul[lastI] > 0) { x.fillStyle = '#0F172A'; x.fillText(cumul[lastI] >= 1e6 ? (cumul[lastI] / 1e6).toFixed(2).replace('.', ',') + ' M€' : keur(cumul[lastI]), P.x, P.y - 12); }
+    if (Math.max(...tops) > 0) { const B = ch.getDatasetMeta(2).data[bestI]; if (B) { const ty = Math.min(...[2, 3, 4].map(k => ch.getDatasetMeta(k)).filter(m => m && m.data[bestI]).map(m => m.data[bestI].y)); x.fillStyle = '#C2410C'; x.font = '700 11px Inter, sans-serif'; x.fillText(keur(tops[bestI]), B.x, ty - 8); } } x.restore(); }};
   ui.chart = new Chart($('chart'), {
+    plugins: [lblPlug],
     data: {labels: MONTHS, datasets: [
-      {type: 'line', label: 'Cumul signé', data: cumul, borderColor: '#C2410C', backgroundColor: '#C2410C', borderWidth: 2.5, pointRadius: cumul.map((v, i) => i === (isCur ? mNow : 11) ? 5 : 0), pointBackgroundColor: '#fff', tension: .3, yAxisID: 'y1', order: 1},
-      {type: 'line', label: 'Objectif', data: objLine, borderColor: '#0F172A', borderDash: [5, 5], borderWidth: 1.5, pointRadius: 0, yAxisID: 'y1', order: 2},
-      {type: 'bar', label: 'SINTESI', data: fam, backgroundColor: '#C2410C', stack: 'ca', maxBarThickness: 34, yAxisID: 'y', order: 3},
+      {type: 'line', label: 'Cumul signé', data: cumul, borderColor: '#0F172A', backgroundColor: ctx => { const ca = ctx.chart.chartArea; if (!ca) return 'rgba(0,0,0,0)'; const g = ctx.chart.ctx.createLinearGradient(0, ca.top, 0, ca.bottom); g.addColorStop(0, 'rgba(234,88,12,.16)'); g.addColorStop(1, 'rgba(234,88,12,0)'); return g; }, fill: true, borderWidth: 2.5, pointRadius: cumul.map((v, i) => i === lastI ? 5 : 0), pointBackgroundColor: '#fff', pointBorderColor: '#0F172A', pointBorderWidth: 2.5, tension: .35, yAxisID: 'y1', order: 1},
+      {type: 'line', label: 'Objectif', data: objLine, borderColor: '#94A3B8', borderDash: [2, 5], borderWidth: 1.6, pointRadius: 0, yAxisID: 'y1', order: 2},
+      {type: 'bar', label: 'SINTESI', data: fam, backgroundColor: '#C2410C', stack: 'ca', maxBarThickness: 30, borderRadius: {topLeft: 6, topRight: 6}, borderSkipped: false, yAxisID: 'y', order: 3},
       {type: 'bar', label: 'GENESI', data: gen, backgroundColor: '#0F766E', stack: 'ca', maxBarThickness: 34, yAxisID: 'y', order: 3},
       {type: 'bar', label: 'Add-ons', data: a, backgroundColor: '#6366F1', stack: 'ca', maxBarThickness: 34, yAxisID: 'y', order: 3},
       ...(oth.some(v => v) ? [{type: 'bar', label: 'Autres robots', data: oth, backgroundColor: '#94A3B8', stack: 'ca', maxBarThickness: 34, yAxisID: 'y', order: 3}] : [])]},
     options: {responsive: true, maintainAspectRatio: false, interaction: {mode: 'index', intersect: false},
-      plugins: {legend: {position: 'bottom', labels: {boxWidth: 8, boxHeight: 8, usePointStyle: true, padding: 8, font: {...font, size: 10}}}, tooltip: {callbacks: {label: i => `${i.dataset.label} : ${eur(i.raw)}`}}},
-      scales: {x: {stacked: true, grid: {display: false}, ticks: {font, color: ctx => isCur && ctx.index === mNow ? '#0F172A' : '#5B6576'}},
-        y: {stacked: true, beginAtZero: true, grid: {color: '#EEF0F3'}, border: {display: false}, title: {display: true, text: 'Ventes du mois (k€)', font: {...font, size: 10}, color: '#5B6576'}, ticks: {font, color: '#5B6576', callback: v => keur(v)}},
-        y1: {position: 'right', beginAtZero: true, grid: {display: false}, border: {display: false}, title: {display: true, text: 'Cumul signé (k€)', font: {...font, size: 10}, color: '#5B6576'}, ticks: {font, color: '#5B6576', callback: v => keur(v)}}}}
+      layout: {padding: {top: 16, right: 2}}, plugins: {legend: {position: 'top', align: 'start', labels: {boxWidth: 8, boxHeight: 8, usePointStyle: true, padding: 12, font: {...font, size: 10.5}}}, tooltip: {callbacks: {label: i => `${i.dataset.label} : ${eur(i.raw)}`}}},
+      scales: {x: {stacked: true, grid: {display: false}, ticks: {font: {...font, weight: '600'}, color: ctx => isCur && ctx.index === mNow ? '#0F172A' : '#64748B'}},
+        y: {stacked: true, beginAtZero: true, grid: {color: '#EEF2F6'}, border: {display: false}, ticks: {font: {...font, size: 10}, maxTicksLimit: 6, color: '#94A3B8', callback: v => v ? keur(v) : '0'}},
+        y1: {position: 'right', beginAtZero: true, grid: {display: false}, border: {display: false}, ticks: {font: {...font, size: 10}, maxTicksLimit: 6, color: '#64748B', callback: v => v >= 1e6 ? (v / 1e6).toString().replace('.', ',') + ' M€' : v ? keur(v) : '0'}}}}
   });
 }
 
@@ -2768,7 +2803,7 @@ function itemRow(x, i, opts = {}) {
   const sub = x.type === 'suivi' && c.pending ? `${STEPS[c.pending.to].short} à fixer` : A.label;
   const st = x.done ? '<span class="pill bg-emerald-50 text-emerald-800"><i class="fas fa-check"></i>Fait</span>' : late ? '<span class="pill bg-rose-50 text-rose-700"><i class="fas fa-clock"></i>En retard</span>' : '<span class="pill bg-slate-100 text-slate-700">À faire</span>';
   const can = x.rap ? !x.done : !x.done && c.nextDate && c.nextDate === x.dt;
-  return `<li class="itr flex gap-3 items-center py-2.5 ${i ? 'border-t border-slate-100' : ''} ${opts.hl ? 'bg-orange-50/50 -mx-2 px-2 rounded-xl' : ''}">
+  return `<li class="itr itr2 ${x.done ? 'done' : late ? 'late' : 'todo'} flex gap-3 items-center">
     <span class="w-[52px] text-[17px] font-bold tabular-nums leading-none ${x.done ? 'text-slate-400' : late ? 'text-rose-700' : 'text-ink'}">${fmtHM(x.dt)}</span>
     <${can ? `button type="button" onclick="traiter('${x.rap ? 'rap' : 'next'}',${c.id}${x.rap ? ',' + x.rap : ''})"` : 'span'} class="w-9 h-9 rounded-xl inline-flex items-center justify-center shrink-0" style="background:${x.done ? '#E8F5EE' : A.bg};color:${x.done ? '#14603F' : A.fg}" title="${can ? 'Traiter cette action (réalisée, sans réponse, replanifier, annuler)' : A.label}">${ic(x.done ? 'check' : A.icon, 17)}</${can ? 'button' : 'span'}>
     <button class="flex-1 min-w-0 text-left" onclick="openClient(${c.id})"><span class="block text-[14px] font-bold truncate ${x.done ? 'text-slate-500' : ''}">${esc(c.pharma)}</span><span class="block text-xs text-muted truncate"><b class="font-semibold" style="color:${x.done ? '#64748B' : A.fg}">${sub}</b> · ${x.note ? esc(x.note) : esc(c.ville)}</span></button>
@@ -2793,7 +2828,7 @@ function ddCard(x, cur) {
 function renderDay() {
   const W = weekItems(), late = lateItems();
   { const td = dayItems().filter(x => !x.done).length, lp = late.filter(x => x.d).length, el = $('md-count');
-    el.textContent = td || lp ? `${td} action${td > 1 ? 's' : ''} à traiter aujourd'hui${lp ? ` · ${lp} en retard` : ''}` : 'Rien à traiter aujourd\'hui';
+    { const dd0 = dayItems().filter(x => x.done).length; el.textContent = td || lp ? `${dd0 ? dd0 + ' faite' + (dd0 > 1 ? 's' : '') + ' · ' : ''}${td} à faire${lp ? ` · ${lp} en retard` : ''}` : (dd0 ? `${dd0} faite${dd0 > 1 ? 's' : ''} · rien à traiter` : 'Rien à traiter aujourd\'hui'); }
     el.style.color = lp ? '#B42318' : td ? '#C2410C' : '#14603F'; }
   if (ui.dd) { $('dd-date').textContent = $('md-date').textContent; $('dd-n-week').textContent = W.length; $('dd-n-late').textContent = late.length; $('dd-n-af').textContent = clients.filter(c => isActive(c) && ['late', 'today', 'none'].includes(actCat(c))).length;
     ['today', 'week', 'late'].forEach(k => $('dd-t-' + k).classList.toggle('tab-on', ui.todo === k));
@@ -2850,7 +2885,10 @@ function renderDay() {
   const gps = opt('gps') && visits.length;
   h += `<div class="flex flex-wrap gap-x-4 gap-y-1.5 text-[13px] text-slate-700">${parts.join('') || '<span class="text-muted">Journée libre</span>'}${gps ? `<span class="inline-flex items-center gap-1.5"><i class="fas fa-road text-blue-700"></i><b id="day-km">…</b><span id="day-time" class="text-muted"></span></span>` : ''}</div>`;
   if (ui.dd) { $('dd-sum').innerHTML = `${parts.join('') || '<span class="text-muted">Journée libre</span>'}${gps ? `<span class="inline-flex items-center gap-1.5"><i class="fas fa-road text-blue-700"></i><b id="day-km">…</b><span id="day-time" class="text-muted"></span></span>` : ''}<span class="ml-auto text-muted">Enjeu : <b class="text-ink">${eur(sum(items.filter(x => isActive(x.c)), x => x.c.montant || 0))}</b></span>`; h = h.replace(/<div class="flex flex-wrap gap-x-4 gap-y-1.5 text-\[13px\] text-slate-700">[\s\S]*$/, ''); h += items.map(x => ddCard(x, next && x.c.id === next.c.id && !x.done && x.dt === next.dt)).join(''); }
-  else if (items.length) h += `<ol class="flex flex-col">${items.map((x, i) => itemRow(x, i, {hl: next && x.c.id === next.c.id && !x.done})).join('')}</ol>`;
+  else if (items.length) { const td = items.filter(x => !x.done), dn = items.filter(x => x.done), pc = Math.round(dn.length / items.length * 100);
+    h += `<div class="dprog" title="${dn.length} faite${dn.length > 1 ? 's' : ''} sur ${items.length}"><i style="width:${pc}%"></i></div>`
+      + (td.length ? `<div class="flex justify-between text-[11px] font-extrabold uppercase tracking-wide text-slate-600 mb-1.5"><span>À faire · ${td.length}</span>${td.some(x => parseD(x.dt) < now) ? `<span class="text-rose-700">dont ${td.filter(x => parseD(x.dt) < now).length} en retard</span>` : ''}</div><ol class="flex flex-col">${td.map((x, i) => itemRow(x, i)).join('')}</ol>` : '')
+      + (dn.length ? `<details class="mt-1 dfd"><summary class="dfold"><span><i class="fas fa-circle-check"></i> Faites aujourd'hui · ${dn.length}</span><span>▾ Afficher</span></summary><ol class="flex flex-col">${dn.map((x, i) => itemRow(x, i)).join('')}</ol></details>` : ''); }
   if (gps) {
     const addrs = visits.map(x => addr(x.c)), stops = ['Bureau', ...visits, 'Bureau'];
     h += extraDay(items, late) + `<details class="rounded-xl border border-slate-200 px-3 py-2 text-[13px]"><summary class="cursor-pointer kicker !text-ptkd">Tournée du jour · itinéraire</summary><div class="flex flex-col gap-2 mt-2">
@@ -3236,10 +3274,14 @@ function traiter(kind, cid, rid) {
   $('dlg-trait').showModal();
 }
 /* ----- V3.2 : tentative sans réponse = action réalisée + dupliquée + replanifiée ----- */
+const FR_HOL = {};
+function frHol(y) { if (FR_HOL[y]) return FR_HOL[y]; const a = y % 19, b = Math.floor(y / 100), c = y % 100, d = Math.floor(b / 4), e = b % 4, f = Math.floor((b + 8) / 25), g = Math.floor((b - f + 1) / 3), h = (19 * a + b - d - g + 15) % 30, i = Math.floor(c / 4), k = c % 4, l = (32 + 2 * e + 2 * i - h - k) % 7, m = Math.floor((a + 11 * h + 22 * l) / 451), mo = Math.floor((h + l - 7 * m + 114) / 31), da = ((h + l - 7 * m + 114) % 31) + 1, pq = new Date(y, mo - 1, da), S = new Set(), add = x => S.add(`${x.getMonth() + 1}-${x.getDate()}`), off = n => { const x = new Date(pq); x.setDate(x.getDate() + n); add(x); };
+  [[1, 1], [5, 1], [5, 8], [7, 14], [8, 15], [11, 1], [11, 11], [12, 25]].forEach(([mm, dd]) => S.add(`${mm}-${dd}`)); off(1); off(39); off(50); return FR_HOL[y] = S; }
+const isHolFR = d => frHol(d.getFullYear()).has(`${d.getMonth() + 1}-${d.getDate()}`);
 function workSlot(d) {
   d = new Date(d); const at = (x, h, m) => { const y = new Date(x); y.setHours(h, m, 0, 0); return y; }, nextDay = x => at(new Date(x.getFullYear(), x.getMonth(), x.getDate() + 1), 8, 30);
-  for (let i = 0; i < 10; i++) {
-    const w = d.getDay(); if (w === 0 || w === 6) { d = nextDay(d); continue; }
+  for (let i = 0; i < 14; i++) {
+    const w = d.getDay(); if (w === 0 || w === 6 || isHolFR(d)) { d = nextDay(d); continue; }
     if (d < at(d, 8, 30)) return at(d, 8, 30);
     if (d < at(d, 12, 0)) return d;
     if (d < at(d, 14, 0)) return at(d, 14, 0);
@@ -3365,7 +3407,7 @@ function setDirty(v) {
 function cancelEdits() { const c = byId(ui.editId); if (c) { fillForm(c); toast('Modifications annulées'); } setDirty(false); }
 function guardLeave(go) {
   if (!ui.dirty || $('view-client').classList.contains('hidden')) return false;
-  confirmBox('Modifications non enregistrées', 'Vous avez modifié cette fiche sans l\'enregistrer.<br>Que souhaitez-vous faire ?', '<i class="fas fa-floppy-disk"></i>Enregistrer et continuer', () => { if (saveClient(false)) { setDirty(false); go(); } }, {no: 'Quitter sans enregistrer', onNo: () => { setDirty(false); go(); }, icon: 'fa-triangle-exclamation'});
+  confirmBox('Des modifications ont été effectuées', 'Vous avez modifié cette fiche sans l\'enregistrer.<br>Voulez-vous valider ces modifications avant de quitter ?', '<i class="fas fa-floppy-disk"></i>Valider et continuer', () => { if (saveClient(false)) { setDirty(false); go(); } }, {no: 'Quitter sans valider', onNo: () => { setDirty(false); go(); }, icon: 'fa-triangle-exclamation'});
   return true;
 }
 document.addEventListener('input', e => { if (e.target.closest && e.target.closest('#view-client') && !e.target.closest('#f-search')) setDirty(true); });
@@ -3634,10 +3676,14 @@ function renderActivity() {
     + types.map(t => card(ic(ACTIONS[t].icon, 16), ACTIONS[t].fg, ACTIONS[t].bg, ({visite: 'Visites sur site', teams: 'Visios Teams', relance: 'Appels', suivi: 'Relances', mail: 'E-mails'})[t], A.filter(a => a.type === t).length, B.filter(a => a.type === t).length)).join('');
   const more = (l, n, p) => `<div class="rounded-xl bg-slate-50 px-4 py-3"><div class="text-xs font-semibold text-muted">${l}</div><div class="text-xl font-bold">${n}</div><div class="text-[11px]">${delta(n, p)}</div></div>`;
   const inR = (ds, a, b) => { const d = parseD(ds); return d && d >= a && d < b; };
-  $('sa-more').innerHTML = more('Comptes-rendus saisis', saHist(s, e, /^(Compte-rendu|Notes de l'échange)/), saHist(ps, pe, /^(Compte-rendu|Notes de l'échange)/))
-    + more('Étapes franchies', saHist(s, e, /^Étape franchie/), saHist(ps, pe, /^Étape franchie/))
-    + more('Nouvelles fiches', clients.filter(c => inR(createdOf(c), s, e)).length, clients.filter(c => inR(createdOf(c), ps, pe)).length)
-    + more('Robots signés', clients.filter(c => c.step === 'Signé' && inR(c.signatureDate, s, e)).length, clients.filter(c => c.step === 'Signé' && inR(c.signatureDate, ps, pe)).length);
+  const sub = (l, n, p, txt, ic, bg, fg) => `<div class="rounded-2xl border border-slate-200 p-4 flex flex-col gap-1.5"><div class="flex items-center gap-2"><span class="w-8 h-8 rounded-lg inline-flex items-center justify-center" style="background:${bg};color:${fg}"><i class="fas ${ic}"></i></span><span class="text-xs font-semibold text-muted">${l}</span></div><div class="text-[26px] font-bold leading-none">${n}</div><div class="text-[12px] text-slate-600">${txt}</div>${p == null ? '' : `<div class="text-[11px]">${delta(n, p)}</div>`}</div>`;
+  const vis = A.filter(a => a.type === 'visite'), visB = B.filter(a => a.type === 'visite'), nbj = (() => { let n = 0; const d = new Date(s); while (d < e && d <= TODAY) { const w = d.getDay(); if (w && w < 6 && !isHolFR(d)) n++; d.setDate(d.getDate() + 1); } return n; })();
+  const phs = new Set(vis.map(a => a.c.id)).size, sans = A.filter(a => ['relance', 'suivi', 'teams'].includes(a.type)), sansB = B.filter(a => ['relance', 'suivi', 'teams'].includes(a.type));
+  const lateN = typeof lateItems === 'function' ? lateItems().length : 0;
+  $('sa-more').innerHTML = sub('Visites sur site', vis.length, visB.length, `${phs} pharmacie${phs > 1 ? 's' : ''} différente${phs > 1 ? 's' : ''} · ${nbj ? (vis.length / nbj).toFixed(1).replace('.', ',') : '0'} par jour ouvré`, 'fa-location-dot', '#FFEDD5', '#C2410C')
+    + sub('Sans déplacement', sans.length, sansB.length, `${A.filter(a => a.type === 'relance').length} appels · ${A.filter(a => a.type === 'suivi').length} relances · ${A.filter(a => a.type === 'teams').length} visios`, 'fa-headset', '#E0F2FE', '#0369A1')
+    + sub('Actions traitées', A.filter(a => a.done !== false).length, B.filter(a => a.done !== false).length, 'visites, appels, relances, visios, e-mails', 'fa-circle-check', '#E8F5EE', '#14603F')
+    + sub('Actions en retard', lateN, null, lateN ? 'à traiter dans Ma journée' : 'rien en retard', 'fa-triangle-exclamation', lateN ? '#FEE2E2' : '#F1F3F6', lateN ? '#B42318' : '#475569');
   // graphique
   if (typeof Chart !== 'undefined') {
     chartTheme();
@@ -3655,11 +3701,11 @@ function renderActivity() {
   visits.forEach(a => { (days[isoDay(a.d)] = days[isoDay(a.d)] || []).push(a); });
   const dk = Object.keys(days).sort(), tok = ui.saTok = Date.now();
   const box = (km, min, legs, est, pending) => `<div class="h-full rounded-2xl bg-blue-50 border border-blue-100 p-5 flex flex-col gap-3">
-    <div class="flex items-center justify-between"><h3 class="text-sm font-bold text-blue-950"><i class="fas fa-road mr-1.5"></i>Trajets et kilomètres</h3>${pending ? '<span class="text-xs text-blue-900"><i class="fas fa-spinner fa-spin"></i> calcul…</span>' : ''}</div>
+    <div class="flex items-center justify-between"><h3 class="text-sm font-bold text-blue-950"><i class="fas fa-road mr-1.5"></i>Mes déplacements</h3>${pending ? '<span class="text-xs text-blue-900"><i class="fas fa-spinner fa-spin"></i> calcul…</span>' : ''}</div>
     <div class="grid grid-cols-2 gap-3">
       <div><div class="text-xs font-semibold text-blue-900">Kilomètres</div><div class="text-2xl font-bold text-blue-950">${Math.round(km).toLocaleString('fr-FR')} km</div></div>
       <div><div class="text-xs font-semibold text-blue-900">Temps de route</div><div class="text-2xl font-bold text-blue-950">${fmtMin(min)}</div></div>
-      <div><div class="text-xs font-semibold text-blue-900">Moyenne par trajet</div><div class="text-lg font-bold text-blue-950">${legs ? fmtMin(min / legs) : '—'}</div></div>
+      <div><div class="text-xs font-semibold text-blue-900">Moyenne par visite</div><div class="text-lg font-bold text-blue-950">${visits.length ? fmtMin(min / visits.length) : '—'}</div></div>
       <div><div class="text-xs font-semibold text-blue-900">Moyenne par tournée</div><div class="text-lg font-bold text-blue-950">${dk.length ? fmtMin(min / dk.length) : '—'}</div></div>
     </div>
     <div class="text-[13px] text-blue-950">${dk.length} tournée${dk.length > 1 ? 's' : ''} · ${visits.length} visite${visits.length > 1 ? 's' : ''} · ${legs} trajet${legs > 1 ? 's' : ''}</div>
@@ -3680,7 +3726,13 @@ function renderActivity() {
 }
 
 /* ================= STATISTIQUES : VENTES ================= */
+const ST_TABS = [['a', 'fa-chart-column', 'Activité commerciale'], ['v', 'fa-euro-sign', 'Ventes'], ['m', 'fa-table', 'Détail mensuel']];
+function stTab(k) { ui.stTab = k; renderStats(); }
 function renderStats() {
+  const tab = ui.stTab || 'a';
+  $('st-tabs').innerHTML = ST_TABS.map(([k, i, l]) => `<button class="h-10 px-4 rounded-xl text-[13.5px] font-bold whitespace-nowrap ${tab === k ? 'bg-ink text-white' : 'text-muted hover:bg-slate-100'}" onclick="stTab('${k}')"><i class="fas ${i} mr-1.5"></i>${k === 'v' ? 'Ventes ' + ui.year : l}</button>`).join('');
+  ['a', 'v', 'm'].forEach(k => { const e = $('st-pane-' + k); e.classList.toggle('hidden', k !== tab); e.classList.toggle('flex', k === tab); });
+  $('st-title2').textContent = `Détail mensuel ${ui.year}`;
   renderActivity();
   renderYearSelect('st-year'); $('st-title').textContent = `Ventes ${ui.year}`;
   const {rob, add, lost} = yearData(), caR = sum(rob, c => c.montant), caA = sum(add, x => x.a.montant);
@@ -3700,7 +3752,7 @@ function renderStats() {
       {type: 'bar', label: 'Robots', data: r, backgroundColor: ctx => grad(ctx, '#F59E5B', '#C2410C'), borderRadius: 8, borderSkipped: false, stack: 's', barPercentage: .62, order: 1},
       {type: 'bar', label: 'Add-ons', data: a, backgroundColor: '#818CF8', borderRadius: 8, borderSkipped: false, stack: 's', barPercentage: .62, order: 1}]},
     options: {responsive: true, maintainAspectRatio: false, interaction: {mode: 'index', intersect: false}, plugins: {vlabels: {stack: true, fmt: keur}, tooltip: {callbacks: {label: i => `${i.dataset.label} : ${eur(i.raw)}`}}},
-      scales: {x: {stacked: true, grid: {display: false}}, y: {stacked: true, beginAtZero: true, grace: '12%', ticks: {callback: v => keur(v)}}, y1: {position: 'right', beginAtZero: true, grid: {display: false}, ticks: {callback: v => keur(v)}}}}}));
+      scales: {x: {stacked: true, grid: {display: false}}, y: {stacked: true, beginAtZero: true, grace: '12%', ticks: {callback: v => keur(v)}}, y1: {position: 'right', display: false, beginAtZero: true, grid: {display: false}}}}}));
   const byModel = MODELS.map(m => rob.filter(c => (c.robots || []).includes(m)).length);
   ui.sc.push(new Chart($('st-c2'), {type: 'doughnut', data: {labels: MODELS, datasets: [{data: byModel, backgroundColor: ['#C2410C', '#F59E5B', '#1C7C54', '#6EBF95', '#4B53BC'], borderColor: '#fff', borderWidth: 3, hoverOffset: 6}]},
     options: {responsive: true, maintainAspectRatio: false, cutout: '68%', plugins: {legend: {position: 'right'}, center: {top: String(rob.length), sub: 'robots signés'}}}}));
@@ -3857,13 +3909,14 @@ function saveActionGo() {
   const doneNow = parseD(dt) <= new Date(Date.now() + 6e4);
   log(c, `${ACTIONS[type].label} ${doneNow ? 'réalisée' : 'planifiée'}${a ? ` (add-on : ${a.quoi})` : ''} — ${fmtDT(dt)}`, `${motif}\n${msg}`);
   if (a) a.lastActionDate = isoDay(new Date());
-  if ($('act-next').checked) { const old = c.nextDate; if (old && old !== dt) c.acts = (c.acts || []).filter(a => !(a.dt === old && !a.done)); c.nextDate = dt; c.nextType = type; }
+  if (doneNow) { if (c.nextDate && c.nextDate <= dt && (c.nextType || 'relance') === type) { c.acts = (c.acts || []).filter(a => !(a.dt === c.nextDate && !a.done)); c.nextDate = null; } }   /* V4.5.17 : une action déjà réalisée ne reste plus « à faire » */
+  else if ($('act-next').checked) { const old = c.nextDate; if (old && old !== dt) c.acts = (c.acts || []).filter(a => !(a.dt === old && !a.done)); c.nextDate = dt; c.nextType = type; }
   addAct(c, dt, type, motif); if (doneNow) { c.acts[c.acts.length - 1].done = true; c.lastDone = {dt, type}; }
   if (advance && $('act-adv-cb').checked && c.step !== advance) { c.step = advance; log(c, `Étape franchie : ${STEPS[advance].label}`); }
   save();
   toast('Action enregistrée au journal'); if ($('act-cal').checked) setTimeout(() => askAgenda(c, dt, type, motif, `${ACTIONS[type].label}${motif ? ' · ' + motif : ''}`), 50); else setTimeout(() => nearAfter(c, dt, type), 50);
   closeDlg('dlg-action');
-  if (ui.editId === cid && !$('view-client').classList.contains('hidden')) { if ($('act-next').checked) { $('f-next').value = dt; ui.nextType = type; } $('f-cr-next').innerHTML = ''; renderChrome(c); renderNextTypes(); renderRoute(); }
+  if (ui.editId === cid && !$('view-client').classList.contains('hidden')) { if ($('act-next').checked && !doneNow) { $('f-next').value = dt; ui.nextType = type; } else if (doneNow) { $('f-next').value = c.nextDate || ''; ui.nextType = c.nextType || ui.nextType; } $('f-cr-next').innerHTML = ''; renderChrome(c); renderNextTypes(); renderRoute(); }
   else refresh();
 }
 
@@ -4933,7 +4986,7 @@ function renderChrome(c) {
   const I = INTEREST[c?.indicateur || ''];
   $('f-badges').innerHTML = (signed ? '<span class="pill bg-emerald-700 text-white"><i class="fas fa-circle-check"></i>Signé</span>' : lost ? `<span class="pill bg-rose-700 text-white">${c.perduMotif === 'Perdu contre' ? 'Perdu' : 'Abandonné'}</span>` : '')
     + (c && active ? `<span class="pill" style="background:${I[2]};color:${I[3]}"><span class="w-2 h-2 rounded-full" style="background:${I[1]}"></span>${c.indicateur ? 'Intérêt ' + I[0].toLowerCase() : 'Intérêt à renseigner'}</span>` : '')
-    + cesPill(c) + (c?.situation && !c?.cession?.on ? `<span class="pill" style="background:#EEF2FC;color:#1E3A8A"><i class="fas fa-key"></i>${esc(SITU[c.situation])}</span>` : '') + (c?.robotConc ? '<span class="pill" style="background:#FFF1E7;color:#9A3412"><i class="fas fa-robot"></i>Déjà équipé</span>' : '') + (c ? pendPill(c) + devisPill(c) + secPill(c) : '');
+    + cesPill(c) + (c?.situation && !c?.cession?.on ? `<span class="pill" style="background:#EEF2FC;color:#1E3A8A"><i class="fas fa-key"></i>${esc(SITU[c.situation])}</span>` : '') + (c?.robotConc ? '<span class="pill" style="background:#FFF1E7;color:#9A3412"><i class="fas fa-robot"></i>Déjà équipé</span>' : '') + (c ? pendPill(c) + devisPill(c) + (signed ? '' : secPill(c)) : '');
   $('f-sub').textContent = c ? [c.ville + (depOf(c) ? ` (${depOf(c)})` : ''), c.groupement && `Groupement ${c.groupement}`, c.cip && `CIP ${c.cip}`, c.lgo && `LGO ${c.lgo === 'Autre' ? c.lgoAutre || 'autre' : c.lgo}`, active && c.typeProjet && TYPES_PROJET[c.typeProjet], active && c.opportunite && `Origine : ${c.opportunite}`].filter(Boolean).join(' · ') : "Commencez par la recherche dans l'annuaire";
   const t = [];
   { const lb = $('f-lost1'); if (lb) { lb.style.display = c && active ? '' : 'none'; lb.onclick = () => c && openLost(c.id); } }
@@ -4944,6 +4997,8 @@ function renderChrome(c) {
   $('f-steps').classList.toggle('hidden', !active);
   if (active) renderFormSteps(step);
   ['f-project', 'f-crcard', 'f-nextcard'].forEach(id => $(id).classList.toggle('hidden', !active));
+  /* V4.5.17 : dossier signé = plus de barre d'étapes, de « Reste à faire » ni d'étape « Suivi » */
+  ['f-secnav', 'f-todo'].forEach(id => { const e = $(id); if (e) e.classList.toggle('hidden', !!signed); }); { const z5 = document.querySelector('#view-client .fz[data-zone="5"]'); if (z5) z5.classList.toggle('hidden', !!signed); }
   renderBanner(c); renderActBan(c);
   renderDevis(c); offreBox(c); opBox(c); renderBesoins(c); renderImpl(c); renderQual(c); renderArgBtn(c); renderOffTabs(c); renderCoord(); renderContacts(); renderAddonsList(c); renderHistory(c); renderMobileBar(); renderStage(); renderNextSum(c);
   try { v4Need(); } catch (e) {}
@@ -5007,6 +5062,7 @@ function renderBanner(c) {
         <div><label class="lbl" for="b-livraison">Date de livraison</label><input type="date" id="b-livraison" class="inp" value="${esc(c.livraisonDate || '')}"></div>
         <div><label class="lbl" for="b-sign-montant">Prix final (€ HT)</label><input type="number" id="b-sign-montant" class="inp font-bold" value="${c.montant || 0}"></div>
       </div>
+      ${(!c.signatureDate || !c.livraisonDate || !(+c.montant > 0)) ? `<div class="rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-[12.5px] px-3 py-2 flex items-center gap-2"><i class="fas fa-triangle-exclamation"></i>À compléter : ${[!c.signatureDate && 'date de signature', !c.livraisonDate && 'date de livraison', !(+c.montant > 0) && 'prix final'].filter(Boolean).join(', ')}.</div>` : ''}
       <div class="text-[13px] text-slate-700">Modèle : <b>${esc((c.robots || []).join(', ') || '—')}</b></div>
       <div class="rounded-xl bg-white border border-slate-200 p-4 flex flex-col gap-3">
         <label class="flex items-center gap-2 text-[13px] font-semibold"><input type="checkbox" id="b-res" class="w-4 h-4 accent-orange-700" ${c.hasReserves ? 'checked' : ''} onchange="resToggle()">Contrat signé avec réserves (clauses suspensives)</label>
@@ -7059,14 +7115,37 @@ const cnt3 = rows => { const nr = rows.filter(r => !r.a).length, na = rows.filte
 function comRecap(rows) {
   const kind = r => r.nan ? 'n' : r.a ? 'a' : 'r';
   const g = (st, k) => { const x = rows.filter(r => (st === '*' || r.statut === st) && (k === '*' || kind(r) === k)); return {n: x.length, m: sum(x, r => r.com)}; };
-  const cell = o => `<td class="rn g">${o.n}</td><td class="rm">${eur2(o.m)}</td>`;
-  const line = (cls, lab, st) => `<tr class="${cls}"><td class="rl">${lab}</td>${['r', 'a', 'n', '*'].map(k => cell(g(st, k))).join('')}</tr>`;
+  const stk = {paye: 'paye', attente: 'attente', bloque: 'bloque', '*': '*'};
+  const cell = (o, st, k) => `<td class="rn g cd-click" onclick="comDet('${stk[st]}','${k}')" title="Voir le détail">${o.n}</td><td class="rm cd-click" onclick="comDet('${stk[st]}','${k}')" title="Voir le détail">${eur2(o.m)}</td>`;
+  const line = (cls, lab, st) => `<tr class="${cls}"><td class="rl cd-click" onclick="comDet('${stk[st]}','*')" title="Voir le détail">${lab}</td>${['r', 'a', 'n', '*'].map(k => cell(g(st, k), st, k)).join('')}</tr>`;
   const sub = ['r', 'a', 'n', '*'].map(() => '<th class="g">Nb</th><th>Commission</th>').join('');
   return `<div class="px-5 py-3 border-b border-slate-200"><div class="inline-block rounded-xl overflow-hidden" style="border:1.5px solid #94A3B8"><div class="flex justify-between gap-8 px-3 py-1.5 text-[12.5px] font-extrabold text-white" style="background:#64748B"><span>Récapitulatif des commissions</span><span class="font-medium opacity-90">au ${fmtD(isoDay(TODAY))}</span></div>
     <table class="rec rec2"><thead><tr><th rowspan="2"></th><th colspan="2" class="g">ROBOTS</th><th colspan="2" class="g">ADD-ONS</th><th colspan="2" class="g">FINANCEMENT NANCEO</th><th colspan="2" class="g tt">TOTAL</th></tr><tr>${sub}</tr></thead><tbody>
     ${line('pa', '<i class="fas fa-circle-check text-emerald-600 mr-1"></i>Payées', 'paye')}${line('at', '<i class="fas fa-hourglass-half text-amber-600 mr-1"></i>En attente', 'attente')}${line('bl', '<i class="fas fa-lock mr-1"></i>Sous réserve', 'bloque')}
     ${line('to', 'Total', '*')}</tbody></table></div>
     <div class="text-[11.5px] text-muted mt-1">Nb = nombre de dossiers · Commission = montant en euros.</div></div>`;
+}
+/* V4.5.17 : fenêtre « détail » au clic sur une carte ou une ligne du récapitulatif */
+const CD_ST = {acq: ['Commissions acquises', ['attente', 'paye']], paye: ['Commissions payées', ['paye']], attente: ['En attente de paiement', ['attente']], bloque: ['Bloquées · réserves', ['bloque']], '*': ['Toutes les commissions', ['attente', 'paye', 'bloque']]};
+const CD_K = {r: ['Robots', r => !r.a], a: ['Add-ons', r => r.a && !r.nan], n: ['Financement NANCEO', r => r.nan], '*': ['', () => true]};
+function comDetRows() { const d = ui.cd || {st: '*', k: '*'}; return comFiltered().filter(r => CD_ST[d.st][1].includes(r.statut) && CD_K[d.k][1](r)).sort((a, b) => String(b.date).localeCompare(String(a.date))); }
+function comDet(st, k) {
+  ui.cd = {st, k: k || '*'}; const rows = comDetRows(), d = ui.cd, att = rows.filter(r => r.statut === 'attente' && !r.nan);
+  $('cd-title').textContent = CD_ST[st][0] + (CD_K[d.k][0] ? ' · ' + CD_K[d.k][0] : '');
+  $('cd-sub').textContent = `${rows.length} dossier${rows.length > 1 ? 's' : ''} · ${P_LABEL()}`;
+  $('cd-body').innerHTML = rows.length ? `<div class="overflow-x-auto"><table class="tbl w-full min-w-[820px]"><thead><tr>${['Pharmacie', 'Signature', 'Robot / add-on', 'Base', 'Taux', 'Commission', 'Statut'].map((h, i) => `<th class="${i > 2 && i < 6 ? 'text-right' : ''}"><span class="block px-3 py-2.5 ${i > 2 && i < 6 ? 'text-right' : ''}">${h}</span></th>`).join('')}</tr></thead><tbody>`
+    + rows.map(r => `<tr class="cursor-pointer hover:bg-slate-50" onclick="closeDlg('dlg-comdet');openClient(${r.c.id})"><td class="font-semibold">${esc(r.c.pharma)}<div class="text-[11px] text-muted font-normal">${esc(r.c.ville || '')}</div></td><td>${fmtD(r.date)}</td><td>${esc(r.f)}${r.label && r.label !== r.f ? ' · ' + esc(r.label) : ''}</td><td class="text-right">${eur(r.base)}</td><td class="text-right">${(r.taux || 0).toLocaleString('fr-FR')} %</td><td class="text-right font-bold">${eur2(r.com)}</td><td>${comPill(r)}</td></tr>`).join('') + '</tbody></table></div>'
+    : '<p class="p-6 text-sm text-muted">Aucun dossier dans cette catégorie sur la période affichée.</p>';
+  $('cd-tot').textContent = `Total : ${eur2(sum(rows, r => r.com))}`;
+  $('cd-pay').classList.toggle('hidden', !att.length); $('cd-pay').dataset.n = att.length;
+  $('dlg-comdet').showModal();
+}
+const P_LABEL = () => { const P = ui.comP; return P.mode === 'year' ? `année civile ${P.year}` : `du ${P.du ? fmtD(P.du) : '…'} au ${P.au ? fmtD(P.au) : '…'}`; };
+function comDetPay() { const keys = comDetRows().filter(r => r.statut === 'attente' && !r.nan).map(r => r.key); closeDlg('dlg-comdet'); openPay(keys); }
+function comDetCsv() {
+  const rows = comDetRows(); if (!rows.length) return toast('Aucune donnée.', true);
+  const L = ['"Pharmacie";"Ville";"Signature";"Type";"Robot / add-on";"Base";"Taux %";"Commission";"Statut"', ...rows.map(r => [r.c.pharma, r.c.ville || '', r.date, r.f, r.label || '', r.base, r.taux, r.com, COM_ST[r.statut][0]].map(v => `"${String(v).replace(/"/g, '""')}"`).join(';'))];
+  download('commissions_detail.csv', '\uFEFF' + L.join('\r\n'), 'text/csv;charset=utf-8'); toast('Export CSV réalisé');
 }
 function comBar(rows, vw) {
   const F = comF(), n = (skip, f) => comView(rows, skip).filter(f).length;
@@ -7092,7 +7171,7 @@ function pfCom() {
   const tot = st => sum(rows.filter(r => !st || r.statut === st), r => r.com);
   const yrRows = all.filter(r => r.y === yr), nS = yrRows.filter(r => r.f === 'SINTESI').length, nG = yrRows.filter(r => r.f === 'GENESI').length;
   const obj = +settings.objectif || 18, tS = tierInfo('SINTESI', nS), tG = tierInfo('GENESI', nG);
-  const tile = (l, v, s, bg, fg, bd) => `<div class="rounded-2xl p-4" style="background:${bg};--tb:${bd}"><div class="text-[11px] font-semibold uppercase tracking-wider" style="color:${fg}">${l}</div><div class="text-[22px] font-bold mt-1" style="color:${fg}">${v}</div><div class="text-xs" style="color:${fg}">${s}</div></div>`;
+  const tile = (l, v, s, bg, fg, bd, st) => `<div class="rounded-2xl p-4 cd-click" role="button" tabindex="0" title="Voir le détail" onclick="comDet('${st}')" onkeydown="if(event.key==='Enter')comDet('${st}')" style="background:${bg};--tb:${bd}"><div class="text-[11px] font-semibold uppercase tracking-wider" style="color:${fg}">${l}</div><div class="text-[22px] font-bold mt-1" style="color:${fg}">${v}</div><div class="text-xs" style="color:${fg}">${s}</div></div>`;
   const years = [...new Set([CUR_YEAR, ...all.map(r => r.y)])].sort((a, b) => b - a);
   const vw = comView(rows), attP = rows.filter(r => r.statut === 'attente'), att = vw.filter(r => r.statut === 'attente');
   const sel = ui.paySel; [...sel].forEach(k => { if (!att.some(r => r.key === k)) sel.delete(k); });
@@ -7110,10 +7189,10 @@ function pfCom() {
       <div class="v43-cur"><span class="text-muted">Affichage actuel :</span>${P.mode === 'year' ? `<span class="v43-ok">✔ Année civile ${P.year} · 01/01 → 31/12</span>` : `<span class="v43-warn">⚠ Période personnalisée · ${P.du ? fmtD(P.du) : '…'} → ${P.au ? fmtD(P.au) : '…'}</span>`}<b>${cnt3(rows)}</b>${P.mode === 'year' ? '' : `<button class="btn btn-g !h-9 ml-auto" onclick="ui.comP={mode:'year',year:${CUR_YEAR},du:'',au:''};renderProfile()"><i class="fas fa-rotate-left"></i>Revenir à l’année civile</button>`}</div>
     </section>
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 v38-tiles">
-      ${tile('Commissions acquises', eur2(tot('attente') + tot('paye')), 'hors dossiers bloqués', '#F1F3F6', '#0F172A', '#CBD5E1')}
-      ${tile('Payées', eur2(tot('paye')), `${rows.filter(r => r.statut === 'paye').length} dossier(s)`, '#E8F5EE', '#14603F', '#86CFA0')}
-      ${tile('En attente de paiement', eur2(tot('attente')), `${attP.length} dossier(s)`, '#FEF6E4', '#6B4607', '#F2C46B')}
-      ${tile('Bloquées · réserves', eur2(tot('bloque')), `${rows.filter(r => r.statut === 'bloque').length} dossier(s) à lever`, '#FDECEC', '#9F1C1C', '#F29B9B')}
+      ${tile('Commissions acquises', eur2(tot('attente') + tot('paye')), 'hors dossiers bloqués', '#F1F3F6', '#0F172A', '#CBD5E1', 'acq')}
+      ${tile('Payées', eur2(tot('paye')), `${rows.filter(r => r.statut === 'paye').length} dossier(s)`, '#E8F5EE', '#14603F', '#86CFA0', 'paye')}
+      ${tile('En attente de paiement', eur2(tot('attente')), `${attP.length} dossier(s)`, '#FEF6E4', '#6B4607', '#F2C46B', 'attente')}
+      ${tile('Bloquées · réserves', eur2(tot('bloque')), `${rows.filter(r => r.statut === 'bloque').length} dossier(s) à lever`, '#FDECEC', '#9F1C1C', '#F29B9B', 'bloque')}
     </div>
     <div class="grid lg:grid-cols-3 gap-5 v38-cards">
       <section class="card p-5 flex flex-col gap-2.5" style="--cb2:#86CFA0;--cf2:#F6FBF8"><div class="flex justify-between"><h2 class="h2 flex items-center gap-2">${robotIco('SINTESI XL', 30)}Objectif SINTESI ${yr}</h2><span class="text-sm font-bold">${nS} / ${obj}</span></div>
