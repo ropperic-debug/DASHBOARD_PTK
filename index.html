@@ -1272,7 +1272,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
-<li><b>V4.5.31</b> : <b>Envoi du fichier CRO par e-mail</b> : les destinataires sont séparés par des points-virgules (au lieu de virgules), ce qui évite l'erreur « Vérification des noms » d'Outlook. Même correction pour l'e-mail de levée des réserves.</li>\n<li><b>V4.5.30</b> : <b>Fichier de suivi CRO</b> : une pharmacie présente en double (même code CIP) parmi les projets en cours n'apparaît plus qu'une fois : la fiche la plus avancée est gardée. Vos fiches ne sont pas modifiées.</li>\n<li><b>V4.5.29</b> : <b>Fichier de suivi CRO</b> : toutes les lignes des tableaux ont maintenant la même hauteur (plus de lignes décalées), les commentaires restent sur une seule ligne et les colonnes s'ajustent au contenu.</li>\n<li><b>V4.5.28</b> : <b>Leads à recontacter</b>. « Nouvelle fiche » propose désormais « Projet robot » ou « Lead à recontacter » (pharmacie, origine, motif, première action). Un lead est <b>hors portefeuille, prévisions et statistiques</b> : il est dans la tuile violette « Prospection non aboutie » (onglets À recontacter / Sans suite). Sa première action apparaît dans « Ma journée ». Boutons « Créer le projet » (passe au portefeuille sans ressaisie), « Classer sans suite » et « Réactiver ». L'historique est toujours conservé.</li>
+<li><b>V4.5.32</b> : <b>Création d'un lead</b> : recherche dans l'annuaire officiel des pharmacies, comme pour une fiche projet. Un clic sur le résultat remplit nom, adresse, code postal, ville, téléphone et titulaire (et le SIRET, conservé dans la fiche).</li>\n<li><b>V4.5.31</b> : <b>Envoi du fichier CRO par e-mail</b> : les destinataires sont séparés par des points-virgules (au lieu de virgules), ce qui évite l'erreur « Vérification des noms » d'Outlook. Même correction pour l'e-mail de levée des réserves.</li>\n<li><b>V4.5.30</b> : <b>Fichier de suivi CRO</b> : une pharmacie présente en double (même code CIP) parmi les projets en cours n'apparaît plus qu'une fois : la fiche la plus avancée est gardée. Vos fiches ne sont pas modifiées.</li>\n<li><b>V4.5.29</b> : <b>Fichier de suivi CRO</b> : toutes les lignes des tableaux ont maintenant la même hauteur (plus de lignes décalées), les commentaires restent sur une seule ligne et les colonnes s'ajustent au contenu.</li>\n<li><b>V4.5.28</b> : <b>Leads à recontacter</b>. « Nouvelle fiche » propose désormais « Projet robot » ou « Lead à recontacter » (pharmacie, origine, motif, première action). Un lead est <b>hors portefeuille, prévisions et statistiques</b> : il est dans la tuile violette « Prospection non aboutie » (onglets À recontacter / Sans suite). Sa première action apparaît dans « Ma journée ». Boutons « Créer le projet » (passe au portefeuille sans ressaisie), « Classer sans suite » et « Réactiver ». L'historique est toujours conservé.</li>
 <li><b>V4.5.27</b> : (1) <b>Fiche réorganisée</b> : la carte « Préparer et générer le PDF » est maintenant la dernière étape de « Offre de robotisation » (robot → devis → plan → PDF), avec une barre de progression à 4 étapes. (2) <b>Remplacer le devis</b> : bouton orange bien visible dans « Devis + maintenance » ; vous importez le nouveau PDF, une fenêtre compare l'ancien et le nouveau (total, écart, lignes ajoutées, supprimées ou modifiées), puis vous validez. L'ancien devis est conservé dans l'historique de la fiche.</li>
 <li><b>V4.5.26</b> : <b>Mise en page automatique du PDF</b> : avant de créer le PDF, le logiciel fait des essais invisibles et ajuste seul pour éviter une dernière page quasi vide : bloc « Éléments complémentaires » placé en page 3 s'il y a de la place, bandeau « Restons connectés » compact, espaces resserrés, puis en dernier recours retrait de « c'est aussi… » puis de la garantie. Un message indique ce qui a été ajusté (fenêtre de génération et confirmation). Un PDF qui passe déjà bien ne change pas.</li>
 <li><b>V4.5.25</b> : <b>Offre : lignes à 0 € = « Inclus »</b>. Dans le PDF (offre seule et fusionné), toute ligne du devis à 0 € quitte la liste chiffrée et apparaît dans un bloc vert « Inclus dans votre offre » avec une pastille « Inclus » ; les totaux ne changent pas. Dans l'écran de l'offre, un message vert prévient quand une ligne est à 0 (pour repérer un prix oublié).</li>
@@ -1715,7 +1715,11 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <dialog id="dlg-lead" class="!w-[min(720px,97vw)]">
   <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start"><div><h3 class="font-bold flex items-center gap-2 text-violet-900"><i class="fas fa-phone-volume"></i>Lead à recontacter</h3><p class="text-xs text-muted">Aucun projet pour l'instant : la fiche reste hors portefeuille.</p></div><button class="dlg-x" onclick="closeDlg('dlg-lead')" aria-label="Fermer"><i class="fas fa-xmark"></i></button></div>
   <div class="dlg-body p-5 flex flex-col gap-3">
-    <div class="grid sm:grid-cols-3 gap-3"><div class="sm:col-span-2"><label class="lbl" for="ld-ph">Pharmacie *</label><input id="ld-ph" class="inp" placeholder="Ex. : Pharmacie du Centre"></div><div><label class="lbl" for="ld-vil">Ville</label><input id="ld-vil" class="inp"></div></div>
+    <div class="rounded-xl border border-blue-200 bg-blue-50/60 p-3"><div class="grid grid-cols-[1fr_90px] gap-2"><div><label class="lbl !text-blue-900" for="ld-q"><i class="fas fa-magnifying-glass mr-1"></i>Annuaire officiel des pharmacies</label><input id="ld-q" class="inp" placeholder="Ex. : Prado" autocomplete="off" oninput="leadSearch()"></div>
+      <div><label class="lbl !text-blue-900" for="ld-dep">Départ.</label><input id="ld-dep" class="inp font-mono text-center" placeholder="18" maxlength="3" inputmode="numeric" oninput="this.value=this.value.toUpperCase().replace(/[^0-9AB]/g,'');leadSearch()"></div></div>
+      <p class="text-[12px] text-blue-900 mt-1">Tapez le nom (inutile d'écrire « pharmacie ») et, si vous le connaissez, le n° de département. Cliquez sur un résultat pour remplir la fiche.</p>
+      <div id="ld-res" class="hidden mt-2 rounded-xl border border-slate-200 bg-white max-h-64 overflow-auto"></div></div>
+    <div class="grid sm:grid-cols-3 gap-3"><div class="sm:col-span-2"><label class="lbl" for="ld-ph">Pharmacie *</label><input id="ld-ph" class="inp" placeholder="Ex. : Pharmacie du Centre" oninput="leadTyping()"></div><div><label class="lbl" for="ld-vil">Ville</label><input id="ld-vil" class="inp"></div></div>
     <div class="grid sm:grid-cols-3 gap-3"><div><label class="lbl" for="ld-cp">Code postal</label><input id="ld-cp" class="inp" inputmode="numeric" maxlength="5"></div><div><label class="lbl" for="ld-nom">Contact (nom)</label><input id="ld-nom" class="inp" placeholder="Titulaire…"></div><div><label class="lbl" for="ld-tel">Téléphone</label><input id="ld-tel" class="inp" inputmode="tel"></div></div>
     <div><label class="lbl" for="ld-mail">E-mail</label><input id="ld-mail" type="email" class="inp"></div>
     <div class="grid sm:grid-cols-2 gap-3"><div><label class="lbl" for="ld-ori">Origine du lead</label><select id="ld-ori" class="inp"><option>Lead marketing</option><option>Salon / événement</option><option>Appel entrant</option><option>Recommandation</option><option>Autre</option></select></div><div><label class="lbl" for="ld-mot">Motif / raison</label><input id="ld-mot" class="inp" placeholder="Ex. : demande de documentation reçue du marketing"></div></div>
@@ -2039,7 +2043,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.31';
+const APP_VERSION = '4.5.32';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -4033,10 +4037,44 @@ function newClient() { $('dlg-newtype').showModal(); }
 ui.leadTab = 'recontacter';
 const LEAD_ORI = ['Lead marketing', 'Salon / événement', 'Appel entrant', 'Recommandation', 'Autre'];
 const isLead = c => c?.step === 'Lead';
+
+let ldT;
+function leadTyping() { const v = $('ld-ph').value.trim(); if (v.length < 3 || ui.ldPicked === v) return; $('ld-q').value = v; leadSearch(); }
+function leadSearch() {
+  clearTimeout(ldT); const my = (ui.ldSeq = (ui.ldSeq || 0) + 1), raw = $('ld-q').value.trim(), box = $('ld-res');
+  const m = raw.match(/^(.*?)[\s,]+(\d{2,3}|2[ab])$/i), dep = ($('ld-dep').value.trim() || (m ? m[2] : '')).toUpperCase().padStart(2, '0');
+  const q = (m && !$('ld-dep').value.trim() ? m[1] : raw).replace(/^pharmacie\s+(de\s+la\s+|du\s+|des\s+|de\s+l'|de\s+)?/i, '').trim();
+  if (q.length < 3) { box.classList.add('hidden'); return; }
+  const depOk = /^(\d{2,3}|2[AB])$/.test(dep) && dep !== '00' ? dep : '';
+  ldT = setTimeout(async () => {
+    box.innerHTML = `<div class="p-3 text-xs text-muted"><i class="fas fa-spinner fa-spin mr-1"></i>Recherche « ${esc(q)} »${depOk ? ' dans le ' + esc(depOk) : ''}…</div>`; box.classList.remove('hidden');
+    const loc = await pbaseSearch(q, depOk); if (my !== ui.ldSeq) return;
+    let api = [];
+    try { const u = new URL('https://recherche-entreprises.api.gouv.fr/search'); u.searchParams.set('q', q); u.searchParams.set('activite_principale', '47.73Z'); u.searchParams.set('per_page', '8'); if (depOk) u.searchParams.set('departement', depOk); const r = await fetch(u); if (r.ok) api = (await r.json()).results || []; } catch { }
+    if (my !== ui.ldSeq) return;
+    const seen = new Set(loc.map(x => x.siret).filter(Boolean)); api = api.filter(p => !seen.has(p.siege?.siret));
+    ui.ldRes = [...loc.map(x => ({loc: x})), ...api];
+    box.innerHTML = ui.ldRes.length ? (loc.length ? '<div class="px-3 pt-2 pb-1 text-[11px] font-semibold uppercase tracking-wide text-emerald-800">Base officielle importée</div>' : '') + ui.ldRes.map((p, i) => {
+      if (p.loc) { const x = p.loc; return `<button type="button" class="w-full text-left px-3 py-2.5 border-b border-slate-100 hover:bg-violet-50" onclick="leadPick(${i})"><div class="text-sm font-semibold">${esc(x.nom)}</div><div class="text-xs text-muted">${esc([x.rue, x.cp + ' ' + x.ville].filter(Boolean).join(', '))}${x.tel ? ' · ' + esc(x.tel) : ''}</div></button>`; }
+      const s = p.siege || {}; return `${i === loc.length && loc.length ? '<div class="px-3 pt-2 pb-1 text-[11px] font-semibold uppercase tracking-wide text-blue-900">Annuaire des entreprises (en ligne)</div>' : ''}<button type="button" class="w-full text-left px-3 py-2.5 border-b border-slate-100 hover:bg-violet-50" onclick="leadPick(${i})"><div class="text-sm font-semibold">${esc(titleCase(s.liste_enseignes?.[0] || p.nom_complet))}</div><div class="text-xs text-muted">${esc(titleCase(s.adresse || ''))}</div></button>`; }).join('')
+      : `<div class="p-3 text-xs text-muted">Aucun résultat${depOk ? '' : ' — précisez le n° de département'}.</div>`;
+    if (!settings.pbase?.n) box.insertAdjacentHTML('beforeend', '<div class="p-3 text-xs text-muted bg-slate-50">Téléphone et titulaire : <button type="button" class="font-semibold text-ptkd hover:underline" onclick="closeDlg(\'dlg-lead\');openBase()">installer la base des pharmacies</button> (2 minutes, une seule fois).</div>');
+  }, 350);
+}
+function leadPick(i) {
+  clearTimeout(ldT); ui.ldSeq = (ui.ldSeq || 0) + 1; const p = ui.ldRes[i]; if (!p) return; let f;
+  if (p.loc) { const x = p.loc, t = (x.tits && x.tits[0]) || x.tit; f = {nom: x.nom, rue: x.rue || '', cp: x.cp || '', ville: x.ville || '', tel: x.tel || '', siret: x.siret || '', tit: t ? {civ: t.civ, prenom: t.prenom, nom: t.nom} : null}; }
+  else { const s = p.siege || {}, d = (p.dirigeants || []).filter(d => d.type_dirigeant === 'personne physique')[0];
+    f = {nom: titleCase(s.liste_enseignes?.[0] || p.nom_complet), rue: titleCase([s.numero_voie, s.indice_repetition, s.type_voie, s.libelle_voie].filter(Boolean).join(' ')), cp: s.code_postal || '', ville: titleCase(s.libelle_commune || ''), tel: '', siret: s.siret || '',
+      tit: d ? {civ: d.genre === '2' || d.genre === 'F' ? 'Mme' : 'M.', prenom: titleCase((d.prenoms || '').split(' ')[0]), nom: titleCase(d.nom || '')} : null}; }
+  ui.ldPicked = f.nom; $('ld-ph').value = f.nom; $('ld-vil').value = f.ville; $('ld-cp').value = f.cp; if (f.tel) { $('ld-tel').value = f.tel; fmtPhone($('ld-tel')); } if (f.tit) $('ld-nom').value = f.tit.nom;
+  ui.ldExtra = {rue: f.rue, siret: (f.siret || '').replace(/\D/g, ''), tit: f.tit}; $('ld-res').classList.add('hidden'); toast('Coordonnées pré-remplies depuis l\'annuaire');
+}
 function leadOpen() {
   closeDlg('dlg-newtype');
   ['ld-ph', 'ld-vil', 'ld-cp', 'ld-nom', 'ld-tel', 'ld-mail', 'ld-mot'].forEach(i => $(i).value = ''); $('ld-ori').value = 'Lead marketing'; $('ld-act').value = 'relance'; $('ld-dt').value = addDays(3); $('ld-hm').value = '09:00';
-  $('dlg-lead').showModal(); setTimeout(() => $('ld-ph').focus(), 200);
+  ui.ldExtra = {}; ui.ldPicked = ''; ['ld-q', 'ld-dep'].forEach(i => $(i).value = ''); $('ld-res').classList.add('hidden');
+  $('dlg-lead').showModal(); setTimeout(() => $('ld-q').focus(), 200);
 }
 function leadCreate() {
   const ph = $('ld-ph').value.trim(); if (!ph) { toast('Indiquez le nom de la pharmacie.', true); return $('ld-ph').focus(); }
@@ -4044,8 +4082,9 @@ function leadCreate() {
   const dup = clients.find(x => (x.pharma || '').trim().toLowerCase() === ph.toLowerCase() && (!$('ld-vil').value.trim() || (x.ville || '').trim().toLowerCase() === $('ld-vil').value.trim().toLowerCase()));
   const go = () => {
     const dt = $('ld-dt').value ? `${$('ld-dt').value}T${$('ld-hm').value || '09:00'}` : null, type = $('ld-act').value, ori = $('ld-ori').value, mot = $('ld-mot').value.trim();
-    const c = {id: Date.now(), step: 'Lead', pharma: ph, ville: $('ld-vil').value.trim(), cp: $('ld-cp').value.trim(), genre: 'M.', nom: $('ld-nom').value.trim(), prenom: '', telFixe: $('ld-tel').value.trim(), email: mail, cip: '', montant: 0,
+    const c = {id: Date.now(), step: 'Lead', pharma: ph, ville: $('ld-vil').value.trim(), cp: $('ld-cp').value.trim(), genre: 'M.', nom: $('ld-nom').value.trim(), prenom: '', rue: ui.ldExtra?.rue || '', siret: ui.ldExtra?.siret || '', telFixe: $('ld-tel').value.trim(), email: mail, cip: '', montant: 0,
       lead: {statut: 'recontacter', origine: ori, motif: mot, depuis: isoDay(TODAY)}, addons: [], contacts: [], history: [], acts: [], nextDate: dt, nextType: dt ? type : null, createdAt: isoDT(new Date())};
+    { const t = ui.ldExtra?.tit; if (t && t.nom === c.nom) { c.prenom = t.prenom || ''; c.genre = t.civ === 'Mme' ? 'Mme' : 'M.'; } }
     log(c, 'Lead créé', `${ori}${mot ? ' · ' + mot : ''}`); if (dt) log(c, `${ACTIONS[type].label} planifié(e) — ${fmtDT(dt)}`, 'Première action du lead');
     clients.unshift(c); save(); closeDlg('dlg-lead'); toast('Lead créé : il apparaît dans « Prospection non aboutie »'); ui.leadTab = 'recontacter'; try { refresh(); } catch (e) {} openClient(c.id);
   };
