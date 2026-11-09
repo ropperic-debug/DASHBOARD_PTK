@@ -1272,6 +1272,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.38</b> : <b>Fiche lead</b> : origine « Lead Pharmagest » ; bloc « Compte-rendu de la conversation » (dictée possible, date et heure de l'échange, inscrit dans l'historique) ; bloc « Et ensuite ? » avec un seul bouton Valider : garder en lead (prochain rappel, raccourcis 1 mois à 1 an), créer le projet ou classer sans suite ; l'action planifiée est visible sur la fiche (Fait, Replanifier, Retirer) ; à la création, la première action est une case à cocher facultative ; colonne « Dernier échange » dans le tableau des leads.</li>
 <li><b>V4.5.37</b> : <b>Lead à recontacter</b> : le titulaire de la pharmacie est proposé automatiquement dans le champ « Titulaire / contact » (base importée, sinon annuaire des entreprises en ligne) ; s'il y en a plusieurs, ils sont proposés en boutons cliquables. Vous pouvez toujours le modifier.</li>\n<li><b>V4.5.36</b> : <b>Action sur une fiche sans action</b> : la case « Définir comme prochaine action du dossier » est maintenant cochée d'office quand la fiche n'a aucune action prévue ; l'action planifiée apparaît donc tout de suite dans le portefeuille (colonne « Prochaine action »).</li>\n<li><b>V4.5.35</b> : <b>Dictée</b> : le micro s'arrête de lui-même après environ 30 secondes de silence (il ne se relance plus indéfiniment).</li>\n<li><b>V4.5.34</b> : <b>Page de garde des PDF</b> : image dédiée pour les modèles SINTESI XL (monobras et double bras) et GENESI, plus grande et sans bandeau gris. Les autres modèles gardent la photo actuelle.</li>\n<li><b>V4.5.33</b> : (1) <b>Dictée</b> : le bandeau « Je vous écoute… » ne se répète plus (il s'empilait à chaque relance automatique du micro). (2) <b>Sécurité des fenêtres</b> : si vous avez saisi ou dicté du texte, un clic à côté de la fenêtre ou la touche Échap demande confirmation avant de fermer (Échap pendant une dictée arrête seulement le micro).</li>\n<li><b>V4.5.32</b> : <b>Création d'un lead</b> : recherche dans l'annuaire officiel des pharmacies, comme pour une fiche projet. Un clic sur le résultat remplit nom, adresse, code postal, ville, téléphone et titulaire (et le SIRET, conservé dans la fiche).</li>\n<li><b>V4.5.31</b> : <b>Envoi du fichier CRO par e-mail</b> : les destinataires sont séparés par des points-virgules (au lieu de virgules), ce qui évite l'erreur « Vérification des noms » d'Outlook. Même correction pour l'e-mail de levée des réserves.</li>\n<li><b>V4.5.30</b> : <b>Fichier de suivi CRO</b> : une pharmacie présente en double (même code CIP) parmi les projets en cours n'apparaît plus qu'une fois : la fiche la plus avancée est gardée. Vos fiches ne sont pas modifiées.</li>\n<li><b>V4.5.29</b> : <b>Fichier de suivi CRO</b> : toutes les lignes des tableaux ont maintenant la même hauteur (plus de lignes décalées), les commentaires restent sur une seule ligne et les colonnes s'ajustent au contenu.</li>\n<li><b>V4.5.28</b> : <b>Leads à recontacter</b>. « Nouvelle fiche » propose désormais « Projet robot » ou « Lead à recontacter » (pharmacie, origine, motif, première action). Un lead est <b>hors portefeuille, prévisions et statistiques</b> : il est dans la tuile violette « Prospection non aboutie » (onglets À recontacter / Sans suite). Sa première action apparaît dans « Ma journée ». Boutons « Créer le projet » (passe au portefeuille sans ressaisie), « Classer sans suite » et « Réactiver ». L'historique est toujours conservé.</li>
 <li><b>V4.5.27</b> : (1) <b>Fiche réorganisée</b> : la carte « Préparer et générer le PDF » est maintenant la dernière étape de « Offre de robotisation » (robot → devis → plan → PDF), avec une barre de progression à 4 étapes. (2) <b>Remplacer le devis</b> : bouton orange bien visible dans « Devis + maintenance » ; vous importez le nouveau PDF, une fenêtre compare l'ancien et le nouveau (total, écart, lignes ajoutées, supprimées ou modifiées), puis vous validez. L'ancien devis est conservé dans l'historique de la fiche.</li>
 <li><b>V4.5.26</b> : <b>Mise en page automatique du PDF</b> : avant de créer le PDF, le logiciel fait des essais invisibles et ajuste seul pour éviter une dernière page quasi vide : bloc « Éléments complémentaires » placé en page 3 s'il y a de la place, bandeau « Restons connectés » compact, espaces resserrés, puis en dernier recours retrait de « c'est aussi… » puis de la garantie. Un message indique ce qui a été ajusté (fenêtre de génération et confirmation). Un PDF qui passe déjà bien ne change pas.</li>
@@ -1722,8 +1723,9 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
     <div class="grid sm:grid-cols-3 gap-3"><div class="sm:col-span-2"><label class="lbl" for="ld-ph">Pharmacie *</label><input id="ld-ph" class="inp" placeholder="Ex. : Pharmacie du Centre" oninput="leadTyping()"></div><div><label class="lbl" for="ld-vil">Ville</label><input id="ld-vil" class="inp"></div></div>
     <div class="grid sm:grid-cols-3 gap-3"><div><label class="lbl" for="ld-cp">Code postal</label><input id="ld-cp" class="inp" inputmode="numeric" maxlength="5"></div><div><label class="lbl" for="ld-nom">Titulaire / contact</label><input id="ld-nom" class="inp" placeholder="Titulaire…" oninput="ui.ldTitTyped=true"><div id="ld-tits" class="flex flex-wrap gap-1 mt-1"></div></div><div><label class="lbl" for="ld-tel">Téléphone</label><input id="ld-tel" class="inp" inputmode="tel"></div></div>
     <div><label class="lbl" for="ld-mail">E-mail</label><input id="ld-mail" type="email" class="inp"></div>
-    <div class="grid sm:grid-cols-2 gap-3"><div><label class="lbl" for="ld-ori">Origine du lead</label><select id="ld-ori" class="inp"><option>Lead marketing</option><option>Salon / événement</option><option>Appel entrant</option><option>Recommandation</option><option>Autre</option></select></div><div><label class="lbl" for="ld-mot">Motif / raison</label><input id="ld-mot" class="inp" placeholder="Ex. : demande de documentation reçue du marketing"></div></div>
-    <div class="grid sm:grid-cols-3 gap-3"><div><label class="lbl" for="ld-act">Première action</label><select id="ld-act" class="inp"><option value="relance">Appel</option><option value="mail">E-mail</option><option value="suivi">Relance</option><option value="visite">Visite sur site</option><option value="teams">Visio Teams</option></select></div><div><label class="lbl" for="ld-dt">À faire le</label><input type="date" id="ld-dt" class="inp"></div><div><label class="lbl" for="ld-hm">Heure</label><input type="time" id="ld-hm" class="inp" value="09:00"></div></div>
+    <div class="grid sm:grid-cols-2 gap-3"><div><label class="lbl" for="ld-ori">Origine du lead</label><select id="ld-ori" class="inp"><option>Lead marketing</option><option>Lead Pharmagest</option><option>Salon / événement</option><option>Appel entrant</option><option>Recommandation</option><option>Autre</option></select></div><div><label class="lbl" for="ld-mot">Motif / raison</label><input id="ld-mot" class="inp" placeholder="Ex. : demande de documentation reçue du marketing"></div></div>
+    <label class="flex items-center gap-2 text-[13px] font-semibold cursor-pointer"><input type="checkbox" id="ld-plan" class="accent-violet-700" checked onchange="ldPlanTog()">Planifier une première action de rappel <span class="font-normal text-muted">(décochez s'il n'y en a pas)</span></label>
+    <div id="ld-planbox" class="grid sm:grid-cols-3 gap-3"><div><label class="lbl" for="ld-act">Première action</label><select id="ld-act" class="inp"><option value="relance">Appel</option><option value="mail">E-mail</option><option value="suivi">Relance</option><option value="visite">Visite sur site</option><option value="teams">Visio Teams</option></select></div><div><label class="lbl" for="ld-dt">À faire le</label><input type="date" id="ld-dt" class="inp"></div><div><label class="lbl" for="ld-hm">Heure</label><input type="time" id="ld-hm" class="inp" value="09:00"></div></div>
     <div class="rounded-xl border border-dashed border-violet-400 bg-violet-50 px-3 py-2 text-[12.5px] text-violet-900">L'action apparaît dans <b>Ma journée</b>. La fiche reste <b>hors portefeuille, prévisions et statistiques</b> tant qu'aucun projet n'est créé.</div>
   </div>
   <div class="px-5 py-4 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-lead')">Annuler</button><button class="btn text-white" style="background:#6D28D9;border-color:#6D28D9" onclick="leadCreate()"><i class="fas fa-check"></i>Créer le lead</button></div>
@@ -2045,7 +2047,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.37';
+const APP_VERSION = '4.5.38';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -3295,12 +3297,13 @@ window.addEventListener('scroll', () => { const e = document.getElementById('f-r
 function renderRap(c) {
   const el = $('f-rap'); if (!el) return;
   if (!c || !ui.editId) { el.innerHTML = ''; return; }
-  const R = rapOpen(c), act = isActive(c) && c.nextDate, now0 = new Date();
+  const R = rapOpen(c), lead = isLead(c) && c.lead?.statut !== 'sans_suite', act = (isActive(c) || lead) && c.nextDate, now0 = new Date();
   let top = '', oth = [], cancel = '', done = '', replan = '', nxt = '', opn = '', tkTop = 'appel';
   if (act) {
     const A = ACTIONS[c.nextType] || ACTIONS.relance; nxt = c.nextDate; oth = R; tkTop = ACT_TK[c.nextType || 'relance'];
     top = {fa: A.fa, t: `${A.label} · ${fmtDT(c.nextDate)}${c.nextTryDt === c.nextDate && c.nextTry ? ' · ' + ordT(c.nextTry + 1) + ' tentative' : ''}`, s: `${esc(c.pharma)} · ${STEPS[c.step].short}`};
     done = `askDone(${c.id})`; replan = `openReplan(${c.id})`; cancel = `cancelNext(${c.id})`; opn = `traiter('next',${c.id})`;
+    if (lead) { done = `leActDone(${c.id})`; replan = 'leActPlan()'; cancel = `leActDel(${c.id})`; }
   } else if (R.length) {
     const r = R[0], T = RAP_T[r.type] || RAP_T.rappel; nxt = r.dt; oth = R.slice(1); tkTop = RAP_TK[r.type] || 'rappel';
     top = {fa: T.fa, t: `${T.l} · ${fmtDT(r.dt)}${r.try ? ' · ' + ordT(r.try + 1) + ' tentative' : ''}`, s: `${esc(c.pharma)}${r.note ? ' · ' + esc(r.note) : ''}`};
@@ -3623,7 +3626,7 @@ const TABLES = {
     cols: [
       {l: 'Pharmacie', v: c => c.pharma, t: c => `${c.pharma} — ${addr(c)}`, h: pharmaCell, b: c => c.pharma},
       {l: 'Origine', v: c => c.lead?.origine || '', b: c => c.lead?.origine || '—'},
-      {l: 'Motif', v: c => c.lead?.motif || '', h: c => `<span class="text-[12.5px]">${esc(c.lead?.motif || '—')}</span>`},
+      {l: 'Dernier échange', v: c => c.lead?.dernier?.texte || c.lead?.motif || '', t: c => c.lead?.dernier?.texte || c.lead?.motif || '', h: c => { const d = c.lead?.dernier, t = d ? d.texte : (c.lead?.motif || ''); return `<span class="text-[12.5px]" style="display:block;max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${t ? '« ' + esc(t) + ' »' : '—'}</span>${d ? `<span class="text-[11px] text-muted">${fmtD(d.date)}</span>` : ''}`; }},
       {l: 'Dernier contact', v: c => daysSince(lastAction(c)) ?? 999, t: c => fmtD(lastAction(c)), h: c => lastCell(c), b: c => ageB(lastAction(c)), bo: AGE_B},
       {l: 'Prochaine action', v: c => effNext(c).nextDate || '9999', t: c => effNext(c).nextDate ? fmtDT(effNext(c).nextDate) : '', h: c => c.lead?.statut === 'sans_suite' ? '<span class="text-muted">—</span>' : nextCell(c), b: nextB, bo: NEXT_B},
       {l: 'Statut', v: c => c.lead?.statut === 'sans_suite' ? 'Sans suite' : 'À recontacter', h: c => c.lead?.statut === 'sans_suite' ? '<span class="pill bg-slate-100 text-slate-700">Sans suite</span>' : '<span class="pill" style="background:#EDE9FE;color:#5B21B6">À recontacter</span>'},
@@ -4038,7 +4041,7 @@ function newClient() { $('dlg-newtype').showModal(); }
 
 /* ----- V4.5.28 : Leads à recontacter (prospection non aboutie) ----- */
 ui.leadTab = 'recontacter';
-const LEAD_ORI = ['Lead marketing', 'Salon / événement', 'Appel entrant', 'Recommandation', 'Autre'];
+const LEAD_ORI = ['Lead marketing', 'Lead Pharmagest', 'Salon / événement', 'Appel entrant', 'Recommandation', 'Autre'];
 const isLead = c => c?.step === 'Lead';
 
 let ldT;
@@ -4086,16 +4089,17 @@ function leadPick(i) {
 }
 function leadOpen() {
   closeDlg('dlg-newtype');
-  ['ld-ph', 'ld-vil', 'ld-cp', 'ld-nom', 'ld-tel', 'ld-mail', 'ld-mot'].forEach(i => $(i).value = ''); $('ld-ori').value = 'Lead marketing'; $('ld-act').value = 'relance'; $('ld-dt').value = addDays(3); $('ld-hm').value = '09:00';
+  ['ld-ph', 'ld-vil', 'ld-cp', 'ld-nom', 'ld-tel', 'ld-mail', 'ld-mot'].forEach(i => $(i).value = ''); $('ld-ori').value = 'Lead marketing'; $('ld-act').value = 'relance'; $('ld-dt').value = addDays(3); $('ld-hm').value = '09:00'; $('ld-plan').checked = true; ldPlanTog();
   ui.ldExtra = {}; ui.ldPicked = ''; ui.ldTits = []; ui.ldTitTyped = false; ui.ldTitSeq = (ui.ldTitSeq || 0) + 1; $('ld-tits').innerHTML = ''; ['ld-q', 'ld-dep'].forEach(i => $(i).value = ''); $('ld-res').classList.add('hidden');
   $('dlg-lead').showModal(); setTimeout(() => $('ld-q').focus(), 200);
 }
+function ldPlanTog() { const on = $('ld-plan').checked; $('ld-planbox').style.opacity = on ? '' : '.4'; ['ld-act', 'ld-dt', 'ld-hm'].forEach(i => $(i).disabled = !on); }
 function leadCreate() {
   const ph = $('ld-ph').value.trim(); if (!ph) { toast('Indiquez le nom de la pharmacie.', true); return $('ld-ph').focus(); }
   const mail = $('ld-mail').value.trim(); if (mail && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)) { toast('Adresse e-mail incorrecte.', true); return $('ld-mail').focus(); }
   const dup = clients.find(x => (x.pharma || '').trim().toLowerCase() === ph.toLowerCase() && (!$('ld-vil').value.trim() || (x.ville || '').trim().toLowerCase() === $('ld-vil').value.trim().toLowerCase()));
   const go = () => {
-    const dt = $('ld-dt').value ? `${$('ld-dt').value}T${$('ld-hm').value || '09:00'}` : null, type = $('ld-act').value, ori = $('ld-ori').value, mot = $('ld-mot').value.trim();
+    const dt = $('ld-plan').checked && $('ld-dt').value ? `${$('ld-dt').value}T${$('ld-hm').value || '09:00'}` : null, type = $('ld-act').value, ori = $('ld-ori').value, mot = $('ld-mot').value.trim();
     const c = {id: Date.now(), step: 'Lead', pharma: ph, ville: $('ld-vil').value.trim(), cp: $('ld-cp').value.trim(), genre: 'M.', nom: $('ld-nom').value.trim(), prenom: '', rue: ui.ldExtra?.rue || '', siret: ui.ldExtra?.siret || '', telFixe: $('ld-tel').value.trim(), email: mail, cip: '', montant: 0,
       lead: {statut: 'recontacter', origine: ori, motif: mot, depuis: isoDay(TODAY)}, addons: [], contacts: [], history: [], acts: [], nextDate: dt, nextType: dt ? type : null, createdAt: isoDT(new Date())};
     { const tv = $('ld-nom').value.trim(), t = (ui.ldTits || []).find(x => ldFull(x) === tv); if (t) { c.nom = t.nom || ''; c.prenom = t.prenom || ''; c.genre = t.civ === 'Mme' ? 'Mme' : 'M.'; } }
@@ -4118,20 +4122,61 @@ function leadReact(id) {
 }
 function leadToProject(id) {
   const c = byId(id); if (!c) return;
-  confirmBox('Créer le projet ?', `La fiche <b>${esc(c.pharma)}</b> passe dans le <b>portefeuille</b> (étape Contact). Son historique est conservé.`, '<i class="fas fa-briefcase"></i>Créer le projet', () => {
-    c.step = 'Contact'; c.lead = Object.assign(c.lead || {}, {statut: 'converti', converti: isoDay(TODAY)});
-    const m = {'Lead marketing': 'Lead interne', 'Salon / événement': 'Événement'}[c.lead.origine]; if (m && !c.opportunite) c.opportunite = m;
-    log(c, 'Lead transformé en projet', c.lead.origine || ''); save(); toast('Projet créé : la fiche est maintenant dans le portefeuille'); ui.tab = 'portfolio'; try { refresh(); } catch (e) {} openClient(id);
-  });
+  confirmBox('Créer le projet ?', `La fiche <b>${esc(c.pharma)}</b> passe dans le <b>portefeuille</b> (étape Contact). Son historique est conservé.`, '<i class="fas fa-briefcase"></i>Créer le projet', () => leadConvert(c));
+}
+function leadConvert(c) {
+  c.step = 'Contact'; c.lead = Object.assign(c.lead || {}, {statut: 'converti', converti: isoDay(TODAY)});
+  const m = {'Lead marketing': 'Lead interne', 'Salon / événement': 'Événement'}[c.lead.origine]; if (m && !c.opportunite) c.opportunite = m;
+  log(c, 'Lead transformé en projet', c.lead.origine || ''); save(); toast('Projet créé : la fiche est maintenant dans le portefeuille'); ui.tab = 'portfolio'; try { refresh(); } catch (e) {} openClient(c.id);
+}
+const nowLocal = () => { const d = new Date(); return `${isoDay(d)}T${pad(d.getHours())}:${pad(d.getMinutes())}`; };
+function leSel(k) {
+  ui.leK = k;
+  ['garder', 'projet', 'sans'].forEach(x => { const b = $('le-o-' + x), d = $('le-d-' + x); if (!b) return; b.style.borderColor = x === k ? '#6D28D9' : '#E2E8F0'; b.style.background = x === k ? '#F5F3FF' : '#fff'; if (d) d.classList.toggle('hidden', x !== k); });
+  const t = {garder: 'Valider : enregistrer le compte-rendu et garder le lead', projet: 'Valider : enregistrer le compte-rendu et créer le projet', sans: 'Valider : enregistrer le compte-rendu et classer sans suite'}[k]; if ($('le-ok')) $('le-ok').innerHTML = '<i class="fas fa-check"></i>' + t;
+}
+function leIn(m) { const d = new Date(TODAY); if (m === 12) d.setFullYear(d.getFullYear() + 1); else d.setMonth(d.getMonth() + m); $('le-dt').value = isoDay(d); }
+function leMot(t) { $('le-mot2').value = t; }
+function leActDone(id) {
+  const c = byId(id); if (!c) return; const A = ACTIONS[c.nextType] || ACTIONS.relance;
+  log(c, `${A.label} réalisé(e)`, 'Action du lead'); c.nextDate = null; c.nextType = null; save(); toast('Action notée comme faite'); try { refresh(); } catch (e) {} renderChrome(c); setTimeout(() => $('lb-cr')?.focus(), 100);
+}
+function leActDel(id) { const c = byId(id); if (!c) return; c.nextDate = null; c.nextType = null; log(c, 'Action planifiée retirée', 'Lead'); save(); toast('Action retirée'); try { refresh(); } catch (e) {} renderChrome(c); }
+function leActPlan() { leSel('garder'); $('le-dt')?.focus(); $('le-o-garder')?.scrollIntoView({block: 'center', behavior: 'smooth'}); }
+function leValider(id) {
+  const c = byId(id); if (!c) return; const k = ui.leK || 'garder', cr = $('lb-cr').value.trim(), when = $('lb-crdt').value || nowLocal();
+  if (k === 'garder' && !cr) { toast('Rédigez le compte-rendu de la conversation.', true); return $('lb-cr').focus(); }
+  let dt = null, type = $('le-type').value;
+  if (k === 'garder') { if (!$('le-dt').value) { toast('Choisissez la date du prochain rappel.', true); return $('le-dt').focus(); } dt = `${$('le-dt').value}T${$('le-hm').value || '09:00'}`; }
+  const mot = k === 'sans' ? ($('le-mot2').value.trim() || 'Pas de projet') : '';
+  c.lead = c.lead || {};
+  if (cr) { c.lead.dernier = {date: when, texte: cr}; log(c, 'Compte-rendu de la conversation', cr); c.history[0].date = when.length === 16 ? when + ':00' : when; c.history.sort((a, b) => String(b.date).localeCompare(String(a.date))); }
+  if (k === 'garder') { c.nextDate = dt; c.nextType = type; log(c, `${ACTIONS[type].label} planifié(e) — ${fmtDT(dt)}`, 'Lead gardé à recontacter'); save(); toast('Compte-rendu enregistré · lead gardé à recontacter'); try { refresh(); } catch (e) {} renderChrome(c); }
+  else if (k === 'sans') { c.lead = Object.assign(c.lead, {statut: 'sans_suite', fin: isoDay(TODAY), finMotif: mot}); c.nextDate = null; c.nextType = null; delete c.pending; log(c, 'Lead classé sans suite', mot); save(); toast('Lead classé sans suite'); try { refresh(); } catch (e) {} renderChrome(c); }
+  else leadConvert(c);
 }
 const leadBanner = c => {
-  const L = c.lead || {}, off = L.statut === 'sans_suite';
+  const L = c.lead || {}, off = L.statut === 'sans_suite', A = ACTIONS[c.nextType] || ACTIONS.relance, tm = (ui.leK = 'garder');
+  const act = !off && c.nextDate ? `<div class="flex items-center gap-3 flex-wrap rounded-xl px-3 py-2.5 bg-white" style="border:2px solid #C2410C"><i class="fas ${A.fa || 'fa-phone'} text-orange-700 text-lg"></i><div class="flex-1 min-w-[180px]"><div class="font-extrabold uppercase text-[11px] text-orange-800">Action planifiée</div><div class="font-extrabold">${A.label} · ${fmtDT(c.nextDate)}</div></div><button class="btn btn-ok" onclick="leActDone(${c.id})"><i class="fas fa-check"></i>Fait</button><button class="btn btn-g" onclick="leActPlan()">Replanifier</button><button class="btn btn-g" onclick="leActDel(${c.id})"><i class="fas fa-xmark"></i>Retirer</button></div>` : (!off ? `<div class="rounded-xl px-3 py-2 bg-white text-[13px] text-slate-600" style="border:1px dashed #94A3B8">Aucune action planifiée pour ce lead.</div>` : '');
+  const chip = (t, f) => `<button type="button" class="pill" style="background:#EDE9FE;color:#5B21B6;cursor:pointer" onclick="${f}">${t}</button>`;
+  const opt = (k, ico, tt, sub, body) => `<div id="le-o-${k}" class="rounded-xl p-3" style="border:2px solid ${k === 'garder' ? '#6D28D9' : '#E2E8F0'};background:${k === 'garder' ? '#F5F3FF' : '#fff'}"><label class="flex items-start gap-2 cursor-pointer"><input type="radio" name="le-k" class="mt-1 accent-violet-700" ${k === 'garder' ? 'checked' : ''} onchange="leSel('${k}')"><span><b class="text-[13.5px]">${ico} ${tt}</b><br><span class="text-[12px] text-muted">${sub}</span></span></label><div id="le-d-${k}" class="${k === 'garder' ? '' : 'hidden'} mt-2">${body}</div></div>`;
+  const ets = off ? '' : `<div class="rounded-xl border border-slate-200 bg-white p-4 flex flex-col gap-3">
+    <div class="font-extrabold text-[15px]">Et ensuite ? <span class="text-[12px] font-normal text-muted">· choisissez une issue après la conversation</span></div>
+    ${opt('garder', '<i class="fas fa-phone-volume text-violet-700"></i>', 'Garder en lead à recontacter', 'Le lead reste affiché dans « Prospection non aboutie » avec le compte-rendu. Planifiez le prochain rappel.', `<div class="grid grid-cols-[1.2fr_1fr_.7fr] gap-2"><div><label class="lbl" for="le-type">Prochaine action</label><select id="le-type" class="inp"><option value="relance">Appel</option><option value="mail">E-mail</option><option value="suivi">Relance</option><option value="visite">Visite sur site</option><option value="teams">Visio Teams</option></select></div><div><label class="lbl" for="le-dt">Le</label><input type="date" id="le-dt" class="inp"></div><div><label class="lbl" for="le-hm">Heure</label><input type="time" id="le-hm" class="inp" value="09:00"></div></div><div class="flex gap-1.5 flex-wrap mt-2">${chip('dans 1 mois', 'leIn(1)')}${chip('dans 3 mois', 'leIn(3)')}${chip('dans 6 mois', 'leIn(6)')}${chip('dans 1 an', 'leIn(12)')}</div>`)}
+    ${opt('projet', '<i class="fas fa-briefcase text-orange-700"></i>', 'Créer le projet', 'La fiche passe au portefeuille (étape Contact), sans rien ressaisir. Le compte-rendu est conservé.', '')}
+    ${opt('sans', '<i class="fas fa-box-archive text-slate-600"></i>', 'Classer sans suite', 'Pas de projet : la fiche reste dans l\'onglet « Sans suite », réactivable à tout moment.', `<input id="le-mot2" class="inp" placeholder="Raison (facultatif)" value="Pas de projet"><div class="flex gap-1.5 flex-wrap mt-2">${['Pas de projet', 'Déjà équipé', 'Injoignable', 'Autre'].map(t => chip(t, `leMot('${t}')`)).join('')}</div>`)}
+    <div class="flex justify-end"><button id="le-ok" class="btn text-white" style="background:#6D28D9;border-color:#6D28D9" onclick="leValider(${c.id})"><i class="fas fa-check"></i>Valider : enregistrer le compte-rendu et garder le lead</button></div></div>`;
+  const cr = off ? '' : `<div class="rounded-xl border border-slate-200 bg-white p-4"><div class="flex justify-between items-end gap-2 flex-wrap mb-1"><label class="lbl !mb-0" for="lb-cr">Compte-rendu de la conversation</label><span class="flex items-center gap-1.5 text-[12px] text-muted">Échange du <input type="datetime-local" id="lb-crdt" class="inp !w-auto !py-1" value="${nowLocal()}"></span></div>
+    <div class="mic-wrap"><textarea id="lb-cr" rows="4" class="ta" placeholder="Ce qui s'est dit : projet, calendrier, budget, interlocuteur… Tapez ou touchez le micro."></textarea><button type="button" class="mic" onclick="dictate('lb-cr',this)" aria-label="Dicter le compte-rendu"><i class="fas fa-microphone"></i></button></div></div>`;
   return `<div class="card p-5 flex flex-col gap-3" style="border:2px solid ${off ? '#CBD5E1' : '#7C3AED'};background:${off ? '#F8FAFC' : '#F5F3FF'}">
     <div class="flex flex-wrap justify-between items-center gap-2"><h2 class="h2" style="color:${off ? '#475569' : '#5B21B6'}"><i class="fas fa-phone-volume mr-1.5"></i>${off ? 'Lead sans suite' : 'Lead à recontacter'} <span class="text-[12px] font-medium text-muted">· hors portefeuille, prévisions et statistiques</span></h2>
-      <div class="flex flex-wrap gap-2">${off ? `<button class="btn btn-d" onclick="leadReact(${c.id})"><i class="fas fa-rotate-left"></i>Réactiver</button>` : `<button class="btn btn-g" onclick="leadEndOpen(${c.id})"><i class="fas fa-box-archive"></i>Classer sans suite</button>`}<button class="btn btn-p" onclick="leadToProject(${c.id})"><i class="fas fa-briefcase"></i>Créer le projet</button></div></div>
+      ${off ? `<div class="flex flex-wrap gap-2"><button class="btn btn-d" onclick="leadReact(${c.id})"><i class="fas fa-rotate-left"></i>Réactiver</button><button class="btn btn-p" onclick="leadToProject(${c.id})"><i class="fas fa-briefcase"></i>Créer le projet</button></div>` : ''}</div>
     <div class="grid sm:grid-cols-2 gap-3"><div><label class="lbl" for="lb-ori">Origine du lead</label><select id="lb-ori" class="inp" onchange="leadSet(${c.id},'origine',this.value)">${LEAD_ORI.map(o => `<option${o === L.origine ? ' selected' : ''}>${o}</option>`).join('')}</select></div>
       <div><label class="lbl" for="lb-mot">Motif / raison</label><input id="lb-mot" class="inp" value="${esc(L.motif || '')}" onchange="leadSet(${c.id},'motif',this.value)"></div></div>
-    ${off && L.finMotif ? `<p class="text-[13px] text-slate-600">Classé sans suite le ${fmtD(L.fin)} : ${esc(L.finMotif)}</p>` : ''}</div>`;
+    ${act}
+    ${off && L.finMotif ? `<p class="text-[13px] text-slate-600">Classé sans suite le ${fmtD(L.fin)} : ${esc(L.finMotif)}</p>` : ''}
+    ${L.dernier ? `<div class="rounded-xl bg-white border border-slate-200 px-3 py-2 text-[13px]"><span class="text-[11px] font-bold uppercase text-muted">Dernier échange · ${fmtDT(L.dernier.date)}</span><br>${esc(L.dernier.texte)}</div>` : ''}
+    ${cr}${ets}</div>`;
 };
 function newProject() { closeDlg('dlg-newtype'); ui.editId = null; ui.formStep = 'Contact'; ui.coordEdit = true; fillForm(null); showView('client'); setPane('coord'); setTimeout(() => $('s-q').focus(), 300); }
 function openClient(id) { if (id !== ui.editId && guardLeave(() => openClient(id))) return; if (ui.pendingDone && ui.pendingDone.id !== id) revertDone(); const c = byId(id); if (!c) return; delete c._rk; try { if (v41Auto(c)) save(); } catch (e) {} ui.editId = id; ui.coordEdit = false; try { fillForm(c); } catch (e) { console.error(e); toast('Fiche ouverte avec une erreur d\'affichage : ' + (e && e.message || e), true); } showView('client'); setPane('projet'); if (c.step === 'R1' && opt('qual') && !QUAL.seen.has(id)) { QUAL.seen.add(id); setTimeout(() => qualOpen(id), 350); } }
