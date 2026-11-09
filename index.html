@@ -1272,7 +1272,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
-<li><b>V4.5.28</b> : <b>Leads à recontacter</b>. « Nouvelle fiche » propose désormais « Projet robot » ou « Lead à recontacter » (pharmacie, origine, motif, première action). Un lead est <b>hors portefeuille, prévisions et statistiques</b> : il est dans la tuile violette « Prospection non aboutie » (onglets À recontacter / Sans suite). Sa première action apparaît dans « Ma journée ». Boutons « Créer le projet » (passe au portefeuille sans ressaisie), « Classer sans suite » et « Réactiver ». L'historique est toujours conservé.</li>
+<li><b>V4.5.29</b> : <b>Fichier de suivi CRO</b> : toutes les lignes des tableaux ont maintenant la même hauteur (plus de lignes décalées), les commentaires restent sur une seule ligne et les colonnes s'ajustent au contenu.</li>\n<li><b>V4.5.28</b> : <b>Leads à recontacter</b>. « Nouvelle fiche » propose désormais « Projet robot » ou « Lead à recontacter » (pharmacie, origine, motif, première action). Un lead est <b>hors portefeuille, prévisions et statistiques</b> : il est dans la tuile violette « Prospection non aboutie » (onglets À recontacter / Sans suite). Sa première action apparaît dans « Ma journée ». Boutons « Créer le projet » (passe au portefeuille sans ressaisie), « Classer sans suite » et « Réactiver ». L'historique est toujours conservé.</li>
 <li><b>V4.5.27</b> : (1) <b>Fiche réorganisée</b> : la carte « Préparer et générer le PDF » est maintenant la dernière étape de « Offre de robotisation » (robot → devis → plan → PDF), avec une barre de progression à 4 étapes. (2) <b>Remplacer le devis</b> : bouton orange bien visible dans « Devis + maintenance » ; vous importez le nouveau PDF, une fenêtre compare l'ancien et le nouveau (total, écart, lignes ajoutées, supprimées ou modifiées), puis vous validez. L'ancien devis est conservé dans l'historique de la fiche.</li>
 <li><b>V4.5.26</b> : <b>Mise en page automatique du PDF</b> : avant de créer le PDF, le logiciel fait des essais invisibles et ajuste seul pour éviter une dernière page quasi vide : bloc « Éléments complémentaires » placé en page 3 s'il y a de la place, bandeau « Restons connectés » compact, espaces resserrés, puis en dernier recours retrait de « c'est aussi… » puis de la garantie. Un message indique ce qui a été ajusté (fenêtre de génération et confirmation). Un PDF qui passe déjà bien ne change pas.</li>
 <li><b>V4.5.25</b> : <b>Offre : lignes à 0 € = « Inclus »</b>. Dans le PDF (offre seule et fusionné), toute ligne du devis à 0 € quitte la liste chiffrée et apparaît dans un bloc vert « Inclus dans votre offre » avec une pastille « Inclus » ; les totaux ne changent pas. Dans l'écran de l'offre, un message vert prévient quand une ligne est à 0 (pour repérer un prix oublié).</li>
@@ -2039,7 +2039,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.28';
+const APP_VERSION = '4.5.29';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -7169,7 +7169,7 @@ async function genCRO() {
       const v = c ? [i + 1, null, +c.cip || c.cip || '', (c.pharma || '').toUpperCase(), (c.groupement || '').toUpperCase(), titu(c), +depOf(c) || depOf(c) || '', regionOf(c), c.devis?.statut === 'envoye' ? xd(c.devis.date) : null,
         xd(c.dateDecision), xd(c.livraisonDate), c.montant || null, lostMode ? (c.perduMotif === 'Perdu contre' ? 'PERDU' : 'ABANDON') : null, lostMode ? (c.perduConcurrent || 'AUTRE').toUpperCase() : null,
         sd('R1'), sd('R2'), sd('R3'), lostMode ? (c.perduObservation || '') : comment(c)] : Array(18).fill(null);
-      v.forEach((val, k) => { if (k !== 17) note(k, val); else note(k, typeof val === 'string' ? val.length * 0.92 : 0); const cell = ws.getCell(row, k + 1); cell.value = val; cell.font = C; cell.alignment = {horizontal: [3, 4, 5, 17].includes(k) ? 'left' : 'center', vertical: 'middle', indent: [3, 4, 5, 17].includes(k) ? 1 : 0}; });
+      v.forEach((val, k) => { if (k !== 17) note(k, val); else if (typeof val === 'string') mx[17] = Math.max(mx[17], val.length); const cell = ws.getCell(row, k + 1); cell.value = val; cell.font = C; cell.alignment = {horizontal: [3, 4, 5, 17].includes(k) ? 'left' : 'center', vertical: 'middle', indent: [3, 4, 5, 17].includes(k) ? 1 : 0}; });
       if (c) { const ind = IND[c.indicateur], ic2 = ws.getCell(row, 2); if (ind) { ic2.value = ind[0]; ic2.fill = solid(ind[1]); ic2.font = {...C, bold: true, color: {argb: ind[2]}}; } else ic2.value = 'À renseigner'; note(1, 'À renseigner', true); }
       [9, 15, 16, 17].forEach(k => ws.getCell(row, k).numFmt = 'dd/mm/yyyy');
       ws.getCell(row, 10).numFmt = 'mmm-yy'; ws.getCell(row, 10).font = {...C, bold: true, color: {argb: 'FFFF0000'}}; ws.getCell(row, 11).numFmt = 'mmm-yy'; ws.getCell(row, 12).numFmt = EUR0;
@@ -7183,14 +7183,14 @@ async function genCRO() {
   const pe = wb.addWorksheet('PERDUS', {views: [{zoomScale: 70, showGridLines: false}]}); setW(pe);
   section(pe, 2, `PROJETS PERDUS / ABANDONNÉS - ${settings.prenom.toUpperCase()} ${settings.nom.toUpperCase()}`, null, 22, 6);
   projBlock(pe, 4, D.lost, true);
-  // Largeurs ajustées au contenu (aucune cellule coupée ni « ##### »), retour à la ligne si trop long
-  const wd = W.map((m, k) => k === 17 ? Math.min(CAPW[k], Math.max(m, Math.ceil(mx[k] + 3))) : Math.min(CAPW[k], Math.max(m, Math.ceil(mx[k] * 1.12 + 3))));
+  // V4.5.29 : toutes les lignes ont la MÊME hauteur, aucun retour à la ligne (colonne Commentaires comprise) ; largeurs ajustées au contenu
+  const CAPW2 = CAPW.slice(); CAPW2[17] = 230;
+  const wd = W.map((m, k) => k === 17 ? Math.min(CAPW2[k], Math.max(m, Math.ceil(mx[k] + 3))) : Math.min(CAPW2[k], Math.max(m, Math.ceil(mx[k] * 1.12 + 3))));
   [pj, pe].forEach(ws => {
     wd.forEach((w, k) => { ws.getColumn(k + 1).width = w; });
     ws.eachRow(row => {
-      if (row.height !== RH) return; let lines = 1;
-      row.eachCell(cell => { const k = cell.col - 1; if (typeof cell.value !== 'string') return; if (k === 17) { const l17 = Math.ceil((cell.value.length * 1.08 + 3) / wd[17]); cell.alignment = {...cell.alignment, wrapText: true}; if (l17 > 1) lines = Math.max(lines, l17); return; } const l = Math.ceil((cell.value.length * 1.12 + 3) / wd[k]); if (l > 1) { cell.alignment = {...cell.alignment, wrapText: true}; lines = Math.max(lines, l); } });
-      if (lines > 1) row.height = lines * 15 + 5;
+      if (row.height !== RH) return;
+      row.eachCell(cell => { const k = cell.col - 1; if (typeof cell.value !== 'string') return; const need = cell.value.length * (k === 17 ? 1.0 : 1.12) + 3; cell.alignment = {...cell.alignment, wrapText: false, shrinkToFit: need > wd[k]}; });
     });
   });
   return wb.xlsx.writeBuffer();
