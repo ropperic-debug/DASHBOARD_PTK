@@ -1245,6 +1245,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.16</b> : <b>présentation des prix de l'offre</b>. Dans « Votre investissement », le total est affiché <b>net hors taxes</b> en gros, avec en tout petit « TVA au taux de 20 % en sus » ; il n'y a plus de ligne TVA ni de total TTC dans le détail de l'offre. L'indicateur clé affiche le total net HT, avec en petit le montant de la TVA et le total TTC ; l'indicateur du contrat de service rappelle la remise (par exemple 290 € HT/mois pendant 36 mois, puis 450 € HT/mois). Les conditions de paiement (30 % / 50 % / 20 %) restent calculées sur le TTC, « TVA incluse ». La remise maintenance n'apparaît que si elle est renseignée dans l'offre.</li>
 <li><b>V4.5.15</b> : <b>devis en TTC</b>. Dans la synthèse de l'offre, le bloc « Votre investissement » affiche maintenant le total net HT, la TVA à 20 % puis le <b>total TTC</b>. Les acomptes (30 % / 50 % / 20 %) sont calculés sur le TTC et marqués « TVA incluse », et l'indicateur clé affiche le total TTC. La mensualité du contrat de service reste exprimée HT, avec la mention « TVA 20 % en sus ». Le montant du dossier dans le tableau de bord reste en HT.</li>
 <li><b>V4.5.14</b> : <b>relecture plus confortable</b>. La fenêtre est presque plein écran, les zones de texte sont plus hautes et les suggestions de phrases sont affichées d'emblée sous chaque texte (le bouton « Suggestions » les replie). Nouveau bouton <b>« Corriger »</b> sous chaque texte : ponctuation et espaces à la française, majuscules en début de phrase, accents oubliés sur les mots courants. Il fonctionne sans internet et se défait avec « Annuler la correction ». Il ne reformule pas le texte.</li>
 <li><b>V4.5.13</b> : <b>suggestions de phrases adaptées à la fiche</b> (relecture de la synthèse) : les phrases proposées tiennent compte du dossier. Les phrases propres au dossier passent en premier (robot retenu, options, LGO, dossiers par jour, temps rendu à l'équipe, maintenance), les phrases de la bibliothèque qui ne correspondent pas au dossier sont masquées (par exemple le chargeur si Pharmaload n'est pas dans l'offre), et celles qui parlent du besoin de la priorité affichée remontent en tête. « Ma phrase » reste disponible. La correction orthographique du navigateur est activée sur les zones de texte.</li>
@@ -1953,7 +1954,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.15';
+const APP_VERSION = '4.5.16';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -6371,9 +6372,10 @@ function genOffre(id, K0) {
   // ===== Indicateurs clés
   if (SX('kpi')) {
   sect('Indicateurs clés', 'chart-line', 40, 'offre');
-  { const kp = [['euro-sign', 'Total TTC', eur(TTC) + ' TTC', true], ['boxes-stacked', 'Capacité', o.tech?.capacite || '—'], ['ruler-combined', 'Dimensions', o.tech?.dims || '—'], ['weight-hanging', 'Poids à vide', [o.tech?.poids, o.tech?.poidsM2].filter(Boolean).join(' · ') || '—'], ['headset', 'Contrat de service', m.mensuel ? `${eur(promo ? k.mRem : m.mensuel)} HT/mois` : '—']], g = 3, cw = (CW - g * 4) / 5, h = promo ? 25 : 17;
+  { const kp = [['euro-sign', 'Total net HT', eur(k.net) + ' HT', true], ['boxes-stacked', 'Capacité', o.tech?.capacite || '—'], ['ruler-combined', 'Dimensions', o.tech?.dims || '—'], ['weight-hanging', 'Poids à vide', [o.tech?.poids, o.tech?.poidsM2].filter(Boolean).join(' · ') || '—'], ['headset', 'Contrat de service', m.mensuel ? `${eur(promo ? k.mRem : m.mensuel)} HT/mois` : '—']], g = 3, cw = (CW - g * 4) / 5, h = 25;
     kp.forEach((x, i) => { const xx = M + i * (cw + g); card(xx, K.y, cw, h, 2.8, x[3] ? PK.or : BD, x[3] ? .6 : .25); badge(x[0], xx + 5.4, K.y + 5.2, 2.6); lab(x[1], xx + 9.6, K.y + 6.2, PK.ord, 4.8, .15);
       K.font(x[3] ? 10 : 8, 'bold', PK.ink); doc.text(doc.splitTextToSize(pdfTxt(x[2]), cw - 5.4).slice(0, promo ? 2 : 1), xx + 3.2, K.y + 12.6);
+      if (i === 0) { K.font(5.8, 'normal', PK.mut); doc.text(doc.splitTextToSize(pdfTxt(`TVA 20 % en sus : ${eur(TVA)}, soit ${eur(TTC)} TTC`), cw - 5.4).slice(0, 3), xx + 3.2, K.y + 16.6, {lineHeightFactor: 1.2}); }
       if (i === 4 && promo) { K.font(5.8, 'normal', PK.mut); doc.text(doc.splitTextToSize(pdfTxt(`pendant ${mois} mois (${eur(m.mensuel - k.mRem)} HT de remise par mois), puis ${eur(m.mensuel)} HT/mois`), cw - 5.4).slice(0, 3), xx + 3.2, K.y + 16.6, {lineHeightFactor: 1.2}); } });
     K.y += h + 2; }
   }
@@ -6404,11 +6406,11 @@ function genOffre(id, K0) {
         if (sP) { K.font(6.4, 'normal', GRN); K.t(`Soit ${k.pct.toLocaleString('fr-FR')} % de remise sur le total brut`, ix + 12.5, cy + 8.3); }
         K.font(11.5, 'bold', [21, 128, 61]); K.t(sE ? `- ${eur(k.rem)}` : `- ${k.pct.toLocaleString('fr-FR')} %`, ix + iw - 5, cy + 6.7, {align: 'right'}); cy += 10.6 + 1.8; }
       else { K.font(9.2, 'bold', PK.ink); K.t('Total des postes', ix + 4, cy + 5.6); K.font(10, 'bold', PK.ink); K.t(eur(k.brut), ix + iw - 5, cy + 5.7, {align: 'right'}); cy += 9; } }
-    if (!framed) { K.y = cy; K.need(36); cy = K.y; }
-    doc.setFillColor(...CRM); doc.setDrawColor(...FAM); doc.setLineWidth(.4); doc.roundedRect(ix, cy, iw, 30, 2.8, 2.8, 'FD'); rr(ix, cy, 2.8, 30, 1.4, PK.or); doc.setFillColor(...CRM); doc.rect(ix + 1.5, cy + .35, 1.5, 29.3, 'F');
-    lab('Votre investissement', ix + 8, cy + 6.4, PK.ord, 5.6, .4); K.font(9, 'normal', PK.sub); K.t('Total net HT', ix + 8, cy + 12); K.font(9.4, 'bold', PK.ink); K.t(eur(k.net), ix + iw - 7, cy + 12, {align: 'right'}); K.font(9, 'normal', PK.sub); K.t('TVA 20 %', ix + 8, cy + 17.2); K.font(9.4, 'bold', PK.ink); K.t(eur(TVA), ix + iw - 7, cy + 17.2, {align: 'right'}); doc.setDrawColor(...FAM); doc.setLineWidth(.3); doc.line(ix + 8, cy + 19.6, ix + iw - 7, cy + 19.6); K.font(11, 'bold', PK.ink); const ttw = doc.getTextWidth('Total TTC'); K.t('Total TTC', ix + 8, cy + 26.4); K.font(6.6, 'normal', PK.mut); K.t('TVA 20 % incluse', ix + 8 + ttw + 3, cy + 26.4); K.font(21, 'bold', [17, 24, 39]); K.t(eur(TTC), ix + iw - 7, cy + 27, {align: 'right'}); cy += 32;
+    if (!framed) { K.y = cy; K.need(24); cy = K.y; }
+    doc.setFillColor(...CRM); doc.setDrawColor(...FAM); doc.setLineWidth(.4); doc.roundedRect(ix, cy, iw, 17, 2.8, 2.8, 'FD'); rr(ix, cy, 2.8, 17, 1.4, PK.or); doc.setFillColor(...CRM); doc.rect(ix + 1.5, cy + .35, 1.5, 16.3, 'F');
+    lab('Votre investissement', ix + 8, cy + 6.4, PK.ord, 5.6, .4); K.font(11, 'bold', PK.ink); K.t('Total net hors taxes', ix + 8, cy + 11.6); K.font(5.8, 'normal', PK.mut); K.t('TVA au taux de 20 % en sus', ix + 8, cy + 14.6); K.font(21, 'bold', [17, 24, 39]); K.t(eur(k.net) + ' HT', ix + iw - 7, cy + 12.8, {align: 'right'}); cy += 19;
     const dm = String(o.date || '').match(/(\d{1,2})\/(\d{1,2})\/(\d{4})/), until = dm ? new Date(+dm[3], +dm[2] - 1, +dm[1] + v0).toLocaleDateString('fr-FR') : '';
-    K.font(6.6, 'normal', PK.mut); K.t(`Devis valable ${v0} jours${until ? ", jusqu'au " + until : ''} · Total TTC, TVA 20 % incluse`, ix + iw / 2, cy + 2.6, {align: 'center'}); cy += 5.5;
+    K.font(6.6, 'normal', PK.mut); K.t(`Devis valable ${v0} jours${until ? ", jusqu'au " + until : ''}`, ix + iw / 2, cy + 2.6, {align: 'center'}); cy += 5.5;
     if (framed) { doc.setDrawColor(...PK.or); doc.setLineWidth(.9); doc.roundedRect(M, top, CW, cy + 1.5 - top, 4, 4, 'S'); K.y = cy + 4; } else K.y = cy + 2; }
   // ===== Services inclus
   if (SX('srv')) {
@@ -6446,7 +6448,7 @@ function genOffre(id, K0) {
   if (tr.length) { sect('Caractéristiques techniques', 'robot', 16 + Math.ceil(tr.length / 3) * 14.4 + 8, 'tech'); const g = 3, cw = (CW - g * 2) / 3, h = 12.2;
     const ecoOn = ptkOf(c).args?.eco !== false; tr.forEach((x, i) => { const col = i % 3, eco = ecoOn && /^(Consommation|Absorption)/.test(x[0]); if (col === 0) K.need(h + 2); const xx = M + col * (cw + g), yy = K.y; card(xx, yy, cw, h, 2.6, eco ? [150, 205, 175] : BD); doc.setFillColor(...(eco ? [28, 124, 84] : PK.or)); doc.rect(xx + 3, yy, cw - 6, .9, 'F'); badge(x[2], xx + 6.5, yy + 6.6, 3.1, eco ? GRN : PK.or); if (eco) { K.font(5.2, 'bold', WH); const ew = doc.getTextWidth('ECO') + 5; rr(xx + cw - ew - 2, yy + 2, ew, 3.8, 1.9, GRN); K.t('ECO', xx + cw - ew / 2 - 2, yy + 4.7, {align: 'center'}); } lab(x[0], xx + 11.5, yy + 5.4, PK.ord, 4.9, .15); K.font(8.4, 'bold', PK.ink); doc.text(doc.splitTextToSize(pdfTxt(x[1]), cw - 14).slice(0, 1), xx + 11.5, yy + 9.8); if (col === 2 || i === tr.length - 1) K.y += h + 2; }); }
   }
-  K.need(5); K.y += 3.2; K.font(7, 'italic', PK.mut); doc.text(doc.splitTextToSize(pdfTxt(`Total net HT après remise : ${eur(k.net)} + TVA 20 % : ${eur(TVA)} = total TTC : ${eur(TTC)}. Contrat de service exprimé HT par mois, TVA 20 % en sus. Devis valable ${o.validite || 30} jours à compter du ${o.date || '—'}.`), CW), M, K.y);
+  K.need(5); K.y += 3.2; K.font(7, 'italic', PK.mut); doc.text(doc.splitTextToSize(pdfTxt(`Devis valable ${o.validite || 30} jours à compter du ${o.date || '—'}.`), CW), M, K.y);
   if (K.deferPil) { const f = K.deferPil; K.deferPil = null; f(); }
   if (K.deferSoc) { const f = K.deferSoc; K.deferSoc = null; f(); }
   K.foot();
