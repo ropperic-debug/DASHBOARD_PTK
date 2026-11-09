@@ -252,6 +252,14 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 .v44-todo{margin-top:8px;background:#fff;border:1px solid #fed7aa;border-left:4px solid #ea580c;border-radius:12px;padding:10px 14px}.v44-th{font-weight:700;font-size:13px;margin-bottom:4px}.v44-th span{font-weight:400;color:#64748b;font-size:12px}
 .v44-tr{display:flex;gap:10px;align-items:center;padding:5px 0;border-top:1px solid #f1f5f9}.v44-tr:first-of-type{border-top:0}.v44-n{flex:none;width:20px;height:20px;border-radius:50%;background:#ea580c;color:#fff;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center}.v44-tr b{width:150px;flex:none;font-size:12.5px}.v44-tc{display:flex;gap:6px;flex-wrap:wrap}.v44-tc a{font-size:12px;background:#fff7ed;border:1px solid #fdba74;color:#9a3412;border-radius:99px;padding:2px 10px;font-weight:600;text-decoration:none}.v44-tc a:before{content:"○ "}.v44-tr em{margin-left:auto;font-size:11.5px;color:#64748b;font-style:normal}
 @media(max-width:640px){.v44-tr{flex-wrap:wrap}.v44-tr b{width:auto}.v44-tr em{display:none}.v44-todo{padding:8px 10px}}
+/* V4.5.18 : avancement par jalons */
+.v5-bar{height:8px;border-radius:99px;background:#E2E8F0;overflow:hidden;margin:2px 0 10px}.v5-bar i{display:block;height:8px;background:linear-gradient(90deg,#059669,#EA580C);border-radius:99px}
+.v5-jal{display:flex;align-items:flex-start;justify-content:space-between;gap:2px;margin-bottom:10px}.v5-jal .st{text-align:center;font-size:11px;font-weight:700;color:#64748B;line-height:1.2}
+.v5-jal .st>i{display:flex;margin:0 auto 4px;width:28px;height:28px;border-radius:50%;align-items:center;justify-content:center;background:#E2E8F0;color:#64748B;font-style:normal}
+.v5-jal .st.ok>i{background:#059669;color:#fff}.v5-jal .st.cur>i{background:#EA580C;color:#fff}.v5-jal .st.ok,.v5-jal .st.cur{color:#0F172A}
+.v5-jal .ln{flex:1;height:3px;background:#E2E8F0;margin-top:13px}
+.v5-todo{border:2px dashed #EA580C;background:#FFF7ED;border-radius:14px;padding:10px 14px}.v5-todo .t{font-weight:800;font-size:13.5px}.v5-todo .t span{font-weight:600;font-size:12px;color:#9A3412}
+.v5-todo .ap-c{margin-top:7px}.v4-manrow.hidden{display:none}.v5-todo .chip{cursor:pointer}
 /* V2.8 : fiche sans bloc Étape en cours, bouton Dossier perdu */
 #f-stage{display:none!important}
 .zlost{margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:11px;border:2px solid #DC2626;background:#FEF2F2;color:#B91C1C;font-weight:800;font-size:13.5px}.zlost:hover{background:#FEE2E2}
@@ -641,11 +649,11 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
     <div data-pane="projet" class="w-full lg:flex-[7] min-w-0 flex flex-col gap-4">
       <div id="f-banner"></div>
 
-      <nav id="f-secnav" aria-label="Sections de la fiche" class="sticky top-[118px] lg:top-[62px] z-20 bg-white/95 backdrop-blur border border-slate-200 rounded-2xl p-1 shadow-sm flex gap-1 overflow-x-auto"></nav>
-      <div id="f-todo"></div>
+      <nav id="f-secnav" style="display:none" aria-label="Sections de la fiche" class="sticky top-[118px] lg:top-[62px] z-20 bg-white/95 backdrop-blur border border-slate-200 rounded-2xl p-1 shadow-sm flex gap-1 overflow-x-auto"></nav>
+      <div id="f-todo" style="display:none"></div>
       <section id="f-project" class="flex flex-col gap-4">
         <div class="fz flex flex-col gap-4" data-zone="1">
-        <div id="sec-1" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">1</span><h2 class="h2">Projet</h2><span id="f-horizon"></span><span id="sst-1" class="text-xs font-semibold"></span><button type="button" id="f-lost1" class="zlost" title="Déclarer ce dossier perdu ou abandonné"><i class="fas fa-circle-xmark"></i>Dossier perdu ou abandonné</button></div>
+        <div id="sec-1" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">1</span><h2 class="h2">Projet et officine</h2><span id="f-horizon"></span><span id="sst-1" class="text-xs font-semibold"></span><button type="button" id="f-lost1" class="zlost" title="Déclarer ce dossier perdu ou abandonné"><i class="fas fa-circle-xmark"></i>Dossier perdu ou abandonné</button></div>
         <fieldset id="f-ind-box">
           <legend class="lbl">Intérêt du prospect pour le projet <span class="font-normal">(obligatoire avant la R1)</span></legend>
           <div class="flex flex-wrap gap-2">
@@ -665,9 +673,8 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
         </div>
         <div id="f-qual-box"></div>
         <div id="f-type-box"></div>
-        </div>
-        <div class="fz flex flex-col gap-3" data-zone="2">
-          <div id="sec-2" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">2</span><h2 class="h2">Détail de l'officine</h2><span id="sst-2" class="ml-auto text-xs font-semibold"></span></div>
+        <div class="flex flex-col gap-3 pt-1">
+          <div id="sec-2" class="scroll-mt-36 flex items-center gap-2 text-[11px] font-extrabold tracking-wider text-slate-500 pt-1"><span>L'OFFICINE · ce que vous demandez au client</span><span class="flex-1 h-px bg-slate-200"></span><span id="sst-2" class="hidden"></span></div>
           <div id="f-det-box"></div>
         <div id="f-sit-box" class="fbox ok"><div class="flex justify-between items-center gap-2 mb-2.5"><span class="text-[13px] font-bold text-ink flex items-center gap-2"><i class="fas fa-circle-check text-emerald-700"></i>L'officine est-elle déjà robotisée ?</span><span id="f-sit-act" class="flex items-center gap-1"></span></div>
           <div id="f-sit-sum" class="hidden flex flex-wrap items-center gap-2"></div>
@@ -682,9 +689,10 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
             <div class="min-w-[170px] flex-1"><label class="lbl" for="f-rc-projet">Projet envisagé</label><select id="f-rc-projet" class="inp"><option value="remplacement">Remplacement</option><option value="extension">Extension</option><option value="peripheriques">Périphériques</option></select></div>
           </div></div></div>
         </div>
-        <div class="fz flex flex-col gap-3" data-zone="3"><div id="sec-3" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">3</span><h2 class="h2">Besoins</h2><span id="sst-3" class="ml-auto text-xs font-semibold"></span></div>
-        <div id="f-besoins-box"></div></div>
-        <div class="fz flex flex-col gap-3" data-zone="4"><div id="sec-4" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">4</span><h2 class="h2">Offre de robotisation</h2><span id="sec-offre-ico" class="inline-flex items-center gap-1"></span><span id="sst-4" class="ml-auto text-xs font-semibold"></span></div>
+        </div>
+        <div class="fz flex flex-col gap-3" data-zone="3"><div id="sec-3" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">2</span><h2 class="h2">Besoins et argumentaire</h2><span id="sst-3" class="ml-auto text-xs font-semibold"></span></div>
+        <div id="f-besoins-box"></div><div id="f-arg-box"></div></div>
+        <div class="fz flex flex-col gap-3" data-zone="4"><div id="sec-4" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">3</span><h2 class="h2">Offre de robotisation</h2><span id="sec-offre-ico" class="inline-flex items-center gap-1"></span><span id="sst-4" class="ml-auto text-xs font-semibold"></span></div>
         <div id="f-off-tabs"></div>
         <div class="offer-card">
         <div id="f-strip"></div>
@@ -692,13 +700,12 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
         <div id="f-devis-box"></div>
         <div id="f-offre-box"></div>
         <div id="f-op-box"></div>
-        <div id="f-arg-box"></div>
         <div id="f-impl-box"></div></div></div>
                 <p id="f-tip" class="m-0 text-xs text-amber-900"></p>
       </section>
 
       <div class="fz flex flex-col gap-3" data-zone="5">
-      <div id="sec-5" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap px-1"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">5</span><h2 class="h2">Suivi</h2><span id="sst-5" class="ml-auto text-xs font-semibold"></span></div>
+      <div id="sec-5" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap px-1"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">4</span><h2 class="h2">Notes et prochaine action</h2><span id="sst-5" class="ml-auto text-xs font-semibold"></span></div>
       <div class="suivi-grid">
       <details id="f-crcard" class="card">
         <summary class="flex justify-between items-center gap-3 p-5">
@@ -1265,6 +1272,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.18</b> : (1) <b>Taux de transformation</b> = robots signés ÷ (robots signés + dossiers perdus face à un concurrent) ; les abandons n'en font plus partie ; (2) <b>fiche client</b> en 4 blocs : « Projet et officine » (fusionnés), « Besoins et argumentaire », « Offre », « Notes et prochaine action » ; fin du bandeau « Reste à faire » et des pastilles de navigation ; (3) <b>Avancement du dossier</b> par jalons (Projet et officine, Besoins et argumentaire, Devis réalisé, Offre présentée, Contrat signé) avec pourcentage ; (4) bouton « Offre présentée au client » : une fenêtre demande la <b>chance de signature</b> (25 % faible, 50 % moyen, 75 % transformable) ; elle colore la pastille du tableau de bord et pondère le « Potentiel à signer » (10 % tant que l'offre n'est pas présentée).</li>
 <li><b>V4.5.17</b> : (1) <b>Ventes</b> : colonne « Potentiel à signer » plus étroite, graphique plus large et plus lisible ; (2) <b>Ma journée et ma semaine</b> : actions à faire (cadre pointillé orange), en retard (rouge) et faites (vert, repliées sous « Faites aujourd'hui ») avec barre de progression ; (3) <b>Statistiques</b> en 3 onglets (Activité commerciale, Ventes, Détail mensuel), cartes « Mes déplacements », « Visites sur site », « Sans déplacement » ; (4) <b>Commissions</b> : un clic sur une carte ou une ligne du récapitulatif ouvre la liste des dossiers (CSV, « Marquer payées ») ; (5) <b>fiche signée</b> simplifiée (plus de « Reste à faire » ni de « Suivi », bandeau « À compléter ») ; (6) action déjà faite = ne reste plus « à faire » ; (7) replanification : week-ends et jours fériés français ignorés ; (8) message de confirmation en quittant une fiche modifiée.</li>
 <li><b>V4.5.16</b> : <b>présentation des prix de l'offre</b>. Dans « Votre investissement », le total est affiché <b>net hors taxes</b> en gros, avec en tout petit « TVA au taux de 20 % en sus » ; il n'y a plus de ligne TVA ni de total TTC dans le détail de l'offre. L'indicateur clé affiche le total net HT, avec en petit le montant de la TVA et le total TTC ; l'indicateur du contrat de service rappelle la remise (par exemple 290 € HT/mois pendant 36 mois, puis 450 € HT/mois). Les conditions de paiement (30 % / 50 % / 20 %) restent calculées sur le TTC, « TVA incluse ». La remise maintenance n'apparaît que si elle est renseignée dans l'offre.</li>
 <li><b>V4.5.15</b> : <b>devis en TTC</b>. Dans la synthèse de l'offre, le bloc « Votre investissement » affiche maintenant le total net HT, la TVA à 20 % puis le <b>total TTC</b>. Les acomptes (30 % / 50 % / 20 %) sont calculés sur le TTC et marqués « TVA incluse », et l'indicateur clé affiche le total TTC. La mensualité du contrat de service reste exprimée HT, avec la mention « TVA 20 % en sus ». Le montant du dossier dans le tableau de bord reste en HT.</li>
@@ -1708,6 +1716,13 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
   <div class="px-5 py-3 border-t bg-slate-50 flex flex-wrap justify-between items-center gap-2"><span id="cd-tot" class="font-bold"></span><div class="flex gap-2"><button id="cd-pay" class="btn btn-d hidden" onclick="comDetPay()"><i class="fas fa-check"></i>Marquer payées…</button><button class="btn btn-g" onclick="comDetCsv()"><i class="fas fa-download"></i>CSV</button><button class="btn btn-g" onclick="closeDlg('dlg-comdet')">Fermer</button></div></div>
 </dialog>
 
+<dialog id="dlg-chance" class="!w-[min(560px,94vw)]">
+  <div class="px-5 py-4 border-b bg-slate-50"><h3 class="font-bold text-base"><i class="fas fa-handshake text-orange-600 mr-1.5"></i>Offre présentée à <span id="ch-name"></span></h3><p class="text-xs text-muted mt-0.5">Après cette présentation, quelle est la chance de signer ?</p></div>
+  <div class="p-5 flex flex-col gap-2.5" id="ch-opts"></div>
+  <p class="px-5 pb-3 text-[11.5px] text-muted"><i class="fas fa-circle-info mr-1"></i>Modifiable à tout moment depuis la fiche. Ce pourcentage alimente le « Potentiel à signer » et la couleur de la pastille.</p>
+  <div class="px-5 py-3 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-chance')">Annuler</button><button class="btn btn-d" onclick="chanceOk()">Valider</button></div>
+</dialog>
+
 <dialog id="dlg-list" class="!w-[min(1080px,96vw)]">
   <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start gap-2">
     <div><h3 id="ls-title" class="font-bold flex items-center gap-2"></h3><p id="ls-sub" class="text-xs text-muted mt-0.5"></p></div>
@@ -1984,7 +1999,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.17';
+const APP_VERSION = '4.5.18';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2065,6 +2080,9 @@ const ROBOTS_CONC = ['BD Rowa', 'Meditech', 'Omnicell', 'Gollmann', 'Pharmax', '
 const FONCTIONS = ['Coordinateur de travaux', 'Électricien', 'Agenceur', 'Architecte', 'Co-titulaire / associé', 'Pharmacien adjoint', 'Expert-comptable', 'Banquier'];
 const TYPES_PROJET = {seule: 'Robotisation seule', agencement: 'Avec agencement', transfert: 'Avec transfert'};
 const ECH_ORDER = ['court', 'moyen', 'long'];
+const CHANCE = {25: ['Faible', '#E2E8F0', '#475569'], 50: ['Moyen', '#FFEDD5', '#9A3412'], 75: ['Transformable', '#DCFCE7', '#166534']};
+const chancePill = (c, big) => c && c.chance && CHANCE[c.chance] ? `<span class="pill" title="Chance de signature : ${c.chance} % (${CHANCE[c.chance][0]})" style="background:${CHANCE[c.chance][1]};color:${CHANCE[c.chance][2]};font-weight:800">${c.chance} %</span>` : '';
+const probaOf = c => c.chance ? c.chance / 100 : (c.step === 'R3' ? .5 : .1);
 const INTEREST = {fort: ['Fort', '#1C7C54', '#E8F5EE', '#14603F'], moyen: ['Moyen', '#D97706', '#FEF6E4', '#6B4607'], faible: ['Faible', '#DC2626', '#FDECEC', '#9F1C1C'], '': ['À renseigner', '#94A3B8', '#F1F3F6', '#475569']};
 const ACTIONS = {
   visite: {label: 'Visite sur site', short: 'Visite', icon: 'car', fa: 'fa-car-side', fg: '#C2410C', bg: '#FFF1E7', dur: 90, motifs: ['Qualification du projet (R1)', "Présentation de l'offre et démonstration (R2)", 'Signature du contrat (R3)', "Visite d'une officine équipée"]},
@@ -2705,10 +2723,10 @@ function renderSales() {
       <div class="h-2 rounded-full bg-slate-100 overflow-hidden mt-1"><div class="h-2 rounded-full bg-emerald-700" style="width:${pct}%"></div></div>
       <div class="text-[10.5px] text-muted mt-1">${isCur ? `${keur(od)} à date · <b style="color:${gap >= 0 ? '#14603F' : '#B42318'}">${gap >= 0 ? '+ ' : '− '}${keur(Math.abs(gap))}</b> · ${Math.max(0, obj - nS)} à signer` : 'Année close'}</div></button>`;
   const tm = r.map((v, i) => v + a[i]), best = tm.indexOf(Math.max(...tm));
-  const conv = rob.length + lost.length ? Math.round(rob.length / (rob.length + lost.length) * 100) : null, cyc = cycleDays(rob);
+  const lostC = lost.filter(c => c.perduMotif === 'Perdu contre'), conv = rob.length + lostC.length ? Math.round(rob.length / (rob.length + lostC.length) * 100) : null, cyc = cycleDays(rob);
   const key = (l, v, s2, k) => `<${k ? `button onclick="showList('${k}')"` : 'div'} title="${esc(s2)}" class="vk"><span>${l}</span><b>${v}</b></${k ? 'button' : 'div'}>`;
   $('sales-keys').innerHTML = key('Meilleur mois', tm[best] ? cap1(MONTHS_L[best]) : '—', tm[best] ? keur(tm[best]) : 'aucune vente')
-    + key('Transformation', conv == null ? '—' : conv + ' %', `${rob.length} signés · ${lost.length} perdus`, 'conv')
+    + key('Transformation', conv == null ? '—' : conv + ' %', `${rob.length} signés · ${lostC.length} perdus face à la concurrence · ${lost.length - lostC.length} abandon(s) non comptés`, 'conv')
     + key('Cycle moyen', cyc == null ? '—' : cyc + ' j', 'création → signature', 'robots')
     + key('SINTESI / GENESI', `${nS} / ${nG}`, 'robots signés', 'robots');
   const robS = rob.filter(c => famOf(c) === 'SINTESI'), robG = rob.filter(c => famOf(c) === 'GENESI'), pm = l => l.length ? keur(sum(l, c => c.montant) / l.length) : '—';
@@ -3483,7 +3501,7 @@ const TABLES = {
   portfolio: {label: 'Portefeuille', icon: 'fa-briefcase', desc: () => 'Projets robots en cours de négociation', file: 'portefeuille_en_cours', sort: {i: 7, asc: true},
     rows: () => clients.filter(isActive), total: r => sum(r, c => c.montant),
     cols: [
-      {l: 'Indic.', v: c => ['fort', 'moyen', 'faible', ''].indexOf(c.indicateur || ''), t: c => INTEREST[c.indicateur || ''][0], h: c => { const [l, col] = INTEREST[c.indicateur || ''] || INTEREST['']; return `<span title="Intérêt : ${l}" class="inline-block rounded-full align-middle" style="width:14px;height:14px;background:${col}"></span>`; }, bo: ['Fort', 'Moyen', 'Faible', 'À renseigner']},
+      {l: 'Indic.', v: c => ['fort', 'moyen', 'faible', ''].indexOf(c.indicateur || ''), t: c => INTEREST[c.indicateur || ''][0], h: c => { if (c.chance && CHANCE[c.chance]) return chancePill(c); const [l, col] = INTEREST[c.indicateur || ''] || INTEREST['']; return `<span title="Intérêt : ${l}" class="inline-block rounded-full align-middle" style="width:14px;height:14px;background:${col}"></span>`; }, bo: ['Fort', 'Moyen', 'Faible', 'À renseigner']},
       {l: 'Pharmacie', v: c => c.pharma, t: c => `${c.pharma} — ${addr(c)}`, h: pharmaCell, b: c => c.pharma},
       {l: 'Étape', v: c => ORDER.indexOf(c.step), t: c => STEPS[c.step].label, h: c => stepProg(c) + pendPill(c), bo: ORDER.map(k => STEPS[k].label)},
       {l: 'Dernière action', v: c => daysSince(lastAction(c)) ?? 999, t: c => fmtD(lastAction(c)), h: c => lastCell(c), b: c => ageB(lastAction(c)), bo: AGE_B},
@@ -3736,12 +3754,12 @@ function renderStats() {
   renderActivity();
   renderYearSelect('st-year'); $('st-title').textContent = `Ventes ${ui.year}`;
   const {rob, add, lost} = yearData(), caR = sum(rob, c => c.montant), caA = sum(add, x => x.a.montant);
-  const conv = rob.length + lost.length ? Math.round(rob.length / (rob.length + lost.length) * 100) : null, cyc = cycleDays(rob);
+  const lostC = lost.filter(c => c.perduMotif === 'Perdu contre'), conv = rob.length + lostC.length ? Math.round(rob.length / (rob.length + lostC.length) * 100) : null, cyc = cycleDays(rob);
   const k = (l, v, s) => `<div class="rounded-2xl bg-slate-50 p-4"><div class="kicker">${l}</div><div class="text-xl font-bold mt-1">${v}</div><div class="text-xs text-muted">${s}</div></div>`;
   const opN = [...rob, ...clients.filter(isActive)].filter(c => c.opApplied === true).length, opT = [...rob, ...clients.filter(isActive)].filter(c => c.opApplied !== undefined).length;
   $('st-kpis').innerHTML = k('Opération commerciale', opT ? `${opN} / ${opT}` : '—', 'offres où elle est appliquée') + k('CA signé', keur(caR + caA), `${eur(caR + caA)} HT`) + k('Robots signés', rob.length, `${rob.filter(c => famOf(c) === 'SINTESI').length} SINTESI · ${rob.filter(c => famOf(c) === 'GENESI').length} GENESI`)
-    + k('Panier moyen robot', keur(rob.length ? caR / rob.length : 0), 'montant HT moyen') + k('Taux de transformation', conv == null ? '—' : conv + ' %', 'signés / (signés + perdus)')
-    + k('Cycle de vente moyen', cyc == null ? '—' : cyc + ' j', 'création → signature') + k('Pipeline pondéré', keur(sum(clients.filter(isActive), c => c.montant * STEPS[c.step].proba)), 'montant × probabilité') + k('CA perdu', keur(sum(lost, c => c.montant)), `${lost.length} dossier${lost.length > 1 ? 's' : ''}`);
+    + k('Panier moyen robot', keur(rob.length ? caR / rob.length : 0), 'montant HT moyen') + k('Taux de transformation', conv == null ? '—' : conv + ' %', 'signés / (signés + perdus face à la concurrence)')
+    + k('Cycle de vente moyen', cyc == null ? '—' : cyc + ' j', 'création → signature') + k('Pipeline pondéré', keur(sum(clients.filter(isActive), c => c.montant * probaOf(c))), 'montant × probabilité') + k('CA perdu', keur(sum(lost, c => c.montant)), `${lost.length} dossier${lost.length > 1 ? 's' : ''}`);
   if (typeof Chart === 'undefined') return;
   chartTheme();
   ui.sc.forEach(c => c.destroy()); ui.sc = [];
@@ -4000,7 +4018,7 @@ function lgoSync(from) {
   if (from === 'd' && typeof setDirty === 'function') setDirty(true);
   secStat();
 }
-const SEC_NAMES = [[1, 'Projet'], [2, "Détail de l'officine"], [3, 'Besoins'], [4, 'Offre'], [5, 'Suivi']];
+const SEC_NAMES = [[1, 'Projet et officine'], [3, 'Besoins et argumentaire'], [4, 'Offre'], [5, 'Notes et prochaine action']];
 let secT = null;
 function secStat() { clearTimeout(secT); secT = setTimeout(secDraw, 120); }
 function secDraw() {
@@ -4008,15 +4026,15 @@ function secDraw() {
   let d; try { d = collectRaw(); } catch (e) { return; }
   const c = ui.editId ? byId(ui.editId) : null, M = mxGet(), has = x => x !== '' && x != null && +x !== 0;
   const S = {
-    1: [!!d.echeance, !!d.dateDecision, has(d.montant), !!d.typeProjet, d.indicateur && d.indicateur !== '-'],
-    2: [!!d.lgo, has(M.postes), has(M.dossiers), has(M.boites), has(M.dc), (M.positions || []).length > 0],
+    1: [!!d.echeance, !!d.dateDecision, has(d.montant), !!d.typeProjet, d.indicateur && d.indicateur !== '-', !!d.lgo, has(M.postes), has(M.dossiers), has(M.boites), has(M.dc), (M.positions || []).length > 0],
+    2: [],
     3: [(d.besoins || []).length > 0],
     4: [(d.robots || []).length > 0, !!(d.devis && d.devis.statut), !!(c && c.offre && c.offre.lignes && c.offre.lignes.length)],
     5: [!!(c && ((c.history || []).length || (c.notes || '').trim()))]};
   /* V4.4.4 : ce qu'il reste à faire, étape par étape (libellé, champ à atteindre) */
   const SL = {
-    1: [['Échéance', 'f-ech'], ['Date de décision', 'f-decision'], ['Montant', 'f-montant'], ['Type de projet', 'f-type-box'], ['Indicateur', 'f-ind-box']],
-    2: [['LGO', 'f-lgo'], ['Postes', 'sec-2'], ['Dossiers', 'sec-2'], ['Boîtes / jour', 'sec-2'], ['Dispensations (DC)', 'f-dc'], ['Positions', 'sec-2']],
+    1: [['Échéance', 'f-ech'], ['Date de décision', 'f-decision'], ['Montant', 'f-montant'], ['Type de projet', 'f-type-box'], ['Indicateur', 'f-ind-box'], ['LGO', 'f-lgo'], ['Postes', 'sec-2'], ['Dossiers', 'sec-2'], ['Boîtes / jour', 'sec-2'], ['Dispensations (DC)', 'f-dc'], ['Positions', 'sec-2']],
+    2: [],
     3: [['Cocher au moins un besoin', 'f-besoins-box']],
     4: [['Choisir un robot', 'f-models-box'], ['Statut du devis', 'f-devis-box'], ["Chiffrer l'offre", 'sec-4']],
     5: [['Une note ou un échange', 'sec-5']]};
@@ -4985,7 +5003,7 @@ function renderChrome(c) {
   $('f-ico').innerHTML = c ? cIco(c, 44) : '';
   const I = INTEREST[c?.indicateur || ''];
   $('f-badges').innerHTML = (signed ? '<span class="pill bg-emerald-700 text-white"><i class="fas fa-circle-check"></i>Signé</span>' : lost ? `<span class="pill bg-rose-700 text-white">${c.perduMotif === 'Perdu contre' ? 'Perdu' : 'Abandonné'}</span>` : '')
-    + (c && active ? `<span class="pill" style="background:${I[2]};color:${I[3]}"><span class="w-2 h-2 rounded-full" style="background:${I[1]}"></span>${c.indicateur ? 'Intérêt ' + I[0].toLowerCase() : 'Intérêt à renseigner'}</span>` : '')
+    + (c && active && c.chance ? chancePill(c) : c && active ? `<span class="pill" style="background:${I[2]};color:${I[3]}"><span class="w-2 h-2 rounded-full" style="background:${I[1]}"></span>${c.indicateur ? 'Intérêt ' + I[0].toLowerCase() : 'Intérêt à renseigner'}</span>` : '')
     + cesPill(c) + (c?.situation && !c?.cession?.on ? `<span class="pill" style="background:#EEF2FC;color:#1E3A8A"><i class="fas fa-key"></i>${esc(SITU[c.situation])}</span>` : '') + (c?.robotConc ? '<span class="pill" style="background:#FFF1E7;color:#9A3412"><i class="fas fa-robot"></i>Déjà équipé</span>' : '') + (c ? pendPill(c) + devisPill(c) + (signed ? '' : secPill(c)) : '');
   $('f-sub').textContent = c ? [c.ville + (depOf(c) ? ` (${depOf(c)})` : ''), c.groupement && `Groupement ${c.groupement}`, c.cip && `CIP ${c.cip}`, c.lgo && `LGO ${c.lgo === 'Autre' ? c.lgoAutre || 'autre' : c.lgo}`, active && c.typeProjet && TYPES_PROJET[c.typeProjet], active && c.opportunite && `Origine : ${c.opportunite}`].filter(Boolean).join(' · ') : "Commencez par la recherche dans l'annuaire";
   const t = [];
@@ -5170,10 +5188,6 @@ function renderFormSteps(step) {
   const c = ui.editId ? byId(ui.editId) : null, cur = ORDER.indexOf(step), d = collectRaw(), items = v4Items(step, c, d), F = v4Facts(c, d);
   const rdy = v4Ready(step, c, d), pct = c ? v4Pct({...c, step}, d) : 5, nx = V4_NEXT[step];
   const sub = ['', 'Qualification', 'Présentation', 'Closing'];
-  const bar = ORDER.concat(['Signé']).map((k, i) => {
-    const ok = i < cur, now = i === cur, lab = k === 'Signé' ? 'Signé' : STEPS[k].short;
-    return `<li class="ap-s ${ok ? 'ok' : now ? 'cur' : ''}"><div class="dt">${ok ? '<i class="fas fa-check"></i>' : i + 1}</div><div class="nm">${lab}</div><div class="sb">${ok ? 'fait' : now ? 'en cours' : 'à venir'}</div></li>`;
-  }).join('');
   const chips = items.map(x => `<span class="chip ${x[1] ? 'k' : ''}">${x[1] ? '✓' : '○'} ${x[0]}</span>`).join('');
   const miss = items.filter(x => !x[1]);
   const first = miss.find(x => !x[3]) || miss[0] || [], allOk = !miss.length;
@@ -5190,13 +5204,33 @@ function renderFormSteps(step) {
     gd = (green ? `Planifiez le rendez-vous ${nS} dans « Prochaine action ». ` : `Complétez la fiche${step === 'Contact' ? '' : ', puis planifiez le rendez-vous ' + nS}. `) + `<b>${green ? 'Dès qu\'il est planifié' : 'Quand tout est coché'}, le dossier passe en ${nS} tout seul.</b>`;
     gb = first[3] ? [`Planifier le rendez-vous ${nS}`, "openRap('visite')"] : ['Compléter : ' + first[0].toLowerCase(), `v4Act('${first[2]}')`];
   }
-  $('f-steps').innerHTML = `<div class="v4-ap"><div class="ap-t"><b>Avancement du dossier · ${pct} %</b><span>se met à jour tout seul</span></div><ol class="ap-bar" aria-label="Parcours de vente">${bar}</ol>
-    <div class="ap-c">${chips}</div>
-    <div class="v4-guide ${green ? 'g' : ''}"><div class="v4-gnum"><small>ÉTAPE</small><span>${cur + 1}/5</span></div><div class="v4-gt"><div class="k">${kk}</div><div class="t">${gt}</div><div class="d">${gd}</div></div>
-      <button class="v4-gq" onclick="v4Help('${step}')"><i class="fas fa-circle-question mr-1"></i>Aide</button><button class="v4-gb" onclick="${gb[1]}">${gb[0]}</button></div>
+  const dv = (c && c.devis) || d.devis || {}, J = [['Projet et officine', 'fa-folder-open', F.int && F.mod && F.mont && F.dec], ['Besoins et argumentaire', 'fa-comments', F.bes], ['Devis réalisé', 'fa-file-invoice-dollar', dv.statut === 'envoye'], ['Offre présentée', 'fa-handshake', !!(c && c.offreDate)], ['Contrat signé', 'fa-pen-nib', false]];
+  const nd = J.filter(x => x[2]).length, jp = Math.round(nd / 5 * 100), nj = J.findIndex(x => !x[2]);
+  const jbar = J.map(([l, ic, ok], i) => `<div class="st ${ok ? 'ok' : i === nj ? 'cur' : ''}" style="width:auto"><i><i class="fas ${ok ? 'fa-check' : ic}" style="${ok ? '' : 'font-size:11px'}"></i></i>${l.replace(' ', '<br>')}</div>`).join('<div class="ln"></div>').replace(/<div class="ln"><\/div>/g, (m, o, s) => m);
+  const cp = c && c.chance ? `<span>chance de signature ${chancePill(c)}</span>` : '';
+  const offBtn = c && dv.statut === 'envoye' ? (c.offreDate ? `<button class="btn btn-g !h-8 !text-xs" onclick="chanceOpen(${c.id})">Modifier la chance de signature</button>` : `<button class="btn btn-d !h-9" onclick="chanceOpen(${c.id})"><i class="fas fa-handshake"></i>Offre présentée au client</button>`) : '';
+  const CK = [['Intérêt', F.int, 'f-ind-box'], ['Besoins', F.bes, 'besoins'], ['Modèle cible', F.mod, 'f-models-box'], ['Montant', F.mont, 'f-montant'], ['Date de décision', F.dec, 'f-decision'], ['Devis réalisé', dv.statut === 'envoye', 'f-devis-box'], ['Offre présentée au client', !!(c && c.offreDate), 'offre']];
+  const chips2 = CK.map(x => `<button type="button" class="chip ${x[1] ? 'k' : ''}" ${x[1] ? '' : `onclick="${x[2] === 'offre' ? (c && dv.statut === 'envoye' ? `chanceOpen(${c.id})` : "v4Act('f-devis-box')") : `v4Act('${x[2]}')`}"`}>${x[1] ? '✓' : '○'} ${x[0]}</button>`).join('');
+  const N2 = CK.filter(x => !x[1]).length, f2 = CK.find(x => !x[1]);
+  $('f-steps').innerHTML = `<div class="v4-ap v5-ap"><div class="ap-t"><b>Avancement du dossier · ${jp} %</b><span>${nd} étape${nd > 1 ? 's' : ''} sur 5 ${cp}</span></div><div class="v5-bar"><i style="width:${jp}%"></i></div><div class="v5-jal">${jbar}</div>
+    <div class="v5-todo"><div class="t">${nj >= 0 && nj < 4 ? 'Prochaine étape : ' + J[nj][0].toLowerCase() : 'Dossier à suivre jusqu\'à la signature'} <span>· ${N2 ? `il reste ${N2} chose${N2 > 1 ? 's' : ''}` : 'tout est prêt'}</span></div><div class="ap-c">${chips2}</div><div class="flex flex-wrap gap-2 mt-2 items-center">${offBtn}${f2 && f2[2] !== 'offre' ? `<button class="v4-gb !h-9" onclick="v4Act('${f2[2]}')">Compléter : ${f2[0].toLowerCase()}</button>` : ''}</div></div>
     <button class="v4-man" onclick="v4Man()">Changer l'étape manuellement</button><div id="v4-manrow" class="v4-manrow hidden">${ORDER.map(k => `<button onclick="selectStep('${k}')">${STEPS[k].label}</button>`).join('')}</div></div>`;
   $('f-tip').innerHTML = `<i class="fas fa-lightbulb mr-1 text-amber-600"></i><b>Conseil ${STEPS[step].short} :</b> ${TIPS[step]}`;
   v4Need();
+}
+function chanceOpen(id) {
+  const c = byId(id); if (!c) return; ui.chId = id; ui.chV = c.chance || 50; $('ch-name').textContent = c.pharma;
+  const O = [[25, 'Intérêt faible', 'Hésitant, compare, pas de calendrier', '#475569'], [50, 'Intérêt moyen', 'Intéressé, des points à lever (prix, financement, associé…)', '#C2410C'], [75, 'Dossier transformable', 'Convaincu, décision proche', '#047857']];
+  $('ch-opts').innerHTML = O.map(([v, t, d, col]) => `<label class="flex items-center gap-3 rounded-xl border-2 px-3 py-2.5 cursor-pointer ${ui.chV === v ? 'border-orange-500 bg-orange-50' : 'border-slate-300'}"><input type="radio" name="ch-v" value="${v}" class="sr-only" ${ui.chV === v ? 'checked' : ''} onchange="ui.chV=${v};chanceOpen(${id})"><span class="w-14 text-center font-extrabold text-[19px]" style="color:${col}">${v} %</span><span><b class="text-[13.5px]">${t}</b><span class="block text-xs text-muted">${d}</span></span></label>`).join('');
+  if (!$('dlg-chance').open) $('dlg-chance').showModal();
+}
+function chanceOk() {
+  const c = byId(ui.chId); if (!c) return; const first = !c.offreDate;
+  c.chance = ui.chV; if (first) c.offreDate = isoDay(TODAY);
+  log(c, first ? `Offre présentée au client · chance de signature ${c.chance} %` : `Chance de signature : ${c.chance} %`, CHANCE[c.chance][0]);
+  save(); closeDlg('dlg-chance'); toast(`Chance de signature : ${c.chance} %`);
+  if (ui.editId === c.id) { renderFormSteps(c.step); if (typeof renderChrome === 'function') renderChrome(c); }
+  if (typeof refresh === 'function') refresh();
 }
 function v4Man() { $('v4-manrow').classList.toggle('hidden'); }
 function v4Need() {
