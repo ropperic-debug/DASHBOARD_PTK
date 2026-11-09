@@ -1272,6 +1272,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.20</b> : <b>fichier suivi CRO</b> : (1) tableau ATTERRISSAGE : tous les mois sont renseignés, y compris les mois à venir (0 et 0 € quand rien n'est prévu) au lieu de cases vides ; le tableau suit vos fiches à chaque génération ; (2) colonne COMMENTAIRES : le texte long passe à la ligne et la ligne s'agrandit, plus de texte qui dépasse du cadre.</li>
 <li><b>V4.5.19</b> : synthèse PDF : (1) page de couverture sans répétition du lieu (« Pharmacie d'Arconnay · Arconnay » devient « Pharmacie d'Arconnay ») et espaces doubles supprimés ; (2) <b>offre chiffrée</b> : miniature de l'option dès qu'une image existe, y compris quand l'option est citée dans le détail (ex. « Option bras robotisé · Euclid3D ») ; (3) plus de « stockage temporaire » ni de « upgrade » devant Euclid3D ; (4) l'argumentaire n'affiche plus deux fois le même titre (problématique du client et besoin identique).</li>
 <li><b>V4.5.18</b> : (0) <b>Plus de R1 / R2 / R3 à l'écran</b> : le tableau de bord (bandeau et colonne « Avancement ») et la fiche affichent les jalons ; (1) <b>Taux de transformation</b> = robots signés ÷ (robots signés + dossiers perdus face à un concurrent) ; les abandons n'en font plus partie ; (2) <b>fiche client</b> en 4 blocs : « Projet et officine » (fusionnés), « Besoins et argumentaire », « Offre », « Notes et prochaine action » ; fin du bandeau « Reste à faire » et des pastilles de navigation ; (3) <b>Avancement du dossier</b> par jalons (Projet et officine, Besoins et argumentaire, Devis réalisé, Offre présentée, Contrat signé) avec pourcentage ; (4) bouton « Offre présentée au client » : une fenêtre demande la <b>chance de signature</b> (25 % faible, 50 % moyen, 75 % transformable) ; elle colore la pastille du tableau de bord et pondère le « Potentiel à signer » (10 % tant que l'offre n'est pas présentée).</li>
 <li><b>V4.5.17</b> : (1) <b>Ventes</b> : colonne « Potentiel à signer » plus étroite, graphique plus large et plus lisible ; (2) <b>Ma journée et ma semaine</b> : actions à faire (cadre pointillé orange), en retard (rouge) et faites (vert, repliées sous « Faites aujourd'hui ») avec barre de progression ; (3) <b>Statistiques</b> en 3 onglets (Activité commerciale, Ventes, Détail mensuel), cartes « Mes déplacements », « Visites sur site », « Sans déplacement » ; (4) <b>Commissions</b> : un clic sur une carte ou une ligne du récapitulatif ouvre la liste des dossiers (CSV, « Marquer payées ») ; (5) <b>fiche signée</b> simplifiée (plus de « Reste à faire » ni de « Suivi », bandeau « À compléter ») ; (6) action déjà faite = ne reste plus « à faire » ; (7) replanification : week-ends et jours fériés français ignorés ; (8) message de confirmation en quittant une fiche modifiée.</li>
@@ -2000,7 +2001,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.19';
+const APP_VERSION = '4.5.20';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -6899,7 +6900,7 @@ async function genCRO() {
   Object.assign(at.getCell('B3'), {value: `Commercial ${settings.prenom} ${settings.nom}`, fill: solid('FFC6E0B4')}); at.getCell('B3').font = {...L, bold: true};
   ['Nbre de projets', 'Prev signature(s)', 'CA €', 'Signé(s)', 'CA signé'].forEach((h, i) => { const c = at.getCell(4, i + 2); c.value = h; c.font = {...L, bold: true}; c.fill = solid('FFF2F2F2'); });
   D.months.forEach((m, i) => {
-    const r = 5 + i, vals = [m.l, m.nb || null, m.prev || (m.past ? 0 : null), m.ca || (m.past ? 0 : null), m.past ? m.sig : null, m.past ? m.caSig : null];
+    const r = 5 + i, vals = [m.l, m.nb || 0, m.prev || 0, m.ca || 0, m.sig || 0, m.caSig || 0];
     vals.forEach((v, k) => { at.getCell(r, k + 1).value = v; });
     at.getCell(r, 4).numFmt = EURR; at.getCell(r, 6).numFmt = EUR2;
   });
@@ -6976,7 +6977,7 @@ async function genCRO() {
     wd.forEach((w, k) => { ws.getColumn(k + 1).width = w; });
     ws.eachRow(row => {
       if (row.height !== RH) return; let lines = 1;
-      row.eachCell(cell => { const k = cell.col - 1; if (k === 17 || typeof cell.value !== 'string') return; const l = Math.ceil((cell.value.length * 1.12 + 3) / wd[k]); if (l > 1) { cell.alignment = {...cell.alignment, wrapText: true}; lines = Math.max(lines, l); } });
+      row.eachCell(cell => { const k = cell.col - 1; if (typeof cell.value !== 'string') return; if (k === 17) { const l17 = Math.ceil((cell.value.length * 1.08 + 3) / wd[17]); cell.alignment = {...cell.alignment, wrapText: true}; if (l17 > 1) lines = Math.max(lines, l17); return; } const l = Math.ceil((cell.value.length * 1.12 + 3) / wd[k]); if (l > 1) { cell.alignment = {...cell.alignment, wrapText: true}; lines = Math.max(lines, l); } });
       if (lines > 1) row.height = lines * 15 + 5;
     });
   });
