@@ -1271,6 +1271,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.24</b> : <b>Relier le téléphone en 3 étapes</b> (Paramètres › Synchronisation) : un seul écran à la fois avec barre de progression. Étape 1 : code de l'appareil (ancien « compte de l'appareil »). Étape 2 : mot de passe de synchronisation. Étape 3 : phrase secrète. Sur l'ordinateur, un seul bouton « Copier le lien pour mon téléphone » (plus d'adresse de base, de clé API ni de code à coller). Le lien ouvre maintenant directement l'onglet Synchronisation (avant, il pouvait ouvrir un onglet inexistant).</li>
 <li><b>V4.5.23</b> : <b>PDF fusionné (synthèse + offre) corrigé</b> : titre de l'offre = « Offre pour <i>nom de la pharmacie</i> », plus de page quasi vide en fin de document, bloc « Indicateurs clés » retiré du PDF fusionné (il répétait l'offre), lignes du devis sur 2 lignes au lieu d'être coupées, chiffres incohérents des 3 piliers masqués (« 0 min », « 6,50 » sans unité), bandeau « Faible consommation » supprimé (déjà dans les caractéristiques), « m² » écrit « m2 » dans le PDF, titre du document PDF renseigné.</li>
 <li><b>V4.5.22</b> : (1) <b>Synthèse PDF sans page vide</b> : le bloc « Étude remise à / Votre interlocuteur » n'est plus répété en page 2 (il figure sur la page de garde) ; (2) <b>3 arguments au maximum</b> dans « Ce que vous nous avez dit » ; (3) <b>image de la gamme</b> (SINTESI SLIM / XL / GENESI) sur la dernière page utile, avant les QR codes, si la place le permet ; (4) <b>offre chiffrée</b> : les cases « Indicateurs clés » vides (capacité, dimensions, poids, contrat) sont masquées, et la section disparaît s'il ne reste que le total.</li>
 <li><b>V4.5.21</b> : (1) <b>Retour</b> : depuis une fiche, le bouton Retour (et le geste retour du téléphone) ramène à l'écran d'origine (onglet, filtres et position conservés : commissions, statistiques, Ma journée…) ; (2) <b>Chance de signature unique</b> 25 / 50 / 75 % : remplace Fort / Moyen / Faible, renseignée dès le départ, confirmée d'un clic après « Offre présentée » ; la pastille du tableau de bord affiche ce pourcentage (gris 25, orange 50, vert 75) ; les anciennes fiches sont converties (Faible 25, Moyen 50, Fort 75) ; (3) <b>Statistiques compactes</b> : indicateurs fins, graphique limité à aujourd'hui, Ventes avec 6 indicateurs et graphiques réorganisés, abandons affichés en gris « non compté » ; (4) <b>Ma journée</b> : une seule liste (en retard en rouge avec le nombre de jours, puis aujourd'hui), nom complet de la pharmacie, type d'action en pastille, trois onglets Aujourd'hui / Semaine / En retard, barre « faites », « Voir les autres », « À faire » déplacé en haut.</li>
@@ -1874,7 +1875,7 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
 
   function showLogin() {
     const stay = LS.getItem('ptk_sec_stay') === '1';
-    const d = screen(`<form id="sc-fm" method="post" action="#" autocomplete="on" style="display:flex;flex-direction:column;gap:11px"><h3>🔒 Connexion</h3><div><label for="sc-m">Adresse e-mail</label><input type="email" id="sc-m" name="username" autocomplete="username" value="${esc(sec.email)}"></div>${pwField('sc-p', 'Mot de passe', 'current-password')}<div class="ft"><label style="display:flex;gap:6px;align-items:center;margin:0;font-weight:600"><input type="checkbox" id="sc-stay" style="width:auto" ${stay ? 'checked' : ''}> Rester connecté (jusqu’à la fermeture de l’onglet)</label><button class="lk" id="sc-fg" type="button">Mot de passe oublié ?</button></div><div class="er" id="sc-er"></div><button class="go" id="sc-go" type="submit">Déverrouiller</button><p style="text-align:center">🛡 Données chiffrées sur cet appareil</p></form>`);
+    const d = screen(`<form id="sc-fm" method="post" action="#" autocomplete="on" style="display:flex;flex-direction:column;gap:11px"><h3>🔒 Connexion à cet appareil</h3><div><label for="sc-m">Votre e-mail</label><input type="email" id="sc-m" name="username" autocomplete="username" value="${esc(sec.email)}"></div>${pwField('sc-p', 'Code de cet appareil', 'current-password')}<div class="ft"><label style="display:flex;gap:6px;align-items:center;margin:0;font-weight:600"><input type="checkbox" id="sc-stay" style="width:auto" ${stay ? 'checked' : ''}> Rester connecté (jusqu’à la fermeture de l’onglet)</label><button class="lk" id="sc-fg" type="button">Code oublié ?</button></div><div class="er" id="sc-er"></div><button class="go" id="sc-go" type="submit">Déverrouiller</button><p style="text-align:center">🛡 Données chiffrées sur cet appareil</p></form>`);
     const go = async () => {
       say(''); const b = $q('sc-go'); b.disabled = true;
       try { if (val('sc-m').trim().toLowerCase() !== sec.email.toLowerCase()) throw 0; await unlockWith(val('sc-p'), 'pw'); await loadAll(); install(); fails = 0; const st = $q('sc-stay').checked; LS.setItem('ptk_sec_stay', st ? '1' : '0'); if (st) saveSess(); else clearSess(); done(); }
@@ -1893,15 +1894,15 @@ var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],
   }
   function showCreate(first) {
     let pre = ''; try { pre = (JSON.parse(LS.getItem('ptk_user_settings') || '{}').email || '').replace(/^eric\.r@.*$/, ''); } catch { }
-    const d = screen(`<form id="sc-fm" autocomplete="on" style="display:flex;flex-direction:column;gap:11px"><h3>🔒 Création du compte</h3><p>Protégez vos données : adresse e-mail (identifiant) et mot de passe fort. Vos fiches seront chiffrées sur cet appareil.</p><div><label for="sc-m">Adresse e-mail (identifiant)</label><input type="email" id="sc-m" name="username" autocomplete="username" value="${esc(pre)}" placeholder="prenom.nom@pharmathek.fr"></div>${pwField('sc-p', 'Mot de passe', 'new-password')}<div id="sc-mt"></div>${pwField('sc-p2', 'Confirmer le mot de passe', 'new-password')}<div class="er" id="sc-er"></div><button class="go" id="sc-go" type="submit">Créer mon compte</button><p>Une clé de récupération vous sera ensuite remise.</p>${first ? '<div style="text-align:center"><button class="lk" id="sc-sk" type="button">Continuer sans protection pour cette fois</button></div>' : '<div style="text-align:center"><button class="lk" id="sc-cn" type="button">Annuler</button></div>'}</form>`);
+    const d = screen(`<form id="sc-fm" autocomplete="on" style="display:flex;flex-direction:column;gap:11px"><h3>🔒 Étape 1 sur 3 · Code de cet appareil</h3><p>Ce code sert seulement à ouvrir l'application <b>sur cet appareil</b>. Vous pouvez reprendre le même que sur votre ordinateur. Vos fiches sont chiffrées ici.</p><div><label for="sc-m">Votre e-mail</label><input type="email" id="sc-m" name="username" autocomplete="username" value="${esc(pre)}" placeholder="prenom.nom@pharmathek.fr"></div>${pwField('sc-p', 'Code de cet appareil (12 caractères minimum)', 'new-password')}<div id="sc-mt"></div>${pwField('sc-p2', 'Confirmer le code', 'new-password')}<div class="er" id="sc-er"></div><button class="go" id="sc-go" type="submit">Continuer</button><p>Une clé de récupération vous sera ensuite remise : notez-la.</p>${first ? '<div style="text-align:center"><button class="lk" id="sc-sk" type="button">Continuer sans protection pour cette fois</button></div>' : '<div style="text-align:center"><button class="lk" id="sc-cn" type="button">Annuler</button></div>'}</form>`);
     meter($q('sc-mt'), ''); $q('sc-p').oninput = () => meter($q('sc-mt'), val('sc-p'));
     if (!first) $q('sc-cn').onclick = () => { RUNNING = false; ov.remove(); ov = null; };
     if (first) $q('sc-sk').onclick = () => { if (ov) { ov.remove(); ov = null; } window.__ptkStart(); armIdle(); };
     $q('sc-fm').onsubmit = async e => {
       e.preventDefault(); say(''); const m = val('sc-m').trim(), pw = val('sc-p');
-      if (!okMail(m)) return say('Adresse e-mail non valide.'); if (!strong(pw)) return say('Mot de passe trop faible : respectez les 4 règles.'); if (pw !== val('sc-p2')) return say('Les deux mots de passe sont différents.');
+      if (!okMail(m)) return say('Adresse e-mail non valide.'); if (!strong(pw)) return say('Code trop faible : 12 caractères minimum, avec majuscule, minuscule, chiffre et symbole.'); if (pw !== val('sc-p2')) return say('Les deux codes sont différents.');
       const b = $q('sc-go'); b.disabled = true; b.textContent = 'Chiffrement en cours…';
-      try { const rk = await create(m, pw); install(); await loadAll(); showKey(rk); } catch (e) { console.error(e); say('Création impossible : vos données n’ont pas été modifiées.'); b.disabled = false; b.textContent = 'Créer mon compte'; }
+      try { const rk = await create(m, pw); install(); await loadAll(); showKey(rk); } catch (e) { console.error(e); say('Création impossible : vos données n’ont pas été modifiées.'); b.disabled = false; b.textContent = 'Continuer'; }
     };
   }
   function showKey(rk, onDone) {
@@ -2003,7 +2004,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.23';
+const APP_VERSION = '4.5.24';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -7563,23 +7564,7 @@ function pfBlocks() {
         <button class="btn btn-g !h-11 sm:w-fit" onclick="crmEnrich()"><i class="fas fa-location-dot text-blue-800"></i>Compléter seulement les adresses manquantes</button>
         <div id="crm-res" class="text-[12.5px] text-slate-700"></div></div>
       <div class="flex flex-wrap items-center justify-between gap-2 rounded-xl bg-slate-50 border border-slate-200 px-4 py-3 text-[13px]"><span><b>Actions de démonstration</b> · replace les rendez-vous des fiches d'exemple sur aujourd'hui et cette semaine, pour tester « Fait » (confirmation et retour à l'état d'origine). Vos vraies fiches ne sont pas touchées.</span><button class="btn btn-g !h-10" onclick="resetDemoActs()"><i class="fas fa-calendar-plus"></i>Replanifier</button></div>`),
-    sync: sec(1, 'fa-user-shield', 'Compte sécurisé', 'Adresse de la base, clé API, e-mail et mot de passe : renseignés une seule fois par appareil.', `<div class="flex flex-col gap-2">
-          <input id="fb-url" class="inp" placeholder="Adresse de la base : https://xxxx-default-rtdb.europe-west1.firebasedatabase.app" value="${esc(settings.fbUrl || '')}">
-          <input id="fb-api" class="inp" placeholder="Clé API Web (Firebase > Paramètres du projet > Général)" value="${esc(settings.fbApi || '')}" autocomplete="off">
-          <div class="grid sm:grid-cols-2 gap-2"><input id="fb-mail" type="email" class="inp" placeholder="Votre e-mail" value="${esc(settings.fbEmail || '')}" autocomplete="username"><input id="fb-pwd" type="password" class="inp" placeholder="Mot de passe du compte" autocomplete="current-password"></div>
-          <div class="flex flex-wrap gap-2"><button class="btn btn-g !h-11" onclick="fbConnect('up')"><i class="fas fa-user-plus text-orange-700"></i>Créer mon compte</button><button class="btn btn-p !h-11" onclick="fbConnect('in')"><i class="fas fa-right-to-bracket"></i>Se connecter</button><button class="btn btn-g !h-11" onclick="fbReset()">Mot de passe oublié</button></div></div>
-        `)
-      + sec(2, 'fa-key', 'Chiffrement de vos fiches', 'Vos données sont chiffrées avant envoi : personne d’autre que vous ne peut les lire.', `<div class="flex flex-col gap-2">
-          <p class="text-[12px] text-slate-600">La phrase secrète chiffre vos données avant envoi. Première fois : elle les active. Sur un autre appareil : elle les déverrouille. <b>Perdue, elle ne peut pas être récupérée.</b></p>
-          <div class="flex flex-col sm:flex-row gap-2"><input id="fb-pass" type="password" class="inp flex-1" placeholder="Phrase secrète (8 caractères minimum)" autocomplete="off"><button class="btn btn-g !h-11" onclick="fbEnc()"><i class="fas fa-key text-orange-700"></i>Activer / déverrouiller</button></div></div>`)
-      + sec(3, 'fa-mobile-screen', 'Relier le téléphone', 'Sur le PC : copiez le lien ou le code. Sur le téléphone : collez le code, puis synchronisez.', `<div class="flex flex-col gap-2">
-        <div class="flex flex-col sm:flex-row gap-2"><input id="fb-app" class="inp flex-1" placeholder="Adresse de l'application mobile : https://….workers.dev" value="${esc(settings.appUrl || '')}"><button class="btn btn-g !h-11" onclick="fbAppLink()"><i class="fas fa-link text-orange-700"></i>Copier le lien de liaison</button></div>
-        <div class="flex flex-col sm:flex-row gap-2"><input id="fb-code" class="inp flex-1" readonly placeholder="Code de liaison (après connexion)" value="${settings.fbUrl && settings.fbKey ? fbCode() : ''}"><button class="btn btn-g !h-11" onclick="fbCopy()"><i class="fas fa-copy"></i>Copier le code</button></div>
-        <div class="flex flex-col sm:flex-row gap-2"><input id="fb-in" class="inp flex-1" placeholder="Sur le téléphone : collez ici le code de liaison (ptk2.…)"><button class="btn btn-g !h-11" onclick="fbLinkBtn()"><i class="fas fa-mobile-screen text-orange-700"></i>Relier ce poste</button></div>
-        <div class="flex flex-wrap items-center gap-2"><button class="btn btn-p !h-11" onclick="fbSync()"><i class="fas fa-rotate"></i>Synchroniser maintenant</button><button class="btn btn-g !h-11" onclick="fbDisconnect()"><i class="fas fa-link-slash"></i>Déconnecter</button></div>
-        <div id="fb-state" class="text-[12.5px] text-slate-700">${fbOK() ? 'Connecté · ' + esc(settings.fbUrl.replace('https://', '')) + (settings.mobLastExport ? ' · dernière synchro ' + fmtDT(settings.mobLastExport) : '') : 'Pas encore connecté.'}</div>
-        
-<div id="mob-res" class="text-[12.5px] text-slate-700"></div></div>`),
+    sync: `<section class="card p-5 sm:p-6"><div id="fbw" data-s="${fbWizState()}">${fbWizHtml()}</div><div id="mob-res" class="text-[12.5px] text-slate-700 mt-2"></div></section>`,
     syncIntro: `<p class="text-[12.5px] text-slate-600">Le même dashboard sur le PC et sur le téléphone, synchronisés par Internet fiche par fiche (la modification la plus récente l'emporte). <a href="#" class="text-ptkd underline" onclick="openAide('a-mise');return false">Mode opératoire</a>.</p>`
   };
 }
@@ -7792,37 +7777,62 @@ async function fbReq(path, method, body) {
   if (!r.ok) throw new Error(r.status === 401 || r.status === 403 ? 'accès refusé : vérifiez les règles Firebase (aide, étape A4) et votre connexion' : r.status === 404 ? 'adresse de la base introuvable' : 'erreur ' + r.status);
   return r.json();
 }
+function fbWizState() { return !settings.fbUrl ? 'A' : !fbOK() ? 'B' : !cryKey ? 'C' : 'D'; }
+function fbWizBar(n) { const c = i => i < n ? '#2e9d5b' : i === n ? '#e87722' : '#e2e8f0'; return `<div class="flex gap-1.5 mb-1">${[1, 2, 3].map(i => `<span class="flex-1 h-1.5 rounded" style="background:${c(i)}"></span>`).join('')}</div>`; }
+function fbWizHtml() {
+  const S = fbWizState(), hid = `<input type="hidden" id="fb-url" value="${esc(settings.fbUrl || '')}"><input type="hidden" id="fb-api" value="${esc(settings.fbApi || '')}">`;
+  const hd = (n, t, p) => `${fbWizBar(n)}<div class="text-[12px] font-extrabold tracking-wider text-orange-800 uppercase">Étape ${n} sur 3</div><h2 class="h2 !text-[20px]">${t}</h2><p class="text-[13.5px] text-slate-600">${p}</p>`;
+  const st = `<div id="fb-state" class="text-[12.5px] text-slate-700">${fbOK() ? 'Connecté' + (settings.fbEmail ? ' · ' + esc(settings.fbEmail) : '') + (settings.mobLastExport ? ' · dernière synchro ' + fmtDT(settings.mobLastExport) : '') : 'Pas encore connecté.'}</div>`;
+  let h = '';
+  if (S === 'A') h = hd(2, 'Relier ce poste à votre espace en ligne', 'Le plus simple : sur l\'ordinateur, ouvrez Paramètres › Synchronisation et touchez « Copier le lien pour mon téléphone ». Envoyez-vous ce lien (WhatsApp, e-mail) et ouvrez-le <b>dans Chrome</b>.')
+    + `<details class="rounded-xl bg-slate-50 border border-slate-200 p-3"><summary class="font-bold text-[14px] cursor-pointer">Le lien ne marche pas ? Collez le code ici</summary><div class="flex flex-col gap-2 mt-2"><input id="fb-in" class="inp" placeholder="Code qui commence par ptk2."><button class="btn btn-p !h-12" onclick="fbLinkBtn()">Continuer</button></div></details>`
+    + `<details class="rounded-xl bg-slate-50 border border-slate-200 p-3"><summary class="font-bold text-[14px] cursor-pointer">Première installation sur l'ordinateur (une seule fois)</summary><div class="flex flex-col gap-2 mt-2"><input id="fb-url" class="inp" placeholder="Adresse de la base : https://xxxx-default-rtdb.europe-west1.firebasedatabase.app"><input id="fb-api" class="inp" placeholder="Clé API Web (Firebase › Paramètres du projet › Général)" autocomplete="off"><input id="fb-mail" type="email" class="inp" placeholder="Votre e-mail" autocomplete="username"><input id="fb-pwd" type="password" class="inp" placeholder="Mot de passe de synchronisation" autocomplete="current-password"><div class="flex flex-wrap gap-2"><button class="btn btn-g !h-11" onclick="fbConnect('up')">Créer le compte</button><button class="btn btn-p !h-11" onclick="fbConnect('in')">Se connecter</button></div></div></details>`;
+  else if (S === 'B') h = hid + hd(2, 'Mot de passe de synchronisation', 'C\'est celui que vous avez déjà sur l\'ordinateur : il relie vos deux appareils. Ce n\'est pas le code de cet appareil.')
+    + `<label class="lbl" for="fb-mail">Votre e-mail</label><input id="fb-mail" type="email" class="inp" value="${esc(settings.fbEmail || '')}" autocomplete="username"><label class="lbl" for="fb-pwd">Mot de passe de synchronisation</label><input id="fb-pwd" type="password" class="inp" autocomplete="current-password" onkeydown="if(event.key==='Enter')fbConnect('in')"><button class="btn btn-p !h-12 text-[16px]" onclick="fbConnect('in')">Continuer</button><div class="flex flex-wrap gap-4 text-[13px]"><a href="#" class="text-ptkd underline" onclick="fbReset();return false">Mot de passe oublié ?</a><a href="#" class="text-slate-500 underline" onclick="fbConnect('up');return false">Première fois : créer ce compte</a></div>`;
+  else if (S === 'C') h = hid + hd(3, 'Phrase secrète', 'Exactement la même que sur l\'ordinateur : mêmes majuscules, mêmes accents, mêmes espaces. Si c\'est la toute première fois, choisissez-en une et notez-la : perdue, elle ne peut pas être récupérée.')
+    + `<label class="lbl" for="fb-pass">Phrase secrète</label><input id="fb-pass" type="password" class="inp" autocomplete="off" onkeydown="if(event.key==='Enter')fbEnc()"><button class="btn btn-p !h-12 text-[16px]" onclick="fbEnc()">Terminer</button>`;
+  else {
+    const auto = fbAppAuto(), need = !settings.appUrl && !auto;
+    h = `${fbWizBar(4)}<div class="flex items-center gap-2 rounded-xl bg-emerald-50 border border-emerald-200 p-3 text-emerald-900"><i class="fas fa-circle-check text-xl"></i><div><b>Tout est relié.</b> Vos fiches se synchronisent toutes seules.</div></div>`
+      + `<div class="text-[12px] font-extrabold tracking-wider text-orange-800 uppercase mt-1">Relier un autre téléphone</div><p class="text-[13.5px] text-slate-600">Copiez le lien, envoyez-le au téléphone (WhatsApp ou e-mail à vous-même), puis ouvrez-le <b>dans Chrome</b>. Le téléphone vous demandera 3 choses : un code pour lui, le mot de passe de synchronisation, la phrase secrète.</p>`
+      + (need ? `<input id="fb-app" class="inp" placeholder="Adresse de votre application : https://….workers.dev" value="${esc(settings.appUrl || '')}">` : '')
+      + `<button class="btn btn-p !h-12 text-[16px]" onclick="fbAppLink()"><i class="fas fa-paper-plane"></i>Copier le lien pour mon téléphone</button><div class="flex flex-wrap gap-2"><button class="btn btn-g !h-11" onclick="fbSync()"><i class="fas fa-rotate"></i>Synchroniser maintenant</button><button class="btn btn-g !h-11" onclick="fbDisconnect()"><i class="fas fa-link-slash"></i>Déconnecter</button></div>`
+      + `<details class="rounded-xl bg-slate-50 border border-slate-200 p-3 text-[13px]"><summary class="font-bold cursor-pointer">Le lien ne marche pas ? Autre méthode</summary><div class="flex flex-col gap-2 mt-2"><input id="fb-code" class="inp" readonly value="${fbOK() ? esc(fbCode()) : ''}"><button class="btn btn-g !h-10" onclick="fbCopy()"><i class="fas fa-copy"></i>Copier le code (à coller sur le téléphone)</button></div></details>`;
+  }
+  return `<div class="flex flex-col gap-3" data-ws="${S}">${h}${st}</div>`;
+}
+function fbWizRefresh() { const b = $('fbw'); if (!b) return; const S = fbWizState(); if (b.dataset.s === S) return; b.dataset.s = S; b.innerHTML = fbWizHtml(); }
 function fbStatus() {
   const st = $('fb-state'); if (st) st.innerHTML = fbOK() ? `<i class="fas fa-lock text-emerald-700"></i> Connecté${settings.fbEmail ? ' · ' + esc(settings.fbEmail) : ''} · ${cryKey ? '<b>chiffrement actif</b>' : '<b class="text-amber-800">données non chiffrées (activez la phrase secrète)</b>'}${settings.mobLastExport ? ' · dernière synchro ' + fmtDT(settings.mobLastExport) : ''}` : 'Pas encore connecté.';
   const c = $('fb-code'); if (c) c.value = fbOK() ? fbCode() : '';
   const sm = $('fb-sum'); if (sm) sm.outerHTML = pfBand(...fbSumInfo(), 'fb-sum');
-  syncDraw();
+  fbWizRefresh(); syncDraw();
 }
 async function fbConnect(kind) {
-  const u = ($('fb-url').value || '').trim().replace(/\/+$/, ''), api = ($('fb-api').value || '').trim(), em = ($('fb-mail').value || '').trim(), pw = $('fb-pwd').value || '';
+  const u = (($('fb-url') || {}).value || settings.fbUrl || '').trim().replace(/\/+$/, ''), api = (($('fb-api') || {}).value || settings.fbApi || '').trim(), em = (($('fb-mail') || {}).value || settings.fbEmail || '').trim(), pw = ($('fb-pwd') || {}).value || '';
   if (!/^(https:\/\/[\w.-]+\.(firebasedatabase\.app|firebaseio\.com)|http:\/\/localhost(:\d+)?)$/i.test(u)) return fbMsg("Adresse de la base non valide : elle ressemble à https://xxxx-default-rtdb.europe-west1.firebasedatabase.app", true);
   if (!/^[\w-]{20,}$/.test(api)) return fbMsg("Clé API non valide : copiez-la depuis Firebase > Paramètres du projet > Général > « Clé API Web ».", true);
-  if (!em || !pw) return fbMsg('Saisissez votre e-mail et votre mot de passe.', true);
+  if (!em || !pw) return fbMsg('Saisissez le mot de passe de synchronisation.', true);
   try {
     const j = await fbIdt(kind === 'up' ? 'signUp' : 'signInWithPassword', {email: em, password: pw, returnSecureToken: true}, api);
     settings.fbUrl = u; settings.fbApi = api; settings.fbEmail = em; delete settings.fbKey; fbSession(j);
-    if (!settings.smaj) settings.smaj = Date.now(); $('fb-pwd').value = ''; saveSet(); fbStatus();
-    fbMsg(kind === 'up' ? 'Compte créé et connecté. Activez maintenant la phrase secrète (chiffrement).' : 'Connecté.'); await fbSync();
-  } catch (e) { fbMsg('Connexion impossible : ' + esc(e.message), true); }
+    if (!settings.smaj) settings.smaj = Date.now(); if ($('fb-pwd')) $('fb-pwd').value = ''; saveSet(); fbStatus();
+    fbMsg(kind === 'up' ? 'Compte créé et connecté. Dernière étape : la phrase secrète.' : 'Mot de passe accepté. Dernière étape : la phrase secrète.'); await fbSync();
+  } catch (e) { fbMsg('Mot de passe refusé ou connexion impossible (' + esc(e.message) + '). Vérifiez le mot de passe ; sinon touchez « Mot de passe oublié ».', true); }
 }
 async function fbReset() {
-  const api = ($('fb-api').value || settings.fbApi || '').trim(), em = ($('fb-mail').value || '').trim(); if (!api || !em) return fbMsg("Saisissez la clé API et l'e-mail.", true);
+  const api = (($('fb-api') || {}).value || settings.fbApi || '').trim(), em = (($('fb-mail') || {}).value || settings.fbEmail || '').trim(); if (!api || !em) return fbMsg("Adresse e-mail introuvable : reliez d'abord le téléphone avec le lien.", true);
   try { await fbIdt('sendOobCode', {requestType: 'PASSWORD_RESET', email: em}, api); fbMsg('Un e-mail de réinitialisation vient d\'être envoyé.'); } catch (e) { fbMsg(esc(e.message), true); }
 }
 async function fbEnc() {
-  const pass = $('fb-pass').value; if (!fbOK()) return fbMsg("Connectez-vous d'abord (e-mail et mot de passe).", true);
+  const pass = ($('fb-pass') || {}).value || ''; if (!fbOK()) return fbMsg("Entrez d'abord le mot de passe de synchronisation (étape 2).", true);
   if (pass.length < 8) return fbMsg('Phrase secrète : 8 caractères minimum (une phrase de 4-5 mots est idéale).', true);
   try {
     const meta = await fbReq('full/meta', 'GET');
-    if (meta) { const k = await cryDerive(pass, meta.salt); cryKey = k; try { if (await cryDec(meta.check) !== 'ptk-ok') throw 0; } catch { cryKey = null; return fbMsg('Phrase secrète incorrecte.', true); } await PDB.set('ckey', k); $('fb-pass').value = ''; fbStatus(); fbMsg('Chiffrement déverrouillé sur ce poste.'); return fbSync(); }
+    if (meta) { const k = await cryDerive(pass, meta.salt); cryKey = k; try { if (await cryDec(meta.check) !== 'ptk-ok') throw 0; } catch { cryKey = null; return fbMsg('Phrase secrète incorrecte : mêmes majuscules, accents et espaces que sur l\'ordinateur.', true); } await PDB.set('ckey', k); if ($('fb-pass')) $('fb-pass').value = ''; fbStatus(); fbMsg('Phrase secrète acceptée : vos fiches arrivent.'); return fbSync(); }
     confirmBox('Activer le chiffrement', 'Vos fiches seront chiffrées avant envoi : <b>seul quelqu\'un connaissant la phrase secrète peut les lire</b>, pas même Google ni Pharmathek.<br><br><b class="text-rose-700">Si vous perdez cette phrase, les données en ligne sont définitivement illisibles</b> (vos fiches sur ce PC et vos sauvegardes JSON restent valides). Notez-la dans un endroit sûr.', 'Activer', async () => {
       const salt = B64.e(crypto.getRandomValues(new Uint8Array(16))); cryKey = await cryDerive(pass, salt);
-      await fbReq('full/meta', 'PUT', {salt, check: await cryEnc('ptk-ok')}); await PDB.set('ckey', cryKey); settings.fbRepush = 1; settings.smaj = Date.now(); saveSet(); $('fb-pass').value = ''; fbStatus(); fbMsg('Chiffrement activé : envoi de vos fiches chiffrées…'); await fbSync();
+      await fbReq('full/meta', 'PUT', {salt, check: await cryEnc('ptk-ok')}); await PDB.set('ckey', cryKey); settings.fbRepush = 1; settings.smaj = Date.now(); saveSet(); if ($('fb-pass')) $('fb-pass').value = ''; fbStatus(); fbMsg('Phrase secrète enregistrée : envoi de vos fiches chiffrées…'); await fbSync();
     });
   } catch (e) { fbMsg(esc(e.message || e), true); }
 }
@@ -7833,15 +7843,16 @@ function fbLink(txt) {
     if (v2) { settings.fbApi = j.a; settings.fbEmail = j.e || ''; settings.fbUid = ''; settings.fbTok = ''; settings.fbRef = ''; settings.fbKey = ''; } else { settings.fbKey = j.k; settings.fbApi = ''; }
     saveSet(); fbStatus(); return true; } catch { return false; }
 }
-function fbLinkBtn() { const v = ($('fb-in').value || '').trim(); if (!fbLink(v)) return fbMsg('Code non valide : recopiez-le en entier (il commence par ptk2.)', true); $('fb-in').value = ''; fbAfterLink(); }
-function fbAfterLink() { if (fbOK()) return fbSync(); renderProfile(); fbMsg('Poste relié à la base. Saisissez maintenant votre mot de passe puis « Se connecter », puis la phrase secrète.'); toast('Saisissez votre mot de passe pour terminer'); }
+function fbLinkBtn() { const v = (($('fb-in') || {}).value || '').trim(); if (!fbLink(v)) return fbMsg('Code non valide : recopiez-le en entier (il commence par ptk2.)', true); if ($('fb-in')) $('fb-in').value = ''; fbAfterLink(); }
+function fbAfterLink() { if (fbOK()) return fbSync(); renderProfile(); fbMsg('Téléphone relié. Étape 2 sur 3 : entrez le mot de passe de synchronisation.'); toast('Étape 2 sur 3 : mot de passe de synchronisation'); }
+function fbAppAuto() { return location.protocol === 'https:' ? (location.origin + location.pathname.replace(/\/[^\/]*$/, '')).replace(/\/+$/, '') : ''; }
 function fbAppLink() {
-  const a = ($('fb-app').value || '').trim().replace(/[#?].*$/, '').replace(/\/+$/, '');
-  if (!/^https:\/\/[\w.-]+/.test(a)) return fbMsg("Collez d'abord l'adresse de l'application (https://….workers.dev).", true);
-  if (!fbOK()) return fbMsg("Connectez d'abord la base (bouton Connecter).", true);
+  const a = ((($('fb-app') || {}).value) || settings.appUrl || fbAppAuto()).trim().replace(/[#?].*$/, '').replace(/\/+$/, '');
+  if (!/^https:\/\/[\w.-]+/.test(a)) return fbMsg("Collez d'abord l'adresse de votre application (celle de Cloudflare, https://….workers.dev).", true);
+  if (!fbOK()) return fbMsg("Terminez d'abord les étapes ci-dessus sur cet appareil.", true);
   settings.appUrl = a; saveSet(); const t = `${a}/#ptk=${fbCode()}`;
-  try { navigator.clipboard.writeText(t); } catch { const x = $('fb-code'); x.select(); document.execCommand('copy'); }
-  toast('Lien copié : envoyez-le sur le téléphone et ouvrez-le dans Chrome');
+  try { navigator.clipboard.writeText(t); } catch { const x = $('fb-code'); if (x) { x.select(); document.execCommand('copy'); } }
+  toast('Lien copié : collez-le dans WhatsApp ou un e-mail, puis ouvrez-le dans Chrome sur le téléphone');
 }
 function fbCopy() { const c = $('fb-code'); if (!c || !c.value) return; try { navigator.clipboard.writeText(c.value); } catch { c.select(); document.execCommand('copy'); } toast('Code copié'); }
 async function fbFull() {
@@ -8096,7 +8107,7 @@ document.querySelectorAll('dialog').forEach(d => {
 initSelects(); save(); renderBrand(); showView('dashboard');
 snapStart();
 window.__fbReady = true;
-(function () { const m = /#ptk=(ptk[12]\.[A-Za-z0-9+\/=_-]+)/.exec(location.hash); if (m) { try { history.replaceState(null, '', location.pathname + location.search); } catch { } if (fbLink(m[1])) { if (fbOK()) { toast('Téléphone relié : synchronisation en cours…'); setTimeout(() => fbSync(), 600); } else { ui.ptab = 'reglages'; showView('profile'); fbAfterLink(); } } else toast('Lien de liaison non valide', true); } })();
+(function () { const m = /#ptk=(ptk[12]\.[A-Za-z0-9+\/=_-]+)/.exec(location.hash); if (m) { try { history.replaceState(null, '', location.pathname + location.search); } catch { } if (fbLink(m[1])) { if (fbOK()) { toast('Téléphone relié : synchronisation en cours…'); setTimeout(() => fbSync(), 600); } else { ui.ptab = 'sync'; showView('profile'); fbAfterLink(); } } else toast('Lien de liaison non valide', true); } })();
 if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) navigator.serviceWorker.register('sw.js').catch(() => { });
 
 /* V4.3 : geste « retour » du téléphone = fermer la fenêtre ouverte, revenir au tableau de bord, puis demander confirmation avant de quitter */
