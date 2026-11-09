@@ -688,7 +688,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
         </div>
         </div>
         <div class="fz flex flex-col gap-3" data-zone="3"><div id="sec-3" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">2</span><h2 class="h2">Besoins et argumentaire</h2><span id="sst-3" class="ml-auto text-xs font-semibold"></span></div>
-        <div id="f-besoins-box"></div><div id="f-arg-box"></div></div>
+        <div id="f-besoins-box"></div></div>
         <div class="fz flex flex-col gap-3" data-zone="4"><div id="sec-4" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">3</span><h2 class="h2">Offre de robotisation</h2><span id="sec-offre-ico" class="inline-flex items-center gap-1"></span><span id="sst-4" class="ml-auto text-xs font-semibold"></span></div>
         <div id="f-off-tabs"></div>
         <div class="offer-card">
@@ -697,7 +697,8 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
         <div id="f-devis-box"></div>
         <div id="f-offre-box"></div>
         <div id="f-op-box"></div>
-        <div id="f-impl-box"></div></div></div>
+        <div id="f-impl-box"></div>
+        <div id="f-arg-box"></div></div></div>
                 <p id="f-tip" class="m-0 text-xs text-amber-900"></p>
       </section>
 
@@ -1271,6 +1272,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.27</b> : (1) <b>Fiche réorganisée</b> : la carte « Préparer et générer le PDF » est maintenant la dernière étape de « Offre de robotisation » (robot → devis → plan → PDF), avec une barre de progression à 4 étapes. (2) <b>Remplacer le devis</b> : bouton orange bien visible dans « Devis + maintenance » ; vous importez le nouveau PDF, une fenêtre compare l'ancien et le nouveau (total, écart, lignes ajoutées, supprimées ou modifiées), puis vous validez. L'ancien devis est conservé dans l'historique de la fiche.</li>
 <li><b>V4.5.26</b> : <b>Mise en page automatique du PDF</b> : avant de créer le PDF, le logiciel fait des essais invisibles et ajuste seul pour éviter une dernière page quasi vide : bloc « Éléments complémentaires » placé en page 3 s'il y a de la place, bandeau « Restons connectés » compact, espaces resserrés, puis en dernier recours retrait de « c'est aussi… » puis de la garantie. Un message indique ce qui a été ajusté (fenêtre de génération et confirmation). Un PDF qui passe déjà bien ne change pas.</li>
 <li><b>V4.5.25</b> : <b>Offre : lignes à 0 € = « Inclus »</b>. Dans le PDF (offre seule et fusionné), toute ligne du devis à 0 € quitte la liste chiffrée et apparaît dans un bloc vert « Inclus dans votre offre » avec une pastille « Inclus » ; les totaux ne changent pas. Dans l'écran de l'offre, un message vert prévient quand une ligne est à 0 (pour repérer un prix oublié).</li>
 <li><b>V4.5.24</b> : <b>Relier le téléphone en 3 étapes</b> (Paramètres › Synchronisation) : un seul écran à la fois avec barre de progression. Étape 1 : code de l'appareil (ancien « compte de l'appareil »). Étape 2 : mot de passe de synchronisation. Étape 3 : phrase secrète. Sur l'ordinateur, un seul bouton « Copier le lien pour mon téléphone » (plus d'adresse de base, de clé API ni de code à coller). Le lien ouvre maintenant directement l'onglet Synchronisation (avant, il pouvait ouvrir un onglet inexistant).</li>
@@ -1702,6 +1704,11 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
   </div>
 </dialog>
 
+<dialog id="dlg-offrecmp" class="!w-[min(860px,97vw)]">
+  <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start gap-2"><div><h3 class="font-bold flex items-center gap-2"><i class="fas fa-arrows-rotate text-ptkd"></i>Remplacer le devis · comparaison</h3><p id="oc-sub" class="text-xs text-muted mt-0.5"></p></div><button class="dlg-x" onclick="closeDlg('dlg-offrecmp')" aria-label="Fermer"><i class="fas fa-xmark"></i></button></div>
+  <div id="oc-body" class="dlg-body p-5 flex flex-col gap-3"></div>
+  <div class="px-5 py-4 border-t bg-slate-50 flex flex-wrap justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-offrecmp')">Annuler</button><button class="btn btn-g" onclick="offreCmpEdit()"><i class="fas fa-pen text-ptkd"></i>Ajuster avant de remplacer</button><button class="btn btn-p" onclick="offreCmpApply()"><i class="fas fa-arrows-rotate"></i>Remplacer par le nouveau devis</button></div>
+</dialog>
 <dialog id="dlg-offre" class="!w-[min(980px,97vw)]">
   <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start gap-2">
     <div><h3 class="font-bold flex items-center gap-2"><i class="fas fa-file-invoice text-ptkd"></i>Synthèse de l'offre</h3><p id="of-sub" class="text-xs text-muted mt-0.5"></p></div>
@@ -2006,7 +2013,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.26';
+const APP_VERSION = '4.5.27';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -4470,7 +4477,7 @@ function renderArgBtn(c) {
     ? `<div class="rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 p-3.5 flex flex-wrap items-center gap-4"><button type="button" class="btn !h-12 text-[15px] font-bold !bg-slate-200 !border-slate-200 !text-slate-500 cursor-not-allowed" aria-disabled="true" onclick="argHelp()" title="Complétez les éléments ci-contre pour activer le bouton"><i class="fas fa-file-pdf text-lg"></i>${lab}</button>
       <div class="flex-1 min-w-[260px] flex flex-col gap-1 text-[13px]"><b class="text-orange-900">Il manque ${miss.length} élément${miss.length > 1 ? 's' : ''} pour générer le PDF :</b>${miss.map(m => `<div class="flex items-center gap-2"><span class="w-4 h-4 rounded-full border-2 border-slate-300 inline-block"></span><span>${esc(lbl[m] || m)}</span><button type="button" class="ml-auto font-bold text-[12px] text-ptkd underline" onclick="document.getElementById('${tgt[m]}')?.scrollIntoView({block:'center',behavior:'smooth'})">${go[m] || 'Renseigner →'}</button></div>`).join('')}</div></div>`
     : (() => { const [na, nt] = argCountLive(c), A2 = assocOf(c), nn = 1 + A2.filter(x => x.on).length;
-      return `<div class="pbox"><div class="hd"><i class="n">3</i>Préparer et générer le PDF<span class="r">${c.offre?.lignes?.length ? 'Synthèse + offre' : 'Synthèse'}</span></div><div class="p-3.5 flex flex-col gap-3">
+      return `<div class="pbox"><div class="hd"><i class="n">4</i>Préparer et générer le PDF<span class="r">${c.offre?.lignes?.length ? 'Synthèse + offre' : 'Synthèse'}</span></div><div class="p-3.5 flex flex-col gap-3">
       <div class="ppills"><button type="button" class="ppill" onclick="prepGo('arg')"><i class="fas fa-list-check"></i>Contenu<b>${na}/${nt}</b></button><button type="button" class="ppill" onclick="prepGo('txt')"><i class="fas fa-pen-to-square"></i>Textes<b>${c.argDraft ? 'modifiés' : 'standard'}</b></button><button type="button" class="ppill" onclick="prepGo('nom')"><i class="fas fa-user-group"></i>Noms<b>${nn}</b></button><button type="button" class="ppill" onclick="document.getElementById('f-impl-box')?.scrollIntoView({block:'center',behavior:'smooth'})"><i class="fas fa-map-location-dot"></i>Implantation<b>plan et photos</b></button></div>
       <div class="flex flex-wrap items-center gap-2"><button type="button" class="btn btn-g !h-11" onclick="prepGo('txt')"><i class="fas fa-sliders text-ptkd"></i>Préparer le PDF…</button><button type="button" class="btn btn-g !h-11" onclick="prevArg(${c.id})"><i class="fas fa-eye text-ptkd"></i>Aperçu</button><button type="button" class="btn btn-p !h-12 text-[15px] font-bold shadow-md ml-auto" onclick="pdfArg(${c.id})"><i class="fas fa-file-pdf text-lg"></i>${lab}</button></div>
       <p class="text-[12.5px] text-emerald-800 font-semibold m-0"><i class="fas fa-circle-check mr-1"></i>Tout est prêt : besoins, robot, devis + maintenance · ${esc(c.pharma)}</p></div></div>`; })();
@@ -4492,8 +4499,8 @@ function prepGo(k) { const id = ui.argId || ui.paId || ui.pdfId || ui.editId; ['
 function namesDraw(c) { const A = assocOf(c); $('nm-body').innerHTML = `<div class="flex items-center gap-2 text-slate-600"><input type="checkbox" checked disabled class="w-4 h-4 accent-emerald-700">${esc(c.devisNom || [c.genre, c.prenom, c.nom].filter(Boolean).join(' '))} <span class="text-muted">· Titulaire</span></div>${A.map((a, i) => `<label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="w-4 h-4 accent-emerald-700" ${a.on ? 'checked' : ''} onchange="assocTick(${c.id},${i},this.checked);renderArgBtn(byId(${c.id}))">${esc(a.nom)} <span class="text-muted">· ${esc(a.role)}</span></label>`).join('') || '<div class="text-muted text-[12.5px]">Autres noms : à saisir dans Coordonnées (« Titulaires et associés »).</div>'}`; }
 function namesOpen(id) { const c = ensureSaved() || byId(id); if (!c) return; ui.argId = c.id; namesDraw(c); $('dlg-names').showModal(); }
 function argCountLive(c) { const AR = ptkOf(c).args || {}; let n = 0, t = 0; try { PA_GROUPS.forEach(([, , ks]) => ks.forEach(k => { const [v] = paLive(c, k); if (v === null) return; t++; if (k === 'plan' ? (AR.plan ?? false) : AR[k] !== false) n++; })); } catch { } return [n, t]; }
-function renderStrip(c, miss) { const b = $('f-strip'); if (!b) return; const L = argLive(c), ch = !!(L.robots || []).length, ci = !!c.offre?.lignes?.length, pdf = ch && ci;
-  b.innerHTML = c.step === 'Perdu' ? '' : `<div class="s4"><div class="${ch ? 'ok' : 'cur'}"><i class="fas fa-${ch ? 'circle-check' : 'pen'}"></i>1 · ${ch ? 'Choisi' : 'Choisir le robot'}</div><div class="${ci ? 'ok' : ch ? 'cur' : 'todo'}"><i class="fas fa-${ci ? 'circle-check' : 'pen'}"></i>2 · ${ci ? 'Chiffré' : 'Chiffrer l\'offre'}</div><div class="${pdf ? 'cur' : 'todo'}"><i class="fas fa-${pdf ? 'pen' : 'circle'}"></i>3 · PDF à préparer</div></div>`; }
+function renderStrip(c, miss) { const b = $('f-strip'); if (!b) return; const L = argLive(c), ch = !!(L.robots || []).length, ci = !!c.offre?.lignes?.length, pdf = ch && ci, pl = IMPL.id === c.id && (IMPL.imgs || []).length > 0;
+  b.innerHTML = c.step === 'Perdu' ? '' : `<div class="s4"><div class="${ch ? 'ok' : 'cur'}"><i class="fas fa-${ch ? 'circle-check' : 'pen'}"></i>1 · ${ch ? 'Robot choisi' : 'Choisir le robot'}</div><div class="${ci ? 'ok' : ch ? 'cur' : 'todo'}"><i class="fas fa-${ci ? 'circle-check' : 'pen'}"></i>2 · ${ci ? 'Devis chiffré' : 'Chiffrer le devis'}</div><div class="${pl ? 'ok' : 'todo'}"><i class="fas fa-${pl ? 'circle-check' : 'circle'}"></i>3 · Plan${pl ? '' : ' (facultatif)'}</div><div class="${pdf ? 'cur' : 'todo'}"><i class="fas fa-${pdf ? 'pen' : 'circle'}"></i>4 · PDF à préparer</div></div>`; }
 /* ----- Implantation : plan & photos (stockés dans ce navigateur, IndexedDB) ----- */
 const IMPL = {id: null, imgs: []};
 async function implGet(id) { try { return (await PDB.get('impl_' + id)) || []; } catch { return []; } }
@@ -4501,7 +4508,7 @@ async function implSet() { try { await PDB.set('impl_' + IMPL.id, IMPL.imgs); } 
 function renderImpl(c) {
   const box = $('f-impl-box'); if (!box) return;
   if (!c || c.step === 'Perdu') { box.innerHTML = ''; IMPL.id = null; IMPL.imgs = []; return; }
-  if (IMPL.id !== c.id) { IMPL.id = c.id; IMPL.imgs = []; implGet(c.id).then(a => { if (IMPL.id === c.id) { IMPL.imgs = a; implDraw(); } }); }
+  if (IMPL.id !== c.id) { IMPL.id = c.id; IMPL.imgs = []; implGet(c.id).then(a => { if (IMPL.id === c.id) { IMPL.imgs = a; implDraw(); renderStrip(c); } }); }
   implDraw();
 }
 function implDraw() {
@@ -6330,8 +6337,10 @@ function offreBox(c) {
   const box = $('f-offre-box');
   if (!c || !ui.editId) { box.innerHTML = ''; return; }
   const o = c.offre, k = o?.lignes?.length ? offreCalc(o) : null;
-  box.innerHTML = `<div class="fbox ${k ? 'ok' : 'none'}">${fboxHead('Devis + maintenance', !!k, k ? `${editBtn(`openOffre(${c.id})`, 'Modifier l\'offre')}<button class="lnk-edit !text-emerald-800" onclick="genOffre(${c.id})"><i class="fas fa-file-pdf text-[11px]"></i>Générer le PDF</button><button class="lnk-edit" onclick="printOffre(${c.id})"><i class="fas fa-print text-[11px]"></i>Imprimer la synthèse seule</button>` : '', '(devis + contrat de maintenance · alimente le PDF de l\'offre)')}
-    ${k ? `<div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-[13px]">${[['Devis', esc(o.ref || '—'), o.date || ''], ['Total brut', eur(k.brut), `${o.lignes.length} poste${o.lignes.length > 1 ? 's' : ''}`], ['Remise', k.rem ? `${k.pct.toLocaleString('fr-FR')} %` : 'Aucune', k.rem ? '− ' + eur(k.rem) : ''], ['Total net HT', `<span class="text-ptkd">${eur(k.net)}</span>`, o.maint?.mensuel ? `maintenance ${eur(o.maint.remPct ? k.mRem : o.maint.mensuel)}/mois` : '']].map(([l, v, s2]) => `<div class="rounded-lg bg-slate-50 px-3 py-2"><div class="text-[11px] font-semibold text-muted">${l}</div><div class="font-bold">${v}</div><div class="text-[11px] text-muted truncate">${s2}</div></div>`).join('')}</div>`
+  box.innerHTML = `<div class="fbox ${k ? 'ok' : 'none'}">${fboxHead('Devis + maintenance', !!k, '', '(devis + contrat de maintenance · alimente le PDF de l\'offre)')}
+    ${k ? `<div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-[13px]">${[['Devis', esc(o.ref || '—'), o.date || ''], ['Total brut', eur(k.brut), `${o.lignes.length} poste${o.lignes.length > 1 ? 's' : ''}`], ['Remise', k.rem ? `${k.pct.toLocaleString('fr-FR')} %` : 'Aucune', k.rem ? '− ' + eur(k.rem) : ''], ['Total net HT', `<span class="text-ptkd">${eur(k.net)}</span>`, o.maint?.mensuel ? `maintenance ${eur(o.maint.remPct ? k.mRem : o.maint.mensuel)}/mois` : '']].map(([l, v, s2]) => `<div class="rounded-lg bg-slate-50 px-3 py-2"><div class="text-[11px] font-semibold text-muted">${l}</div><div class="font-bold">${v}</div><div class="text-[11px] text-muted truncate">${s2}</div></div>`).join('')}</div>
+      <div class="mt-3 rounded-2xl border-2 border-orange-500 bg-orange-50 p-3 flex flex-wrap items-center gap-3"><label class="btn btn-p !h-12 text-[15px] font-bold cursor-pointer" style="min-width:280px" title="Importer le nouveau devis (et le contrat) : vous comparez avant de valider"><i class="fas fa-arrows-rotate"></i>Remplacer le devis (nouveau PDF)<input type="file" accept="application/pdf,.pdf" multiple class="hidden" onchange="offreImport(this, false, true)"></label><div class="flex-1 min-w-[230px] text-[12.5px] text-orange-950 leading-snug"><b>Le devis a changé ?</b> Importez le nouveau devis et le contrat : l'offre est mise à jour, vous comparez avant de valider. L'ancien devis reste dans l'historique.</div></div>
+      <div class="mt-2.5 flex flex-wrap gap-2"><button type="button" class="btn btn-g !h-10" onclick="openOffre(${c.id})"><i class="fas fa-pen text-ptkd"></i>Modifier les lignes</button><button type="button" class="btn btn-g !h-10" onclick="genOffre(${c.id})"><i class="fas fa-file-pdf text-ptkd"></i>Générer le PDF</button><button type="button" class="btn btn-g !h-10" onclick="printOffre(${c.id})"><i class="fas fa-print text-ptkd"></i>Imprimer la synthèse seule</button></div>`
       : `<label class="w-full rounded-xl border-2 border-dashed border-slate-300 bg-slate-50 px-3 py-3 text-[13px] font-semibold text-slate-700 flex items-center gap-2 cursor-pointer hover:border-orange-300"><i class="fas fa-file-import text-ptkd"></i><span title="L'application lit le devis et le contrat (PDF) et remplit l'offre : lignes, remise, maintenance mensuelle">Importer le devis et le contrat (PDF)</span><input type="file" accept="application/pdf,.pdf" multiple class="hidden" onchange="offreImport(this)"></label>
         <button class="text-xs text-muted hover:underline mt-1.5" title="Saisissez vous-même chaque poste, la remise et la maintenance : utile sans PDF ou si la lecture échoue" onclick="openOffre(${c.id})">ou saisir les lignes manuellement</button>
         <p class="text-[11.5px] leading-snug text-muted mt-1.5 mb-0"><b>Importer le devis et le contrat (PDF)</b> : l'application lit vos deux documents et remplit l'offre automatiquement (lignes du devis, remise, maintenance mensuelle). Vous vérifiez avant de valider. <b>Saisir les lignes manuellement</b> : à utiliser sans PDF, ou si la lecture échoue. Vous entrez chaque poste (désignation, montant HT), la remise et la maintenance ; le total se calcule seul. Dans les deux cas, ces informations alimentent le PDF « Synthèse et offre commerciale ».</p>`}</div>`;
@@ -6400,7 +6409,7 @@ async function ocrLines(buf, lib) {
   } finally { await w.terminate(); }
   return out;
 }
-async function offreImport(input, inDlg) {
+async function offreImport(input, inDlg, replace) {
   const files = [...input.files]; input.value = ''; if (!files.length) return;
   const c = ensureSaved(); if (!c) return;
   toast('Lecture des documents…');
@@ -6419,8 +6428,33 @@ async function offreImport(input, inDlg) {
     } catch { toast(`Document non reconnu : ${f.name}`, true); }
   }
   if (!got.length) return;
+  if (replace && c.offre?.lignes?.length) { if (!o.lignes?.length) return toast('Aucune ligne de devis lue dans ce document.', true); return offreCmpOpen(c, o, got); }
   ui.ofDraft = o; openOffre(c.id, o); toast(`Lu : ${got.join(' et ')} · vérifiez puis enregistrez`);
 }
+/* ----- Remplacer le devis : comparaison avant validation ----- */
+function offreCmpOpen(c, n, got) {
+  const o = c.offre, ko = offreCalc(o), kn = offreCalc(n); ui.ofCmp = {id: c.id, n};
+  const key = t => norm(String(t || '').replace(/\(.*$/, '')).replace(/\s+/g, ' ').trim(), amt = v => (+v) ? eur(+v) : 'Inclus';
+  const oldL = o.lignes.map(x => ({...x, k: key(x.t), used: false})), rows = [];
+  n.lignes.forEach(x => { const k = key(x.t), m = oldL.find(y => !y.used && y.k === k); if (m) { m.used = true; rows.push([x.t, m.m, x.m, (+m.m === +x.m) ? 'same' : 'chg']); } else rows.push([x.t, null, x.m, 'new']); });
+  oldL.filter(y => !y.used).forEach(y => rows.push([y.t, y.m, null, 'gone']));
+  const ec = Math.round(kn.net - ko.net), mo = o.maint?.remPct ? ko.mRem : o.maint?.mensuel, mn = n.maint?.remPct ? kn.mRem : n.maint?.mensuel;
+  const card = (l, v, s) => `<div class="rounded-xl bg-slate-50 px-3 py-2"><div class="text-[11px] font-semibold text-muted">${l}</div><div class="font-bold text-[15px]">${v}</div><div class="text-[11px] text-muted">${s || ''}</div></div>`;
+  const warn = n.src?.pharma && norm(n.src.pharma) !== norm(c.pharma) ? `<div class="rounded-xl bg-amber-50 border border-amber-300 px-4 py-2.5 text-[13px] text-amber-950"><i class="fas fa-triangle-exclamation mr-1.5"></i>Le nouveau devis est au nom de <b>${esc(titleFr(n.src.pharma))}</b>, la fiche est « ${esc(c.pharma)} ». Vérifiez qu'il s'agit du bon client.</div>` : '';
+  $('oc-sub').textContent = `${c.pharma} · devis ${o.ref || '—'} → ${n.ref || '—'}`;
+  $('oc-body').innerHTML = `${warn}<div class="grid grid-cols-2 md:grid-cols-4 gap-2">${card('Total net HT', `${eur(ko.net)} → <span class="text-ptkd">${eur(kn.net)}</span>`, `devis ${esc(o.ref || '—')} → ${esc(n.ref || '—')}`)}${card('Écart', `<span class="${ec > 0 ? 'text-rose-700' : ec < 0 ? 'text-emerald-700' : ''}">${ec > 0 ? '+ ' : ec < 0 ? '− ' : ''}${eur(Math.abs(ec))}</span>`, ec ? 'sur le total net HT' : 'aucun écart')}${card('Maintenance', mn ? `${eur(mn)}/mois` : '—', mo && mn && Math.round(mo) !== Math.round(mn) ? `avant : ${eur(mo)}/mois` : 'inchangée')}${card('Lignes', `${o.lignes.length} → ${n.lignes.length}`, got && got.length ? 'lu : ' + esc(got.join(', ')).slice(0, 60) : '')}</div>
+    <div class="overflow-x-auto"><table class="w-full text-[13px]"><thead><tr class="text-[11px] uppercase tracking-wide text-muted text-left"><th class="py-1.5">Ligne du devis</th><th class="py-1.5 text-right">Ancien</th><th class="py-1.5 text-right">Nouveau</th></tr></thead><tbody>${rows.map(([t, a, b, s]) => `<tr class="border-t border-slate-200 ${s === 'new' ? 'bg-emerald-50' : s === 'gone' ? 'bg-rose-50 text-slate-500' : s === 'chg' ? 'bg-amber-50' : ''}"><td class="py-1.5 pr-2 ${s === 'gone' ? 'line-through' : ''}">${esc(t)}${s === 'new' ? ' <b class="text-emerald-800 text-[11px]">· ajoutée</b>' : s === 'chg' ? ' <b class="text-amber-800 text-[11px]">· modifiée</b>' : s === 'gone' ? ' <b class="text-rose-700 text-[11px] no-underline">· supprimée</b>' : ''}</td><td class="py-1.5 text-right whitespace-nowrap">${a == null ? '—' : amt(a)}</td><td class="py-1.5 text-right whitespace-nowrap font-semibold">${b == null ? 'supprimée' : amt(b)}</td></tr>`).join('')}</tbody></table></div>
+    <div class="rounded-xl border-l-4 border-orange-500 bg-orange-50 px-3 py-2 text-[13px] text-orange-950">L'ancien devis <b>${esc(o.ref || '')}</b> est conservé dans l'historique de la fiche. Rien n'est remplacé tant que vous n'avez pas validé.</div>`;
+  $('dlg-offrecmp').showModal();
+}
+function offreCmpApply() {
+  const D = ui.ofCmp, c = D && byId(D.id); if (!c) return; const ko = offreCalc(c.offre), kn = offreCalc(D.n);
+  c.offreHist = [...(c.offreHist || []), {date: new Date().toISOString(), offre: JSON.parse(JSON.stringify(c.offre)), net: Math.round(ko.net)}].slice(-5);
+  const oldRef = c.offre.ref; c.offre = D.n; c.montant = Math.round(kn.net); if ($('f-montant')) $('f-montant').value = c.montant; ui.ofCmp = null;
+  log(c, `Devis remplacé : ${oldRef || '—'} → ${D.n.ref || '—'}`, `Total net HT ${eur(ko.net)} → ${eur(kn.net)} · ancien devis conservé dans l'historique`);
+  save(); closeDlg('dlg-offrecmp'); renderChrome(c); toast(`Devis remplacé · nouveau total : ${eur(kn.net)} HT`);
+}
+function offreCmpEdit() { const D = ui.ofCmp; if (!D) return; closeDlg('dlg-offrecmp'); ui.ofDraft = D.n; openOffre(D.id, D.n); }
 function openOffre(id, draft) {
   const c = byId(id); if (!c) return; ui.ofId = id;
   const o = draft || (c.offre ? JSON.parse(JSON.stringify(c.offre)) : offreNew(c)), m = o.maint, op = opActive();
