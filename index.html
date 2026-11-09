@@ -1271,6 +1271,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.26</b> : <b>Mise en page automatique du PDF</b> : avant de créer le PDF, le logiciel fait des essais invisibles et ajuste seul pour éviter une dernière page quasi vide : bloc « Éléments complémentaires » placé en page 3 s'il y a de la place, bandeau « Restons connectés » compact, espaces resserrés, puis en dernier recours retrait de « c'est aussi… » puis de la garantie. Un message indique ce qui a été ajusté (fenêtre de génération et confirmation). Un PDF qui passe déjà bien ne change pas.</li>
 <li><b>V4.5.25</b> : <b>Offre : lignes à 0 € = « Inclus »</b>. Dans le PDF (offre seule et fusionné), toute ligne du devis à 0 € quitte la liste chiffrée et apparaît dans un bloc vert « Inclus dans votre offre » avec une pastille « Inclus » ; les totaux ne changent pas. Dans l'écran de l'offre, un message vert prévient quand une ligne est à 0 (pour repérer un prix oublié).</li>
 <li><b>V4.5.24</b> : <b>Relier le téléphone en 3 étapes</b> (Paramètres › Synchronisation) : un seul écran à la fois avec barre de progression. Étape 1 : code de l'appareil (ancien « compte de l'appareil »). Étape 2 : mot de passe de synchronisation. Étape 3 : phrase secrète. Sur l'ordinateur, un seul bouton « Copier le lien pour mon téléphone » (plus d'adresse de base, de clé API ni de code à coller). Le lien ouvre maintenant directement l'onglet Synchronisation (avant, il pouvait ouvrir un onglet inexistant).</li>
 <li><b>V4.5.23</b> : <b>PDF fusionné (synthèse + offre) corrigé</b> : titre de l'offre = « Offre pour <i>nom de la pharmacie</i> », plus de page quasi vide en fin de document, bloc « Indicateurs clés » retiré du PDF fusionné (il répétait l'offre), lignes du devis sur 2 lignes au lieu d'être coupées, chiffres incohérents des 3 piliers masqués (« 0 min », « 6,50 » sans unité), bandeau « Faible consommation » supprimé (déjà dans les caractéristiques), « m² » écrit « m2 » dans le PDF, titre du document PDF renseigné.</li>
@@ -2005,7 +2006,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.25';
+const APP_VERSION = '4.5.26';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -4609,7 +4610,7 @@ function pdfSecInfo() {
   const c = byId(ui.pdfId); if (!c || !$('ps-info')) return; const I = ui.pdfInfo, S = ui.pdfSec || {}, mg = !!(c.offre?.lignes?.length && ui.pdfMerge);
   const L = [['cover', 'Page de garde'], ...[['need'], ['sol'], ['prod'], ['plan'], ['kpi'], ['pay'], ['srv'], ['ctr'], ['tech'], ['pil'], ['soc']].filter(([k]) => S[k] !== false && (mg || !['kpi', 'pay', 'srv', 'ctr', 'tech'].includes(k))).map(([k]) => [k, PG_DEF[k][0]])];
   const pg = k => I && I.pgm ? I.pgm[PG_PGM[k] || k] : null, rows = L.filter(([k]) => k === 'cover' || pg(k)).sort((a, b) => (a[0] === 'cover' ? 1 : pg(a[0])) - (b[0] === 'cover' ? 1 : pg(b[0])));
-  $('ps-info').innerHTML = `<h4 class="font-bold text-[14px]">Votre document</h4><p class="text-[22px] font-extrabold text-ptkd leading-tight mt-1">${I ? I.pages + ' pages' : 'Calcul…'}</p><p class="text-[12px] text-muted mb-2">${mg ? 'Synthèse + offre commerciale' : 'Synthèse personnalisée'} · nombre réel de pages</p><ol class="text-[12.5px] flex flex-col gap-1">${rows.map(([k, n]) => `<li class="flex justify-between gap-2 border-t border-slate-200 pt-1"><span>${n}</span><b class="text-slate-600">p. ${k === 'cover' ? 1 : pg(k)}</b></li>`).join('')}</ol><button class="btn btn-g !h-9 w-full mt-3" onclick="pdfSecGo(true)"><i class="fas fa-scissors"></i>Régler les sauts de page</button>`;
+  $('ps-info').innerHTML = `<h4 class="font-bold text-[14px]">Votre document</h4><p class="text-[22px] font-extrabold text-ptkd leading-tight mt-1">${I ? I.pages + ' pages' : 'Calcul…'}</p><p class="text-[12px] text-muted mb-2">${mg ? 'Synthèse + offre commerciale' : 'Synthèse personnalisée'} · nombre réel de pages</p>${ui.fitNote ? `<p class="text-[12px] text-emerald-800 font-semibold mb-2"><i class="fas fa-wand-magic-sparkles"></i> ${ui.fitNote}</p>` : ''}<ol class="text-[12.5px] flex flex-col gap-1">${rows.map(([k, n]) => `<li class="flex justify-between gap-2 border-t border-slate-200 pt-1"><span>${n}</span><b class="text-slate-600">p. ${k === 'cover' ? 1 : pg(k)}</b></li>`).join('')}</ol><button class="btn btn-g !h-9 w-full mt-3" onclick="pdfSecGo(true)"><i class="fas fa-scissors"></i>Régler les sauts de page</button>`;
 }
 let pdfDryT = null;
 function pdfDry() { clearTimeout(pdfDryT); pdfDryT = setTimeout(async () => { const c = byId(ui.pdfId); if (!c || !$('dlg-pdfsec').open) return; ui.pdfDry = true; try { await genArgNew(c.id, !!(c.offre?.lignes?.length && ui.pdfMerge), false, {...ui.pdfSec}); } catch { ui.pdfInfo = null; } ui.pdfDry = false; if ($('dlg-pdfsec').open) pdfSecDraw(); }, 300); }
@@ -4694,12 +4695,23 @@ function coverPage(K, c, o) {
   col(150, 40, 'Solution', String(mm[1] || rb).toUpperCase(), [mm[2] ? cap1(mm[2]) : '', `Étude valable ${o.validite || 30} jours`]);
   K.font(6.8, 'normal', PK.mut); doc.text(pdfTxt(PTK_ADDR), 22, 287); doc.text('Automation Technologies', W - 22, 287, {align: 'right'});
 }
+const FIT_LV = [{}, {cq: 1}, {cq: 1, tight: 1}, {cq: 1, tight: 1, noAussi: 1}, {cq: 1, tight: 1, noAussi: 1, noObso: 1}];
 async function genArgNew(id, merge, prev, sec) {
+  /* Mise en page automatique : essais invisibles, du moins intrusif au plus intrusif, jusqu'à ce qu'il n'y ait plus de page quasi vide */
+  const dry0 = ui.pdfDry; let pick = 0, res = null; ui.pdfDry = true;
+  try { for (let i = 0; i < FIT_LV.length; i++) { ui.fit = FIT_LV[i]; ui.fitRes = null; await genArgNew0(id, merge, false, sec); res = ui.fitRes; pick = i; if (!res || !res.orph) break; } if (res && res.orph) { pick = 0; ui.fit = FIT_LV[0]; ui.fitRes = null; await genArgNew0(id, merge, false, sec); res = ui.fitRes; } } catch (e) { ui.pdfDry = dry0; ui.fit = null; throw e; }
+  ui.pdfDry = dry0; const F = FIT_LV[pick], nt = []; if (res && res.extraP3) nt.push('bloc « Éléments complémentaires » placé en page 3'); if (F.cq) nt.push('bandeau QR compact'); if (F.tight) nt.push('espaces resserrés'); if (F.noAussi) nt.push('bloc « c\'est aussi » retiré'); if (F.noObso) nt.push('bloc garantie retiré');
+  ui.fitNote = nt.length ? 'Ajusté automatiquement : ' + nt.join(', ') + '.' : '';
+  if (dry0) { ui.fit = null; return; }
+  ui.fit = F; try { return await genArgNew0(id, merge, prev, sec); } finally { ui.fit = null; }
+}
+async function genArgNew0(id, merge, prev, sec) {
   PSEC = sec || {}; PGM = {}; PBR = {...(byId(id)?.pdfBreaks || {})};
   const IMG = await implGet(id);
   const c = byId(id); if (!c) return; if (!window.jspdf) return toast('Générateur PDF indisponible (connexion Internet requise au premier chargement).', true);
   const P = ptkOf(c), C = ptkCalc(P), A = argDefault(c, c.argDraft || {}), H = C.H, T = c.offre?.tech || {};
-  const K = pdfKit(`Synthèse · ${c.pharma}`), doc = K.doc, M = K.M, CW = K.CW, W = K.W, fr = n => Math.round(n).toLocaleString('fr-FR');
+  const K = pdfKit(`Synthèse · ${c.pharma}`), doc = K.doc, M = K.M, CW = K.CW, W = K.W, fr = n => Math.round(n).toLocaleString('fr-FR'), FIT = ui.fit || {}; let extraDone = false;
+  { const foot0 = K.foot; K.foot = () => { K.lastFootY = K.y; foot0(); }; }
   if (prev) K.save = name => showPrev(doc, name, id, merge);
   if (ui.pdfDry) K.save = () => { ui.pdfInfo = {pages: doc.getNumberOfPages(), pgm: {...PGM}}; };
   const WH = [255, 255, 255], rr = (x, y, w, h, r, fill) => { doc.setFillColor(...fill); doc.roundedRect(x, y, w, h, r, r, 'F'); };
@@ -4845,6 +4857,9 @@ async function genArgNew(id, merge, prev, sec) {
     if (IN.length >= 2) { const rws = Math.ceil(IN.length / 2), bh = rws * 7.4 + 5; sub('D', 'Inclus dans votre projet', bh + 12); rr(M, K.y, CW, bh, 3, [250, 250, 251]); bord(M, K.y, CW, bh, 3);
       IN.forEach((t, i) => { const xx = M + 6 + (i % 2) * (CW / 2), yy = K.y + 5.4 + Math.floor(i / 2) * 7.4; doc.setFillColor(...PK.or); doc.circle(xx + 2.2, yy - 1.2, 2.2, 'F'); tick(xx + 2.2, yy - 1.1, WH, 1); K.font(8.8, 'bold', PK.ink); doc.text(pdfTxt(t), xx + 6.5, yy); }); K.y += bh + 3; } }
   }
+  const extraCalc = () => { const el = String(A.extra || '').split(/\n+/).map(t => t.trim()).filter(Boolean); K.font(8.4, 'normal', PK.ink); const XL = el.map(t => doc.splitTextToSize(pdfTxt(/^[A-ZÉa-z]/.test(t) ? '• ' + t : t), CW - 16)); return {XL, xh: 15 + XL.reduce((a, l) => a + l.length, 0) * 4.1 + XL.length * .8}; };
+  const extraDraw = () => { const {XL, xh} = extraCalc(); K.card(M, K.y, CW, xh, PK.cream, 'left'); bord(M, K.y, CW, xh, 2.6); K.font(10.4, 'bold', PK.ink); K.t('Éléments complémentaires', M + 8, K.y + 8.2); K.font(8.4, 'normal', PK.sub); let xy = K.y + 15; XL.forEach(l => { doc.text(l, M + 8, xy, {lineHeightFactor: 1.35}); xy += l.length * 4.1 + .8; }); K.y += xh + 4; extraDone = true; };
+  if (String(A.extra || '').trim() && SX('sol') && PBR.pil !== 'new' && K.y > 60) { const xh0 = extraCalc().xh; if (K.y + xh0 + 4 <= 276 && !(C.gTot > 0 && SX('prod') && K.y + 100 <= 280)) { K.y += 2; extraDraw(); } }
   if (C.gTot > 0 && SX('prod')) {
     if (PBR.prod === 'new') brk(); K.need(100); sect('2. Étude de productivité officinale', 'chart-line'); PGM.prod = doc.getNumberOfPages();
     if (on('p_vente') && C.gCpt > .5) {
@@ -4893,19 +4908,19 @@ async function genArgNew(id, merge, prev, sec) {
   // ================= PAGE 3 : valeur & pérennité
   if (AO.plan === true || (AO.plan === undefined && IMG.length > 0)) K.y = 285;
   const drawPil = () => {
-  if (PBR.pil === 'new') brk(); K.need(100); K.y += 4; sect('3. Les 3 piliers stratégiques de votre investissement', 'award'); PGM.pil = doc.getNumberOfPages(); K.y += 1;
+  if (PBR.pil === 'new') brk(); K.need(100); K.y += FIT.tight ? 1 : 4; sect('3. Les 3 piliers stratégiques de votre investissement', 'award'); PGM.pil = doc.getNumberOfPages(); K.y += 1;
   const dimW = (() => { const t0 = String(T.dims || '').trim(), f = t0.split(/\s*[x×]\s*/i)[0], u = (t0.match(/[a-zA-Z]+\s*$/) || [''])[0].trim(); return !f ? '' : (/[a-zA-Z]/.test(f) ? f : f + (u ? ' ' + u : '')); })(), gc = C.pst && C.gCollab > 0;
   const pil = [
     ['Patient & conseil', 'user-nurse', gc ? `${hm(C.gCollab)}/j/poste` : '', [...(gc ? [`**${hm(C.gCollab)}/jour** gagnées par collaborateur : disponibilité immédiate pour l'écoute et les nouvelles missions.`] : (+H.gainPct > 0 ? [`**${H.gainPct} % de temps gagné** par délivrance : disponibilité immédiate pour l'écoute et les nouvelles missions.`] : [])), '**Proximité patient** : plus de temps d\'écoute, donc des patients fidélisés, un bouche-à-oreille positif et une fréquentation en hausse.', opts.includes('Euclid3D') ? `**Délivrance en un seul cycle** : multipicking Euclid3D, jusqu'à 15 boîtes${on('ligne') ? " (possibilité de délivrer à la ligne aussi, option paramétrable par l'utilisateur)" : ''}.` : '**Délivrance directe** : les produits arrivent au comptoir, sans déplacement.']],
     ['Espace & merchandising', 'up-right-and-down-left-from-center', dimW, ["**Haute densité de stockage** : un maximum d'espace utile libéré.", '**Surface de vente valorisée** : plus de proximité patient, moins de démarque inconnue.', `**Robot ${pos.length ? pos.join(', ').toLowerCase() : 'sur mesure'}**${opts.includes('Transitique tapis') ? ", transitique tapis jusqu'aux postes de vente" : " : implantation adaptée à l'officine"}.`]],
     ['Stock & FMD', 'shield-halved', cap ? `${fr(cap)} boîtes` : '', [cap && C.stk ? `**${cap >= C.stk ? '100 %' : Math.round(cap / C.stk * 100) + ' %'} du stock couvert** (${fr(C.stk)} boîtes), stock juste permanent.` : '**Stock juste permanent**, inventaire automatique.', opts.includes('Pharmaload') ? `**Pharmaload** : zéro erreur de rangement${C.gBo ? `, ~${hm(C.gBo)}/jour gagnés en back-office` : ''}.` : `**Rangement automatique** : zéro erreur${C.gBo ? `, ~${hm(C.gBo)}/jour gagnés en back-office` : ''}.`, '**Traçabilité & FMD** : lots et péremptions suivis, sans scan manuel.']]];
-  const HD = 17, pw = (CW - 8) / 3, ph = pil.map(p => p[3].map(t => K.richH(md(t), pw - 14, 7.6, 3.7) + 2.4)), bodyH = Math.max(...ph.map(a => sum(a, x => x))) + 4;
+  const HD = 17, pw = (CW - 8) / 3, ph = pil.map(p => p[3].map(t => K.richH(md(t), pw - 14, 7.6, 3.7) + (FIT.tight ? 1.4 : 2.4))), bodyH = Math.max(...ph.map(a => sum(a, x => x))) + (FIT.tight ? 1.5 : 4);
   pil.forEach((p, i) => { const xx = M + i * (pw + 4), yy = K.y; rr(xx + .7, yy + .7, pw, HD + bodyH, 2.5, [228, 230, 233]); rr(xx, yy, pw, HD + bodyH, 2.5, WH); doc.setDrawColor(...PK.or); doc.setLineWidth(.6); doc.roundedRect(xx, yy, pw, HD + bodyH, 2.5, 2.5, 'S'); rr(xx, yy, pw, HD, 2.5, PK.or); doc.rect(xx, yy + HD - 2.5, pw, 2.5, 'F');
     ic(p[1], xx + 3, yy + 2.8, 5.4, true); K.font(7.4, 'bold', WH); doc.text(pdfTxt(p[0].toUpperCase()), xx + 10.5, yy + 6, {charSpace: .25}); if (p[2]) { K.font(14.5, 'bold', WH); K.t(p[2], xx + 4, yy + 13.6); }
     let ly = yy + HD + 4; p[3].forEach((t, j) => { doc.setFillColor(...PK.or); doc.circle(xx + 5.2, ly + 1.3, 2, 'F'); K.font(6.4, 'bold', WH); K.t(String(j + 1), xx + 5.2, ly + 2.1, {align: 'center'}); K.rich(md(t), xx + 9.5, ly + 1.6, pw - 13, 7.6, 3.7, PK.sub); ly += ph[i][j]; }); });
-  K.y += HD + bodyH + 5;
+  K.y += HD + bodyH + (FIT.tight ? 3 : 5);
   if (false && T.conso && on('conso')) { K.need(18); rr(M, K.y, CW, 12, 2.8, [226, 242, 232]); doc.setDrawColor(150, 205, 175); doc.setLineWidth(.3); doc.roundedRect(M, K.y, CW, 12, 2.8, 2.8, 'S'); badge('bolt', M + 7, K.y + 6, 3.8, [28, 124, 84]); K.font(10, 'bold', [20, 98, 66]); K.t(`Faible consommation électrique : ${T.conso}`, M + 14, K.y + 5.4); K.font(7.4, 'normal', [52, 90, 72]); K.t('Un robot performant, sobre et durable : sans impact notable sur votre facture d\'énergie.', M + 14, K.y + 9.4); K.y += 15; }
-  if (on('obso')) {
+  if (on('obso') && !FIT.noObso) {
   const ob = [['truck-moving', 'Transfert pharmacie', "Démontable, transportable et réinstallable lors d'un transfert.", 'Mobilité patrimoniale'], ['ruler-combined', 'Dimensions modifiables', 'Rallongement a posteriori par ajout de colonnes.', 'Extension sur site']];
   if (dbl) ob.push(['hands', 'Évolution 1 à 2 bras', 'Passage ultérieur au double bras Euclid3D pour doubler la cadence.', 'Cadence doublée']);
   if (!onlyGen) ob.push(['plug-circle-plus', 'Ajout de périphériques', 'Transitique, borne H24 QuickPick24, sorties directes, à tout moment.', 'Transitique évolutive']);
@@ -4913,13 +4928,13 @@ async function genArgNew(id, merge, prev, sec) {
   badge('shield-halved', M + 8.4, K.y + 6.6, 3.6); K.font(11.5, 'bold', PK.ink); K.t('Garantie anti-obsolescence et évolutivité de votre robot', M + 14.5, K.y + 7.6); K.font(7.4, 'bold', PK.ord); K.t('Investissement pérenne', M + CW - 5, K.y + 7.6, {align: 'right'});
   K.font(7.6, 'normal', PK.sub); K.t('Architecture industrielle modulaire : votre robot évolue avec votre officine, sans jamais devenir obsolète.', M + 5, K.y + 12.8);
   ob.forEach((o, i) => { const xx = M + 5 + i * (ocw + 3), yy = K.y + 16; rr(xx, yy, ocw, oh - 3, 2, WH); doc.setFillColor(...PK.or); doc.rect(xx, yy, ocw, .9, 'F'); badge(o[0], xx + 6, yy + 7.6, 3.8); K.font(8.2, 'bold', PK.ink); doc.text(doc.splitTextToSize(pdfTxt(o[1]), ocw - 14), xx + 11.5, yy + 6.6); K.font(7.2, 'normal', PK.sub); doc.text(doc.splitTextToSize(pdfTxt(o[2]), ocw - 6), xx + 3, yy + 16.2); lab(o[3], xx + 3, yy + oh - 6.5, PK.ord, 5.4, .15); });
-  K.y += oh + 15 + 4;
+  K.y += oh + 15 + (FIT.tight ? 2 : 4);
   }
   const al = [['tubes', 'vial', 'Spécificité officinale', 'Tubes homéopathiques', 'Stockage dense et délivrance automatisée des tubes et doses.'], ['split', 'box-open', 'Déconditionnement', 'Split Pack App', 'Boîtes entamées réétiquetées avec la quantité restante, rechargées dans le robot.'], ['service', 'headset', 'Sérénité officinale', 'Service client 7j/7', 'Télémaintenance, diagnostic actif 24/7, hotline et techniciens Pharmathek France, 365 jours par an.']].filter(x => on(x[0]));
-  if (al.length) { K.need(58); sect("La robotisation Pharmathek, c'est aussi...", 'star'); const aw = (CW - 4 * (al.length - 1)) / al.length;
+  if (al.length && !FIT.noAussi) { K.need(58); sect("La robotisation Pharmathek, c'est aussi...", 'star'); const aw = (CW - 4 * (al.length - 1)) / al.length;
     al.forEach((x, i) => { const xx = M + i * (aw + 4); rr(xx, K.y, aw, 26, 3, WH); bord(xx, K.y, aw, 26, 3); badge(x[1], xx + 8.4, K.y + 9.4, 5.2); lab(x[2], xx + 16, K.y + 7.4, PK.ord, 5.6, .25); K.font(9.2, 'bold', PK.ink); K.t(x[3], xx + 16, K.y + 12.6); K.font(7.2, 'normal', PK.sub); doc.text(doc.splitTextToSize(pdfTxt(x[4]), aw - 8).slice(0, 3), xx + 4, K.y + 18.8, {lineHeightFactor: 1.25}); });
-    K.y += 28; }
-  if (String(A.extra || '').trim()) { const el = String(A.extra).split(/\n+/).map(t => t.trim()).filter(Boolean); K.font(8.4, 'normal', PK.ink); const XL = el.map(t => doc.splitTextToSize(pdfTxt(/^[A-ZÉa-z]/.test(t) ? '• ' + t : t), CW - 16)), xh = 15 + XL.reduce((a, l) => a + l.length, 0) * 4.1 + XL.length * .8; K.need(xh + 4);
+    K.y += FIT.tight ? 26 : 28; }
+  if (!extraDone && String(A.extra || '').trim()) { const el = String(A.extra).split(/\n+/).map(t => t.trim()).filter(Boolean); K.font(8.4, 'normal', PK.ink); const XL = el.map(t => doc.splitTextToSize(pdfTxt(/^[A-ZÉa-z]/.test(t) ? '• ' + t : t), CW - 16)), xh = 15 + XL.reduce((a, l) => a + l.length, 0) * 4.1 + XL.length * .8; K.need(xh + 4);
     K.card(M, K.y, CW, xh, PK.cream, 'left'); bord(M, K.y, CW, xh, 2.6); K.font(10.4, 'bold', PK.ink); K.t('Éléments complémentaires', M + 8, K.y + 8.2); K.font(8.4, 'normal', PK.sub); let xy = K.y + 15; XL.forEach(l => { doc.text(l, M + 8, xy, {lineHeightFactor: 1.35}); xy += l.length * 4.1 + .8; }); K.y += xh + 4; }
   };
   if (SX('pil')) { if (merge && c.offre?.lignes?.length) K.deferPil = () => { if (K.y > 46 && PBR.pil !== 'join') { K.foot(); doc.addPage(); K.head(); } drawPil(); }; else drawPil(); }
@@ -4934,18 +4949,19 @@ async function genArgNew(id, merge, prev, sec) {
     rr(M, K.y, CW, h + 6, 3, WH); bord(M, K.y, CW, h + 6, 3); try { doc.addImage(GAMME_IMG, 'JPEG', x0, K.y + 3, wd, h); } catch { } K.y += h + 10;
   };
   const drawSoc = () => { drawGamme(); if (!SOC.length) return;
-    const sh = 25.5; if (K.y + 3 > 279 - sh) { K.foot(); doc.addPage(); K.head(); } const sy = 279 - sh; rr(M, sy, CW, sh, 3, WH); bord(M, sy, CW, sh, 3); doc.setFillColor(...PK.or); doc.rect(M, sy + 3, 1.3, sh - 6, 'F');
-    badge('qrcode', M + 9, sy + 8.2, 4.2); K.font(11, 'bold', PK.ink); K.t('Restons connectés', M + 16, sy + 9); K.font(7.2, 'normal', PK.sub); doc.text(doc.splitTextToSize(pdfTxt("Scannez avec l'appareil photo de votre smartphone : actualités, retours d'expérience, vidéos des robots en action."), 50), M + 5, sy + 15, {lineHeightFactor: 1.25});
-    const n = SOC.length, x1 = M + 56, cw = (CW - 58) / n, qs = 15.5;
-    SOC.forEach(([l, u, icn, col, colF], i) => { const x0 = x1 + i * cw; qrDraw(doc, u, x0 + (cw - qs) / 2, sy + 2.8, qs, col, colF, null); K.font(7.4, 'bold', PK.ink); doc.text(pdfTxt(l), x0 + cw / 2, sy + sh - 5, {align: 'center'}); K.font(5.4, 'normal', PK.mut); doc.text(pdfTxt(String(u).replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')).slice(0, 34), x0 + cw / 2, sy + sh - 1.8, {align: 'center'}); doc.link(x0, sy, cw, sh, {url: u}); });
+    let sh = 25.5, cp = false; K.preSocY = K.y; if (K.y + 3 > 279 - sh) { if (FIT.cq && K.y + 3 <= 279 - 17.5) { sh = 17.5; cp = true; } else { K.socOrph = true; K.foot(); doc.addPage(); K.head(); } } const sy = 279 - sh; rr(M, sy, CW, sh, 3, WH); bord(M, sy, CW, sh, 3); doc.setFillColor(...PK.or); doc.rect(M, sy + 3, 1.3, sh - 6, 'F');
+    badge('qrcode', M + 9, sy + (cp ? 5.6 : 8.2), cp ? 3.4 : 4.2); K.font(cp ? 9.6 : 11, 'bold', PK.ink); K.t('Restons connectés', M + (cp ? 14.5 : 16), sy + (cp ? 6.6 : 9)); K.font(cp ? 6.6 : 7.2, 'normal', PK.sub); doc.text(doc.splitTextToSize(pdfTxt(cp ? "Scannez avec votre smartphone : actualités, retours d'expérience, vidéos des robots." : "Scannez avec l'appareil photo de votre smartphone : actualités, retours d'expérience, vidéos des robots en action."), cp ? 48 : 50), M + 5, sy + (cp ? 11 : 15), {lineHeightFactor: 1.25});
+    const n = SOC.length, x1 = M + 56, cw = (CW - 58) / n, qs = cp ? 10.6 : 15.5;
+    SOC.forEach(([l, u, icn, col, colF], i) => { const x0 = x1 + i * cw; qrDraw(doc, u, x0 + (cw - qs) / 2, sy + (cp ? 1.8 : 2.8), qs, col, colF, null); K.font(cp ? 6.6 : 7.4, 'bold', PK.ink); doc.text(pdfTxt(l), x0 + cw / 2, sy + sh - (cp ? 3.6 : 5), {align: 'center'}); K.font(cp ? 4.8 : 5.4, 'normal', PK.mut); doc.text(pdfTxt(String(u).replace(/^https?:\/\/(www\.)?/, '').replace(/\/$/, '')).slice(0, 34), x0 + cw / 2, sy + sh - (cp ? 1.2 : 1.8), {align: 'center'}); doc.link(x0, sy, cw, sh, {url: u}); });
     K.y = 279;
   };
   if (merge && c.offre?.lignes?.length) { K.deferGamme = () => drawGamme(true); K.deferSoc = drawSoc; } else drawSoc();
   K.foot();
   if (merge && c.offre?.lignes?.length) { genOffre(id, K); K.save(`Synthese_projet_de_robotisation_${slug(c.pharma)}_${isoDay(TODAY)}.pdf`); }
   else K.save(`Synthese_${slug(c.pharma)}_${isoDay(TODAY)}.pdf`);
-  if (prev) return;
-  log(c, `Argumentaire personnalisé généré (PDF${merge ? ", fusionné avec la synthèse de l'offre" : ''})`, opts.join(', ')); save(); renderHistory(c); toast(merge ? 'Synthèse du projet générée (PDF unique)' : 'Synthèse générée');
+  ui.fitRes = {orph: doc.getNumberOfPages() > 2 && (!!K.socOrph || (K.preSocY != null ? K.preSocY : (K.lastFootY || 0)) < 110), pages: doc.getNumberOfPages(), extraP3: extraDone, y: K.preSocY};
+  if (prev || ui.pdfDry) return;
+  log(c, `Argumentaire personnalisé généré (PDF${merge ? ", fusionné avec la synthèse de l'offre" : ''})`, opts.join(', ')); save(); renderHistory(c); toast((merge ? 'Synthèse du projet générée (PDF unique)' : 'Synthèse générée') + ` · ${doc.getNumberOfPages()} pages${ui.fitNote ? ' · ' + ui.fitNote : ''}`);
 }
 
 function genArg() {
