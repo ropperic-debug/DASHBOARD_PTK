@@ -608,7 +608,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
   </section>
 
   <section class="flex flex-col gap-3">
-    <div id="tiles" role="tablist" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2"></div>
+    <div id="tiles" role="tablist" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2"></div>
     <div class="card overflow-hidden">
       <div class="flex flex-wrap justify-between items-center gap-3 px-5 py-3 border-b border-slate-200">
         <div id="tbl-title" class="text-sm font-semibold"></div>
@@ -1272,6 +1272,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.28</b> : <b>Leads à recontacter</b>. « Nouvelle fiche » propose désormais « Projet robot » ou « Lead à recontacter » (pharmacie, origine, motif, première action). Un lead est <b>hors portefeuille, prévisions et statistiques</b> : il est dans la tuile violette « Prospection non aboutie » (onglets À recontacter / Sans suite). Sa première action apparaît dans « Ma journée ». Boutons « Créer le projet » (passe au portefeuille sans ressaisie), « Classer sans suite » et « Réactiver ». L'historique est toujours conservé.</li>
 <li><b>V4.5.27</b> : (1) <b>Fiche réorganisée</b> : la carte « Préparer et générer le PDF » est maintenant la dernière étape de « Offre de robotisation » (robot → devis → plan → PDF), avec une barre de progression à 4 étapes. (2) <b>Remplacer le devis</b> : bouton orange bien visible dans « Devis + maintenance » ; vous importez le nouveau PDF, une fenêtre compare l'ancien et le nouveau (total, écart, lignes ajoutées, supprimées ou modifiées), puis vous validez. L'ancien devis est conservé dans l'historique de la fiche.</li>
 <li><b>V4.5.26</b> : <b>Mise en page automatique du PDF</b> : avant de créer le PDF, le logiciel fait des essais invisibles et ajuste seul pour éviter une dernière page quasi vide : bloc « Éléments complémentaires » placé en page 3 s'il y a de la place, bandeau « Restons connectés » compact, espaces resserrés, puis en dernier recours retrait de « c'est aussi… » puis de la garantie. Un message indique ce qui a été ajusté (fenêtre de génération et confirmation). Un PDF qui passe déjà bien ne change pas.</li>
 <li><b>V4.5.25</b> : <b>Offre : lignes à 0 € = « Inclus »</b>. Dans le PDF (offre seule et fusionné), toute ligne du devis à 0 € quitte la liste chiffrée et apparaît dans un bloc vert « Inclus dans votre offre » avec une pastille « Inclus » ; les totaux ne changent pas. Dans l'écran de l'offre, un message vert prévient quand une ligne est à 0 (pour repérer un prix oublié).</li>
@@ -1704,6 +1705,31 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
   </div>
 </dialog>
 
+<dialog id="dlg-newtype" class="!w-[min(640px,97vw)]">
+  <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start"><div><h3 class="font-bold">Nouvelle fiche</h3><p class="text-xs text-muted">Que voulez-vous créer ?</p></div><button class="dlg-x" onclick="closeDlg('dlg-newtype')" aria-label="Fermer"><i class="fas fa-xmark"></i></button></div>
+  <div class="dlg-body p-5 grid sm:grid-cols-2 gap-3">
+    <button type="button" class="text-left p-4 rounded-xl border-2 border-slate-200 hover:border-orange-500 hover:bg-orange-50" onclick="newProject()"><b class="flex items-center gap-2"><i class="fas fa-briefcase text-ptkd"></i>Projet robot</b><span class="block text-[12.5px] text-muted mt-1">Dossier commercial complet : besoins, devis, offre. Va dans le portefeuille.</span></button>
+    <button type="button" class="text-left p-4 rounded-xl border-2 border-slate-200 hover:border-violet-600 hover:bg-violet-50" onclick="leadOpen()"><b class="flex items-center gap-2 text-violet-900"><i class="fas fa-phone-volume"></i>Lead à recontacter</b><span class="block text-[12.5px] text-muted mt-1">Pas de projet pour l'instant (lead marketing, salon, appel). Va dans « Prospection non aboutie ».</span></button>
+  </div>
+</dialog>
+<dialog id="dlg-lead" class="!w-[min(720px,97vw)]">
+  <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start"><div><h3 class="font-bold flex items-center gap-2 text-violet-900"><i class="fas fa-phone-volume"></i>Lead à recontacter</h3><p class="text-xs text-muted">Aucun projet pour l'instant : la fiche reste hors portefeuille.</p></div><button class="dlg-x" onclick="closeDlg('dlg-lead')" aria-label="Fermer"><i class="fas fa-xmark"></i></button></div>
+  <div class="dlg-body p-5 flex flex-col gap-3">
+    <div class="grid sm:grid-cols-3 gap-3"><div class="sm:col-span-2"><label class="lbl" for="ld-ph">Pharmacie *</label><input id="ld-ph" class="inp" placeholder="Ex. : Pharmacie du Centre"></div><div><label class="lbl" for="ld-vil">Ville</label><input id="ld-vil" class="inp"></div></div>
+    <div class="grid sm:grid-cols-3 gap-3"><div><label class="lbl" for="ld-cp">Code postal</label><input id="ld-cp" class="inp" inputmode="numeric" maxlength="5"></div><div><label class="lbl" for="ld-nom">Contact (nom)</label><input id="ld-nom" class="inp" placeholder="Titulaire…"></div><div><label class="lbl" for="ld-tel">Téléphone</label><input id="ld-tel" class="inp" inputmode="tel"></div></div>
+    <div><label class="lbl" for="ld-mail">E-mail</label><input id="ld-mail" type="email" class="inp"></div>
+    <div class="grid sm:grid-cols-2 gap-3"><div><label class="lbl" for="ld-ori">Origine du lead</label><select id="ld-ori" class="inp"><option>Lead marketing</option><option>Salon / événement</option><option>Appel entrant</option><option>Recommandation</option><option>Autre</option></select></div><div><label class="lbl" for="ld-mot">Motif / raison</label><input id="ld-mot" class="inp" placeholder="Ex. : demande de documentation reçue du marketing"></div></div>
+    <div class="grid sm:grid-cols-3 gap-3"><div><label class="lbl" for="ld-act">Première action</label><select id="ld-act" class="inp"><option value="relance">Appel</option><option value="mail">E-mail</option><option value="suivi">Relance</option><option value="visite">Visite sur site</option><option value="teams">Visio Teams</option></select></div><div><label class="lbl" for="ld-dt">À faire le</label><input type="date" id="ld-dt" class="inp"></div><div><label class="lbl" for="ld-hm">Heure</label><input type="time" id="ld-hm" class="inp" value="09:00"></div></div>
+    <div class="rounded-xl border border-dashed border-violet-400 bg-violet-50 px-3 py-2 text-[12.5px] text-violet-900">L'action apparaît dans <b>Ma journée</b>. La fiche reste <b>hors portefeuille, prévisions et statistiques</b> tant qu'aucun projet n'est créé.</div>
+  </div>
+  <div class="px-5 py-4 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-lead')">Annuler</button><button class="btn text-white" style="background:#6D28D9;border-color:#6D28D9" onclick="leadCreate()"><i class="fas fa-check"></i>Créer le lead</button></div>
+</dialog>
+<dialog id="dlg-leadend" class="!w-[min(560px,97vw)]">
+  <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start"><div><h3 class="font-bold">Classer sans suite</h3><p id="le-sub" class="text-xs text-muted"></p></div><button class="dlg-x" onclick="closeDlg('dlg-leadend')" aria-label="Fermer"><i class="fas fa-xmark"></i></button></div>
+  <div class="dlg-body p-5 flex flex-col gap-3"><div><label class="lbl" for="le-mot">Raison</label><select id="le-mot" class="inp"><option>Pas de projet</option><option>Déjà équipé (concurrent)</option><option>Injoignable</option><option>Pas intéressé</option><option>Autre</option></select></div><div><label class="lbl" for="le-note">Précision (facultatif)</label><input id="le-note" class="inp"></div>
+  <p class="text-[12.5px] text-muted">La fiche et son historique sont conservés dans « Prospection non aboutie ». L'action prévue est retirée de « Ma journée ».</p></div>
+  <div class="px-5 py-4 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-leadend')">Annuler</button><button class="btn btn-p" onclick="leadEndOk()">Classer sans suite</button></div>
+</dialog>
 <dialog id="dlg-offrecmp" class="!w-[min(860px,97vw)]">
   <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start gap-2"><div><h3 class="font-bold flex items-center gap-2"><i class="fas fa-arrows-rotate text-ptkd"></i>Remplacer le devis · comparaison</h3><p id="oc-sub" class="text-xs text-muted mt-0.5"></p></div><button class="dlg-x" onclick="closeDlg('dlg-offrecmp')" aria-label="Fermer"><i class="fas fa-xmark"></i></button></div>
   <div id="oc-body" class="dlg-body p-5 flex flex-col gap-3"></div>
@@ -2013,7 +2039,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.27';
+const APP_VERSION = '4.5.28';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2058,6 +2084,7 @@ const STEPS = {
   R3: {label: 'Signature', short: 'Signature', color: '#1C7C54', tint: '#E8F5EE', bar: '#1C7C54', proba: .80}
 };
 const ORDER = Object.keys(STEPS);
+STEPS.Lead = {label: 'Lead à recontacter', short: 'Lead', color: '#6D28D9', tint: '#F5F3FF', bar: '#7C3AED', proba: 0}; /* V4.5.28 : hors ORDER = hors portefeuille, prévisions et stats */
 const HYP_D = {delivMin: 9, gainPct: 30, jm: 24, ja: 300, kmh: 4, etp: 1607, bTrajet: 4, boGain: 50};
 const hyp = () => ({...HYP_D, ...(settings.hyp || {})});
 const PHARMALOAD_CAD = 300;
@@ -3585,6 +3612,16 @@ const TABLES = {
       {l: 'Équipement', v: r => r.a.quoi, h: r => `<b class="text-teal-900">${esc(r.a.quoi)}</b>`},
       {l: 'Réf.', v: r => r.a.notes || ''},
       money(r => r.a.montant, '#115E59')]},
+  lead: {label: 'Prospection non aboutie', icon: 'fa-phone-volume', desc: () => 'Leads sans projet · hors portefeuille', file: 'prospection_non_aboutie', sort: {i: 4, asc: true},
+    rows: () => clients.filter(c => isLead(c) && (ui.leadTab === 'tous' || (c.lead?.statut || 'recontacter') === ui.leadTab)), total: () => 0,
+    cols: [
+      {l: 'Pharmacie', v: c => c.pharma, t: c => `${c.pharma} — ${addr(c)}`, h: pharmaCell, b: c => c.pharma},
+      {l: 'Origine', v: c => c.lead?.origine || '', b: c => c.lead?.origine || '—'},
+      {l: 'Motif', v: c => c.lead?.motif || '', h: c => `<span class="text-[12.5px]">${esc(c.lead?.motif || '—')}</span>`},
+      {l: 'Dernier contact', v: c => daysSince(lastAction(c)) ?? 999, t: c => fmtD(lastAction(c)), h: c => lastCell(c), b: c => ageB(lastAction(c)), bo: AGE_B},
+      {l: 'Prochaine action', v: c => effNext(c).nextDate || '9999', t: c => effNext(c).nextDate ? fmtDT(effNext(c).nextDate) : '', h: c => c.lead?.statut === 'sans_suite' ? '<span class="text-muted">—</span>' : nextCell(c), b: nextB, bo: NEXT_B},
+      {l: 'Statut', v: c => c.lead?.statut === 'sans_suite' ? 'Sans suite' : 'À recontacter', h: c => c.lead?.statut === 'sans_suite' ? '<span class="pill bg-slate-100 text-slate-700">Sans suite</span>' : '<span class="pill" style="background:#EDE9FE;color:#5B21B6">À recontacter</span>'},
+      {l: '', h: c => `<div class="flex gap-1 justify-end">${actBtns(c.id)}${c.lead?.statut === 'sans_suite' ? `<button class="qb !w-auto px-2.5 text-xs font-semibold" onclick="event.stopPropagation();leadReact(${c.id})">Réactiver</button>` : `<button class="qb !w-auto px-2.5 text-xs font-bold !bg-orange-700 !border-orange-700 text-white" onclick="event.stopPropagation();leadToProject(${c.id})">Créer le projet</button>`}</div>`, cls: 'text-right'}]},
   lost: {label: 'Perdus', icon: 'fa-folder-minus', desc: y => `Dossiers perdus ou abandonnés en ${y}`, file: 'dossiers_perdus', sort: {i: 0, asc: false},
     rows: () => yearData().lost, total: r => sum(r, c => c.montant),
     cols: [
@@ -3611,6 +3648,8 @@ function tableRows() {
 function setTab(k) { if (k === 'portfolio') { ui.filters.portfolio = {}; renderPipeline(); } ui.tab = k; closeColPop(); renderTiles(); renderTable(); }
 function renderTiles() {
   $('tiles').innerHTML = Object.entries(TABLES).map(([k, T]) => { const on = ui.tab === k, rows = T.rows();
+    if (k === 'lead') { const all = clients.filter(isLead), nr = all.filter(c => (c.lead?.statut || 'recontacter') === 'recontacter').length;
+      return `<button role="tab" aria-selected="${on}" onclick="setTab('lead')" title="Leads sans projet : hors portefeuille, prévisions et statistiques" class="text-left rounded-2xl flex flex-col transition" style="border:2px dashed #7C3AED;background:${on ? '#EDE9FE' : '#F5F3FF'}"><span class="vt-l" style="color:#6D28D9"><i class="fas fa-phone-volume"></i> Prospection non aboutie</span><span class="vt"><span class="vt-n" style="color:#5B21B6">${all.length}</span><span class="vt-e" style="color:#6D28D9">dont ${nr} à recontacter</span></span></button>`; }
     return `<button role="tab" aria-selected="${on}" onclick="setTab('${k}')" title="${esc(T.desc(ui.year))}" class="text-left rounded-2xl border-2 flex flex-col transition ${on ? 'border-ptk bg-orange-50/60' : 'border-slate-200 bg-white hover:border-slate-300'}">
       <span class="vt-l">${T.label}</span><span class="vt"><span class="vt-n">${rows.length}</span><span class="vt-e">${eur(T.total(rows))}</span></span></button>`; }).join('');
 }
@@ -3627,7 +3666,9 @@ function renderTable() {
   { const st = ui.tab === 'portfolio' && fl.length === 1 ? stepFilterOn() : null, tot = T.rows().length;
     $('tbl-banner').innerHTML = fl.length ? `<div class="zbar"><span class="zi"><i class="fas fa-filter"></i></span><span>Filtre actif : ${st != null ? `avancement <b>${esc(JST[st].label)}</b>` : `<b>${esc(fl.join(', '))}</b>`} · <b>${rows.length} dossier${rows.length > 1 ? 's' : ''} sur ${tot}</b></span><button type="button" class="zb" onclick="clearFilters()"><i class="fas fa-xmark"></i>Afficher tout le ${ui.tab === 'portfolio' ? 'portefeuille' : 'tableau'}</button></div>` : ''; }
   if (false) $('tbl-filters').innerHTML = fl.length ? `<button class="btn !h-9 !px-3 border-orange-200 bg-orange-50 text-orange-900" onclick="clearFilters()"><i class="fas fa-filter-circle-xmark"></i>Filtres : ${esc(fl.join(', '))} · effacer</button>` : '';
-  $('tbl-foot').innerHTML = `<span><b class="text-ink">${rows.length} ligne${rows.length > 1 ? 's' : ''}</b> · ${eur(T.total(rows))} HT</span><span>Cliquez une ligne pour ouvrir la fiche</span>`;
+  if (ui.tab === 'lead') { const al = clients.filter(isLead), n1 = al.filter(c => (c.lead?.statut || 'recontacter') === 'recontacter').length, n2 = al.length - n1, chip = (k, l, n) => `<button type="button" class="pill" style="${ui.leadTab === k ? 'background:#6D28D9;color:#fff' : 'background:#EDE9FE;color:#5B21B6'};cursor:pointer" onclick="ui.leadTab='${k}';renderTable()">${l} ${n}</button>`;
+    $('tbl-banner').innerHTML = `<div class="flex flex-wrap items-center gap-2 px-1 pb-2">${chip('recontacter', 'À recontacter', n1)}${chip('sans_suite', 'Sans suite', n2)}${chip('tous', 'Tous', al.length)}<span class="text-[12px] text-muted ml-2">Ces fiches ne comptent ni dans le portefeuille, ni dans les prévisions, ni dans les statistiques. L'historique est conservé.</span></div>`; }
+  $('tbl-foot').innerHTML = `<span><b class="text-ink">${rows.length} ligne${rows.length > 1 ? 's' : ''}</b>${ui.tab === 'lead' ? '' : ` · ${eur(T.total(rows))} HT`}</span><span>Cliquez une ligne pour ouvrir la fiche</span>`;
 }
 function clearFilters() { ui.filters[ui.tab] = {}; renderTable(); renderPipeline(); }
 function openColPop(i, el) {
@@ -3986,7 +4027,60 @@ function saveActionGo() {
 }
 
 /* ================= FICHE CLIENT ================= */
-function newClient() { ui.editId = null; ui.formStep = 'Contact'; ui.coordEdit = true; fillForm(null); showView('client'); setPane('coord'); setTimeout(() => $('s-q').focus(), 300); }
+function newClient() { $('dlg-newtype').showModal(); }
+
+/* ----- V4.5.28 : Leads à recontacter (prospection non aboutie) ----- */
+ui.leadTab = 'recontacter';
+const LEAD_ORI = ['Lead marketing', 'Salon / événement', 'Appel entrant', 'Recommandation', 'Autre'];
+const isLead = c => c?.step === 'Lead';
+function leadOpen() {
+  closeDlg('dlg-newtype');
+  ['ld-ph', 'ld-vil', 'ld-cp', 'ld-nom', 'ld-tel', 'ld-mail', 'ld-mot'].forEach(i => $(i).value = ''); $('ld-ori').value = 'Lead marketing'; $('ld-act').value = 'relance'; $('ld-dt').value = addDays(3); $('ld-hm').value = '09:00';
+  $('dlg-lead').showModal(); setTimeout(() => $('ld-ph').focus(), 200);
+}
+function leadCreate() {
+  const ph = $('ld-ph').value.trim(); if (!ph) { toast('Indiquez le nom de la pharmacie.', true); return $('ld-ph').focus(); }
+  const mail = $('ld-mail').value.trim(); if (mail && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)) { toast('Adresse e-mail incorrecte.', true); return $('ld-mail').focus(); }
+  const dup = clients.find(x => (x.pharma || '').trim().toLowerCase() === ph.toLowerCase() && (!$('ld-vil').value.trim() || (x.ville || '').trim().toLowerCase() === $('ld-vil').value.trim().toLowerCase()));
+  const go = () => {
+    const dt = $('ld-dt').value ? `${$('ld-dt').value}T${$('ld-hm').value || '09:00'}` : null, type = $('ld-act').value, ori = $('ld-ori').value, mot = $('ld-mot').value.trim();
+    const c = {id: Date.now(), step: 'Lead', pharma: ph, ville: $('ld-vil').value.trim(), cp: $('ld-cp').value.trim(), genre: 'M.', nom: $('ld-nom').value.trim(), prenom: '', telFixe: $('ld-tel').value.trim(), email: mail, cip: '', montant: 0,
+      lead: {statut: 'recontacter', origine: ori, motif: mot, depuis: isoDay(TODAY)}, addons: [], contacts: [], history: [], acts: [], nextDate: dt, nextType: dt ? type : null, createdAt: isoDT(new Date())};
+    log(c, 'Lead créé', `${ori}${mot ? ' · ' + mot : ''}`); if (dt) log(c, `${ACTIONS[type].label} planifié(e) — ${fmtDT(dt)}`, 'Première action du lead');
+    clients.unshift(c); save(); closeDlg('dlg-lead'); toast('Lead créé : il apparaît dans « Prospection non aboutie »'); ui.leadTab = 'recontacter'; try { refresh(); } catch (e) {} openClient(c.id);
+  };
+  if (dup) confirmBox('Fiche déjà existante', `Une fiche <b>${esc(dup.pharma)}</b>${dup.ville ? ' (' + esc(dup.ville) + ')' : ''} existe déjà. Créer quand même ce lead ?`, 'Créer quand même', go); else go();
+}
+function leadSet(id, f, v) { const c = byId(id); if (!c?.lead) return; c.lead[f] = v; save(); }
+function leadEndOpen(id) { const c = byId(id); if (!c) return; ui.leadEndId = id; $('le-sub').textContent = c.pharma; $('le-mot').value = 'Pas de projet'; $('le-note').value = ''; $('dlg-leadend').showModal(); }
+function leadEndOk() {
+  const c = byId(ui.leadEndId); if (!c) return; const m = $('le-mot').value, n = $('le-note').value.trim();
+  c.lead = Object.assign(c.lead || {}, {statut: 'sans_suite', fin: isoDay(TODAY), finMotif: m + (n ? ' · ' + n : '')}); c.nextDate = null; c.nextType = null; delete c.pending;
+  log(c, 'Lead classé sans suite', m + (n ? ' · ' + n : '')); save(); closeDlg('dlg-leadend'); toast('Lead classé sans suite'); try { refresh(); } catch (e) {}
+  if (ui.editId === c.id && !$('view-client').classList.contains('hidden')) renderChrome(c);
+}
+function leadReact(id) {
+  const c = byId(id); if (!c?.lead) return; c.lead.statut = 'recontacter'; delete c.lead.fin; delete c.lead.finMotif; log(c, 'Lead réactivé', 'Remis dans « À recontacter ».'); save(); toast('Lead réactivé'); try { refresh(); } catch (e) {}
+  if (ui.editId === id && !$('view-client').classList.contains('hidden')) { renderChrome(c); openAction(id, 'relance'); }
+}
+function leadToProject(id) {
+  const c = byId(id); if (!c) return;
+  confirmBox('Créer le projet ?', `La fiche <b>${esc(c.pharma)}</b> passe dans le <b>portefeuille</b> (étape Contact). Son historique est conservé.`, '<i class="fas fa-briefcase"></i>Créer le projet', () => {
+    c.step = 'Contact'; c.lead = Object.assign(c.lead || {}, {statut: 'converti', converti: isoDay(TODAY)});
+    const m = {'Lead marketing': 'Lead interne', 'Salon / événement': 'Événement'}[c.lead.origine]; if (m && !c.opportunite) c.opportunite = m;
+    log(c, 'Lead transformé en projet', c.lead.origine || ''); save(); toast('Projet créé : la fiche est maintenant dans le portefeuille'); ui.tab = 'portfolio'; try { refresh(); } catch (e) {} openClient(id);
+  });
+}
+const leadBanner = c => {
+  const L = c.lead || {}, off = L.statut === 'sans_suite';
+  return `<div class="card p-5 flex flex-col gap-3" style="border:2px solid ${off ? '#CBD5E1' : '#7C3AED'};background:${off ? '#F8FAFC' : '#F5F3FF'}">
+    <div class="flex flex-wrap justify-between items-center gap-2"><h2 class="h2" style="color:${off ? '#475569' : '#5B21B6'}"><i class="fas fa-phone-volume mr-1.5"></i>${off ? 'Lead sans suite' : 'Lead à recontacter'} <span class="text-[12px] font-medium text-muted">· hors portefeuille, prévisions et statistiques</span></h2>
+      <div class="flex flex-wrap gap-2">${off ? `<button class="btn btn-d" onclick="leadReact(${c.id})"><i class="fas fa-rotate-left"></i>Réactiver</button>` : `<button class="btn btn-g" onclick="leadEndOpen(${c.id})"><i class="fas fa-box-archive"></i>Classer sans suite</button>`}<button class="btn btn-p" onclick="leadToProject(${c.id})"><i class="fas fa-briefcase"></i>Créer le projet</button></div></div>
+    <div class="grid sm:grid-cols-2 gap-3"><div><label class="lbl" for="lb-ori">Origine du lead</label><select id="lb-ori" class="inp" onchange="leadSet(${c.id},'origine',this.value)">${LEAD_ORI.map(o => `<option${o === L.origine ? ' selected' : ''}>${o}</option>`).join('')}</select></div>
+      <div><label class="lbl" for="lb-mot">Motif / raison</label><input id="lb-mot" class="inp" value="${esc(L.motif || '')}" onchange="leadSet(${c.id},'motif',this.value)"></div></div>
+    ${off && L.finMotif ? `<p class="text-[13px] text-slate-600">Classé sans suite le ${fmtD(L.fin)} : ${esc(L.finMotif)}</p>` : ''}</div>`;
+};
+function newProject() { closeDlg('dlg-newtype'); ui.editId = null; ui.formStep = 'Contact'; ui.coordEdit = true; fillForm(null); showView('client'); setPane('coord'); setTimeout(() => $('s-q').focus(), 300); }
 function openClient(id) { if (id !== ui.editId && guardLeave(() => openClient(id))) return; if (ui.pendingDone && ui.pendingDone.id !== id) revertDone(); const c = byId(id); if (!c) return; delete c._rk; try { if (v41Auto(c)) save(); } catch (e) {} ui.editId = id; ui.coordEdit = false; try { fillForm(c); } catch (e) { console.error(e); toast('Fiche ouverte avec une erreur d\'affichage : ' + (e && e.message || e), true); } showView('client'); setPane('projet'); if (c.step === 'R1' && opt('qual') && !QUAL.seen.has(id)) { QUAL.seen.add(id); setTimeout(() => qualOpen(id), 350); } }
 function initSelects() {
   $('f-lgo').innerHTML = '<option value="">— Non renseigné —</option>' + LGOS.map(x => `<option>${x}</option>`).join('') + '<option>Autre</option>';
@@ -5074,13 +5168,13 @@ function renderChrome(c) {
   { const t = $('f-del-t'); if (t) t.textContent = c ? 'Supprimer définitivement la fiche' : 'Abandonner et supprimer la fiche'; }
   $('f-ico').innerHTML = c ? cIco(c, 44) : '';
   const I = INTEREST[c?.indicateur || ''];
-  $('f-badges').innerHTML = (signed ? '<span class="pill bg-emerald-700 text-white"><i class="fas fa-circle-check"></i>Signé</span>' : lost ? `<span class="pill bg-rose-700 text-white">${c.perduMotif === 'Perdu contre' ? 'Perdu' : 'Abandonné'}</span>` : '')
+  $('f-badges').innerHTML = (signed ? '<span class="pill bg-emerald-700 text-white"><i class="fas fa-circle-check"></i>Signé</span>' : isLead(c) ? `<span class="pill" style="background:#EDE9FE;color:#5B21B6">${c.lead?.statut === 'sans_suite' ? 'Lead sans suite' : 'Lead à recontacter'}</span>` : lost ? `<span class="pill bg-rose-700 text-white">${c.perduMotif === 'Perdu contre' ? 'Perdu' : 'Abandonné'}</span>` : '')
     + (c && active && chOf(c) ? chancePill(c) : c && active ? `<span class="pill" style="background:${I[2]};color:${I[3]}"><span class="w-2 h-2 rounded-full" style="background:${I[1]}"></span>${c.indicateur ? 'Chance ' + CH_IND[c.indicateur] + ' %' : 'Chance à renseigner'}</span>` : '')
     + cesPill(c) + (c?.situation && !c?.cession?.on ? `<span class="pill" style="background:#EEF2FC;color:#1E3A8A"><i class="fas fa-key"></i>${esc(SITU[c.situation])}</span>` : '') + (c?.robotConc ? '<span class="pill" style="background:#FFF1E7;color:#9A3412"><i class="fas fa-robot"></i>Déjà équipé</span>' : '') + (c ? pendPill(c) + devisPill(c) + (signed ? '' : secPill(c)) : '');
   $('f-sub').textContent = c ? [c.ville + (depOf(c) ? ` (${depOf(c)})` : ''), c.groupement && `Groupement ${c.groupement}`, c.cip && `CIP ${c.cip}`, c.lgo && `LGO ${c.lgo === 'Autre' ? c.lgoAutre || 'autre' : c.lgo}`, active && c.typeProjet && TYPES_PROJET[c.typeProjet], active && c.opportunite && `Origine : ${c.opportunite}`].filter(Boolean).join(' · ') : "Commencez par la recherche dans l'annuaire";
   const t = [];
   { const lb = $('f-lost1'); if (lb) { lb.style.display = c && active ? '' : 'none'; lb.onclick = () => c && openLost(c.id); } }
-  if (c && active) t.push(pulseBtn(c), `<button class="btn btn-d" onclick="openAction(${c.id},'relance')">${ic('plus', 16)}Nouvelle action</button>`);
+  if (c && (active || isLead(c))) t.push(pulseBtn(c), `<button class="btn btn-d" onclick="openAction(${c.id},'relance')">${ic('plus', 16)}Nouvelle action</button>`);
   if (signed) t.push(`<button class="btn btn-g" onclick="openAddon(${c.id})"><i class="fas fa-cart-plus text-indigo-700"></i>Add-on</button>`);
   if (c) t.push(`<button class="btn btn-g !w-11 !px-0" aria-label="Supprimer la fiche" title="Supprimer la fiche" onclick="deleteClient(${c.id})"><i class="fas fa-trash-can text-rose-700"></i></button>`);
   $('f-tools').innerHTML = t.join('');
@@ -5170,7 +5264,8 @@ function renderBanner(c) {
     $('f-banner').innerHTML = `<div class="card p-5 !border-rose-300 bg-rose-50 flex flex-wrap justify-between items-center gap-3">
       <div><h2 class="h2 !text-rose-900">${esc(c.perduMotif)}${c.perduConcurrent ? ' ' + esc(c.perduConcurrent) : ''} — ${fmtD(c.perduDate)}</h2><p class="text-sm mt-1">${esc(c.perduObservation || '')}</p></div>
       <button class="btn btn-d" onclick="reactivate(${c.id})"><i class="fas fa-rotate-left"></i>Réactiver en R1</button></div>`;
-  } else $('f-banner').innerHTML = '';
+  } else if (isLead(c)) $('f-banner').innerHTML = leadBanner(c);
+  else $('f-banner').innerHTML = '';
 }
 function levSteps(c) {
   const el = $('b-lev-steps'); if (!el) return; const ok = (d, t, w) => d ? `<span class="text-emerald-800"><i class="fas fa-square-check mr-1.5"></i>${t} le ${fmtD(d)}</span>` : `<span class="text-slate-500"><i class="far fa-square mr-1.5"></i>${w}</span>`;
@@ -5532,6 +5627,8 @@ function renderStage() {
     h = `<div class="card p-5 !border-emerald-300 flex flex-col gap-2"><span class="kicker">Étape en cours</span><div class="flex items-center gap-2.5"><span class="w-3 h-3 rounded-full bg-emerald-700"></span><span class="text-xl font-bold text-emerald-800">Dossier signé</span></div>
       <p class="text-[13px] text-slate-700">Signé le ${fmtD(c.signatureDate)}${c.numDossier ? ' · dossier ' + esc(c.numDossier) : ''}</p>
       <p class="text-[13px]">${c.hasReserves ? (c.leveeDate ? `<span class="text-emerald-800 font-semibold">Réserves levées le ${fmtD(c.leveeDate)}</span>` : '<span class="text-rose-700 font-semibold">Réserves en cours</span>') : 'Sans réserve'}</p></div>`;
+  } else if (c?.step === 'Lead') {
+    h = '';
   } else if (c?.step === 'Perdu') {
     h = `<div class="card p-5 !border-rose-300 flex flex-col gap-2"><span class="kicker">Étape en cours</span><span class="text-xl font-bold text-rose-800">Dossier ${c.perduMotif === 'Perdu contre' ? 'perdu' : 'abandonné'}</span><button class="btn btn-d" onclick="reactivate(${c.id})">Réactiver en R1</button></div>`;
   } else {
