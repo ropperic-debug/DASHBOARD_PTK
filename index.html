@@ -1309,6 +1309,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.54</b> : <b>Synthèse PDF relookée</b> : (1) pastilles « Ce que cette solution change pour vous » en cartes avec anneau dégradé et icône ; (2) section « gain de temps » redessinée : grand « 11 h 48 par jour » avec barre de 12 cases (vente / back-office), « soit 1,5 journée de travail », deux chiffres sobres (heures par mois, km de marche) et calcul en 5 étapes numérotées avec la barre « une ordonnance : 9 min → 6,3 min ». Les chiffres et les options cochées ne changent pas.</li>
 <li><b>V4.5.53</b> : <b>Curseur « Écart entre l’offre et la réalité »</b> (onglet Offre, carte « Stock et capacité ») : de 0 à −20 %, propre à chaque client. Il réduit la capacité retenue du robot ; la marge de croissance et la jauge de la synthèse l’utilisent, avec une ligne de prudence sous la jauge. Le chiffre de l’offre ne change pas. Le temps de délivrance réglé par client est désormais bien enregistré.</li>
 <li><b>V4.5.52</b> : (1) <b>Barre d’onglets de la fiche</b> : les 5 onglets tiennent toujours dans la barre (plus d’ascenseur) ; noms courts sur smartphone ; (2) <b>Synthèse : encadré « Comment est calculé le temps gagné ? »</b> (9 min × 30 % = 2,7 min par ordonnance × dossiers par jour = temps par jour, puis par mois) ; (3) <b>notes sous les chiffres de la page 2</b> (heures par mois, kilomètres convertis en temps de marche) ; (4) <b>jauge « Stock actuel / capacité du robot »</b> avec marge de croissance (page Solution) ; (5) ces deux blocs sont des <b>options cochables</b> dans « Préparer le PDF… » (grisées avec la raison si une donnée manque) ; (6) le temps de délivrance s’ajuste par client (onglet Projet) et la synthèse suit ; (7) la partie « Solution » ne laisse plus une page quasi vide quand « Besoins » déborde d’une carte.</li>
 <li><b>V4.5.51</b> : (1) <b>Fiche en 5 onglets</b> : Projet et officine, Offre de robotisation, Besoins et argumentaire, Préparation de l’offre, Suivi (un seul onglet affiché à la fois) ; (2) <b>« L’officine est-elle déjà robotisée ? »</b> remontée tout en haut du projet ; l’implantation (plan et photos) est dans l’onglet Projet ; (3) <b>« Produits en stock » devient « Stock actuel de l’officine »</b>, comparé à la <b>capacité du robot</b> dans l’onglet Offre (marge de croissance) et dans les Indicateurs clés du PDF de l’offre (jauge) ; (4) <b>curseur « Temps de délivrance »</b> par client (temps actuel par ordonnance et temps gagné) dans l’onglet Projet.</li>
@@ -2101,7 +2102,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.53';
+const APP_VERSION = '4.5.54';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -5198,23 +5199,39 @@ async function genArgNew0(id, merge, prev, sec) {
     if (C.dist && on('dist_par')) kp.push(['route', `${fr(C.kmAn)} km/an`, `de marche supprimés${P.dc && on('dist_cpt') ? ` (comptoirs - tiroirs : ${P.dc} m)` : ''}`]);
     const fOk = on('p_formule') && C.dos > 0 && C.gBase > .5 && C.gCpt <= C.gBase + .5, splitB = on('k_split') && C.gCpt > .5 && C.gBo > .5;   /* V4.5.52 : notes sous les chiffres + encadré de calcul */
     const NT = [fOk && !splitB ? 'Calcul détaillé dans l\'encadré ci-dessous.' : '', `= ${hm(C.gTot)} × ${H.jm} jours ouvrés par mois.`, C.dist && on('dist_par') && H.kmh ? `= ${fr(C.kmAn / H.kmh)} h de marche par an, soit ${fr(C.kmAn / H.kmh / 8)} journées de 8 h (à ${H.kmh} km/h).` : ''];
-    const kws = kp.length === 2 ? [CW * .6 - 1.5, CW * .4 - 1.5] : [CW * .42 - 2, CW * .29 - 2, CW * .29 - 2], KH = 31; let kx = M;
-    kp.forEach((x, i) => { const kw = kws[i], xx = kx; kx += kw + 3; K.card(xx, K.y, kw, KH, WH, 'top'); bord(xx, K.y, kw, KH, 2.6); K.font(x[3] ? 19 : 18, 'bold', PK.or); K.t(x[1], xx + 5, K.y + 11.6); K.font(7.2, 'normal', PK.sub); doc.text(doc.splitTextToSize(pdfTxt(x[2]), kw - 9).slice(0, 2), xx + 5, K.y + 16.6);
-      if (x[3] && on('k_split') && C.gCpt > .5 && C.gBo > .5) { const tot = C.gCpt + C.gBo, bw2 = kw - 10; doc.setFillColor(229, 231, 235); doc.roundedRect(xx + 5, K.y + 21, bw2, 2, 1, 1, 'F'); doc.setFillColor(...PK.or); doc.rect(xx + 5, K.y + 21, bw2 * C.gCpt / tot, 2, 'F'); doc.setFillColor(30, 142, 78); doc.rect(xx + 5 + bw2 * C.gCpt / tot, K.y + 21, bw2 * C.gBo / tot, 2, 'F');
-        K.font(7, 'bold', PK.ord); K.t(hm(C.gCpt), xx + 5, K.y + 27); const wv = doc.getTextWidth(pdfTxt(hm(C.gCpt))); K.font(6.6, 'normal', PK.sub); K.t(' côté vente', xx + 5 + wv + .4, K.y + 27);
-        const sb = ' côté back-office'; K.font(6.6, 'normal', PK.sub); const w2 = doc.getTextWidth(pdfTxt(sb)); K.t(sb, xx + kw - 5 - w2, K.y + 27); K.font(7, 'bold', [20, 98, 66]); const wb = doc.getTextWidth(pdfTxt(hm(C.gBo))); K.t(hm(C.gBo), xx + kw - 5 - w2 - wb - .4, K.y + 27); }
-      if (NT[i]) { K.font(6.2, 'italic', PK.mut); doc.text(doc.splitTextToSize(pdfTxt(NT[i]), kw - 9).slice(0, 2), xx + 5, K.y + 27, {lineHeightFactor: 1.15}); } });
-    K.y += KH + 2.5;
-    if (fOk) { const f1 = x => x.toLocaleString('fr-FR', {maximumFractionDigits: 1}), mn = H.delivMin * H.gainPct / 100, nbo = C.gBo > .5, bh = nbo ? 25 : 20.5; K.need(bh + 3);
-      const bx = M, by0 = K.y; doc.setFillColor(255, 247, 237); doc.setDrawColor(253, 186, 116); doc.setLineWidth(.35); doc.roundedRect(bx, by0, CW, bh, 2.6, 2.6, 'FD');
-      K.font(6.2, 'bold', PK.ord); doc.text(pdfTxt('COMMENT EST CALCULÉ LE TEMPS GAGNÉ ?'), bx + 5, by0 + 4.4, {charSpace: 1.1});
-      const sw = 31, ow = (CW - 10 - 4 * sw) / 3, sy = by0 + 5.8, sh = 13.2,
-        ST = [["AUJOURD'HUI", `${f1(H.delivMin)} min`, 'pour délivrer une ordonnance'], ['PAR ORDONNANCE', `${f1(mn)} min`, 'gagnées à chaque délivrance'], [nbo ? 'PAR JOUR · VENTE' : 'PAR JOUR', hm(C.gBase), "rendues à l'équipe"], ['PAR MOIS', `${fr(C.gBase * H.jm / 60)} h`, `soit ${fr(C.gBase * H.ja / 60)} h par an`]],
-        OP = [[`${H.gainPct} %`, 'gagnés avec le robot'], [fr(C.dos), 'ordonnances par jour'], [String(H.jm), 'jours ouvrés par mois']];
-      ST.forEach((s, i) => { const sx = bx + 5 + i * (sw + ow); doc.setFillColor(255, 255, 255); doc.setDrawColor(...(i >= 2 ? PK.or : [253, 186, 116])); doc.setLineWidth(i >= 2 ? .5 : .3); doc.roundedRect(sx, sy, sw, sh, 1.8, 1.8, 'FD');
-        K.font(4.6, 'bold', PK.ord); doc.text(pdfTxt(s[0]), sx + sw / 2, sy + 3, {align: 'center', charSpace: .4}); K.font(10, 'bold', PK.or); doc.text(pdfTxt(s[1]), sx + sw / 2, sy + 7.6, {align: 'center'});
-        K.font(4.9, 'normal', PK.sub); doc.text(doc.splitTextToSize(pdfTxt(s[2]), sw - 2.5).slice(0, 2), sx + sw / 2, sy + 10.2, {align: 'center', lineHeightFactor: 1.1});
-        if (i < 3) { const ox = sx + sw + ow / 2; K.font(8, 'bold', PK.mut); doc.text('x', ox, sy + 3.6, {align: 'center'}); K.font(8.2, 'bold', PK.ink); doc.text(pdfTxt(OP[i][0]), ox, sy + 7.4, {align: 'center'}); K.font(4.6, 'normal', PK.sub); doc.text(doc.splitTextToSize(pdfTxt(OP[i][1]), ow - 1).slice(0, 2), ox, sy + 10, {align: 'center', lineHeightFactor: 1.1}); } });
+    /* V4.5.54 : section « gain de temps » redessinée (bloc « temps rendu » + deux chiffres + calcul numéroté) */
+    { const f1 = x => x.toLocaleString('fr-FR', {maximumFractionDigits: 1}), tm = Math.round(C.gTot), hh = Math.floor(tm / 60), mm = tm % 60, jr = C.gTot / 480, BH = splitB ? 49.5 : 36, by1 = (K.need(BH + 2), K.y), LW = CW * .56, rx = M + LW + 8, RW = CW - LW - 8;
+      K.font(5.6, 'bold', PK.ord); const lt = "TEMPS RENDU À L'ÉQUIPE", pw = doc.getTextWidth(pdfTxt(lt)) + lt.length * .6 + 12;
+      rr(M, by1, pw, 6.8, 3.4, [255, 241, 227]); doc.setFillColor(...PK.or); doc.circle(M + 3.6, by1 + 3.4, 2.6, 'F'); ic('clock', M + 2.1, by1 + 1.9, 3, true); doc.text(pdfTxt(lt), M + 8, by1 + 4.4, {charSpace: .6});
+      { let nx = M; const pts = []; if (hh > 0) pts.push([String(hh), 'h']); if (mm > 0 || hh === 0) pts.push([String(mm), 'min']);
+        pts.forEach(p => { K.font(33, 'bold', PK.or); doc.text(p[0], nx, by1 + 19.5); nx += doc.getTextWidth(p[0]) + 1; K.font(12, 'bold', PK.ord); doc.text(p[1], nx, by1 + 19.5); nx += doc.getTextWidth(p[1]) + 4; });
+        K.font(8.4, 'bold', PK.sub); doc.text('par jour', nx, by1 + 19.5); }
+      K.rich(md(`rendues à l'équipe pour le conseil et la vente${jr >= .5 ? `, soit **${f1(jr)} journée${jr >= 2 ? 's' : ''} de travail** chaque jour` : ''}.`), M, by1 + 25.5, LW, 8.4, 4.1, PK.sub);
+      if (splitB) { const cy0 = by1 + 38.6, nC = 12, u = Math.max(1, Math.ceil(C.gTot / 60 / nC)), gp = .8, cwd = (LW - (nC - 1) * gp) / nC, vH = C.gCpt / 60, tH = C.gTot / 60;
+        K.font(4.8, 'normal', PK.mut); doc.text(pdfTxt(`UNE CASE = ${u} HEURE${u > 1 ? 'S' : ''}`), M, by1 + 36.6, {charSpace: .5});
+        for (let k = 0; k < nC; k++) { const mid = (k + .5) * u, col = mid < vH ? PK.or : mid < tH ? [22, 163, 74] : [254, 226, 196]; rr(M + k * (cwd + gp), cy0, cwd, 4.6, 1.2, col); }
+        const ly = by1 + 47.2; doc.setFillColor(...PK.or); doc.circle(M + 1, ly - 1, .9, 'F'); K.font(6.6, 'bold', PK.ord); K.t(hm(C.gCpt), M + 3, ly); const wv = doc.getTextWidth(pdfTxt(hm(C.gCpt))); K.font(6.6, 'normal', PK.sub); K.t(' côté vente', M + 3 + wv, ly); const x2 = M + 3 + wv + doc.getTextWidth(pdfTxt(' côté vente')) + 5;
+        doc.setFillColor(22, 163, 74); doc.circle(x2 + 1, ly - 1, .9, 'F'); K.font(6.6, 'bold', [20, 98, 66]); K.t(hm(C.gBo), x2 + 3, ly); const wb = doc.getTextWidth(pdfTxt(hm(C.gBo))); K.font(6.6, 'normal', PK.sub); K.t(' back-office', x2 + 3 + wb, ly); }
+      doc.setDrawColor(245, 199, 155); doc.setLineWidth(.25); doc.line(M + LW + 3.5, by1 + 1, M + LW + 3.5, by1 + BH - 3);
+      const RO = [['calendar-check', fr(C.gMois), 'h', 'par mois', "gagnées sur l'ensemble de l'officine", `${hm(C.gTot)} × ${H.jm} jours ouvrés`]];
+      if (C.dist && on('dist_par')) RO.push(['route', fr(C.kmAn), 'km', 'par an', 'de marche supprimés', `${H.kmh ? `soit ${fr(C.kmAn / H.kmh / 8)} journées de 8 h` : ''}${P.dc && on('dist_cpt') ? ` · comptoirs - tiroirs : ${P.dc} m` : ''}`.replace(/^ · /, '')]);
+      const rh = (BH - 3) / RO.length;
+      RO.forEach((q, i) => { const ry = by1 + i * rh, cy = ry + rh / 2; doc.setDrawColor(245, 199, 155); doc.setLineWidth(.4); doc.circle(rx + 5.6, cy, 5.4, 'S'); ic(q[0], rx + 3.1, cy - 2.5, 5);
+        K.font(15, 'bold', PK.ink); doc.text(pdfTxt(q[1]), rx + 13.5, cy - 2.4); const vw = doc.getTextWidth(pdfTxt(q[1])); K.font(7.6, 'bold', PK.ord); doc.text(pdfTxt(`${q[2]} ${q[3]}`), rx + 13.5 + vw + 1.4, cy - 2.4);
+        K.font(7.2, 'bold', PK.sub); doc.text(pdfTxt(q[4]), rx + 13.5, cy + 2.2); K.font(5.9, 'normal', PK.mut); doc.text(doc.splitTextToSize(pdfTxt(q[5]), RW - 14).slice(0, 2), rx + 13.5, cy + 5.4, {lineHeightFactor: 1.15});
+        if (i < RO.length - 1) { doc.setDrawColor(243, 227, 211); doc.setLineWidth(.2); doc.line(rx, ry + rh, M + CW, ry + rh); } });
+      K.y = by1 + BH + 1.5; }
+    if (fOk) { const f1 = x => x.toLocaleString('fr-FR', {maximumFractionDigits: 1}), mn = H.delivMin * H.gainPct / 100, nbo = C.gBo > .5, bh = nbo ? 36 : 32; K.need(bh + 3);
+      const bx = M, by0 = K.y; doc.setFillColor(255, 247, 237); doc.setDrawColor(253, 186, 116); doc.setLineWidth(.35); doc.roundedRect(bx, by0, CW, bh, 3, 3, 'FD');
+      K.font(6.2, 'bold', PK.ord); doc.text(pdfTxt('COMMENT EST CALCULÉ LE TEMPS GAGNÉ ?'), bx + 5, by0 + 5.2, {charSpace: 1.1});
+      const gp = 5, tw = (CW - 10 - 4 * gp) / 5, sy = by0 + 10, sh = 13.4,
+        ST = [["AUJOURD'HUI", `${f1(H.delivMin)} min`, 'par ordonnance', 0], ['GAIN ROBOT', `${H.gainPct} %`, 'de temps gagné', 0], ['PAR ORDONNANCE', `${f1(mn)} min`, 'gagnées', 1], [`× ${fr(C.dos)} DOSSIERS`, hm(C.gBase), nbo ? 'par jour · vente' : 'par jour', 1], [`× ${H.jm} JOURS`, `${fr(C.gBase * H.jm / 60)} h`, `par mois · ${fr(C.gBase * H.ja / 60)} h/an`, 1]];
+      ST.forEach((s, i) => { const sx = bx + 5 + i * (tw + gp), hl = !!s[3]; if (hl) { doc.setFillColor(...PK.or); doc.setDrawColor(...PK.ord); } else { doc.setFillColor(255, 255, 255); doc.setDrawColor(253, 186, 116); } doc.setLineWidth(.3); doc.roundedRect(sx, sy, tw, sh, 2.6, 2.6, 'FD');
+        const tc = hl ? [255, 255, 255] : PK.ink; K.font(4.6, 'bold', hl ? [255, 255, 255] : PK.ord); doc.text(pdfTxt(s[0]), sx + tw / 2, sy + 4.1, {align: 'center', charSpace: .4}); K.font(10.5, 'bold', tc); doc.text(pdfTxt(s[1]), sx + tw / 2, sy + 8.6, {align: 'center'}); K.font(4.9, 'normal', hl ? [255, 255, 255] : PK.sub); doc.text(pdfTxt(s[2]), sx + tw / 2, sy + 11.6, {align: 'center'});
+        doc.setFillColor(...(hl ? [255, 255, 255] : PK.or)); doc.setDrawColor(...PK.or); doc.setLineWidth(.25); doc.circle(sx + tw / 2, sy, 1.8, 'FD'); K.font(5, 'bold', hl ? PK.ord : [255, 255, 255]); doc.text(String(i + 1), sx + tw / 2, sy + .6, {align: 'center'});
+        if (i < 4) { K.font(9, 'bold', PK.or); doc.text('>', sx + tw + gp / 2, sy + sh / 2 + 1.4, {align: 'center'}); } });
+      const by5 = sy + sh + 4.6; K.font(6, 'normal', PK.mut); K.t('Une ordonnance', bx + 5, by5 + .6); const brx = bx + 29, brw = CW - 29 - 5 - 36, nvr = 1 - H.gainPct / 100; rr(brx, by5 - 2.2, brw, 3.2, 1.6, PK.or); doc.setFillColor(253, 186, 116); doc.roundedRect(brx + brw * nvr, by5 - 2.2, brw * (1 - nvr), 3.2, 1.6, 1.6, 'F'); doc.setFillColor(...PK.or); doc.rect(brx + brw * nvr - 1.6, by5 - 2.2, 1.6, 3.2, 'F');
+      K.font(6, 'bold', PK.ord); K.t(`${f1(H.delivMin * nvr)} min`, brx + brw + 3, by5 + .6); const wm = doc.getTextWidth(pdfTxt(`${f1(H.delivMin * nvr)} min`)); K.font(6, 'normal', PK.sub); K.t(` avec le robot · -${H.gainPct} %`, brx + brw + 3 + wm, by5 + .6);
       if (nbo) { K.font(6, 'italic', PK.mut); doc.text(doc.splitTextToSize(pdfTxt(`À ces ${hm(C.gBase)} côté vente s'ajoutent ${hm(C.gBo)} gagnées au back-office : ${hm(C.gTot)} par jour au total, soit ${fr(C.gMois)} h par mois.`), CW - 10), bx + 5, by0 + bh - 2.8); }
       K.y += bh + 2.5; }
   }
@@ -5296,11 +5313,11 @@ async function genArgNew0(id, merge, prev, sec) {
   }
   { const stkOn = on('stk_cap') && capE > 0 && C.stk > 0 && capE >= C.stk;   /* V4.5.52 : jauge stock actuel / capacité */
   if (on('sol_kpi') || stkOn) { const KP = [];
-    if (on('sol_kpi') && cap && C.stk && !stkOn) KP.push([cap >= C.stk ? '100' : String(Math.round(cap / C.stk * 100)), '%', 'de votre stock tient dans le robot']);
-    if (on('sol_kpi') && C.gTot > .5) KP.push([hm(C.gTot), '/ jour', "rendues à l'équipe"]);
-    if (on('sol_kpi') && H.delivMin && H.gainPct && C.gCpt > .5) KP.push([(H.delivMin * H.gainPct / 100).toLocaleString('fr-FR', {maximumFractionDigits: 1}), 'min', 'gagnées par délivrance']);
-    if (on('sol_kpi') && C.dos) KP.push([fr(C.dos), '', 'dossiers par jour automatisés']);
-    if (KP.length >= 2 || stkOn) { sub('B', 'Ce que cette solution change pour vous', stkOn ? 26 : 40);
+    if (on('sol_kpi') && cap && C.stk && !stkOn) KP.push([cap >= C.stk ? '100' : String(Math.round(cap / C.stk * 100)), '%', 'de votre stock tient dans le robot', 'boxes-stacked']);
+    if (on('sol_kpi') && C.gTot > .5) KP.push([hm(C.gTot), '/ jour', "rendues à l'équipe", 'clock']);
+    if (on('sol_kpi') && H.delivMin && H.gainPct && C.gCpt > .5) KP.push([(H.delivMin * H.gainPct / 100).toLocaleString('fr-FR', {maximumFractionDigits: 1}), 'min', 'gagnées par délivrance', 'stopwatch']);
+    if (on('sol_kpi') && C.dos) KP.push([fr(C.dos), '', 'dossiers par jour automatisés', 'gears']);
+    if (KP.length >= 2 || stkOn) { sub('B', 'Ce que cette solution change pour vous', stkOn ? 26 : 46);
       if (stkOn) { const gh = capA > 0 ? 22.6 : 19, pc = Math.round(C.stk / capE * 100); K.need(gh + 2); const gy = K.y; doc.setFillColor(255, 247, 237); doc.setDrawColor(253, 186, 116); doc.setLineWidth(.35); doc.roundedRect(M, gy, CW, gh, 2.4, 2.4, 'FD');
         K.font(5.4, 'bold', PK.ord); doc.text(pdfTxt("STOCK ACTUEL DE L'OFFICINE · CAPACITÉ DU ROBOT"), M + 5, gy + 4.6, {charSpace: .6});
         K.font(9, 'bold', PK.ink); doc.text(pdfTxt(`${fr(C.stk)} boîtes en stock`), M + 5, gy + 9.6); doc.text(pdfTxt(`${fr(capE)} boîtes de capacité`), M + CW - 5, gy + 9.6, {align: 'right'});
@@ -5308,10 +5325,14 @@ async function genArgNew0(id, merge, prev, sec) {
         K.font(6.6, 'bold', PK.ord); doc.text(pdfTxt(`${pc} % de la capacité utilisée · marge de croissance +${fr(capE - C.stk)} boîtes (+${Math.round((capE / C.stk - 1) * 100)} %)`), M + 5, gy + 17);
         if (capA > 0) { K.font(6.2, 'italic', PK.mut); doc.text(doc.splitTextToSize(pdfTxt(`Capacité retenue avec une marge de prudence de ${capA} % sur la capacité annoncée (${fr(cap)} boîtes).`), CW - 10), M + 5, gy + 20.6); } K.y += gh + 3; }
       if (KP.length >= 2) { const n = KP.length, cw = CW / n;
-      KP.forEach((x, i) => { const cx = M + cw * (i + .5), cy = K.y + 8.8; doc.setDrawColor(253, 228, 216); doc.setLineWidth(2.2); doc.circle(cx, cy, 8.6, 'S'); doc.setDrawColor(...PK.or); doc.setLineWidth(1.1); doc.circle(cx, cy, 8.6, 'S');
-        K.font(x[0].length > 5 ? 9.6 : 12, 'bold', PK.or); doc.text(pdfTxt(x[0]), cx, cy + (x[1] ? .6 : 1.8), {align: 'center'}); if (x[1]) { K.font(5.8, 'bold', PK.sub); doc.text(pdfTxt(x[1]), cx, cy + 4.6, {align: 'center'}); }
-        K.font(7.6, 'normal', PK.sub); doc.text(doc.splitTextToSize(pdfTxt(x[2]), cw - 8).slice(0, 2), cx, cy + 13, {align: 'center', lineHeightFactor: 1.2}); });
-      K.y += 27; } } } }
+      /* V4.5.54 : pastilles KPI en cartes, anneau dégradé et icône */
+      const ch = 34; K.need(ch + 3); const arc = (cx, cy, r, a0, a1, c0, c1) => { doc.setLineWidth(1.9); doc.setLineCap('round'); const N = Math.ceil((a1 - a0) / 4); for (let k = 0; k < N; k++) { const t = k / N, p = a0 + (a1 - a0) * t, q = a0 + (a1 - a0) * Math.min(1, (k + 1) / N); doc.setDrawColor(Math.round(c0[0] + (c1[0] - c0[0]) * t), Math.round(c0[1] + (c1[1] - c0[1]) * t), Math.round(c0[2] + (c1[2] - c0[2]) * t)); doc.line(cx + r * Math.cos(p * Math.PI / 180), cy + r * Math.sin(p * Math.PI / 180), cx + r * Math.cos(q * Math.PI / 180), cy + r * Math.sin(q * Math.PI / 180)); } doc.setLineCap('butt'); };
+      KP.forEach((x, i) => { const cx = M + cw * (i + .5), xx = M + cw * i + 1.5, cy = K.y + 13; rr(xx, K.y, cw - 3, ch, 3, [255, 250, 245]); doc.setDrawColor(253, 214, 170); doc.setLineWidth(.3); doc.roundedRect(xx, K.y, cw - 3, ch, 3, 3, 'S');
+        doc.setFillColor(255, 255, 255); doc.circle(cx, cy, 9, 'F'); doc.setDrawColor(254, 230, 207); doc.setLineWidth(1.9); doc.circle(cx, cy, 9, 'S'); arc(cx, cy, 9, -90, 180, [251, 146, 60], [194, 65, 12]);
+        if (x[3]) ic(x[3], cx - 1.9, cy - 6.6, 3.8);
+        K.font(x[0].length > 5 ? 8.6 : 11.5, 'bold', PK.ink); doc.text(pdfTxt(x[0]), cx, cy + (x[1] ? 2.6 : 3.6), {align: 'center'}); if (x[1]) { K.font(5.2, 'bold', PK.ord); doc.text(pdfTxt(x[1]), cx, cy + 6.2, {align: 'center'}); }
+        K.font(7.4, 'bold', PK.sub); doc.text(doc.splitTextToSize(pdfTxt(x[2]), cw - 10).slice(0, 2), cx, cy + 15.2, {align: 'center', lineHeightFactor: 1.2}); });
+      K.y += ch + 3; } } } }
   if (on('sol_argu')) { const GR = []; (c.besoinsSol || []).forEach(i => { const x = solOv(c, i), g = solById(i); if (!x || !g) return; let G = GR.find(q => q.g === g.g); if (!G) { G = {g: g.g, s: []}; GR.push(G); } G.s.push({t: x[1], d: x[2]}); });
     const SR = GR.slice(0, 3);
     if (SR.length) { sub('C', 'Votre besoin, notre réponse', 30);
