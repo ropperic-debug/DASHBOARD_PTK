@@ -1294,6 +1294,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.47</b> : (1) <b>Portefeuille : filtres en un bouton</b> : plus de champs qui occupent l’écran ; une recherche et un bouton « Filtres » (badge orange = nombre de filtres) ouvrent une fenêtre avec département, robot et dernière action ; une ligne violette n’apparaît que si un filtre est actif (synthèse, croix pour chaque filtre, « Tout réinitialiser » avec « Annuler » pendant 5 secondes) ; (2) <b>Perdus</b> : pastilles « Tous / Perdu contre un concurrent / Abandonné » et, pour les concurrents, une pastille par nom avec le nombre de dossiers ; le CSV n’exporte que les lignes affichées ; (3) <b>Ma journée</b> : texte de la carte plus court : « Action faite aujourd’hui · prochaine action à planifier ».</li>
 <li><b>V4.5.46</b> : <b>« Dernière action » exacte</b> : une action réalisée à une date passée (par exemple une visite du mois dernier saisie aujourd’hui) est maintenant bien prise comme dernière action dans le portefeuille, « Ma journée » et les statistiques. Les mises à jour de la fiche (chance de signature, étape, devis importé, création) ne comptent plus comme une action.</li>
 <li><b>V4.5.45</b> : <b>Tableau Portefeuille</b> : (1) colonnes « Décision » et « Échéance » fusionnées, tout tient à l’écran sans défilement latéral, colonne « Actions » toujours visible à droite ; bouton « Colonnes » pour masquer ce que vous ne regardez pas (choix mémorisé) ; (2) <b>filtres</b> au-dessus du tableau : recherche pharmacie / ville, département (2 chiffres, plusieurs possibles), type de robot, date de dernière action, avec bandeau de synthèse (nombre de projets, total, chance moyenne) ; le CSV n’exporte que les lignes affichées ; (3) bouton <b>Réinitialiser</b> (5 secondes pour annuler) ; (4) <b>GENESI : nombre de modules (1 à 5)</b> dans la fiche, repris dans le portefeuille, l’offre, les PDF et le fichier CRO.</li>
 <li><b>V4.5.44</b> : <b>Import du devis GENESI</b> : le devis PDF d’un robot GENESI (robot et modules, options en verre, remise du bon de commande, contrat de maintenance) est maintenant reconnu et rempli automatiquement.</li>
@@ -1358,7 +1359,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>V3.7</b> : récapitulatif des commissions, colonne TYPE avec cadres de couleur, dossiers sous réserve bien visibles.</li>
 <li><b>Commissions : double date (V3.6)</b> : quand vous pointez une commission (fenêtre « Payée… » ou case « Commission payée » de la fiche client), vous indiquez deux mois : <b>« Pointée en »</b> (le mois où vous constatez le paiement, par défaut le mois en cours) et <b>« Sur le salaire de »</b> (le bulletin concerné, par défaut le mois précédent, modifiable). Exemple : pointée en novembre, sur le salaire d'octobre. Les deux mois sont affichés dans le détail, l'historique et le CSV. Les commissions déjà pointées gardent leur mois, qui sert aussi de mois de salaire.</li>
 <li><b>Commissions : tableau sur 8 colonnes (V3.6)</b> : plus de défilement horizontal. La date de signature et le n° de dossier sont sous le nom de la pharmacie, le rang sous le modèle, et montant HT, assiette et base sont regroupés dans « Calcul ». Le statut et le bouton « Payée… » sont toujours visibles.</li>
-<li><b>Portefeuille : filtres et colonnes (V4.5.45)</b> : au-dessus du tableau « Portefeuille », tapez un nom de pharmacie ou de ville, un ou plusieurs départements (« 18, 36 » ou un clic sur la pastille du département, avec le nombre de projets), un type de robot, ou une période de dernière action (aujourd’hui, moins de 7 j, plus de 5 / 15 / 30 j, ou deux dates). Les filtres se combinent entre eux et avec les filtres des en-têtes de colonnes ; un bandeau violet donne le nombre de projets, le total HT et la chance moyenne, avec une croix pour retirer chaque filtre. Le bouton CSV n’exporte que les lignes affichées. <b>Réinitialiser</b> efface tous les filtres et remet le tri et les colonnes par défaut (« Annuler » pendant 5 secondes ; aucune fiche n’est modifiée). <b>Colonnes</b> permet de masquer des colonnes (choix mémorisé sur cet ordinateur). « Décision » et « Échéance » sont regroupées dans une seule colonne ; sur un petit écran, la colonne Pharmacie reste figée à gauche et Actions à droite.</li>
+<li><b>Portefeuille : filtres et colonnes (V4.5.45)</b> : au-dessus du tableau « Portefeuille », (depuis V4.5.47 : recherche en haut du tableau et bouton « Filtres » qui ouvre une fenêtre) tapez un nom de pharmacie ou de ville, un ou plusieurs départements (« 18, 36 » ou un clic sur la pastille du département, avec le nombre de projets), un type de robot, ou une période de dernière action (aujourd’hui, moins de 7 j, plus de 5 / 15 / 30 j, ou deux dates). Les filtres se combinent entre eux et avec les filtres des en-têtes de colonnes ; un bandeau violet donne le nombre de projets, le total HT et la chance moyenne, avec une croix pour retirer chaque filtre. Le bouton CSV n’exporte que les lignes affichées. <b>Réinitialiser</b> efface tous les filtres et remet le tri et les colonnes par défaut (« Annuler » pendant 5 secondes ; aucune fiche n’est modifiée). <b>Colonnes</b> permet de masquer des colonnes (choix mémorisé sur cet ordinateur). « Décision » et « Échéance » sont regroupées dans une seule colonne ; sur un petit écran, la colonne Pharmacie reste figée à gauche et Actions à droite.</li>
 <li><b>GENESI : nombre de modules (V4.5.45)</b> : dans la fiche, quand le robot GENESI est choisi, une rangée « Nombre de modules » (1 à 5, 1 par défaut) apparaît. Le nombre s’affiche dans le portefeuille (« GENESI · 3 modules »), dans la fenêtre « Générer l’offre », sur la page de garde et la synthèse du PDF et dans le fichier CRO. Le prix reste à saisir. L’import d’un devis GENESI renseigne le nombre de modules automatiquement.</li>
 <li><b>Commissions : filtres pour le pointage (V3.6)</b> : au-dessus du détail, choisissez le statut (Tous, En attente, Payées, Bloquées), le type de vente (SINTESI, GENESI, Add-on), le modèle, le mois de signature, le <b>mois du salaire</b> (avec le total de chaque mois) ou tapez un nom de pharmacie / n° de dossier. Le bandeau indique le nombre de lignes et le total affichés ; « Tout sélectionner » ne coche que les lignes affichées ; le CSV exporte les lignes affichées ; « Réinitialiser » efface les filtres.</li>
 <li><b>Objectifs annuels (V3.6)</b> : ils sont calculés sur l'année civile, du 1er janvier au 31 décembre (objectif de robots, objectif de CA, rang et palier de commission), jamais sur 12 mois glissants.</li>
@@ -2079,7 +2080,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.46';
+const APP_VERSION = '4.5.47';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -3594,7 +3595,7 @@ function actTabHTML() {
   const chips = ['late', 'today', 'none', 'week'].map(k => `<div class="flex-1 rounded-xl px-2 py-1.5 text-center" style="background:${ACAT[k].b};border:1px solid ${ACAT[k].bd};color:${ACAT[k].c}"><b class="block text-xl leading-tight">${cnt[k]}</b><span class="text-[10.5px] font-bold">${ACAT[k].n}</span></div>`).join('');
   const ord = {late: 0, today: 1, none: 2}, L = act.filter(c => ord[actCat(c)] !== undefined).sort((a, b) => ord[actCat(a)] - ord[actCat(b)] || String(effNext(a).nextDate).localeCompare(String(effNext(b).nextDate)));
   const grp = (k, lab) => { const l = L.filter(c => actCat(c) === k); if (!l.length) return ''; return `<div class="font-extrabold uppercase tracking-wide mt-2 mb-1" style="font-size:11px;color:${ACAT[k].c}">${lab} · ${l.length}</div>` + l.map(c => `<div class="flex items-center gap-2 rounded-[10px] px-2 py-1.5 mb-1.5" style="border:1px solid #E2E8F0;border-left:5px solid ${ACAT[k].c};background:${k === 'none' ? ACAT[k].b : '#fff'}">${actDot(c, k, 30)}
-    <button class="flex-1 min-w-0 text-left" onclick="openClient(${c.id})"><b class="block text-[12.5px] truncate">${esc(c.pharma)}</b><span class="text-[11px] text-muted">${k === 'none' ? (dayItems().some(x => x.done && x.c === c) ? 'Action faite aujourd\'hui · à planifier : ' : 'À planifier · ') + STEPS[c.step].short : (ACTIONS[effNext(c).nextType] || ACTIONS.relance).label + ' · ' + fmtDT(effNext(c).nextDate).replace(' à ', ' ')}</span></button>
+    <button class="flex-1 min-w-0 text-left" onclick="openClient(${c.id})"><b class="block text-[12.5px] truncate">${esc(c.pharma)}</b><span class="text-[11px] text-muted">${k === 'none' ? (dayItems().some(x => x.done && x.c === c) ? 'Action faite aujourd\'hui · prochaine action à planifier' : 'Prochaine action à planifier') : (ACTIONS[effNext(c).nextType] || ACTIONS.relance).label + ' · ' + fmtDT(effNext(c).nextDate).replace(' à ', ' ')}</span></button>
     ${k === 'none' ? `<button class="w-[30px] h-[30px] rounded-lg bg-ptkd text-white" aria-label="Planifier" title="Planifier" onclick="gotoPlan(${c.id})"><i class="fas fa-calendar-plus"></i></button>` : `${zsw(c.id, effNext(c)._rap ? effNext(c)._rap.id : 0, k === 'late', false)}`}</div>`).join(''); };
   const dn = dayItems().filter(x => x.done), dnH = dn.length ? `<details open class="dfd mt-2"><summary class="dfold"><span><i class="fas fa-circle-check"></i> Faites aujourd'hui · ${dn.length}</span><span>▾</span></summary><ol class="flex flex-col">${dn.map(x => itemRow2(x)).join('')}</ol></details>` : '';
   const h = grp('late', 'En retard') + grp('today', "Aujourd'hui") + grp('none', 'Sans action planifiée') + dnH;
@@ -3692,13 +3693,13 @@ const bucket = (col, r) => (col.b ? col.b(r) : cellText(col, r)) || '—';
 const cmp = (a, b) => ((a == null) - (b == null)) || (typeof a === 'number' && typeof b === 'number' ? a - b : String(a).localeCompare(String(b), 'fr', {numeric: true}));
 function filtered(tab, except = -1) {
   const T = TABLES[tab], F = ui.filters[tab] || {};
-  return T.rows().filter(r => (tab !== 'portfolio' || pfMatch(r)) && Object.entries(F).every(([i, set]) => +i === except || set.has(bucket(T.cols[i], r))));
+  return T.rows().filter(r => (tab !== 'portfolio' || pfMatch(r)) && (tab !== 'lost' || lostMatch(r)) && Object.entries(F).every(([i, set]) => +i === except || set.has(bucket(T.cols[i], r))));
 }
 function tableRows() {
   const T = TABLES[ui.tab], s = ui.sort[ui.tab] || T.sort;
   return filtered(ui.tab).sort((a, b) => cmp(T.cols[s.i].v(a), T.cols[s.i].v(b)) * (s.asc ? 1 : -1));
 }
-function setTab(k) { if (k === 'portfolio') { ui.filters.portfolio = {}; ui.pf = pfNew(); renderPipeline(); } ui.tab = k; closeColPop(); renderTiles(); renderTable(); }
+function setTab(k) { ui.pfOpen = false; if (k === 'lost') ui.lf = {motif: '', conc: new Set()}; if (k === 'portfolio') { ui.filters.portfolio = {}; ui.pf = pfNew(); renderPipeline(); } ui.tab = k; closeColPop(); renderTiles(); renderTable(); }
 function renderTiles() {
   $('tiles').innerHTML = Object.entries(TABLES).map(([k, T]) => { const on = ui.tab === k, rows = T.rows();
     if (k === 'lead') { const all = clients.filter(isLead), nr = all.filter(c => (c.lead?.statut || 'recontacter') === 'recontacter').length;
@@ -3747,43 +3748,67 @@ function pfMatch(c, skip) {
 function pfRows(skip) { const F = ui.filters.portfolio || {}, T = TABLES.portfolio; return T.rows().filter(r => pfMatch(r, skip) && Object.entries(F).every(([i, set]) => set.has(bucket(T.cols[i], r)))); }
 function pfCount() { const P = ui.pf; return Object.keys(ui.filters.portfolio || {}).length + (P.q ? 1 : 0) + (P.deps.size ? 1 : 0) + (P.rob.size ? 1 : 0) + (P.last ? 1 : 0) + (P.from || P.to ? 1 : 0); }
 function pfDirty() { const s = ui.sort.portfolio, d = TABLES.portfolio.sort; return pfCount() > 0 || ui.hid.size > 0 || (s && (s.i !== d.i || s.asc !== d.asc)); }
+const pfNg = () => { const P = ui.pf; return (P.deps.size ? 1 : 0) + (P.rob.size ? 1 : 0) + (P.last ? 1 : 0) + (P.from || P.to ? 1 : 0); };
+ui.lf = {motif: '', conc: new Set()}; ui.pfOpen = false;
 function renderPfBar() {
   const host = $('tbl-pf'), top = $('tbl-filters'); if (!host) return;
-  if (ui.tab !== 'portfolio') { host.innerHTML = ''; top.innerHTML = ''; return; }
-  const n = pfCount(), dirty = pfDirty();
-  top.innerHTML = `<button type="button" onclick="pfReset()" ${dirty ? '' : 'disabled'} class="btn !h-9 !px-3" style="${dirty ? 'background:#EDE9FE;color:#5B21B6;border:1.5px solid #C4B5FD' : 'background:#F1F5F9;color:#94A3B8;border:1.5px solid #E2E8F0;cursor:default'}" title="Efface tous les filtres et remet le tri et les colonnes par défaut. Aucune donnée n'est supprimée."><i class="fas fa-rotate-left"></i>Réinitialiser${n ? ` · ${n} filtre${n > 1 ? 's' : ''} actif${n > 1 ? 's' : ''}` : (dirty ? ' l’affichage' : '')}</button><button type="button" data-colbtn class="btn btn-g !h-9 !px-3" onclick="openColsMenu(this)" aria-haspopup="true"><i class="fas fa-gear"></i>Colonnes<i class="fas fa-chevron-down text-[10px]"></i></button>`;
-  const ae = document.activeElement, keep = ae && host.contains(ae) && ae.id ? {id: ae.id, s: ae.selectionStart, e: ae.selectionEnd} : null;
+  const ae = document.activeElement, keep = ae && ae.id && (host.contains(ae) || top.contains(ae) || $('pfmenu')?.contains(ae)) ? {id: ae.id, s: ae.selectionStart, e: ae.selectionEnd} : null;
+  if (ui.tab === 'lost') { top.innerHTML = ''; host.innerHTML = lostBar(); pfMenuHide(); }
+  else if (ui.tab !== 'portfolio') { host.innerHTML = ''; top.innerHTML = ''; pfMenuHide(); }
+  else {
+    const P = ui.pf, ng = pfNg(), n = pfCount(), dirty = pfDirty(), T = TABLES.portfolio;
+    top.innerHTML = `<label class="relative inline-block"><i class="fas fa-magnifying-glass" style="position:absolute;left:11px;top:11px;font-size:12px;color:#94A3B8"></i><input id="pf-q" class="inp" placeholder="Rechercher pharmacie ou ville" value="${esc(P.q)}" oninput="pfSet('q',this.value)" autocomplete="off" aria-label="Rechercher une pharmacie ou une ville" style="height:36px;width:230px;padding-left:30px;font-size:13px"></label>
+      <button type="button" data-pfbtn class="btn !h-9 !px-3" onclick="pfMenuToggle()" aria-haspopup="true" aria-expanded="${ui.pfOpen}" style="${ng ? 'background:#FFF7ED;border:1.5px solid #FB923C;color:#9A3412' : ''}"><i class="fas fa-sliders"></i>Filtres${ng ? ` <span style="background:#C2410C;color:#fff;border-radius:99px;padding:0 7px;font-size:11px;font-weight:700">${ng}</span>` : ''}<i class="fas fa-chevron-down text-[10px]"></i></button>
+      <button type="button" data-colbtn class="btn btn-g !h-9 !px-3" onclick="openColsMenu(this)" aria-haspopup="true"><i class="fas fa-gear"></i>Colonnes<i class="fas fa-chevron-down text-[10px]"></i></button>`;
+    const act = [];
+    if (P.q) act.push([`Recherche : « ${esc(P.q)} »`, "pfClr('q')"]);
+    if (P.deps.size) act.push([`Dép. ${[...P.deps].sort().join(', ')}`, "pfClr('dep')"]);
+    if (P.rob.size) act.push([`Robot : ${[...P.rob].map(m => (PF_ROB.find(x => x[0] === m) || [0, m])[1]).join(', ')}`, "pfClr('rob')"]);
+    if (P.last) act.push([`Dernière action : ${PF_LAST.find(x => x[0] === P.last)[1].toLowerCase()}`, "pfClr('last')"]);
+    if (P.from || P.to) act.push([`Dernière action : ${P.from ? 'du ' + fmtD(P.from) : ''}${P.from && P.to ? ' ' : ''}${P.to ? 'au ' + fmtD(P.to) : ''}`, "pfClr('range')"]);
+    Object.keys(ui.filters.portfolio || {}).forEach(i => { const f = ui.filters.portfolio[i]; act.push([`${esc(T.cols[i].l)} : ${esc([...f].slice(0, 2).join(', '))}${f.size > 2 ? '…' : ''}`, `pfClrCol(${i})`]); });
+    const rows = pfRows(), tot = sum(rows, c => c.montant), chs = rows.map(c => chOf(c)).filter(Boolean), avg = chs.length ? Math.round(chs.reduce((a, b) => a + b, 0) / chs.length) : null;
+    host.innerHTML = dirty ? `<div class="flex flex-wrap items-center gap-2 px-5 py-2 border-b border-slate-200" style="background:#F5F3FF">${n ? `<span class="text-[13px]" style="color:#4C1D95"><b>${rows.length} projet${rows.length > 1 ? 's' : ''}</b> · <b>${eur(tot)}</b> HT${avg != null ? ` · chance moyenne <b>${avg} %</b>` : ''}</span><span style="color:#C4B5FD">|</span>${act.map(([l, fn]) => `<span class="pfa">${l}<button type="button" onclick="${fn}" aria-label="Retirer ce filtre"><i class="fas fa-xmark text-[11px]"></i></button></span>`).join('')}` : '<span class="text-[13px]" style="color:#4C1D95">Tri ou colonnes modifiés</span>'}<button type="button" class="text-[12.5px] font-semibold ml-auto" style="color:#5B21B6" onclick="pfReset()" title="Efface les filtres et remet le tri et les colonnes par défaut. Aucune donnée n'est supprimée."><i class="fas fa-rotate-left mr-1"></i>Tout réinitialiser</button></div>` : '';
+    pfMenuDraw();
+  }
+  if (keep) { const el = $(keep.id); if (el) { el.focus(); try { if (keep.s != null) el.setSelectionRange(keep.s, keep.e); } catch { } } }
+}
+function pfMenuHide() { const p = $('pfmenu'); if (p) p.style.display = 'none'; }
+function pfMenuToggle() { ui.pfOpen = !ui.pfOpen; renderPfBar(); }
+function pfMenuDraw() {
+  let p = $('pfmenu');
+  if (!ui.pfOpen) { pfMenuHide(); return; }
+  if (!p) { p = document.createElement('div'); p.id = 'pfmenu'; p.className = 'card'; p.style.cssText = 'position:fixed;z-index:70;width:450px;max-width:calc(100vw - 16px);max-height:calc(100vh - 90px);overflow-y:auto;padding:16px 18px;box-shadow:0 16px 40px #0004;flex-direction:column;gap:14px'; document.body.appendChild(p);
+    document.addEventListener('click', e => { const q = $('pfmenu'); if (ui.pfOpen && q && q.style.display === 'flex' && !q.contains(e.target) && !e.target.closest('[data-pfbtn]') && e.target.isConnected) { ui.pfOpen = false; pfMenuHide(); renderPfBar(); } }); }
   const P = ui.pf, chip = (on, l, k, fn) => `<button type="button" class="pfc${on ? ' on' : ''}" aria-pressed="${on}" onclick="${fn}">${l}${k != null ? ` <b>${k}</b>` : ''}</button>`;
   const dc = {}; pfRows('dep').forEach(c => { const d = depOf(c); if (d) dc[d] = (dc[d] || 0) + 1; });
   const rc = {}; pfRows('rob').forEach(c => (c.robots || []).forEach(m => rc[m] = (rc[m] || 0) + 1));
   const rl = pfRows('last'), lc = k => { const f = PF_LAST.find(x => x[0] === k); return rl.filter(c => { const d = daysSince(lastAction(c)); return d != null && f[2](d); }).length; };
-  const deps = Object.keys(dc).sort();
-  const depChips = deps.map(d => chip(P.deps.has(d), d, dc[d], `pfDep('${d}')`)).join('');
+  const depChips = Object.keys(dc).sort().map(d => chip(P.deps.has(d), d, dc[d], `pfDep('${d}')`)).join('');
   const robChips = PF_ROB.filter(([m]) => rc[m] || P.rob.has(m)).map(([m, l]) => chip(P.rob.has(m), l, rc[m] || 0, `pfRob('${m}')`)).join('');
   const lastChips = PF_LAST.map(([k, l]) => chip(P.last === k, l, lc(k), `pfLast('${k}')`)).join('');
-  const rows = pfRows(), tot = sum(rows, c => c.montant), chs = rows.map(c => chOf(c)).filter(Boolean), avg = chs.length ? Math.round(chs.reduce((a, b) => a + b, 0) / chs.length) : null;
-  const act = []; const T = TABLES.portfolio;
-  if (P.q) act.push([`Recherche : « ${esc(P.q)} »`, "pfClr('q')"]);
-  if (P.deps.size) act.push([`Dép. ${[...P.deps].sort().join(', ')}`, "pfClr('dep')"]);
-  if (P.rob.size) act.push([`Robot : ${[...P.rob].map(m => (PF_ROB.find(x => x[0] === m) || [0, m])[1]).join(', ')}`, "pfClr('rob')"]);
-  if (P.last) act.push([`Dernière action : ${PF_LAST.find(x => x[0] === P.last)[1].toLowerCase()}`, "pfClr('last')"]);
-  if (P.from || P.to) act.push([`Dernière action : ${P.from ? 'du ' + fmtD(P.from) : ''}${P.from && P.to ? ' ' : ''}${P.to ? 'au ' + fmtD(P.to) : ''}`, "pfClr('range')"]);
-  Object.keys(ui.filters.portfolio || {}).forEach(i => { const f = ui.filters.portfolio[i]; act.push([`${esc(T.cols[i].l)} : ${esc([...f].slice(0, 2).join(', '))}${f.size > 2 ? '…' : ''}`, `pfClrCol(${i})`]); });
-  host.innerHTML = `<div class="px-5 py-3 border-b border-slate-200 flex flex-col gap-2.5 bg-slate-50/60">
-    <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
-      <label class="flex items-center gap-2"><span class="pfl">Recherche</span><input id="pf-q" class="inp !w-[210px]" placeholder="Pharmacie ou ville" value="${esc(P.q)}" oninput="pfSet('q',this.value)" autocomplete="off"></label>
-      <label class="flex items-center gap-2"><span class="pfl">Département</span><input id="pf-dep" class="inp !w-[150px]" placeholder="ex. 18, 36, 37" value="${esc(P.depTxt)}" oninput="pfDepIn(this.value)" autocomplete="off" inputmode="numeric"></label>
-      <div class="flex flex-wrap items-center gap-1.5">${depChips || '<span class="text-xs text-muted">Aucun département</span>'}</div>
-    </div>
-    <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
-      <div class="flex flex-wrap items-center gap-1.5"><span class="pfl mr-1">Robot</span>${robChips || '<span class="text-xs text-muted">—</span>'}</div>
-    </div>
-    <div class="flex flex-wrap items-center gap-x-3 gap-y-2"><span class="pfl">Dernière action</span>${lastChips}
-      <span class="text-xs text-muted ml-1">ou du</span><input id="pf-from" type="date" class="inp !w-[150px]" value="${esc(P.from)}" onchange="pfSet('from',this.value)" aria-label="Dernière action à partir du"><span class="text-xs text-muted">au</span><input id="pf-to" type="date" class="inp !w-[150px]" value="${esc(P.to)}" onchange="pfSet('to',this.value)" aria-label="Dernière action jusqu'au"></div>
-    ${act.length ? `<div class="flex flex-wrap items-center gap-2 rounded-xl border border-violet-200 bg-violet-50/70 px-3 py-2"><span class="text-[13px] text-violet-950"><b>${rows.length} projet${rows.length > 1 ? 's' : ''}</b> · <b>${eur(tot)}</b> HT${avg != null ? ` · chance moyenne <b>${avg} %</b>` : ''}</span><span class="text-violet-300">|</span>${act.map(([l, fn]) => `<span class="pfa">${l}<button type="button" onclick="${fn}" aria-label="Retirer ce filtre"><i class="fas fa-xmark text-[11px]"></i></button></span>`).join('')}</div>` : ''}
-  </div>`;
-  if (keep) { const el = $(keep.id); if (el) { el.focus(); try { if (keep.s != null) el.setSelectionRange(keep.s, keep.e); } catch { } } }
+  const nn = pfRows().length;
+  p.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center"><span style="font-weight:800;font-size:14px">Filtrer le portefeuille</span><button type="button" class="text-muted hover:text-ink w-8 h-8" onclick="ui.pfOpen=false;renderPfBar()" aria-label="Fermer"><i class="fas fa-xmark"></i></button></div>
+    <div><div class="pfl" style="margin-bottom:6px">Département</div><input id="pf-dep" class="inp" placeholder="Tapez les 2 chiffres : 18, 36, 37" value="${esc(P.depTxt)}" oninput="pfDepIn(this.value)" autocomplete="off" inputmode="numeric" style="height:34px;font-size:13px;margin-bottom:8px"><div style="display:flex;flex-wrap:wrap;gap:6px">${depChips || '<span class="text-xs text-muted">Aucun département</span>'}</div></div>
+    <div><div class="pfl" style="margin-bottom:6px">Robot</div><div style="display:flex;flex-wrap:wrap;gap:6px">${robChips || '<span class="text-xs text-muted">—</span>'}</div></div>
+    <div><div class="pfl" style="margin-bottom:6px">Dernière action</div><div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px">${lastChips}</div><div style="display:flex;align-items:center;gap:8px;font-size:12px;color:#64748B">ou du <input id="pf-from" type="date" class="inp" value="${esc(P.from)}" onchange="pfSet('from',this.value)" aria-label="Dernière action à partir du" style="height:32px;width:140px;font-size:12px"> au <input id="pf-to" type="date" class="inp" value="${esc(P.to)}" onchange="pfSet('to',this.value)" aria-label="Dernière action jusqu'au" style="height:32px;width:140px;font-size:12px"></div></div>
+    <div style="display:flex;justify-content:space-between;align-items:center;border-top:1px solid #E2E8F0;padding-top:10px"><button type="button" class="text-[13px] font-semibold" style="color:#5B21B6" onclick="pfClr('dep');ui.pf.rob=new Set();ui.pf.last='';ui.pf.from='';ui.pf.to='';pfGo()"><i class="fas fa-rotate-left mr-1"></i>Tout effacer</button><button type="button" class="btn btn-d !h-9" onclick="ui.pfOpen=false;renderPfBar()">Voir les ${nn} projet${nn > 1 ? 's' : ''}</button></div>`;
+  p.style.display = 'flex';
+  const b = document.querySelector('#tbl-filters [data-pfbtn]'); if (b) { const r = b.getBoundingClientRect(); p.style.left = Math.max(8, Math.min(r.right - 440, innerWidth - 458)) + 'px'; p.style.top = (r.bottom + 8) + 'px'; }
 }
+/* V4.5.47 : filtres rapides du tableau « Perdus » */
+const lostConc = c => String(c.perduConcurrent || '').trim();
+function lostMatch(c) { const L = ui.lf; if (L.motif === 'contre' && c.perduMotif !== 'Perdu contre') return false; if (L.motif === 'aband' && c.perduMotif === 'Perdu contre') return false; if (L.motif === 'contre' && L.conc.size && !L.conc.has(norm(lostConc(c)))) return false; return true; }
+function lostBar() {
+  const L = ui.lf, all = TABLES.lost.rows(), ct = all.filter(c => c.perduMotif === 'Perdu contre'), nb = all.length - ct.length, names = {};
+  ct.forEach(c => { const k = norm(lostConc(c)); (names[k] = names[k] || {l: lostConc(c) || 'Non précisé', n: 0}).n++; });
+  const chip = (on, l, k, fn) => `<button type="button" class="pfc${on ? ' on' : ''}" aria-pressed="${on}" onclick="${fn}">${l} <b>${k}</b></button>`;
+  const cc = L.motif === 'contre' ? `<span style="width:1px;height:22px;background:#CBD5E1;margin:0 6px"></span><span class="pfl mr-1">Concurrent</span>${Object.entries(names).sort((a, b) => b[1].n - a[1].n).map(([k, v]) => chip(L.conc.has(k), esc(v.l), v.n, `lfConc(decodeURIComponent('${encodeURIComponent(k).replace(/'/g, '%27')}'))`)).join('')}` : '';
+  const rows = filtered('lost');
+  return `<div class="px-5 py-3 border-b border-slate-200" style="background:#F8FAFC"><div class="flex flex-wrap items-center gap-2"><span class="pfl mr-1">Motif</span>${chip(!L.motif, 'Tous', all.length, "lfMotif('')")}${chip(L.motif === 'contre', 'Perdu contre un concurrent', ct.length, "lfMotif('contre')")}${chip(L.motif === 'aband', 'Abandonné', nb, "lfMotif('aband')")}${cc}<span class="ml-auto text-[13px]" style="color:#475569"><b>${rows.length} dossier${rows.length > 1 ? 's' : ''}</b> · <b>${eur(sum(rows, c => c.montant))}</b> HT</span></div></div>`;
+}
+function lfMotif(m) { const L = ui.lf; L.motif = L.motif === m ? '' : m; if (L.motif !== 'contre') L.conc = new Set(); renderTable(); }
+function lfConc(k) { const s = ui.lf.conc; if (s.has(k)) s.delete(k); else s.add(k); renderTable(); }
 const pfGo = () => { renderTable(); };
 function pfSet(k, v) { ui.pf[k] = v; pfGo(); }
 function pfDepIn(v) { const P = ui.pf; P.depTxt = v; P.deps = new Set((v.toUpperCase().match(/2[AB]|\d{1,2}/g) || [])); pfGo(); }
