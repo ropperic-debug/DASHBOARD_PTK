@@ -291,6 +291,8 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 .v5-todo{border:2px dashed #EA580C;background:#FFF7ED;border-radius:14px;padding:10px 14px}.v5-todo .t{font-weight:800;font-size:13.5px}.v5-todo .t span{font-weight:600;font-size:12px;color:#9A3412}
 .v5-todo .ap-c{margin-top:7px}.v4-manrow.hidden{display:none}.v5-todo .chip{cursor:pointer}
 .tab2{height:36px;border-radius:9px;font-weight:700;font-size:13px;color:#64748B;display:flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap}.tab2.tab-on{background:#fff;color:#0F172A;box-shadow:0 1px 3px rgba(15,23,42,.15)}.tab2 .cnt{background:#E2E8F0;color:#334155;border-radius:999px;padding:0 7px;font-size:11px;line-height:18px}#todo-t-late .cnt{background:#FEE2E2;color:#B42318}.tab2:focus-visible{outline:2px solid #F97316}
+#view-client .fz-off{display:none!important}
+#f-secnav button.sn-on{background:#FFF7ED;box-shadow:inset 0 0 0 2px #EA580C}
 /* V2.8 : fiche sans bloc Étape en cours, bouton Dossier perdu */
 #f-stage{display:none!important}
 .zlost{margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:11px;border:2px solid #DC2626;background:#FEF2F2;color:#B91C1C;font-weight:800;font-size:13.5px}.zlost:hover{background:#FEE2E2}
@@ -680,7 +682,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
     <div data-pane="projet" class="w-full lg:flex-[7] min-w-0 flex flex-col gap-4">
       <div id="f-banner"></div>
 
-      <nav id="f-secnav" style="display:none" aria-label="Sections de la fiche" class="sticky top-[118px] lg:top-[62px] z-20 bg-white/95 backdrop-blur border border-slate-200 rounded-2xl p-1 shadow-sm flex gap-1 overflow-x-auto"></nav>
+      <nav id="f-secnav" aria-label="Sections de la fiche" class="sticky top-[118px] lg:top-[62px] z-20 bg-white/95 backdrop-blur border border-slate-200 rounded-2xl p-1 shadow-sm flex gap-1 overflow-x-auto"></nav>
       <div id="f-todo" style="display:none"></div>
       <section id="f-project" class="flex flex-col gap-4">
         <div class="fz flex flex-col gap-4" data-zone="1">
@@ -700,10 +702,6 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
           <div><label class="lbl" for="f-opp">Origine</label><select id="f-opp" class="inp"><option>Lead interne</option><option>Lead externe</option><option>Événement</option><option>Salon Pharmagora</option></select></div>
         </div>
         <div id="f-qual-box"></div>
-        <div id="f-type-box"></div>
-        <div class="flex flex-col gap-3 pt-1">
-          <div id="sec-2" class="scroll-mt-36 flex items-center gap-2 text-[11px] font-extrabold tracking-wider text-slate-500 pt-1"><span>L'OFFICINE · ce que vous demandez au client</span><span class="flex-1 h-px bg-slate-200"></span><span id="sst-2" class="hidden"></span></div>
-          <div id="f-det-box"></div>
         <div id="f-sit-box" class="fbox ok"><div class="flex justify-between items-center gap-2 mb-2.5"><span class="text-[13px] font-bold text-ink flex items-center gap-2"><i class="fas fa-circle-check text-emerald-700"></i>L'officine est-elle déjà robotisée ?</span><span id="f-sit-act" class="flex items-center gap-1"></span></div>
           <div id="f-sit-sum" class="hidden flex flex-wrap items-center gap-2"></div>
           <div id="f-sit-edit"><div class="flex flex-wrap gap-2"><label class="cursor-pointer"><input type="radio" name="f-sit" value="first" class="peer sr-only" checked onchange="sitSet('first')"><span class="inline-flex items-center gap-2 h-10 px-4 rounded-full border-2 border-slate-300 text-[13px] font-semibold text-slate-700 peer-checked:bg-orange-50 peer-checked:border-orange-500 peer-checked:text-orange-900 peer-focus-visible:ring-2 ring-orange-300"><i class="fas fa-seedling"></i>Non, premier robot</span></label>
@@ -716,25 +714,32 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
             <div class="w-28"><label class="lbl" for="f-rc-annee">Installé en</label><input id="f-rc-annee" type="number" min="1990" max="2100" class="inp" placeholder="2015"></div>
             <div class="min-w-[170px] flex-1"><label class="lbl" for="f-rc-projet">Projet envisagé</label><select id="f-rc-projet" class="inp"><option value="remplacement">Remplacement</option><option value="extension">Extension</option><option value="peripheriques">Périphériques</option></select></div>
           </div></div></div>
+        <div id="f-type-box"></div>
+        <div class="flex flex-col gap-3 pt-1">
+          <div id="sec-2" class="scroll-mt-36 flex items-center gap-2 text-[11px] font-extrabold tracking-wider text-slate-500 pt-1"><span>L'OFFICINE · ce que vous demandez au client</span><span class="flex-1 h-px bg-slate-200"></span><span id="sst-2" class="hidden"></span></div>
+          <div id="f-det-box"></div>
+                </div>
+        <div id="f-impl-box"></div>
         </div>
-        </div>
-        <div class="fz flex flex-col gap-3" data-zone="3"><div id="sec-3" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">2</span><h2 class="h2">Besoins et argumentaire</h2><span id="sst-3" class="ml-auto text-xs font-semibold"></span></div>
-        <div id="f-besoins-box"></div></div>
-        <div class="fz flex flex-col gap-3" data-zone="4"><div id="sec-4" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">3</span><h2 class="h2">Offre de robotisation</h2><span id="sec-offre-ico" class="inline-flex items-center gap-1"></span><span id="sst-4" class="ml-auto text-xs font-semibold"></span></div>
+        <div class="fz flex flex-col gap-3" data-zone="4"><div id="sec-4" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">2</span><h2 class="h2">Offre de robotisation</h2><span id="sec-offre-ico" class="inline-flex items-center gap-1"></span><span id="sst-4" class="ml-auto text-xs font-semibold"></span></div>
         <div id="f-off-tabs"></div>
         <div class="offer-card">
         <div id="f-strip"></div>
         <div id="f-models-box"></div>
+        <div id="f-cap-box"></div>
         <div id="f-devis-box"></div>
         <div id="f-offre-box"></div>
         <div id="f-op-box"></div>
-        <div id="f-impl-box"></div>
-        <div id="f-arg-box"></div></div></div>
+        </div></div>
+        <div class="fz flex flex-col gap-3" data-zone="3"><div id="sec-3" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">3</span><h2 class="h2">Besoins et argumentaire</h2><span id="sst-3" class="ml-auto text-xs font-semibold"></span></div>
+        <div id="f-besoins-box"></div></div>
+        <div class="fz flex flex-col gap-3" data-zone="6"><div id="sec-6" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">4</span><h2 class="h2">Préparation de l'offre et de l'argumentaire</h2><span id="sst-6" class="ml-auto text-xs font-semibold"></span></div>
+        <div id="f-arg-box"></div></div>
                 <p id="f-tip" class="m-0 text-xs text-amber-900"></p>
       </section>
 
       <div class="fz flex flex-col gap-3" data-zone="5">
-      <div id="sec-5" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap px-1"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">4</span><h2 class="h2">Notes et prochaine action</h2><span id="sst-5" class="ml-auto text-xs font-semibold"></span></div>
+      <div id="sec-5" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap px-1"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">5</span><h2 class="h2">Notes et prochaine action</h2><span id="sst-5" class="ml-auto text-xs font-semibold"></span></div>
       <div class="suivi-grid">
       <details id="f-crcard" class="card">
         <summary class="flex justify-between items-center gap-3 p-5">
@@ -1304,6 +1309,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.51</b> : (1) <b>Fiche en 5 onglets</b> : Projet et officine, Offre de robotisation, Besoins et argumentaire, Préparation de l’offre, Suivi (un seul onglet affiché à la fois) ; (2) <b>« L’officine est-elle déjà robotisée ? »</b> remontée tout en haut du projet ; l’implantation (plan et photos) est dans l’onglet Projet ; (3) <b>« Produits en stock » devient « Stock actuel de l’officine »</b>, comparé à la <b>capacité du robot</b> dans l’onglet Offre (marge de croissance) et dans les Indicateurs clés du PDF de l’offre (jauge) ; (4) <b>curseur « Temps de délivrance »</b> par client (temps actuel par ordonnance et temps gagné) dans l’onglet Projet.</li>
 <li><b>V4.5.50</b> : <b>Page de garde SINTESI XL</b> : nouvelle image du robot sur toutes les offres et synthèses SINTESI XL (mono et double bras).</li>
 <li><b>V4.5.49</b> : <b>PDF de l’offre, « Caractéristiques techniques »</b> : la pastille verte « ECO » ne recouvre plus le titre « Absorption électrique maximale » ; elle est placée à droite de la valeur.</li>
 <li><b>V4.5.48</b> : (1) <b>Commissions</b> : l’étiquette « FINANCEMENT NANCEO » ne chevauche plus le nom de la pharmacie (étiquette « NANCEO », détail d’installation sur deux lignes) ; (2) <b>GENESI, options</b> : plus de photo, une ligne simple avec une icône (Couleur, Plateau supérieur en verre) dans la fiche, l’argumentaire PDF et l’offre PDF ; les options des robots SINTESI gardent leurs visuels.</li>
@@ -1415,7 +1421,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>V1.9</b> : toutes les actions se créent dans la même fenêtre « Planifier une action » : bouton noir « Nouvelle action », icônes de « Prochaine action » (Relance, Rappel, Appel, Visite, Visio, E-mail) et « Replanifier » (même présentation, mêmes champs, mêmes modèles de message).</li>
 <li><b>V1.8</b> : bouton <b>Synchro</b> en haut, à gauche de « Nouveau client », avec l'heure de la dernière synchronisation et la version (vert : à jour ; orange : en attente ; rouge : problème ; un toucher relance) ; <b>CA signé</b> détaillé (SINTESI, GENESI, add-ons) et graphique empilé par type avec le cumul ; bouton <b>Imprimer la synthèse seule</b> dans « Synthèse de l'offre » (sans couverture ni argumentaire).</li>
 <li><b>V1.7</b> : le choix du modèle laisse la fenêtre ouverte pour cocher les options (nouvelle option « Double bras ») ; en quittant une fiche, vous revenez toujours au Portefeuille ; le numéro de version et l'état de la synchronisation (vert, orange, rouge) s'affichent en haut de l'écran d'accueil.</li>
-<li><b>Fiche en 5 sections</b> (barre de navigation collée en haut, avec l'état de chaque section) : ① Projet, ② Détail de l'officine (LGO, postes, dossiers, boîtes, distances, positions du robot, robot déjà en place avec marque, modèle et année), ③ Besoins, ④ Offre de robotisation (icône du modèle choisi), ⑤ Suivi. Une donnée saisie une seule fois se met à jour partout (offre, synthèse, PDF, argumentaire). TechniLab est ajouté à la liste des robots.</li>
+<li><b>Fiche en 5 onglets</b> (barre d'onglets collée en haut, avec l'état de chaque onglet) : ① <b>Projet et officine</b> (« L'officine est-elle déjà robotisée ? » et type de projet en haut, activité avec le « Stock actuel de l'officine », temps de délivrance réglable, déplacements, réception des commandes, position du robot, implantation plan et photos), ② <b>Offre de robotisation</b> (robot, stock actuel face à la capacité du robot, devis, options), ③ <b>Besoins et argumentaire</b>, ④ <b>Préparation de l'offre</b> (génération des PDF), ⑤ <b>Suivi</b>.</li>
 <li><b>Action réalisée</b> : le dashboard demande la date et l'heure effectives (calendrier), préremplies avec le moment présent.</li>
 <li><b>Bouton « Valider » flottant</b> : pendant que vous modifiez « Construction de l'offre » ou « Devis réalisé », il reste visible à droite de l'écran.</li>
 <li><b>Dossier perdu ou abandonné</b> : bouton rouge en haut à droite du cadre 1 (Projet) de la fiche, visible tant que le dossier est actif. Une confirmation et le motif vous sont demandés, puis l'événement est noté dans l'historique.</li>
@@ -2093,7 +2099,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.50';
+const APP_VERSION = '4.5.51';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2144,7 +2150,7 @@ const hyp = () => ({...HYP_D, ...(settings.hyp || {})});
 const PHARMALOAD_CAD = 300;
 const ptkOf = c => ({options: c?.options || [], positions: c?.positions || [], dc: c?.distCpt ?? '', dist: c?.distJ ?? '', pas: c?.pasJ ?? '', pasLong: c?.pasLong || PAS_M, postes: '', dossiers: '', boites: '', stock: '', use: {}, bo: {h: 2, taux: hyp().boGain, valid: false}, ...(c?.ptk || {})});
 function ptkCalc(P) {
-  const H = {...hyp(), ...(+P.gainPct > 0 ? {gainPct: +P.gainPct} : {})}, n = x => +x || 0, U = P.use || {}, bo = P.bo || {h: 2, taux: H.boGain};
+  const H = {...hyp(), ...(+P.gainPct > 0 ? {gainPct: +P.gainPct} : {}), ...(+P.delivMin > 0 ? {delivMin: +P.delivMin} : {})}, n = x => +x || 0, U = P.use || {}, bo = P.bo || {h: 2, taux: H.boGain};
   const dos = U.dossiers ? n(P.dossiers) : 0, box = U.boites ? n(P.boites) : 0, pst = U.postes ? n(P.postes) : 0, stk = U.stock ? n(P.stock) : 0;
   const bpd = dos && box ? box / dos : 0, traj = bpd ? Math.max(1, Math.ceil(bpd / H.bTrajet)) : 1;
   const distAuto = dos && n(P.dc) ? dos * traj * 2 * n(P.dc) : 0, dist = n(P.dist) || distAuto, L = n(P.pasLong) || PAS_M;
@@ -4377,7 +4383,7 @@ const leadBanner = c => {
     ${cr}${ets}</div>`;
 };
 function newProject() { closeDlg('dlg-newtype'); ui.editId = null; ui.formStep = 'Contact'; ui.coordEdit = true; fillForm(null); showView('client'); setPane('coord'); setTimeout(() => $('s-q').focus(), 300); }
-function openClient(id) { if (id !== ui.editId && guardLeave(() => openClient(id))) return; if (ui.pendingDone && ui.pendingDone.id !== id) revertDone(); const c = byId(id); if (!c) return; delete c._rk; try { if (v41Auto(c)) save(); } catch (e) {} ui.editId = id; ui.coordEdit = false; try { fillForm(c); } catch (e) { console.error(e); toast('Fiche ouverte avec une erreur d\'affichage : ' + (e && e.message || e), true); } showView('client'); setPane('projet'); if (c.step === 'R1' && opt('qual') && !QUAL.seen.has(id)) { QUAL.seen.add(id); setTimeout(() => qualOpen(id), 350); } }
+function openClient(id) { if (id !== ui.editId && guardLeave(() => openClient(id))) return; if (ui.pendingDone && ui.pendingDone.id !== id) revertDone(); const c = byId(id); if (!c) return; delete c._rk; try { if (v41Auto(c)) save(); } catch (e) {} ui.editId = id; ui.coordEdit = false; if (ui.zoneFor !== id) { ui.zone = 1; ui.zoneFor = id; } try { fillForm(c); } catch (e) { console.error(e); toast('Fiche ouverte avec une erreur d\'affichage : ' + (e && e.message || e), true); } showView('client'); setPane('projet'); if (c.step === 'R1' && opt('qual') && !QUAL.seen.has(id)) { QUAL.seen.add(id); setTimeout(() => qualOpen(id), 350); } }
 function initSelects() {
   $('f-lgo').innerHTML = '<option value="">— Non renseigné —</option>' + LGOS.map(x => `<option>${x}</option>`).join('') + '<option>Autre</option>';
   $('f-rc-marque').innerHTML = ROBOTS_CONC.map(x => `<option>${x}</option>`).join('') + '<option>Pharmathek</option><option>Autre</option>';
@@ -4400,7 +4406,7 @@ function mxRead() {
   if ($('f-opt-box')) { M.options = q('f-opt');
     if (document.querySelector('input[name=f-arg]')) { M.args = {}; document.querySelectorAll('input[name=f-arg]').forEach(x => { if (x.value === 'plan') M.args.plan = x.checked; else if (!x.checked) M.args[x.value] = false; }); }
     if ($('f-cm')) M.comment = {text: $('f-cm').value, on: $('f-cmon') ? $('f-cmon').checked : true, auto: !!(M.comment && M.comment.auto) && !!$('f-cm').value.trim()};
-    if ($('f-gp')) { const g = +$('f-gp').value; M.gainPct = g && g !== hyp().gainPct ? g : ''; }
+    if ($('f-gp')) { const g = +$('f-gp').value; M.gainPct = g && g !== hyp().gainPct ? g : ''; } if ($('f-dm')) { const d = +$('f-dm').value; M.delivMin = d && d !== hyp().delivMin ? d : ''; }
     if ($('f-boh')) { M.bo = {h: +v('f-boh') || 0, taux: +v('f-botx') || 0, valid: M.bo.valid || JSON.stringify([+v('f-boh') || 0, +v('f-botx') || 0]) !== ui.mx0}; } }
 }
 
@@ -4434,7 +4440,10 @@ function renderDetail() {
       ${row('Postes de vente', 'Nombre de comptoirs de délivrance', num('f-postes', M.postes, 'ex. 4', "detIn('postes')"), 'postes', tg('postes'), 'Gain par poste de vente')}
       ${row('Dossiers par jour', 'Ordonnances traitées en moyenne', num('f-dossiers', M.dossiers, 'ex. 220', "detIn('dossiers')"), 'dossiers', tg('dossiers'), 'Temps de délivrance gagné')}
       ${row('Boîtes délivrées par jour', 'Boîtes sorties du robot', num('f-boites', M.boites, 'ex. 680', "detIn('boites')"), 'boîtes', tg('boites'), 'Cadence et trajets')}
-      ${row('Produits en stock', 'Boîtes à stocker', num('f-stock', M.stock, 'ex. 21000', "detIn('stock')"), 'boîtes', tg('stock'), 'Capacité du robot (page Solution)')}</tbody></table>`)}
+      ${row('Stock actuel de l\'officine', 'Boîtes en rayon aujourd\'hui (≠ capacité du robot)', num('f-stock', M.stock, 'ex. 21000', "detIn('stock')"), 'boîtes', tg('stock'), 'Comparé à la capacité du robot')}</tbody></table>`)}
+    ${card('Temps de délivrance', 'Réglable pour ce client', `<div class="py-2.5 flex flex-col gap-3"><div class="grid sm:grid-cols-[230px_1fr_90px] gap-3 items-center"><label class="font-bold text-[13px]" for="f-dm">Temps de délivrance actuel<span class="block font-normal text-[11.5px] text-muted">par ordonnance, sans robot</span></label><input type="range" id="f-dm" min="2" max="20" step="0.5" value="${C.H.delivMin}" class="w-full accent-orange-700" oninput="gpSet()"><b id="f-dm-v" class="text-ptkd text-lg text-right">${C.H.delivMin.toLocaleString('fr-FR')} min</b></div>
+      <div class="grid sm:grid-cols-[230px_1fr_90px] gap-3 items-center"><label class="font-bold text-[13px]" for="f-gp">Temps gagné avec le robot<span class="block font-normal text-[11.5px] text-muted">de 20 % (prudent) à 50 %</span></label><input type="range" id="f-gp" min="20" max="50" step="5" value="${C.H.gainPct}" class="w-full accent-orange-700" oninput="gpSet()"><b id="f-gp-v" class="text-ptkd text-lg text-right">${C.H.gainPct} %</b></div>
+      <p id="f-gp-t" class="rounded-lg bg-emerald-50 border border-emerald-200 px-3 py-2 text-[12.5px] text-emerald-950">${dmTxt(C)}</p></div>`)}
     ${card('B · Les déplacements', `Parcours = dossiers × trajets × 2 × distance (un trajet porte ${H.bTrajet} boîtes)`, `<table class="w-full">${head('Donnée', 'Valeur', 'Origine', 'Sert à')}<tbody>
       ${row('Distance comptoirs → back-office', '', `<input type="number" min="0" step="0.5" id="f-dc" class="inp !w-32 !h-10 font-bold" value="${esc(M.dc)}" oninput="mxDist('auto');detState()" placeholder="ex. 9">`, 'mètres', '<span class="text-[12.5px] text-muted">Saisie par vous</span>', 'Pas et kilomètres évités')}
       ${row('Longueur d\'un pas', '', `<input type="number" min="0.3" max="1.2" step="0.05" id="f-pasl" class="inp !w-32 !h-10 font-bold" value="${M.pasLong}" oninput="mxDist('auto')">`, 'mètre', '<span class="text-[12.5px] text-muted">0,75 par défaut</span>', 'Conversion mètres → pas')}
@@ -4455,10 +4464,23 @@ function lgoSync(from) {
   if (from === 'd' && typeof setDirty === 'function') setDirty(true);
   secStat();
 }
-const SEC_NAMES = [[1, 'Projet et officine'], [3, 'Besoins et argumentaire'], [4, 'Offre'], [5, 'Notes et prochaine action']];
+const SEC_NAMES = [[1, 'Projet et officine'], [4, 'Offre de robotisation'], [3, 'Besoins et argumentaire'], [6, "Préparation de l'offre"], [5, 'Suivi']];   /* V4.5.51 : onglets */
+function fzShow(n) { ui.zone = n; document.querySelectorAll('#view-client .fz[data-zone]').forEach(z => z.classList.toggle('fz-off', !!n && +z.dataset.zone !== n)); if ($('f-secnav')) secStat(); }
+function fzTab(n) { fzShow(n); const nv = $('f-secnav'); if (nv) { const nt = nv.getBoundingClientRect().top + window.scrollY; if (window.scrollY > nt - 130) window.scrollTo({top: Math.max(0, nt - 130)}); } try { capDraw(); } catch (e) { } }
+(function () { const o = Element.prototype.scrollIntoView; Element.prototype.scrollIntoView = function (a) { try { const z = this.closest && this.closest('#view-client .fz[data-zone]'); if (z && z.classList.contains('fz-off')) fzShow(+z.dataset.zone); } catch (e) { } return o.call(this, a); }; })();
 let secT = null;
 function secStat() { clearTimeout(secT); secT = setTimeout(secDraw, 120); }
+function capDraw() {
+  const box = $('f-cap-box'); if (!box) return; const c = ui.editId ? byId(ui.editId) : null, M = mxGet(), stk = +M.stock || 0;
+  const capS = c && c.offre && c.offre.tech && c.offre.tech.capacite || '', cap = parseInt(String(capS).replace(/[\s\u00a0\u202f.]/g, '').match(/\d+/)?.[0] || '', 10) || 0, f = x => Math.round(x).toLocaleString('fr-FR');
+  const bx = (t, v, sub) => `<div class="rounded-xl border border-slate-200 bg-white p-3"><div class="text-[11.5px] font-extrabold uppercase tracking-wide text-orange-800">${t}</div><div class="text-2xl font-extrabold mt-1">${v}</div><div class="text-[11.5px] text-muted">${sub}</div></div>`;
+  let res = '';
+  if (stk && cap) res = cap >= stk ? `Marge de croissance : <b>+${f(cap - stk)} boîtes (+${Math.round((cap / stk - 1) * 100)} %)</b> · ${Math.round(stk / cap * 100)} % de la capacité utilisés` : `Le stock actuel dépasse la capacité du robot de <b>${f(stk - cap)} boîtes</b> : à vérifier avec le client.`;
+  else if (!stk) res = 'Renseignez le « Stock actuel de l\'officine » (onglet Projet et officine) pour comparer.'; else res = 'Importez le devis, ou saisissez la capacité dans l\'offre, pour comparer.';
+  box.innerHTML = `<div class="rounded-xl border-2 border-orange-300 bg-orange-50/60 p-3.5 flex flex-col gap-2.5"><div class="font-extrabold text-[13.5px] text-orange-900">Stock et capacité</div><div class="grid sm:grid-cols-2 gap-3">${bx('Stock actuel de l\'officine', stk ? f(stk) + ' boîtes' : '—', 'Saisi dans « Projet et officine »')}${bx('Capacité du robot proposé', cap ? f(cap) + ' boîtes' : '—', cap ? 'Reprise du devis ou de l\'offre' : 'Pas encore renseignée')}</div><div class="rounded-lg bg-white border border-orange-200 px-3 py-2 text-[12.5px] text-orange-950 flex flex-wrap items-center justify-between gap-2"><span>${res}</span>${c ? `<button type="button" class="btn btn-g !h-8" onclick="openOffre(ui.editId)">Modifier la capacité dans l'offre</button>` : ''}</div></div>`;
+}
 function secDraw() {
+  try { capDraw(); } catch (e) { }
   if (!$('f-secnav') || !ui.editId && ui.editId !== null && false) return;
   let d; try { d = collectRaw(); } catch (e) { return; }
   const c = ui.editId ? byId(ui.editId) : null, M = mxGet(), has = x => x !== '' && x != null && +x !== 0;
@@ -4467,21 +4489,23 @@ function secDraw() {
     2: [],
     3: [(d.besoins || []).length > 0],
     4: [(d.robots || []).length > 0, !!(d.devis && d.devis.statut), !!(c && c.offre && c.offre.lignes && c.offre.lignes.length)],
-    5: [!!(c && ((c.history || []).length || (c.notes || '').trim()))]};
+    5: [!!(c && ((c.history || []).length || (c.notes || '').trim()))],
+    6: []};
   /* V4.4.4 : ce qu'il reste à faire, étape par étape (libellé, champ à atteindre) */
   const SL = {
     1: [['Échéance', 'f-ech'], ['Date de décision', 'f-decision'], ['Montant', 'f-montant'], ['Type de projet', 'f-type-box'], ['Chance de signature', 'f-ind-box'], ['LGO', 'f-lgo'], ['Postes', 'sec-2'], ['Dossiers', 'sec-2'], ['Boîtes / jour', 'sec-2'], ['Dispensations (DC)', 'f-dc'], ['Positions', 'sec-2']],
     2: [],
     3: [['Cocher au moins un besoin', 'f-besoins-box']],
     4: [['Choisir un robot', 'f-models-box'], ['Statut du devis', 'f-devis-box'], ["Chiffrer l'offre", 'sec-4']],
-    5: [['Une note ou un échange', 'sec-5']]};
+    5: [['Une note ou un échange', 'sec-5']],
+    6: []};
   const MISS = n => S[n].map((v, i) => v ? null : SL[n][i]).filter(Boolean);
   const goto = id => `(document.getElementById('${id}')||document.getElementById('sec-2')).scrollIntoView({behavior:'smooth',block:'center'})`;
   const todo = SEC_NAMES.filter(([n]) => MISS(n).length);
-  if ($('f-todo')) $('f-todo').innerHTML = todo.length ? `<div class="v44-todo"><div class="v44-th">Reste à faire <span>· cliquez sur un point pour aller au champ</span></div>${todo.map(([n, t]) => { const m = MISS(n); return `<div class="v44-tr"><span class="v44-n">${n}</span><b>${t}</b><div class="v44-tc">${m.map(x => `<a href="#" onclick="${goto(x[1])};return false">${x[0]}</a>`).join('')}</div><em>${m.length}</em></div>`; }).join('')}</div>` : '';
-  $('f-secnav').innerHTML = SEC_NAMES.map(([n, t]) => { const a = S[n], k = a.filter(Boolean).length, st = k === a.length ? 'complet' : k === 0 ? 'à renseigner' : `${k} sur ${a.length}`, col = k === a.length ? 'text-emerald-700' : k === 0 ? 'text-slate-500' : 'text-amber-700';
+  if ($('f-todo')) $('f-todo').innerHTML = todo.length ? `<div class="v44-todo"><div class="v44-th">Reste à faire <span>· cliquez sur un point pour aller au champ</span></div>${todo.map(([n, t]) => { const m = MISS(n); return `<div class="v44-tr"><span class="v44-n">${SEC_NAMES.findIndex(x => x[0] === n) + 1}</span><b>${t}</b><div class="v44-tc">${m.map(x => `<a href="#" onclick="${goto(x[1])};return false">${x[0]}</a>`).join('')}</div><em>${m.length}</em></div>`; }).join('')}</div>` : '';
+  $('f-secnav').innerHTML = SEC_NAMES.map(([n, t], ix) => { const a = S[n], emp = !a.length, k = a.filter(Boolean).length, st = emp ? 'PDF' : k === a.length ? 'complet' : k === 0 ? 'à renseigner' : `${k} sur ${a.length}`, col = emp ? 'text-slate-500' : k === a.length ? 'text-emerald-700' : k === 0 ? 'text-slate-500' : 'text-amber-700';
     const t2 = $('sst-' + n); if (t2) { t2.textContent = st; t2.className = 'ml-auto text-xs font-semibold ' + col; }
-    return `<button type="button" class="shrink-0 flex items-center gap-2 min-h-11 py-1.5 px-3 rounded-xl hover:bg-slate-50 text-left" onclick="document.getElementById('sec-${n}').scrollIntoView({behavior:'smooth',block:'start'})"><span class="w-6 h-6 rounded-full ${k === a.length ? 'bg-emerald-600' : 'bg-orange-600'} text-white text-xs font-bold flex items-center justify-center">${k === a.length ? '✓' : n}</span><span class="leading-tight"><b class="block text-[12.5px] text-ink">${t}</b><span class="block text-[11px] font-semibold ${col}">${st}</span>${(() => { const m = MISS(n); return m.length ? `<span class="v44-mq">${m.slice(0, 2).map(x => `<i>${x[0]}</i>`).join('')}${m.length > 2 ? `<i class="v44-mo">+${m.length - 2}</i>` : ''}</span>` : ''; })()}</span></button>`; }).join('');
+    return `<button type="button" class="shrink-0 flex items-center gap-2 min-h-11 py-1.5 px-3 rounded-xl hover:bg-slate-50 text-left ${(ui.zone || 1) === n ? 'sn-on' : ''}" onclick="fzTab(${n})"><span class="w-6 h-6 rounded-full ${!emp && k === a.length ? 'bg-emerald-600' : 'bg-orange-600'} text-white text-xs font-bold flex items-center justify-center">${!emp && k === a.length ? '✓' : ix + 1}</span><span class="leading-tight"><b class="block text-[12.5px] text-ink">${t}</b><span class="block text-[11px] font-semibold ${col}">${st}</span>${(() => { const m = MISS(n); return m.length ? `<span class="v44-mq">${m.slice(0, 2).map(x => `<i>${x[0]}</i>`).join('')}${m.length > 2 ? `<i class="v44-mo">+${m.length - 2}</i>` : ''}</span>` : ''; })()}</span></button>`; }).join('');
   const ic = (d.robots || []).map(m => robotIco(m, 26)).join('');
   if ($('sec-offre-ico')) $('sec-offre-ico').innerHTML = ic || '<i class="fas fa-robot text-slate-300 text-lg" aria-hidden="true"></i>';
 }
@@ -4524,7 +4548,7 @@ function mxView(locked, sel = []) {
     if (M.positions.length) L.push(`<div><span class="lbl">Positions du robot</span><div class="flex flex-wrap gap-1.5">${M.positions.map(o => `<span class="chip-ok"><i class="fas fa-location-dot text-[11px]"></i>${esc(o)}</span>`).join('')}</div></div>`);
     if ((M.comment || {}).text && M.comment.text.trim()) L.push(`<div><span class="lbl">Commentaire complémentaire${M.comment.on === false ? ' (non affiché)' : ''}</span><p class="text-[13px] whitespace-pre-line">${esc(M.comment.text)}</p></div>`);
     const offA = ARGS_DEF.filter(x => (M.args || {})[x[0]] === false); if (offA.length) L.push(`<p class="text-[12px] text-muted">Masqués dans l'argumentaire : ${offA.map(x => esc(x[1])).join(' · ')}</p>`);
-    const act = [['postes', 'Postes en vente', M.postes], ['dossiers', 'Dossiers/jour', M.dossiers], ['boites', 'Boîtes/jour', M.boites], ['stock', 'Produits en stock', M.stock]].filter(x => x[2] !== '' && x[2] != null).map(x => `<span class="chip-ok ${U[x[0]] ? '' : '!bg-slate-100 !text-slate-500 !border-slate-300'}">${x[1]} : <b>${fmt(x[2])}</b>${U[x[0]] ? '' : ' (non pris en compte)'}</span>`);
+    const act = [['postes', 'Postes en vente', M.postes], ['dossiers', 'Dossiers/jour', M.dossiers], ['boites', 'Boîtes/jour', M.boites], ['stock', 'Stock actuel', M.stock]].filter(x => x[2] !== '' && x[2] != null).map(x => `<span class="chip-ok ${U[x[0]] ? '' : '!bg-slate-100 !text-slate-500 !border-slate-300'}">${x[1]} : <b>${fmt(x[2])}</b>${U[x[0]] ? '' : ' (non pris en compte)'}</span>`);
     if (act.length) L.push(`<div class="flex flex-wrap gap-1.5">${act.join('')}</div>`);
     const di = [M.dc !== '' && M.dc != null ? `Distance comptoirs tiroirs Backoffice : <b>${fmt(M.dc)} m</b>` : ''].filter(Boolean);
     if (di.length) L.push(`<p class="text-[13px] text-slate-700">${di.join(' · ')}</p>`);
@@ -4546,14 +4570,14 @@ function mxView(locked, sel = []) {
       <div><label class="lbl" for="f-boh">Heures / jour</label><input type="number" id="f-boh" class="inp" min="0" max="8" step="0.25" value="${bo.h}" oninput="mxBo()"></div>
       <div><label class="lbl" for="f-botx">Gain robot (%)</label><input type="number" id="f-botx" class="inp" min="0" max="100" step="5" value="${bo.taux}" oninput="mxBo()"></div></div>
       <p class="text-[11.5px] mt-1.5 ${bo.valid ? 'text-emerald-700 font-semibold' : 'text-muted'}">${bo.valid ? 'Valeur ajustée avec le client : prise en compte dans l\'argumentaire.' : 'Estimation par défaut (2 h/jour, gain 50 %) : à ajuster après la découverte.'}</p></div>
-    <div class="gpbox"><div class="flex justify-between items-center gap-2"><span class="lbl !mb-0">Temps gagné par vente et par poste</span><b id="f-gp-v" class="text-ptkd text-lg">${C.H.gainPct} %</b></div><input type="range" id="f-gp" min="20" max="50" step="5" value="${C.H.gainPct}" class="w-full accent-orange-700 mt-2" oninput="gpSet()"><div class="flex justify-between text-[10.5px] text-muted"><span>20 % prudent</span><span>30 % minimum</span><span>50 %</span></div><p id="f-gp-t" class="text-[12.5px] font-semibold mt-1.5">${gpTxt(C)}</p></div>
     <div id="f-mx-res" class="rounded-xl bg-orange-50/60 border border-orange-200 p-3">${mxResHtml(C, M)}</div>
     <details class="text-[12.5px]"><summary class="cursor-pointer font-semibold text-slate-700">Hypothèses de calcul (modifiables)</summary><div class="grid grid-cols-2 sm:grid-cols-3 gap-2 mt-2">${[['delivMin', 'Temps moyen de délivrance (min)'], ['gainPct', 'Gain minimal comptoir (%)'], ['bTrajet', 'Boîtes par trajet'], ['jm', 'Jours ouvrés / mois'], ['ja', 'Jours ouvrés / an'], ['kmh', 'Vitesse de marche (km/h)']].map(([k, l]) => `<div><label class="lbl" for="hy-${k}">${l}</label><input type="number" id="hy-${k}" class="inp !h-9" step="any" value="${H[k]}" onchange="hypSet('${k}',this.value)"></div>`).join('')}</div></details>
   </div></details></div>`;
 }
 function hypSet(k, v) { settings.hyp = {...(settings.hyp || {}), [k]: +v || HYP_D[k]}; saveSet(); mxDist('auto'); }
+const dmTxt = C => { const m = C.H.delivMin * C.H.gainPct / 100, f = x => x.toLocaleString('fr-FR', {maximumFractionDigits: 1}); return `<b>Avec le robot : ${f(C.H.delivMin - m)} min par ordonnance</b> (${f(m)} min gagnées)${C.dos ? `. Sur ${Math.round(C.dos)} dossiers : <b>${hm(C.gCpt)} gagnées par jour</b>, reprises dans la synthèse PDF.` : '. Renseignez les dossiers par jour pour chiffrer le gain par jour.'}`; };
 const gpTxt = C => { const m = C.H.delivMin * C.H.gainPct / 100; return `≈ ${m.toLocaleString('fr-FR', {maximumFractionDigits: 1})} min gagnées par dossier${C.pst ? ` · ~${hm(C.gCollab)} / jour / poste` : ''}`; };
-function gpSet() { mxRead(); const M = mxGet(), C = ptkCalc(M); $('f-gp-v').textContent = C.H.gainPct + ' %'; $('f-gp-t').textContent = gpTxt(C); mxRes(); }
+function gpSet() { mxRead(); const M = mxGet(), C = ptkCalc(M); if ($('f-gp-v')) $('f-gp-v').textContent = C.H.gainPct + ' %'; if ($('f-dm-v')) $('f-dm-v').textContent = C.H.delivMin.toLocaleString('fr-FR') + ' min'; if ($('f-gp-t')) $('f-gp-t').innerHTML = dmTxt(C); mxRes(); }
 const cmClean = t => t.replace(/(?<![\p{L}])(euh+|ben|bah|en fait|du coup|voilà|quoi)(?![\p{L}])[,]?\s*/giu, '').replace(/\s+/g, ' ').replace(/[,;\s]+$/, '').trim();
 const cmSents = t => cmClean(t).split(/(?<=[.!?])\s+|\n+/).map(x => x.trim()).filter(Boolean).map(x => x[0].toUpperCase() + x.slice(1)).map(x => /[.!?]$/.test(x) ? x : x + '.');
 let cmPrev = null;
@@ -5481,7 +5505,7 @@ function renderChrome(c) {
   if (active) renderFormSteps(step);
   ['f-project', 'f-crcard', 'f-nextcard'].forEach(id => $(id).classList.toggle('hidden', !active));
   /* V4.5.17 : dossier signé = plus de barre d'étapes, de « Reste à faire » ni d'étape « Suivi » */
-  ['f-secnav', 'f-todo'].forEach(id => { const e = $(id); if (e) e.classList.toggle('hidden', !!signed); }); { const z5 = document.querySelector('#view-client .fz[data-zone="5"]'); if (z5) z5.classList.toggle('hidden', !!signed); }
+  ['f-secnav', 'f-todo'].forEach(id => { const e = $(id); if (e) e.classList.toggle('hidden', !!signed); }); { const z5 = document.querySelector('#view-client .fz[data-zone="5"]'); if (z5) z5.classList.toggle('hidden', !!signed); } fzShow(signed ? 0 : (ui.zone || 1));
   renderBanner(c); renderActBan(c);
   renderDevis(c); offreBox(c); opBox(c); renderBesoins(c); renderImpl(c); renderQual(c); renderArgBtn(c); renderOffTabs(c); renderCoord(); renderContacts(); renderAddonsList(c); renderHistory(c); renderMobileBar(); renderStage(); renderNextSum(c);
   try { v4Need(); } catch (e) {}
@@ -7000,9 +7024,11 @@ function genOffre(id, K0) {
   // ===== Indicateurs clés
   if (!K0 && SX('kpi') && (o.tech?.capacite || o.tech?.dims || o.tech?.poids || o.tech?.poidsM2 || m.mensuel)) {
   sect('Indicateurs clés', 'chart-line', 40, 'offre');
-  { const kp = [['euro-sign', 'Total net HT', eur(k.net) + ' HT', true], ['boxes-stacked', 'Capacité', o.tech?.capacite || '—'], ['ruler-combined', 'Dimensions', o.tech?.dims || '—'], ['weight-hanging', 'Poids à vide', [o.tech?.poids, o.tech?.poidsM2].filter(Boolean).join(' · ') || '—'], ['headset', 'Contrat de service', m.mensuel ? `${eur(promo ? k.mRem : m.mensuel)} HT/mois` : '—']].filter((x, i) => !i || x[2] !== '—'), g = 3, cw = (CW - g * (kp.length - 1)) / kp.length, h = 25;
-    kp.forEach((x, i) => { const xx = M + i * (cw + g); card(xx, K.y, cw, h, 2.8, x[3] ? PK.or : BD, x[3] ? .6 : .25); badge(x[0], xx + 5.4, K.y + 5.2, 2.6); lab(x[1], xx + 9.6, K.y + 6.2, PK.ord, 4.8, .15);
+  const stkO = (() => { const P0 = ptkOf(c); return P0.use?.stock ? (+P0.stock || 0) : 0; })(), capN = parseInt(String(o.tech?.capacite || '').replace(/[\s\u00a0\u202f.]/g, '').match(/\d+/)?.[0] || '', 10) || 0, gau = !!(capN && stkO && capN >= stkO), nf = n => Math.round(n).toLocaleString('fr-FR');   /* V4.5.51 : jauge stock actuel / capacité du robot */
+  { const kp = [['euro-sign', 'Total net HT', eur(k.net) + ' HT', true], ['boxes-stacked', 'Capacité', o.tech?.capacite || '—'], ['ruler-combined', 'Dimensions', o.tech?.dims || '—'], ['weight-hanging', 'Poids à vide', [o.tech?.poids, o.tech?.poidsM2].filter(Boolean).join(' · ') || '—'], ['headset', 'Contrat de service', m.mensuel ? `${eur(promo ? k.mRem : m.mensuel)} HT/mois` : '—']].filter((x, i) => !i || x[2] !== '—'), g = 3, ws = kp.map(x => x[1] === 'Capacité' && gau ? 1.5 : 1), uw = (CW - g * (kp.length - 1)) / ws.reduce((a, b) => a + b, 0), h = 25; let px0 = M;
+    kp.forEach((x, i) => { const cw = ws[i] * uw, xx = px0; px0 += cw + g; card(xx, K.y, cw, h, 2.8, x[3] ? PK.or : BD, x[3] ? .6 : .25); badge(x[0], xx + 5.4, K.y + 5.2, 2.6); lab(x[1], xx + 9.6, K.y + 6.2, PK.ord, 4.8, .15);
       K.font(x[3] ? 10 : 8, 'bold', PK.ink); doc.text(doc.splitTextToSize(pdfTxt(x[2]), cw - 5.4).slice(0, promo ? 2 : 1), xx + 3.2, K.y + 12.6);
+      if (gau && x[1] === 'Capacité') { K.font(5.8, 'normal', PK.mut); doc.text(pdfTxt(`Stock actuel de l'officine : ${nf(stkO)} boîtes`), xx + 3.2, K.y + 15.9); const gw = cw - 6.4; doc.setFillColor(254, 226, 196); doc.roundedRect(xx + 3.2, K.y + 17.6, gw, 2, 1, 1, 'F'); doc.setFillColor(...PK.or); doc.roundedRect(xx + 3.2, K.y + 17.6, Math.max(2, gw * stkO / capN), 2, 1, 1, 'F'); K.font(5.8, 'bold', PK.ord); doc.text(doc.splitTextToSize(pdfTxt(`${Math.round(stkO / capN * 100)} % de la capacité · marge +${nf(capN - stkO)} boîtes (+${Math.round((capN / stkO - 1) * 100)} %)`), gw).slice(0, 2), xx + 3.2, K.y + 22.3, {lineHeightFactor: 1.15}); }
       if (i === 0) { K.font(5.8, 'normal', PK.mut); doc.text(doc.splitTextToSize(pdfTxt(`TVA 20 % en sus : ${eur(TVA)}, soit ${eur(TTC)} TTC`), cw - 5.4).slice(0, 3), xx + 3.2, K.y + 16.6, {lineHeightFactor: 1.2}); }
       if (i === 4 && promo) { K.font(5.8, 'normal', PK.mut); doc.text(doc.splitTextToSize(pdfTxt(`pendant ${mois} mois (${eur(m.mensuel - k.mRem)} HT de remise par mois), puis ${eur(m.mensuel)} HT/mois`), cw - 5.4).slice(0, 3), xx + 3.2, K.y + 16.6, {lineHeightFactor: 1.2}); } });
     K.y += h + 2; }
