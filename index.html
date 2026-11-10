@@ -1294,6 +1294,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.46</b> : <b>« Dernière action » exacte</b> : une action réalisée à une date passée (par exemple une visite du mois dernier saisie aujourd’hui) est maintenant bien prise comme dernière action dans le portefeuille, « Ma journée » et les statistiques. Les mises à jour de la fiche (chance de signature, étape, devis importé, création) ne comptent plus comme une action.</li>
 <li><b>V4.5.45</b> : <b>Tableau Portefeuille</b> : (1) colonnes « Décision » et « Échéance » fusionnées, tout tient à l’écran sans défilement latéral, colonne « Actions » toujours visible à droite ; bouton « Colonnes » pour masquer ce que vous ne regardez pas (choix mémorisé) ; (2) <b>filtres</b> au-dessus du tableau : recherche pharmacie / ville, département (2 chiffres, plusieurs possibles), type de robot, date de dernière action, avec bandeau de synthèse (nombre de projets, total, chance moyenne) ; le CSV n’exporte que les lignes affichées ; (3) bouton <b>Réinitialiser</b> (5 secondes pour annuler) ; (4) <b>GENESI : nombre de modules (1 à 5)</b> dans la fiche, repris dans le portefeuille, l’offre, les PDF et le fichier CRO.</li>
 <li><b>V4.5.44</b> : <b>Import du devis GENESI</b> : le devis PDF d’un robot GENESI (robot et modules, options en verre, remise du bon de commande, contrat de maintenance) est maintenant reconnu et rempli automatiquement.</li>
 <li><b>V4.5.43</b> : <b>Statistiques › Activité commerciale</b> : nouveau bloc <b>« Prises de rendez-vous »</b> : chaque visite sur site ou visio Teams est comptée automatiquement le jour où vous la planifiez (même prévue dans 15 jours), avec le détail (pharmacie, type, date prévue) et l'écart avec la période précédente ; un compteur « RDV pris » s'ajoute aussi en bas de page. Une replanification ne compte pas deux fois.</li>
@@ -2078,7 +2079,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.45';
+const APP_VERSION = '4.5.46';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2487,7 +2488,8 @@ const byId = id => clients.find(c => c.id === id);
 const isActive = c => ORDER.includes(c.step);
 /* V4.5.42 : dernière action = la plus récente (et non la première ligne de l'historique, parfois plus ancienne) */
 const lastAction = (c, a) => { if (a?.lastActionDate) return a.lastActionDate; let b = null, bt = -1; const T = s => { const d = s && parseD(s); return d && !isNaN(d) ? +d : -1; };
-  const cand = [...(c.history || []).map(h => h.date), c.lastDone && !c.lastDone.nr ? c.lastDone.dt : null, ...(c.rappels || []).filter(r => r.done).map(r => r.doneAt)];
+  /* V4.5.46 : seules comptent les actions réellement faites (réalisées) ; les mouvements administratifs de la fiche (chance, étape, devis importé, création…) ne sont plus pris pour une action */
+  const cand = [...(c.history || []).filter(h => /réalisé/i.test(h.action || '')).map(h => h.date), c.lastDone && !c.lastDone.nr ? c.lastDone.dt : null, ...(c.rappels || []).filter(r => r.done).map(r => r.doneAt), ...(c.acts || []).filter(x => x.done).map(x => x.dt)];
   cand.forEach(s => { const t = T(s); if (t > bt && t <= Date.now() + 36e5) { bt = t; b = s; } }); return b || c.history[0]?.date || null; };
 const createdOf = c => c.createdAt || c.history[c.history.length - 1]?.date || null;
 const ECH = c => settings.echeances[c.echeance] || null;
@@ -4181,7 +4183,7 @@ function saveActionGo() {
   if ($('act-rep') && $('act-rep').checked && $('act-next').checked && !$('act-rep-l').classList.contains('hidden')) { const L = rapLate(c); if (L.length) { c.rappels = c.rappels.filter(x => !L.includes(x)); log(c, `Action en retard remplacée : ${L.map(r => `${(RAP_T[r.type] || RAP_T.rappel).l} du ${fmtDT(r.dt)}`).join(', ')}`, `Remplacée par une action le ${fmtDT(dt)}.`); } }
   const doneNow = parseD(dt) <= new Date(Date.now() + 6e4);
   if (!doneNow && !ui.act.rap && !effNext(c).nextDate) $('act-next').checked = true; /* V4.5.36 : action à venir sur une fiche sans action = prochaine action (visible dans le portefeuille) */
-  log(c, `${ACTIONS[type].label} ${doneNow ? 'réalisée' : 'planifiée'}${a ? ` (add-on : ${a.quoi})` : ''} — ${fmtDT(dt)}`, `${motif}\n${msg}`);
+  log(c, `${ACTIONS[type].label} ${doneNow ? 'réalisée' : 'planifiée'}${a ? ` (add-on : ${a.quoi})` : ''} — ${fmtDT(dt)}`, `${motif}\n${msg}`); if (doneNow && dt) c.history[0].date = dt;
   if (a) a.lastActionDate = isoDay(new Date());
   if (doneNow) { if (c.nextDate && c.nextDate <= dt && (c.nextType || 'relance') === type) { c.acts = (c.acts || []).filter(a => !(a.dt === c.nextDate && !a.done)); c.nextDate = null; } }   /* V4.5.17 : une action déjà réalisée ne reste plus « à faire » */
   else if ($('act-next').checked) { const old = c.nextDate; if (old && old !== dt) c.acts = (c.acts || []).filter(a => !(a.dt === old && !a.done)); c.nextDate = dt; c.nextType = type; }
