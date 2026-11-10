@@ -1273,6 +1273,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.44</b> : <b>Import du devis GENESI</b> : le devis PDF d’un robot GENESI (robot et modules, options en verre, remise du bon de commande, contrat de maintenance) est maintenant reconnu et rempli automatiquement.</li>
 <li><b>V4.5.43</b> : <b>Statistiques › Activité commerciale</b> : nouveau bloc <b>« Prises de rendez-vous »</b> : chaque visite sur site ou visio Teams est comptée automatiquement le jour où vous la planifiez (même prévue dans 15 jours), avec le détail (pharmacie, type, date prévue) et l'écart avec la période précédente ; un compteur « RDV pris » s'ajoute aussi en bas de page. Une replanification ne compte pas deux fois.</li>
 <li><b>V4.5.42</b> : <b>« X j sans action »</b> : le calcul prend maintenant l'action la plus récente de l'historique (une fiche avec des actions faites aujourd'hui n'affiche plus des centaines de jours sans action).</li>
 <li><b>V4.5.41</b> : <b>Ma journée, onglet « À faire »</b> : les actions réalisées aujourd'hui y sont maintenant listées (« Faites aujourd'hui »), et une fiche dont l'action vient d'être faite est marquée « Action faite aujourd'hui · à planifier ».</li>
@@ -2053,7 +2054,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.43';
+const APP_VERSION = '4.5.44';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -6619,6 +6620,33 @@ function parseAncien(L) {
   o.totalDevis = o.lignes.reduce((a, x) => a + x.m, 0);
   return o;
 }
+/* V4.5.44 : devis GENESI (même gabarit « Prix Total HT » que les anciens devis, mais « LE ROBOT GENESI », options en tableau Qté / prix, remise sur le bon de commande) */
+const isGenesi = T => /LE ROBOT GENESI|PTK\s*GENESI/i.test(T) && /Prix Total HT/i.test(T) && !/Prix Total Hors Taxes/i.test(T);
+function parseGenesi(L) {
+  const T = L.join('\n'), nz = s => String(s).replace(/\s+/g, ' ').trim(), o = {lignes: [], tech: {}, maint: {}};
+  let m = T.match(/Offre\s*n\s*°\s*(\d{2}\/\d{2}-\d{2}(?:\s?[A-Z])?)/i) || T.match(/devis\s*n[o°.]+\s*(\d{2}\/\d{2}-\d{2}(?:\s?[A-Z])?)/i); o.ref = m ? nz(m[1]) : '';
+  m = T.match(/Date\s*:\s*(\d{2})\s*\/\s*(\d{2})\s*\/\s*(\d{4})/); o.date = m ? `${m[1]}/${m[2]}/${m[3]}` : '';
+  m = T.match(/(Pharmacie\s+[^\n]+?)\s+-\s+(\d{5})\s+([^\n]+)/i); if (m) { o.pharma = nz(m[1]); o.cp = m[2]; o.ville = nz(m[3]); }
+  m = T.match(/Dossier suivi par[^\n]*?\b(Monsieur|Madame|Mme)\s+([^\n]+?)\s*(?:\n|\s{3,}|$)/); o.titulaire = m ? nz(m[1] + ' ' + m[2]) : '';
+  m = T.match(/ADRESSE\s*:\s*([^\n]+?)\s*(?:\n|$)/); o.rue = m ? nz(m[1].split(/\s{3,}/)[0]) : '';
+  const mod = (T.match(/GENESI\s+(\d)\s*modules?/i) || [])[1], sor = (T.match(/Nombre de sorties\s*:\s*(\d)/i) || [])[1]; o.modules = mod ? +mod : 0;
+  const pr = L.map(l => l.match(/^Prix Total HT\s.*?EUR\s*([\d\s.]*\d)\s*€/i)).find(Boolean);
+  if (pr) o.lignes.push({t: `Robot GENESI${mod ? ' ' + mod + ' module' + (mod > 1 ? 's' : '') : ''}${sor ? ' (' + sor + ' sortie' + (sor > 1 ? 's' : '') + ' directe' + (sor > 1 ? 's' : '') + ')' : ''} + transport, installation et formation`, m: numFr(pr[1])});
+  let inOpt = false;
+  L.forEach(l => { const t = nz(l); if (/^OPTIONS$/i.test(t)) { inOpt = true; return; } if (inOpt && /^(Conditions de paiement|Prix\s*:|PHARMATHEK France SAS|Offre n)/i.test(t)) { inOpt = false; return; } if (!inOpt) return;
+    const p = l.trim().split(/\s{3,}/); if (/^[A-Z]{5,}\d*$/.test(p[0]) && p.length > 1) p.shift(); if (p.length < 4) return;
+    const q = parseInt(p[1], 10), tot = /€/.test(p[3]) ? numFr(p[3].replace('€', '')) : 0; if (q > 0 && tot > 0) o.lignes.push({t: `${nz(p[0])}${q > 1 ? ' (×' + q + ')' : ''}`, m: tot}); });
+  m = L.map(l => l.trim().match(/^Remise\b[^\d-]*(-?\s*[\d\s.]*\d)\s*€/i)).find(Boolean); o.rem = m ? Math.abs(numFr(m[1].replace(/\s/g, ''))) : 0;
+  m = T.match(/TOTAL EUR HT\s+([\d\s.]*\d)\s*€/i); o.totalBdc = m ? numFr(m[1]) : 0;
+  o.totalDevis = o.lignes.reduce((a, x) => a + x.m, 0);
+  m = T.match(/([\d\s]*\d)\s*€\s*par\s*mois/i); if (m) o.maint.mensuel = numFr(m[1].trim().split(/\s+/).pop());
+  const W = {cinq: 5, six: 6, sept: 7, huit: 8, dix: 10}; m = T.match(/p[ée]riode initiale de\s+(\w+)\s+ans/i); if (m) o.maint.ans = W[norm(m[1])] || +m[1] || 0;
+  o.maint.formule = /PROACTIVE/i.test(T) ? 'Maintenance ProActive' : 'Contrat de service';
+  m = T.match(/Puissance\s*:\s*([\d,]+)\s*kW/i); if (m) o.tech.absorption = m[1] + ' kW';
+  m = T.match(/Tension\s*(\d{3}\/\d{3})\s*V\s*[–-]\s*(\d{2})\s*HZ/i); if (m) o.tech.alim = `${m[1]} V — ${m[2]} Hz` + (/Onduleur\s*:\s*1500 VA/i.test(T) ? ' + onduleur 1 500 VA intégré' : '');
+  m = T.match(/Poids estim[ée] à vide\s*:\s*(\d+)\s*kg\/m2/i); if (m) o.tech.poidsM2 = m[1] + ' kg/m²';
+  return o;
+}
 let _tess = null;
 async function loadTess() {
   if (window.Tesseract) return window.Tesseract;
@@ -6649,7 +6677,9 @@ async function offreImport(input, inDlg, replace) {
       const buf = await f.arrayBuffer(); let L = await pdfLines(buf.slice(0), lib), ocr = false;
       if (L.join('').replace(/\s/g, '').length < 80) { try { L = await ocrLines(buf.slice(0), lib); ocr = true; } catch (e) { toast('Document image : la reconnaissance du texte demande une connexion Internet.', true); continue; } }
       const T = L.join('\n');
-      if (isAncien(T)) { const d = parseAncien(L); if (!d.lignes.length) throw 0; Object.assign(o, {ref: d.ref || o.ref, date: d.date || o.date, lignes: d.lignes, tech: {...o.tech, ...d.tech}, src: {pharma: d.pharma, titulaire: d.titulaire, ville: d.ville, rue: d.rue, cp: d.cp, total: d.totalDevis}});
+      if (isGenesi(T)) { const d = parseGenesi(L); if (!d.lignes.length) throw 0; Object.assign(o, {ref: d.ref || o.ref, date: d.date || o.date, lignes: d.lignes, robot: 'Robot GENESI', tech: {...o.tech, ...d.tech}, src: {pharma: d.pharma, titulaire: d.titulaire, ville: d.ville, rue: d.rue, cp: d.cp, total: d.totalDevis}});
+        if (d.rem) Object.assign(o, {remMode: 'eur', remEur: d.rem, remisePct: 0}); if (d.maint.mensuel) Object.assign(o.maint, {formule: d.maint.formule, mensuel: d.maint.mensuel, ans: d.maint.ans || o.maint.ans}); got.push(`devis GENESI${d.modules ? ' (' + d.modules + ' modules)' : ''}${d.rem ? ', remise ' + Math.round(d.rem).toLocaleString('fr-FR') + ' €' : ''}${d.maint.mensuel ? ' et maintenance ' + d.maint.mensuel + ' €/mois' : ''}`); }
+      else if (isAncien(T)) { const d = parseAncien(L); if (!d.lignes.length) throw 0; Object.assign(o, {ref: d.ref || o.ref, date: d.date || o.date, lignes: d.lignes, tech: {...o.tech, ...d.tech}, src: {pharma: d.pharma, titulaire: d.titulaire, ville: d.ville, rue: d.rue, cp: d.cp, total: d.totalDevis}});
         if (d.maint.mensuel) Object.assign(o.maint, {formule: 'Contrat de service', mensuel: d.maint.mensuel, ans: d.maint.ans || o.maint.ans}); got.push(`ancien devis${ocr ? ' (lu par reconnaissance de texte)' : ''}, supprimez les options non retenues`); if (d.notes.length) setTimeout(() => toast('Versions au choix : ' + d.notes.join(' · ')), 3500); }
       else if (/CONTRAT DE SERVICE|Prix du Service/i.test(T) && !/Prix Total Hors Taxes/i.test(T)) { const k = parseContrat(L); Object.assign(o.maint, {formule: k.formule, mensuel: k.mensuel || o.maint.mensuel, ans: k.ans || o.maint.ans}); o.refContrat = k.refContrat; got.push('contrat de maintenance'); }
       else { const d = parseDevis(L); if (!d.lignes.length) throw 0; Object.assign(o, {ref: d.ref || o.ref, date: d.date || o.date, lignes: d.lignes, tech: {...o.tech, ...d.tech}, src: {pharma: d.pharma, titulaire: d.titulaire, ville: d.ville, rue: d.rue, cp: d.cp, total: d.totalDevis}}); got.push('devis'); }
