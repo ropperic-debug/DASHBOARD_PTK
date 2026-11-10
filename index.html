@@ -66,6 +66,26 @@
 
 </style>
 <style>
+.pfc{display:inline-flex;align-items:center;gap:5px;height:30px;padding:0 11px;border-radius:999px;border:1.5px solid #CBD5E1;background:#fff;font-size:12px;font-weight:600;color:#334155;cursor:pointer;white-space:nowrap}
+.pfc b{font-weight:700;color:#475569}.pfc:hover{border-color:#94A3B8}.pfc.on{background:#FFF7ED;border-color:#FB923C;color:#9A3412}.pfc.on b{color:#9A3412}
+.pfa{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 4px 0 10px;border-radius:999px;background:#EDE9FE;color:#5B21B6;font-size:12px;font-weight:600}
+.pfa button{width:20px;height:20px;border-radius:50%;color:#5B21B6}.pfa button:hover{background:#DDD6FE}
+.pfl{font-size:10.5px;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#5B6576;white-space:nowrap}
+#tbl-pf .inp{height:34px!important;font-size:13px!important}
+.hc2 button{white-space:normal!important;line-height:1.15;max-width:96px;text-align:left}
+.depb{display:inline-block;font-size:10px;font-weight:700;background:#E2E8F0;color:#475569;border-radius:5px;padding:0 5px;margin-right:6px;vertical-align:1px}
+#tbl-wrap[data-tab=portfolio] .tbl th:last-child,#tbl-wrap[data-tab=portfolio] .tbl td:last-child{position:sticky;right:0;z-index:2;background:#fff;box-shadow:-8px 0 8px -8px #0003}
+#tbl-wrap[data-tab=portfolio] .tbl th:last-child{background:#F8F9FB}
+#tbl-wrap[data-tab=portfolio] .tbl tr:hover td:last-child{background:#FFF7ED}
+#tbl-wrap[data-tab=portfolio] .pc-a{max-width:140px}
+#tbl-wrap[data-tab=portfolio] .tbl td:nth-child(2){padding-right:10px!important}
+@media(max-width:1380px){#tbl-wrap[data-tab=portfolio] .tbl th:first-child,#tbl-wrap[data-tab=portfolio] .tbl td:first-child{position:sticky;left:0;z-index:1;background:#fff;min-width:64px}
+#tbl-wrap[data-tab=portfolio] .tbl th:first-child{background:#F8F9FB}
+#tbl-wrap[data-tab=portfolio] .tbl th:nth-child(2),#tbl-wrap[data-tab=portfolio] .tbl td:nth-child(2){position:sticky;left:64px;z-index:1;background:#fff;box-shadow:8px 0 8px -8px #0003}
+#tbl-wrap[data-tab=portfolio] .tbl th:nth-child(2){background:#F8F9FB}
+#tbl-wrap[data-tab=portfolio] .tbl tr:hover td:nth-child(2),#tbl-wrap[data-tab=portfolio] .tbl tr:hover td:first-child{background:#FFF7ED}}
+#undo-toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:90;background:#1E293B;color:#fff;border-radius:12px;padding:10px 12px 10px 16px;display:flex;gap:14px;align-items:center;font-size:13.5px;box-shadow:0 10px 30px #0005}
+#undo-toast button{background:#fff;color:#1E293B;border-radius:8px;padding:5px 12px;font-weight:700;font-size:13px}
 #view-dashboard .tbl{min-width:1060px!important}
 #view-dashboard .tbl th button{padding:7px 4px!important;font-size:10px!important;gap:4px!important}
 #view-dashboard .tbl td{padding:4px 4px!important;font-size:12.5px!important;white-space:nowrap}
@@ -612,8 +632,9 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
     <div class="card overflow-hidden">
       <div class="flex flex-wrap justify-between items-center gap-3 px-5 py-3 border-b border-slate-200">
         <div id="tbl-title" class="text-sm font-semibold"></div>
-        <div class="flex gap-2 items-center"><span id="tbl-filters"></span><button class="btn btn-g !h-9" onclick="exportCSV()"><i class="fas fa-download"></i>CSV</button></div>
+        <div class="flex gap-2 items-center flex-wrap"><span id="tbl-filters" class="flex gap-2 items-center"></span><button class="btn btn-g !h-9" onclick="exportCSV()"><i class="fas fa-download"></i>CSV</button></div>
       </div>
+      <div id="tbl-pf"></div>
       <div id="tbl-banner"></div>
       <div class="overflow-x-auto" id="tbl-wrap"><table class="tbl w-full min-w-[1060px]"><thead id="tbl-head"></thead><tbody id="tbl-body"></tbody></table></div>
       <div id="tbl-foot" class="flex justify-between flex-wrap gap-2 px-5 py-3 border-t border-slate-200 text-[13px] text-muted"></div>
@@ -1273,6 +1294,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.45</b> : <b>Tableau Portefeuille</b> : (1) colonnes « Décision » et « Échéance » fusionnées, tout tient à l’écran sans défilement latéral, colonne « Actions » toujours visible à droite ; bouton « Colonnes » pour masquer ce que vous ne regardez pas (choix mémorisé) ; (2) <b>filtres</b> au-dessus du tableau : recherche pharmacie / ville, département (2 chiffres, plusieurs possibles), type de robot, date de dernière action, avec bandeau de synthèse (nombre de projets, total, chance moyenne) ; le CSV n’exporte que les lignes affichées ; (3) bouton <b>Réinitialiser</b> (5 secondes pour annuler) ; (4) <b>GENESI : nombre de modules (1 à 5)</b> dans la fiche, repris dans le portefeuille, l’offre, les PDF et le fichier CRO.</li>
 <li><b>V4.5.44</b> : <b>Import du devis GENESI</b> : le devis PDF d’un robot GENESI (robot et modules, options en verre, remise du bon de commande, contrat de maintenance) est maintenant reconnu et rempli automatiquement.</li>
 <li><b>V4.5.43</b> : <b>Statistiques › Activité commerciale</b> : nouveau bloc <b>« Prises de rendez-vous »</b> : chaque visite sur site ou visio Teams est comptée automatiquement le jour où vous la planifiez (même prévue dans 15 jours), avec le détail (pharmacie, type, date prévue) et l'écart avec la période précédente ; un compteur « RDV pris » s'ajoute aussi en bas de page. Une replanification ne compte pas deux fois.</li>
 <li><b>V4.5.42</b> : <b>« X j sans action »</b> : le calcul prend maintenant l'action la plus récente de l'historique (une fiche avec des actions faites aujourd'hui n'affiche plus des centaines de jours sans action).</li>
@@ -1335,6 +1357,8 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>V3.7</b> : récapitulatif des commissions, colonne TYPE avec cadres de couleur, dossiers sous réserve bien visibles.</li>
 <li><b>Commissions : double date (V3.6)</b> : quand vous pointez une commission (fenêtre « Payée… » ou case « Commission payée » de la fiche client), vous indiquez deux mois : <b>« Pointée en »</b> (le mois où vous constatez le paiement, par défaut le mois en cours) et <b>« Sur le salaire de »</b> (le bulletin concerné, par défaut le mois précédent, modifiable). Exemple : pointée en novembre, sur le salaire d'octobre. Les deux mois sont affichés dans le détail, l'historique et le CSV. Les commissions déjà pointées gardent leur mois, qui sert aussi de mois de salaire.</li>
 <li><b>Commissions : tableau sur 8 colonnes (V3.6)</b> : plus de défilement horizontal. La date de signature et le n° de dossier sont sous le nom de la pharmacie, le rang sous le modèle, et montant HT, assiette et base sont regroupés dans « Calcul ». Le statut et le bouton « Payée… » sont toujours visibles.</li>
+<li><b>Portefeuille : filtres et colonnes (V4.5.45)</b> : au-dessus du tableau « Portefeuille », tapez un nom de pharmacie ou de ville, un ou plusieurs départements (« 18, 36 » ou un clic sur la pastille du département, avec le nombre de projets), un type de robot, ou une période de dernière action (aujourd’hui, moins de 7 j, plus de 5 / 15 / 30 j, ou deux dates). Les filtres se combinent entre eux et avec les filtres des en-têtes de colonnes ; un bandeau violet donne le nombre de projets, le total HT et la chance moyenne, avec une croix pour retirer chaque filtre. Le bouton CSV n’exporte que les lignes affichées. <b>Réinitialiser</b> efface tous les filtres et remet le tri et les colonnes par défaut (« Annuler » pendant 5 secondes ; aucune fiche n’est modifiée). <b>Colonnes</b> permet de masquer des colonnes (choix mémorisé sur cet ordinateur). « Décision » et « Échéance » sont regroupées dans une seule colonne ; sur un petit écran, la colonne Pharmacie reste figée à gauche et Actions à droite.</li>
+<li><b>GENESI : nombre de modules (V4.5.45)</b> : dans la fiche, quand le robot GENESI est choisi, une rangée « Nombre de modules » (1 à 5, 1 par défaut) apparaît. Le nombre s’affiche dans le portefeuille (« GENESI · 3 modules »), dans la fenêtre « Générer l’offre », sur la page de garde et la synthèse du PDF et dans le fichier CRO. Le prix reste à saisir. L’import d’un devis GENESI renseigne le nombre de modules automatiquement.</li>
 <li><b>Commissions : filtres pour le pointage (V3.6)</b> : au-dessus du détail, choisissez le statut (Tous, En attente, Payées, Bloquées), le type de vente (SINTESI, GENESI, Add-on), le modèle, le mois de signature, le <b>mois du salaire</b> (avec le total de chaque mois) ou tapez un nom de pharmacie / n° de dossier. Le bandeau indique le nombre de lignes et le total affichés ; « Tout sélectionner » ne coche que les lignes affichées ; le CSV exporte les lignes affichées ; « Réinitialiser » efface les filtres.</li>
 <li><b>Objectifs annuels (V3.6)</b> : ils sont calculés sur l'année civile, du 1er janvier au 31 décembre (objectif de robots, objectif de CA, rang et palier de commission), jamais sur 12 mois glissants.</li>
 <li><b>V3.6</b> : double date des commissions, tableau sur 8 colonnes, filtres de pointage, année civile des objectifs.</li>
@@ -2054,7 +2078,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.44';
+const APP_VERSION = '4.5.45';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2131,6 +2155,10 @@ const PAS_M = 0.75;
 const MODELS = ['SINTESI SLIM monobras', 'SINTESI SLIM double bras', 'SINTESI XL', 'SINTESI XL double bras', 'GENESI'];
 const famRobot = r => /^SINTESI/i.test(r) ? 'SINTESI' : /GENESI/i.test(r) ? 'GENESI' : null;
 const famOf = c => (c.robots || []).map(famRobot).find(Boolean) || null;
+/* V4.5.45 : nombre de modules GENESI (1 à 5, 1 par défaut) */
+const gMod = c => Math.min(5, Math.max(1, Math.round(+c?.genMod) || 1));
+const robName = (c, m) => /^GENESI$/i.test(m) ? `GENESI · ${gMod(c)} module${gMod(c) > 1 ? 's' : ''}` : m;
+const robList = (c, sep = ', ') => (c.robots || []).map(m => robName(c, m)).join(sep);
 const LGOS = ['LGPI', 'Winpharma', 'Smart Rx', 'LEO', 'Crystal', 'Pharmonie One', 'Pharmavitale', 'Vindilis'];
 const ROBOTS_CONC = ['BD Rowa', 'Meditech', 'Omnicell', 'Gollmann', 'Pharmax', 'Mekapharm', 'Swisslog', 'KLS', 'TechniLab'];
 const FONCTIONS = ['Coordinateur de travaux', 'Électricien', 'Agenceur', 'Architecte', 'Co-titulaire / associé', 'Pharmacien adjoint', 'Expert-comptable', 'Banquier'];
@@ -3263,7 +3291,7 @@ function showList(k, arg) {
 /* ----- Tableaux ----- */
 const intCell = v => { const [l, col, , fg] = INTEREST[v || ''] || INTEREST['']; return `<span class="inline-flex items-center gap-1.5 font-semibold whitespace-nowrap" style="color:${fg}"><span class="w-2.5 h-2.5 rounded-full" style="background:${col}"></span>${l}</span>`; };
 const SITU = {cession: 'En cours de cession', associe: 'Reprise par un associé', creation: 'Ouverture / création'};
-const pharmaCell = c => `<div class="font-semibold whitespace-nowrap">${esc(c.pharma)}${cesPill(c, 1)}${c.situation && !c.cession?.on ? ` <span class="pill" style="background:#EEF2FC;color:#1E3A8A;font-size:10px;padding:1px 7px" title="${esc(SITU[c.situation])}">${c.situation === 'cession' ? 'Cession' : c.situation === 'associe' ? 'Associé' : 'Création'}</span>` : ''}</div><div class="text-xs text-muted pc-a">${esc(addr(c))}</div>`;
+const pharmaCell = (c, dep) => `<div class="font-semibold whitespace-nowrap">${dep && depOf(c) ? `<span class="depb" title="Département">${depOf(c)}</span>` : ''}${esc(c.pharma)}${cesPill(c, 1)}${c.situation && !c.cession?.on ? ` <span class="pill" style="background:#EEF2FC;color:#1E3A8A;font-size:10px;padding:1px 7px" title="${esc(SITU[c.situation])}">${c.situation === 'cession' ? 'Cession' : c.situation === 'associe' ? 'Associé' : 'Création'}</span>` : ''}</div><div class="text-xs text-muted pc-a" title="${esc(addr(c))}">${esc(addr(c))}</div>`;
 const cipCell = c => `<span class="font-mono text-indigo-900">${esc(c.cip || '—')}</span>`;
 function agePill(n) {
   if (n == null) return '';
@@ -3597,14 +3625,14 @@ const TABLES = {
     rows: () => clients.filter(isActive), total: r => sum(r, c => c.montant),
     cols: [
       {l: 'Chance', v: c => -chOf(c), t: c => chOf(c) ? chOf(c) + ' %' : '—', h: c => { if (chOf(c)) return chancePill(c); if (!c.indicateur) return '<span class="pill" style="background:#F1F5F9;color:#94A3B8">—</span>'; const [l, col] = INTEREST[c.indicateur || ''] || INTEREST['']; return `<span title="Intérêt : ${l}" class="inline-block rounded-full align-middle" style="width:14px;height:14px;background:${col}"></span>`; }, bo: ['75 %', '50 %', '25 %', 'À renseigner']},
-      {l: 'Pharmacie', v: c => c.pharma, t: c => `${c.pharma} — ${addr(c)}`, h: pharmaCell, b: c => c.pharma},
+      {l: 'Pharmacie', v: c => c.pharma, t: c => `${c.pharma} — ${addr(c)}`, h: c => pharmaCell(c, true), b: c => c.pharma},
       {l: 'Avancement', v: c => jStage(c), t: c => JST[jStage(c)].label, h: c => stepProg(c) + pendPill(c), bo: JST.map(s => s.label)},
       {l: 'Dernière action', v: c => daysSince(lastAction(c)) ?? 999, t: c => fmtD(lastAction(c)), h: c => lastCell(c), b: c => ageB(lastAction(c)), bo: AGE_B},
       {l: 'Prochaine action', v: c => effNext(c).nextDate || '9999', t: c => effNext(c).nextDate ? fmtDT(effNext(c).nextDate) : '', h: nextCell, b: nextB, bo: NEXT_B},
-      {l: 'Modèle', v: c => (c.robots || []).join(', '), h: c => `<span class="inline-flex items-center gap-2">${cIco(c, 24)}<span class="text-[12.5px] whitespace-nowrap">${esc((c.robots || []).join(', ') || '—')}</span></span>`, b: c => (c.robots || []).join(', ') || '—'},
+      {l: 'Modèle', v: c => robList(c), h: c => `<span class="inline-flex items-center gap-2">${cIco(c, 22)}<span class="text-[12.5px] whitespace-nowrap">${esc(robList(c) || '—')}</span></span>`, b: c => robList(c) || '—'},
       money(c => c.montant),
-      {l: 'Décision', v: c => c.dateDecision || '9999', t: c => fmtD(c.dateDecision), h: c => decCell(c.dateDecision), b: c => decB(c.dateDecision), bo: DEC_B},
-      {l: 'Échéance', v: c => ECH_ORDER.indexOf(c.echeance), t: c => ECH(c)?.label || '—', bo: ECH_ORDER.map(k => settings.echeances[k].label).concat('—')},
+      {l: 'Décision · Échéance', v: c => c.dateDecision || '9999', t: c => `${fmtD(c.dateDecision)} · ${ECH(c)?.label || '—'}`, h: c => `<div>${decCell(c.dateDecision)}</div><div class="text-[11px] text-muted leading-tight">${esc(ECH(c)?.label || '—')}</div>`, b: c => decB(c.dateDecision), bo: DEC_B,
+        hc: 'hc2', csv: [['Décision', c => fmtD(c.dateDecision)], ['Échéance', c => ECH(c)?.label || '—']]},
       {l: 'Op. com.', v: c => opStatus(c), h: c => c.opApplied === true ? '<span class="pill bg-emerald-50 text-emerald-800"><i class="fas fa-tags"></i>Appliquée</span>' : c.opApplied === false ? '<span class="pill bg-slate-100 text-slate-700">Non appliquée</span>' : '<span class="text-muted">—</span>', bo: ['Appliquée', 'Non appliquée', '—']},
       {l: '', h: c => `<div class="flex gap-1 justify-end">${actBtns(c.id)}</div>`, cls: 'text-right'}]},
   addons: {label: 'Add-ons en cours', icon: 'fa-cart-plus', desc: () => 'Équipements complémentaires proposés', file: 'addons_en_cours', sort: {i: 4, asc: true},
@@ -3657,19 +3685,18 @@ const TABLES = {
         h: c => `<span class="pill ${c.perduMotif === 'Perdu contre' ? 'bg-rose-50 text-rose-800' : 'bg-amber-50 text-amber-900'}">${c.perduMotif === 'Perdu contre' ? 'Perdu contre ' + esc(c.perduConcurrent) : 'Abandonné'}</span>`},
       {l: 'Observation', v: c => c.perduObservation || '', h: c => `<span class="text-xs">${esc(c.perduObservation || '—')}</span>`}]}
 };
-{const a = TABLES.portfolio.cols, i = a.findIndex(c => c.l === 'Échéance'); a.push(a.splice(i, 1)[0]);}
 const cellText = (col, r) => String((col.t || col.v)(r) ?? '');
 const bucket = (col, r) => (col.b ? col.b(r) : cellText(col, r)) || '—';
 const cmp = (a, b) => ((a == null) - (b == null)) || (typeof a === 'number' && typeof b === 'number' ? a - b : String(a).localeCompare(String(b), 'fr', {numeric: true}));
 function filtered(tab, except = -1) {
   const T = TABLES[tab], F = ui.filters[tab] || {};
-  return T.rows().filter(r => Object.entries(F).every(([i, set]) => +i === except || set.has(bucket(T.cols[i], r))));
+  return T.rows().filter(r => (tab !== 'portfolio' || pfMatch(r)) && Object.entries(F).every(([i, set]) => +i === except || set.has(bucket(T.cols[i], r))));
 }
 function tableRows() {
   const T = TABLES[ui.tab], s = ui.sort[ui.tab] || T.sort;
   return filtered(ui.tab).sort((a, b) => cmp(T.cols[s.i].v(a), T.cols[s.i].v(b)) * (s.asc ? 1 : -1));
 }
-function setTab(k) { if (k === 'portfolio') { ui.filters.portfolio = {}; renderPipeline(); } ui.tab = k; closeColPop(); renderTiles(); renderTable(); }
+function setTab(k) { if (k === 'portfolio') { ui.filters.portfolio = {}; ui.pf = pfNew(); renderPipeline(); } ui.tab = k; closeColPop(); renderTiles(); renderTable(); }
 function renderTiles() {
   $('tiles').innerHTML = Object.entries(TABLES).map(([k, T]) => { const on = ui.tab === k, rows = T.rows();
     if (k === 'lead') { const all = clients.filter(isLead), nr = all.filter(c => (c.lead?.statut || 'recontacter') === 'recontacter').length;
@@ -3681,18 +3708,116 @@ function renderTable() {
   if ($('tbl-wrap')) $('tbl-wrap').dataset.tab = ui.tab;
   const T = TABLES[ui.tab], rows = tableRows(), s = ui.sort[ui.tab] || T.sort, F = ui.filters[ui.tab] || {};
   $('tbl-title').textContent = `${T.label} · ${T.desc(ui.year)}`;
-  $('tbl-head').innerHTML = '<tr>' + T.cols.map((col, i) => col.v
-    ? `<th class="${col.cls || ''}"><button onclick="openColPop(${i},this)" class="${col.cls === 'text-right' ? 'justify-end' : ''}" aria-haspopup="dialog">${col.l}${s.i === i ? `<i class="fas ${s.asc ? 'fa-arrow-up' : 'fa-arrow-down'} text-[10px]"></i>` : ''}${F[i] ? '<i class="fas fa-filter text-[10px] text-ptkd"></i>' : '<i class="fas fa-chevron-down text-[9px] opacity-50"></i>'}</button></th>`
-    : `<th class="${col.cls || ''}"><span class="block px-2.5 py-3">${col.l}</span></th>`).join('') + '</tr>';
-  $('tbl-body').innerHTML = rows.length ? rows.map(r => `<tr data-id="${(r.c || r).id}" ${ui.tab === 'portfolio' && isActive(r.c || r) ? `data-cat="${actCat(r.c || r)}"` : ''} class="hover:bg-orange-50/40 cursor-pointer">${T.cols.map(col => `<td class="${col.cls || ''}">${col.h ? col.h(r) : esc(cellText(col, r))}</td>`).join('')}</tr>`).join('')
-    : `<tr><td colspan="${T.cols.length}" class="!py-12 text-center text-muted">Aucun dossier${Object.keys(F).length ? ' pour ces filtres' : ''}</td></tr>`;
+  const hid = ui.tab === 'portfolio' ? ui.hid : new Set(), vis = T.cols.map((c, i) => i).filter(i => !hid.has(T.cols[i].l));
+  $('tbl-head').innerHTML = '<tr>' + vis.map(i => { const col = T.cols[i]; return col.v
+    ? `<th class="${col.cls || ''} ${col.hc || ''}"><button onclick="openColPop(${i},this)" class="${col.cls === 'text-right' ? 'justify-end' : ''}" aria-haspopup="dialog">${col.l}${s.i === i ? `<i class="fas ${s.asc ? 'fa-arrow-up' : 'fa-arrow-down'} text-[10px]"></i>` : ''}${F[i] ? '<i class="fas fa-filter text-[10px] text-ptkd"></i>' : '<i class="fas fa-chevron-down text-[9px] opacity-50"></i>'}</button></th>`
+    : `<th class="${col.cls || ''}"><span class="block px-2.5 py-3">${col.l}</span></th>`; }).join('') + '</tr>';
+  $('tbl-body').innerHTML = rows.length ? rows.map(r => `<tr data-id="${(r.c || r).id}" ${ui.tab === 'portfolio' && isActive(r.c || r) ? `data-cat="${actCat(r.c || r)}"` : ''} class="hover:bg-orange-50/40 cursor-pointer">${vis.map(i => T.cols[i]).map(col => `<td class="${col.cls || ''}">${col.h ? col.h(r) : esc(cellText(col, r))}</td>`).join('')}</tr>`).join('')
+    : `<tr><td colspan="${vis.length}" class="!py-12 text-center text-muted">Aucun dossier${Object.keys(F).length ? ' pour ces filtres' : ''}</td></tr>`;
   const fl = Object.keys(F).map(i => T.cols[i].l);
   { const st = ui.tab === 'portfolio' && fl.length === 1 ? stepFilterOn() : null, tot = T.rows().length;
-    $('tbl-banner').innerHTML = fl.length ? `<div class="zbar"><span class="zi"><i class="fas fa-filter"></i></span><span>Filtre actif : ${st != null ? `avancement <b>${esc(JST[st].label)}</b>` : `<b>${esc(fl.join(', '))}</b>`} · <b>${rows.length} dossier${rows.length > 1 ? 's' : ''} sur ${tot}</b></span><button type="button" class="zb" onclick="clearFilters()"><i class="fas fa-xmark"></i>Afficher tout le ${ui.tab === 'portfolio' ? 'portefeuille' : 'tableau'}</button></div>` : ''; }
+    $('tbl-banner').innerHTML = (fl.length && ui.tab !== 'portfolio') ? `<div class="zbar"><span class="zi"><i class="fas fa-filter"></i></span><span>Filtre actif : ${st != null ? `avancement <b>${esc(JST[st].label)}</b>` : `<b>${esc(fl.join(', '))}</b>`} · <b>${rows.length} dossier${rows.length > 1 ? 's' : ''} sur ${tot}</b></span><button type="button" class="zb" onclick="clearFilters()"><i class="fas fa-xmark"></i>Afficher tout le ${ui.tab === 'portfolio' ? 'portefeuille' : 'tableau'}</button></div>` : ''; }
   if (false) $('tbl-filters').innerHTML = fl.length ? `<button class="btn !h-9 !px-3 border-orange-200 bg-orange-50 text-orange-900" onclick="clearFilters()"><i class="fas fa-filter-circle-xmark"></i>Filtres : ${esc(fl.join(', '))} · effacer</button>` : '';
   if (ui.tab === 'lead') { const al = clients.filter(isLead), n1 = al.filter(c => (c.lead?.statut || 'recontacter') === 'recontacter').length, n2 = al.length - n1, chip = (k, l, n) => `<button type="button" class="pill" style="${ui.leadTab === k ? 'background:#6D28D9;color:#fff' : 'background:#EDE9FE;color:#5B21B6'};cursor:pointer" onclick="ui.leadTab='${k}';renderTable()">${l} ${n}</button>`;
     $('tbl-banner').innerHTML = `<div class="flex flex-wrap items-center gap-2 px-1 pb-2">${chip('recontacter', 'À recontacter', n1)}${chip('sans_suite', 'Sans suite', n2)}${chip('tous', 'Tous', al.length)}<span class="text-[12px] text-muted ml-2">Ces fiches ne comptent ni dans le portefeuille, ni dans les prévisions, ni dans les statistiques. L'historique est conservé.</span></div>`; }
+  renderPfBar();
   $('tbl-foot').innerHTML = `<span><b class="text-ink">${rows.length} ligne${rows.length > 1 ? 's' : ''}</b>${ui.tab === 'lead' ? '' : ` · ${eur(T.total(rows))} HT`}</span><span>Cliquez une ligne pour ouvrir la fiche</span>`;
+}
+
+/* ===== V4.5.45 : filtres du portefeuille (recherche, département, robot, dernière action), colonnes, réinitialisation ===== */
+const pfNew = () => ({q: '', deps: new Set(), depTxt: '', rob: new Set(), last: '', from: '', to: ''});
+ui.pf = pfNew();
+try { ui.hid = new Set(JSON.parse(localStorage.getItem('ptk_pf_hid') || '[]')); } catch { ui.hid = new Set(); }
+const PF_LAST = [['today', "Aujourd'hui", n => n === 0], ['lt7', 'Moins de 7 j', n => n < 7], ['gt5', 'Plus de 5 j', n => n > 5], ['gt15', 'Plus de 15 j', n => n > 15], ['gt30', 'Plus de 30 j', n => n > 30]];
+const PF_ROB = [['SINTESI SLIM monobras', 'SLIM monobras'], ['SINTESI SLIM double bras', 'SLIM double bras'], ['SINTESI XL', 'XL'], ['SINTESI XL double bras', 'XL double bras'], ['GENESI', 'GENESI']];
+function pfMatch(c, skip) {
+  const P = ui.pf;
+  if (skip !== 'q' && P.q && !norm(`${c.pharma} ${c.ville || ''}`).includes(norm(P.q))) return false;
+  if (skip !== 'dep' && P.deps.size) { const d = depOf(c); if (!d || ![...P.deps].some(x => d.startsWith(x))) return false; }
+  if (skip !== 'rob' && P.rob.size && !(c.robots || []).some(m => P.rob.has(m))) return false;
+  if (skip !== 'last') {
+    const d = lastAction(c), n = daysSince(d);
+    if (P.last) { const f = PF_LAST.find(x => x[0] === P.last); if (n == null || !f[2](n)) return false; }
+    if (P.from || P.to) { const s = d ? String(d).slice(0, 10) : ''; if (!s || (P.from && s < P.from) || (P.to && s > P.to)) return false; }
+  }
+  return true;
+}
+function pfRows(skip) { const F = ui.filters.portfolio || {}, T = TABLES.portfolio; return T.rows().filter(r => pfMatch(r, skip) && Object.entries(F).every(([i, set]) => set.has(bucket(T.cols[i], r)))); }
+function pfCount() { const P = ui.pf; return Object.keys(ui.filters.portfolio || {}).length + (P.q ? 1 : 0) + (P.deps.size ? 1 : 0) + (P.rob.size ? 1 : 0) + (P.last ? 1 : 0) + (P.from || P.to ? 1 : 0); }
+function pfDirty() { const s = ui.sort.portfolio, d = TABLES.portfolio.sort; return pfCount() > 0 || ui.hid.size > 0 || (s && (s.i !== d.i || s.asc !== d.asc)); }
+function renderPfBar() {
+  const host = $('tbl-pf'), top = $('tbl-filters'); if (!host) return;
+  if (ui.tab !== 'portfolio') { host.innerHTML = ''; top.innerHTML = ''; return; }
+  const n = pfCount(), dirty = pfDirty();
+  top.innerHTML = `<button type="button" onclick="pfReset()" ${dirty ? '' : 'disabled'} class="btn !h-9 !px-3" style="${dirty ? 'background:#EDE9FE;color:#5B21B6;border:1.5px solid #C4B5FD' : 'background:#F1F5F9;color:#94A3B8;border:1.5px solid #E2E8F0;cursor:default'}" title="Efface tous les filtres et remet le tri et les colonnes par défaut. Aucune donnée n'est supprimée."><i class="fas fa-rotate-left"></i>Réinitialiser${n ? ` · ${n} filtre${n > 1 ? 's' : ''} actif${n > 1 ? 's' : ''}` : (dirty ? ' l’affichage' : '')}</button><button type="button" data-colbtn class="btn btn-g !h-9 !px-3" onclick="openColsMenu(this)" aria-haspopup="true"><i class="fas fa-gear"></i>Colonnes<i class="fas fa-chevron-down text-[10px]"></i></button>`;
+  const ae = document.activeElement, keep = ae && host.contains(ae) && ae.id ? {id: ae.id, s: ae.selectionStart, e: ae.selectionEnd} : null;
+  const P = ui.pf, chip = (on, l, k, fn) => `<button type="button" class="pfc${on ? ' on' : ''}" aria-pressed="${on}" onclick="${fn}">${l}${k != null ? ` <b>${k}</b>` : ''}</button>`;
+  const dc = {}; pfRows('dep').forEach(c => { const d = depOf(c); if (d) dc[d] = (dc[d] || 0) + 1; });
+  const rc = {}; pfRows('rob').forEach(c => (c.robots || []).forEach(m => rc[m] = (rc[m] || 0) + 1));
+  const rl = pfRows('last'), lc = k => { const f = PF_LAST.find(x => x[0] === k); return rl.filter(c => { const d = daysSince(lastAction(c)); return d != null && f[2](d); }).length; };
+  const deps = Object.keys(dc).sort();
+  const depChips = deps.map(d => chip(P.deps.has(d), d, dc[d], `pfDep('${d}')`)).join('');
+  const robChips = PF_ROB.filter(([m]) => rc[m] || P.rob.has(m)).map(([m, l]) => chip(P.rob.has(m), l, rc[m] || 0, `pfRob('${m}')`)).join('');
+  const lastChips = PF_LAST.map(([k, l]) => chip(P.last === k, l, lc(k), `pfLast('${k}')`)).join('');
+  const rows = pfRows(), tot = sum(rows, c => c.montant), chs = rows.map(c => chOf(c)).filter(Boolean), avg = chs.length ? Math.round(chs.reduce((a, b) => a + b, 0) / chs.length) : null;
+  const act = []; const T = TABLES.portfolio;
+  if (P.q) act.push([`Recherche : « ${esc(P.q)} »`, "pfClr('q')"]);
+  if (P.deps.size) act.push([`Dép. ${[...P.deps].sort().join(', ')}`, "pfClr('dep')"]);
+  if (P.rob.size) act.push([`Robot : ${[...P.rob].map(m => (PF_ROB.find(x => x[0] === m) || [0, m])[1]).join(', ')}`, "pfClr('rob')"]);
+  if (P.last) act.push([`Dernière action : ${PF_LAST.find(x => x[0] === P.last)[1].toLowerCase()}`, "pfClr('last')"]);
+  if (P.from || P.to) act.push([`Dernière action : ${P.from ? 'du ' + fmtD(P.from) : ''}${P.from && P.to ? ' ' : ''}${P.to ? 'au ' + fmtD(P.to) : ''}`, "pfClr('range')"]);
+  Object.keys(ui.filters.portfolio || {}).forEach(i => { const f = ui.filters.portfolio[i]; act.push([`${esc(T.cols[i].l)} : ${esc([...f].slice(0, 2).join(', '))}${f.size > 2 ? '…' : ''}`, `pfClrCol(${i})`]); });
+  host.innerHTML = `<div class="px-5 py-3 border-b border-slate-200 flex flex-col gap-2.5 bg-slate-50/60">
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+      <label class="flex items-center gap-2"><span class="pfl">Recherche</span><input id="pf-q" class="inp !w-[210px]" placeholder="Pharmacie ou ville" value="${esc(P.q)}" oninput="pfSet('q',this.value)" autocomplete="off"></label>
+      <label class="flex items-center gap-2"><span class="pfl">Département</span><input id="pf-dep" class="inp !w-[150px]" placeholder="ex. 18, 36, 37" value="${esc(P.depTxt)}" oninput="pfDepIn(this.value)" autocomplete="off" inputmode="numeric"></label>
+      <div class="flex flex-wrap items-center gap-1.5">${depChips || '<span class="text-xs text-muted">Aucun département</span>'}</div>
+    </div>
+    <div class="flex flex-wrap items-center gap-x-4 gap-y-2">
+      <div class="flex flex-wrap items-center gap-1.5"><span class="pfl mr-1">Robot</span>${robChips || '<span class="text-xs text-muted">—</span>'}</div>
+    </div>
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-2"><span class="pfl">Dernière action</span>${lastChips}
+      <span class="text-xs text-muted ml-1">ou du</span><input id="pf-from" type="date" class="inp !w-[150px]" value="${esc(P.from)}" onchange="pfSet('from',this.value)" aria-label="Dernière action à partir du"><span class="text-xs text-muted">au</span><input id="pf-to" type="date" class="inp !w-[150px]" value="${esc(P.to)}" onchange="pfSet('to',this.value)" aria-label="Dernière action jusqu'au"></div>
+    ${act.length ? `<div class="flex flex-wrap items-center gap-2 rounded-xl border border-violet-200 bg-violet-50/70 px-3 py-2"><span class="text-[13px] text-violet-950"><b>${rows.length} projet${rows.length > 1 ? 's' : ''}</b> · <b>${eur(tot)}</b> HT${avg != null ? ` · chance moyenne <b>${avg} %</b>` : ''}</span><span class="text-violet-300">|</span>${act.map(([l, fn]) => `<span class="pfa">${l}<button type="button" onclick="${fn}" aria-label="Retirer ce filtre"><i class="fas fa-xmark text-[11px]"></i></button></span>`).join('')}</div>` : ''}
+  </div>`;
+  if (keep) { const el = $(keep.id); if (el) { el.focus(); try { if (keep.s != null) el.setSelectionRange(keep.s, keep.e); } catch { } } }
+}
+const pfGo = () => { renderTable(); };
+function pfSet(k, v) { ui.pf[k] = v; pfGo(); }
+function pfDepIn(v) { const P = ui.pf; P.depTxt = v; P.deps = new Set((v.toUpperCase().match(/2[AB]|\d{1,2}/g) || [])); pfGo(); }
+function pfDep(d) { const P = ui.pf; if (P.deps.has(d)) P.deps.delete(d); else P.deps.add(d); P.depTxt = [...P.deps].sort().join(', '); pfGo(); }
+function pfRob(m) { const s = ui.pf.rob; if (s.has(m)) s.delete(m); else s.add(m); pfGo(); }
+function pfLast(k) { ui.pf.last = ui.pf.last === k ? '' : k; pfGo(); }
+function pfClr(g) { const P = ui.pf; if (g === 'q') P.q = ''; else if (g === 'dep') { P.deps = new Set(); P.depTxt = ''; } else if (g === 'rob') P.rob = new Set(); else if (g === 'last') P.last = ''; else { P.from = ''; P.to = ''; } pfGo(); }
+function pfClrCol(i) { delete (ui.filters.portfolio || {})[i]; renderPipeline(); pfGo(); }
+function openColsMenu(el) {
+  let p = $('colmenu');
+  if (!p) { p = document.createElement('div'); p.id = 'colmenu'; p.className = 'card'; p.style.cssText = 'position:fixed;z-index:60;padding:10px 14px;display:none;flex-direction:column;gap:2px;min-width:230px;box-shadow:0 10px 30px #0003'; document.body.appendChild(p);
+    document.addEventListener('click', e => { const q = $('colmenu'); if (q && q.style.display === 'flex' && !q.contains(e.target) && !e.target.closest('[data-colbtn]')) q.style.display = 'none'; }); }
+  if (p.style.display === 'flex') { p.style.display = 'none'; return; }
+  const T = TABLES.portfolio;
+  p.innerHTML = `<div class="kicker mb-1">Colonnes affichées</div>` + T.cols.map((c, i) => c.l && c.l !== 'Pharmacie' && i !== 0 ? `<label class="flex items-center gap-2 text-[13px] py-1.5 cursor-pointer"><input type="checkbox" class="w-4 h-4 accent-orange-700" ${ui.hid.has(c.l) ? '' : 'checked'} onchange="colToggle(${i},this.checked)">${esc(c.l)}</label>` : '').join('') + `<p class="text-[11.5px] text-muted mt-1">Chance, Pharmacie et Actions restent toujours visibles. Votre choix est mémorisé.</p><button class="btn btn-g !h-8 mt-1" onclick="colsAll()">Tout afficher</button>`;
+  p.style.display = 'flex'; const r = el.getBoundingClientRect(); p.style.left = Math.max(8, Math.min(r.right - 240, innerWidth - 250)) + 'px'; p.style.top = (r.bottom + 6) + 'px';
+}
+function colSave() { try { localStorage.setItem('ptk_pf_hid', JSON.stringify([...ui.hid])); } catch { } }
+function colToggle(i, on) { const l = TABLES.portfolio.cols[i].l; if (on) ui.hid.delete(l); else ui.hid.add(l); colSave(); renderTable(); }
+function colsAll() { ui.hid = new Set(); colSave(); const p = $('colmenu'); if (p) p.style.display = 'none'; renderTable(); }
+let _pfUndo = null;
+function pfReset() {
+  if (!pfDirty()) return;
+  const P = ui.pf, F = ui.filters.portfolio || {};
+  _pfUndo = {F: Object.fromEntries(Object.entries(F).map(([i, s]) => [i, new Set(s)])), P: {...P, deps: new Set(P.deps), rob: new Set(P.rob)}, sort: ui.sort.portfolio, hid: new Set(ui.hid)};
+  const n = pfCount(); ui.filters.portfolio = {}; ui.pf = pfNew(); delete ui.sort.portfolio; ui.hid = new Set(); colSave();
+  const q = $('colmenu'); if (q) q.style.display = 'none';
+  renderPipeline(); renderTable(); pfToast(n);
+}
+function pfToast(n) {
+  let t = $('undo-toast'); if (!t) { t = document.createElement('div'); t.id = 'undo-toast'; t.setAttribute('role', 'status'); document.body.appendChild(t); }
+  t.innerHTML = `<span><i class="fas fa-rotate-left mr-2"></i>Affichage réinitialisé${n ? ` · ${n} filtre${n > 1 ? 's' : ''} retiré${n > 1 ? 's' : ''}` : ''}</span><button type="button" onclick="pfUndo()">Annuler</button>`; t.style.display = 'flex'; clearTimeout(t._h); t._h = setTimeout(() => { t.style.display = 'none'; _pfUndo = null; }, 5000);
+}
+function pfUndo() {
+  const u = _pfUndo; if (!u) return; ui.filters.portfolio = u.F; ui.pf = u.P; if (u.sort) ui.sort.portfolio = u.sort; ui.hid = u.hid; colSave(); _pfUndo = null;
+  const t = $('undo-toast'); if (t) t.style.display = 'none'; renderPipeline(); renderTable(); toast('Filtres rétablis');
 }
 function clearFilters() { ui.filters[ui.tab] = {}; renderTable(); renderPipeline(); }
 function openColPop(i, el) {
@@ -3726,7 +3851,7 @@ function colApply(i) {
 }
 function colClear(i) { const F = ui.filters[ui.tab] || {}; delete F[i]; closeColPop(); renderTable(); if (ui.tab === 'portfolio') renderPipeline(); }
 function exportCSV() {
-  const T = TABLES[ui.tab], rows = tableRows(), cols = T.cols.filter(c => c.v && c.l);
+  const T = TABLES[ui.tab], rows = tableRows(), cols = T.cols.filter(c => c.v && c.l).flatMap(c => c.csv ? c.csv.map(([l, f]) => ({l, v: f, t: f})) : [c]);
   if (!rows.length) return toast('Aucune donnée à exporter.', true);
   const q = v => `"${String(v).replace(/"/g, '""')}"`, val = (c, r) => c.money ? Math.round(c.v(r) || 0) : cellText(c, r);
   download(`${T.file}_${isoDay(new Date())}.csv`, '\uFEFF' + [cols.map(c => q(c.l)).join(';'), ...rows.map(r => cols.map(c => q(val(c, r))).join(';'))].join('\r\n'), 'text/csv;charset=utf-8');
@@ -4433,13 +4558,14 @@ function synScan() { document.querySelectorAll('textarea[id]').forEach(t => { if
 setInterval(synScan, 1200);
 function cmUndo() { if (cmPrev === null) return; $('f-cm').value = cmPrev; cmPrev = null; $('f-cm-undo').classList.add('hidden'); mxRead(); }
 function mxOne(el) { if (el.checked) document.querySelectorAll('input[name=f-model]').forEach(i => { if (i !== el) i.checked = false; }); }
+const gmodHTML = () => { const n = ui.gmod || 1; return `<div class="flex flex-wrap items-center gap-2 mt-2.5"><span class="lbl !mb-0">Nombre de modules GENESI</span><div class="flex gap-1.5" role="radiogroup" aria-label="Nombre de modules GENESI">${[1, 2, 3, 4, 5].map(k => `<label class="cursor-pointer"><input type="radio" name="f-gmod" value="${k}" class="peer sr-only" ${k === n ? 'checked' : ''} onchange="ui.gmod=${k};mxSync()"><span class="inline-flex items-center justify-center w-10 h-10 rounded-full border text-[14px] font-bold border-slate-300 text-slate-700 hover:border-slate-400 peer-checked:bg-orange-50 peer-checked:border-orange-400 peer-checked:text-orange-900 peer-focus-visible:ring-2 ring-orange-300">${k}</span></label>`).join('')}</div><span class="text-xs text-muted">Le prix reste à saisir (montant du projet / offre).</span></div>`; };
 function renderModels(sel) {
   const locked = false, T = "Construction de l'offre de robotisation et synthèse du projet";
   if (locked) { $('f-models-box').innerHTML = `<div class="fbox ok">${fboxHead(T, true, editBtn("ui.modUnlock=true;renderModels(collectRaw().robots)"))}
     <div class="flex flex-wrap items-center gap-2">${sel.map(m => `<span class="chip-ok !h-10 !pl-1.5">${robotIco(m, 30)}<i class="fas fa-check text-[11px]"></i>${esc(m)}</span><input type="checkbox" name="f-model" value="${esc(m)}" checked class="hidden">`).join('')}</div>${mxView(true, sel)}</div>`; return; }
   $('f-models-box').innerHTML = `<div class="fbox ${sel.length ? 'ok' : 'todo'}">${fboxHead(T, sel.length > 0, '')}
     <div class="flex flex-wrap gap-2">${[...MODELS, ...sel.filter(m => !MODELS.includes(m))].map(m => { const on = sel.includes(m);
-      return `<label class="cursor-pointer"><input type="checkbox" name="f-model" value="${esc(m)}" class="peer sr-only" ${on ? 'checked' : ''} onchange="mxOne(this);ui.modUnlock=true;mxSync();renderStage()"><span class="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-full border text-[13px] font-semibold border-slate-300 text-slate-700 hover:border-slate-400 peer-checked:bg-orange-50 peer-checked:border-orange-400 peer-checked:text-orange-900 peer-focus-visible:ring-2 ring-orange-300 !h-10 !pl-1.5">${robotIco(m, 28)}${esc(m)}${MODELS.includes(m) ? '' : ' (ancien libellé)'}</span></label>`; }).join('')}</div>${mxView(false, sel)}</div>`;
+      return `<label class="cursor-pointer"><input type="checkbox" name="f-model" value="${esc(m)}" class="peer sr-only" ${on ? 'checked' : ''} onchange="mxOne(this);ui.modUnlock=true;mxSync();renderStage()"><span class="inline-flex items-center gap-1.5 h-9 px-3.5 rounded-full border text-[13px] font-semibold border-slate-300 text-slate-700 hover:border-slate-400 peer-checked:bg-orange-50 peer-checked:border-orange-400 peer-checked:text-orange-900 peer-focus-visible:ring-2 ring-orange-300 !h-10 !pl-1.5">${robotIco(m, 28)}${esc(m)}${MODELS.includes(m) ? '' : ' (ancien libellé)'}</span></label>`; }).join('')}</div>${sel.some(m => /GENESI/i.test(m)) ? gmodHTML() : ''}${mxView(false, sel)}</div>`;
 }
 const DEVIS = {afaire: ['À faire', '#94A3B8', '#F1F3F6', '#475569'], encours: ['En cours', '#D97706', '#FEF6E4', '#6B4607'], envoye: ['Réalisé', '#1C7C54', '#E8F5EE', '#14603F']};
 function renderDevis(c) {
@@ -4689,7 +4815,7 @@ function offSignUi(c) {
 }
 function offSignPick(cid) { const c = byId(cid), id = +$('r3-offre').value, d = offData(c, id); if (d?.montant) $('r3-montant').value = d.montant; }
 function offSignApply(c) { if (offList(c).length < 2) return; const id = +$('r3-offre').value; offSwitch(c, id); c.offrePriv = id; c.offres.forEach(o => { if (o.id !== id) o.nonretenue = true; }); log(c, `Offre ${c.offres.find(o => o.id === id).nom} retenue`, 'Les autres offres sont conservées en « non retenues ».'); }
-const argLive = c => { if (c && ui.editId === c.id && !$('view-client').classList.contains('hidden')) { try { const d = collectRaw(); return {...c, robots: d.robots, besoins: d.besoins}; } catch { } } return c; };
+const argLive = c => { if (c && ui.editId === c.id && !$('view-client').classList.contains('hidden')) { try { const d = collectRaw(); return {...c, robots: d.robots, genMod: d.genMod, besoins: d.besoins}; } catch { } } return c; };
 function argHelp() { const c = byId(ui.editId); if (!c) return; const m = argMiss(argLive(c)); if (!m.length) return renderArgBtn(c); toast(`À renseigner d'abord : ${m.join(', ')}.`, true); const t = {'Besoins et problématiques': 'f-besoins-box', "Construction de l'offre (modèle)": 'f-models-box', "Synthèse de l'offre": 'f-offre-box'}[m[0]]; $(t)?.scrollIntoView({block: 'center', behavior: 'smooth'}); }
 function renderArgBtn(c) {
   const box = $('f-arg-box'); if (!box) return;
@@ -4906,7 +5032,7 @@ function qrDraw(doc, text, x, y, size, col, colF, bg) {
 const OPT_ICN = {'Hélice et hélicoïdal': 'arrows-spin', 'PANNEAU TYPE A': 'table-cells-large', 'Euclid3D': 'hands', 'Pharmaload': 'boxes-packing', 'QuickAir': 'wind', 'QuickPick24': 'store', 'Parties vitrées': 'window-maximize', "Étagères d'exposition": 'layer-group', 'Transitique tapis': 'right-left', 'Double bras': 'hands-holding'};
 /* ----- Page de garde (argumentaire, synthèse, PDF fusionné) ----- */
 function coverPage(K, c, o) {
-  const doc = K.doc, W = K.W, GR = [243, 244, 246], rb = (c.robots || [])[0] || 'Robot Pharmathek', mm = rb.match(/^(SINTESI \w+|GENESI)\s*(.*)$/i) || [0, rb, ''], civ = c.genre === 'Mme' ? 'Mme' : 'M.';
+  const doc = K.doc, W = K.W, GR = [243, 244, 246], rb = (c.robots || [])[0] || 'Robot Pharmathek', mm = rb.match(/^(SINTESI \w+|GENESI)\s*(.*)$/i) || [0, rb, ''], civ = c.genre === 'Mme' ? 'Mme' : 'M.'; if (/^GENESI$/i.test(rb)) mm[2] = `${gMod(c)} module${gMod(c) > 1 ? 's' : ''}`;
   doc.setFillColor(255, 255, 255); doc.rect(0, 0, W, 297, 'F'); doc.setFillColor(...PK.or); doc.rect(0, 0, 6, 128, 'F'); doc.rect(0, 294, W, 3, 'F');
   try { doc.addImage(settings.logo || LOGO_PTK, 'PNG', 22, 14, 48, 16.4); } catch { }
   K.font(7, 'bold', PK.ord); { const lb = pdfTxt(o.label.toUpperCase()); doc.text(lb, W - 20 - doc.getTextWidth(lb) - lb.length * .7, 24, {charSpace: .7}); } K.font(8.5, 'normal', PK.mut); doc.text(new Date().toLocaleDateString('fr-FR', {day: 'numeric', month: 'long', year: 'numeric'}), W - 20, 29.5, {align: 'right'});
@@ -4978,7 +5104,7 @@ async function genArgNew0(id, merge, prev, sec) {
   { let ty0 = y0 + 15;
     if (C.gTot > 0) { const tn = C.gTot >= 120 ? Math.round(C.gTot / 60) + ' heures' : hm(C.gTot); K.font(24, 'bold', PK.ink); doc.text('Rendez ', M, ty0); const wa = doc.getTextWidth('Rendez '); K.font(24, 'bold', PK.or); doc.text(pdfTxt(`${tn} par jour`), M + wa, ty0); K.font(24, 'bold', PK.ink); doc.text('à votre équipe. Pour le conseil.', M, ty0 + 10.5); ty0 += 10.5; }
     else { K.font(22, 'bold', PK.ink); const tl = doc.splitTextToSize(pdfTxt(A.title || 'Ce que le robot Pharmathek change pour votre officine'), CW); doc.text(tl, M, ty0); ty0 += (tl.length - 1) * 9.5; }
-    const sub = [{t: 'Le robot '}, {t: robots.join(' + ') || 'Pharmathek', b: true}]; if (C.dos) sub.push({t: ', dimensionné pour '}, {t: `${fr(C.dos)} dossiers/jour`, b: true}); if (C.pst) sub.push({t: ' et '}, {t: `${C.pst} postes de vente`, b: true}); sub.push({t: '.'});
+    const sub = [{t: 'Le robot '}, {t: robots.map(m => robName(c, m)).join(' + ') || 'Pharmathek', b: true}]; if (C.dos) sub.push({t: ', dimensionné pour '}, {t: `${fr(C.dos)} dossiers/jour`, b: true}); if (C.pst) sub.push({t: ' et '}, {t: `${C.pst} postes de vente`, b: true}); sub.push({t: '.'});
     K.y = K.rich(sub, M, ty0 + 6, CW, 9.2, 4.2, PK.mut) + 4; }
   if (C.gTot > 0) {
     const kp = [['stopwatch', `${hm(C.gTot)}/jour`, "de temps rendu à l'équipe pour le conseil", true], ['calendar-check', `${fr(C.gMois)} h/mois`, "gagnées sur l'ensemble de l'officine"]];
@@ -5274,7 +5400,7 @@ function fillForm(c) {
   renderEchSelect(c?.echeance || '');
   document.querySelectorAll('input[name=f-ind]').forEach(r => r.checked = r.value === (IND_CH[chOf(c)] || c?.indicateur || '-'));
   ui.typeUnlock = false; renderTypes(c?.typeProjet || '');
-  ui.devisUnlock = false; ui.modUnlock = false; mxLoad(c); renderDetail(); renderModels(c?.robots || []);
+  ui.devisUnlock = false; ui.modUnlock = false; ui.gmod = c ? gMod(c) : 1; mxLoad(c); renderDetail(); renderModels(c?.robots || []);
   const rc = c?.robotConc; $('f-rc').checked = !!rc; rcToggle(); document.querySelectorAll('input[name=f-sit]').forEach(r => r.checked = r.value === (rc ? 'eq' : 'first')); $('f-rc-projet').value = rc?.projet || 'remplacement';
   if (rc) { $('f-rc-marque').value = rc.marque || 'BD Rowa'; v('f-rc-autre', rc.autre); v('f-rc-annee', rc.annee); v('f-rc-modele', rc.modele); }
   else { $('f-rc-marque').value = 'BD Rowa'; v('f-rc-autre', ''); v('f-rc-annee', ''); v('f-rc-modele', ''); }
@@ -5744,7 +5870,7 @@ function collectRaw() {
   const lgo = $('f-lgo').value;
   return {pharma: g('f-pharma'), cip: g('f-cip'), siret: siretOf(g('f-siret')), groupement: g('f-grp'), genre: $('f-genre').value, nom: g('f-nom'), prenom: g('f-prenom'), rue: g('f-rue'), cp: g('f-cp'), ville: g('f-ville'),
     telFixe: g('f-tel'), telPort: g('f-port'), email: g('f-email'), devisNom: g('f-devnom'), assoc: assocRead(), cession: cesRead(), nom2: '', nom2On: false, devisMail: g('f-devmail'), devisTel: g('f-devtel'), situation: $('f-situ').value, situationNote: g('f-situ-note'), lgo, lgoAutre: lgo === 'Autre' ? g('f-lgo-autre') : '',
-    indicateur: document.querySelector('input[name=f-ind]:checked')?.value || '', chance: CH_IND[document.querySelector('input[name=f-ind]:checked')?.value] || undefined, robots: [...document.querySelectorAll('input[name=f-model]:checked')].map(x => x.value),
+    indicateur: document.querySelector('input[name=f-ind]:checked')?.value || '', chance: CH_IND[document.querySelector('input[name=f-ind]:checked')?.value] || undefined, robots: [...document.querySelectorAll('input[name=f-model]:checked')].map(x => x.value), genMod: ui.gmod || 1,
     options: [...mxGet().options], besoinsSol: [...(ui.mxSol || [])], positions: [...mxGet().positions], distCpt: mxGet().dc, pasJ: mxGet().pas, distJ: mxGet().dist, pasLong: mxGet().pasLong, ptk: (({postes, dossiers, boites, stock, use, bo, rec, gainPct, args, comment}) => ({postes, dossiers, boites, stock, use: {...use}, bo: {...bo}, rec: {...(rec || {})}, gainPct: gainPct || '', args: {...(args || {})}, comment: {text: '', on: true, ...(comment || {})}}))(mxGet()),
     montant: +$('f-montant').value || 0, dateDecision: $('f-decision').value, opportunite: $('f-opp').value, echeance: $('f-ech').value,
     typeProjet: document.querySelector('input[name=f-type]:checked')?.value || '',
@@ -6561,7 +6687,7 @@ function parseContrat(L) {
   return o;
 }
 const PTK_HQ = {nom: 'Pharmathek France SAS', rue: '214 Chemin Vallon Rouge – ZA Bertoire II – 13410 Lambesc – France', tel: '+33 04 42 62 77 08', mail: 'france@pharmathek.com'};
-const offreNew = c => ({ref: '', date: new Date().toLocaleDateString('fr-FR'), validite: 30, robot: 'Robot ' + (famOf(c) || 'SINTESI'), lignes: [], remisePct: 0, maint: {formule: 'Maintenance ProActive', mensuel: 0, remPct: 0, mois: 36, ans: 7}, tech: {}});
+const offreNew = c => ({ref: '', date: new Date().toLocaleDateString('fr-FR'), validite: 30, robot: 'Robot ' + (famOf(c) === 'GENESI' ? robName(c, 'GENESI') : (famOf(c) || 'SINTESI')), lignes: famOf(c) === 'GENESI' ? [{t: `Robot ${robName(c, 'GENESI')} + transport, installation et formation`, m: 0}] : [], remisePct: 0, maint: {formule: 'Maintenance ProActive', mensuel: 0, remPct: 0, mois: 36, ans: 7}, tech: {}});
 const offreCalc = o => { const brut = sum(o.lignes, x => +x.m || 0), md = o.remMode || 'pct'; let rem = md === 'eur' ? Math.round(+o.remEur || 0) : md === 'net' ? (o.remNet === '' || o.remNet == null ? 0 : brut - Math.round(+o.remNet)) : Math.round(brut * (+o.remisePct || 0) / 100); rem = Math.max(0, Math.min(rem, Math.max(brut, 0))); const net = brut - rem, pct = brut > 0 ? Math.round(rem / brut * 10000) / 100 : 0, m = o.maint || {}, mRem = Math.round((+m.mensuel || 0) * (1 - (+m.remPct || 0) / 100)); return {brut, rem, net, pct, mRem}; };
 function offreBox(c) {
   const box = $('f-offre-box');
@@ -6631,7 +6757,7 @@ function parseGenesi(L) {
   m = T.match(/ADRESSE\s*:\s*([^\n]+?)\s*(?:\n|$)/); o.rue = m ? nz(m[1].split(/\s{3,}/)[0]) : '';
   const mod = (T.match(/GENESI\s+(\d)\s*modules?/i) || [])[1], sor = (T.match(/Nombre de sorties\s*:\s*(\d)/i) || [])[1]; o.modules = mod ? +mod : 0;
   const pr = L.map(l => l.match(/^Prix Total HT\s.*?EUR\s*([\d\s.]*\d)\s*€/i)).find(Boolean);
-  if (pr) o.lignes.push({t: `Robot GENESI${mod ? ' ' + mod + ' module' + (mod > 1 ? 's' : '') : ''}${sor ? ' (' + sor + ' sortie' + (sor > 1 ? 's' : '') + ' directe' + (sor > 1 ? 's' : '') + ')' : ''} + transport, installation et formation`, m: numFr(pr[1])});
+  if (pr) o.lignes.push({t: `Robot GENESI${mod ? ' · ' + mod + ' module' + (mod > 1 ? 's' : '') : ''}${sor ? ' (' + sor + ' sortie' + (sor > 1 ? 's' : '') + ' directe' + (sor > 1 ? 's' : '') + ')' : ''} + transport, installation et formation`, m: numFr(pr[1])});
   let inOpt = false;
   L.forEach(l => { const t = nz(l); if (/^OPTIONS$/i.test(t)) { inOpt = true; return; } if (inOpt && /^(Conditions de paiement|Prix\s*:|PHARMATHEK France SAS|Offre n)/i.test(t)) { inOpt = false; return; } if (!inOpt) return;
     const p = l.trim().split(/\s{3,}/); if (/^[A-Z]{5,}\d*$/.test(p[0]) && p.length > 1) p.shift(); if (p.length < 4) return;
@@ -6677,8 +6803,8 @@ async function offreImport(input, inDlg, replace) {
       const buf = await f.arrayBuffer(); let L = await pdfLines(buf.slice(0), lib), ocr = false;
       if (L.join('').replace(/\s/g, '').length < 80) { try { L = await ocrLines(buf.slice(0), lib); ocr = true; } catch (e) { toast('Document image : la reconnaissance du texte demande une connexion Internet.', true); continue; } }
       const T = L.join('\n');
-      if (isGenesi(T)) { const d = parseGenesi(L); if (!d.lignes.length) throw 0; Object.assign(o, {ref: d.ref || o.ref, date: d.date || o.date, lignes: d.lignes, robot: 'Robot GENESI', tech: {...o.tech, ...d.tech}, src: {pharma: d.pharma, titulaire: d.titulaire, ville: d.ville, rue: d.rue, cp: d.cp, total: d.totalDevis}});
-        if (d.rem) Object.assign(o, {remMode: 'eur', remEur: d.rem, remisePct: 0}); if (d.maint.mensuel) Object.assign(o.maint, {formule: d.maint.formule, mensuel: d.maint.mensuel, ans: d.maint.ans || o.maint.ans}); got.push(`devis GENESI${d.modules ? ' (' + d.modules + ' modules)' : ''}${d.rem ? ', remise ' + Math.round(d.rem).toLocaleString('fr-FR') + ' €' : ''}${d.maint.mensuel ? ' et maintenance ' + d.maint.mensuel + ' €/mois' : ''}`); }
+      if (isGenesi(T)) { const d = parseGenesi(L); if (!d.lignes.length) throw 0; Object.assign(o, {ref: d.ref || o.ref, date: d.date || o.date, lignes: d.lignes, robot: 'Robot GENESI' + (d.modules ? ` · ${d.modules} module${d.modules > 1 ? 's' : ''}` : ''), tech: {...o.tech, ...d.tech}, src: {pharma: d.pharma, titulaire: d.titulaire, ville: d.ville, rue: d.rue, cp: d.cp, total: d.totalDevis}});
+        if (d.rem) Object.assign(o, {remMode: 'eur', remEur: d.rem, remisePct: 0}); if (d.maint.mensuel) Object.assign(o.maint, {formule: d.maint.formule, mensuel: d.maint.mensuel, ans: d.maint.ans || o.maint.ans}); if (d.modules >= 1 && d.modules <= 5) { c.genMod = d.modules; if (ui.editId === c.id) ui.gmod = d.modules; } got.push(`devis GENESI${d.modules ? ' (' + d.modules + ' modules)' : ''}${d.rem ? ', remise ' + Math.round(d.rem).toLocaleString('fr-FR') + ' €' : ''}${d.maint.mensuel ? ' et maintenance ' + d.maint.mensuel + ' €/mois' : ''}`); }
       else if (isAncien(T)) { const d = parseAncien(L); if (!d.lignes.length) throw 0; Object.assign(o, {ref: d.ref || o.ref, date: d.date || o.date, lignes: d.lignes, tech: {...o.tech, ...d.tech}, src: {pharma: d.pharma, titulaire: d.titulaire, ville: d.ville, rue: d.rue, cp: d.cp, total: d.totalDevis}});
         if (d.maint.mensuel) Object.assign(o.maint, {formule: 'Contrat de service', mensuel: d.maint.mensuel, ans: d.maint.ans || o.maint.ans}); got.push(`ancien devis${ocr ? ' (lu par reconnaissance de texte)' : ''}, supprimez les options non retenues`); if (d.notes.length) setTimeout(() => toast('Versions au choix : ' + d.notes.join(' · ')), 3500); }
       else if (/CONTRAT DE SERVICE|Prix du Service/i.test(T) && !/Prix Total Hors Taxes/i.test(T)) { const k = parseContrat(L); Object.assign(o.maint, {formule: k.formule, mensuel: k.mensuel || o.maint.mensuel, ans: k.ans || o.maint.ans}); o.refContrat = k.refContrat; got.push('contrat de maintenance'); }
@@ -6716,7 +6842,7 @@ function offreCmpApply() {
 function offreCmpEdit() { const D = ui.ofCmp; if (!D) return; closeDlg('dlg-offrecmp'); ui.ofDraft = D.n; openOffre(D.id, D.n); }
 function openOffre(id, draft) {
   const c = byId(id); if (!c) return; ui.ofId = id;
-  const o = draft || (c.offre ? JSON.parse(JSON.stringify(c.offre)) : offreNew(c)), m = o.maint, op = opActive();
+  const o = draft || (c.offre ? JSON.parse(JSON.stringify(c.offre)) : offreNew(c)), m = o.maint, op = opActive(); if (o.robot === 'Robot GENESI' && famOf(c) === 'GENESI') o.robot = 'Robot ' + robName(c, 'GENESI');
   const warn = o.src?.pharma && norm(o.src.pharma) !== norm(c.pharma) ? `<div class="rounded-xl bg-amber-50 border border-amber-300 px-4 py-2.5 text-[13px] text-amber-950"><i class="fas fa-triangle-exclamation mr-1.5"></i>Le devis est au nom de <b>${esc(titleFr(o.src.pharma))}</b>, la fiche est « ${esc(c.pharma)} ». Vérifiez qu'il s'agit du bon client.</div>` : '';
   const f = (id2, l, v, extra = '') => `<div><label class="lbl" for="${id2}">${l}</label><input id="${id2}" class="inp" value="${esc(v ?? '')}" ${extra}></div>`;
   $('of-sub').textContent = `${c.pharma} — ${c.ville}${o.src?.total ? ` · devis importé : ${eur(o.src.total)} HT` : ''}`;
@@ -7319,7 +7445,7 @@ async function genCRO() {
   };
   let r = 6;
   section(pj, r, 'ROBOTS SINTESI & GENESI SIGNES :', 'FF4EA72E', 20);
-  r = signedBlock(pj, r + 1, D.rob, c => [+c.cip || c.cip || '', (c.robots || []).join(', '), (c.pharma || '').toUpperCase(), titu(c), regionOf(c).toUpperCase(), xd(c.signatureDate), xd(c.livraisonDate), c.montant || 0]);
+  r = signedBlock(pj, r + 1, D.rob, c => [+c.cip || c.cip || '', robList(c).replace(' · ', ' '), (c.pharma || '').toUpperCase(), titu(c), regionOf(c).toUpperCase(), xd(c.signatureDate), xd(c.livraisonDate), c.montant || 0]);
   r += 2;
   section(pj, r, 'VENTES ADDITIONNELLES', 'FFDCEDD5', 20);
   r = signedBlock(pj, r + 1, D.add, ({c, a}) => [+c.cip || c.cip || '', a.quoi || (c.robots || []).join(', '), (c.pharma || '').toUpperCase(), titu(c), regionOf(c).toUpperCase(), xd(a.date), null, a.montant || 0]);
