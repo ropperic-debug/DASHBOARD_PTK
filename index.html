@@ -293,6 +293,56 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 .tab2{height:36px;border-radius:9px;font-weight:700;font-size:13px;color:#64748B;display:flex;align-items:center;justify-content:center;gap:6px;white-space:nowrap}.tab2.tab-on{background:#fff;color:#0F172A;box-shadow:0 1px 3px rgba(15,23,42,.15)}.tab2 .cnt{background:#E2E8F0;color:#334155;border-radius:999px;padding:0 7px;font-size:11px;line-height:18px}#todo-t-late .cnt{background:#FEE2E2;color:#B42318}.tab2:focus-visible{outline:2px solid #F97316}
 #view-client .fz-off{display:none!important}
 #f-secnav button.sn-on{background:#FFF7ED;box-shadow:inset 0 0 0 2px #EA580C}
+/* V4.5.56 : fenêtre Planifier une action */
+#dlg-action{width:min(640px,96vw);border-radius:24px;overflow:hidden}
+.ax-hd{background:#E87722;color:#fff;padding:18px 22px}
+.ax-ini{width:48px;height:48px;border-radius:15px;background:#fff;color:#E87722;font-weight:800;font-size:17px;display:flex;align-items:center;justify-content:center;flex:none}
+.ax-kick{font-size:11px;font-weight:800;letter-spacing:1.4px;color:#FFE3CC;text-transform:uppercase}
+.ax-name{font-size:20px;font-weight:800;line-height:1.2;margin-top:2px}.ax-sub{font-size:13px;color:#FFE3CC}
+.ax-x{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.25);color:#fff;display:inline-flex;align-items:center;justify-content:center;flex:none}.ax-x:hover{background:rgba(255,255,255,.4)}
+.ax-ph{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.ax-ph a,.ax-ph span.ax-no{flex:1;min-width:170px;border-radius:14px;background:#fff;color:#111827;padding:8px 13px;display:flex;align-items:center;gap:10px;box-shadow:0 2px 6px rgba(124,45,18,.25);text-decoration:none}
+.ax-ph .pi{width:32px;height:32px;border-radius:50%;background:#dcfce7;color:#15803d;display:inline-flex;align-items:center;justify-content:center;flex:none}.ax-ph .pi.f{background:#f1f5f9;color:#475569}
+.ax-ph b{display:block;font-size:15px;line-height:1.2}.ax-ph small{display:block;font-size:11px;color:#6b7280}
+.ax-bd{background:#f1f2f4;padding:16px 20px;display:flex;flex-direction:column;gap:12px}
+.ax-card{background:#fff;border:1px solid #d9dce1;border-radius:18px;padding:14px 16px;box-shadow:0 2px 6px rgba(0,0,0,.07)}
+.ax-st{display:flex;align-items:center;gap:10px;background:#fff;border:2.5px solid #111827;border-radius:14px;padding:7px 14px;margin-bottom:12px;font-size:18px;font-weight:800;color:#1f2937}
+.ax-n{width:28px;height:28px;border-radius:50%;background:#E87722;color:#fff;font-size:15px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.ax-types{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}
+.ax-tile{border-radius:16px;padding:11px 2px 9px;text-align:center;background:#fff;border:1px solid #cfd3d9;font-size:13px;font-weight:700;color:#374151;cursor:pointer}.ax-tile:hover{border-color:#E87722}
+.ax-tile .bub{width:34px;height:34px;border-radius:50%;background:#fff1e6;color:#E87722;margin:0 auto 5px;display:flex;align-items:center;justify-content:center}.ax-tile .bub .ic{fill:none;stroke:currentColor;stroke-width:1.8}
+.ax-tile.on{background:#E87722;border-color:#E87722;color:#fff;box-shadow:0 4px 10px rgba(232,119,34,.4)}.ax-tile.on .bub{background:#fff}
+.ax-days{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.ax-chip{padding:6px 14px;border-radius:20px;font-size:13px;font-weight:700;background:#fff;border:1px solid #cfd3d9;color:#374151;cursor:pointer}.ax-chip:hover{border-color:#E87722}.ax-chip.on{background:#E87722;border-color:#E87722;color:#fff}
+.ax-mchips{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+.ax-mchips button{padding:5px 12px;border-radius:18px;font-size:12.5px;font-weight:700;background:#FFF3EA;border:1px solid #F3B98A;color:#B84A08;cursor:pointer}.ax-mchips button:hover{background:#FFE6D2}
+.ax-note{border:1.5px dashed #F3B98A;background:#FFFBF7;border-radius:14px;padding:11px 15px;font-size:14px;color:#B84A08;text-align:left}.ax-note span{color:#9ca3af}
+.ax-msg{background:#fff;border:2.5px solid #111827;border-radius:18px;padding:12px 15px}.ax-msg-h{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px}.ax-msg-t{font-size:18px;font-weight:800;color:#1f2937}
+.ax-ft{background:#fff;border-top:1px solid #e5e7eb;padding:14px 20px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+.ax-hl{display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12.5px;color:#6b7280;padding:0 2px}.ax-hl b{color:#374151}.ax-hl summary{cursor:pointer;color:#B84A08;font-weight:800;list-style:none}.ax-hl summary::-webkit-details-marker{display:none}
+@media(max-width:520px){.ax-types{grid-template-columns:repeat(3,1fr)}.ax-hd{padding:14px}.ax-bd{padding:12px}}
+/* V4.5.56 : autres fenêtres */
+#dlg-trait,#dlg-noresp,#dlg-replan,#dlg-lost{width:min(560px,96vw);border-radius:24px;overflow:hidden}
+.ax-opts .v41-opt{background:#fff;border-width:2px;border-radius:16px;margin-bottom:9px}.ax-opts .v41-opt:last-child{margin-bottom:0}
+.ax-lo{padding:14px;border-radius:16px;border:1px solid #cfd3d9;background:#fff;text-align:center}.ax-lo b{font-size:15px}.ax-lo div{font-size:12px;color:#6b7280}
+input:checked+.ax-lo-r{background:#B42318;border-color:#B42318}input:checked+.ax-lo-r b,input:checked+.ax-lo-r div{color:#fff}
+input:checked+.ax-lo-a{background:#E87722;border-color:#E87722}input:checked+.ax-lo-a b,input:checked+.ax-lo-a div{color:#fff}
+.ax-hl summary{color:#6b7280;font-weight:400}.ax-hl summary>span:last-child{color:#B84A08;font-weight:800;white-space:nowrap}
+/* V4.5.56 : bandeau d'étapes, pipeline, Ma journée */
+#f-secnav button.sn-on{background:#FFF3EA!important;box-shadow:none!important;border:2.5px solid #111827!important}
+.ax-sn{min-width:0;display:flex;flex-direction:column;justify-content:space-between;gap:8px;min-height:56px;padding:8px 10px;border-radius:14px;border:1px solid #d9dce1;background:#fff;text-align:left}.ax-sn:hover{border-color:#E87722}
+.ax-bar{display:block;height:6px;border-radius:3px;background:#e5e7eb;overflow:hidden}.ax-bar i{display:block;height:6px;border-radius:3px}
+.pcards{display:grid;grid-template-columns:repeat(5,minmax(150px,1fr));gap:8px;overflow-x:auto;padding-bottom:2px}
+.pcard{display:flex;flex-direction:column;gap:6px;text-align:left;background:#fff;border:1px solid #d9dce1;border-bottom:5px solid var(--pc);border-radius:14px;padding:8px 10px;box-shadow:0 2px 6px rgba(0,0,0,.06);transition:opacity .2s}.pcard:hover{box-shadow:0 4px 10px rgba(0,0,0,.12)}
+.pc-t{display:flex;align-items:center;gap:8px}.pc-b{width:30px;height:30px;border-radius:50%;background:color-mix(in srgb,var(--pc) 14%,#fff);color:var(--pc);display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex:none}
+.pc-l{flex:1;font-size:11px;font-weight:800;letter-spacing:.4px;text-transform:uppercase;color:#374151;line-height:1.15}.pc-n{font-size:24px;font-weight:800;color:var(--pc);line-height:1}
+.pc-m{display:flex;justify-content:space-between;align-items:baseline;gap:6px;font-size:11.5px;color:#6b7280}.pc-m b{font-size:13.5px;color:#111827;white-space:nowrap}.pc-w{color:#B42318;font-weight:700}
+.pcard.on{background:var(--pc);border-color:var(--pc)}.pcard.on .pc-l,.pcard.on .pc-m,.pcard.on .pc-m b,.pcard.on .pc-n,.pcard.on .pc-w{color:#fff}.pcard.on .pc-b{background:#fff;color:var(--pc)}
+#view-dashboard [role=tablist]{background:transparent!important;padding:0!important;gap:8px!important}
+#view-dashboard [role=tablist] .tab2{height:auto;flex-direction:column;gap:2px;padding:8px 4px;border-radius:14px;border:1.5px solid transparent;font-size:12px;letter-spacing:.3px}
+#view-dashboard [role=tablist] .tab2 .cnt{font-size:22px;font-weight:800;background:transparent;padding:0;line-height:1.1}
+#todo-t-today{background:#FFF1E6!important;color:#B84A08!important;border-color:#F3B98A!important}#todo-t-week{background:#E6ECFB!important;color:#2F5BD3!important;border-color:#B9C8F3!important}#todo-t-late{background:#FDECEA!important;color:#B42318!important;border-color:#F2B8B3!important}
+#view-dashboard [role=tablist] .tab2.tab-on{box-shadow:none;border:2.5px solid #111827!important}
 /* V2.8 : fiche sans bloc Étape en cours, bouton Dossier perdu */
 #f-stage{display:none!important}
 .zlost{margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:11px;border:2px solid #DC2626;background:#FEF2F2;color:#B91C1C;font-weight:800;font-size:13.5px}.zlost:hover{background:#FEE2E2}
@@ -633,7 +683,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
   </div>
 
   <section class="card frame p-2.5 flex flex-col lg:flex-row lg:items-center gap-2.5" aria-label="Pipeline">
-    <div id="pipeline" class="flex overflow-x-auto pb-0.5 lg:flex-[1.7] min-w-0"></div>
+    <div id="pipeline" class="pcards min-w-0 lg:flex-[2.2]"></div>
     <div id="pipe-stats" class="flex flex-wrap gap-1.5 lg:flex-1 items-center"></div>
     <button id="pipe-reset" class="hidden btn btn-g !h-8" onclick="filterStep('ALL')"><i class="fas fa-xmark"></i>Tout afficher</button>
     <div id="pipe-bar" class="hidden"></div><div id="pipe-note" class="hidden"></div>
@@ -682,7 +732,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
     <div data-pane="projet" class="w-full lg:flex-[7] min-w-0 flex flex-col gap-4">
       <div id="f-banner"></div>
 
-      <nav id="f-secnav" aria-label="Sections de la fiche" class="sticky top-[118px] lg:top-[62px] z-20 bg-white/95 backdrop-blur border border-slate-200 rounded-2xl p-1 shadow-sm grid grid-cols-5 gap-1"></nav>
+      <nav id="f-secnav" aria-label="Sections de la fiche" class="sticky top-[118px] lg:top-[62px] z-20 bg-white/95 backdrop-blur border border-slate-200 rounded-2xl p-2 shadow-sm grid grid-cols-5 gap-2"></nav>
       <div id="f-todo" style="display:none"></div>
       <section id="f-project" class="flex flex-col gap-4">
         <div class="fz flex flex-col gap-4" data-zone="1">
@@ -990,15 +1040,15 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
   </div>
   <div class="px-5 py-4 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-rap')">Annuler</button><button class="btn btn-ok" onclick="saveRap()"><i class="fas fa-check"></i>Enregistrer le rappel</button></div>
 </dialog>
-<dialog id="dlg-replan" class="!w-[min(440px,94vw)]">
-  <div class="px-5 py-4 border-b flex items-center gap-3"><span class="w-10 h-10 rounded-full inline-flex items-center justify-center bg-orange-50 text-ptkd"><i class="fas fa-calendar-day"></i></span><div><h2 class="font-extrabold text-lg leading-tight">Replanifier cette action</h2><p id="rpn-sub" class="text-xs text-muted"></p></div></div>
-  <div class="p-5 flex flex-col gap-3">
-    <div class="flex gap-1.5 flex-wrap"><button type="button" class="btn btn-g !h-9 text-[12.5px]" onclick="rpnQuick(1)">Demain</button><button type="button" class="btn btn-g !h-9 text-[12.5px]" onclick="rpnQuick(7)">Dans 1 semaine</button><button type="button" class="btn btn-g !h-9 text-[12.5px]" onclick="rpnQuick(14)">Dans 2 semaines</button></div>
-    <div class="grid grid-cols-2 gap-2"><div><label class="lbl" for="rpn-d">Nouvelle date *</label><input type="date" id="rpn-d" class="inp"></div><div><label class="lbl" for="rpn-h">Heure *</label><input type="time" id="rpn-h" class="inp" value="10:00"></div></div>
-    <label class="flex items-center gap-2 text-[13px]"><input type="checkbox" id="rpn-cal" class="w-4 h-4 accent-orange-700">Proposer l'ajout à mon agenda</label>
+<dialog id="dlg-replan">
+  <div class="ax-hd"><div class="flex justify-between items-start gap-3"><div class="flex gap-3 items-center min-w-0"><div class="min-w-0"><div class="ax-kick">Replanifier</div><div class="ax-name" >Replanifier cette action</div><div class="ax-sub"><span id="rpn-sub"></span></div></div></div><button class="ax-x" onclick="closeDlg('dlg-replan')" aria-label="Fermer (Échap)"><i class="fas fa-xmark"></i></button></div></div>
+  <div class="dlg-body ax-bd">
+    <div class="ax-card"><div class="ax-st"><span class="ax-n">1</span>Nouvelle date</div><div class="ax-days"><button type="button" class="ax-chip" onclick="rpnQuick(1)">Demain</button><button type="button" class="ax-chip" onclick="rpnQuick(7)">Dans 1 semaine</button><button type="button" class="ax-chip" onclick="rpnQuick(14)">Dans 2 semaines</button></div>
+    <div class="grid grid-cols-2 gap-2"><div><label class="lbl" for="rpn-d">Nouvelle date *</label><input type="date" id="rpn-d" class="inp"></div><div><label class="lbl" for="rpn-h">Heure *</label><input type="time" id="rpn-h" class="inp" value="10:00"></div></div></div>
+    <label class="flex items-center gap-2 text-[13px] px-1"><input type="checkbox" id="rpn-cal" class="w-4 h-4 accent-orange-700">Proposer l'ajout à mon agenda</label>
     <p id="rpn-err" class="text-xs font-semibold text-rose-700 hidden"></p>
   </div>
-  <div class="px-5 py-4 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-replan')">Annuler</button><button class="btn btn-ok" onclick="rpnSave()"><i class="fas fa-check"></i>Valider la nouvelle date</button></div>
+  <div class="ax-ft" style="justify-content:flex-end"><button class="btn btn-g" onclick="closeDlg('dlg-replan')">Annuler</button><button class="btn btn-ok" onclick="rpnSave()"><i class="fas fa-check"></i>Valider</button></div>
 </dialog>
 <dialog id="dlg-rapl" class="!w-[min(500px,94vw)]">
   <div class="px-5 py-4 border-b flex items-center justify-between"><h2 class="font-extrabold text-lg">Rappels du dossier</h2><button class="btn btn-g !w-9 !px-0" onclick="closeDlg('dlg-rapl')" aria-label="Fermer"><i class="fas fa-xmark"></i></button></div>
@@ -1016,31 +1066,35 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
   <div class="px-5 py-4 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-lev')">Fermer</button><button class="btn btn-ok" onclick="levSend()"><i class="fas fa-paper-plane"></i>Ouvrir mon mail</button></div>
 </dialog>
 <dialog id="dlg-action">
-  <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start gap-2">
-    <div><h3 class="font-bold flex items-center gap-2"><i class="fas fa-bolt text-ptkd"></i><span id="act-ttl">Planifier une action</span></h3><p id="act-sub" class="text-xs text-muted mt-0.5"></p></div>
-    <button class="dlg-x" onclick="closeDlg('dlg-action')" aria-label="Fermer (Échap)"><i class="fas fa-xmark"></i></button>
+  <div class="ax-hd">
+    <div class="flex justify-between items-start gap-3"><div class="flex gap-3 items-center min-w-0"><div class="ax-ini" id="act-ini">PH</div><div class="min-w-0"><div class="ax-kick" id="act-ttl">Planifier une action</div><div class="ax-name" id="act-name"></div><div class="ax-sub" id="act-sub"></div></div></div>
+    <button class="ax-x" onclick="closeDlg('dlg-action')" aria-label="Fermer (Échap)"><i class="fas fa-xmark"></i></button></div>
+    <div class="ax-ph" id="act-ph"></div>
   </div>
-  <div class="idband hidden" data-idb></div>
-  <div class="dlg-body p-5 flex flex-col gap-4">
+  <div class="dlg-body ax-bd">
     <label id="act-adv" class="hidden items-center gap-3 rounded-xl bg-orange-50 border border-orange-200 px-3 py-2.5 text-[13px] text-orange-950"><input type="checkbox" id="act-adv-cb" checked class="w-4 h-4 accent-orange-700"><span id="act-adv-txt"></span></label>
     <div id="act-hist"></div>
-    <div id="act-types" class="grid grid-cols-2 sm:grid-cols-5 gap-2"></div>
     <div id="act-tel" class="hidden"></div>
-    <div class="grid sm:grid-cols-[1.5fr_1fr] gap-3 items-start">
-      <div><label class="lbl" for="act-motif">Motif *</label>
-        <div class="mic-wrap"><input id="act-motif" class="inp" oninput="actDetect(this.value);actGen()"><button type="button" class="mic !top-1 !w-9 !h-9" onclick="dictate('act-motif',this)" aria-label="Dicter le motif"><i class="fas fa-microphone"></i></button></div>
-        <div id="act-chips" class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 mt-2"></div></div>
-      <div><label class="lbl flex justify-between items-center" for="act-dt"><span>Date & heure *</span><button type="button" class="text-xs font-bold text-ptkd hover:underline" onclick="$('act-dt').value=nowDT();ui.act.dtTouched=true;actGen()">Maintenant</button></label><input type="datetime-local" id="act-dt" class="inp" onchange="ui.act.dtTouched=true;actGen();$('act-dt-badge').classList.add('hidden')"></div>
+    <div class="ax-card"><div class="ax-st"><span class="ax-n">1</span>Que voulez-vous planifier ?</div><div id="act-types" class="ax-types"></div></div>
+    <div class="ax-card"><div class="ax-st"><span class="ax-n">2</span>Quand ?</div>
+      <div id="act-days" class="ax-days"></div>
+      <div class="flex items-center justify-between mb-1"><label class="lbl !mb-0" for="act-dt">Date &amp; heure *</label><button type="button" class="text-xs font-bold text-ptkd hover:underline" onclick="$('act-dt').value=nowDT();ui.act.dtTouched=true;actGen();$('act-dt-badge').classList.add('hidden')">Maintenant</button></div>
+      <input type="datetime-local" id="act-dt" class="inp" onchange="ui.act.dtTouched=true;actGen();$('act-dt-badge').classList.add('hidden')">
+      <p class="text-xs text-muted mt-2"><span id="act-dt-badge" class="hidden pill bg-blue-50 text-blue-900 mr-1"><i class="fas fa-wand-magic-sparkles"></i>Date détectée</span>Ou dictez / écrivez dans le motif : « mardi à 14h30 », « dans 15 jours »…</p>
     </div>
-    <p class="text-xs text-muted -mt-2"><span id="act-dt-badge" class="hidden pill bg-blue-50 text-blue-900 mr-1"><i class="fas fa-wand-magic-sparkles"></i>Date détectée</span>Écrivez ou dictez « mardi à 14h30 », « le 12 novembre à 10h », « dans 15 jours »… la date se remplit seule.</p>
-    <div><div class="flex items-center gap-2 flex-wrap mb-1"><label class="lbl !mb-0" for="act-msg">Message / synthèse *</label><span class="text-[11.5px] text-muted">Modèle :</span><div id="act-props" class="flex gap-1.5"></div></div><div class="mic-wrap"><textarea id="act-msg" rows="3" class="ta" oninput="actLink();actDetect(this.value)"></textarea><button type="button" class="mic" onclick="dictate('act-msg',this)" aria-label="Dicter le message"><i class="fas fa-microphone"></i></button></div></div>
-    <div class="flex flex-col gap-1.5 text-[13px]">
+    <div class="ax-card"><div class="ax-st"><span class="ax-n">3</span>Motif</div>
+      <div class="mic-wrap"><input id="act-motif" class="inp" oninput="actDetect(this.value);actGen()"><button type="button" class="mic !top-1 !w-9 !h-9" onclick="dictate('act-motif',this)" aria-label="Dicter le motif"><i class="fas fa-microphone"></i></button></div>
+      <div id="act-chips" class="ax-mchips"></div>
+    </div>
+    <button type="button" id="act-note-btn" class="ax-note hidden" onclick="actNote()"><b>+ Ajouter une note</b> <span>(facultatif)</span></button>
+    <div id="act-msgbox" class="ax-msg hidden"><div class="ax-msg-h"><span class="ax-msg-t" id="act-msg-ttl">Message</span><div id="act-props" class="flex gap-1.5"></div></div><div class="mic-wrap"><textarea id="act-msg" rows="4" class="ta" oninput="actLink();actDetect(this.value)"></textarea><button type="button" class="mic" onclick="dictate('act-msg',this)" aria-label="Dicter le message"><i class="fas fa-microphone"></i></button></div></div>
+    <div class="flex flex-col gap-1.5 text-[13px] px-1">
       <label id="act-rep-l" class="hidden items-start gap-2 rounded-xl bg-amber-50 border border-amber-200 px-3 py-2 text-[13px]"><input type="checkbox" id="act-rep" checked class="accent-orange-700 w-4 h-4 mt-0.5"><span id="act-rep-t"></span></label>
       <label class="flex items-center gap-2"><input type="checkbox" id="act-next" checked class="accent-orange-700 w-4 h-4">Définir comme prochaine action du dossier</label>
       <label class="flex items-center gap-2"><input type="checkbox" id="act-cal" class="accent-orange-700 w-4 h-4" onchange="ui.act.calTouched=true"><span id="act-cal-txt">Ajouter à mon agenda à l'enregistrement</span></label>
     </div>
   </div>
-  <div class="px-5 py-4 border-t bg-slate-50 flex flex-wrap justify-between gap-2">
+  <div class="ax-ft">
     <div class="flex flex-wrap gap-2"><a id="act-link" target="_blank" rel="noopener" class="btn btn-g"></a><button type="button" id="act-cancel" class="btn hidden" style="border:1.5px solid #DC2626;color:#B42318;background:#fff" onclick="actCancel()"><i class="fas fa-ban"></i>Annuler cette action</button></div>
     <div class="flex gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-action')">Fermer</button><button class="btn btn-ok" onclick="saveAction()"><i class="fas fa-check"></i>Enregistrer</button></div>
   </div>
@@ -1077,22 +1131,17 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 </dialog>
 
 <dialog id="dlg-lost">
-  <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start">
-    <div><h3 class="font-bold flex items-center gap-2"><i class="fas fa-circle-xmark text-rose-700"></i>Dossier perdu ou abandonné</h3><p id="lost-sub" class="text-xs text-muted"></p></div>
-    <button class="dlg-x" onclick="closeDlg('dlg-lost')" aria-label="Fermer"><i class="fas fa-xmark"></i></button>
-  </div>
-  <div class="dlg-body p-5 flex flex-col gap-4">
-    <div class="grid grid-cols-2 gap-2">
-      <label class="cursor-pointer"><input type="radio" name="lost" value="Perdu contre" class="peer sr-only" checked onchange="lostToggle()"><div class="p-3 rounded-xl border-2 border-slate-200 peer-checked:border-rose-600 peer-checked:bg-rose-50"><b class="text-sm text-rose-900">Perdu contre</b><div class="text-xs text-muted">Concurrent retenu</div></div></label>
-      <label class="cursor-pointer"><input type="radio" name="lost" value="Dossier abandonné" class="peer sr-only" onchange="lostToggle()"><div class="p-3 rounded-xl border-2 border-slate-200 peer-checked:border-amber-500 peer-checked:bg-amber-50"><b class="text-sm text-amber-900">Abandonné</b><div class="text-xs text-muted">Projet sans suite</div></div></label>
-    </div>
-    <div class="grid grid-cols-2 gap-2">
+  <div class="ax-hd"><div class="flex justify-between items-start gap-3"><div class="flex gap-3 items-center min-w-0"><div class="min-w-0"><div class="ax-kick">Dossier clôturé</div><div class="ax-name" >Dossier perdu ou abandonné</div><div class="ax-sub"><span id="lost-sub"></span></div></div></div><button class="ax-x" onclick="closeDlg('dlg-lost')" aria-label="Fermer (Échap)"><i class="fas fa-xmark"></i></button></div></div>
+  <div class="dlg-body ax-bd">
+    <div class="ax-card"><div class="ax-st"><span class="ax-n">1</span>Issue du dossier</div><div class="grid grid-cols-2 gap-2">
+      <label class="cursor-pointer"><input type="radio" name="lost" value="Perdu contre" class="peer sr-only" checked onchange="lostToggle()"><div class="ax-lo ax-lo-r"><b>Perdu contre</b><div>Concurrent retenu</div></div></label>
+      <label class="cursor-pointer"><input type="radio" name="lost" value="Dossier abandonné" class="peer sr-only" onchange="lostToggle()"><div class="ax-lo ax-lo-a"><b>Abandonné</b><div>Projet sans suite</div></div></label></div></div>
+    <div class="ax-card"><div class="ax-st"><span class="ax-n">2</span>Détails</div><div class="grid grid-cols-2 gap-2">
       <div><label class="lbl" for="lost-date">Date *</label><input type="date" id="lost-date" class="inp"></div>
-      <div id="lost-who-wrap"><label class="lbl" for="lost-who">Concurrent *</label><input id="lost-who" class="inp" list="conc-list" placeholder="BD Rowa…"><datalist id="conc-list"></datalist></div>
-    </div>
-    <div><label class="lbl" for="lost-obs">Observation *</label><textarea id="lost-obs" rows="3" class="ta" placeholder="Raison précise…"></textarea></div>
+      <div id="lost-who-wrap"><label class="lbl" for="lost-who">Concurrent *</label><input id="lost-who" class="inp" list="conc-list" placeholder="BD Rowa…"><datalist id="conc-list"></datalist></div></div>
+      <div class="mt-3"><label class="lbl" for="lost-obs">Raison principale *</label><textarea id="lost-obs" rows="3" class="ta" placeholder="Prix, délai, relation…"></textarea></div></div>
   </div>
-  <div class="px-5 py-4 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-lost')">Annuler</button><button class="btn bg-rose-700 border-rose-700 text-white hover:bg-rose-800" onclick="confirmLost()">Classer le dossier</button></div>
+  <div class="ax-ft" style="justify-content:flex-end"><button class="btn btn-g" onclick="closeDlg('dlg-lost')">Annuler</button><button class="btn bg-rose-700 border-rose-700 text-white hover:bg-rose-800" onclick="confirmLost()">Classer le dossier</button></div>
 </dialog>
 
 <dialog id="dlg-addon">
@@ -1216,31 +1265,32 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
   </div>
   <div class="px-5 py-4 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-real')">Annuler</button><button id="rl-back" type="button" class="btn btn-g hidden" onclick="rlStep(1)"><i class="fas fa-arrow-left"></i>Retour</button><button id="rl-conf" class="btn btn-ok" onclick="realOk()"><i class="fas fa-check"></i>Confirmer</button></div>
 </dialog>
-<dialog id="dlg-trait" class="!w-[min(460px,94vw)]">
-  <div class="px-5 py-4 border-b flex items-center gap-3"><span id="tr-ic" class="w-10 h-10 rounded-xl inline-flex items-center justify-center bg-orange-50 text-orange-700 shrink-0"></span><div class="min-w-0 flex-1"><h2 id="tr-h" class="font-extrabold text-lg leading-tight">Traiter cette action</h2><p class="text-[13px] text-muted">Que s'est-il passé ?</p></div><button class="dlg-x" onclick="closeDlg('dlg-trait')" aria-label="Fermer (Échap)"><i class="fas fa-xmark"></i></button></div>
+<dialog id="dlg-trait">
+  <div class="ax-hd"><div class="flex justify-between items-start gap-3"><div class="flex gap-3 items-center min-w-0"><span id="tr-ic" class="ax-ini"></span><div class="min-w-0"><div class="ax-kick">Traiter une action</div><div class="ax-name" id="tr-h">Traiter cette action</div><div class="ax-sub">Que s'est-il passé ?</div></div></div><button class="ax-x" onclick="closeDlg('dlg-trait')" aria-label="Fermer (Échap)"><i class="fas fa-xmark"></i></button></div></div>
   <div class="idband hidden" data-idb></div>
-  <div class="p-5 flex flex-col gap-2.5">
-    <div class="rounded-xl border-2 px-3.5 py-2.5" style="border-color:#FDBA74;background:#FFF7ED"><div class="text-[11px] font-extrabold tracking-wide" style="color:#C2410C">ACTION À TRAITER</div><div id="tr-n" class="text-[18px] font-extrabold leading-tight"></div><div id="tr-sub" class="text-[13px] text-slate-600"></div></div>
-    <div id="tr-note" class="text-[13px] text-slate-700 rounded-xl bg-slate-50 border border-slate-200 px-3 py-2"></div>
+  <div class="dlg-body ax-bd">
+    <div class="ax-card" style="border:2px solid #E87722;background:#FFF7ED"><div class="text-[11px] font-extrabold tracking-wide" style="color:#B84A08">ACTION À TRAITER</div><div id="tr-n" class="text-[18px] font-extrabold leading-tight"></div><div id="tr-sub" class="text-[13px] text-slate-600"></div></div>
+    <div id="tr-note" class="text-[13px] text-slate-700 rounded-xl bg-white border border-slate-200 px-3 py-2"></div>
     <div id="tr-ctx"></div>
-    <button type="button" id="tr-done" class="v41-opt" style="border-color:#047857;background:#F0FDF4"><i style="background:#047857;color:#fff">✓</i><span><b id="tr-ok-t"></b><small id="tr-ok-s"></small></span></button>
-    <button type="button" id="tr-nr" class="v41-opt" style="border-color:#FB923C"><i style="background:#FFEDD5;color:#C2410C"><span class="fas fa-phone-slash" style="font-size:12px"></span></i><span><b>Sans réponse</b><small>Je réessaie plus tard</small></span></button>
-    <button type="button" id="tr-replan" class="v41-opt"><i style="background:#E2E8F0">↻</i><span><b id="tr-re-t"></b><small id="tr-re-s"></small></span></button>
-    <button type="button" id="tr-cancel" class="v41-opt" style="border-color:#FCA5A5"><i style="background:#FEE2E2;color:#B42318">✕</i><span><b id="tr-no-t"></b><small id="tr-no-s"></small></span></button>
+    <div class="ax-card ax-opts"><div class="ax-st"><span class="ax-n">1</span>Résultat</div>
+    <button type="button" id="tr-done" class="v41-opt" style="border-color:#047857"><i style="background:#047857;color:#fff">✓</i><span><b id="tr-ok-t"></b><small id="tr-ok-s"></small></span></button>
+    <button type="button" id="tr-nr" class="v41-opt" style="border-color:#E87722"><i style="background:#FFF1E6;color:#C2410C"><span class="fas fa-phone-slash" style="font-size:12px"></span></i><span><b>Sans réponse</b><small>Je réessaie plus tard</small></span></button>
+    <button type="button" id="tr-replan" class="v41-opt" style="border-color:#475569"><i style="background:#E2E8F0">↻</i><span><b id="tr-re-t"></b><small id="tr-re-s"></small></span></button>
+    <button type="button" id="tr-cancel" class="v41-opt" style="border-color:#B42318"><i style="background:#FEE2E2;color:#B42318">✕</i><span><b id="tr-no-t"></b><small id="tr-no-s"></small></span></button></div>
   </div>
-  <div class="px-5 py-3 border-t bg-slate-50 flex justify-end"><button class="btn btn-g" onclick="closeDlg('dlg-trait')">Fermer</button></div>
+  <div class="ax-ft" style="justify-content:flex-end"><button class="btn btn-g" onclick="closeDlg('dlg-trait')">Fermer</button></div>
 </dialog>
-<dialog id="dlg-noresp" class="!w-[min(460px,94vw)]">
-  <div class="px-5 py-4 border-b flex items-center gap-3"><span class="w-10 h-10 rounded-full inline-flex items-center justify-center shrink-0" style="background:#FFF7ED;color:#C2410C"><i class="fas fa-phone-slash text-lg"></i></span><div class="min-w-0 flex-1"><h2 class="font-extrabold text-lg leading-tight">Tentative sans réponse</h2><p id="nr-sub" class="text-[13px] text-muted"></p></div><button class="dlg-x" onclick="closeDlg('dlg-noresp')" aria-label="Fermer (Échap)"><i class="fas fa-xmark"></i></button></div>
+<dialog id="dlg-noresp">
+  <div class="ax-hd"><div class="flex justify-between items-start gap-3"><div class="flex gap-3 items-center min-w-0"><div class="min-w-0"><div class="ax-kick">Sans réponse</div><div class="ax-name" >Tentative sans réponse</div><div class="ax-sub"><span id="nr-sub"></span></div></div></div><button class="ax-x" onclick="closeDlg('dlg-noresp')" aria-label="Fermer (Échap)"><i class="fas fa-xmark"></i></button></div></div>
   <div class="idband hidden" data-idb></div>
-  <div class="p-5 flex flex-col gap-3">
-    <div><label class="lbl" for="nr-dt">Tentative effectuée le *</label><input type="datetime-local" id="nr-dt" class="inp !h-11" oninput="nrUpd()"></div>
-    <div><label class="lbl" for="nr-note">Commentaire *</label><div class="mic-wrap"><textarea id="nr-note" rows="2" class="inp !h-auto py-2" placeholder="Ce qui s'est passé (messagerie, occupé, pas de réponse…)"></textarea><button type="button" class="mic !top-1 !w-9 !h-9" onclick="dictate('nr-note',this)" aria-label="Dicter le commentaire"><i class="fas fa-microphone"></i></button></div></div>
-    <div><label class="lbl" for="nr-new" id="nr-newl">Nouvelle date et heure *</label><input type="datetime-local" id="nr-new" class="inp !h-11" oninput="nrUpd()"></div>
+  <div class="dlg-body ax-bd">
+    <div class="ax-card"><div class="ax-st"><span class="ax-n">1</span>Quand ?</div><div class="flex items-center justify-between mb-1"><label class="lbl !mb-0" for="nr-dt">Tentative effectuée le *</label><button type="button" class="text-xs font-bold text-ptkd hover:underline" onclick="$('nr-dt').value=nowDT();nrUpd()">Maintenant</button></div><input type="datetime-local" id="nr-dt" class="inp !h-11" oninput="nrUpd()"></div>
+    <div class="ax-card"><div class="ax-st"><span class="ax-n">2</span>Nouvelle date</div><div class="ax-days"><button type="button" class="ax-chip" onclick="$('nr-new').value=addDays(1,'10:00');nrUpd()">Demain</button><button type="button" class="ax-chip" onclick="$('nr-new').value=addDays(3,'10:00');nrUpd()">Dans 3 jours</button><button type="button" class="ax-chip" onclick="$('nr-new').value=addDays(7,'10:00');nrUpd()">Dans 1 semaine</button></div><label class="lbl" for="nr-new" id="nr-newl">Nouvelle date et heure *</label><input type="datetime-local" id="nr-new" class="inp !h-11" oninput="nrUpd()"></div>
+    <div id="nr-notebox"><button type="button" id="nr-note-btn" class="ax-note w-full" onclick="this.classList.add('hidden');$('nr-notewrap').classList.remove('hidden');$('nr-note').focus()"><b>+ Ajouter une note</b> <span>(facultatif)</span></button><div id="nr-notewrap" class="ax-msg hidden"><div class="ax-msg-h"><span class="ax-msg-t">Note (facultatif)</span></div><div class="mic-wrap"><textarea id="nr-note" rows="2" class="inp !h-auto py-2" placeholder="Messagerie, occupé, pas de réponse…"></textarea><button type="button" class="mic !top-1 !w-9 !h-9" onclick="dictate('nr-note',this)" aria-label="Dicter la note"><i class="fas fa-microphone"></i></button></div></div></div>
     <p id="nr-err" class="hidden text-[12.5px] font-semibold" style="color:#B42318"></p>
-    <div class="rounded-xl p-3 text-[13px]" style="background:#F0FDF4;border:1.5px solid #86EFAC;color:#14532D"><div class="font-extrabold mb-1.5">Ce qui sera enregistré :</div><div id="nr-sum" class="flex flex-col gap-1.5"></div></div>
+    <div class="rounded-xl p-3 text-[13px]" style="background:#fff;border:1.5px solid #86EFAC;color:#14532D"><div class="font-extrabold mb-1.5">Ce qui sera enregistré :</div><div id="nr-sum" class="flex flex-col gap-1.5"></div></div>
   </div>
-  <div class="px-5 py-4 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-noresp')">Annuler</button><button class="btn btn-ok" onclick="nrOk()"><i class="fas fa-check"></i>Confirmer et replanifier</button></div>
+  <div class="ax-ft" style="justify-content:flex-end"><button class="btn btn-g" onclick="closeDlg('dlg-noresp')">Annuler</button><button class="btn btn-ok" onclick="nrOk()"><i class="fas fa-check"></i>Confirmer et replanifier</button></div>
 </dialog>
 <dialog id="dlg-base" class="!w-[min(720px,96vw)]">
   <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start gap-2"><div><h3 class="font-bold flex items-center gap-2"><i class="fas fa-wand-magic-sparkles text-ptkd"></i>Base des pharmacies : téléphones et titulaires</h3><p class="text-xs text-muted mt-0.5">Connexion Internet requise · idéal sur PC · données publiques enregistrées uniquement sur cet appareil</p></div><button class="dlg-x" onclick="closeDlg('dlg-base')" aria-label="Fermer"><i class="fas fa-xmark"></i></button></div>
@@ -1309,6 +1359,7 @@ fieldset.v4-need{border-radius:14px;border:2px solid #EA580C;padding:6px}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.56</b> : <b>Nouveau style des fenêtres, du bandeau d’étapes et du tableau de bord</b>. (1) <b>Planifier une action</b> : en-tête orange avec nom de la pharmacie et les deux téléphones cliquables ; trois étapes numérotées (« Que voulez-vous planifier ? », « Quand ? », « Motif ») entourées de noir ; raccourcis de date (Aujourd’hui, Demain, Dans 3 jours, Lundi, Dans 1 semaine) ; dernière action sur une ligne, historique en un clic. <b>Appel, Relance, Visite : plus de message obligatoire</b> (note facultative) ; E-mail et Visio gardent leur message, entouré de noir. (2) Mêmes habillages pour <b>Traiter une action, Sans réponse (note facultative), Replanifier, Dossier perdu ou abandonné</b>. (3) <b>Bandeau des 5 sections de la fiche</b> : cartes avec barre d’avancement, section active encadrée de noir. (4) <b>Tableau de bord</b> : étapes « Où en sont mes dossiers » en cartes avec icône, nombre et montant (un clic filtre toujours le portefeuille) ; <b>Ma journée</b> : compteurs Aujourd’hui / Semaine / En retard en cartes colorées ; bouton <b>1 mois</b> pour le potentiel à signer. Filtres, tris et colonnes du portefeuille inchangés.</li>
 <li><b>V4.5.55</b> : <b>Enchaînement des pages de la synthèse</b> : page 2 = gain de temps + étude de productivité ; page 3 = besoins + gains par poste / back-office ; puis solution. Plus de carte isolée ni de page presque vide (si les pastilles ne tiennent pas sur la page de la solution, elles sont omises plutôt que de créer une page vide) ; un titre n’est jamais seul en bas de page. Les doublons « Gain global » (déjà dans le grand chiffre) et « Inclus dans votre projet » (déjà dans « Services inclus » de l’offre) disparaissent ; titres de section sans numéros. La note des km précise « aller-retour compris ».</li>
 <li><b>V4.5.54</b> : <b>Synthèse PDF relookée</b> : (1) pastilles « Ce que cette solution change pour vous » en cartes avec anneau dégradé et icône ; (2) section « gain de temps » redessinée : grand « 11 h 48 par jour » avec barre de 12 cases (vente / back-office), « soit 1,5 journée de travail », deux chiffres sobres (heures par mois, km de marche) et calcul en 5 étapes numérotées avec la barre « une ordonnance : 9 min → 6,3 min ». Les chiffres et les options cochées ne changent pas.</li>
 <li><b>V4.5.53</b> : <b>Curseur « Écart entre l’offre et la réalité »</b> (onglet Offre, carte « Stock et capacité ») : de 0 à −20 %, propre à chaque client. Il réduit la capacité retenue du robot ; la marge de croissance et la jauge de la synthèse l’utilisent, avec une ligne de prudence sous la jauge. Le chiffre de l’offre ne change pas. Le temps de délivrance réglé par client est désormais bien enregistré.</li>
@@ -2103,7 +2154,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.55';
+const APP_VERSION = '4.5.56';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2803,7 +2854,7 @@ function sigPeriod() {
   let d0 = new Date(y, m, 1), d1, lo = null;
   if (S.mode === 'year') { d0 = new Date(y, 0, 1); d1 = eod(new Date(y, 11, 31)); lo = d0; }
   else if (S.mode === 'range') { d0 = parseD(S.du) || d0; d1 = parseD(S.au) ? eod(parseD(S.au)) : eod(new Date(y, m + 3, 0)); lo = d0; if (d1 < d0) d1 = eod(new Date(d0)); }
-  else { const n = {'3m': 3, '6m': 6, '12m': 12}[S.mode] || 3; d1 = eod(new Date(y, m + n, 0)); }
+  else { const n = {'1m': 1, '3m': 3, '6m': 6, '12m': 12}[S.mode] || 3; d1 = eod(new Date(y, m + n, 0)); }
   return {d0, d1, lo};
 }
 function sigItems(P) {
@@ -2826,8 +2877,8 @@ function renderSig() {
   const chip = (k, l) => `<button type="button" class="chip ${S.mode === k ? 'on' : ''}" onclick="sigSet('${k}')">${l}</button>`;
   const rows = Object.keys(G).map(Number).filter(k => k !== ck).sort((a, b) => a - b).map(k => `<button type="button" class="vm" onclick="showList('probR')" title="Voir la liste"><span class="mo">${mlab(k)}</span><span class="nm">${names(G[k])}<small>${G[k].length} dossier${G[k].length > 1 ? 's' : ''}</small></span><span class="am">${eur(sum(G[k], x => x.m))}</span></button>`).join('');
   const curRow = `<button type="button" class="vm cur" onclick="showList('prob',0)" title="Voir la liste"><span class="mo"><small>CE MOIS-CI</small>${mlab(ck)}</span><span class="nm">${cur.length ? `<b>${names(cur)}</b><small>${cur.length} dossier${cur.length > 1 ? 's' : ''} · décision prévue ce mois</small>` : 'Aucune décision prévue ce mois-ci'}</span><span class="am">${eur(curT)}</span></button>`;
-  const sc = $('sig-chips'); if (sc) sc.innerHTML = [['3m', '3 mois'], ['6m', '6 mois'], ['12m', '12 mois'], ['year', 'Année'], ['range', 'Dates ▾']].map(([k, l]) => `<button type="button" class="chip ${S.mode === k ? 'on' : ''}" onclick="sigSet('${k}')" title="Signatures probables : ${l}">${l}</button>`).join('');
-  box.innerHTML = `<div class="sp"><div class="k">Potentiel à signer · ${S.mode === 'range' ? 'dates au choix' : ({'3m': '3 mois', '6m': '6 mois', '12m': '12 mois', year: 'année'})[S.mode] || ''}</div>
+  const sc = $('sig-chips'); if (sc) sc.innerHTML = [['1m', '1 mois'], ['3m', '3 mois'], ['6m', '6 mois'], ['12m', '12 mois'], ['year', 'Année'], ['range', 'Dates ▾']].map(([k, l]) => `<button type="button" class="chip ${S.mode === k ? 'on' : ''}" onclick="sigSet('${k}')" title="Signatures probables : ${l}">${l}</button>`).join('');
+  box.innerHTML = `<div class="sp"><div class="k">Potentiel à signer · ${S.mode === 'range' ? 'dates au choix' : ({'1m': '1 mois', '3m': '3 mois', '6m': '6 mois', '12m': '12 mois', year: 'année'})[S.mode] || ''}</div>
       ${S.mode === 'range' ? `<div class="dts">Du <input type="date" id="sig-du" value="${isoDay(P.d0)}" onchange="sigDates()"> au <input type="date" id="sig-au" value="${isoDay(P.d1)}" onchange="sigDates()"></div>` : ''}
       ${curRow}${rows ? `<div class="vfade"><div class="vlist">${rows}</div></div>` : ''}${Object.keys(G).filter(k => +k !== ck).length > 2 ? `<div class="vmore">↓ faites défiler : ${Object.keys(G).filter(k => +k !== ck).length} mois</div>` : ''}
       <div class="vtot" onclick="showList('probR')" title="Voir la liste"><span class="text-[13px]"><b>Potentiel à signer sur la période</b><br><small class="text-muted">Montants HT des dossiers dont la décision est prévue sur la période${cur.length ? ' · dont <b>' + eur(curT) + '</b> ce mois-ci' : ''}</small><br><span class="text-ptkd font-semibold">Voir la liste des ${it.length} dossier${it.length > 1 ? 's' : ''} ›</span></span><span class="m">${eur(tot)} <small>HT</small></span></div></div>`;
@@ -3262,9 +3313,10 @@ function renderPipeline() {
   $('pipeline').innerHTML = data.map(({k, S, l, n}) => {
     const sel = on === k, dim = on && !sel, fg = sel ? '#fff' : '#334155';
     const pend = l.filter(c => c.pending).length, idl = l.filter(idle).length, ns = l.filter(c => famOf(c) === 'SINTESI').length, ng = l.filter(c => famOf(c) === 'GENESI').length;
-    return `<button class="chev" title="${ns} SINTESI · ${ng} GENESI" aria-pressed="${sel}" style="background:${sel ? S.bar : S.bar + '38'};opacity:${dim ? .5 : 1}" onclick="filterStep(${k})">
-      <span class="flex items-center gap-1.5 text-[10.5px] font-extrabold uppercase tracking-wide" style="color:${sel ? '#fff' : S.color}"><span class="w-2.5 h-2.5 rounded-full" style="background:${sel ? '#fff' : S.color}"></span>${S.label}</span>
-      <span class="text-[20px] font-bold leading-tight" style="color:${sel ? '#fff' : '#0F172A'}">${n}${pend || idl ? ` <span class="text-[11px] font-semibold" style="color:${sel ? '#fff' : '#B42318'}">${pend ? pend + ' RDV à fixer' : ''}${pend && idl ? ' · ' : ''}${idl ? idl + ' &gt; 30 j' : ''}</span>` : ''}</span></button>`;
+    const IC = ['fa-id-card', 'fa-clipboard-list', 'fa-file-invoice', 'fa-paper-plane', 'fa-handshake'], mt = l.reduce((a, c) => a + (+c.montant || 0), 0);
+    return `<button class="pcard ${sel ? 'on' : ''}" title="${ns} SINTESI · ${ng} GENESI" aria-pressed="${sel}" style="--pc:${S.bar};opacity:${dim ? .5 : 1}" onclick="filterStep(${k})">
+      <span class="pc-t"><span class="pc-b"><i class="fas ${IC[k]}"></i></span><span class="pc-l">${S.label}</span><b class="pc-n">${n}</b></span>
+      <span class="pc-m"><span>${n > 1 ? 'dossiers' : 'dossier'}${pend || idl ? ` · <span class="pc-w">${pend ? pend + ' RDV à fixer' : ''}${pend && idl ? ' · ' : ''}${idl ? idl + ' &gt; 30 j' : ''}</span>` : ''}</span><b>${keur(mt)}</b></span></button>`;
   }).join('');
   $('pipe-bar').innerHTML = data.map(({k, S, n}) => `<div style="width:${n / tot * 100}%;background:${S.bar}" title="${S.label} : ${n} dossier(s)"></div>`).join('');
   $('pipe-note').textContent = `Répartition des dossiers par avancement · ${Math.round(data[4].n / tot * 100)} % des dossiers ont une offre présentée`;
@@ -3468,24 +3520,24 @@ function noResp(kind, cid, rid) {
 }
 function nrUpd() {
   const N = ui.nr; if (!N) return; const a = $('nr-dt').value, nw = $('nr-new').value;
-  $('nr-sum').innerHTML = `<div class="flex gap-2 items-start"><i class="fas fa-circle-check mt-0.5"></i><span><b>Action réalisée</b> : « ${N.lab} sans réponse (${ordT(N.n)} tentative) »${a ? ' le ' + fmtDT(a) : ''}, avec votre commentaire, dans l'historique.</span></div>
+  $('nr-sum').innerHTML = `<div class="flex gap-2 items-start"><i class="fas fa-circle-check mt-0.5"></i><span><b>Action réalisée</b> : « ${N.lab} sans réponse (${ordT(N.n)} tentative) »${a ? ' le ' + fmtDT(a) : ''}, avec votre note éventuelle, dans l'historique.</span></div>
     <div class="flex gap-2 items-start"><i class="fas fa-clone mt-0.5"></i><span><b>Action dupliquée</b> : « ${N.lab} » identique créé(e) (${ordT(N.n + 1)} tentative).</span></div>
     <div class="flex gap-2 items-start"><i class="fas fa-calendar-check mt-0.5"></i><span><b>Replanifiée</b> : ${nw ? fmtDT(nw) : 'date à choisir'}, visible dans « Prochaine action » et « Ma journée ».</span></div>`;
 }
 function nrOk() {
   const N = ui.nr; if (!N) return; const c = byId(N.cid); if (!c) return;
   const att = $('nr-dt').value, nw = $('nr-new').value, note = $('nr-note').value.trim(), er = $('nr-err');
-  const bad = !att ? 'Indiquez la date de la tentative.' : !note ? 'Le commentaire est obligatoire.' : !nw ? 'Indiquez la nouvelle date et heure.' : parseD(nw) <= parseD(att) ? 'La nouvelle date doit être postérieure à la tentative.' : parseD(att) > new Date(Date.now() + 36e5) ? 'La tentative ne peut pas être dans le futur.' : '';
+  const bad = !att ? 'Indiquez la date de la tentative.' : !nw ? 'Indiquez la nouvelle date et heure.' : parseD(nw) <= parseD(att) ? 'La nouvelle date doit être postérieure à la tentative.' : parseD(att) > new Date(Date.now() + 36e5) ? 'La tentative ne peut pas être dans le futur.' : '';
   if (bad) { er.textContent = bad; er.classList.remove('hidden'); return; }
   const n = N.n, tt = `${N.lab} sans réponse (${ordT(n)} tentative)`;
   if (N.kind === 'next') {
     const old = c.nextDate, type = c.nextType || 'relance'; c.lastDoneBefore = c.lastDone || null; c.lastDone = {dt: att, type, nr: 1};
     const a = (c.acts || []).find(x => x.dt === old); if (a) a.done = true; else (c.acts = c.acts || []).push({dt: old, type, motif: '', done: true});
-    log(c, tt, `Prévu(e) le ${fmtDT(old)}, tentative le ${fmtDT(att)}.\n${note}\nReplanifié(e) au ${fmtDT(nw)} (${ordT(n + 1)} tentative).`); c.history[0].date = att;
+    log(c, tt, `Prévu(e) le ${fmtDT(old)}, tentative le ${fmtDT(att)}.${note ? '\n' + note : ''}\nReplanifié(e) au ${fmtDT(nw)} (${ordT(n + 1)} tentative).`); c.history[0].date = att;
     c.nextDate = nw; c.nextType = type; c.nextTry = n; c.nextTryDt = nw; (c.acts = c.acts || []).push({dt: nw, type, motif: '', done: false});
   } else {
     const r = (c.rappels || []).find(x => x.id === N.rid); if (!r) return;
-    r.done = true; r.nr = 1; r.doneAt = att; r.doneNote = note; log(c, tt, `Prévu(e) le ${fmtDT(r.dt)}, tentative le ${fmtDT(att)}.\n${note}\nReplanifié(e) au ${fmtDT(nw)} (${ordT(n + 1)} tentative).`); c.history[0].date = att;
+    r.done = true; r.nr = 1; r.doneAt = att; r.doneNote = note; log(c, tt, `Prévu(e) le ${fmtDT(r.dt)}, tentative le ${fmtDT(att)}.${note ? '\n' + note : ''}\nReplanifié(e) au ${fmtDT(nw)} (${ordT(n + 1)} tentative).`); c.history[0].date = att;
     c.rappels.push({id: Date.now(), dt: nw, type: r.type, note: r.note, done: false, try: n});
   }
   save(); closeDlg('dlg-noresp'); ui.nr = null;
@@ -4140,10 +4192,12 @@ function openAction(cid, type = 'relance', aid = null, opts = {}) {
   const c = byId(cid); if (!c) return;
   if (!actKeys().includes(type)) type = 'relance';
   idbFill('dlg-action', c);
-  ui.act = {cid, aid, type, prop: 0, advance: opts.advance || null, dtFixed: !!opts.dt, dtTouched: false, rap: opts.rap || null};
+  ui.act = {cid, aid, type, prop: 0, advance: opts.advance || null, dtFixed: !!opts.dt, dtTouched: false, rap: opts.rap || null, noteOpen: false};
   $('act-ttl').textContent = opts.rap ? (opts.rap.rid ? 'Replanifier cette action' : 'Planifier une action') : 'Planifier une action';
-  $('act-dt-badge').classList.add('hidden'); $('act-hist').innerHTML = actCtxHtml(c, {rid: opts && opts.rap ? opts.rap.rid : null});
-  $('act-sub').textContent = `${c.pharma} — ${c.genre} ${c.prenom || ''} ${c.nom} (${c.ville})`;
+  $('act-dt-badge').classList.add('hidden'); $('act-hist').innerHTML = actHistTop(c, {rid: opts && opts.rap ? opts.rap.rid : null});
+  $('act-name').textContent = c.pharma; $('act-sub').textContent = `${c.genre || ''} ${c.prenom || ''} ${c.nom || ''} · ${c.ville || ''}`.replace(/\s+/g, ' ').trim();
+  $('act-ini').textContent = (String(c.pharma || 'PH').replace(/^pharmacie\s+(de\s+la\s+|de\s+l'|du\s+|des\s+|de\s+|d')?/i, '').match(/[A-Za-zÀ-ÿ]+/g) || ['P']).slice(0, 2).map(x => x[0].toUpperCase()).join('') || 'PH';
+  { const T = [[c.telPort, 'Portable', 'fa-mobile-screen'], [c.telFixe, 'Fixe', 'fa-phone']].filter(x => x[0]); $('act-ph').innerHTML = T.length ? T.map(([n, l, f]) => `<a href="tel:${esc(String(n).replace(/\s/g, ''))}"><span class="pi ${l === 'Fixe' ? 'f' : ''}"><i class="fas ${f}"></i></span><span><b>${esc(n)}</b><small>${l}</small></span></a>`).join('') : `<span class="ax-no"><span class="pi f"><i class="fas fa-phone-slash"></i></span><span><b>Aucun numéro</b><small>à renseigner sur la fiche</small></span></span>`; }
   $('act-dt').value = opts.dt || (type === 'suivi' ? addDays(1, '10:00') : nowDT());
   $('act-next').checked = !!opts.dt || type === 'suivi';
   { const L = opts.rap ? [] : rapLate(c), rl = $('act-rep-l'); rl.classList.toggle('hidden', !L.length); rl.classList.toggle('flex', !!L.length); $('act-rep').checked = true; if (L.length) $('act-next').checked = true;
@@ -4165,10 +4219,30 @@ function setActType(type) {
   if (!ui.act.calTouched) $('act-cal').checked = opt('agenda') && (type === 'visite' || type === 'teams');
   actTelShow();
   const a = actAddon();
-  $('act-types').innerHTML = actKeys().map(k => [k, ACTIONS[k]]).map(([k, A]) => `<button class="btn ${k === type ? '' : 'btn-g'}" style="${k === type ? `background:${A.bg};color:${A.fg};border-color:${A.fg}` : ''}" onclick="setActType('${k}')">${ic(A.icon, 16)}${A.label}</button>`).join('');
-  $('act-chips').innerHTML = ACTIONS[type].motifs.map((m, i) => `<button class="mcard" onclick="actMotif(${i})"><span class="mc-i" style="background:${ACTIONS[type].bg};color:${ACTIONS[type].fg}">${ic(ACTIONS[type].icon, 13)}</span><span>${esc(m)}</span></button>`).join('');
+  $('act-types').innerHTML = actKeys().map(k => [k, ACTIONS[k]]).map(([k, A]) => `<button type="button" class="ax-tile ${k === type ? 'on' : ''}" onclick="setActType('${k}')"><span class="bub">${ic(A.icon, 19)}</span>${A.short || A.label}</button>`).join('');
+  $('act-chips').innerHTML = ACTIONS[type].motifs.map((m, i) => `<button type="button" onclick="actMotif(${i})">${esc(m)}</button>`).join('');
+  ui.act.noteOpen = false; if (!actNeed()) $('act-msg').value = '';
   $('act-motif').value = ACTIONS[type].motifs[0] + (a ? ` — ${a.quoi}` : '');
   actGen();
+}
+const actNeed = () => ['mail', 'teams'].includes(ui.act.type);
+function actNote() { ui.act.noteOpen = true; actMode(); $('act-msg').focus(); }
+function actMode() {
+  const need = actNeed(), open = need || ui.act.noteOpen;
+  $('act-msgbox').classList.toggle('hidden', !open); $('act-note-btn').classList.toggle('hidden', open);
+  $('act-props').classList.toggle('hidden', !need);
+  $('act-msg-ttl').textContent = ui.act.type === 'mail' ? "Message de l'e-mail" : ui.act.type === 'teams' ? "Message de l'invitation" : 'Note (facultatif)';
+}
+function actDayChips() {
+  const D = [["Aujourd'hui", nowDT()], ['Demain', addDays(1, '10:00')], ['Dans 3 jours', addDays(3, '10:00')], ['Lundi', (() => { let n = 1; while (new Date(new Date(TODAY).setDate(new Date(TODAY).getDate() + n)).getDay() !== 1) n++; return addDays(n, '10:00'); })()], ['Dans 1 semaine', addDays(7, '10:00')]];
+  const cur = ($('act-dt').value || '').slice(0, 10);
+  $('act-days').innerHTML = D.map(([l, v], i) => `<button type="button" class="ax-chip ${v.slice(0, 10) === cur ? 'on' : ''}" onclick="actDay(${i})">${l}</button>`).join(''); ui.act.days = D;
+}
+function actDay(i) { $('act-dt').value = ui.act.days[i][1]; ui.act.dtTouched = true; $('act-dt-badge').classList.add('hidden'); actGen(); }
+function actHistTop(c, ex) {
+  const L = actHistItems(c)[0], A = L && (ACTIONS[L.k] || ACTIONS.relance);
+  const line = L ? `<span><b>Dernière action : ${esc(L.l || A.label)}</b>${L.m ? ' · ' + esc(L.m) : ''} · ${fmtDT(L.dt)}</span>` : '<span>Aucune action réalisée pour le moment</span>';
+  return `<details class="ax-hl"><summary style="display:flex;justify-content:space-between;gap:8px;width:100%">${line}<span>Historique ›</span></summary><div class="mt-2 text-left">${actCtxHtml(c, ex)}</div></details>`;
 }
 function actMotif(i) { const a = actAddon(); $('act-motif').value = ACTIONS[ui.act.type].motifs[i] + (a ? ` — ${a.quoi}` : ''); actGen(); }
 function actDetect(v) { const d = parseWhen(v); if (d) { $('act-dt').value = d; $('act-dt-badge').classList.remove('hidden'); } }
@@ -4191,12 +4265,12 @@ function actGen() {
     {t: 'Relationnel', x: `Échange prévu ${when} avec ${c.genre} ${c.prenom || ''} ${c.nom} : ${lc1(motif)}. Objectif : lever les dernières questions et sécuriser l'étape suivante.`}
   ];
   ui.act.props.forEach(x => x.x = x.x.replace(/\s+$/, ''));
-  actPick(ui.act.prop);
+  actDayChips(); actMode(); actPick(ui.act.prop);
 }
 function actPick(i) {
   ui.act.prop = i;
   $('act-props').innerHTML = ui.act.props.map((p, k) => `<button type="button" class="btn !h-8 !px-3 !text-xs ${k === i ? 'bg-orange-50 border-ptk text-orange-900' : 'btn-g'}" onclick="actPick(${k})">${p.t}</button>`).join('');
-  $('act-msg').value = ui.act.props[i].x;
+  if (actNeed()) $('act-msg').value = ui.act.props[i].x;
   actLink();
 }
 function actLink() {
@@ -4212,19 +4286,19 @@ function actLink() {
   if (cfg[0]) { l.href = cfg[0]; l.style.cssText = cfg[3]; l.innerHTML = `${ic(cfg[1], 16)}${esc(cfg[2])}`; }
 }
 function saveAction() {
-  const dt = $('act-dt').value, msg = $('act-msg').value.trim(); if (!msg || !dt) return toast('Renseignez la date et le message.', true);
+  const dt = $('act-dt').value, msg = $('act-msg').value.trim(); if ((actNeed() && !msg) || !dt) return toast(actNeed() ? 'Renseignez la date et le message.' : 'Renseignez la date.', true);
   const A = ACTIONS[ui.act.type] || ACTIONS.relance; if (parseD(dt) > new Date(Date.now() - 6e5)) return saveActionGo(); pastGuard(dt, `<b>${A.label}</b> · ${esc(byId(ui.act.cid)?.pharma || '')}`, saveActionGo);
 }
 function saveActionGo() {
-  if ($('act-msg').value.trim() && $('act-dt').value) commitDone();
+  if ((!actNeed() || $('act-msg').value.trim()) && $('act-dt').value) commitDone();
   const {cid, type, advance} = ui.act, c = byId(cid), a = actAddon();
   const msg = $('act-msg').value.trim(), dt = $('act-dt').value, motif = $('act-motif').value.trim();
-  if (!msg || !dt) return toast('Renseignez la date et le message.', true);
+  if ((actNeed() && !msg) || !dt) return toast(actNeed() ? 'Renseignez la date et le message.' : 'Renseignez la date.', true);
   if (ui.act.rap) {
     const R = ui.act.rap, kind = {relance: 'appel', visite: 'visite', teams: 'visio', mail: 'mail', suivi: R.kind === 'rappel' ? 'rappel' : 'relance'}[type] || 'rappel', note = motif || msg.slice(0, 90);
     c.rappels = c.rappels || [];
-    if (R.rid) { const r = c.rappels.find(x => x.id === R.rid); if (r) Object.assign(r, {dt, type: kind, note}); log(c, `${RAP_T[kind].l} replanifié(e) au ${fmtDT(dt)}`, `${motif}\n${msg}`); }
-    else { c.rappels.push({id: Date.now(), dt, type: kind, note, done: false}); log(c, `${RAP_T[kind].l} planifié(e) pour le ${fmtDT(dt)}`, `${motif}\n${msg}`); }
+    if (R.rid) { const r = c.rappels.find(x => x.id === R.rid); if (r) Object.assign(r, {dt, type: kind, note}); log(c, `${RAP_T[kind].l} replanifié(e) au ${fmtDT(dt)}`, `${motif}${msg ? '\n' + msg : ''}`); }
+    else { c.rappels.push({id: Date.now(), dt, type: kind, note, done: false}); log(c, `${RAP_T[kind].l} planifié(e) pour le ${fmtDT(dt)}`, `${motif}${msg ? '\n' + msg : ''}`); }
     save(); closeDlg('dlg-action'); toast('Enregistré : cette action apparaîtra dans « Ma journée »');
     if ($('act-cal').checked) setTimeout(() => askAgenda(c, dt, type, motif, `${ACTIONS[type].label}${motif ? ' · ' + motif : ''}`), 50);
     if (ui.editId === cid && !$('view-client').classList.contains('hidden')) { renderRap(c); renderHistory(c); } refresh(); return;
@@ -4232,7 +4306,7 @@ function saveActionGo() {
   if ($('act-rep') && $('act-rep').checked && $('act-next').checked && !$('act-rep-l').classList.contains('hidden')) { const L = rapLate(c); if (L.length) { c.rappels = c.rappels.filter(x => !L.includes(x)); log(c, `Action en retard remplacée : ${L.map(r => `${(RAP_T[r.type] || RAP_T.rappel).l} du ${fmtDT(r.dt)}`).join(', ')}`, `Remplacée par une action le ${fmtDT(dt)}.`); } }
   const doneNow = parseD(dt) <= new Date(Date.now() + 6e4);
   if (!doneNow && !ui.act.rap && !effNext(c).nextDate) $('act-next').checked = true; /* V4.5.36 : action à venir sur une fiche sans action = prochaine action (visible dans le portefeuille) */
-  log(c, `${ACTIONS[type].label} ${doneNow ? 'réalisée' : 'planifiée'}${a ? ` (add-on : ${a.quoi})` : ''} — ${fmtDT(dt)}`, `${motif}\n${msg}`); if (doneNow && dt) c.history[0].date = dt;
+  log(c, `${ACTIONS[type].label} ${doneNow ? 'réalisée' : 'planifiée'}${a ? ` (add-on : ${a.quoi})` : ''} — ${fmtDT(dt)}`, `${motif}${msg ? '\n' + msg : ''}`); if (doneNow && dt) c.history[0].date = dt;
   if (a) a.lastActionDate = isoDay(new Date());
   if (doneNow) { if (c.nextDate && c.nextDate <= dt && (c.nextType || 'relance') === type) { c.acts = (c.acts || []).filter(a => !(a.dt === c.nextDate && !a.done)); c.nextDate = null; } }   /* V4.5.17 : une action déjà réalisée ne reste plus « à faire » */
   else if ($('act-next').checked) { const old = c.nextDate; if (old && old !== dt) c.acts = (c.acts || []).filter(a => !(a.dt === old && !a.done)); c.nextDate = dt; c.nextType = type; }
@@ -4526,7 +4600,8 @@ function secDraw() {
   if ($('f-todo')) $('f-todo').innerHTML = todo.length ? `<div class="v44-todo"><div class="v44-th">Reste à faire <span>· cliquez sur un point pour aller au champ</span></div>${todo.map(([n, t]) => { const m = MISS(n); return `<div class="v44-tr"><span class="v44-n">${SEC_NAMES.findIndex(x => x[0] === n) + 1}</span><b>${t}</b><div class="v44-tc">${m.map(x => `<a href="#" onclick="${goto(x[1])};return false">${x[0]}</a>`).join('')}</div><em>${m.length}</em></div>`; }).join('')}</div>` : '';
   $('f-secnav').innerHTML = SEC_NAMES.map(([n, t], ix) => { const a = S[n], emp = !a.length, k = a.filter(Boolean).length, st = emp ? 'PDF' : k === a.length ? 'complet' : k === 0 ? 'à renseigner' : `${k} sur ${a.length}`, col = emp ? 'text-slate-500' : k === a.length ? 'text-emerald-700' : k === 0 ? 'text-slate-500' : 'text-amber-700';
     const t2 = $('sst-' + n); if (t2) { t2.textContent = st; t2.className = 'ml-auto text-xs font-semibold ' + col; }
-    return `<button type="button" class="min-w-0 flex flex-col sm:flex-row items-center justify-center sm:justify-start gap-1 sm:gap-2 min-h-12 py-1.5 px-1 sm:px-2.5 rounded-xl hover:bg-slate-50 text-center sm:text-left ${(ui.zone || 1) === n ? 'sn-on' : ''}" onclick="fzTab(${n})"><span class="shrink-0 w-6 h-6 rounded-full ${!emp && k === a.length ? 'bg-emerald-600' : 'bg-orange-600'} text-white text-xs font-bold flex items-center justify-center">${!emp && k === a.length ? '✓' : ix + 1}</span><span class="leading-tight min-w-0"><b class="block text-[10.5px] sm:text-[12.5px] text-ink"><span class="hidden sm:inline">${t}</span><span class="sm:hidden">${SEC_SHORT[ix]}</span></b><span class="hidden sm:block text-[11px] font-semibold ${col}">${st}</span></span></button>`; }).join('');
+    const pc = emp ? 0 : Math.round(k / a.length * 100), bc = emp ? '#9ca3af' : k === a.length ? '#059669' : '#E87722';
+    return `<button type="button" class="ax-sn ${(ui.zone || 1) === n ? 'sn-on' : ''}" onclick="fzTab(${n})"><span class="flex items-center gap-2 sm:gap-2.5 min-w-0"><span class="shrink-0 w-7 h-7 rounded-full ${!emp && k === a.length ? 'bg-emerald-600' : emp ? 'bg-white text-slate-500 border-2 border-slate-400' : 'bg-orange-600'} text-white text-xs font-bold flex items-center justify-center">${!emp && k === a.length ? '✓' : ix + 1}</span><span class="leading-tight min-w-0 text-left"><b class="block text-[11px] sm:text-[13px] text-ink"><span class="hidden sm:inline">${t}</span><span class="sm:hidden">${SEC_SHORT[ix]}</span></b><span class="hidden sm:block text-[12px] font-bold ${col}">${st}</span></span></span><span class="ax-bar"><i style="width:${pc}%;background:${bc}"></i></span></button>`; }).join('');
   const ic = (d.robots || []).map(m => robotIco(m, 26)).join('');
   if ($('sec-offre-ico')) $('sec-offre-ico').innerHTML = ic || '<i class="fas fa-robot text-slate-300 text-lg" aria-hidden="true"></i>';
 }
