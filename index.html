@@ -423,6 +423,24 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
 #mb-nav button{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;font-weight:800;color:#64748B;background:none;border:0;padding:4px 0}
 #mb-nav button i{width:30px;height:30px;border-radius:50%;background:#FFF1E7;color:#E87722;display:inline-flex;align-items:center;justify-content:center;font-size:13px}
 #mb-nav button.main i{background:#E87722;color:#fff}
+.cm-top{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:#fff;border:1px solid #E1E5EB;border-radius:16px;padding:14px 18px}.cm-k{font-size:11px;font-weight:800;letter-spacing:.06em;color:#667085}.cm-v{font-size:32px;font-weight:800;line-height:1.1;color:#0F172A}.cm-s{font-size:13px;color:#667085;font-weight:600}
+.cm-or{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #E1E5EB;border-radius:14px;padding:10px 14px}.cm-oi{width:32px;height:32px;border-radius:50%;background:#FFF0E2;color:#C2570C;display:inline-flex;align-items:center;justify-content:center;flex:none}.cm-ot{flex:1;font-size:13px;font-weight:800}.cm-ot small{display:block;font-weight:600;color:#667085;font-size:11.5px}.cm-or b{font-size:15px}
+/* V4.6.0 : fiche client, charte unifiée (pas de pointillés, bandeaux noirs, blocs repliables) */
+#view-client [class*="border-dashed"],#view-client [style*="dashed"]{border-style:solid!important}
+#view-client .frame{border-style:solid!important}
+#view-client .fz>[id^="sec-"]{border:2.5px solid #111827;border-radius:14px;padding:7px 12px;background:#fff;cursor:pointer;user-select:none}
+#view-client .fz>[id^="sec-"] .fz-ch{margin-right:2px;color:#667085;transition:transform .2s}
+#view-client .fz.fz-c>[id^="sec-"] .fz-ch{transform:rotate(-90deg)}
+#view-client .fz.fz-c>*:not([id^="sec-"]){display:none!important}
+#fz-all{display:flex;justify-content:flex-end;margin:0 0 8px}
+.sec-more{font-weight:800;text-decoration:underline;cursor:pointer;color:#C2570C}
+#sec-pop{position:absolute;z-index:60;width:min(380px,92vw);background:#fff;border:2.5px solid #111;border-radius:16px;padding:12px 14px;box-shadow:0 10px 30px rgba(0,0,0,.2)}
+#sec-pop .spl{display:flex;gap:8px;align-items:center;padding:7px 10px;border-radius:10px;font-size:13px;margin-top:6px}
+#sec-pop .spl.ok{background:#E3F6EC;color:#067647;font-weight:700}#sec-pop .spl.ko{background:#FFF0E2;border:1.5px solid #E87722;font-weight:800}
+#sec-pop .spl button{margin-left:auto;border-radius:9px;height:26px;padding:0 10px;background:#E87722;color:#fff;font-weight:800;font-size:12px}
+#view-client .dz,#view-client .v5-todo,#view-client .ax-note,#view-client .v43-nan-add,.zgo{border-style:solid!important}
+#view-client .dz{border:2px solid #D5DAE1!important}
+.zgo{border-color:#CBD5E1!important}
 /* V2.8 : fiche sans bloc Étape en cours, bouton Dossier perdu */
 #f-stage{display:none!important}
 .zlost{margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:11px;border:2px solid #DC2626;background:#FEF2F2;color:#B91C1C;font-weight:800;font-size:13.5px}.zlost:hover{background:#FEE2E2}
@@ -482,7 +500,7 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
 .cq{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;height:52px;border:1px solid #E2E8F0;border-radius:10px;background:#fff;font-size:11px;font-weight:700;color:#0F172A}.cq:hover{background:#F8FAFC}
 .cq.p{background:#047857;border-color:#047857;color:#fff}.cq.p:hover{background:#065F46}.cq.off{opacity:.4;pointer-events:none}
 /* colonne gauche de la fiche */
-#view-client .fz{border:2.5px dashed #0F172A;border-radius:18px;background:#fff;padding:16px 18px;transition:background .2s}
+#view-client .fz{border:1.5px solid #D5DAE1;border-radius:18px;background:#fff;padding:16px 18px;transition:background .2s}
 #view-client .fz.fz-on{background:#FFF9F3}
 #view-client .fz .fz{border:0;padding:0;background:transparent}
 #view-client #f-project .fz+.fz{margin-top:0}
@@ -715,6 +733,7 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
       <button id="nav-od" class="btn btn-g" onclick="syncNow()" title="Synchroniser PC et téléphone" aria-live="polite"><i class="fas fa-rotate"></i></button>
       <button class="btn btn-p" onclick="newClient()"><i class="fas fa-plus"></i><span class="hidden sm:inline">Nouvelle fiche</span></button>
       <button id="nav-lock" class="btn btn-g !px-3" onclick="SEC.on() ? SEC.lock() : SEC.startCreate()" title="Verrouiller l'application" aria-label="Verrouiller l'application"><i class="fas fa-lock"></i></button>
+      <button id="chk-pill" type="button" class="hidden axp warn !h-9 !px-3 cursor-pointer" onclick="openCheck()" title="Contrôle automatique des données : cliquer pour voir"></button>
       <button id="nav-profile" onclick="showView('profile')" class="flex items-center gap-2.5 h-11 pl-1.5 pr-3 rounded-xl border border-slate-200 bg-white hover:bg-slate-50" aria-label="Mon profil commercial">
         <span id="hd-ava" class="w-8 h-8 rounded-full bg-ink text-white inline-flex items-center justify-center text-xs font-bold"></span>
         <span class="hidden lg:block text-left leading-tight"><b id="hd-name" class="block text-[13px]"></b><span class="block text-[11px] text-muted">Mon profil · paramètres</span></span>
@@ -742,18 +761,18 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
 
       </div>
       <div id="sales-kpi" class="skpi"></div>
-      <div class="vchart2 rounded-xl border border-slate-200"><div class="absolute inset-0 p-1.5"><canvas id="chart" role="img" aria-label="Ventes mensuelles, cumul et objectif"></canvas></div></div>
       <div class="vfuse3 vacc">
         <details class="ax-acc" data-acc="v-prob"><summary><span class="ai"><i class="fas fa-arrow-trend-up"></i></span><span class="at">Potentiel à signer</span><span class="as" id="acc-prob"></span><i class="fas fa-chevron-down ac"></i></summary><div class="ab"><section class="sig2" id="sales-prob" aria-label="Signatures probables"></section></div></details>
         <details class="ax-acc" data-acc="v-top"><summary><span class="ai"><i class="fas fa-chart-pie"></i></span><span class="at">Répartition des ventes</span><span class="as" id="acc-top"></span><i class="fas fa-chevron-down ac"></i></summary><div class="ab"><div id="sales-top"></div></div></details>
         <details class="ax-acc" data-acc="v-keys"><summary><span class="ai"><i class="fas fa-gauge-high"></i></span><span class="at">Indicateurs</span><span class="as" id="acc-keys"></span><i class="fas fa-chevron-down ac"></i></summary><div class="ab"><div class="vchips"><div id="sales-keys"></div><div id="sales-foot"></div></div></div></details>
       </div>
+      <div class="vacc"><details class="ax-acc" data-acc="v-chart"><summary><span class="ai"><i class="fas fa-chart-line"></i></span><span class="at">Évolution des ventes</span><span class="as" id="acc-chart"></span><i class="fas fa-chevron-down ac"></i></summary><div class="ab"><div class="vchart2 rounded-xl border border-slate-200"><div class="absolute inset-0 p-1.5"><canvas id="chart" role="img" aria-label="Ventes mensuelles, cumul et objectif"></canvas></div></div></div></details></div>
         <div class="zgo" style="align-self:flex-end"><span class="zgo-l">ALLER PLUS LOIN</span>
         <button type="button" class="zgo-b zgo-g" onclick="openPrev()" title="Générer le fichier Excel de suivi CRO"><span>Prévisions<i class="fas fa-download"></i></span><small>Fichier Excel de suivi CRO</small></button>
         <button type="button" class="zgo-b zgo-b2" onclick="showView('stats')" title="Ouvrir la page des statistiques détaillées"><span>Stats<i class="fas fa-chevron-right"></i></span><small>Page statistiques détaillées</small></button></div>
     </section>
 
-    <section class="mj-sec relative min-w-0 min-h-[420px] lg:min-h-[300px]" style="flex:0 1 350px">
+    <section class="mj-sec relative min-w-0 min-h-[420px] lg:min-h-[380px]" style="flex:0 1 350px">
       <div class="card frame p-3.5 flex flex-col gap-2 lg:absolute lg:inset-0 h-full cursor-pointer" onclick="dayOpen(event)" title="Cliquer pour ouvrir le détail de la journée">
         <div class="dbn flex items-center gap-3"><h2 class="h2 !text-lg ftitle ft-j flex-1">Ma journée</h2><button type="button" class="btn btn-g !h-8 !px-2.5 !text-[12px] ml-auto" onclick="dayOpen()" title="Ouvrir le détail de la journée sur la droite"><i class="fas fa-up-right-and-down-left-from-center"></i><span class="sr-only">Détail</span></button></div><div class="flex gap-2"><button type="button" class="flex-1 inline-flex items-center justify-center rounded-xl h-9 text-[12.5px] font-extrabold text-white" style="background:#E87722" onclick="event.stopPropagation();openNow(true)" title="Traiter vos actions une par une"><i class="fas fa-bolt mr-1.5"></i>Maintenant</button><button id="todo-t-af" type="button" class="flex-1 inline-flex items-center justify-center rounded-xl h-9 text-[12.5px] font-extrabold" onclick="event.stopPropagation();setTodo('af')" title="Dossiers à relancer ou sans action prévue">À faire · <span id="todo-n-af" class="ml-1">0</span></button></div><p id="md-date" class="text-xs text-muted -mt-1 ml-1"></p><p id="md-count" class="hidden"></p>
         <div role="tablist" class="grid grid-cols-3 gap-1 rounded-xl bg-slate-100 p-1">
@@ -767,7 +786,7 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
   </div>
 
   <section class="card frame p-3.5 flex flex-col gap-3" aria-label="Pipeline">
-    <div class="dbn flex items-center gap-3"><h2 class="h2 !text-lg ftitle ft-p flex-1">Où en sont mes dossiers ?</h2><span id="pipe-sum" class="text-[13px] font-extrabold text-slate-600"></span></div>
+    <div class="dbn flex items-center gap-3"><h2 class="h2 !text-lg ftitle ft-p flex-1">Pipeline commercial</h2><span id="pipe-sum" class="text-[13px] font-extrabold text-slate-600"></span></div>
     <div class="flex flex-col lg:flex-row lg:items-center gap-2.5">
     <div id="pipeline" class="pcards min-w-0 lg:flex-[2.2]"></div>
     <div id="pipe-stats" class="flex flex-wrap gap-1.5 lg:flex-1 items-center"></div>
@@ -1433,6 +1452,9 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
 <p>L'écran d'accueil réunit trois zones :</p>
 <ul>
 <li><b>Ventes</b> : le chiffre d'affaires signé, l'avancement vers l'objectif et les <b>potentiel à signer</b> (carte jaune « Ce mois-ci » et carte « période au choix »).</li>
+<li><b>Annonce de signature (V4.6.0)</b> : dans un contrat signé (et sur chaque add-on signé), le bouton <b>Préparer l’annonce</b> ouvre un courriel prêt à envoyer à l’administration des ventes et à la direction : pharmacie, date de signature, montant final remisé, <b>financement</b> (autofinancement, crédit, leasing, organisme), <b>réserves</b> (avec les clauses suspensives) et la demande de prise en compte, de validation administrative et de mise à jour du fichier Pharmagest. Avec réserves, la commission reste bloquée ; quand la levée signée est reçue (case « Réserve retournée signée » + enregistrement), le courriel d’annonce de la levée s’ouvre. Le courriel s’ouvre dans votre messagerie, vous l’envoyez vous-même, puis vous confirmez. Adresses et textes : Paramètres › Options (option désactivable).</li>
+<li><b>Vérification automatique (V4.6.0)</b> : à l’ouverture, le dashboard contrôle ses données ; une pastille orange « N points à voir » apparaît en haut si besoin.</li>
+<li><b>Fiche client (V4.6.0)</b> : bandeaux repliables, bouton « Tout déplier / Tout replier », et « voir ▾ » sur chaque onglet pour savoir ce qui manque.</li>
 <li><b>Maintenant et vérification (V4.5.60)</b> : le bouton orange <b>Maintenant</b> (Ma journée, ou barre du bas sur téléphone) ouvre vos actions à traiter une par une : retards d'abord, puis aujourd'hui. Mon profil › Sauvegardes › <b>Vérifier mes données</b> compare chaque compteur avec sa liste et signale les écarts (doublons, ventes sans date, rappels sur dossiers clos).</li>
 <li><b>Blocs repliables (V4.5.59)</b> : dans Ventes (Potentiel à signer, Répartition, Indicateurs) et Ma journée (Faites aujourd'hui, Priorités hors planning), cliquez sur une ligne pour l'ouvrir ou la refermer ; le résumé reste lisible à droite et votre choix est retenu sur cet appareil. Ma journée n'affiche que les 2 actions les plus urgentes, « Voir les autres » déplie le reste.</li>
 <li><b>Ma journée et ma semaine</b> : vos rendez-vous et relances, en quatre onglets : <b>Aujourd'hui</b>, <b>Ma semaine</b>, <b>À relancer</b> et <b>À faire</b> (onglet rouge : actions en retard ou sans date).</li>
@@ -1450,6 +1472,7 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.6.0</b> : <b>Annonce de signature</b> (robots, add-ons, levée des réserves) : courriel prêt à envoyer à l’administration des ventes et à la direction (pharmacie, date, montant remisé, financement, réserves, demande de validation et de mise à jour du fichier Pharmagest), option à régler dans Paramètres › Options ; les courriels n’ajoutent plus de signature (votre messagerie s’en charge) ; <b>Fiche client</b> : plus de pointillés, bandeaux noirs repliables avec « Tout déplier / Tout replier », et fenêtre <b>« voir ▾ »</b> sur chaque onglet qui liste ce qui manque avec un bouton « Y aller » (le bandeau indique aussi « Il manque : … ») ; <b>Vérification automatique</b> des données à l’ouverture, à l’enregistrement et à la restauration (pastille orange « N points à voir » en haut ; les rappels ouverts sur un dossier signé ou perdu sont nettoyés tout seuls avec une ligne d’historique) ; <b>Mes commissions</b> redessinées (total en tête, Payées / En attente / Sous réserve, origine Robots · Add-ons · Financement NANCEO, période et récapitulatif repliables) ; (1) <b>Évolution des ventes</b> : le graphique devient un bloc repliable (fermé par défaut, résumé « cumulé · écart vs objectif à date », état mémorisé) ; (2) « Où en sont mes dossiers ? » devient <b>Pipeline commercial</b> ; (3) l’onglet « Détail mensuel » devient <b>Ventes par mois</b> ; (4) autres nouveautés de cette version : voir les lignes suivantes.</li>
 <li><b>V4.5.61</b> : <b>Ma journée</b> : le titre ne contient plus que « Ma journée » et l'icône d'agrandissement ; les boutons « Maintenant » et « À faire » passent sur une ligne dessous (ils débordaient du cadre).</li>
 <li><b>V4.5.60</b> : (1) <b>Dernière action exacte</b> : elle tient compte des besoins renseignés, relances ou appels planifiés et contacts ajoutés (plus de « Devis réalisé 2023 » pour une fiche travaillée aujourd'hui) ; le badge de jours reste gris quand une action est planifiée. (2) <b>Répartition par jour</b> : seules les actions <b>traitées</b> comptent, à leur date de traitement ; la planification compte dans « Prises de rendez-vous ». Semaine du lundi au dimanche. (3) <b>Ventes signées</b> : colonne « Date de signature » (tri chronologique, filtre du… au…, repères de mois). (4) <b>Ma journée</b> sans pointillés (cartes teintées). (5) <b>Activité commerciale</b> et <b>Détail mensuel</b> refaits dans le nouveau style. (6) Titre « Portefeuille · Projets de robots en cours ». (7) <b>Nouveautés</b> : bouton <b>Maintenant</b> (enchaîne vos actions à traiter), <b>Vérification des données</b> (Mon profil › Sauvegardes), vue téléphone « Aujourd'hui » avec barre du bas.</li>
 <li><b>V4.5.59</b> : <b>Tableau de bord allégé</b> : Ventes et Ma journée en blocs repliables (le résumé reste visible sur chaque ligne, l'état ouvert/fermé est retenu), graphique agrandi, Ma journée n'affiche que les 2 actions les plus urgentes + « Voir les autres ». <b>Options et Profil</b> : même style que le reste (cartes à pastille, bandeaux numérotés), contenus et fonctions inchangés.</li>
@@ -1980,6 +2003,7 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
   <div id="ls-body" class="dlg-body"></div>
 </dialog>
 
+<dialog id="dlg-ann" class="!w-[min(640px,96vw)]"><div class="p-4 relative"><button class="dlg-x absolute right-3 top-3" onclick="closeDlg('dlg-ann')" aria-label="Fermer"><i class="fas fa-xmark"></i></button><div id="ann-body"></div></div></dialog>
 <dialog id="dlg-chk" class="!w-[min(560px,96vw)]"><div class="p-4 relative"><button class="dlg-x absolute right-3 top-3" onclick="closeDlg('dlg-chk')" aria-label="Fermer"><i class="fas fa-xmark"></i></button><div id="chk-body"></div></div></dialog>
 
 <dialog id="dlg-op">
@@ -2252,7 +2276,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.61';
+const APP_VERSION = '4.6.0';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2397,7 +2421,7 @@ const GUIDE = {
 const DIST = {'bourges': [3, 8], 'saint-amand-montrond': [46, 42], 'vierzon': [34, 32], 'issoudun': [41, 40], 'chateauroux': [68, 58], 'romorantin-lanthenay': [69, 55], 'blois': [112, 80], 'orleans': [115, 82], 'montargis': [134, 95], 'tours': [148, 102], 'chartres': [188, 125], 'sancerre': [46, 45], 'saint-florent-sur-cher': [22, 22]};
 
 /* ================= PARAMÈTRES ================= */
-const DEFAULTS = () => ({backMode: 'ask', levBody: '', prenom: 'Eric', nom: 'R.', fonction: 'Ingénieur Commercial', tel: '06 12 34 56 78', email: 'eric.r@pharmathek.fr', adresse: '15 rue Vedeau, 18000 Bourges', objectif: 18, objectifCA: 2475000, logo: '', agenda: 'google', opt: {gps: true, teams: true, agenda: true, social: true}, social: {site: 'https://www.pharmathek.com/fr/', linkedin: 'https://www.linkedin.com/company/pharmathek/posts/', facebook: 'https://www.facebook.com/pharmathek', instagram: 'https://www.instagram.com/pharmathek_france/', youtube: ''}, mail: {to: '', cc: '', subject: 'Fichier suivi CRO {annee} – {date}', body: 'Bonjour,\n\nVeuillez trouver ci-joint mon fichier de suivi CRO {annee}, à jour au {date}.\n\nBien cordialement'},
+const DEFAULTS = () => ({backMode: 'ask', levBody: '', prenom: 'Eric', nom: 'R.', fonction: 'Ingénieur Commercial', tel: '06 12 34 56 78', email: 'eric.r@pharmathek.fr', adresse: '15 rue Vedeau, 18000 Bourges', objectif: 18, objectifCA: 2475000, annonce: ANN_DEF(), logo: '', agenda: 'google', opt: {gps: true, teams: true, agenda: true, social: true}, social: {site: 'https://www.pharmathek.com/fr/', linkedin: 'https://www.linkedin.com/company/pharmathek/posts/', facebook: 'https://www.facebook.com/pharmathek', instagram: 'https://www.instagram.com/pharmathek_france/', youtube: ''}, mail: {to: '', cc: '', subject: 'Fichier suivi CRO {annee} – {date}', body: 'Bonjour,\n\nVeuillez trouver ci-joint mon fichier de suivi CRO {annee}, à jour au {date}.\n\nBien cordialement'},
   echeances: {court: {label: 'Court terme', duree: 'moins de 6 mois', rappel: 14}, moyen: {label: 'Moyen terme', duree: '6 à 12 mois', rappel: 30}, long: {label: 'Long terme', duree: 'plus de 12 mois', rappel: 90}},
   secteur: {lgpi: ['03','08','10','18','19','21','23','25','28','36','37','41','45','51','52','54','55','57','58','63','67','68','70','71','72','75','77','86','87','88','89','90','91','94'],
     prospect: ['08','10','25','39','51','52','54','55','57','67','68','70','88','90']},
@@ -2407,6 +2431,7 @@ const DEFAULTS = () => ({backMode: 'ask', levBody: '', prenom: 'Eric', nom: 'R.'
 });
 function mergeDeep(d, s) { for (const k in s) { if (s[k] && typeof s[k] === 'object' && !Array.isArray(s[k]) && d[k] && typeof d[k] === 'object' && !Array.isArray(d[k])) mergeDeep(d[k], s[k]); else d[k] = s[k]; } return d; }
 const K_DATA = 'ptk_clients_v2', K_SET = 'ptk_user_settings';
+const ANN_DEF = () => ({dest: [{n: 'Administration des ventes', e: '', on: true}, {n: 'Direction', e: '', on: true}], dem: {prise: true, valid: true, pharmagest: true}, subj: 'Signature de contrat · [Pharmacie] ([Ville]) · [Date]', rappel: true, since: ''});
 const settings = mergeDeep(DEFAULTS(), store.load(K_SET, {}));
 if (settings.mail && typeof settings.mail.body === 'string') settings.mail.body = settings.mail.body.replace(/Bien cordialement,?\s*\n\{prenom\}[\s\S]*$/, 'Bien cordialement');
 const opt = k => k === 'qual' ? false : settings.opt[k] !== false;   /* check-list R1 supprimée en V1.5 */
@@ -2906,6 +2931,7 @@ function renderDashboard() {
   $('today-label').textContent = cap1(new Date().toLocaleDateString('fr-FR', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'})) + ' · version ' + APP_VERSION;
   $('hello').textContent = `${new Date().getHours() < 18 ? 'Bonjour' : 'Bonsoir'} ${settings.prenom}`;
   v4Recent(); renderDashAlert(); renderYearSelect('year-sel'); renderSales(); renderChart(); renderDay(); renderPipeline(); renderTiles(); renderTable();
+  autoCheck();
 }
 function v4Recent() {
   let el = $('v4-recent');
@@ -2970,6 +2996,7 @@ function sigDates() { ui.sig = {mode: 'range', du: $('sig-du').value, au: $('sig
 const accOpen = n => { try { return localStorage.getItem('ax_acc_' + n) === '1'; } catch (e) { return false; } };
 const accHtml = (n, ic, t, sum, body) => `<details class="ax-acc" data-acc="${n}" ${accOpen(n) ? 'open' : ''}><summary><span class="ai"><i class="fas ${ic}"></i></span><span class="at">${t}</span><span class="as">${sum}</span><i class="fas fa-chevron-down ac"></i></summary><div class="ab">${body}</div></details>`;
 document.addEventListener('toggle', e => { const d = e.target; if (d && d.matches && d.matches('details[data-acc]')) { try { localStorage.setItem('ax_acc_' + d.dataset.acc, d.open ? '1' : '0'); } catch (x) {} } }, true);
+document.addEventListener('toggle', e => { const d = e.target; if (d && d.matches && d.matches('details[data-acc="v-chart"]') && d.open) { try { renderChart(); } catch (x) { } } }, true);
 function accInit() { document.querySelectorAll('details[data-acc]').forEach(d => { const o = accOpen(d.dataset.acc); if (d.open !== o) d.open = o; }); }
 function renderSalesKpi() {
   const el = $('sales-kpi'); if (!el) return;
@@ -3045,6 +3072,10 @@ function renderChart() {
   const isCur = ui.year === CUR_YEAR, mNow = TODAY.getMonth();
   let cum = 0; const cumul = m.map((v, i) => (isCur && i > mNow) ? null : (cum += v));
   const objCA = +settings.objectifCA || 0, objLine = m.map((_, i) => objCA / 12 * (i + 1));
+  { const li = (() => { let k = -1; cumul.forEach((v, i) => { if (v != null) k = i; }); return k; })(), ac = $('acc-chart');
+    if (ac) { const cv = li >= 0 ? cumul[li] : 0, df = objCA ? cv - objLine[li >= 0 ? li : 0] : null, fm = x => Math.abs(x) >= 1e6 ? (x / 1e6).toFixed(2).replace('.', ',') + ' M€' : keur(Math.abs(x));
+      ac.textContent = `${fm(cv)} cumulé` + (df == null ? '' : ` · ${df >= 0 ? '+' : '−'}${fm(df)} vs objectif à date`); } }
+  { const dt = $('chart') && $('chart').closest('details'); if (dt && !dt.open) { if (ui.chart) { ui.chart.destroy(); ui.chart = null; } return; } }
   if (typeof Chart === 'undefined') return;
   if (ui.chart) ui.chart.destroy();
   const font = {family: 'Inter', size: 11};
@@ -3109,7 +3140,9 @@ function checkData() {
   const dead = clients.filter(c => !isActive(c) && (c.rappels || []).some(r => !r.done)); if (dead.length) ko(`${dead.length} fiche${dead.length > 1 ? 's' : ''} signée${dead.length > 1 ? 's' : ''} ou perdue${dead.length > 1 ? 's' : ''} avec des rappels encore ouverts`, dead.slice(0, 3).map(c => c.pharma).join(', '), () => openClient(dead[0].id), 'Ouvrir', () => { dead.forEach(c => { c.rappels = (c.rappels || []).filter(r => r.done); }); save(); }); else ok('Rappels', 'aucun rappel ouvert sur un dossier clos');
   const nd = clients.filter(c => c.step === 'Signé' && !c.signatureDate); nd.length ? ko(`${nd.length} vente${nd.length > 1 ? 's' : ''} sans date de signature`, nd.slice(0, 3).map(c => c.pharma).join(', '), () => openClient(nd[0].id), 'Ouvrir') : ok('Ventes signées', 'toutes ont une date de signature');
   const seen = {}, dup = []; clients.forEach(c => { const k = (c.cip && 'c' + c.cip) || (c.pharma + '|' + c.cp).toLowerCase(); if (seen[k]) dup.push([seen[k], c]); else seen[k] = c; }); dup.length ? ko(`${dup.length} doublon${dup.length > 1 ? 's' : ''} possible${dup.length > 1 ? 's' : ''}`, dup.slice(0, 3).map(d => d[1].pharma).join(', '), () => openClient(dup[0][1].id), 'Ouvrir') : ok('Doublons', 'aucune pharmacie en double');
+  { const at = annTodo(); if (at.length) ko(`${at.length} annonce${at.length > 1 ? 's' : ''} de signature à envoyer`, at.slice(0, 3).map(x => x.c.pharma + (x.k === 'levee' ? ' (levée)' : '')).join(', '), () => openClient(at[0].c.id), 'Ouvrir'); }
   const late = lateItems().filter(x => x.d).length; late ? ko(`${late} action${late > 1 ? 's' : ''} en retard à traiter`, 'Ce ne sont pas des erreurs de données, mais des actions à faire', () => { closeDlg('dlg-chk'); openNow(true); }, 'Faire maintenant') : ok('Actions en retard', 'aucune');
+  if (late) R[R.length - 1].late = 1;
   return R;
 }
 function openCheck() {
@@ -3119,6 +3152,110 @@ function openCheck() {
     ${R.map((r, i) => `<div class="flex items-center gap-2.5 rounded-xl px-3 py-2 mt-2 border-[1.5px]" style="${r.ok ? 'border-color:#A7F3D0;background:#F0FDF8' : 'border-color:#B42318;background:#FEF1F0'}"><span>${r.ok ? '✔' : '⚠'}</span><div class="flex-1 min-w-0"><b class="text-[13px]">${esc(r.t)}</b><div class="text-[11.5px] text-muted">${esc(r.s)}</div></div>${r.fn ? `<button class="btn btn-g !h-8 !px-3 !text-[12px]" onclick="ui.chk[${i}].fn()">${r.lab}</button>` : ''}</div>`).join('')}
     <div class="flex gap-2 mt-3">${nF ? `<button class="btn btn-ok" onclick="ui.chk.filter(r=>r.fix).forEach(r=>r.fix());toast('Corrigé');openCheck()">Tout corriger (${nF})</button>` : ''}<button class="btn btn-g" onclick="openCheck()">Relancer le contrôle</button></div>`;
   $('dlg-chk').showModal();
+}
+/* V4.6.0 : annonce de signature (ventes robots, add-ons, levée des réserves) */
+const ANN_FIN = ['Autofinancement', 'Crédit bancaire', 'Leasing', 'Autre'];
+function annCfg() { const A = settings.annonce = Object.assign(ANN_DEF(), settings.annonce || {}); A.dem = Object.assign({prise: true, valid: true, pharmagest: true}, A.dem || {}); if (!Array.isArray(A.dest)) A.dest = ANN_DEF().dest; return A; }
+const annRef = (c, aid) => aid ? (c.addons || []).find(a => a.id === aid) : c;
+function annOn(c, aid) { const o = annRef(c, aid); return !!(o && o.annonce && o.annonce.sentAt); }
+function annLvOn(c) { return !!(c.annonce && c.annonce.leveeSentAt); }
+function annTodo() { const A = annCfg(), since = A.since || '0'; const r = []; if (!opt('annonce') || !A.rappel) return r;
+  clients.filter(c => c.step === 'Signé' && c.signatureDate && c.signatureDate >= since && !annOn(c)).forEach(c => r.push({c, k: 'sign'}));
+  clients.filter(c => c.step === 'Signé' && c.hasReserves && c.leveeDate && c.leveeDate >= since && !annLvOn(c)).forEach(c => r.push({c, k: 'levee'}));
+  return r; }
+function annBlock(c) {
+  if (!opt('annonce')) return '';
+  const o = c, sent = annOn(c), A = c.annonce || {};
+  const lv = c.hasReserves && c.leveeDate;
+  const pill = (ok, t) => `<span class="axp ${ok ? 'ok' : 'warn'}" style="margin-left:auto">${t}</span>`;
+  return `<div class="rounded-2xl p-4 flex flex-col gap-2.5" style="background:#fff;border:2px solid ${sent ? '#A7F3D0' : '#E87722'}">
+    <div class="ax-st nm !mb-0 !text-[15px]"><span class="ax-ib"><i class="fas fa-envelope"></i></span>Annonce de la signature${pill(sent, sent ? 'Annoncée le ' + fmtD(A.sentAt.slice(0, 10)) : 'Non envoyée')}</div>
+    <p class="text-[12.5px] text-slate-600">Informe l'administration des ventes et la direction, et demande la validation de la commande et la mise à jour du fichier Pharmagest.</p>
+    <div class="flex flex-wrap gap-2"><button type="button" class="btn ${sent ? 'btn-g' : ''}" ${sent ? '' : 'style="background:#E87722;color:#fff;border-color:#E87722"'} onclick="annOpen(${c.id},0,'sign')"><i class="fas fa-envelope mr-1.5"></i>${sent ? 'Renvoyer l\'annonce' : 'Préparer l\'annonce'}</button>
+    ${c.hasReserves ? `<button type="button" class="btn ${annLvOn(c) ? 'btn-g' : ''}" ${lv && !annLvOn(c) ? 'style="background:#E87722;color:#fff;border-color:#E87722"' : ''} ${lv ? '' : 'disabled style="opacity:.45"'} onclick="annOpen(${c.id},0,'levee')" title="${lv ? '' : 'Disponible quand la levée signée est reçue du client'}"><i class="fas fa-unlock mr-1.5"></i>${annLvOn(c) ? 'Renvoyer l\'annonce de la levée' : 'Annoncer la levée'}</button>${annLvOn(c) ? `<span class="axp ok" style="align-self:center">Levée annoncée le ${fmtD(c.annonce.leveeSentAt.slice(0, 10))}</span>` : ''}` : ''}</div></div>`;
+}
+function annFinDef(o, c) { if (o.fin && o.fin.type) return {type: o.fin.type, org: o.fin.org || ''}; if (c.nanceo && c.nanceo.on) return {type: 'Leasing', org: 'NANCEO'}; return {type: '', org: ''}; }
+function annOpen(cid, aid, kind) {
+  const c = byId(cid); if (!c) return; const A = annCfg();
+  const o = annRef(c, aid), f = annFinDef(o, c);
+  ui.ann = {cid, aid: aid || 0, kind, to: A.dest.map(d => !!(d.on && d.e)), fin: f, res: !!c.hasReserves, clauses: c.reservesText || '', edited: false, subj: '', msg: ''};
+  annBuild(); annDraw(); $('dlg-ann').showModal();
+}
+function annFinTxt(f) { if (!f || !f.type) return 'non précisé'; const t = f.type.toLowerCase(); return f.type === 'Autofinancement' ? 'autofinancement (sans organisme)' : t + (f.org ? ' · ' + f.org : ''); }
+function annBuild() {
+  const S = ui.ann, c = byId(S.cid), A = annCfg(), o = annRef(c, S.aid), ad = S.aid ? o : null;
+  const montant = ad ? ad.montant : c.montant, dt = ad ? ad.date : c.signatureDate;
+  const nm = ad ? ad.quoi : (c.robots || []).join(', ') || '—';
+  const fill = t => t.replace(/\[Pharmacie\]/g, c.pharma || '').replace(/\[Ville\]/g, c.ville || '').replace(/\[Date\]/g, dt ? fmtD(dt) : '');
+  const dem = []; if (A.dem.prise) dem.push(S.kind === 'levee' ? 'confirmer la prise en compte de la levée des réserves' : 'confirmer la prise en compte de la commande'); if (A.dem.valid) dem.push(S.kind === 'levee' ? 'valider définitivement la commande sur le plan administratif' : (S.res && !ad ? 'la valider administrativement (sous réserve)' : 'la valider administrativement')); if (A.dem.pharmagest) dem.push('confirmer la mise à jour du fichier partagé avec Pharmagest');
+  const dl = dem.length ? `\n\nPourriez-vous, s'il vous plaît :\n${dem.map((x, i) => `${i + 1}. ${x}`).join('\n')}` : '';
+  let subj, msg;
+  if (S.kind === 'levee') {
+    subj = `Levée des réserves reçue · ${c.pharma} (${c.ville || ''}) · commande du ${c.signatureDate ? fmtD(c.signatureDate) : ''}`;
+    msg = `Bonjour,\n\nSuite à notre courriel${c.annonce && c.annonce.sentAt ? ' du ' + fmtD(c.annonce.sentAt.slice(0, 10)) : ''}, j'ai le plaisir de vous confirmer que la levée des réserves a été signée et reçue du client le ${fmtD(c.leveeDate)}.\n\n- Pharmacie : ${c.pharma}, ${c.ville || ''}${c.cp ? ' (' + String(c.cp).slice(0, 2) + ')' : ''}${c.cip ? ' · CIP ' + c.cip : ''}\n- Date de signature initiale : ${c.signatureDate ? fmtD(c.signatureDate) : ''}\n- Montant final remisé : ${eur(c.montant)} HT\n- Financement : ${annFinTxt(S.fin)}\n- Réserves : levées${c.reservesText ? ' (' + c.reservesText + ')' : ''}\n\nLa commande est donc désormais ferme.${dl}\n\nLa levée signée est jointe à ce message.\n\nBien cordialement`;
+  } else {
+    subj = fill(A.subj || ANN_DEF().subj);
+    const resL = ad ? '' : `\n- Réserves : ${S.res ? 'oui' + (S.clauses ? ' · clauses suspensives : ' + S.clauses : '') + ' (commande à valider sous réserve ; je vous informerai de la levée)' : 'aucune (contrat signé sans réserve)'}`;
+    msg = `Bonjour,\n\nJ'ai le plaisir de vous informer de la signature ${ad ? "d'une vente additionnelle" : "d'un contrat de vente robot"} :\n\n- Pharmacie : ${c.pharma}, ${c.ville || ''}${c.cp ? ' (' + String(c.cp).slice(0, 2) + ')' : ''}${c.cip ? ' · CIP ' + c.cip : ''}\n- ${ad ? 'Équipement' : 'Modèle'} : ${nm}\n- Date de signature : ${dt ? fmtD(dt) : ''}\n- Montant final remisé : ${eur(montant)} HT\n- Financement : ${annFinTxt(S.fin)}${resL}${dl}\n\nJe vous remercie par avance et reste à votre disposition pour tout complément.\n\nBien cordialement`;
+  }
+  if (!S.edited) { S.subj = subj; S.msg = msg; }
+}
+function annDraw() {
+  const S = ui.ann, c = byId(S.cid), A = annCfg(), ad = S.aid, lev = S.kind === 'levee';
+  const seg = (arr, cur, fn) => `<div class="flex rounded-xl overflow-hidden" style="border:1.5px solid #D0D5DD">${arr.map(([v, l, col]) => `<button type="button" onclick="${fn}" data-v="${esc(v)}" class="flex-1 py-2 text-[12.5px] font-extrabold" style="${cur === v ? `background:${col || '#E87722'};color:#fff` : 'color:#667085;background:#fff'}">${l}</button>`).join('')}</div>`;
+  const chips = A.dest.map((d, i) => `<button type="button" class="rounded-full px-3 py-1.5 text-[12.5px] font-extrabold" style="${S.to[i] ? 'border:1.5px solid #067647;background:#E3F6EC;color:#067647' : 'border:1.5px solid #D0D5DD;background:#fff;color:#667085'}" onclick="ui.ann.to[${i}]=!ui.ann.to[${i}];annDraw()" title="${esc(d.e || 'adresse à renseigner dans Profil › Options')}">${S.to[i] ? '✓ ' : ''}${esc(d.n)}${d.e ? '' : ' ⚠'}</button>`).join('');
+  const finBox = `<div class="lbl">Financement</div><div class="flex rounded-xl overflow-hidden" style="border:1.5px solid #D0D5DD">${ANN_FIN.map(v => `<button type="button" class="flex-1 py-2 text-[12.5px] font-extrabold" style="${S.fin.type === v ? 'background:#E87722;color:#fff' : 'color:#667085;background:#fff'}" onclick="annFin('${v}')">${v === 'Crédit bancaire' ? 'Crédit' : v}</button>`).join('')}</div>
+    ${S.fin.type && S.fin.type !== 'Autofinancement' ? `<div class="flex gap-2 items-center mt-2"><input class="inp !h-9 flex-1" id="ann-org" value="${esc(S.fin.org)}" placeholder="${S.fin.type === 'Crédit bancaire' ? 'Banque' : 'Organisme financeur'}" oninput="annOrg(this.value)">${S.fin.type === 'Leasing' ? `<button type="button" class="rounded-full border px-3 py-1 text-[12px] font-bold" style="border-color:#D0D5DD" onclick="annOrg('NANCEO');$('ann-org').value='NANCEO'">NANCEO</button>` : ''}</div>` : ''}`;
+  const resBox = (lev || ad) ? '' : `<div class="lbl">Réserves</div>${seg([['0', '✓ Sans réserve', '#067647'], ['1', '⚠ Avec réserves', '#E87722']], S.res ? '1' : '0', "annRes(this.dataset.v==='1')")}${S.res ? `<input class="inp !h-9 mt-2" value="${esc(S.clauses)}" placeholder="Clauses suspensives" oninput="ui.ann.clauses=this.value;annBuild();$('ann-msg').value=ui.ann.msg;$('ann-sub').value=ui.ann.subj">` : ''}`;
+  const o = ad ? annRef(c, ad) : c;
+  $('ann-body').innerHTML = `<div class="dbn flex items-center gap-3 mr-11"><span class="ax-ib"><i class="fas fa-envelope"></i></span><h3 class="font-extrabold text-[17px]">${lev ? 'Annonce de la levée des réserves' : 'Annonce de signature'} · ${esc(c.pharma)}</h3></div>
+    <div class="lbl">Destinataires</div><div class="flex flex-wrap gap-2">${chips || '<span class="text-xs text-muted">Aucun destinataire : voir Profil › Options.</span>'}</div>
+    ${finBox}${resBox}
+    <div class="lbl">Objet</div><input id="ann-sub" class="inp !h-9" value="${esc(S.subj)}" oninput="ui.ann.subj=this.value;ui.ann.edited=true">
+    <div class="lbl">Message (modifiable)</div><textarea id="ann-msg" rows="14" class="inp !h-auto py-2 text-[13px]" oninput="ui.ann.msg=this.value;ui.ann.edited=true">${esc(S.msg)}</textarea>
+    <div class="flex flex-wrap gap-2 mt-3"><button type="button" class="btn btn-ok" onclick="annSend()"><i class="fas fa-envelope mr-1.5"></i>Ouvrir dans ma messagerie</button><button type="button" class="btn btn-g" onclick="annCopy()">Copier le texte</button><button type="button" class="btn btn-g ml-auto" onclick="closeDlg('dlg-ann')">Plus tard</button></div>
+    <p class="text-[11.5px] text-muted mt-2">${lev ? 'Pensez à joindre la levée signée au courriel. ' : ''}Le courriel s'ouvre dans votre messagerie : vous l'envoyez vous-même.</p>`;
+}
+function annSave(c) { save(); try { renderBanner(c); } catch (e) { } }
+function annFin(v) { const S = ui.ann, c = byId(S.cid), o = annRef(c, S.aid); S.fin = {type: v, org: v === 'Autofinancement' ? '' : (S.fin.org || (v === 'Leasing' ? 'NANCEO' : ''))}; annFinStore(); annBuild(); annDraw(); }
+function annOrg(v) { const S = ui.ann; S.fin.org = v; annFinStore(); annBuild(); if ($('ann-msg') && !S.edited) { $('ann-msg').value = S.msg; $('ann-sub').value = S.subj; } }
+function annFinStore() { const S = ui.ann, c = byId(S.cid), o = annRef(c, S.aid); if (!o) return; o.fin = {type: S.fin.type, org: S.fin.org};
+  if (!S.aid) { const isN = S.fin.type === 'Leasing' && /nanceo/i.test(S.fin.org); if (isN) { c.nanceo = Object.assign(c.nanceo || {}, {on: true}); if (!c.nanceo.instPrev && c.livraisonDate) c.nanceo.instPrev = c.livraisonDate; } else if (c.nanceo && c.nanceo.on) c.nanceo.on = false; } save(); }
+function annRes(on) { const S = ui.ann, c = byId(S.cid); S.res = on; c.hasReserves = on; if (!on) c.leveeDate = ''; if ($('b-res')) { $('b-res').checked = on; try { resToggle(); } catch (e) { } } save(); annBuild(); annDraw(); }
+function annTo() { const S = ui.ann, A = annCfg(); return A.dest.filter((d, i) => S.to[i] && d.e).map(d => d.e.trim()).join(';'); }
+function annSend() {
+  const S = ui.ann, c = byId(S.cid), to = annTo(); if (!to) toast('Aucune adresse sélectionnée : renseignez-les dans Profil › Options.', true);
+  location.href = `mailto:${to}?subject=${enc(S.subj)}&body=${enc(S.msg)}`;
+  setTimeout(() => { if (!confirm('Le courriel est-il parti ? OK = le marquer comme annoncé.')) return; const iso = new Date().toISOString();
+    if (S.kind === 'levee') { c.annonce = Object.assign(c.annonce || {}, {leveeSentAt: iso}); log(c, 'Annonce de la levée des réserves envoyée', annTo() || ''); }
+    else { const o = annRef(c, S.aid); o.annonce = Object.assign(o.annonce || {}, {sentAt: iso}); log(c, S.aid ? `Annonce de la vente additionnelle envoyée : ${o.quoi}` : 'Annonce de signature envoyée', annTo() || ''); }
+    save(); closeDlg('dlg-ann'); try { renderBanner(c); renderAddonsList(c); } catch (e) { } try { if (!$('view-dashboard').classList.contains('hidden')) renderDashboard(); } catch (e) { } toast('Annonce enregistrée'); }, 900);
+}
+function annCopy() { try { navigator.clipboard.writeText(ui.ann.subj + '\n\n' + ui.ann.msg); toast('Texte copié'); } catch (e) { toast('Copie impossible', true); } }
+function annCfgHtml() {
+  const A = annCfg(), row = (d, i) => `<div class="grid gap-2 items-center" style="grid-template-columns:22px 1fr 1.3fr 30px"><input type="checkbox" class="w-4 h-4 accent-emerald-700" ${d.on ? 'checked' : ''} onchange="annCfg().dest[${i}].on=this.checked;saveSet()" aria-label="Pré-sélectionné"><input class="inp !h-9" value="${esc(d.n)}" placeholder="Nom" oninput="annCfg().dest[${i}].n=this.value;saveSet()"><input class="inp !h-9" type="email" value="${esc(d.e)}" placeholder="adresse@…" oninput="annCfg().dest[${i}].e=this.value;saveSet()"><button type="button" class="text-rose-700" onclick="annCfg().dest.splice(${i},1);saveSet();renderProfile()" aria-label="Supprimer"><i class="fas fa-trash"></i></button></div>`;
+  const ck = (k, t) => `<label class="flex items-center gap-2 text-[13px]"><input type="checkbox" class="w-4 h-4 accent-emerald-700" ${A.dem[k] ? 'checked' : ''} onchange="annCfg().dem['${k}']=this.checked;saveSet()">${t}</label>`;
+  return `<section class="card p-5 sm:p-6 flex flex-col gap-3" style="border:2px solid #E87722"><div class="ax-st nm"><span class="ax-ib"><i class="fas fa-envelope"></i></span>Annonce de signature de contrat<span class="axp ok">Activée</span></div>
+    <p class="text-[13px] text-muted">Réglages du courriel envoyé à l'administration des ventes et à la direction (robots, add-ons, levée des réserves).</p>
+    <div class="lbl">Destinataires par défaut <span class="font-normal normal-case">· cochés = pré-sélectionnés</span></div>${A.dest.map(row).join('')}
+    <button type="button" class="btn btn-g !h-9 w-fit" onclick="annCfg().dest.push({n:'',e:'',on:true});saveSet();renderProfile()"><i class="fas fa-plus mr-1.5"></i>Ajouter un destinataire</button>
+    <div class="lbl">Demandes incluses dans le courriel</div>${ck('prise', 'Confirmer la prise en compte de la commande')}${ck('valid', 'Valider administrativement la commande')}${ck('pharmagest', 'Confirmer la mise à jour du fichier partagé avec Pharmagest')}
+    <div class="lbl">Objet du courriel</div><input class="inp !h-9" value="${esc(A.subj)}" oninput="annCfg().subj=this.value;saveSet()"><p class="text-[11.5px] text-muted">[Pharmacie], [Ville] et [Date] sont remplacés automatiquement.</p>
+    <label class="flex items-center gap-2 text-[13px] border-t pt-3 mt-1"><input type="checkbox" class="w-4 h-4 accent-emerald-700" ${A.rappel ? 'checked' : ''} onchange="annCfg().rappel=this.checked;saveSet()">Rappel « à annoncer » si l'annonce n'est pas envoyée (pastille orange en haut)</label>
+    <button type="button" class="btn btn-g !h-9 w-fit" onclick="if(confirm('Rétablir les valeurs par défaut ?')){const s=annCfg().since;settings.annonce=ANN_DEF();settings.annonce.since=s;saveSet();renderProfile()}">Rétablir les valeurs par défaut</button></section>`;
+}
+
+/* V4.6.0 : contrôle automatique et silencieux (ouverture, enregistrement, restauration) */
+let _ac = false;
+function autoCheck() {
+  try { const A = annCfg(); if (!A.since) { A.since = isoDay(TODAY); saveSet(); } } catch (e) { }
+  if (_ac || !$('pipe-stats') || !$('chk-pill')) return; _ac = true;
+  try {
+    const dead = clients.filter(c => !isActive(c) && (c.rappels || []).some(r => !r.done));
+    if (dead.length) { dead.forEach(c => { const n = (c.rappels || []).filter(r => !r.done).length; c.rappels = (c.rappels || []).filter(r => r.done); try { log(c, `Contrôle automatique : ${n} rappel${n > 1 ? 's' : ''} ouvert${n > 1 ? 's' : ''} supprimé${n > 1 ? 's' : ''} (dossier clos)`); } catch (e) { } }); save(); }
+    const n = checkData().filter(r => r.ko && !r.late).length, p = $('chk-pill');
+    p.classList.toggle('hidden', !n); p.innerHTML = `<i class="fas fa-triangle-exclamation mr-1.5"></i>${n} point${n > 1 ? 's' : ''} à voir`;
+  } catch (e) { } finally { _ac = false; }
 }
 function lateItems() {
   const planned = clients.filter(c => c.nextDate && c.step !== 'Perdu' && parseD(c.nextDate) < TODAY).map(c => ({c, d: parseD(c.nextDate), dt: c.nextDate, type: c.nextType || 'relance', why: `${(ACTIONS[c.nextType] || ACTIONS.relance).label.toLowerCase()} prévu(e) le ${fmtD(c.nextDate)} non réalisé(e)`}));
@@ -4270,13 +4407,13 @@ function renderActivity() {
 }
 
 /* ================= STATISTIQUES : VENTES ================= */
-const ST_TABS = [['a', 'fa-chart-column', 'Activité commerciale'], ['v', 'fa-euro-sign', 'Ventes'], ['m', 'fa-table', 'Détail mensuel']];
+const ST_TABS = [['a', 'fa-chart-column', 'Activité commerciale'], ['v', 'fa-euro-sign', 'Ventes'], ['m', 'fa-table', 'Ventes par mois']];
 function stTab(k) { ui.stTab = k; renderStats(); }
 function renderStats() {
   const tab = ui.stTab || 'a';
   $('st-tabs').innerHTML = ST_TABS.map(([k, i, l]) => `<button class="h-10 px-4 rounded-xl text-[13.5px] font-bold whitespace-nowrap ${tab === k ? 'bg-ink text-white' : 'text-muted hover:bg-slate-100'}" onclick="stTab('${k}')"><i class="fas ${i} mr-1.5"></i>${k === 'v' ? 'Ventes ' + ui.year : l}</button>`).join('');
   ['a', 'v', 'm'].forEach(k => { const e = $('st-pane-' + k); e.classList.toggle('hidden', k !== tab); e.classList.toggle('flex', k === tab); });
-  $('st-title2').textContent = `Détail mensuel ${ui.year}`;
+  $('st-title2').textContent = `Détail des ventes par mois ${ui.year}`;
   renderActivity();
   renderYearSelect('st-year'); $('st-title').textContent = `Ventes ${ui.year}`;
   const {rob, add, lost} = yearData(), caR = sum(rob, c => c.montant), caA = sum(add, x => x.a.montant);
@@ -4424,12 +4561,12 @@ function actGen() {
   const civ = `${c.genre} ${c.nom}`, sujet = a ? a.quoi : `projet ${(c.robots || []).join(' / ') || 'de robotisation'}`;
   const sig = '';
   ui.act.props = type === 'mail' ? [
-    {t: 'Direct', x: `Bonjour ${civ},\n\nComme convenu, je reviens vers vous au sujet de votre ${sujet} : ${lc1(motif)}.\n\nJe reste à votre disposition.\n\nBien cordialement,\n${sig}`},
-    {t: 'Argumenté', x: `Bonjour ${civ},\n\nSuite à nos échanges sur votre ${sujet}, vous trouverez ci-joint les éléments demandés (${lc1(motif)}).\n${c.besoins?.length ? `Ils répondent à vos priorités : ${c.besoins.map(lc1).join(', ')}.\nVous y trouverez aussi` : 'Ils détaillent'} le gain de temps au comptoir, le retour sur investissement et le calendrier de mise en service.\n\nJe vous propose d'en parler ${when}.\n\nBien cordialement,\n${sig}`},
-    {t: 'Relationnel', x: `Bonjour ${civ},\n\nMerci encore pour votre accueil. Comme promis, je vous transmets : ${lc1(motif)}.\nN'hésitez pas à me faire part des questions de votre équipe.\n\nBien cordialement,\n${sig}`}
+    {t: 'Direct', x: `Bonjour ${civ},\n\nComme convenu, je reviens vers vous au sujet de votre ${sujet} : ${lc1(motif)}.\n\nJe reste à votre disposition.\n\nBien cordialement`},
+    {t: 'Argumenté', x: `Bonjour ${civ},\n\nSuite à nos échanges sur votre ${sujet}, vous trouverez ci-joint les éléments demandés (${lc1(motif)}).\n${c.besoins?.length ? `Ils répondent à vos priorités : ${c.besoins.map(lc1).join(', ')}.\nVous y trouverez aussi` : 'Ils détaillent'} le gain de temps au comptoir, le retour sur investissement et le calendrier de mise en service.\n\nJe vous propose d'en parler ${when}.\n\nBien cordialement`},
+    {t: 'Relationnel', x: `Bonjour ${civ},\n\nMerci encore pour votre accueil. Comme promis, je vous transmets : ${lc1(motif)}.\nN'hésitez pas à me faire part des questions de votre équipe.\n\nBien cordialement`}
   ] : type === 'teams' ? [
-    {t: 'Direct', x: `Bonjour ${civ},\n\nJe vous propose une visioconférence ${when} : ${lc1(motif)}.\nLe lien Teams est joint à cette invitation.\n\nBien cordialement,\n${sig}`},
-    {t: 'Argumenté', x: `Bonjour ${civ},\n\nPour avancer sur votre ${sujet}, je vous propose un point en visio ${when}.\nOrdre du jour : ${lc1(motif)}, retour sur investissement et calendrier de décision.\nIl vous suffit de cliquer sur le lien Teams de cette invitation.\n\nBien cordialement,\n${sig}`},
+    {t: 'Direct', x: `Bonjour ${civ},\n\nJe vous propose une visioconférence ${when} : ${lc1(motif)}.\nLe lien Teams est joint à cette invitation.\n\nBien cordialement`},
+    {t: 'Argumenté', x: `Bonjour ${civ},\n\nPour avancer sur votre ${sujet}, je vous propose un point en visio ${when}.\nOrdre du jour : ${lc1(motif)}, retour sur investissement et calendrier de décision.\nIl vous suffit de cliquer sur le lien Teams de cette invitation.\n\nBien cordialement`},
     {t: 'Relationnel', x: `Bonjour ${civ},\n\nComme convenu, voici l'invitation pour notre échange en visio ${when} (${lc1(motif)}).\nN'hésitez pas à inviter les membres de votre équipe concernés.\n\nÀ très bientôt,\n${sig}`}
   ] : [
     {t: 'Direct', x: `${A.label} ${when} avec ${civ} (${c.pharma}). Motif : ${lc1(motif)}.`},
@@ -4718,8 +4855,27 @@ function lgoSync(from) {
 }
 const SEC_NAMES = [[1, 'Projet et officine'], [4, 'Offre de robotisation'], [3, 'Besoins et argumentaire'], [6, "Préparation de l'offre"], [5, 'Suivi']];   /* V4.5.51 : onglets */
 const SEC_SHORT = ['Projet', 'Offre', 'Besoins', 'Prépa.', 'Suivi'];
-function fzShow(n) { ui.zone = n; document.querySelectorAll('#view-client .fz[data-zone]').forEach(z => z.classList.toggle('fz-off', !!n && +z.dataset.zone !== n)); if ($('f-secnav')) secStat(); }
-function fzTab(n) { fzShow(n); const nv = $('f-secnav'); if (nv) { const nt = nv.getBoundingClientRect().top + window.scrollY; if (window.scrollY > nt - 130) window.scrollTo({top: Math.max(0, nt - 130)}); } try { capDraw(); } catch (e) { } }
+function fzShow(n) { ui.zone = n; try { fzCh(); } catch (e) { } document.querySelectorAll('#view-client .fz[data-zone]').forEach(z => z.classList.toggle('fz-off', !!n && +z.dataset.zone !== n)); if ($('f-secnav')) secStat(); }
+function fzCh() {
+  document.querySelectorAll('#view-client .fz[data-zone]').forEach(z => { const h = z.querySelector(':scope>[id^="sec-"]'); if (!h) return; if (!h.querySelector('.fz-ch')) h.insertAdjacentHTML('afterbegin', '<i class="fas fa-chevron-down fz-ch"></i>'); const c = (() => { try { return localStorage.getItem('ax_acc_fz-' + z.dataset.zone) === '0'; } catch (e) { return false; } })(); z.classList.toggle('fz-c', c); });
+  if (!$('fz-all') && $('f-secnav')) $('f-secnav').insertAdjacentHTML('beforebegin', '<div id="fz-all"><button type="button" class="btn btn-g !h-8 !text-[12px]" onclick="fzAll()"></button></div>');
+  fzAllLbl();
+}
+function fzSet(z, open) { z.classList.toggle('fz-c', !open); try { localStorage.setItem('ax_acc_fz-' + z.dataset.zone, open ? '1' : '0'); } catch (e) { } }
+function fzAllLbl() { const b = document.querySelector('#fz-all button'); if (!b) return; const zs = [...document.querySelectorAll('#view-client .fz[data-zone]')]; const allOpen = zs.every(z => !z.classList.contains('fz-c')); b.innerHTML = allOpen ? '<i class="fas fa-angles-up mr-1.5"></i>Tout replier' : '<i class="fas fa-angles-down mr-1.5"></i>Tout déplier'; }
+function fzAll() { const zs = [...document.querySelectorAll('#view-client .fz[data-zone]')]; const allOpen = zs.every(z => !z.classList.contains('fz-c')); zs.forEach(z => fzSet(z, !allOpen)); fzAllLbl(); }
+document.addEventListener('click', e => { const h = e.target.closest && e.target.closest('#view-client .fz>[id^="sec-"]'); if (!h || e.target.closest('button,a,input,select,textarea')) return; const z = h.parentElement; fzSet(z, z.classList.contains('fz-c')); fzAllLbl(); });
+function secPop(n, el) {
+  const old = $('sec-pop'); if (old) { const same = old.dataset.n == n; old.remove(); if (same) return; }
+  const I = ui.secInfo ? ui.secInfo(n) : [], nm = (SEC_NAMES.find(x => x[0] === n) || [0, ''])[1], miss = I.filter(x => !x.ok).length, r = el.getBoundingClientRect();
+  const d = document.createElement('div'); d.id = 'sec-pop'; d.dataset.n = n; d.style.left = Math.max(8, Math.min(window.scrollX + r.left - 20, window.scrollX + window.innerWidth - 400)) + 'px'; d.style.top = (window.scrollY + r.bottom + 8) + 'px';
+  d.innerHTML = `<div style="font-weight:800;font-size:14px">${esc(nm)} · ${I.length - miss} sur ${I.length}</div><div style="font-size:11.5px;color:#667085">${miss ? `Il manque ${miss} point${miss > 1 ? 's' : ''} pour que l'étape soit complète.` : 'Tout est renseigné.'}</div>`
+    + I.map(x => `<div class="spl ${x.ok ? 'ok' : 'ko'}">${x.ok ? '✓' : '✗'} ${esc(x.l)}${x.ok ? '' : `<button type="button" onclick="secPopGo(${n},'${x.id}')">Y aller →</button>`}</div>`).join('');
+  document.body.appendChild(d);
+}
+function secPopGo(n, id) { const p = $('sec-pop'); if (p) p.remove(); fzTab(n); const z = document.querySelector(`#view-client .fz[data-zone="${n}"]`); if (z) fzSet(z, true); fzAllLbl(); setTimeout(() => { const e = $(id) || $('sec-2'); if (e) { e.scrollIntoView({behavior: 'smooth', block: 'center'}); e.style.outline = '3px solid #E87722'; setTimeout(() => { e.style.outline = ''; }, 2200); } }, 120); }
+document.addEventListener('click', e => { const p = $('sec-pop'); if (p && !e.target.closest('#sec-pop,.sec-more')) p.remove(); });
+function fzTab(n) { fzShow(n); { const z = document.querySelector(`#view-client .fz[data-zone="${n}"]`); if (z) { fzSet(z, true); fzAllLbl(); } } const nv = $('f-secnav'); if (nv) { const nt = nv.getBoundingClientRect().top + window.scrollY; if (window.scrollY > nt - 130) window.scrollTo({top: Math.max(0, nt - 130)}); } try { capDraw(); } catch (e) { } }
 (function () { const o = Element.prototype.scrollIntoView; Element.prototype.scrollIntoView = function (a) { try { const z = this.closest && this.closest('#view-client .fz[data-zone]'); if (z && z.classList.contains('fz-off')) fzShow(+z.dataset.zone); } catch (e) { } return o.call(this, a); }; })();
 let secT = null;
 function secStat() { clearTimeout(secT); secT = setTimeout(secDraw, 120); }
@@ -4767,13 +4923,14 @@ function secDraw() {
     5: [['Une note ou un échange', 'sec-5']],
     6: []};
   const MISS = n => S[n].map((v, i) => v ? null : SL[n][i]).filter(Boolean);
+  ui.secInfo = n => S[n].map((v, i) => ({l: SL[n][i][0], id: SL[n][i][1], ok: !!v}));
   const goto = id => `(document.getElementById('${id}')||document.getElementById('sec-2')).scrollIntoView({behavior:'smooth',block:'center'})`;
   const todo = SEC_NAMES.filter(([n]) => MISS(n).length);
   if ($('f-todo')) $('f-todo').innerHTML = todo.length ? `<div class="v44-todo"><div class="v44-th">Reste à faire <span>· cliquez sur un point pour aller au champ</span></div>${todo.map(([n, t]) => { const m = MISS(n); return `<div class="v44-tr"><span class="v44-n">${SEC_NAMES.findIndex(x => x[0] === n) + 1}</span><b>${t}</b><div class="v44-tc">${m.map(x => `<a href="#" onclick="${goto(x[1])};return false">${x[0]}</a>`).join('')}</div><em>${m.length}</em></div>`; }).join('')}</div>` : '';
   $('f-secnav').innerHTML = SEC_NAMES.map(([n, t], ix) => { const a = S[n], emp = !a.length, k = a.filter(Boolean).length, st = emp ? 'PDF' : k === a.length ? 'complet' : k === 0 ? 'à renseigner' : `${k} sur ${a.length}`, col = emp ? 'text-slate-500' : k === a.length ? 'text-emerald-700' : k === 0 ? 'text-slate-500' : 'text-amber-700';
-    const t2 = $('sst-' + n); if (t2) { t2.textContent = st; t2.className = 'ml-auto text-xs font-semibold ' + col; }
+    const t2 = $('sst-' + n), mm = MISS(n); if (t2) { t2.textContent = (!emp && mm.length) ? `Il manque : ${mm[0][0].toLowerCase()}${mm.length > 1 ? ' · +' + (mm.length - 1) : ''}` : st; t2.className = 'ml-auto text-xs font-semibold ' + col; }
     const pc = emp ? 0 : Math.round(k / a.length * 100), bc = emp ? '#9ca3af' : k === a.length ? '#059669' : '#E87722';
-    return `<button type="button" class="ax-sn ${(ui.zone || 1) === n ? 'sn-on' : ''}" onclick="fzTab(${n})"><span class="flex items-center gap-2 sm:gap-2.5 min-w-0"><span class="shrink-0 w-7 h-7 rounded-full ${!emp && k === a.length ? 'bg-emerald-600' : emp ? 'bg-white text-slate-500 border-2 border-slate-400' : 'bg-orange-600'} text-white text-xs font-bold flex items-center justify-center">${!emp && k === a.length ? '✓' : ix + 1}</span><span class="leading-tight min-w-0 text-left"><b class="block text-[11px] sm:text-[13px] text-ink"><span class="hidden sm:inline">${t}</span><span class="sm:hidden">${SEC_SHORT[ix]}</span></b><span class="hidden sm:block text-[12px] font-bold ${col}">${st}</span></span></span><span class="ax-bar"><i style="width:${pc}%;background:${bc}"></i></span></button>`; }).join('');
+    return `<button type="button" class="ax-sn ${(ui.zone || 1) === n ? 'sn-on' : ''}" onclick="fzTab(${n})"><span class="flex items-center gap-2 sm:gap-2.5 min-w-0"><span class="shrink-0 w-7 h-7 rounded-full ${!emp && k === a.length ? 'bg-emerald-600' : emp ? 'bg-white text-slate-500 border-2 border-slate-400' : 'bg-orange-600'} text-white text-xs font-bold flex items-center justify-center">${!emp && k === a.length ? '✓' : ix + 1}</span><span class="leading-tight min-w-0 text-left"><b class="block text-[11px] sm:text-[13px] text-ink"><span class="hidden sm:inline">${t}</span><span class="sm:hidden">${SEC_SHORT[ix]}</span></b><span class="hidden sm:block text-[12px] font-bold ${col}">${st}${emp ? '' : ` · <span role="button" tabindex="0" class="sec-more" onclick="event.stopPropagation();secPop(${n},this)">voir ▾</span>`}</span></span></span><span class="ax-bar"><i style="width:${pc}%;background:${bc}"></i></span></button>`; }).join('');
   const ic = (d.robots || []).map(m => robotIco(m, 26)).join('');
   if ($('sec-offre-ico')) $('sec-offre-ico').innerHTML = ic || '<i class="fas fa-robot text-slate-300 text-lg" aria-hidden="true"></i>';
 }
@@ -5895,7 +6052,7 @@ function renderBanner(c) {
           </div>
           ${opt('com') ? '<p class="text-xs text-muted">La commission est débloquée dès que la date de levée est renseignée et le dossier enregistré (détail dans « Objectifs et commissions »).</p>' : ''}
         </div>
-      </div>${comFicheBox(c)}</div>`;
+      </div>${annBlock(c)}${comFicheBox(c)}</div>`;
     levSteps(c); resInd();
   } else if (lost) {
     $('f-banner').innerHTML = `<div class="card p-5 !border-rose-300 bg-rose-50 flex flex-wrap justify-between items-center gap-3">
@@ -6403,7 +6560,7 @@ function renderAddonsList(c) {
   if (!show) return;
   $('f-addons').innerHTML = c.addons.length ? c.addons.map(a => `<div class="flex flex-wrap justify-between items-center gap-2 p-3 rounded-xl ${a.statut === 'signe' ? 'bg-teal-50' : 'bg-indigo-50/60'}">
     <div class="flex items-center gap-2">${optIco(a.quoi, 30)}<div><b>${esc(a.quoi)}</b> — <b>${eur(a.montant)} HT</b><div class="text-xs text-muted">${a.statut === 'signe' ? 'Validé le ' + fmtD(a.date) : esc(a.statutDetail) + ' · décision ' + fmtD(a.date)}${a.notes ? ' · ' + esc(a.notes) : ''}</div></div>
-    ${a.statut === 'signe' ? '<span class="pill bg-teal-700 text-white">Signé</span>' : `<div class="flex gap-1">${actBtns(c.id, a.id)}<button class="btn btn-ok !h-9 !px-3" onclick="signAddon(${c.id},${a.id})">Signé</button></div>`}${a.statut === 'signe' ? comAddonLine(c, a) : ''}</div>`).join('')
+    ${a.statut === 'signe' ? `<span class="flex items-center gap-2"><span class="pill bg-teal-700 text-white">Signé</span>${opt('annonce') ? `<button type="button" class="btn ${annOn(c, a.id) ? 'btn-g' : ''} !h-8 !px-2.5 !text-[12px]" ${annOn(c, a.id) ? '' : 'style="background:#E87722;color:#fff;border-color:#E87722"'} onclick="annOpen(${c.id},${a.id},'sign')"><i class="fas fa-envelope mr-1"></i>${annOn(c, a.id) ? 'Annoncée' : 'Annoncer'}</button>` : ''}</span>` : `<div class="flex gap-1">${actBtns(c.id, a.id)}<button class="btn btn-ok !h-9 !px-3" onclick="signAddon(${c.id},${a.id})">Signé</button></div>`}${a.statut === 'signe' ? comAddonLine(c, a) : ''}</div>`).join('')
     : '<div class="text-sm text-muted italic">Aucune vente additionnelle.</div>';
 }
 function histIcon(h) {
@@ -6477,6 +6634,7 @@ function saveClient(back = true, silent = false) {
       if ($('b-dossier').value.trim() && !DOSSIER_RX.test($('b-dossier').value.trim())) { toast('N° de dossier : format attendu 25/03-19 B', true); $('b-dossier').focus(); return null; }
       Object.assign(c, {numDossier: $('b-dossier').value.trim(), signatureDate: $('b-sign-date').value || c.signatureDate, livraisonDate: $('b-livraison').value, montant: +$('b-sign-montant').value || c.montant,
         hasReserves: $('b-res').checked, leveeDate: $('b-res').checked ? $('b-levee').value : ''});
+      if (c.leveeDate && c.leveeDate !== had && opt('annonce') && !annLvOn(c)) setTimeout(() => { try { annOpen(c.id, 0, 'levee'); } catch (e) { } }, 600);
       if (c.leveeDate && c.leveeDate !== had) { log(c, `Réserves levées le ${fmtD(c.leveeDate)}`, 'Réserve retournée signée par le client · commission débloquée.'); (c.rappels || []).filter(r => r.lev && !r.done).forEach(r => { r.done = true; r.doneAt = nowDT(); }); }
     }
   } else {
@@ -6599,7 +6757,7 @@ function recordCR() {
   log(c, `Notes de l'échange ${STEPS[c.step]?.short || ''}`.trim(), cr); save(); renderHistory(c);
   ui.lastCR = {cid: c.id, text: cr};
   const next = $('f-next').value;
-  $('f-mail').value = `Bonjour ${c.genre} ${c.nom},\n\nSuite à notre échange de ce jour concernant votre projet de robotisation :\n${cr}\n${next ? `\nComme convenu, nous faisons le point ${fmtDT(next)}.\n` : ''}\nJe reste à votre disposition.\n\nBien cordialement,\n${settings.prenom} ${settings.nom}\n${settings.fonction} — Pharmathek\n${settings.tel}`;
+  $('f-mail').value = `Bonjour ${c.genre} ${c.nom},\n\nSuite à notre échange de ce jour concernant votre projet de robotisation :\n${cr}\n${next ? `\nComme convenu, nous faisons le point ${fmtDT(next)}.\n` : ''}\nJe reste à votre disposition.\n\nBien cordialement`;
   $('f-mail-box').classList.remove('hidden'); $('f-mail-box').classList.add('flex'); $('f-cr').value = ''; $('f-synth').classList.add('hidden');
   // Suite logique proposée
   if (ORDER.includes(c.step)) {
@@ -8105,20 +8263,21 @@ function pfCom() {
   const subTabs = objSub();
   const nA = rows.filter(r => r.a).length, nR = rows.length - nA;
   $('pf-body').innerHTML = `<div class="v38-r1">${subTabs}</div>
-    <section class="card p-4 v43-per">
+    ${accHtml('com-per', 'fa-calendar-days', 'Période affichée', P.mode === 'year' ? 'Année civile ' + P.year : 'Période personnalisée', `<div class="v43-per p-1">
       <div class="flex flex-wrap gap-6 items-start">
         <div><div class="v43-lb">ANNÉE DES OBJECTIFS</div><select id="cp-year" class="inp !w-32" onchange="ui.comP={mode:'year',year:+this.value,du:'',au:''};renderProfile()" aria-label="Année des objectifs">${years.map(y => `<option ${P.mode === 'year' && P.year === y ? 'selected' : ''}>${y}</option>`).join('')}</select><div class="v43-h">Année civile : du 1er janvier au 31 décembre.<br>C’est le réglage normal, rien d’autre à faire.</div></div>
         <div class="v43-sep"></div>
         <div><div class="v43-lb">PÉRIODE PERSONNALISÉE <span>(facultatif)</span></div><div class="flex flex-wrap gap-2 items-center"><span class="text-muted">Du</span><input type="date" lang="fr-FR" id="cp-du" class="inp !w-40" aria-label="Début de période" value="${P.mode === 'range' ? P.du : ''}"><span class="text-muted">au</span><input type="date" lang="fr-FR" id="cp-au" class="inp !w-40" aria-label="Fin de période" value="${P.mode === 'range' ? P.au : ''}"><button class="btn btn-d" onclick="ui.comP={mode:'range',year:${CUR_YEAR},du:$('cp-du').value,au:$('cp-au').value};renderProfile()">Appliquer</button></div><div class="v43-h">À utiliser seulement pour isoler une période (trimestre, challenge…).<br>Laissez vide pour garder l’année civile.</div></div>
       </div>
-      <div class="v43-cur"><span class="text-muted">Affichage actuel :</span>${P.mode === 'year' ? `<span class="v43-ok">✔ Année civile ${P.year} · 01/01 → 31/12</span>` : `<span class="v43-warn">⚠ Période personnalisée · ${P.du ? fmtD(P.du) : '…'} → ${P.au ? fmtD(P.au) : '…'}</span>`}<b>${cnt3(rows)}</b>${P.mode === 'year' ? '' : `<button class="btn btn-g !h-9 ml-auto" onclick="ui.comP={mode:'year',year:${CUR_YEAR},du:'',au:''};renderProfile()"><i class="fas fa-rotate-left"></i>Revenir à l’année civile</button>`}</div>
-    </section>
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 v38-tiles">
-      ${tile('Commissions acquises', eur2(tot('attente') + tot('paye')), 'hors dossiers bloqués', '#F1F3F6', '#0F172A', '#CBD5E1', 'acq')}
+      <div class="v43-cur"><span class="text-muted">Affichage actuel :</span>${P.mode === 'year' ? `<span class="v43-ok">✔ Année civile ${P.year} · 01/01 → 31/12</span>` : `<span class="v43-warn">⚠ Période personnalisée · ${P.du ? fmtD(P.du) : '…'} → ${P.au ? fmtD(P.au) : '…'}</span>`}<b>${cnt3(rows)}</b>${P.mode === 'year' ? '' : `<button class="btn btn-g !h-9 ml-auto" onclick="ui.comP={mode:'year',year:${CUR_YEAR},du:'',au:''};renderProfile()"><i class="fas fa-rotate-left"></i>Revenir à l’année civile</button>`}</div></div>`)}
+    <div class="dbn flex items-center gap-3"><h2 class="h2 !text-lg flex-1">Mes commissions</h2><span class="axp warn">${P.mode === 'year' ? 'Année civile ' + P.year : 'Période personnalisée'}</span></div>
+    <div class="cm-top cd-click" role="button" tabindex="0" onclick="comDet('*')" onkeydown="if(event.key==='Enter')comDet('*')" title="Voir toutes les commissions"><div><div class="cm-k">TOTAL DES COMMISSIONS</div><div class="cm-v">${eur2(tot(''))}</div></div><div class="cm-s">${rows.length} vente${rows.length > 1 ? 's' : ''} · ${P_LABEL()}</div></div>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
       ${tile('Payées', eur2(tot('paye')), `${rows.filter(r => r.statut === 'paye').length} dossier(s)`, '#E8F5EE', '#14603F', '#86CFA0', 'paye')}
       ${tile('En attente de paiement', eur2(tot('attente')), `${attP.length} dossier(s)`, '#FEF6E4', '#6B4607', '#F2C46B', 'attente')}
-      ${tile('Bloquées · réserves', eur2(tot('bloque')), `${rows.filter(r => r.statut === 'bloque').length} dossier(s) à lever`, '#FDECEC', '#9F1C1C', '#F29B9B', 'bloque')}
+      ${tile('Sous réserve', eur2(tot('bloque')), `${rows.filter(r => r.statut === 'bloque').length} dossier(s) à lever`, '#FDECEC', '#9F1C1C', '#F29B9B', 'bloque')}
     </div>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">${[['r', 'fa-boxes-stacked', 'Robots', rows.filter(r => !r.a)], ['a', 'fa-circle-plus', 'Add-ons', rows.filter(r => r.a && !r.nan)], ['n', 'fa-building-columns', 'Financement NANCEO', rows.filter(r => r.nan)]].map(([k, ic, l, L]) => `<div class="cm-or cd-click" role="button" tabindex="0" onclick="comDet('*','${k}')" onkeydown="if(event.key==='Enter')comDet('*','${k}')"><span class="cm-oi"><i class="fas ${ic}"></i></span><span class="cm-ot">${l}<small>${L.length} vente${L.length > 1 ? 's' : ''}</small></span><b>${eur2(sum(L, r => r.com))}</b></div>`).join('')}</div>
     <div class="grid lg:grid-cols-3 gap-5 v38-cards">
       <section class="card p-5 flex flex-col gap-2.5" style="--cb2:#86CFA0;--cf2:#F6FBF8"><div class="flex justify-between"><h2 class="h2 flex items-center gap-2">${robotIco('SINTESI XL', 30)}Objectif SINTESI ${yr}</h2><span class="text-sm font-bold">${nS} / ${obj}</span></div>
         <div class="h-2.5 rounded-full bg-slate-100 overflow-hidden"><div class="h-2.5 rounded-full bg-emerald-700" style="width:${Math.min(100, nS / obj * 100)}%"></div></div>
@@ -8135,7 +8294,7 @@ function pfCom() {
         <h2 class="h2">Détail des commissions</h2>
         <div class="flex gap-2 flex-wrap"><button class="btn btn-ok !h-9" ${sel.size ? '' : 'disabled style="opacity:.45"'} onclick="openPay([...ui.paySel])"><i class="fas fa-circle-check"></i>Marquer comme payées (${sel.size})</button><button class="btn btn-g !h-9" onclick="exportCom()"><i class="fas fa-download"></i>CSV</button></div>
       </div>
-      <div class="v38-top">${comRecap(rows)}${comBar(rows, vw)}</div>
+      <div class="v38-top">${accHtml('com-recap', 'fa-table-list', 'Récapitulatif', `${rows.length} vente${rows.length > 1 ? 's' : ''} · ${eur2(tot(''))}`, comRecap(rows))}${comBar(rows, vw)}</div>
       <div class="cf-tot"><span><b>${vw.length} ligne${vw.length > 1 ? 's' : ''}</b> affichée${vw.length > 1 ? 's' : ''} sur ${rows.length} · commissions <b>${eur2(sum(vw, r => r.com))}</b></span>${att.length ? `<label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="w-4 h-4 accent-orange-700" ${att.every(r => sel.has(r.key)) ? 'checked' : ''} onchange="[${att.map(r => `'${r.key}'`).join(',')}].forEach(k=>this.checked?ui.paySel.add(k):ui.paySel.delete(k));renderProfile()"><b>Tout sélectionner</b> (${att.length} ligne${att.length > 1 ? 's' : ''} à pointer affichée${att.length > 1 ? 's' : ''})</label>` : ''}</div>
       <div class="tbl-com v38g">
         <div class="v38-grid v38-h"><span></span><span>Type</span><span>Pharmacie</span><span>Vente</span><span style="text-align:right">Calcul</span><span class="v38-n">Taux</span><span class="v38-n">Commission</span><span>Statut</span><span></span></div>
@@ -8349,6 +8508,7 @@ function pfBlocks() {
       ${tg('agenda', ic('file', 20), CB, 'Agenda', 'Ajout des rendez-vous et relances à votre agenda.')}
       <div class="axo-g">Commercial</div>
       ${tg('com', '<i class="fas fa-euro-sign"></i>', CG, 'Commissions', "Les montants de commission ne s'affichent que dans l'onglet « Objectifs et commissions ».")}
+      ${tg('annonce', '<i class="fas fa-envelope"></i>', CG, 'Annonce de signature', "Bouton « Préparer l'annonce » dans les contrats signés et les add-ons : courriel à l'administration des ventes et à la direction (réserves, financement, levée).")}
       ${tg('chal', '<i class="fas fa-trophy"></i>', CA, 'Challenges', "Challenges dans l'onglet « Objectifs et commissions » et rappel du challenge en cours sur l'accueil.")}
     </section>
     <section class="card p-5 sm:p-6 flex flex-col gap-3"><div class="ax-st nm"><span class="ax-ib"><i class="fas fa-sliders"></i></span>Préférences</div>
@@ -8413,7 +8573,7 @@ function pfSecteur() {
 }
 function pfOptions() {
   const X = pfBlocks();
-  $('pf-body').innerHTML = `<div class="flex flex-col gap-5">${X.opt}</div>`;
+  $('pf-body').innerHTML = `<div class="flex flex-col gap-5">${X.opt}${opt('annonce') ? annCfgHtml() : ''}</div>`;
 }
 function pfDocs() {
   const row = (ic, t, d, k) => `<div class="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 p-4"><div class="flex items-start gap-3 min-w-0"><span class="w-9 h-9 rounded-xl bg-orange-50 text-ptkd inline-flex items-center justify-center shrink-0"><i class="fas ${ic}"></i></span><div><b class="text-sm">${t}</b><p class="text-xs text-muted mt-0.5">${d}</p></div></div><div class="flex gap-2"><button class="btn btn-p !h-10" onclick="openDoc('${k}')"><i class="fas fa-eye"></i>Consulter</button></div></div>`;
