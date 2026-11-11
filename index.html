@@ -441,6 +441,25 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
 #view-client .dz,#view-client .v5-todo,#view-client .ax-note,#view-client .v43-nan-add,.zgo{border-style:solid!important}
 #view-client .dz{border:2px solid #D5DAE1!important}
 .zgo{border-color:#CBD5E1!important}
+/* V4.7.0 */
+.dsw{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;padding:10px 12px;border:1px solid #d9dce1;border-radius:14px;background:#fff;margin-bottom:10px}
+.dsw>b{font-size:13.5px}.dsw-n{font-size:12px;color:#64748b}
+.dsw-s{display:flex;gap:4px;padding:4px;border-radius:12px;background:#f1f5f9}
+.dsw-s button{display:flex;flex-direction:column;align-items:flex-start;gap:0;padding:6px 12px;border-radius:9px;font-size:13px;font-weight:700;color:#475569;min-height:44px}
+.dsw-s button small{font-size:11px;font-weight:500;color:#64748b}.dsw-s button i{margin-right:6px;color:#E87722}
+.dsw-s button.a{background:#111;color:#fff}.dsw-s button.a small{color:#cbd5e1}
+.pres-r{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;padding:8px 10px;border:1px solid #e2e8f0;border-radius:12px;background:#fff}
+.pres-i{width:32px;height:32px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#fff3e8;color:#c2570c;flex:none}.pres-i.ok{background:#dcfce7;color:#166534}
+.pres-t{flex:1;min-width:200px;display:flex;flex-direction:column;font-size:12.5px;color:#475569}.pres-t b{color:#0f172a;font-size:13.5px}.pres-w{color:#b45309;font-weight:700}
+.pr-g{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.pr-o{display:flex;flex-direction:column;align-items:center;gap:4px;padding:10px 6px;border:2px solid #d9dce1;border-radius:12px;font-size:13px;font-weight:700;background:#fff;min-height:64px}.pr-o i{color:#E87722;font-size:18px}.pr-o.a{border-color:#E87722;background:#fff3e8}
+.pr-rel{padding:10px 12px;border:1px dashed #E87722;border-radius:12px;background:#fffaf5}
+.sec-more{white-space:nowrap;display:inline-block}
+.vfuse3.vacc{display:grid!important;grid-template-columns:1fr 1fr;gap:8px;align-items:start}
+.vfuse3.vacc>details[open]{grid-column:1/-1}
+@media(max-width:640px){.vfuse3.vacc{grid-template-columns:1fr}}
+.pfblock{gap:10px!important}
+#view-dashboard .tbl td{padding-top:5px!important;padding-bottom:5px!important}
+#view-dashboard .tbl tbody tr{height:42px}
 /* V2.8 : fiche sans bloc Étape en cours, bouton Dossier perdu */
 #f-stage{display:none!important}
 .zlost{margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:11px;border:2px solid #DC2626;background:#FEF2F2;color:#B91C1C;font-weight:800;font-size:13.5px}.zlost:hover{background:#FEE2E2}
@@ -757,7 +776,7 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
   <div class="flex flex-wrap gap-3 items-stretch">
     <section class="card frame vwrap p-3.5 flex flex-col gap-2 min-w-0" style="flex:1 1 640px">
       <div class="flex items-stretch gap-2.5 flex-wrap">
-        <div class="dbn flex items-center gap-3 flex-wrap flex-1 min-w-[300px]"><h2 id="sales-title" class="h2 !text-lg ftitle ft-v"></h2><span id="sig-chips" class="flex gap-1.5 flex-wrap ml-auto"></span></div>
+        <div class="dbn flex items-center gap-3 flex-wrap flex-1 min-w-[300px]"><h2 id="sales-title" class="h2 !text-lg ftitle ft-v"></h2><span id="sig-chips" class="flex gap-1.5 flex-wrap ml-auto"></span><button type="button" id="v-fold" class="btn btn-g !h-8 !px-2.5 !text-[12px]" onclick="ventesFold()"><i class="fas fa-angles-up"></i><span>Tout replier</span></button></div>
 
       </div>
       <div id="sales-kpi" class="skpi"></div>
@@ -765,8 +784,8 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
         <details class="ax-acc" data-acc="v-prob"><summary><span class="ai"><i class="fas fa-arrow-trend-up"></i></span><span class="at">Potentiel à signer</span><span class="as" id="acc-prob"></span><i class="fas fa-chevron-down ac"></i></summary><div class="ab"><section class="sig2" id="sales-prob" aria-label="Signatures probables"></section></div></details>
         <details class="ax-acc" data-acc="v-top"><summary><span class="ai"><i class="fas fa-chart-pie"></i></span><span class="at">Répartition des ventes</span><span class="as" id="acc-top"></span><i class="fas fa-chevron-down ac"></i></summary><div class="ab"><div id="sales-top"></div></div></details>
         <details class="ax-acc" data-acc="v-keys"><summary><span class="ai"><i class="fas fa-gauge-high"></i></span><span class="at">Indicateurs</span><span class="as" id="acc-keys"></span><i class="fas fa-chevron-down ac"></i></summary><div class="ab"><div class="vchips"><div id="sales-keys"></div><div id="sales-foot"></div></div></div></details>
+        <details class="ax-acc" data-acc="v-chart"><summary><span class="ai"><i class="fas fa-chart-line"></i></span><span class="at">Évolution des ventes</span><span class="as" id="acc-chart"></span><i class="fas fa-chevron-down ac"></i></summary><div class="ab"><div class="vchart2 rounded-xl border border-slate-200"><div class="absolute inset-0 p-1.5"><canvas id="chart" role="img" aria-label="Ventes mensuelles, cumul et objectif"></canvas></div></div></div></details>
       </div>
-      <div class="vacc"><details class="ax-acc" data-acc="v-chart"><summary><span class="ai"><i class="fas fa-chart-line"></i></span><span class="at">Évolution des ventes</span><span class="as" id="acc-chart"></span><i class="fas fa-chevron-down ac"></i></summary><div class="ab"><div class="vchart2 rounded-xl border border-slate-200"><div class="absolute inset-0 p-1.5"><canvas id="chart" role="img" aria-label="Ventes mensuelles, cumul et objectif"></canvas></div></div></div></details></div>
         <div class="zgo" style="align-self:flex-end"><span class="zgo-l">ALLER PLUS LOIN</span>
         <button type="button" class="zgo-b zgo-g" onclick="openPrev()" title="Générer le fichier Excel de suivi CRO"><span>Prévisions<i class="fas fa-download"></i></span><small>Fichier Excel de suivi CRO</small></button>
         <button type="button" class="zgo-b zgo-b2" onclick="showView('stats')" title="Ouvrir la page des statistiques détaillées"><span>Stats<i class="fas fa-chevron-right"></i></span><small>Page statistiques détaillées</small></button></div>
@@ -785,19 +804,16 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
     </section>
   </div>
 
-  <section class="card frame p-3.5 flex flex-col gap-3" aria-label="Pipeline">
-    <div class="dbn flex items-center gap-3"><h2 class="h2 !text-lg ftitle ft-p flex-1">Pipeline commercial</h2><span id="pipe-sum" class="text-[13px] font-extrabold text-slate-600"></span></div>
+  <section class="card frame p-3.5 flex flex-col gap-3 pfblock" aria-label="Pipeline et portefeuille">
+    <div class="dbn flex items-center gap-3"><h2 class="h2 !text-lg ftitle ft-p flex-1">Pipeline et portefeuille</h2><span id="pipe-sum" class="text-[13px] font-extrabold text-slate-600"></span></div>
     <div class="flex flex-col lg:flex-row lg:items-center gap-2.5">
     <div id="pipeline" class="pcards min-w-0 lg:flex-[2.2]"></div>
     <div id="pipe-stats" class="flex flex-wrap gap-1.5 lg:flex-1 items-center"></div>
     <button id="pipe-reset" class="hidden btn btn-g !h-8" onclick="filterStep('ALL')"><i class="fas fa-xmark"></i>Tout afficher</button>
     <div id="pipe-bar" class="hidden"></div><div id="pipe-note" class="hidden"></div>
     </div>
-  </section>
-
-  <section class="flex flex-col gap-3">
     <div id="tiles" role="tablist" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2"></div>
-    <div class="card overflow-hidden">
+    <div class="rounded-xl border border-slate-200 overflow-hidden">
       <div class="flex flex-wrap justify-between items-center gap-3 px-5 py-3 border-b border-slate-200">
         <div id="tbl-title" class="text-sm font-semibold"></div>
         <div class="flex gap-2 items-center flex-wrap"><span id="tbl-filters" class="flex gap-2 items-center"></span><button class="btn btn-g !h-9" onclick="exportCSV()"><i class="fas fa-download"></i>CSV</button></div>
@@ -890,7 +906,7 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
         <div class="fz flex flex-col gap-3" data-zone="3"><div id="sec-3" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">3</span><h2 class="h2">Besoins et argumentaire</h2><span id="sst-3" class="ml-auto text-xs font-semibold"></span></div>
         <div id="f-besoins-box"></div></div>
         <div class="fz flex flex-col gap-3" data-zone="6"><div id="sec-6" class="scroll-mt-36 flex items-center gap-2.5 flex-wrap"><span class="w-7 h-7 rounded-full bg-orange-600 text-white text-sm font-bold flex items-center justify-center shrink-0">4</span><h2 class="h2">Préparation de l'offre et de l'argumentaire</h2><span id="sst-6" class="ml-auto text-xs font-semibold"></span></div>
-        <div id="f-arg-box"></div></div>
+        <div id="f-arg-box"></div><div id="f-pres-box"></div></div>
                 <p id="f-tip" class="m-0 text-xs text-amber-900"></p>
       </section>
 
@@ -1452,6 +1468,8 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
 <p>L'écran d'accueil réunit trois zones :</p>
 <ul>
 <li><b>Ventes</b> : le chiffre d'affaires signé, l'avancement vers l'objectif et les <b>potentiel à signer</b> (carte jaune « Ce mois-ci » et carte « période au choix »).</li>
+<li><b>Document pour le client (V4.7.0)</b> : à l’étape 4 de la fiche, « Quelle offre présenter ? » : <b>Personnalisée</b> (besoins et argumentaire) ou <b>Synthétique</b> (devis et maintenance). On peut passer de l’une à l’autre à tout moment ; le choix du robot et du devis reste obligatoire.</li>
+<li><b>Offres présentées (V4.7.0)</b> : chaque PDF généré apparaît « Prête ». Cliquez <b>Marquer comme présentée</b> : mode (en visite, en visio, remise par courriel), date, offre. Une relance est proposée (15 jours si la décision est dans moins de 3 mois, sinon 30 ; réglable dans Paramètres › Options). <b>Revoir l’offre</b> rouvre le document ; une alerte signale si le montant a changé depuis. L’option « Générer et présenter maintenant » est désactivée par défaut.</li>
 <li><b>Annonce de signature (V4.6.0)</b> : dans un contrat signé (et sur chaque add-on signé), le bouton <b>Préparer l’annonce</b> ouvre un courriel prêt à envoyer à l’administration des ventes et à la direction : pharmacie, date de signature, montant final remisé, <b>financement</b> (autofinancement, crédit, leasing, organisme), <b>réserves</b> (avec les clauses suspensives) et la demande de prise en compte, de validation administrative et de mise à jour du fichier Pharmagest. Avec réserves, la commission reste bloquée ; quand la levée signée est reçue (case « Réserve retournée signée » + enregistrement), le courriel d’annonce de la levée s’ouvre. Le courriel s’ouvre dans votre messagerie, vous l’envoyez vous-même, puis vous confirmez. Adresses et textes : Paramètres › Options (option désactivable).</li>
 <li><b>Vérification automatique (V4.6.0)</b> : à l’ouverture, le dashboard contrôle ses données ; une pastille orange « N points à voir » apparaît en haut si besoin.</li>
 <li><b>Fiche client (V4.6.0)</b> : bandeaux repliables, bouton « Tout déplier / Tout replier », et « voir ▾ » sur chaque onglet pour savoir ce qui manque.</li>
@@ -1472,6 +1490,7 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.7.0</b> : <b>Offres présentées</b> (en visite, en visio ou remise par courriel, avec relance proposée à 15 ou 30 jours), choix <b>offre personnalisée / synthétique</b> dans la fiche, accueil harmonisé (Ventes en 2 colonnes dépliables, pipeline et portefeuille réunis, lignes plus fines).</li>
 <li><b>V4.6.0</b> : <b>Annonce de signature</b> (robots, add-ons, levée des réserves) : courriel prêt à envoyer à l’administration des ventes et à la direction (pharmacie, date, montant remisé, financement, réserves, demande de validation et de mise à jour du fichier Pharmagest), option à régler dans Paramètres › Options ; les courriels n’ajoutent plus de signature (votre messagerie s’en charge) ; <b>Fiche client</b> : plus de pointillés, bandeaux noirs repliables avec « Tout déplier / Tout replier », et fenêtre <b>« voir ▾ »</b> sur chaque onglet qui liste ce qui manque avec un bouton « Y aller » (le bandeau indique aussi « Il manque : … ») ; <b>Vérification automatique</b> des données à l’ouverture, à l’enregistrement et à la restauration (pastille orange « N points à voir » en haut ; les rappels ouverts sur un dossier signé ou perdu sont nettoyés tout seuls avec une ligne d’historique) ; <b>Mes commissions</b> redessinées (total en tête, Payées / En attente / Sous réserve, origine Robots · Add-ons · Financement NANCEO, période et récapitulatif repliables) ; (1) <b>Évolution des ventes</b> : le graphique devient un bloc repliable (fermé par défaut, résumé « cumulé · écart vs objectif à date », état mémorisé) ; (2) « Où en sont mes dossiers ? » devient <b>Pipeline commercial</b> ; (3) l’onglet « Détail mensuel » devient <b>Ventes par mois</b> ; (4) autres nouveautés de cette version : voir les lignes suivantes.</li>
 <li><b>V4.5.61</b> : <b>Ma journée</b> : le titre ne contient plus que « Ma journée » et l'icône d'agrandissement ; les boutons « Maintenant » et « À faire » passent sur une ligne dessous (ils débordaient du cadre).</li>
 <li><b>V4.5.60</b> : (1) <b>Dernière action exacte</b> : elle tient compte des besoins renseignés, relances ou appels planifiés et contacts ajoutés (plus de « Devis réalisé 2023 » pour une fiche travaillée aujourd'hui) ; le badge de jours reste gris quand une action est planifiée. (2) <b>Répartition par jour</b> : seules les actions <b>traitées</b> comptent, à leur date de traitement ; la planification compte dans « Prises de rendez-vous ». Semaine du lundi au dimanche. (3) <b>Ventes signées</b> : colonne « Date de signature » (tri chronologique, filtre du… au…, repères de mois). (4) <b>Ma journée</b> sans pointillés (cartes teintées). (5) <b>Activité commerciale</b> et <b>Détail mensuel</b> refaits dans le nouveau style. (6) Titre « Portefeuille · Projets de robots en cours ». (7) <b>Nouveautés</b> : bouton <b>Maintenant</b> (enchaîne vos actions à traiter), <b>Vérification des données</b> (Mon profil › Sauvegardes), vue téléphone « Aujourd'hui » avec barre du bas.</li>
@@ -1969,7 +1988,7 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
 </dialog>
 <dialog id="dlg-offre" class="!w-[min(980px,97vw)]">
   <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start gap-2">
-    <div><h3 class="font-bold flex items-center gap-2"><i class="fas fa-file-invoice text-ptkd"></i>Synthèse de l'offre</h3><p id="of-sub" class="text-xs text-muted mt-0.5"></p></div>
+    <div><h3 class="font-bold flex items-center gap-2"><i class="fas fa-file-invoice text-ptkd"></i>Devis et offre synthétique</h3><p id="of-sub" class="text-xs text-muted mt-0.5"></p></div>
     <button class="dlg-x" onclick="closeDlg('dlg-offre')" aria-label="Fermer"><i class="fas fa-xmark"></i></button>
   </div>
   <div id="of-body" class="dlg-body p-5 flex flex-col gap-5"></div>
@@ -1993,6 +2012,12 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
   <div class="p-5 flex flex-col gap-2.5" id="ch-opts"></div>
   <p class="px-5 pb-3 text-[11.5px] text-muted"><i class="fas fa-circle-info mr-1"></i>Modifiable à tout moment depuis la fiche. Ce pourcentage alimente le « Potentiel à signer » et la couleur de la pastille.</p>
   <div class="px-5 py-3 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-chance')">Annuler</button><button class="btn btn-d" onclick="chanceOk()">Valider</button></div>
+</dialog>
+
+<dialog id="dlg-pres" class="!w-[min(560px,94vw)]">
+  <div class="px-5 py-4 border-b bg-slate-50"><h3 class="font-bold text-base"><i class="fas fa-handshake text-orange-600 mr-1.5"></i>Offre présentée à <span id="pr-name"></span></h3><p class="text-xs text-muted mt-0.5">Comment et quand l'offre a-t-elle été présentée ?</p></div>
+  <div class="p-5 flex flex-col gap-3.5" id="pr-body"></div>
+  <div class="px-5 py-3 border-t bg-slate-50 flex flex-wrap justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-pres')">Annuler</button><button id="pr-no" class="btn btn-g" onclick="presOk(true)">Sans relance</button><button id="pr-ok" class="btn btn-d" onclick="presOk()">Enregistrer</button></div>
 </dialog>
 
 <dialog id="dlg-list" class="!w-[min(1080px,96vw)]">
@@ -2276,7 +2301,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.6.0';
+const APP_VERSION = '4.7.0';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2421,7 +2446,7 @@ const GUIDE = {
 const DIST = {'bourges': [3, 8], 'saint-amand-montrond': [46, 42], 'vierzon': [34, 32], 'issoudun': [41, 40], 'chateauroux': [68, 58], 'romorantin-lanthenay': [69, 55], 'blois': [112, 80], 'orleans': [115, 82], 'montargis': [134, 95], 'tours': [148, 102], 'chartres': [188, 125], 'sancerre': [46, 45], 'saint-florent-sur-cher': [22, 22]};
 
 /* ================= PARAMÈTRES ================= */
-const DEFAULTS = () => ({backMode: 'ask', levBody: '', prenom: 'Eric', nom: 'R.', fonction: 'Ingénieur Commercial', tel: '06 12 34 56 78', email: 'eric.r@pharmathek.fr', adresse: '15 rue Vedeau, 18000 Bourges', objectif: 18, objectifCA: 2475000, annonce: ANN_DEF(), logo: '', agenda: 'google', opt: {gps: true, teams: true, agenda: true, social: true}, social: {site: 'https://www.pharmathek.com/fr/', linkedin: 'https://www.linkedin.com/company/pharmathek/posts/', facebook: 'https://www.facebook.com/pharmathek', instagram: 'https://www.instagram.com/pharmathek_france/', youtube: ''}, mail: {to: '', cc: '', subject: 'Fichier suivi CRO {annee} – {date}', body: 'Bonjour,\n\nVeuillez trouver ci-joint mon fichier de suivi CRO {annee}, à jour au {date}.\n\nBien cordialement'},
+const DEFAULTS = () => ({backMode: 'ask', levBody: '', prenom: 'Eric', nom: 'R.', fonction: 'Ingénieur Commercial', tel: '06 12 34 56 78', email: 'eric.r@pharmathek.fr', adresse: '15 rue Vedeau, 18000 Bourges', objectif: 18, objectifCA: 2475000, annonce: ANN_DEF(), logo: '', agenda: 'google', opt: {gps: true, teams: true, agenda: true, social: true, presentNow: false}, relOffre: {on: true, near: 15, far: 30, limit: 3}, social: {site: 'https://www.pharmathek.com/fr/', linkedin: 'https://www.linkedin.com/company/pharmathek/posts/', facebook: 'https://www.facebook.com/pharmathek', instagram: 'https://www.instagram.com/pharmathek_france/', youtube: ''}, mail: {to: '', cc: '', subject: 'Fichier suivi CRO {annee} – {date}', body: 'Bonjour,\n\nVeuillez trouver ci-joint mon fichier de suivi CRO {annee}, à jour au {date}.\n\nBien cordialement'},
   echeances: {court: {label: 'Court terme', duree: 'moins de 6 mois', rappel: 14}, moyen: {label: 'Moyen terme', duree: '6 à 12 mois', rappel: 30}, long: {label: 'Long terme', duree: 'plus de 12 mois', rappel: 90}},
   secteur: {lgpi: ['03','08','10','18','19','21','23','25','28','36','37','41','45','51','52','54','55','57','58','63','67','68','70','71','72','75','77','86','87','88','89','90','91','94'],
     prospect: ['08','10','25','39','51','52','54','55','57','67','68','70','88','90']},
@@ -2997,6 +3022,7 @@ const accOpen = n => { try { return localStorage.getItem('ax_acc_' + n) === '1';
 const accHtml = (n, ic, t, sum, body) => `<details class="ax-acc" data-acc="${n}" ${accOpen(n) ? 'open' : ''}><summary><span class="ai"><i class="fas ${ic}"></i></span><span class="at">${t}</span><span class="as">${sum}</span><i class="fas fa-chevron-down ac"></i></summary><div class="ab">${body}</div></details>`;
 document.addEventListener('toggle', e => { const d = e.target; if (d && d.matches && d.matches('details[data-acc]')) { try { localStorage.setItem('ax_acc_' + d.dataset.acc, d.open ? '1' : '0'); } catch (x) {} } }, true);
 document.addEventListener('toggle', e => { const d = e.target; if (d && d.matches && d.matches('details[data-acc="v-chart"]') && d.open) { try { renderChart(); } catch (x) { } } }, true);
+function ventesFold() { const D = [...document.querySelectorAll('.vfuse3 details[data-acc]')], any = D.some(d => d.open); D.forEach(d => { d.open = !any; }); const b = $('v-fold'); if (b) b.innerHTML = any ? '<i class="fas fa-angles-down"></i><span>Tout déplier</span>' : '<i class="fas fa-angles-up"></i><span>Tout replier</span>'; }
 function accInit() { document.querySelectorAll('details[data-acc]').forEach(d => { const o = accOpen(d.dataset.acc); if (d.open !== o) d.open = o; }); }
 function renderSalesKpi() {
   const el = $('sales-kpi'); if (!el) return;
@@ -3232,6 +3258,13 @@ function annSend() {
     save(); closeDlg('dlg-ann'); try { renderBanner(c); renderAddonsList(c); } catch (e) { } try { if (!$('view-dashboard').classList.contains('hidden')) renderDashboard(); } catch (e) { } toast('Annonce enregistrée'); }, 900);
 }
 function annCopy() { try { navigator.clipboard.writeText(ui.ann.subj + '\n\n' + ui.ann.msg); toast('Texte copié'); } catch (e) { toast('Copie impossible', true); } }
+function relCfgHtml() {
+  const R = relCfg(), n = (k, l) => `<label class="flex items-center gap-2 text-[13px]"><input type="number" min="1" max="365" class="inp !h-9 !w-20" value="${R[k]}" onchange="settings.relOffre=Object.assign(relCfg(),{${k}:Math.max(1,+this.value||1)});saveSet()">${l}</label>`;
+  return `<section class="card p-5 sm:p-6 flex flex-col gap-3" style="border:2px solid #E87722"><div class="ax-st nm"><span class="ax-ib"><i class="fas fa-clock-rotate-left"></i></span>Relance après présentation<span class="axp ${R.on ? 'ok' : 'warn'}">${R.on ? 'Activée' : 'Désactivée'}</span></div>
+    <p class="text-[13px] text-muted">Proposée quand vous enregistrez qu'une offre a été présentée. Vous pouvez toujours la modifier ou la refuser.</p>
+    <label class="flex items-center gap-2 text-[13px]"><input type="checkbox" class="w-4 h-4 accent-emerald-700" ${R.on ? 'checked' : ''} onchange="settings.relOffre=Object.assign(relCfg(),{on:this.checked});saveSet();renderProfile()">Proposer une relance</label>
+    ${n('near', 'jours si la décision est prévue dans moins de')}${n('limit', 'mois')}${n('far', 'jours dans les autres cas')}</section>`;
+}
 function annCfgHtml() {
   const A = annCfg(), row = (d, i) => `<div class="grid gap-2 items-center" style="grid-template-columns:22px 1fr 1.3fr 30px"><input type="checkbox" class="w-4 h-4 accent-emerald-700" ${d.on ? 'checked' : ''} onchange="annCfg().dest[${i}].on=this.checked;saveSet()" aria-label="Pré-sélectionné"><input class="inp !h-9" value="${esc(d.n)}" placeholder="Nom" oninput="annCfg().dest[${i}].n=this.value;saveSet()"><input class="inp !h-9" type="email" value="${esc(d.e)}" placeholder="adresse@…" oninput="annCfg().dest[${i}].e=this.value;saveSet()"><button type="button" class="text-rose-700" onclick="annCfg().dest.splice(${i},1);saveSet();renderProfile()" aria-label="Supprimer"><i class="fas fa-trash"></i></button></div>`;
   const ck = (k, t) => `<label class="flex items-center gap-2 text-[13px]"><input type="checkbox" class="w-4 h-4 accent-emerald-700" ${A.dem[k] ? 'checked' : ''} onchange="annCfg().dem['${k}']=this.checked;saveSet()">${t}</label>`;
@@ -5217,7 +5250,7 @@ function argAuto() { const c = byId(ui.argId); if (!c || !ui.argSnap) return; tr
 document.addEventListener('close', e => { if (e.target && e.target.id === 'dlg-arg') argAuto(); }, true);
 function argSave(silent) { const c = byId(ui.argId); if (!c) return; c.argDraft = argRead(); { const it = c.argDraft.items.find(x => x.k === '__prob'); if (it && ui.probIn) { const off = !it.h && it.h0 !== undefined && $('ag-it-on-0') && !$('ag-it-on-0').checked, txt = {h: it.h0 || it.h, p: it.p, r: it.r, b: it.b}, ch = ['h', 'p', 'r', 'b'].some(f => txt[f] !== ui.probIn[f]), offCh = off !== ui.probOff; if (ch || offCh) c.prob = {...(c.prob || {}), k: ui.probIn.k, ...txt, auto: ch ? false : (c.prob ? c.prob.auto : true), on: !off}; } } ui.argSnap = JSON.stringify(c.argDraft); save(); if (!silent) { toast('Brouillon de l\'argumentaire enregistré'); $('ag-sub').textContent = `${c.pharma} — ${c.ville} · brouillon enregistré`; } }
 function argReset() { const c = byId(ui.argId); confirmBox('Réinitialiser l\'argumentaire', 'Les textes modifiés seront remplacés par les textes d\'origine. Continuer ?', 'Réinitialiser', () => { delete c.argDraft; save(); openArg(c.id); }); }
-const argMiss = c => { const m = []; if (!(c?.besoins || []).length) m.push('Besoins et problématiques'); if (!(c?.robots || []).length) m.push("Construction de l'offre (modèle)"); if (!c?.offre?.lignes?.length) m.push("Synthèse de l'offre"); return m; };
+const argMiss = c => { const m = []; if (c?.docMode !== 'synth' && !(c?.besoins || []).length) m.push('Besoins et problématiques'); if (!(c?.robots || []).length) m.push("Construction de l'offre (modèle)"); if (!c?.offre?.lignes?.length) m.push("Synthèse de l'offre"); return m; };
 /* ================= OFFRES MULTIPLES (A / B / C) ================= */
 /* c.robots / options / montant / devis / offre = offre ACTIVE (édition). c.offres = toutes les offres ; c.offrePriv = offre privilégiée
    (celle du pipeline). En quittant la fiche, l'offre privilégiée redevient l'offre active : le reste de l'application est inchangé. */
@@ -5308,21 +5341,86 @@ const argLive = c => { if (c && ui.editId === c.id && !$('view-client').classLis
 function argHelp() { const c = byId(ui.editId); if (!c) return; const m = argMiss(argLive(c)); if (!m.length) return renderArgBtn(c); toast(`À renseigner d'abord : ${m.join(', ')}.`, true); const t = {'Besoins et problématiques': 'f-besoins-box', "Construction de l'offre (modèle)": 'f-models-box', "Synthèse de l'offre": 'f-offre-box'}[m[0]]; $(t)?.scrollIntoView({block: 'center', behavior: 'smooth'}); }
 function renderArgBtn(c) {
   const box = $('f-arg-box'); if (!box) return;
-  if (!c || c.step === 'Perdu') { box.innerHTML = ''; return; }
-  const miss = argMiss(argLive(c));
+  if (!c || c.step === 'Perdu') { box.innerHTML = ''; renderPres(c); return; }
+  const miss = argMiss(argLive(c)), dm = c.docMode === 'synth' ? 'synth' : 'perso';
   const act = c.offres?.length > 1 ? c.offres.find(o => o.id === c.offreAct) : null, lab = act ? `Générer le PDF de l'offre ${esc(act.nom)}` : 'Générer le PDF : synthèse et offre commerciale';
   const tgt = {'Besoins et problématiques': 'f-besoins-box', "Construction de l'offre (modèle)": 'f-models-box', "Synthèse de l'offre": 'f-offre-box'}, go = {'Besoins et problématiques': 'Renseigner →', "Construction de l'offre (modèle)": 'Choisir →', "Synthèse de l'offre": 'Importer →'};
   const lbl = {"Construction de l'offre (modèle)": 'Robot retenu (construction de l\'offre)', "Synthèse de l'offre": "Devis + contrat de maintenance (synthèse de l'offre)"};
-  box.innerHTML = miss.length
+  box.innerHTML = presSw(c) + (miss.length
     ? `<div class="rounded-2xl border-2 border-dashed border-slate-300 bg-slate-50 p-3.5 flex flex-wrap items-center gap-4"><button type="button" class="btn !h-12 text-[15px] font-bold !bg-slate-200 !border-slate-200 !text-slate-500 cursor-not-allowed" aria-disabled="true" onclick="argHelp()" title="Complétez les éléments ci-contre pour activer le bouton"><i class="fas fa-file-pdf text-lg"></i>${lab}</button>
       <div class="flex-1 min-w-[260px] flex flex-col gap-1 text-[13px]"><b class="text-orange-900">Il manque ${miss.length} élément${miss.length > 1 ? 's' : ''} pour générer le PDF :</b>${miss.map(m => `<div class="flex items-center gap-2"><span class="w-4 h-4 rounded-full border-2 border-slate-300 inline-block"></span><span>${esc(lbl[m] || m)}</span><button type="button" class="ml-auto font-bold text-[12px] text-ptkd underline" onclick="document.getElementById('${tgt[m]}')?.scrollIntoView({block:'center',behavior:'smooth'})">${go[m] || 'Renseigner →'}</button></div>`).join('')}</div></div>`
     : (() => { const [na, nt] = argCountLive(c), A2 = assocOf(c), nn = 1 + A2.filter(x => x.on).length;
-      return `<div class="pbox"><div class="hd"><i class="n">4</i>Préparer et générer le PDF<span class="r">${c.offre?.lignes?.length ? 'Synthèse + offre' : 'Synthèse'}</span></div><div class="p-3.5 flex flex-col gap-3">
-      <div class="ppills"><button type="button" class="ppill" onclick="prepGo('arg')"><i class="fas fa-list-check"></i>Contenu<b>${na}/${nt}</b></button><button type="button" class="ppill" onclick="prepGo('txt')"><i class="fas fa-pen-to-square"></i>Textes<b>${c.argDraft ? 'modifiés' : 'standard'}</b></button><button type="button" class="ppill" onclick="prepGo('nom')"><i class="fas fa-user-group"></i>Noms<b>${nn}</b></button><button type="button" class="ppill" onclick="document.getElementById('f-impl-box')?.scrollIntoView({block:'center',behavior:'smooth'})"><i class="fas fa-map-location-dot"></i>Implantation<b>plan et photos</b></button></div>
+      return `<div class="pbox"><div class="hd"><i class="n">4</i>Document pour le client<span class="r">${dm === 'synth' ? 'Offre synthétique' : 'Offre personnalisée'}</span></div><div class="p-3.5 flex flex-col gap-3">
+      ${dm === 'synth' ? `<div class="flex flex-wrap items-center gap-2"><button type="button" class="btn btn-g !h-11" onclick="printOffre(${c.id})"><i class="fas fa-print text-ptkd"></i>Imprimer</button><button type="button" class="btn btn-g !h-11" onclick="openOffre(${c.id})"><i class="fas fa-pen text-ptkd"></i>Modifier les lignes</button><button type="button" class="btn btn-p !h-12 text-[15px] font-bold shadow-md ml-auto" onclick="genOffre(${c.id})"><i class="fas fa-file-pdf text-lg"></i>Générer la synthèse (PDF)</button></div><p class="text-[12.5px] text-slate-600 m-0">Devis et contrat de maintenance seulement, sans argumentaire. <button type="button" class="font-bold text-ptkd underline" onclick="docMode(${c.id},'perso')">Passer en offre personnalisée</button></p>` : `<div class="ppills"><button type="button" class="ppill" onclick="prepGo('arg')"><i class="fas fa-list-check"></i>Contenu<b>${na}/${nt}</b></button><button type="button" class="ppill" onclick="prepGo('txt')"><i class="fas fa-pen-to-square"></i>Textes<b>${c.argDraft ? 'modifiés' : 'standard'}</b></button><button type="button" class="ppill" onclick="prepGo('nom')"><i class="fas fa-user-group"></i>Noms<b>${nn}</b></button><button type="button" class="ppill" onclick="document.getElementById('f-impl-box')?.scrollIntoView({block:'center',behavior:'smooth'})"><i class="fas fa-map-location-dot"></i>Implantation<b>plan et photos</b></button></div>
       <div class="flex flex-wrap items-center gap-2"><button type="button" class="btn btn-g !h-11" onclick="prepGo('txt')"><i class="fas fa-sliders text-ptkd"></i>Préparer le PDF…</button><button type="button" class="btn btn-g !h-11" onclick="prevArg(${c.id})"><i class="fas fa-eye text-ptkd"></i>Aperçu</button><button type="button" class="btn btn-p !h-12 text-[15px] font-bold shadow-md ml-auto" onclick="pdfArg(${c.id})"><i class="fas fa-file-pdf text-lg"></i>${lab}</button></div>
-      <p class="text-[12.5px] text-emerald-800 font-semibold m-0"><i class="fas fa-circle-check mr-1"></i>Tout est prêt : besoins, robot, devis + maintenance · ${esc(c.pharma)}</p></div></div>`; })();
-  renderStrip(c, miss);
+      <p class="text-[12.5px] text-emerald-800 font-semibold m-0"><i class="fas fa-circle-check mr-1"></i>Tout est prêt : besoins, robot, devis + maintenance · ${esc(c.pharma)} · <button type="button" class="font-bold text-ptkd underline" onclick="docMode(${c.id},'synth')">Passer en offre synthétique</button></p>`}</div></div>`; })());
+  renderStrip(c, miss); renderPres(c);
 }
+
+/* ----- V4.7.0 : document pour le client, offres présentées, relance ----- */
+const PRES_M = {visite: ['En visite', 'handshake'], visio: ['En visio', 'video'], mail: ['Remise par courriel', 'envelope']};
+const PRES_D = {perso: 'Offre personnalisée', synth: 'Offre synthétique'};
+const relCfg = () => Object.assign({on: true, near: 15, far: 30, limit: 3}, settings.relOffre || {});
+const presOf = c => (c && Array.isArray(c.pres)) ? c.pres : [];
+const presMontant = c => { try { if (c.offre?.lignes?.length) { const n = offreCalc(c.offre).net; if (n) return Math.round(n); } } catch (e) { } return Math.round(+c.montant || 0); };
+function presSw(c) {
+  if (!c || c.step === 'Perdu') return ''; const dm = c.docMode === 'synth' ? 'synth' : 'perso';
+  return `<div class="dsw"><b>Quelle offre présenter ?</b><div class="dsw-s" role="group" aria-label="Type d'offre"><button type="button" class="${dm === 'perso' ? 'a' : ''}" aria-pressed="${dm === 'perso'}" onclick="docMode(${c.id},'perso')"><i class="fas fa-bullseye"></i>Personnalisée<small>besoins + argumentaire</small></button><button type="button" class="${dm === 'synth' ? 'a' : ''}" aria-pressed="${dm === 'synth'}" onclick="docMode(${c.id},'synth')"><i class="fas fa-file-lines"></i>Synthétique<small>devis + maintenance</small></button></div><span class="dsw-n">Vous pouvez passer de l'une à l'autre à tout moment.</span></div>`;
+}
+function docMode(id, m) { const c = byId(id); if (!c) return; c.docMode = m; c.maj = Date.now(); save(); renderArgBtn(c); }
+function presPrep(c, doc) {
+  if (!c) return; c.pres = presOf(c); const m = presMontant(c), t = isoDay(TODAY);
+  const p = c.pres.find(x => x.st === 'prete' && x.doc === doc);
+  if (p) { p.montant = m; p.gen = t; } else c.pres.push({id: Date.now() + c.pres.length, st: 'prete', doc, montant: m, gen: t});
+  if (opt('presentNow')) setTimeout(() => { try { presOpen(c.id); } catch (e) { } }, 600);
+}
+const presWd = (n) => { const d = new Date(TODAY); d.setDate(d.getDate() + n); while (d.getDay() === 0 || d.getDay() === 6) d.setDate(d.getDate() + 1); return isoDay(d); };
+function presRelDays(c) { const R = relCfg(), dd = parseD(c.dateDecision), lim = new Date(TODAY); lim.setMonth(lim.getMonth() + (+R.limit || 3)); return (dd && dd < lim) ? (+R.near || 15) : (+R.far || 30); }
+function renderPres(c) {
+  const box = $('f-pres-box'); if (!box) return;
+  if (!c || c.step === 'Perdu') { box.innerHTML = ''; return; }
+  let L = presOf(c).slice(); if (!L.length && c.offreDate) L = [{id: 0, st: 'presentee', doc: 'perso', date: c.offreDate, legacy: 1}];
+  if (!L.length) { box.innerHTML = ''; return; }
+  const nP = L.filter(x => x.st === 'presentee').length, nR = L.length - nP, cur = presMontant(c);
+  const row = p => { const pr = p.st === 'presentee', M = PRES_M[p.mode] || ['Présentée', 'handshake'], gap = p.montant && cur && Math.abs(p.montant - cur) > 0.5 && !p.legacy;
+    return `<div class="pres-r"><span class="pres-i ${pr ? 'ok' : ''}"><i class="fas fa-${pr ? M[1] : 'file-pdf'}"></i></span><div class="pres-t"><b>${PRES_D[p.doc] || 'Offre'}${p.montant ? ` · ${eur(p.montant)} HT` : ''}</b><span>${pr ? `${M[0]} · le ${fmtD(p.date)}` : `Prête depuis le ${fmtD(p.gen)}, pas encore présentée`}</span>${gap ? `<span class="pres-w"><i class="fas fa-triangle-exclamation"></i> Le montant a changé depuis : ${eur(p.montant)} → ${eur(cur)} HT</span>` : ''}</div>${pr ? '' : `<button type="button" class="btn btn-d !h-8 !px-2.5 !text-[12px]" onclick="presOpen(${c.id},${p.id})"><i class="fas fa-handshake"></i>Marquer comme présentée</button>`}${p.legacy ? '' : `<button type="button" class="btn btn-g !h-8 !px-2.5 !text-[12px]" onclick="presView(${c.id},${p.id})"><i class="fas fa-eye"></i>Revoir l'offre</button>`}</div>`; };
+  box.innerHTML = accHtml('pres', 'fa-handshake', 'Offres présentées', `${nP} présentée${nP > 1 ? 's' : ''}${nR ? ` · ${nR} prête${nR > 1 ? 's' : ''}` : ''}`, `<div class="flex flex-col gap-2">${L.slice().reverse().map(row).join('')}</div>`);
+}
+function presView(cid, pid) { const c = byId(cid), p = presOf(c).find(x => x.id === pid); if (!c || !p) return; if (p.doc === 'synth') printOffre(cid); else prevArg(cid); }
+function presOpen(id, pid) {
+  const c = byId(id); if (!c) return; if (ui.editId === id) { try { ensureSaved(); } catch (e) { } }
+  const L = presOf(c), p = (pid != null ? L.find(x => x.id === pid) : null) || L.slice().reverse().find(x => x.st === 'prete') || null, R = relCfg();
+  ui.pr = {id, pid: p ? p.id : null, mode: 'visite', date: isoDay(TODAY), doc: p ? p.doc : (c.docMode === 'synth' ? 'synth' : 'perso'), rel: !!R.on, relType: 'relance'};
+  ui.pr.relDt = presWd(presRelDays(c)); presDraw(); $('dlg-pres').showModal();
+}
+function presDraw() {
+  const P = ui.pr, c = byId(P.id); if (!c) return; const R = relCfg(), n = presRelDays(c), dd = parseD(c.dateDecision);
+  $('pr-name').textContent = c.pharma || '';
+  const opt3 = (k, v, ic, t) => `<button type="button" class="pr-o ${P.mode === k ? 'a' : ''}" onclick="ui.pr.mode='${k}';presDraw()"><i class="fas fa-${ic}"></i>${t}</button>`;
+  $('pr-body').innerHTML = `<div><div class="lbl">Comment l'avez-vous présentée ?</div><div class="pr-g">${opt3('visite', 0, 'handshake', 'En visite')}${opt3('visio', 0, 'video', 'En visio')}${opt3('mail', 0, 'envelope', 'Remise par courriel')}</div></div>
+    <div class="grid grid-cols-2 gap-3"><div><label class="lbl" for="pr-date">Date</label><input id="pr-date" type="date" class="inp" value="${P.date}" onchange="ui.pr.date=this.value"></div>
+    <div><label class="lbl" for="pr-doc">Offre présentée</label><select id="pr-doc" class="inp" onchange="ui.pr.doc=this.value"><option value="perso" ${P.doc === 'perso' ? 'selected' : ''}>Personnalisée</option><option value="synth" ${P.doc === 'synth' ? 'selected' : ''}>Synthétique</option></select></div></div>
+    ${R.on ? `<div class="pr-rel"><label class="flex items-start gap-2 text-[13px] cursor-pointer"><input type="checkbox" class="w-4 h-4 mt-0.5 accent-emerald-700" ${P.rel ? 'checked' : ''} onchange="ui.pr.rel=this.checked;presDraw()"><span><b>Planifier une relance dans ${n} jours</b><br><span class="text-muted">${dd && n === (+R.near || 15) ? 'Décision prévue dans moins de ' + (R.limit || 3) + ' mois : relance rapprochée.' : 'Relance standard.'}</span></span></label>
+    ${P.rel ? `<div class="grid grid-cols-2 gap-3 mt-2"><div><label class="lbl" for="pr-rd">Date de relance</label><input id="pr-rd" type="date" class="inp" value="${P.relDt}" onchange="ui.pr.relDt=this.value"></div><div><label class="lbl" for="pr-rt">Type</label><select id="pr-rt" class="inp" onchange="ui.pr.relType=this.value"><option value="relance" ${P.relType === 'relance' ? 'selected' : ''}>Appel</option><option value="visite" ${P.relType === 'visite' ? 'selected' : ''}>Visite</option><option value="teams" ${P.relType === 'teams' ? 'selected' : ''}>Visio</option><option value="mail" ${P.relType === 'mail' ? 'selected' : ''}>E-mail</option></select></div></div>` : ''}</div>` : ''}`;
+  $('pr-ok').textContent = R.on && P.rel ? 'Enregistrer et planifier' : 'Enregistrer';
+  $('pr-no').classList.toggle('hidden', !(R.on && P.rel));
+}
+function presOk(noRel) {
+  const P = ui.pr, c = byId(P.id); if (!c) return; const R = relCfg(); c.pres = presOf(c);
+  let p = c.pres.find(x => x.id === P.pid); if (!p) { p = {id: Date.now(), gen: null}; c.pres.push(p); }
+  const m = p.montant || presMontant(c);
+  Object.assign(p, {st: 'presentee', mode: P.mode, date: P.date || isoDay(TODAY), doc: P.doc, montant: m});
+  c.offreDate = c.offreDate || p.date; const hadCh = !!chOf(c); if (hadCh) { c.chance = chOf(c); c.chConf = false; }
+  log(c, `Offre présentée · ${PRES_M[p.mode][0].toLowerCase()}`, `${PRES_D[p.doc]}${m ? ' · ' + eur(m) + ' HT' : ''} · le ${fmtD(p.date)}`);
+  let msg = 'Présentation enregistrée';
+  if (R.on && P.rel && !noRel && P.relDt) { const dt = P.relDt + 'T09:00', now = isoDT(new Date());
+    if (!c.nextDate || c.nextDate < now || c.nextDate > dt) { c.nextDate = dt; c.nextType = P.relType; addAct(c, dt, P.relType, 'Relance après présentation'); log(c, `Relance planifiée · ${fmtDT(dt)}`, 'Après la présentation de l\'offre'); msg += ` · relance le ${fmtD(dt)}`; }
+    else msg += ` · une action est déjà prévue le ${fmtD(c.nextDate)}`; }
+  c.maj = Date.now(); save(); closeDlg('dlg-pres');
+  if (ui.editId === c.id) { renderFormSteps(c.step); renderArgBtn(c); try { renderHistory(c); } catch (e) { } } refresh(); toast(msg);
+  if (!hadCh) setTimeout(() => chanceOpen(c.id), 250);
+}
+function offreMark(id) { presOpen(id); }
 const ASSOC_R = ['Titulaire', 'Co-titulaire', 'Associé', 'Gérant'];
 function assocOf(c) { if (!c) return []; if (!c.assoc && c.nom2) c.assoc = [{nom: c.nom2, role: 'Associé', on: !!c.nom2On}]; return (c.assoc || []).filter(a => a && a.nom); }
 function assocRow(a) { return `<div class="flex gap-1.5 items-center" data-as data-on="${a.on ? 1 : 0}"><input class="inp !h-9 flex-1" data-n value="${esc(a.nom || '')}" placeholder="Ex. : Mme Claire MARTIN"><select class="inp !h-9 !w-36" data-r>${ASSOC_R.map(r => `<option ${r === (a.role || 'Associé') ? 'selected' : ''}>${r}</option>`).join('')}</select><button type="button" class="btn btn-g !h-9 !px-2.5" onclick="this.closest('[data-as]').remove()" aria-label="Retirer"><i class="fas fa-xmark"></i></button></div>`; }
@@ -5340,7 +5438,7 @@ function namesDraw(c) { const A = assocOf(c); $('nm-body').innerHTML = `<div cla
 function namesOpen(id) { const c = ensureSaved() || byId(id); if (!c) return; ui.argId = c.id; namesDraw(c); $('dlg-names').showModal(); }
 function argCountLive(c) { const AR = ptkOf(c).args || {}; let n = 0, t = 0; try { PA_GROUPS.forEach(([, , ks]) => ks.forEach(k => { const [v] = paLive(c, k); if (v === null) return; t++; if (k === 'plan' ? (AR.plan ?? false) : AR[k] !== false) n++; })); } catch { } return [n, t]; }
 function renderStrip(c, miss) { const b = $('f-strip'); if (!b) return; const L = argLive(c), ch = !!(L.robots || []).length, ci = !!c.offre?.lignes?.length, pdf = ch && ci, pl = IMPL.id === c.id && (IMPL.imgs || []).length > 0;
-  b.innerHTML = c.step === 'Perdu' ? '' : `<div class="s4"><div class="${ch ? 'ok' : 'cur'}"><i class="fas fa-${ch ? 'circle-check' : 'pen'}"></i>1 · ${ch ? 'Robot choisi' : 'Choisir le robot'}</div><div class="${ci ? 'ok' : ch ? 'cur' : 'todo'}"><i class="fas fa-${ci ? 'circle-check' : 'pen'}"></i>2 · ${ci ? 'Devis chiffré' : 'Chiffrer le devis'}</div><div class="${pl ? 'ok' : 'todo'}"><i class="fas fa-${pl ? 'circle-check' : 'circle'}"></i>3 · Plan${pl ? '' : ' (facultatif)'}</div><div class="${pdf ? 'cur' : 'todo'}"><i class="fas fa-${pdf ? 'pen' : 'circle'}"></i>4 · PDF à préparer</div></div>`; }
+  b.innerHTML = c.step === 'Perdu' ? '' : `<div class="s4"><div class="${ch ? 'ok' : 'cur'}"><i class="fas fa-${ch ? 'circle-check' : 'pen'}"></i>1 · ${ch ? 'Robot choisi' : 'Choisir le robot'}</div><div class="${ci ? 'ok' : ch ? 'cur' : 'todo'}"><i class="fas fa-${ci ? 'circle-check' : 'pen'}"></i>2 · ${ci ? 'Devis chiffré' : 'Chiffrer le devis'}</div><div class="${pl ? 'ok' : 'todo'}"><i class="fas fa-${pl ? 'circle-check' : 'circle'}"></i>3 · Plan${pl ? '' : ' (facultatif)'}</div><div class="${pdf ? 'cur' : 'todo'}"><i class="fas fa-${pdf ? 'pen' : 'circle'}"></i>4 · Choisir le document</div></div>`; }
 /* ----- Implantation : plan & photos (stockés dans ce navigateur, IndexedDB) ----- */
 const IMPL = {id: null, imgs: []};
 async function implGet(id) { try { return (await PDB.get('impl_' + id)) || []; } catch { return []; } }
@@ -5856,7 +5954,7 @@ async function genArgNew0(id, merge, prev, sec) {
   else K.save(`Synthese_${slug(c.pharma)}_${isoDay(TODAY)}.pdf`);
   ui.fitRes = {orph: doc.getNumberOfPages() > 2 && (!!K.socOrph || (K.preSocY != null ? K.preSocY : (K.lastFootY || 0)) < 110), pages: doc.getNumberOfPages(), extraP3: extraDone, y: K.preSocY};
   if (prev || ui.pdfDry) return;
-  log(c, `Argumentaire personnalisé généré (PDF${merge ? ", fusionné avec la synthèse de l'offre" : ''})`, opts.join(', ')); save(); renderHistory(c); toast((merge ? 'Synthèse du projet générée (PDF unique)' : 'Synthèse générée') + ` · ${doc.getNumberOfPages()} pages${ui.fitNote ? ' · ' + ui.fitNote : ''}`);
+  presPrep(c, 'perso'); log(c, `Argumentaire personnalisé généré (PDF${merge ? ", fusionné avec la synthèse de l'offre" : ''})`, opts.join(', ')); save(); renderHistory(c); toast((merge ? 'Synthèse du projet générée (PDF unique)' : 'Synthèse générée') + ` · ${doc.getNumberOfPages()} pages${ui.fitNote ? ' · ' + ui.fitNote : ''}`);
 }
 
 function genArg() {
@@ -5902,7 +6000,7 @@ function genArg() {
   }
   K.foot();
   K.save(`Synthese_${slug(c.pharma)}_${isoDay(TODAY)}.pdf`);
-  log(c, 'Argumentaire personnalisé généré (PDF)', items.map(i => i.t).join(', ')); save(); renderHistory(c);
+  presPrep(c, 'perso'); log(c, 'Argumentaire personnalisé généré (PDF)', items.map(i => i.t).join(', ')); save(); renderHistory(c);
   closeDlg('dlg-arg'); toast('Synthèse générée');
 }
 function renderTypes(sel) {
@@ -6184,12 +6282,6 @@ function chanceOpen(id) {
   const O = [[25, 'Intérêt faible', 'Hésitant, compare, pas de calendrier', '#475569'], [50, 'Intérêt moyen', 'Intéressé, des points à lever (prix, financement, associé…)', '#C2410C'], [75, 'Dossier transformable', 'Convaincu, décision proche', '#047857']];
   $('ch-opts').innerHTML = O.map(([v, t, d, col]) => `<label class="flex items-center gap-3 rounded-xl border-2 px-3 py-2.5 cursor-pointer ${ui.chV === v ? 'border-orange-500 bg-orange-50' : 'border-slate-300'}"><input type="radio" name="ch-v" value="${v}" class="sr-only" ${ui.chV === v ? 'checked' : ''} onchange="ui.chV=${v};chanceOpen(${id})"><span class="w-14 text-center font-extrabold text-[19px]" style="color:${col}">${v} %</span><span><b class="text-[13.5px]">${t}</b><span class="block text-xs text-muted">${d}</span></span></label>`).join('');
   if (!$('dlg-chance').open) $('dlg-chance').showModal();
-}
-function offreMark(id) {
-  const c = byId(id); if (!c) return;
-  if (!chOf(c)) { chanceOpen(id); return; }
-  c.chance = chOf(c); c.offreDate = isoDay(TODAY); c.chConf = false; log(c, 'Offre présentée au client', `Chance de signature : ${c.chance} %`); save();
-  if (ui.editId === c.id) renderFormSteps(c.step); refresh();
 }
 function chanceConfirm(id) {
   const c = byId(id); if (!c) return; c.chance = chOf(c) || 50; c.indicateur = IND_CH[c.chance]; c.chConf = true; log(c, `Chance de signature confirmée : ${c.chance} %`, CHANCE[c.chance][0]); save(); toast(`Chance de signature : ${c.chance} %`);
@@ -7588,7 +7680,7 @@ function genOffre(id, K0) {
   K.foot();
   if (K0) return;
   K.save(`Synthese_projet_de_robotisation_${slug(c.pharma)}_${slug(o.ref || isoDay(TODAY))}.pdf`);
-  log(c, "Synthèse de l'offre générée (PDF)", `Réf. ${o.ref || '—'} · ${eur(k.net)} HT`); save(); renderHistory(c); toast('Synthèse de l\'offre générée');
+  presPrep(c, 'synth'); log(c, "Synthèse de l'offre générée (PDF)", `Réf. ${o.ref || '—'} · ${eur(k.net)} HT`); save(); renderHistory(c); toast('Synthèse de l\'offre générée');
 }
 
 /* ================= BASE DES PHARMACIES (FINESS + Annuaire Santé, importée localement) ================= */
@@ -8509,6 +8601,7 @@ function pfBlocks() {
       <div class="axo-g">Commercial</div>
       ${tg('com', '<i class="fas fa-euro-sign"></i>', CG, 'Commissions', "Les montants de commission ne s'affichent que dans l'onglet « Objectifs et commissions ».")}
       ${tg('annonce', '<i class="fas fa-envelope"></i>', CG, 'Annonce de signature', "Bouton « Préparer l'annonce » dans les contrats signés et les add-ons : courriel à l'administration des ventes et à la direction (réserves, financement, levée).")}
+      ${tg('presentNow', '<i class="fas fa-bolt"></i>', CG, 'Générer et présenter maintenant', "Après la création d'un PDF, propose tout de suite d'enregistrer la présentation (utile quand l'offre est générée en rendez-vous). Désactivé par défaut : l'offre est en général préparée en amont.")}
       ${tg('chal', '<i class="fas fa-trophy"></i>', CA, 'Challenges', "Challenges dans l'onglet « Objectifs et commissions » et rappel du challenge en cours sur l'accueil.")}
     </section>
     <section class="card p-5 sm:p-6 flex flex-col gap-3"><div class="ax-st nm"><span class="ax-ib"><i class="fas fa-sliders"></i></span>Préférences</div>
@@ -8573,7 +8666,7 @@ function pfSecteur() {
 }
 function pfOptions() {
   const X = pfBlocks();
-  $('pf-body').innerHTML = `<div class="flex flex-col gap-5">${X.opt}${opt('annonce') ? annCfgHtml() : ''}</div>`;
+  $('pf-body').innerHTML = `<div class="flex flex-col gap-5">${X.opt}${relCfgHtml()}${opt('annonce') ? annCfgHtml() : ''}</div>`;
 }
 function pfDocs() {
   const row = (ic, t, d, k) => `<div class="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-200 p-4"><div class="flex items-start gap-3 min-w-0"><span class="w-9 h-9 rounded-xl bg-orange-50 text-ptkd inline-flex items-center justify-center shrink-0"><i class="fas ${ic}"></i></span><div><b class="text-sm">${t}</b><p class="text-xs text-muted mt-0.5">${d}</p></div></div><div class="flex gap-2"><button class="btn btn-p !h-10" onclick="openDoc('${k}')"><i class="fas fa-eye"></i>Consulter</button></div></div>`;
