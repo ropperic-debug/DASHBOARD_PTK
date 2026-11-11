@@ -343,6 +343,24 @@ input:checked+.ax-lo-a{background:#E87722;border-color:#E87722}input:checked+.ax
 #view-dashboard [role=tablist] .tab2 .cnt{font-size:22px;font-weight:800;background:transparent;padding:0;line-height:1.1}
 #todo-t-today{background:#FFF1E6!important;color:#B84A08!important;border-color:#F3B98A!important}#todo-t-week{background:#E6ECFB!important;color:#2F5BD3!important;border-color:#B9C8F3!important}#todo-t-late{background:#FDECEA!important;color:#B42318!important;border-color:#F2B8B3!important}
 #view-dashboard [role=tablist] .tab2.tab-on{box-shadow:none;border:2.5px solid #111827!important}
+/* V4.5.57 : titres encadrés + cartes du tableau de bord */
+.dbn,#view-dashboard #tbl-title{background:#fff;border:2.5px solid #111827;border-radius:14px;padding:7px 14px}
+#view-dashboard #tbl-title{font-size:18px;font-weight:800;display:flex;align-items:center;gap:10px}
+#view-dashboard .ftitle{font-size:18px;font-weight:800;color:#1f2937}
+#view-dashboard .ftitle::before,#view-dashboard #tbl-title::before{content:"\f201";width:30px;height:30px;border-radius:50%;background:#FFF1E6;color:#E87722;font:900 14px/30px "Font Awesome 6 Free","Font Awesome 7 Free";text-align:center;flex-shrink:0}
+#view-dashboard .ft-j::before{content:"\f0f3"}#view-dashboard .ft-p::before{content:"\f1b2"}#view-dashboard #tbl-title::before{content:"\f0b1"}
+.dbn .chip{font-size:12.5px}
+.skpi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.kc{display:flex;gap:10px;align-items:center;text-align:left;border-radius:16px;padding:10px 12px;border:1.5px solid;min-width:0}
+.kc-i{width:40px;height:40px;border-radius:13px;display:inline-flex;align-items:center;justify-content:center;color:#fff;font-size:17px;flex:none}
+.kc-t{display:flex;flex-direction:column;min-width:0}.kc-k{font-size:10.5px;font-weight:800;letter-spacing:.5px}.kc-t b{font-size:22px;line-height:1.1;font-weight:800;color:#111827;white-space:nowrap}.kc-t b small{font-size:11px;font-weight:600;color:#6b7280}.kc-m{font-size:12px;color:#4b5563}
+.kc-g{background:#E3F6EE;border-color:#A8DCC6}.kc-g .kc-i{background:#059669}.kc-g .kc-k{color:#047857}
+.kc-o{background:#FFF1E6;border-color:#F3B98A}.kc-o .kc-i{background:#E87722}.kc-o .kc-k{color:#B84A08}
+.kc-b{background:#E6ECFB;border-color:#B9C8F3}.kc-b .kc-i{background:#2F5BD3}.kc-b .kc-k{color:#2F5BD3}
+.kc-bar{display:block;height:6px;border-radius:3px;background:#fff;margin-top:4px;overflow:hidden}.kc-bar i{display:block;height:6px;background:#059669}
+.dupk{display:none!important}
+@media(max-width:900px){.skpi{grid-template-columns:1fr}}
+#view-dashboard .ftitle{white-space:nowrap}.dbn{padding:6px 12px}
 /* V2.8 : fiche sans bloc Étape en cours, bouton Dossier perdu */
 #f-stage{display:none!important}
 .zlost{margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:11px;border:2px solid #DC2626;background:#FEF2F2;color:#B91C1C;font-weight:800;font-size:13.5px}.zlost:hover{background:#FEE2E2}
@@ -657,21 +675,22 @@ input:checked+.ax-lo-a{background:#E87722;border-color:#E87722}input:checked+.ax
 
   <div class="flex flex-wrap gap-3 items-stretch">
     <section class="card frame vwrap p-3.5 flex flex-col gap-2 min-w-0" style="flex:1 1 640px">
-      <div class="flex justify-between items-center gap-2 flex-wrap">
-        <h2 id="sales-title" class="h2 !text-base ftitle"></h2>
-        <div class="flex gap-1.5 flex-wrap items-center"><span id="sig-chips" class="flex gap-1.5 flex-wrap"></span>
-        <div class="zgo"><span class="zgo-l">ALLER PLUS LOIN</span>
-        <button type="button" class="zgo-b zgo-g" onclick="openPrev()" title="Générer le fichier Excel de suivi CRO"><span>Prévisions<i class="fas fa-download"></i></span><small>Fichier Excel de suivi CRO</small></button>
-        <button type="button" class="zgo-b zgo-b2" onclick="showView('stats')" title="Ouvrir la page des statistiques détaillées"><span>Stats<i class="fas fa-chevron-right"></i></span><small>Page statistiques détaillées</small></button></div></div>
+      <div class="flex items-stretch gap-2.5 flex-wrap">
+        <div class="dbn flex items-center gap-3 flex-wrap flex-1 min-w-[300px]"><h2 id="sales-title" class="h2 !text-lg ftitle ft-v"></h2><span id="sig-chips" class="flex gap-1.5 flex-wrap ml-auto"></span></div>
+
       </div>
+      <div id="sales-kpi" class="skpi"></div>
       <div class="vfuse3"><div id="sales-top"></div><section class="sig2" id="sales-prob" aria-label="Signatures probables"></section>
         <div class="relative rounded-xl border border-slate-200 vchart"><div class="absolute inset-0 p-1.5"><canvas id="chart" role="img" aria-label="Ventes mensuelles, cumul et objectif"></canvas></div></div></div>
       <div class="vchips"><div id="sales-keys"></div><div id="sales-foot"></div></div>
+        <div class="zgo" style="align-self:flex-end"><span class="zgo-l">ALLER PLUS LOIN</span>
+        <button type="button" class="zgo-b zgo-g" onclick="openPrev()" title="Générer le fichier Excel de suivi CRO"><span>Prévisions<i class="fas fa-download"></i></span><small>Fichier Excel de suivi CRO</small></button>
+        <button type="button" class="zgo-b zgo-b2" onclick="showView('stats')" title="Ouvrir la page des statistiques détaillées"><span>Stats<i class="fas fa-chevron-right"></i></span><small>Page statistiques détaillées</small></button></div>
     </section>
 
     <section class="relative min-w-0 min-h-[420px] lg:min-h-[300px]" style="flex:0 1 350px">
       <div class="card frame p-3.5 flex flex-col gap-2 lg:absolute lg:inset-0 h-full cursor-pointer" onclick="dayOpen(event)" title="Cliquer pour ouvrir le détail de la journée">
-        <div class="flex justify-between items-center gap-3"><div><h2 class="h2 !text-lg ftitle">Ma journée</h2><p id="md-date" class="text-xs text-muted mt-0.5 ml-[14px]"></p><p id="md-count" class="hidden"></p></div><button id="todo-t-af" type="button" class="ml-auto rounded-lg px-2.5 h-8 text-[12px] font-extrabold" onclick="event.stopPropagation();setTodo('af')" title="Dossiers à relancer ou sans action prévue"><i class="fas fa-bolt mr-1"></i>À faire · <span id="todo-n-af">0</span></button><button type="button" class="btn btn-g !h-8 !px-2.5 !text-[12px]" onclick="dayOpen()" title="Ouvrir le détail de la journée sur la droite"><i class="fas fa-up-right-and-down-left-from-center"></i><span class="sr-only">Détail</span></button></div>
+        <div class="dbn flex items-center gap-3"><h2 class="h2 !text-lg ftitle ft-j flex-1">Ma journée</h2><button id="todo-t-af" type="button" class="ml-auto rounded-lg px-2.5 h-8 text-[12px] font-extrabold" onclick="event.stopPropagation();setTodo('af')" title="Dossiers à relancer ou sans action prévue"><i class="fas fa-bolt mr-1"></i>À faire · <span id="todo-n-af">0</span></button><button type="button" class="btn btn-g !h-8 !px-2.5 !text-[12px]" onclick="dayOpen()" title="Ouvrir le détail de la journée sur la droite"><i class="fas fa-up-right-and-down-left-from-center"></i><span class="sr-only">Détail</span></button></div><p id="md-date" class="text-xs text-muted -mt-1 ml-1"></p><p id="md-count" class="hidden"></p>
         <div role="tablist" class="grid grid-cols-3 gap-1 rounded-xl bg-slate-100 p-1">
           <button id="todo-t-today" class="tab2" onclick="setTodo('today')">Aujourd'hui <span id="todo-n-today" class="cnt">0</span></button>
           <button id="todo-t-week" class="tab2" onclick="setTodo('week')">Semaine <span id="todo-n-week" class="cnt">0</span></button>
@@ -682,11 +701,14 @@ input:checked+.ax-lo-a{background:#E87722;border-color:#E87722}input:checked+.ax
     </section>
   </div>
 
-  <section class="card frame p-2.5 flex flex-col lg:flex-row lg:items-center gap-2.5" aria-label="Pipeline">
+  <section class="card frame p-3.5 flex flex-col gap-3" aria-label="Pipeline">
+    <div class="dbn flex items-center gap-3"><h2 class="h2 !text-lg ftitle ft-p flex-1">Où en sont mes dossiers ?</h2><span id="pipe-sum" class="text-[13px] font-extrabold text-slate-600"></span></div>
+    <div class="flex flex-col lg:flex-row lg:items-center gap-2.5">
     <div id="pipeline" class="pcards min-w-0 lg:flex-[2.2]"></div>
     <div id="pipe-stats" class="flex flex-wrap gap-1.5 lg:flex-1 items-center"></div>
     <button id="pipe-reset" class="hidden btn btn-g !h-8" onclick="filterStep('ALL')"><i class="fas fa-xmark"></i>Tout afficher</button>
     <div id="pipe-bar" class="hidden"></div><div id="pipe-note" class="hidden"></div>
+    </div>
   </section>
 
   <section class="flex flex-col gap-3">
@@ -1359,6 +1381,7 @@ input:checked+.ax-lo-a{background:#E87722;border-color:#E87722}input:checked+.ax
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.57</b> : <b>Tableau de bord aligné sur les maquettes</b> : titres encadrés de noir avec icône (Ventes, Ma journée, Où en sont mes dossiers ?, Portefeuille) ; trois cartes colorées en tête des ventes (Signé, À signer, Objectif) qui suivent le choix 1 / 3 / 6 / 12 mois ; « Où en sont mes dossiers ? » avec son total ; le doublon du CA signé dans la colonne de gauche est retiré.</li>
 <li><b>V4.5.56</b> : <b>Nouveau style des fenêtres, du bandeau d’étapes et du tableau de bord</b>. (1) <b>Planifier une action</b> : en-tête orange avec nom de la pharmacie et les deux téléphones cliquables ; trois étapes numérotées (« Que voulez-vous planifier ? », « Quand ? », « Motif ») entourées de noir ; raccourcis de date (Aujourd’hui, Demain, Dans 3 jours, Lundi, Dans 1 semaine) ; dernière action sur une ligne, historique en un clic. <b>Appel, Relance, Visite : plus de message obligatoire</b> (note facultative) ; E-mail et Visio gardent leur message, entouré de noir. (2) Mêmes habillages pour <b>Traiter une action, Sans réponse (note facultative), Replanifier, Dossier perdu ou abandonné</b>. (3) <b>Bandeau des 5 sections de la fiche</b> : cartes avec barre d’avancement, section active encadrée de noir. (4) <b>Tableau de bord</b> : étapes « Où en sont mes dossiers » en cartes avec icône, nombre et montant (un clic filtre toujours le portefeuille) ; <b>Ma journée</b> : compteurs Aujourd’hui / Semaine / En retard en cartes colorées ; bouton <b>1 mois</b> pour le potentiel à signer. Filtres, tris et colonnes du portefeuille inchangés.</li>
 <li><b>V4.5.55</b> : <b>Enchaînement des pages de la synthèse</b> : page 2 = gain de temps + étude de productivité ; page 3 = besoins + gains par poste / back-office ; puis solution. Plus de carte isolée ni de page presque vide (si les pastilles ne tiennent pas sur la page de la solution, elles sont omises plutôt que de créer une page vide) ; un titre n’est jamais seul en bas de page. Les doublons « Gain global » (déjà dans le grand chiffre) et « Inclus dans votre projet » (déjà dans « Services inclus » de l’offre) disparaissent ; titres de section sans numéros. La note des km précise « aller-retour compris ».</li>
 <li><b>V4.5.54</b> : <b>Synthèse PDF relookée</b> : (1) pastilles « Ce que cette solution change pour vous » en cartes avec anneau dégradé et icône ; (2) section « gain de temps » redessinée : grand « 11 h 48 par jour » avec barre de 12 cases (vente / back-office), « soit 1,5 journée de travail », deux chiffres sobres (heures par mois, km de marche) et calcul en 5 étapes numérotées avec la barre « une ordonnance : 9 min → 6,3 min ». Les chiffres et les options cochées ne changent pas.</li>
@@ -2154,7 +2177,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.56';
+const APP_VERSION = '4.5.57';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2865,6 +2888,15 @@ function sigItems(P) {
 }
 function sigSet(mode) { ui.sig = {mode, du: '', au: ''}; renderSig(); }
 function sigDates() { ui.sig = {mode: 'range', du: $('sig-du').value, au: $('sig-au').value}; renderSig(); }
+function renderSalesKpi() {
+  const el = $('sales-kpi'); if (!el) return;
+  const {rob, add} = yearData(), ca = sum(rob, c => c.montant) + sum(add, x => x.a.montant), obj = Math.max(1, +settings.objectif || 18), nS = rob.filter(c => famOf(c) === 'SINTESI').length;
+  const P = sigPeriod(), it = sigItems(P), tot = sum(it, x => x.m), S = ui.sig || {mode: '3m'}, pl = S.mode === 'range' ? 'dates au choix' : ({'1m': '1 mois', '3m': '3 mois', '6m': '6 mois', '12m': '12 mois', year: 'année'})[S.mode] || '', pct = Math.round(nS / obj * 100);
+  const kc = (cl, ic, k, v, m, on) => `<button type="button" class="kc ${cl}" onclick="${on}"><span class="kc-i"><i class="fas ${ic}"></i></span><span class="kc-t"><span class="kc-k">${k}</span><b>${v}</b><span class="kc-m">${m}</span></span></button>`;
+  el.innerHTML = kc('kc-g', 'fa-check', `SIGNÉ ${ui.year}`, eur(ca) + ' <small>HT</small>', `${rob.length} robot${rob.length > 1 ? 's' : ''} · ${add.length} add-on${add.length > 1 ? 's' : ''}`, "showList('signes')")
+    + kc('kc-o', 'fa-arrow-trend-up', `À SIGNER · ${pl.toUpperCase()}`, eur(tot) + ' <small>HT</small>', `${it.length} dossier${it.length > 1 ? 's' : ''}`, "showList('probR')")
+    + kc('kc-b', 'fa-bullseye', 'OBJECTIF SINTESI', `${nS} / ${obj}`, `${pct} % atteint<span class="kc-bar"><i style="width:${Math.min(100, pct)}%"></i></span>`, "showList('signes')");
+}
 function renderSig() {
   const box = $('sales-prob'); if (!box) return;
   const now = TODAY, ck = now.getFullYear() * 12 + now.getMonth();
@@ -2878,6 +2910,7 @@ function renderSig() {
   const rows = Object.keys(G).map(Number).filter(k => k !== ck).sort((a, b) => a - b).map(k => `<button type="button" class="vm" onclick="showList('probR')" title="Voir la liste"><span class="mo">${mlab(k)}</span><span class="nm">${names(G[k])}<small>${G[k].length} dossier${G[k].length > 1 ? 's' : ''}</small></span><span class="am">${eur(sum(G[k], x => x.m))}</span></button>`).join('');
   const curRow = `<button type="button" class="vm cur" onclick="showList('prob',0)" title="Voir la liste"><span class="mo"><small>CE MOIS-CI</small>${mlab(ck)}</span><span class="nm">${cur.length ? `<b>${names(cur)}</b><small>${cur.length} dossier${cur.length > 1 ? 's' : ''} · décision prévue ce mois</small>` : 'Aucune décision prévue ce mois-ci'}</span><span class="am">${eur(curT)}</span></button>`;
   const sc = $('sig-chips'); if (sc) sc.innerHTML = [['1m', '1 mois'], ['3m', '3 mois'], ['6m', '6 mois'], ['12m', '12 mois'], ['year', 'Année'], ['range', 'Dates ▾']].map(([k, l]) => `<button type="button" class="chip ${S.mode === k ? 'on' : ''}" onclick="sigSet('${k}')" title="Signatures probables : ${l}">${l}</button>`).join('');
+  renderSalesKpi();
   box.innerHTML = `<div class="sp"><div class="k">Potentiel à signer · ${S.mode === 'range' ? 'dates au choix' : ({'1m': '1 mois', '3m': '3 mois', '6m': '6 mois', '12m': '12 mois', year: 'année'})[S.mode] || ''}</div>
       ${S.mode === 'range' ? `<div class="dts">Du <input type="date" id="sig-du" value="${isoDay(P.d0)}" onchange="sigDates()"> au <input type="date" id="sig-au" value="${isoDay(P.d1)}" onchange="sigDates()"></div>` : ''}
       ${curRow}${rows ? `<div class="vfade"><div class="vlist">${rows}</div></div>` : ''}${Object.keys(G).filter(k => +k !== ck).length > 2 ? `<div class="vmore">↓ faites défiler : ${Object.keys(G).filter(k => +k !== ck).length} mois</div>` : ''}
@@ -2895,8 +2928,8 @@ function renderSales() {
   let cum = 0; const {r, a} = monthly(); r.forEach((v, i) => { if (!isCur || i <= TODAY.getMonth()) cum += v + a[i]; });
   const od = objToDate(), gap = cum - od;
   const last = [...rob].sort((p, q) => q.signatureDate.localeCompare(p.signatureDate))[0];
-  $('sales-top').innerHTML = `<button class="num-btn text-left w-full" onclick="showList('signes')" title="Voir la liste"><div class="kicker">CA signé · ${ui.year} (déjà vendu)</div><div class="text-[21px] font-bold tracking-tight leading-none mt-0.5">${eur(tot)} <span class="text-[11px] font-medium text-muted">HT</span></div>
-      <div class="text-[11.5px] text-slate-700 mt-1">${rob.length} robot${rob.length > 1 ? 's' : ''} · ${add.length} add-on${add.length > 1 ? 's' : ''}</div>
+  $('sales-top').innerHTML = `<button class="num-btn text-left w-full" onclick="showList('signes')" title="Voir la liste"><div class="kicker dupk">CA signé · ${ui.year} (déjà vendu)</div><div class="dupk text-[21px] font-bold tracking-tight leading-none mt-0.5">${eur(tot)} <span class="text-[11px] font-medium text-muted">HT</span></div>
+      <div class="dupk text-[11.5px] text-slate-700 mt-1">${rob.length} robot${rob.length > 1 ? 's' : ''} · ${add.length} add-on${add.length > 1 ? 's' : ''}</div>
       ${last ? `<button type="button" class="block text-left text-[10.5px] text-slate-700 hover:underline max-w-full leading-[1.2]" style="display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden" onclick="openClient(${last.id})" title="Dernière vente robot : ouvrir la fiche">Dernière vente : <b>${esc(last.pharma)}</b> · ${fmtD(last.signatureDate)} · ${eur(last.montant)}</button>` : '<div class="text-[11.5px] text-muted mt-0.5">Dernière vente : —</div>'}
       <div class="mt-1 flex flex-col text-[11.5px] text-slate-700">${dl('#C2410C', nS + ' SINTESI', caS)}${dl('#0F766E', nG + ' GENESI', caG)}${nX > 0 ? dl('#94A3B8', nX + ' autre' + (nX > 1 ? 's' : ''), caX) : ''}${dl('#6366F1', add.length + ' add-on' + (add.length > 1 ? 's' : ''), caA)}</div></button>
     <button class="num-btn text-left w-full mt-1.5" onclick="showList('sintesi')" title="Voir la liste"><div class="flex justify-between items-baseline text-[12px]"><span><b class="text-[14px]">${nS}</b><span class="text-muted">/${obj} SINTESI</span></span><span class="font-semibold">${Math.round(pct)} %</span></div>
@@ -3320,7 +3353,7 @@ function renderPipeline() {
   }).join('');
   $('pipe-bar').innerHTML = data.map(({k, S, n}) => `<div style="width:${n / tot * 100}%;background:${S.bar}" title="${S.label} : ${n} dossier(s)"></div>`).join('');
   $('pipe-note').textContent = `Répartition des dossiers par avancement · ${Math.round(data[4].n / tot * 100)} % des dossiers ont une offre présentée`;
-  $('pipe-reset').classList.toggle('hidden', !on);
+  $('pipe-reset').classList.toggle('hidden', !on); { const tt = data.reduce((a, d) => a + d.l.reduce((x, c) => x + (+c.montant || 0), 0), 0); $('pipe-sum').textContent = `${act.length} dossier${act.length > 1 ? 's' : ''} · ${keur(tt)} en cours`; }
 }
 function filterStep(k) {
   const f = ui.filters.portfolio = ui.filters.portfolio || {};
