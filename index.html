@@ -361,6 +361,45 @@ input:checked+.ax-lo-a{background:#E87722;border-color:#E87722}input:checked+.ax
 .dupk{display:none!important}
 @media(max-width:900px){.skpi{grid-template-columns:1fr}}
 #view-dashboard .ftitle{white-space:nowrap}.dbn{padding:6px 12px}
+.ax-acc{border:2px solid #CBD5E1;border-radius:14px;background:#fff}
+.ax-acc>summary{list-style:none;display:flex;align-items:center;gap:10px;padding:8px 11px;cursor:pointer;min-height:44px}
+.ax-acc>summary::-webkit-details-marker{display:none}
+.ax-acc .ai{width:28px;height:28px;border-radius:999px;display:inline-flex;align-items:center;justify-content:center;background:#FFF1E7;color:#C2410C;font-size:13px;flex:none}
+.ax-acc .at{font-weight:800;font-size:13.5px;color:#0F172A;white-space:nowrap}
+.ax-acc .as{margin-left:auto;font-size:12px;color:#64748B;text-align:right;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.ax-acc .ac{font-size:11px;color:#475569;flex:none;transition:transform .15s}
+.ax-acc[open]>summary .ac{transform:rotate(180deg)}
+.ax-acc[open]{border-color:#E87722}
+.ax-acc .ab{padding:2px 11px 11px}
+.vacc{display:flex!important;flex-direction:column;gap:8px}
+.vacc #sales-top{border-right:0!important;padding-right:0!important}
+.vchart2{height:250px;position:relative}
+#day-body .ax-acc{margin-top:8px}
+/* V4.5.59 : Options + Profil (maquettes validées) */
+#pf-tabs .ptab{height:auto;padding:6px 10px;border-radius:12px;gap:10px;color:#1F2937;font-weight:700;font-size:13.5px}
+#pf-tabs .ptab:hover{background:#FFF7F0}
+#pf-tabs .pfi{width:28px;height:28px;border-radius:999px;background:#FFF1E7;color:#E87722;display:inline-flex;align-items:center;justify-content:center;font-size:12px;flex:none}
+#pf-tabs .ptab-on{background:#E87722!important;border-color:#E87722!important;color:#fff!important}
+#pf-tabs .ptab-on .pfi{background:rgba(255,255,255,.28);color:#fff}
+#pf-tabs .pf-grp{color:#6B7280}
+.ax-st.nm{margin-bottom:0;justify-content:flex-start}
+.ax-n{width:26px;height:26px;border-radius:999px;background:#E87722;color:#fff;font-size:14px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.ax-ib{width:30px;height:30px;border-radius:999px;background:#FFF1E7;color:#E87722;font-size:14px;display:inline-flex;align-items:center;justify-content:center;flex:none}
+.axp{margin-left:auto;font-size:12px;font-weight:700;border-radius:999px;padding:3px 11px;white-space:nowrap}
+.axp.ok{background:#E3F5EC;color:#047857}.axp.warn{background:#FFF1E7;color:#C2410C}
+.axo-g{font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#C2410C;margin:6px 2px 0}
+.axo{display:flex;align-items:center;gap:12px;border:2px solid #E2E8F0;background:#F8FAFC;border-radius:14px;padding:10px 12px;cursor:pointer;position:relative}
+.axo.on{border-color:#059669;background:#fff}
+.axo-i{width:40px;height:40px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;flex:none;font-size:17px}
+.axo-t{flex:1;min-width:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 8px}.axo-t b{font-size:15px;color:#0F172A}
+.axo-t small{flex-basis:100%;font-size:12px;color:#64748B;line-height:1.3}
+.axo-p{font-size:10.5px;font-weight:800;border-radius:999px;padding:1px 8px;background:#E2E8F0;color:#475569}.axo-p.on{background:#D6F2E4;color:#047857}
+.axo-cb{position:absolute;opacity:0;width:1px;height:1px}
+.axo-sw{width:46px;height:26px;border-radius:999px;background:#CBD5E1;position:relative;flex:none;transition:.15s}
+.axo-sw::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.3);transition:.15s}
+.axo-cb:checked~.axo-sw{background:#059669}.axo-cb:checked~.axo-sw::after{left:23px}
+.axo-cb:focus-visible~.axo-sw{outline:3px solid #E87722;outline-offset:2px}
+@media(min-width:1024px){#pf-tabs .ptab{white-space:normal;text-align:left;line-height:1.2}}
 /* V2.8 : fiche sans bloc Étape en cours, bouton Dossier perdu */
 #f-stage{display:none!important}
 .zlost{margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:11px;border:2px solid #DC2626;background:#FEF2F2;color:#B91C1C;font-weight:800;font-size:13.5px}.zlost:hover{background:#FEE2E2}
@@ -680,9 +719,12 @@ input:checked+.ax-lo-a{background:#E87722;border-color:#E87722}input:checked+.ax
 
       </div>
       <div id="sales-kpi" class="skpi"></div>
-      <div class="vfuse3"><div id="sales-top"></div><section class="sig2" id="sales-prob" aria-label="Signatures probables"></section>
-        <div class="relative rounded-xl border border-slate-200 vchart"><div class="absolute inset-0 p-1.5"><canvas id="chart" role="img" aria-label="Ventes mensuelles, cumul et objectif"></canvas></div></div></div>
-      <div class="vchips"><div id="sales-keys"></div><div id="sales-foot"></div></div>
+      <div class="vchart2 rounded-xl border border-slate-200"><div class="absolute inset-0 p-1.5"><canvas id="chart" role="img" aria-label="Ventes mensuelles, cumul et objectif"></canvas></div></div>
+      <div class="vfuse3 vacc">
+        <details class="ax-acc" data-acc="v-prob"><summary><span class="ai"><i class="fas fa-arrow-trend-up"></i></span><span class="at">Potentiel à signer</span><span class="as" id="acc-prob"></span><i class="fas fa-chevron-down ac"></i></summary><div class="ab"><section class="sig2" id="sales-prob" aria-label="Signatures probables"></section></div></details>
+        <details class="ax-acc" data-acc="v-top"><summary><span class="ai"><i class="fas fa-chart-pie"></i></span><span class="at">Répartition des ventes</span><span class="as" id="acc-top"></span><i class="fas fa-chevron-down ac"></i></summary><div class="ab"><div id="sales-top"></div></div></details>
+        <details class="ax-acc" data-acc="v-keys"><summary><span class="ai"><i class="fas fa-gauge-high"></i></span><span class="at">Indicateurs</span><span class="as" id="acc-keys"></span><i class="fas fa-chevron-down ac"></i></summary><div class="ab"><div class="vchips"><div id="sales-keys"></div><div id="sales-foot"></div></div></div></details>
+      </div>
         <div class="zgo" style="align-self:flex-end"><span class="zgo-l">ALLER PLUS LOIN</span>
         <button type="button" class="zgo-b zgo-g" onclick="openPrev()" title="Générer le fichier Excel de suivi CRO"><span>Prévisions<i class="fas fa-download"></i></span><small>Fichier Excel de suivi CRO</small></button>
         <button type="button" class="zgo-b zgo-b2" onclick="showView('stats')" title="Ouvrir la page des statistiques détaillées"><span>Stats<i class="fas fa-chevron-right"></i></span><small>Page statistiques détaillées</small></button></div>
@@ -1366,6 +1408,7 @@ input:checked+.ax-lo-a{background:#E87722;border-color:#E87722}input:checked+.ax
 <p>L'écran d'accueil réunit trois zones :</p>
 <ul>
 <li><b>Ventes</b> : le chiffre d'affaires signé, l'avancement vers l'objectif et les <b>potentiel à signer</b> (carte jaune « Ce mois-ci » et carte « période au choix »).</li>
+<li><b>Blocs repliables (V4.5.59)</b> : dans Ventes (Potentiel à signer, Répartition, Indicateurs) et Ma journée (Faites aujourd'hui, Priorités hors planning), cliquez sur une ligne pour l'ouvrir ou la refermer ; le résumé reste lisible à droite et votre choix est retenu sur cet appareil. Ma journée n'affiche que les 2 actions les plus urgentes, « Voir les autres » déplie le reste.</li>
 <li><b>Ma journée et ma semaine</b> : vos rendez-vous et relances, en quatre onglets : <b>Aujourd'hui</b>, <b>Ma semaine</b>, <b>À relancer</b> et <b>À faire</b> (onglet rouge : actions en retard ou sans date).</li>
 <li><b>Les fiches clients</b> : tableau filtrable par étape, avec la prochaine action de chaque dossier.</li>
 </ul>
@@ -1381,6 +1424,8 @@ input:checked+.ax-lo-a{background:#E87722;border-color:#E87722}input:checked+.ax
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.59</b> : <b>Tableau de bord allégé</b> : Ventes et Ma journée en blocs repliables (le résumé reste visible sur chaque ligne, l'état ouvert/fermé est retenu), graphique agrandi, Ma journée n'affiche que les 2 actions les plus urgentes + « Voir les autres ». <b>Options et Profil</b> : même style que le reste (cartes à pastille, bandeaux numérotés), contenus et fonctions inchangés.</li>
+<li><b>V4.5.58</b> : <b>Une seule définition de « sans action » partout</b> (pastille « Sans action &gt; 30 j », sa liste, la priorité du jour) : dossier actif <b>sans aucune action prévue</b> (prochaine action de la fiche ou rappel) <b>et</b> sans action réalisée depuis plus de 30 jours. Avant, une action prévue sur la fiche ne comptait pas, d’où l’écart entre le tableau de bord et la fiche. Une tentative « sans réponse » compte désormais comme une action (dernière action). « RDV 7 j » tient aussi compte des rappels, comme la fiche.</li>
 <li><b>V4.5.57</b> : <b>Tableau de bord aligné sur les maquettes</b> : titres encadrés de noir avec icône (Ventes, Ma journée, Où en sont mes dossiers ?, Portefeuille) ; trois cartes colorées en tête des ventes (Signé, À signer, Objectif) qui suivent le choix 1 / 3 / 6 / 12 mois ; « Où en sont mes dossiers ? » avec son total ; le doublon du CA signé dans la colonne de gauche est retiré.</li>
 <li><b>V4.5.56</b> : <b>Nouveau style des fenêtres, du bandeau d’étapes et du tableau de bord</b>. (1) <b>Planifier une action</b> : en-tête orange avec nom de la pharmacie et les deux téléphones cliquables ; trois étapes numérotées (« Que voulez-vous planifier ? », « Quand ? », « Motif ») entourées de noir ; raccourcis de date (Aujourd’hui, Demain, Dans 3 jours, Lundi, Dans 1 semaine) ; dernière action sur une ligne, historique en un clic. <b>Appel, Relance, Visite : plus de message obligatoire</b> (note facultative) ; E-mail et Visio gardent leur message, entouré de noir. (2) Mêmes habillages pour <b>Traiter une action, Sans réponse (note facultative), Replanifier, Dossier perdu ou abandonné</b>. (3) <b>Bandeau des 5 sections de la fiche</b> : cartes avec barre d’avancement, section active encadrée de noir. (4) <b>Tableau de bord</b> : étapes « Où en sont mes dossiers » en cartes avec icône, nombre et montant (un clic filtre toujours le portefeuille) ; <b>Ma journée</b> : compteurs Aujourd’hui / Semaine / En retard en cartes colorées ; bouton <b>1 mois</b> pour le potentiel à signer. Filtres, tris et colonnes du portefeuille inchangés.</li>
 <li><b>V4.5.55</b> : <b>Enchaînement des pages de la synthèse</b> : page 2 = gain de temps + étude de productivité ; page 3 = besoins + gains par poste / back-office ; puis solution. Plus de carte isolée ni de page presque vide (si les pastilles ne tiennent pas sur la page de la solution, elles sont omises plutôt que de créer une page vide) ; un titre n’est jamais seul en bas de page. Les doublons « Gain global » (déjà dans le grand chiffre) et « Inclus dans votre projet » (déjà dans « Services inclus » de l’offre) disparaissent ; titres de section sans numéros. La note des km précise « aller-retour compris ».</li>
@@ -1535,7 +1580,7 @@ input:checked+.ax-lo-a{background:#E87722;border-color:#E87722}input:checked+.ax
 <li><b>Mon secteur</b> : départements, base des pharmacies, assistant Fiabiliser.</li>
 <li><b>Synchronisation</b> : compte sécurisé, chiffrement, liaison du téléphone.</li>
 <li><b>Sauvegardes</b> : sauvegarde JSON, restauration, copies de secours, purge des fiches de démonstration.</li>
-<li><b>Options</b> : modules actifs (tracé GPS, Teams, agenda, pharmacies à proximité, accès smartphone, commissions, challenges) et réglages de comportement.</li>
+<li><b>Options</b> : modules actifs (tracé GPS, Teams, agenda, pharmacies à proximité, accès smartphone, commissions, challenges) et réglages de comportement. Chaque module s'active avec un interrupteur (vert = actif).</li>
 <li><b>Documents</b> : mode d'emploi, note de sécurité et mode opératoire, à jour de la version installée.</li>
 <li><b>Envois et liens</b> : envoi du fichier de suivi CRO, site et réseaux sociaux Pharmathek.</li>
 </ul>
@@ -2177,7 +2222,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.57';
+const APP_VERSION = '4.5.59';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2588,8 +2633,11 @@ const isActive = c => ORDER.includes(c.step);
 /* V4.5.42 : dernière action = la plus récente (et non la première ligne de l'historique, parfois plus ancienne) */
 const lastAction = (c, a) => { if (a?.lastActionDate) return a.lastActionDate; let b = null, bt = -1; const T = s => { const d = s && parseD(s); return d && !isNaN(d) ? +d : -1; };
   /* V4.5.46 : seules comptent les actions réellement faites (réalisées) ; les mouvements administratifs de la fiche (chance, étape, devis importé, création…) ne sont plus pris pour une action */
-  const cand = [...(c.history || []).filter(h => /réalisé/i.test(h.action || '')).map(h => h.date), c.lastDone && !c.lastDone.nr ? c.lastDone.dt : null, ...(c.rappels || []).filter(r => r.done).map(r => r.doneAt), ...(c.acts || []).filter(x => x.done).map(x => x.dt)];
+  const cand = [...(c.history || []).filter(h => /réalisé|sans réponse/i.test(h.action || '')).map(h => h.date), c.lastDone ? c.lastDone.dt : null, ...(c.rappels || []).filter(r => r.done).map(r => r.doneAt), ...(c.acts || []).filter(x => x.done).map(x => x.dt)];
   cand.forEach(s => { const t = T(s); if (t > bt && t <= Date.now() + 36e5) { bt = t; b = s; } }); return b || c.history[0]?.date || null; };
+/* V4.5.58 : définition UNIQUE de « sans action » (tableau de bord, listes, pastilles, priorités) :
+   dossier actif SANS action prévue (prochaine action de la fiche OU rappel ouvert) ET dont la dernière action réalisée (ou tentative sans réponse) date de plus de `lim` jours */
+const idleOf = (c, lim = 30) => isActive(c) && !effNext(c).nextDate && (daysSince(lastAction(c)) ?? 999) > lim;
 const createdOf = c => c.createdAt || c.history[c.history.length - 1]?.date || null;
 const ECH = c => settings.echeances[c.echeance] || null;
 function addAct(c, dt, type, motif = '') { if (!dt) return; c.acts = c.acts || []; c.acts.push({dt, type, motif, done: false}); }
@@ -2888,11 +2936,17 @@ function sigItems(P) {
 }
 function sigSet(mode) { ui.sig = {mode, du: '', au: ''}; renderSig(); }
 function sigDates() { ui.sig = {mode: 'range', du: $('sig-du').value, au: $('sig-au').value}; renderSig(); }
+/* blocs repliables : l'état ouvert/fermé est retenu sur cet appareil */
+const accOpen = n => { try { return localStorage.getItem('ax_acc_' + n) === '1'; } catch (e) { return false; } };
+const accHtml = (n, ic, t, sum, body) => `<details class="ax-acc" data-acc="${n}" ${accOpen(n) ? 'open' : ''}><summary><span class="ai"><i class="fas ${ic}"></i></span><span class="at">${t}</span><span class="as">${sum}</span><i class="fas fa-chevron-down ac"></i></summary><div class="ab">${body}</div></details>`;
+document.addEventListener('toggle', e => { const d = e.target; if (d && d.matches && d.matches('details[data-acc]')) { try { localStorage.setItem('ax_acc_' + d.dataset.acc, d.open ? '1' : '0'); } catch (x) {} } }, true);
+function accInit() { document.querySelectorAll('details[data-acc]').forEach(d => { const o = accOpen(d.dataset.acc); if (d.open !== o) d.open = o; }); }
 function renderSalesKpi() {
   const el = $('sales-kpi'); if (!el) return;
   const {rob, add} = yearData(), ca = sum(rob, c => c.montant) + sum(add, x => x.a.montant), obj = Math.max(1, +settings.objectif || 18), nS = rob.filter(c => famOf(c) === 'SINTESI').length;
   const P = sigPeriod(), it = sigItems(P), tot = sum(it, x => x.m), S = ui.sig || {mode: '3m'}, pl = S.mode === 'range' ? 'dates au choix' : ({'1m': '1 mois', '3m': '3 mois', '6m': '6 mois', '12m': '12 mois', year: 'année'})[S.mode] || '', pct = Math.round(nS / obj * 100);
   const kc = (cl, ic, k, v, m, on) => `<button type="button" class="kc ${cl}" onclick="${on}"><span class="kc-i"><i class="fas ${ic}"></i></span><span class="kc-t"><span class="kc-k">${k}</span><b>${v}</b><span class="kc-m">${m}</span></span></button>`;
+  const ap = $('acc-prob'); if (ap) ap.textContent = tot ? `${eur(tot)} · ${it.length} dossier${it.length > 1 ? 's' : ''} · ${pl}` : `0 € · aucune décision (${pl})`;
   el.innerHTML = kc('kc-g', 'fa-check', `SIGNÉ ${ui.year}`, eur(ca) + ' <small>HT</small>', `${rob.length} robot${rob.length > 1 ? 's' : ''} · ${add.length} add-on${add.length > 1 ? 's' : ''}`, "showList('signes')")
     + kc('kc-o', 'fa-arrow-trend-up', `À SIGNER · ${pl.toUpperCase()}`, eur(tot) + ' <small>HT</small>', `${it.length} dossier${it.length > 1 ? 's' : ''}`, "showList('probR')")
     + kc('kc-b', 'fa-bullseye', 'OBJECTIF SINTESI', `${nS} / ${obj}`, `${pct} % atteint<span class="kc-bar"><i style="width:${Math.min(100, pct)}%"></i></span>`, "showList('signes')");
@@ -2935,6 +2989,7 @@ function renderSales() {
     <button class="num-btn text-left w-full mt-1.5" onclick="showList('sintesi')" title="Voir la liste"><div class="flex justify-between items-baseline text-[12px]"><span><b class="text-[14px]">${nS}</b><span class="text-muted">/${obj} SINTESI</span></span><span class="font-semibold">${Math.round(pct)} %</span></div>
       <div class="h-2 rounded-full bg-slate-100 overflow-hidden mt-1"><div class="h-2 rounded-full bg-emerald-700" style="width:${pct}%"></div></div>
       <div class="text-[10.5px] text-muted mt-1">${isCur ? `${keur(od)} à date · <b style="color:${gap >= 0 ? '#14603F' : '#B42318'}">${gap >= 0 ? '+ ' : '− '}${keur(Math.abs(gap))}</b> · ${Math.max(0, obj - nS)} à signer` : 'Année close'}</div></button>`;
+  const at = $('acc-top'); if (at) at.textContent = `${nS} SINTESI · ${nG} GENESI · ${add.length} add-on${add.length > 1 ? 's' : ''}`;
   const tm = r.map((v, i) => v + a[i]), best = tm.indexOf(Math.max(...tm));
   const lostC = lost.filter(c => c.perduMotif === 'Perdu contre'), conv = rob.length + lostC.length ? Math.round(rob.length / (rob.length + lostC.length) * 100) : null, cyc = cycleDays(rob);
   const key = (l, v, s2, k) => `<${k ? `button onclick="showList('${k}')"` : 'div'} title="${esc(s2)}" class="vk"><span>${l}</span><b>${v}</b></${k ? 'button' : 'div'}>`;
@@ -2949,6 +3004,8 @@ function renderSales() {
   let f = '';
   if (showCh) { const p = chalProgress(ch); f += `<button onclick="ui.ptab='objectifs';ui.comSub='chal';showView('profile')" class="vk vkc" title="${esc(ch.nom)} : ${p.st === 'atteint' ? 'prime de ' + eur(ch.prime) + ' acquise' : 'encore ' + p.left + ' pour ' + eur(ch.prime) + ' de prime'}"><span>🏆</span><b>${p.n}/${ch.objectif} robots</b></button>`; }
   $('sales-foot').innerHTML = f;
+  const ak = $('acc-keys'); if (ak) ak.textContent = `${tm[best] ? 'Meilleur mois ' + cap1(MONTHS_L[best]) : 'Aucune vente'} · Transformation ${conv == null ? '—' : conv + ' %'}`;
+  accInit();
 }
 function renderChart() {
   chartTheme();
@@ -3003,7 +3060,7 @@ function weekItems() {
 function relanceDays(c) { return ECH(c)?.rappel || 30; }
 function lateItems() {
   const planned = clients.filter(c => c.nextDate && c.step !== 'Perdu' && parseD(c.nextDate) < TODAY).map(c => ({c, d: parseD(c.nextDate), dt: c.nextDate, type: c.nextType || 'relance', why: `${(ACTIONS[c.nextType] || ACTIONS.relance).label.toLowerCase()} prévu(e) le ${fmtD(c.nextDate)} non réalisé(e)`}));
-  const idle = clients.filter(c => isActive(c) && !c.nextDate && daysSince(lastAction(c)) > relanceDays(c)).map(c => ({c, d: null, why: `${daysSince(lastAction(c))} j sans action · rythme ${ECH(c) ? lc1(ECH(c).label) : 'par défaut'} : ${relanceDays(c)} j`}));
+  const idle = clients.filter(c => isActive(c) && !effNext(c).nextDate && daysSince(lastAction(c)) > relanceDays(c)).map(c => ({c, d: null, why: `${daysSince(lastAction(c))} j sans action · rythme ${ECH(c) ? lc1(ECH(c).label) : 'par défaut'} : ${relanceDays(c)} j`}));
   const rl = rapItems().filter(({r}) => !r.done && parseD(r.dt) < TODAY).map(({c, r}) => ({c, d: parseD(r.dt), dt: r.dt, type: RAP_T[r.type].a, rap: r.id, note: r.note, why: `${RAP_T[r.type].l.toLowerCase()} du ${fmtD(r.dt)} : ${r.note}`}));
   return [...[...planned, ...rl].sort((a, b) => a.d - b.d), ...idle];
 }
@@ -3060,13 +3117,13 @@ function todayList(items, late, emptyMsg) {
   const L = late.filter(x => x.d && x.type), td = items.filter(x => !x.done), dn = items.filter(x => x.done), tot = items.length;
   if (!tot && !L.length) return emptyMsg();
   window.ZNEXT = L[0] || td[0];
-  const rows = [...L.map(x => ({x, late: true})), ...td.map(x => ({x}))], lim = ui.dayAll ? rows.length : 4, shown = rows.slice(0, lim);
+  const rows = [...L.map(x => ({x, late: true})), ...td.map(x => ({x}))], lim = ui.dayAll ? rows.length : 2, shown = rows.slice(0, lim);
   const sL = shown.filter(r => r.late), sT = shown.filter(r => !r.late), hd = (ic2, t, n, col, extra) => `<div class="flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-wide ${col}"><i class="fas ${ic2}"></i>${t} · ${n}${extra || ''}</div>`;
   let h = `<div class="flex items-center gap-3 text-[12px] text-slate-600"><span class="whitespace-nowrap"><b class="text-ink">${dn.length}</b> / ${tot} faite${dn.length > 1 ? 's' : ''}</span><div class="dprog flex-1 !m-0" title="${dn.length} faite${dn.length > 1 ? 's' : ''} sur ${tot}"><i style="width:${tot ? Math.round(dn.length / tot * 100) : 0}%"></i></div></div>`;
   if (sL.length) h += hd('fa-triangle-exclamation', 'En retard', L.length, 'text-rose-700', '<span class="font-semibold normal-case tracking-normal text-slate-500">à rattraper d\'abord</span>') + `<ol class="flex flex-col">${sL.map(r => itemRow2(r.x, true)).join('')}</ol>`;
   if (sT.length) h += hd('fa-calendar-day', "Aujourd'hui", td.length, 'text-slate-600') + `<ol class="flex flex-col">${sT.map(r => itemRow2(r.x)).join('')}</ol>`;
-  if (rows.length > 4) h += `<button type="button" class="text-[13px] font-bold text-slate-700 py-1.5 border-t border-slate-200 hover:text-ink" onclick="ui.dayAll=${!ui.dayAll};renderDay()">${ui.dayAll ? 'Réduire ▴' : `Voir les ${rows.length - lim} autres ▾`}</button>`;
-  h += dn.length ? `<details class="dfd"><summary class="dfold"><span><i class="fas fa-circle-check"></i> Faites aujourd'hui · ${dn.length}</span><span>▾</span></summary><ol class="flex flex-col">${dn.map(x => itemRow2(x)).join('')}</ol></details>` : `<div class="dfold" style="cursor:default"><span><i class="fas fa-circle-check"></i> Faites aujourd'hui · 0</span></div>`;
+  if (rows.length > 2) h += `<button type="button" class="text-[13px] font-bold text-slate-700 py-1.5 border-t border-slate-200 hover:text-ink" onclick="ui.dayAll=${!ui.dayAll};renderDay()">${ui.dayAll ? 'Réduire ▴' : `Voir les ${rows.length - lim} autres ▾`}</button>`;
+  h += dn.length ? accHtml('d-done', 'fa-circle-check', 'Faites aujourd\'hui', dn.length, `<ol class="flex flex-col">${dn.map(x => itemRow2(x)).join('')}</ol>`) : `<div class="ax-acc"><div class="flex items-center gap-2.5 px-3 py-2.5"><span class="ai"><i class="fas fa-circle-check"></i></span><span class="at">Faites aujourd'hui</span><span class="as">0</span></div></div>`;
   return h;
 }
 function dayOpen(e) { if (e && e.target.closest('button,a,input,select,summary,details,li,textarea,label')) return; ui.dd = true; $('day-body').innerHTML = ''; if (!$('dlg-day').open) $('dlg-day').showModal(); renderDay(); }
@@ -3153,7 +3210,7 @@ function prioItems() {
   const lt = lateItems().filter(x => x.d).slice(0, 2); lt.forEach(x => R.push({lv: 'r', c: x.c, t: 'Relancer ' + x.c.pharma, sb: x.why, ic: 'phone', fn: `openAction(${x.c.id},'suivi')`}));
   act.filter(c => (c.step === 'R2' || c.step === 'R3') && (!c.devis?.statut || c.devis.statut === 'afaire') && c.dateDecision && c.dateDecision.slice(0, 7) <= mois).slice(0, 2).forEach(c => R.push({lv: 'r', c, t: 'Préparer le devis · ' + c.pharma, sb: 'Décision prévue ' + fmtD(c.dateDecision) + ' · devis à faire', ic: 'file-invoice', fn: `openClient(${c.id})`}));
   act.filter(c => c.step !== 'Contact' && !(c.besoins || []).length).slice(0, 2).forEach(c => R.push({lv: 'o', c, t: 'Qualifier les besoins · ' + c.pharma, sb: STEPS[c.step].label + ' : besoins non renseignés', ic: 'clipboard-check', fn: `openClient(${c.id})`}));
-  const dorm = act.filter(c => daysSince(lastAction(c)) > 30);
+  const dorm = act.filter(c => idleOf(c));
   if (dorm.length) R.push({lv: 'o', c: dorm[0], t: `${dorm.length} dossier${dorm.length > 1 ? 's' : ''} sans action depuis plus de 30 jours`, sb: dorm.slice(0, 3).map(c => c.pharma.replace(/^Pharmacie\s+(de la |des |du |de |d')?/i, '')).join(' · '), ic: 'list', fn: `openClient(${dorm[0].id})`});
   clients.filter(c => c.step === 'Signé' || c.signatureDate).filter(c => c.hasReserves && !c.leveeDate).slice(0, 2).forEach(c => R.push({lv: 'g', c, t: 'Lever les réserves · ' + c.pharma, sb: c.reservesText || 'Réserves ouvertes', ic: 'screwdriver-wrench', fn: `openClient(${c.id})`}));
   return R.slice(0, 5);
@@ -3162,7 +3219,7 @@ function extraDay(items, late) {
   let h = '';
   if (items.length) h += `<div><div class="kicker mb-1">Ma journée en un coup d'œil</div><div class="relative h-5 rounded-md bg-slate-100">${items.map(x => { const d = parseD(x.dt), hh = d.getHours() + d.getMinutes() / 60, l = Math.max(0, Math.min(94, (hh - 8) / 10 * 100)); return `<i class="absolute top-0.5 h-4 rounded" style="left:${l}%;width:6%;background:${(ACTIONS[x.type] || {}).fg || '#E87722'};opacity:${x.done ? .35 : 1}" title="${esc(x.c.pharma)}"></i>`; }).join('')}</div><div class="flex justify-between text-[10px] text-muted mt-0.5"><span>8 h</span><span>10 h</span><span>12 h</span><span>14 h</span><span>16 h</span><span>18 h</span></div></div>`;
   const P = prioItems();
-  if (P.length) h += `<div><div class="flex justify-between kicker mb-1"><span>Priorités du jour · hors planning</span><span class="normal-case tracking-normal font-medium">${P.length} action${P.length > 1 ? 's' : ''}</span></div>${P.map(x => `<div class="flex items-center gap-2.5 py-1.5 border-t border-slate-100"><span class="w-1.5 h-7 rounded shrink-0" style="background:${{r: '#B42318', o: '#F59E0B', g: '#14603F'}[x.lv]}"></span><button class="flex-1 min-w-0 text-left" onclick="${x.fn}"><span class="block text-[12.5px] font-bold truncate">${esc(x.t)}</span><span class="block text-[11px] text-muted truncate">${esc(x.sb)}</span></button><button class="qb" title="Ouvrir" onclick="${x.fn}">${ic(x.ic, 14)}</button></div>`).join('')}</div>`;
+  if (P.length) h += accHtml('d-prio', 'fa-flag', 'Priorités du jour', `${P.length} action${P.length > 1 ? 's' : ''} · hors planning`, `${P.map(x => `<div class="flex items-center gap-2.5 py-1.5 border-t border-slate-100"><span class="w-1.5 h-7 rounded shrink-0" style="background:${{r: '#B42318', o: '#F59E0B', g: '#14603F'}[x.lv]}"></span><button class="flex-1 min-w-0 text-left" onclick="${x.fn}"><span class="block text-[12.5px] font-bold truncate">${esc(x.t)}</span><span class="block text-[11px] text-muted truncate">${esc(x.sb)}</span></button><button class="qb" title="Ouvrir" onclick="${x.fn}">${ic(x.ic, 14)}</button></div>`).join('')}`);
   return h;
 }
 function confirmBox(title, msg, ok, fn, o = {}) {
@@ -3334,13 +3391,13 @@ const PCOL = 2; // colonne « Étape » du portefeuille
 function stepFilterOn() { const f = ui.filters.portfolio?.[PCOL]; if (!f || f.size !== 1) return null; const i = JST.findIndex(s => f.has(s.label)); return i < 0 ? null : i; }
 function renderPipeline() {
   const act = clients.filter(isActive), tot = act.length || 1, on = stepFilterOn();
-  const idle = c => daysSince(lastAction(c)) > 30;
+  const idle = c => idleOf(c);
   const wk = new Date(TODAY); wk.setDate(wk.getDate() + 8);
   const stat = (l, v, s2, col = '#0F172A', k = '') => `<button class="vk" onclick="showList('${k}')" title="${esc(s2)}"><span>${l}</span><b style="color:${col}">${v}</b></button>`;
-  const nPend = act.filter(c => c.pending).length, nIdle = act.filter(idle).length, nPlan = act.filter(c => c.nextDate && parseD(c.nextDate) >= TODAY && parseD(c.nextDate) < wk).length;
+  const nPend = act.filter(c => c.pending).length, nIdle = act.filter(idle).length, nPlan = act.filter(c => { const e = effNext(c); return e.nextDate && parseD(e.nextDate) >= TODAY && parseD(e.nextDate) < wk; }).length;
   $('pipe-stats').innerHTML = stat('Actifs', act.length, `dont ${act.filter(c => chOf(c) === 75).length} à 75 %`, '#0F172A', 'actifs')
     + stat('RDV 7 j', nPlan, 'rendez-vous / actions planifiées dans les 7 jours', '#0F172A', 'rdv7') + stat('RDV à fixer', nPend, 'prospects à rappeler', nPend ? '#9A3412' : '#0F172A', 'afixer')
-    + stat('Sans action > 30 j', nIdle, 'dossiers à relancer', nIdle ? '#B42318' : '#0F172A', 'idle')
+    + stat('Sans action > 30 j', nIdle, 'dossiers actifs sans aucune action prévue et sans action réalisée depuis plus de 30 jours', nIdle ? '#B42318' : '#0F172A', 'idle')
     + (act.some(c => c.cession?.on) ? stat('Cessions prévues', act.filter(c => c.cession?.on).length, 'pharmacies dont la reprise par un nouveau titulaire est prévue', '#5B21B6', 'cession') : '');
   const data = JST.map((S, k) => { const l = act.filter(c => jStage(c) === k); return {k, S, l, n: l.length}; });
   $('pipeline').innerHTML = data.map(({k, S, l, n}) => {
@@ -3371,10 +3428,10 @@ const nextWhen = c => {
 };
 const LISTS = {
   actifs: () => ({t: 'Dossiers actifs', i: 'fa-briefcase', rows: clients.filter(isActive).map(c => ({c}))}),
-  rdv7: () => { const wk = new Date(TODAY); wk.setDate(wk.getDate() + 8); return {t: 'Rendez-vous à 7 jours', i: 'fa-calendar-days', rows: clients.filter(c => isActive(c) && c.nextDate && parseD(c.nextDate) >= TODAY && parseD(c.nextDate) < wk).sort((a, b) => a.nextDate.localeCompare(b.nextDate)).map(c => ({c, info: `${(ACTIONS[c.nextType] || ACTIONS.relance).label} · ${fmtDT(c.nextDate)}`}))}; },
+  rdv7: () => { const wk = new Date(TODAY); wk.setDate(wk.getDate() + 8); return {t: 'Rendez-vous à 7 jours', i: 'fa-calendar-days', rows: clients.filter(c => { const e = effNext(c); return isActive(c) && e.nextDate && parseD(e.nextDate) >= TODAY && parseD(e.nextDate) < wk; }).sort((a, b) => effNext(a).nextDate.localeCompare(effNext(b).nextDate)).map(c => { const e = effNext(c); return {c, info: `${(ACTIONS[e.nextType] || ACTIONS.relance).label} · ${fmtDT(e.nextDate)}`}; })}; },
   afixer: () => ({t: 'Rendez-vous à fixer', i: 'fa-bell', rows: clients.filter(c => isActive(c) && c.pending).map(c => ({c, info: `${STEPS[c.pending.to].short} à fixer · rappeler le ${fmtDT(c.pending.rappel)}`}))}),
   cession: () => ({t: 'Cessions prévues', i: 'fa-right-left', rows: clients.filter(c => isActive(c) && c.cession?.on).sort((a, b) => String(a.cession.date || '9').localeCompare(String(b.cession.date || '9'))).map(c => ({c, info: `Cession ${cesMois(c.cession.date) || 'à dater'}${c.cession.futur ? ' · futur titulaire : ' + c.cession.futur : ''}`}))}),
-  idle: () => ({t: 'Sans action depuis plus de 30 jours', i: 'fa-hourglass-half', rows: clients.filter(c => isActive(c) && daysSince(lastAction(c)) > 30).sort((a, b) => daysSince(lastAction(b)) - daysSince(lastAction(a))).map(c => ({c, info: `${daysSince(lastAction(c))} jours sans action`}))}),
+  idle: () => ({t: 'Sans action depuis plus de 30 jours', i: 'fa-hourglass-half', rows: clients.filter(c => idleOf(c)).sort((a, b) => daysSince(lastAction(b)) - daysSince(lastAction(a))).map(c => ({c, info: `${daysSince(lastAction(c))} jours sans action · aucune action prévue`}))}),
   prob: i => { const tM = TODAY.getFullYear() * 12 + TODAY.getMonth(), inB = ds => { const d = parseD(ds); if (!d) return false; const k = d.getFullYear() * 12 + d.getMonth() - tM; return (k <= 0 ? 0 : k <= 3 ? 1 : k <= 6 ? 2 : -1) === i; };
     return {t: `Signatures probables · ${['ce mois-ci', 'M+1 à M+3', 'M+4 à M+6'][i]}`, i: 'fa-pen-nib', rows: [...clients.filter(c => isActive(c) && inB(c.dateDecision)).map(c => ({c, info: `Décision le ${fmtD(c.dateDecision)}`})), ...clients.flatMap(c => c.addons.filter(a => a.statut !== 'signe' && inB(a.date)).map(a => ({c, info: `Add-on : ${a.quoi} · décision ${fmtD(a.date)}`, m: a.montant})))]}; },
   probR: () => ({t: 'Signatures probables · période choisie', i: 'fa-pen-nib', rows: sigItems(sigPeriod()).sort((a, b) => a.d - b.d).map(x => ({c: x.c, info: x.info, m: x.add ? x.m : undefined}))}),
@@ -7831,7 +7888,7 @@ function renderProfile() {
   if (ui.ptab === 'challenges') ui.comSub = 'chal';
   if (PTAB_LEG[ui.ptab]) ui.ptab = PTAB_LEG[ui.ptab];
   if (!PTABS.some(t => t[0] === ui.ptab)) ui.ptab = 'profil';
-  $('pf-tabs').innerHTML = PTABS.map(([k, i, l, g]) => `${g ? `<span class="pf-grp">${g}</span>` : ''}<button class="ptab ${ui.ptab === k ? 'ptab-on' : ''}" onclick="ui.ptab='${k}';renderProfile()"><i class="fas ${i}"></i>${l}</button>`).join('');
+  $('pf-tabs').innerHTML = PTABS.map(([k, i, l, g]) => `${g ? `<span class="pf-grp">${g}</span>` : ''}<button class="ptab ${ui.ptab === k ? 'ptab-on' : ''}" onclick="ui.ptab='${k}';renderProfile()"><span class="pfi"><i class="fas ${i}"></i></span>${l}</button>`).join('');
   ({profil: pfProfil, objectifs: pfObj, secteur: pfSecteur, sync: pfSync, sauv: pfSauv, options: pfOptions, docs: pfDocs, envois: pfEnvois})[ui.ptab]();
   $('pf-body').insertAdjacentHTML('afterbegin', pfSummary(ui.ptab));
   { const r1 = $('pf-body').querySelector('.v38-r1'), bn = $('pf-body').firstElementChild; if (r1 && bn && bn !== r1) r1.append(bn); }
@@ -7840,7 +7897,7 @@ function renderProfile() {
 function pfFrame() {
   const body = $('pf-body'); if (!body) return;
   body.querySelectorAll('.pf-box').forEach(e => e.classList.remove('pf-box'));
-  if (ui.ptab === 'objectifs' && (ui.comSub || 'mes') === 'mes') return;
+  if (ui.ptab === 'options' || ui.ptab === 'profil' || (ui.ptab === 'objectifs' && (ui.comSub || 'mes') === 'mes')) return;
   const c = [...body.querySelectorAll('.card,[class*="rounded-2xl"][class*="border"],[class*="rounded-xl"][class*="border"],details')].filter(e => e.offsetHeight > (e.tagName === 'DETAILS' ? 35 : 62) && !e.matches('input,select,button,label,a,.btn,.inp,.pill,.chip,.w-fit,.tbl') && !e.closest('button,label') && !e.querySelector(':scope > input'));
   c.filter(e => !c.some(o => o !== e && e.contains(o))).forEach(e => e.classList.add('pf-box'));
 }
@@ -7858,9 +7915,9 @@ function pfSummary(k) {
   if (k === 'secteur') return pfBand(B.n && !(age > PBASE_DAYS) ? 'ok' : 'warn', `${S.lgpi.length} départements clients LGPI · ${S.prospect.length} départements prospects · base ${B.n ? B.n.toLocaleString('fr-FR') + ' officines' + (age != null ? ' (mise à jour il y a ' + age + ' j)' : '') : 'non importée'}`);
   if (k === 'sync') { const [t, h] = fbSumInfo(); return pfBand(t, h, 'fb-sum'); }
   if (k === 'sauv') return pfBand('info', 'Copies de secours automatiques : lecture…', 'sauv-sum');
-  if (k === 'docs') return '';
+  if (k === 'docs' || k === 'options') return '';
   if (k === 'envois') return '';
-  const n = ['gps', 'teams', 'agenda', 'nearby', 'qual', 'com', 'chal'].filter(opt).length;
+  const n = ['gps', 'teams', 'agenda', 'nearby', 'phone', 'com', 'chal'].filter(opt).length;
   return pfBand('info', `${n} module${n > 1 ? 's' : ''} actif${n > 1 ? 's' : ''} sur 7 · ${opt('social') ? 'liens Pharmathek dans le PDF' : 'liens Pharmathek masqués'}`);
 }
 const objSub = () => { const sub = ui.comSub || 'mes'; return `<div class="flex flex-wrap gap-1 bg-white border border-slate-200 rounded-2xl p-1 w-fit">${[['param', 'fa-sliders', 'Paramétrage', 1], ['mes', 'fa-coins', 'Mes commissions', opt('com')], ['chal', 'fa-trophy', 'Challenges et opérations', opt('chal')]].filter(x => x[3]).map(([k, i, l]) => `<button class="h-10 px-4 rounded-xl text-[13px] font-semibold inline-flex items-center gap-2 ${sub === k ? 'bg-orange-50 text-ptkd' : 'text-slate-600 hover:bg-slate-50'}" onclick="ui.comSub='${k}';renderProfile()"><i class="fas ${i}"></i>${l}</button>`).join('')}</div>`; };
@@ -8137,7 +8194,7 @@ function pfSecCard() {
   const row = (ic, t, sub, btn) => `<div class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white px-3 py-2"><i class="fas ${ic} text-slate-500 w-5 text-center"></i><div class="flex-1 min-w-0"><b class="text-[13px]">${t}</b><div class="text-[11.5px] text-muted truncate">${sub}</div></div>${btn}</div>`;
   const form = K === 'pw' ? `${F('sf-cur', 'Mot de passe actuel')}${F('sf-new', 'Nouveau mot de passe (12 caractères, majuscule, minuscule, chiffre, caractère spécial)')}${F('sf-new2', 'Confirmer le nouveau mot de passe')}`
     : K === 'mail' ? `${F('sf-cur', 'Mot de passe actuel')}${F('sf-mail', 'Nouvelle adresse e-mail', 'email')}` : K === 'key' ? `${F('sf-cur', 'Mot de passe actuel (une nouvelle clé remplacera l\'ancienne)')}` : '';
-  $('sec-card').innerHTML = `<h2 class="h2 ftitle"><i class="fas fa-shield-halved text-ptkd mr-1.5"></i>Sécurité du compte</h2>` + (!on ? `<div class="rounded-xl border border-amber-200 bg-amber-50 p-3 text-[13px] text-amber-950">Aucun compte n'est créé : vos données ne sont <b>pas protégées</b> sur cet appareil.<div class="mt-2"><button class="btn btn-ok" onclick="SEC.startCreate()"><i class="fas fa-lock"></i>Créer mon compte et chiffrer mes données</button></div></div>` :
+  $('sec-card').innerHTML = `<div class="ax-st nm"><span class="ax-n">3</span>Sécurité du compte<span class="axp ${on ? 'ok' : 'warn'}">${on ? 'Compte actif' : 'À faire'}</span></div>` + (!on ? `<div class="rounded-xl border border-amber-200 bg-amber-50 p-3 text-[13px] text-amber-950">Aucun compte n'est créé : vos données ne sont <b>pas protégées</b> sur cet appareil.<div class="mt-2"><button class="btn btn-ok" onclick="SEC.startCreate()"><i class="fas fa-lock"></i>Créer mon compte et chiffrer mes données</button></div></div>` :
     `<div class="flex flex-col gap-2">${row('fa-user', esc(SEC.email()), 'Identifiant de connexion', '<button class="btn btn-g !h-9" onclick="secForm(\'mail\')">Modifier</button>')}
     ${row('fa-lock', 'Mot de passe', 'Fort : 12 caractères minimum, jamais enregistré en clair', '<button class="btn btn-g !h-9" onclick="secForm(\'pw\')">Changer</button>')}
     ${row('fa-hourglass-half', 'Verrouillage automatique', 'Après inactivité', `<select id="sf-lock" class="inp !h-9 !w-28" onchange="SEC.setLock(this.value);toast('Verrouillage automatique : ' + (this.value < 60 ? this.value + ' min' : this.value / 60 + ' h'))">${[30, 60, 120, 240, 480].map(m => `<option value="${m}" ${SEC.lockMin() === m ? 'selected' : ''}>${m < 60 ? m + ' min' : m / 60 + ' h'}</option>`).join('')}</select>`)}
@@ -8157,7 +8214,7 @@ function lastTouch(c) { let m = 0; const t = x => { const d = x ? Date.parse(x) 
 function rgpdDue() { const lim = Date.now() - RGPD_ANS * 365.25 * 864e5; return clients.filter(c => !c.demo && !c.anon && c.step !== 'Signé' && !(c.rgpdKeep && c.rgpdKeep.until > Date.now()) && lastTouch(c) && lastTouch(c) < lim); }
 function pfRgpdCard() {
   const L = rgpdDue();
-  $('rgpd-card').innerHTML = `<h2 class="h2 ftitle"><i class="fas fa-scale-balanced text-ptkd mr-1.5"></i>Conservation des données (RGPD)</h2>
+  $('rgpd-card').innerHTML = `<div class="ax-st nm"><span class="ax-n">4</span>Conservation des données (RGPD)<span class="axp ${L.length ? 'warn' : 'ok'}">${L.length ? L.length + ' à réviser' : 'Rien à réviser'}</span></div>
     <p class="text-[12.5px] text-muted">Prospects et dossiers perdus : sans action depuis ${RGPD_ANS} ans, la fiche est à réviser (supprimer, anonymiser ou prolonger avec un motif). Clients signés : conservés pendant la relation contractuelle. Rien n'est effacé automatiquement.</p>
     ${L.length ? `<div class="flex flex-col gap-2">${L.map(c => `<div class="flex items-center gap-3 rounded-xl border border-amber-200 bg-amber-50/60 px-3 py-2"><div class="flex-1 min-w-0"><b class="text-[13px]">${esc(c.pharma)}</b><div class="text-[11.5px] text-muted">${esc(c.step)} · dernière activité ${fmtD(new Date(lastTouch(c)).toISOString().slice(0, 10))}</div></div><button class="btn btn-g !h-9" onclick="rgpdKeep(${c.id})" title="Conserver la fiche avec un motif (1 an)">Prolonger</button><button class="btn btn-g !h-9" onclick="rgpdAnon(${c.id})" title="Efface l'identité et les notes, garde les chiffres (étape, robot, montant, motif de perte)">Anonymiser</button><button class="btn btn-ko !h-9" onclick="rgpdDel(${c.id})">Supprimer</button></div>`).join('')}</div>` : `<div class="rounded-xl border border-emerald-200 bg-emerald-50 p-3 text-[13px] text-emerald-900"><i class="fas fa-circle-check mr-1.5"></i>Aucune fiche à réviser.</div>`}`;
 }
@@ -8172,11 +8229,11 @@ function rgpdAnon(id) {
 function rgpdDel(id) { const c = byId(id); if (!c) return; confirmBox('Supprimer cette fiche ?', `La fiche <b>${esc(c.pharma)}</b> sera supprimée définitivement.<br><span class="text-rose-700 font-semibold">Action irréversible.</span>`, '<i class="fas fa-trash-can"></i>Oui, supprimer', () => { clients = clients.filter(x => x.id !== id); (settings.tomb = settings.tomb || {})[id] = Date.now(); saveSet(); save(); pfRgpdCard(); toast('Fiche supprimée'); }, {no: 'Non, la garder', icon: 'fa-trash-can'}); }
 function pfProfil() {
   $('pf-body').innerHTML = `<div class="grid lg:grid-cols-2 gap-5">
-    <section class="card p-5 sm:p-6 flex flex-col gap-3"><h2 class="h2 ftitle">Identité</h2>
+    <section class="card p-5 sm:p-6 flex flex-col gap-3"><div class="ax-st nm"><span class="ax-n">1</span>Identité</div>
       <div class="grid sm:grid-cols-2 gap-3">${fld('set-prenom', 'Prénom', settings.prenom)}${fld('set-nom', 'Nom', settings.nom)}${fld('set-fonction', 'Fonction', settings.fonction)}${fld('set-tel', 'Téléphone', settings.tel, 'tel', 'oninput="fmtPhone(this)"')}
       <div class="sm:col-span-2">${fld('set-email', 'E-mail', settings.email, 'email')}</div>
       <div class="sm:col-span-2">${fld('set-adresse', 'Adresse de départ et de retour des tournées (bureau ou domicile)', settings.adresse)}</div></div></section>
-    <section class="card p-5 sm:p-6 flex flex-col gap-3"><h2 class="h2 ftitle">Logo de l'en-tête</h2>
+    <section class="card p-5 sm:p-6 flex flex-col gap-3"><div class="ax-st nm"><span class="ax-n">2</span>Logo de l'en-tête</div>
       <div class="flex flex-wrap items-center gap-4"><div class="h-16 min-w-[160px] px-4 rounded-xl border border-dashed border-slate-300 flex items-center justify-center bg-slate-50">${settings.logo ? `<img src="${settings.logo}" alt="Logo" class="max-h-12 max-w-[220px] object-contain">` : '<span class="text-xs text-muted">Logo par défaut</span>'}</div>
         <label class="btn btn-g cursor-pointer"><i class="fas fa-upload"></i>Importer le logo Pharmathek<input type="file" accept="image/png,image/jpeg,image/svg+xml,image/webp" class="hidden" onchange="importLogo(this)"></label>
         ${settings.logo ? '<button class="btn btn-ko" onclick="settings.logo=\'\';saveSet();renderBrand();renderProfile()">Retirer</button>' : ''}</div>
@@ -8195,21 +8252,27 @@ function pfBlocks() {
       <input type="checkbox" id="opt-${k}" class="mt-0.5 w-5 h-5 accent-emerald-700 shrink-0" ${opt(k) ? 'checked' : ''} onchange="settings.opt['${k}']=this.checked;saveSet();renderProfile();toast(this.checked?'Option activée':'Option désactivée')">
       <span class="flex-1 min-w-0"><span class="flex items-center justify-between gap-2"><span class="flex items-center gap-2 text-sm font-bold">${icon}${title}</span><span class="pill ${opt(k) ? 'bg-emerald-700 text-white' : 'bg-slate-200 text-slate-700'}">${opt(k) ? 'Activé' : 'Désactivé'}</span></span><span class="block text-xs text-slate-600 mt-1 leading-snug">${desc}</span></span></label>`;
   const sec = (n, icon, title, sub, body) => `<section class="card p-5 sm:p-6 flex flex-col gap-4"><div class="flex items-start gap-3"><span class="w-9 h-9 rounded-xl bg-orange-50 text-ptkd inline-flex items-center justify-center shrink-0 font-bold text-sm">${n}</span><div><h2 class="h2 flex items-center gap-2"><i class="fas ${icon} text-muted text-sm"></i>${title}</h2><p class="text-xs text-muted mt-0.5">${sub}</p></div></div>${body}</section>`;
+  const tg = (k, icn, col, title, desc) => { const on = opt(k); return `<label class="axo ${on ? 'on' : ''}"><span class="axo-i" style="background:${col[0]};color:${col[1]}">${icn}</span><span class="axo-t"><b>${title}</b><span class="axo-p ${on ? 'on' : ''}">${on ? 'Activé' : 'Désactivé'}</span><small>${desc}</small></span><input type="checkbox" id="opt-${k}" class="axo-cb" ${on ? 'checked' : ''} onchange="settings.opt['${k}']=this.checked;saveSet();renderProfile();toast(this.checked?'Option activée':'Option désactivée')"><span class="axo-sw"></span></label>`; };
+  const CT = ['#FDEFE3', '#C2410C'], CB = ['#E8EEFC', '#1D4ED8'], CG = ['#E3F5EC', '#047857'], CA = ['#FEF3C7', '#B45309'];
+  const nOn = ['gps', 'teams', 'agenda', 'nearby', 'phone', 'com', 'chal'].filter(k => opt(k)).length;
   const B = settings.pbase || {}, age = B.date ? daysSince(B.date) : null, old = age != null && age > PBASE_DAYS;
   return {
-    opt: sec('<i class="fas fa-toggle-on"></i>', 'fa-toggle-on', 'Options du dashboard', 'Cochez ce que vous utilisez. Une option décochée disparaît de tout le dashboard.', `
-      <div class="grid md:grid-cols-2 gap-2.5">
-        ${sw('gps', ic('route', 18), 'Tracé GPS', 'Itinéraires Google Maps, carte et kilomètres de la tournée, temps de route.')}
-        ${sw('teams', ic('video', 18, `color:${TEAMS}`), 'Microsoft Teams', "Action « Visio Teams » et invitation Teams pré-remplie.")}
-        ${sw('agenda', ic('file', 18), 'Agenda', 'Ajout des rendez-vous et relances à votre agenda.')}
-        ${sw('nearby', '<i class="fas fa-location-crosshairs text-ptkd"></i>', 'Pharmacies à proximité', "À la planification d'une visite, propose d'autres pharmacies à moins de 1 h 30 à visiter le même jour (projets en cours et clients installés).")}
-        ${sw('phone', '<i class="fas fa-mobile-screen text-ptkd"></i>', 'Accès smartphone', "Lien et code de liaison pour utiliser le dashboard sur votre téléphone (Paramètres > Synchronisation). Décochée : ces champs sont masqués, la synchronisation du PC reste active.")}
-        ${sw('com', '<i class="fas fa-euro-sign text-emerald-700"></i>', 'Commissions', "Les montants de commission ne s'affichent que dans l'onglet « Objectifs et commissions ».")}
-        ${sw('chal', '<i class="fas fa-trophy text-amber-600"></i>', 'Challenges', "Challenges dans l'onglet « Objectifs et commissions » et rappel du challenge en cours sur l'accueil.")}
-      </div>
+    opt: `<section class="card p-5 sm:p-6 flex flex-col gap-3"><div class="ax-st nm"><span class="ax-ib"><i class="fas fa-bolt"></i></span>Options du dashboard<span class="axp ok">${nOn} module${nOn > 1 ? 's' : ''} actif${nOn > 1 ? 's' : ''} sur 7</span></div><p class="text-[13px] text-muted">Activez ce que vous utilisez. Une option désactivée disparaît de tout le dashboard.</p>
+      <div class="axo-g">Sur le terrain</div>
+      ${tg('gps', ic('route', 20), CT, 'Tracé GPS', 'Itinéraires Google Maps, carte et kilomètres de la tournée, temps de route.')}
+      ${tg('nearby', '<i class="fas fa-location-crosshairs"></i>', CT, 'Pharmacies à proximité', "À la planification d'une visite, propose d'autres pharmacies à moins de 1 h 30 à visiter le même jour (projets en cours et clients installés).")}
+      ${tg('phone', '<i class="fas fa-mobile-screen"></i>', CT, 'Accès smartphone', "Lien et code de liaison pour utiliser le dashboard sur votre téléphone (Paramètres > Synchronisation). Décochée : ces champs sont masqués, la synchronisation du PC reste active.")}
+      <div class="axo-g">Communication</div>
+      ${tg('teams', ic('video', 20, `color:${TEAMS}`), CB, 'Microsoft Teams', "Action « Visio Teams » et invitation Teams pré-remplie.")}
+      ${tg('agenda', ic('file', 20), CB, 'Agenda', 'Ajout des rendez-vous et relances à votre agenda.')}
+      <div class="axo-g">Commercial</div>
+      ${tg('com', '<i class="fas fa-euro-sign"></i>', CG, 'Commissions', "Les montants de commission ne s'affichent que dans l'onglet « Objectifs et commissions ».")}
+      ${tg('chal', '<i class="fas fa-trophy"></i>', CA, 'Challenges', "Challenges dans l'onglet « Objectifs et commissions » et rappel du challenge en cours sur l'accueil.")}
+    </section>
+    <section class="card p-5 sm:p-6 flex flex-col gap-3"><div class="ax-st nm"><span class="ax-ib"><i class="fas fa-sliders"></i></span>Préférences</div>
       <div class="grid md:grid-cols-2 gap-3">
         <div class="rounded-xl bg-slate-50 border border-slate-200 p-3"><label class="lbl" for="backmode">Après une action terminée</label><select id="backmode" class="inp" onchange="settings.backMode=this.value;saveSet();toast('Réglage enregistré')">${[['ask', 'Me proposer de revenir au portefeuille'], ['auto', 'Revenir automatiquement, sans demander'], ['stay', 'Toujours rester sur la fiche']].map(([k, l]) => `<option value="${k}" ${(settings.backMode || 'ask') === k ? 'selected' : ''}>${l}</option>`).join('')}</select></div>
-        ${opt('agenda') ? `<div class="rounded-xl bg-slate-50 border border-slate-200 p-3"><label class="lbl" for="set-agenda">Agenda utilisé</label><select id="set-agenda" class="inp" onchange="settings.agenda=this.value;saveSet();toast('Agenda enregistré')">${[['google', "Google Agenda (événement pré-rempli)"], ['ics', 'Fichier .ics (Apple Calendrier, Outlook)']].map(([k, l]) => `<option value="${k}" ${settings.agenda === k ? 'selected' : ''}>${l}</option>`).join('')}</select><p class="text-[11px] text-muted mt-1">Titre : « 18 – Pharmacie Centrale – 10h00 », coordonnées et historique en description.</p></div>` : '<div></div>'}</div>`),
+        ${opt('agenda') ? `<div class="rounded-xl bg-slate-50 border border-slate-200 p-3"><label class="lbl" for="set-agenda">Agenda utilisé</label><select id="set-agenda" class="inp" onchange="settings.agenda=this.value;saveSet();toast('Agenda enregistré')">${[['google', "Google Agenda (événement pré-rempli)"], ['ics', 'Fichier .ics (Apple Calendrier, Outlook)']].map(([k, l]) => `<option value="${k}" ${settings.agenda === k ? 'selected' : ''}>${l}</option>`).join('')}</select><p class="text-[11px] text-muted mt-1">Titre : « 18 – Pharmacie Centrale – 10h00 », coordonnées et historique en description.</p></div>` : '<div></div>'}</div></section>`,
     mail: sec('<i class="fas fa-paper-plane"></i>', 'fa-paper-plane', 'Envoi du fichier de suivi CRO', 'Destinataires du fichier généré par le bouton « Prévisions ». Collez une adresse copiée depuis Outlook (« Nom » &lt;adresse&gt;) : seule l\'adresse est gardée.', `
       <div class="grid md:grid-cols-2 gap-3">
         <div><div class="lbl">À *</div><div class="mbw" data-k="to">${(mbLoad(), mbHtml('to'))}</div></div>
