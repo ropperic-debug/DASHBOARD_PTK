@@ -400,6 +400,29 @@ input:checked+.ax-lo-a{background:#E87722;border-color:#E87722}input:checked+.ax
 .axo-cb:checked~.axo-sw{background:#059669}.axo-cb:checked~.axo-sw::after{left:23px}
 .axo-cb:focus-visible~.axo-sw{outline:3px solid #E87722;outline-offset:2px}
 @media(min-width:1024px){#pf-tabs .ptab{white-space:normal;text-align:left;line-height:1.2}}
+.sgb{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:8px 14px;border-bottom:1px solid #E2E8F0;font-size:12px;color:#475569}
+.sgb .inp{height:34px;padding:0 10px;font-size:12.5px;width:auto}
+.sgm td{background:#FFF1E7;color:#C2410C;font-size:11px;font-weight:800;letter-spacing:.05em;padding:3px 14px!important}
+.sgd{font-weight:800;font-size:13.5px;background:#FFF1E7;border-radius:8px;padding:3px 9px;display:inline-block;white-space:nowrap}
+th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
+#sa-period .chip{padding:4px 12px;border-radius:999px;font-size:12.5px;font-weight:700;border:1.5px solid #E5E7EB;background:#fff;color:#334155;cursor:pointer}
+#sa-period .chip.on{background:#C2410C;border-color:#C2410C;color:#fff}
+.mmt{border-collapse:separate;border-spacing:0 5px;font-size:13px}
+.mmt th{font-size:10.5px;letter-spacing:.06em;color:#64748B;text-align:right;padding:2px 12px;font-weight:800;text-transform:uppercase}.mmt th:first-child{text-align:left}
+.mmt td{padding:7px 12px;text-align:right;background:#F8FAFC;border-top:1.5px solid #E2E8F0;border-bottom:1.5px solid #E2E8F0}
+.mmt td:first-child{text-align:left;border-left:1.5px solid #E2E8F0;border-radius:11px 0 0 11px;font-weight:800}.mmt td:last-child{border-right:1.5px solid #E2E8F0;border-radius:0 11px 11px 0}
+.mmt .z{color:#CBD5E1}.mmt .dot{display:inline-block;width:9px;height:9px;border-radius:50%;background:#E87722;margin-right:9px}.mmt .dot.f{background:#E2E8F0}
+.mmt .tt{display:flex;align-items:center;gap:8px;justify-content:flex-end;font-weight:800}.mmt .bar{height:8px;border-radius:9px;background:#E87722;display:inline-block}
+.mmt tr.cur td{background:#FFF1E7;border-color:#E87722}.mmt tr.cur td:first-child{border-left-color:#E87722}.mmt tr.cur td:last-child{border-right-color:#E87722}
+.mmt tr.tot td{background:#fff;border:2.5px solid #111827;border-left:0;border-right:0;font-weight:800;font-size:14px}.mmt tr.tot td:first-child{border-left:2.5px solid #111827}.mmt tr.tot td:last-child{border-right:2.5px solid #111827}
+.mmt .pl{background:#FFF1E7;color:#C2410C;border-radius:999px;padding:1px 8px;font-size:10.5px;font-weight:800;margin-left:6px}
+@media(max-width:640px){.mj-sec{order:-1;flex:1 1 100%!important;min-height:0!important}.vwrap{order:1}#day-body .qb{width:46px;height:46px}#view-dashboard{padding-bottom:72px}}
+#mb-nav{display:none}
+@media(max-width:640px){#mb-nav.on{display:grid}}
+#mb-nav{position:fixed;bottom:0;left:0;right:0;z-index:30;background:#fff;border-top:1.5px solid #E2E8F0;grid-template-columns:repeat(4,1fr);padding:6px 4px 10px}
+#mb-nav button{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:11px;font-weight:800;color:#64748B;background:none;border:0;padding:4px 0}
+#mb-nav button i{width:30px;height:30px;border-radius:50%;background:#FFF1E7;color:#E87722;display:inline-flex;align-items:center;justify-content:center;font-size:13px}
+#mb-nav button.main i{background:#E87722;color:#fff}
 /* V2.8 : fiche sans bloc Étape en cours, bouton Dossier perdu */
 #f-stage{display:none!important}
 .zlost{margin-left:auto;display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 14px;border-radius:11px;border:2px solid #DC2626;background:#FEF2F2;color:#B91C1C;font-weight:800;font-size:13.5px}.zlost:hover{background:#FEE2E2}
@@ -419,7 +442,7 @@ input:checked+.ax-lo-a{background:#E87722;border-color:#E87722}input:checked+.ax
 .zsw.late{border-color:#DC2626!important}.zsw.late:before{color:#DC2626}
 .zsw.on{background:#10B981!important;border-color:#10B981!important}.zsw.on:before{color:#fff;opacity:1}
 .itr2{border-radius:14px;padding:8px 10px!important;margin-bottom:8px}
-.itr2.todo{border:2px dashed #EA580C;background:#FFFAF5}.itr2.late{border:2px dashed #DC2626;background:#FFF7F7}
+.itr2.todo{border:1.5px solid #C2410C;background:#FFF1E7}.itr2.late{border:1.5px solid #B42318;background:#FEF1F0}
 .itr2.done{border:1.5px solid #BBF7D0;background:#F8FAFC;padding:5px 10px!important;margin-bottom:5px}.itr2.done .font-bold{text-decoration:line-through;font-weight:700}
 .dfold{border:1.5px solid #A7F3D0;background:#ECFDF5;color:#047857;border-radius:10px;padding:7px 10px;font-size:12px;font-weight:800;display:flex;justify-content:space-between;cursor:pointer;list-style:none;margin:6px 0}.dfold::-webkit-details-marker{display:none}
 .dprog{height:6px;background:#E2E8F0;border-radius:6px;overflow:hidden;margin:0 0 8px}.dprog i{display:block;height:6px;background:#10B981;border-radius:6px}
@@ -466,9 +489,9 @@ input:checked+.ax-lo-a{background:#E87722;border-color:#E87722}input:checked+.ax
 /* tuile KPI sélectionnée */
 #view-dashboard #tiles>button.border-ptk{border:2.5px dashed #0F172A!important;border-radius:16px!important;background:#FFF7ED!important}
 /* Ma journée : une action = un cadre */
-#day-body>div.rounded-xl,#day-body ol>li,#day-body details{border:2.5px dashed #0F172A!important;border-radius:16px!important}
- #day-body ol>li.itr2.todo,#day-body>div.border-orange-200{border:2px dashed #EA580C!important;border-radius:14px!important}
-#day-body ol>li.itr2.late{border:2px dashed #DC2626!important;border-radius:14px!important}
+#day-body>div.rounded-xl,#day-body ol>li,#day-body details{border:2px solid #CBD5E1!important;border-radius:14px!important}
+ #day-body ol>li.itr2.todo,#day-body>div.border-orange-200{border:1.5px solid #C2410C!important;border-radius:14px!important}
+#day-body ol>li.itr2.late{border:1.5px solid #B42318!important;border-radius:14px!important}
 #day-body ol>li.itr2.done{border:1.5px solid #BBF7D0!important;border-radius:10px!important}
 #day-body details.dfd{border:0!important;padding:0!important}
 #day-body ol>li{margin:0 0 8px!important;padding:7px 8px!important;gap:8px!important}#day-body ol>li .pill{display:none!important}#day-body ol>li.itr2 .pill{display:inline-flex!important;gap:4px;align-items:center;font-weight:800}
@@ -730,9 +753,9 @@ input:checked+.ax-lo-a{background:#E87722;border-color:#E87722}input:checked+.ax
         <button type="button" class="zgo-b zgo-b2" onclick="showView('stats')" title="Ouvrir la page des statistiques détaillées"><span>Stats<i class="fas fa-chevron-right"></i></span><small>Page statistiques détaillées</small></button></div>
     </section>
 
-    <section class="relative min-w-0 min-h-[420px] lg:min-h-[300px]" style="flex:0 1 350px">
+    <section class="mj-sec relative min-w-0 min-h-[420px] lg:min-h-[300px]" style="flex:0 1 350px">
       <div class="card frame p-3.5 flex flex-col gap-2 lg:absolute lg:inset-0 h-full cursor-pointer" onclick="dayOpen(event)" title="Cliquer pour ouvrir le détail de la journée">
-        <div class="dbn flex items-center gap-3"><h2 class="h2 !text-lg ftitle ft-j flex-1">Ma journée</h2><button id="todo-t-af" type="button" class="ml-auto rounded-lg px-2.5 h-8 text-[12px] font-extrabold" onclick="event.stopPropagation();setTodo('af')" title="Dossiers à relancer ou sans action prévue"><i class="fas fa-bolt mr-1"></i>À faire · <span id="todo-n-af">0</span></button><button type="button" class="btn btn-g !h-8 !px-2.5 !text-[12px]" onclick="dayOpen()" title="Ouvrir le détail de la journée sur la droite"><i class="fas fa-up-right-and-down-left-from-center"></i><span class="sr-only">Détail</span></button></div><p id="md-date" class="text-xs text-muted -mt-1 ml-1"></p><p id="md-count" class="hidden"></p>
+        <div class="dbn flex items-center gap-3"><h2 class="h2 !text-lg ftitle ft-j flex-1">Ma journée</h2><button type="button" class="hidden sm:inline-flex items-center rounded-lg px-2.5 h-8 text-[12px] font-extrabold text-white" style="background:#E87722" onclick="event.stopPropagation();openNow(true)" title="Traiter vos actions une par une"><i class="fas fa-bolt mr-1"></i>Maintenant</button><button id="todo-t-af" type="button" class="ml-auto rounded-lg px-2.5 h-8 text-[12px] font-extrabold" onclick="event.stopPropagation();setTodo('af')" title="Dossiers à relancer ou sans action prévue"><i class="fas fa-bolt mr-1"></i>À faire · <span id="todo-n-af">0</span></button><button type="button" class="btn btn-g !h-8 !px-2.5 !text-[12px]" onclick="dayOpen()" title="Ouvrir le détail de la journée sur la droite"><i class="fas fa-up-right-and-down-left-from-center"></i><span class="sr-only">Détail</span></button></div><p id="md-date" class="text-xs text-muted -mt-1 ml-1"></p><p id="md-count" class="hidden"></p>
         <div role="tablist" class="grid grid-cols-3 gap-1 rounded-xl bg-slate-100 p-1">
           <button id="todo-t-today" class="tab2" onclick="setTodo('today')">Aujourd'hui <span id="todo-n-today" class="cnt">0</span></button>
           <button id="todo-t-week" class="tab2" onclick="setTodo('week')">Semaine <span id="todo-n-week" class="cnt">0</span></button>
@@ -1001,21 +1024,21 @@ input:checked+.ax-lo-a{background:#E87722;border-color:#E87722}input:checked+.ax
   <nav id="st-tabs" class="flex gap-1.5 overflow-x-auto bg-white border border-slate-200 rounded-2xl p-1.5 w-fit max-w-full" aria-label="Sections des statistiques"></nav>
   <section id="st-pane-a" class="card frame p-5 sm:p-6 flex flex-col gap-5">
     <div class="flex flex-wrap justify-between items-center gap-3">
-      <div><h2 class="h2 !text-lg ftitle">Activité commerciale</h2><p id="sa-range" class="text-xs text-muted mt-0.5 ml-[14px]"></p></div>
-      <div id="sa-period" class="flex flex-wrap gap-1.5 bg-slate-100 rounded-xl p-1"></div>
+      <div class="dbn flex items-center gap-3 flex-wrap w-full"><span class="ax-ib"><i class="fas fa-chart-column"></i></span><h2 class="h2 !text-lg">Activité commerciale</h2><div id="sa-period" class="flex flex-wrap gap-1.5 ml-auto"></div></div>
     </div>
+    <p id="sa-range" class="text-xs text-muted -mt-3 ml-1"></p>
     <div id="sa-custom" class="hidden flex-wrap items-end gap-2 rounded-xl bg-slate-50 p-3">
       <div><label class="lbl" for="sa-du">Du</label><input type="date" id="sa-du" class="inp"></div>
       <div><label class="lbl" for="sa-au">Au</label><input type="date" id="sa-au" class="inp"></div>
       <button class="btn btn-d" onclick="ui.sa={k:'custom',du:$('sa-du').value,au:$('sa-au').value};renderActivity()">Appliquer</button>
     </div>
-    <div id="sa-kpis" class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-2.5"></div>
-    <div id="sa-rdv"></div>
+    <div id="sa-kpis" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5"></div>
+    <div id="sa-more" class="grid grid-cols-2 md:grid-cols-4 gap-2.5"></div>
     <div class="grid lg:grid-cols-[2fr_1fr] gap-4">
-      <div class="flex flex-col gap-1 rounded-2xl border border-slate-200 p-3"><h3 class="text-sm font-bold">Répartition des actions · jour par jour</h3><div class="h-52"><canvas id="sa-c1" role="img" aria-label="Actions réalisées par période"></canvas></div></div>
+      <div class="ax-acc !border-solid flex flex-col gap-1 p-3" style="border-color:#CBD5E1"><h3 class="text-sm font-bold flex items-center gap-2"><span class="ax-ib"><i class="fas fa-chart-column"></i></span>Répartition des actions<span id="sa-c1t" class="ml-auto text-xs font-medium text-muted"></span></h3><div id="sa-c1w" class="h-52 mx-auto w-full"><canvas id="sa-c1" role="img" aria-label="Actions réalisées par période"></canvas></div></div>
       <div id="sa-gps"></div>
     </div>
-    <div id="sa-more" class="grid grid-cols-2 md:grid-cols-5 gap-2.5"></div>
+    <div id="sa-rdv"></div>
   </section>
 
   <section id="st-pane-v" class="hidden card frame p-5 sm:p-6 flex flex-col gap-5">
@@ -1036,8 +1059,9 @@ input:checked+.ax-lo-a{background:#E87722;border-color:#E87722}input:checked+.ax
     </div>
   </section>
   <section id="st-pane-m" class="hidden card frame p-5 sm:p-6 flex flex-col gap-4">
-    <div class="flex flex-wrap justify-between items-center gap-3"><h2 id="st-title2" class="h2 !text-lg ftitle"></h2><button class="btn btn-g" onclick="exportStats()"><i class="fas fa-download"></i>CSV</button></div>
-    <div class="rounded-2xl border border-slate-200 overflow-hidden"><div class="overflow-x-auto"><table class="tbl w-full min-w-[720px]" id="st-table"></table></div></div>
+    <div class="dbn flex items-center gap-3 flex-wrap w-full"><span class="ax-ib"><i class="fas fa-calendar-days"></i></span><h2 id="st-title2" class="h2 !text-lg"></h2><button class="btn btn-g ml-auto" onclick="exportStats()"><i class="fas fa-download"></i>CSV</button></div>
+    <div id="mm-kpis" class="grid grid-cols-2 md:grid-cols-4 gap-2.5"></div>
+    <div class="overflow-x-auto"><table class="mmt w-full min-w-[720px]" id="st-table"></table></div>
   </section>
 </section>
 
@@ -1054,6 +1078,7 @@ input:checked+.ax-lo-a{background:#E87722;border-color:#E87722}input:checked+.ax
 </main>
 
 <!-- Barre d'actions mobile (fiche) -->
+<nav id="mb-nav" aria-label="Navigation téléphone"><button type="button" onclick="showView('dashboard');window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-bell"></i>Jour</button><button type="button" onclick="showView('dashboard');setTimeout(()=>($('tbl-title')||document.body).scrollIntoView({behavior:'smooth'}),80)"><i class="fas fa-folder-open"></i>Dossiers</button><button type="button" class="main" onclick="openNow(true)"><i class="fas fa-bolt"></i>Maintenant</button><button type="button" onclick="showView('stats')"><i class="fas fa-chart-column"></i>Stats</button></nav>
 <nav id="f-mbar" aria-label="Actions rapides" class="hidden lg:hidden fixed bottom-0 inset-x-0 z-30 bg-white border-t border-slate-200 px-2 pt-2 pb-3 grid grid-cols-5 gap-1.5">
   <a id="mb-call" class="qa !h-14"></a>
   <a id="mb-route" target="_blank" rel="noopener" class="qa !h-14"></a>
@@ -1408,6 +1433,7 @@ input:checked+.ax-lo-a{background:#E87722;border-color:#E87722}input:checked+.ax
 <p>L'écran d'accueil réunit trois zones :</p>
 <ul>
 <li><b>Ventes</b> : le chiffre d'affaires signé, l'avancement vers l'objectif et les <b>potentiel à signer</b> (carte jaune « Ce mois-ci » et carte « période au choix »).</li>
+<li><b>Maintenant et vérification (V4.5.60)</b> : le bouton orange <b>Maintenant</b> (Ma journée, ou barre du bas sur téléphone) ouvre vos actions à traiter une par une : retards d'abord, puis aujourd'hui. Mon profil › Sauvegardes › <b>Vérifier mes données</b> compare chaque compteur avec sa liste et signale les écarts (doublons, ventes sans date, rappels sur dossiers clos).</li>
 <li><b>Blocs repliables (V4.5.59)</b> : dans Ventes (Potentiel à signer, Répartition, Indicateurs) et Ma journée (Faites aujourd'hui, Priorités hors planning), cliquez sur une ligne pour l'ouvrir ou la refermer ; le résumé reste lisible à droite et votre choix est retenu sur cet appareil. Ma journée n'affiche que les 2 actions les plus urgentes, « Voir les autres » déplie le reste.</li>
 <li><b>Ma journée et ma semaine</b> : vos rendez-vous et relances, en quatre onglets : <b>Aujourd'hui</b>, <b>Ma semaine</b>, <b>À relancer</b> et <b>À faire</b> (onglet rouge : actions en retard ou sans date).</li>
 <li><b>Les fiches clients</b> : tableau filtrable par étape, avec la prochaine action de chaque dossier.</li>
@@ -1424,6 +1450,7 @@ input:checked+.ax-lo-a{background:#E87722;border-color:#E87722}input:checked+.ax
 <li><b>Verrouillage moins fréquent (V2.9)</b> : le verrouillage automatique passe à <b>2 heures</b> d'inactivité par défaut (choix de 30 min à 8 h dans Paramètres › Profil › Sécurité du compte). Un réglage resté à 10 min ou moins est relevé automatiquement à 2 h une seule fois.</li>
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
+<li><b>V4.5.60</b> : (1) <b>Dernière action exacte</b> : elle tient compte des besoins renseignés, relances ou appels planifiés et contacts ajoutés (plus de « Devis réalisé 2023 » pour une fiche travaillée aujourd'hui) ; le badge de jours reste gris quand une action est planifiée. (2) <b>Répartition par jour</b> : seules les actions <b>traitées</b> comptent, à leur date de traitement ; la planification compte dans « Prises de rendez-vous ». Semaine du lundi au dimanche. (3) <b>Ventes signées</b> : colonne « Date de signature » (tri chronologique, filtre du… au…, repères de mois). (4) <b>Ma journée</b> sans pointillés (cartes teintées). (5) <b>Activité commerciale</b> et <b>Détail mensuel</b> refaits dans le nouveau style. (6) Titre « Portefeuille · Projets de robots en cours ». (7) <b>Nouveautés</b> : bouton <b>Maintenant</b> (enchaîne vos actions à traiter), <b>Vérification des données</b> (Mon profil › Sauvegardes), vue téléphone « Aujourd'hui » avec barre du bas.</li>
 <li><b>V4.5.59</b> : <b>Tableau de bord allégé</b> : Ventes et Ma journée en blocs repliables (le résumé reste visible sur chaque ligne, l'état ouvert/fermé est retenu), graphique agrandi, Ma journée n'affiche que les 2 actions les plus urgentes + « Voir les autres ». <b>Options et Profil</b> : même style que le reste (cartes à pastille, bandeaux numérotés), contenus et fonctions inchangés.</li>
 <li><b>V4.5.58</b> : <b>Une seule définition de « sans action » partout</b> (pastille « Sans action &gt; 30 j », sa liste, la priorité du jour) : dossier actif <b>sans aucune action prévue</b> (prochaine action de la fiche ou rappel) <b>et</b> sans action réalisée depuis plus de 30 jours. Avant, une action prévue sur la fiche ne comptait pas, d’où l’écart entre le tableau de bord et la fiche. Une tentative « sans réponse » compte désormais comme une action (dernière action). « RDV 7 j » tient aussi compte des rappels, comme la fiche.</li>
 <li><b>V4.5.57</b> : <b>Tableau de bord aligné sur les maquettes</b> : titres encadrés de noir avec icône (Ventes, Ma journée, Où en sont mes dossiers ?, Portefeuille) ; trois cartes colorées en tête des ventes (Signé, À signer, Objectif) qui suivent le choix 1 / 3 / 6 / 12 mois ; « Où en sont mes dossiers ? » avec son total ; le doublon du CA signé dans la colonne de gauche est retiré.</li>
@@ -1952,6 +1979,8 @@ input:checked+.ax-lo-a{background:#E87722;border-color:#E87722}input:checked+.ax
   <div id="ls-body" class="dlg-body"></div>
 </dialog>
 
+<dialog id="dlg-chk" class="!w-[min(560px,96vw)]"><div class="p-4 relative"><button class="dlg-x absolute right-3 top-3" onclick="closeDlg('dlg-chk')" aria-label="Fermer"><i class="fas fa-xmark"></i></button><div id="chk-body"></div></div></dialog>
+
 <dialog id="dlg-op">
   <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-center">
     <h3 class="font-bold flex items-center gap-2"><i class="fas fa-tags text-ptkd"></i>Opération commerciale Pharmathek</h3>
@@ -2222,7 +2251,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.5.59';
+const APP_VERSION = '4.5.60';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2633,7 +2662,7 @@ const isActive = c => ORDER.includes(c.step);
 /* V4.5.42 : dernière action = la plus récente (et non la première ligne de l'historique, parfois plus ancienne) */
 const lastAction = (c, a) => { if (a?.lastActionDate) return a.lastActionDate; let b = null, bt = -1; const T = s => { const d = s && parseD(s); return d && !isNaN(d) ? +d : -1; };
   /* V4.5.46 : seules comptent les actions réellement faites (réalisées) ; les mouvements administratifs de la fiche (chance, étape, devis importé, création…) ne sont plus pris pour une action */
-  const cand = [...(c.history || []).filter(h => /réalisé|sans réponse/i.test(h.action || '')).map(h => h.date), c.lastDone ? c.lastDone.dt : null, ...(c.rappels || []).filter(r => r.done).map(r => r.doneAt), ...(c.acts || []).filter(x => x.done).map(x => x.dt)];
+  const cand = [...(c.history || []).filter(h => (/réalisé|sans réponse|planifié|renseigné|Contact ajouté/i.test(h.action || '') && !/Repris du fichier|fiabilisé/i.test((h.details || '') + ' ' + (h.action || '')))).map(h => h.date), c.lastDone ? c.lastDone.dt : null, ...(c.rappels || []).filter(r => r.done).map(r => r.doneAt), ...(c.acts || []).filter(x => x.done).map(x => x.dt)];
   cand.forEach(s => { const t = T(s); if (t > bt && t <= Date.now() + 36e5) { bt = t; b = s; } }); return b || c.history[0]?.date || null; };
 /* V4.5.58 : définition UNIQUE de « sans action » (tableau de bord, listes, pastilles, priorités) :
    dossier actif SANS action prévue (prochaine action de la fiche OU rappel ouvert) ET dont la dernière action réalisée (ou tentative sans réponse) date de plus de `lim` jours */
@@ -2818,7 +2847,7 @@ function showView(v) {
   if (rec) rec.stop();
   closeColPop(); $('gs-res').classList.add('hidden');
   ['dashboard', 'client', 'stats', 'profile'].forEach(k => { const el = $('view-' + k); el.classList.toggle('hidden', k !== v); el.classList.toggle('flex', k === v); });
-  $('f-mbar').classList.toggle('hidden', v !== 'client');
+  $('f-mbar').classList.toggle('hidden', v !== 'client'); $('mb-nav').classList.toggle('on', v === 'dashboard');
   $('nav-dashboard').className = 'btn ' + (v === 'dashboard' ? 'btn-d' : 'btn-g');
   $('nav-profile').classList.toggle('!border-ink', v === 'profile');
   if (v === 'dashboard') { renderDashboard(); syncDraw(); }
@@ -3058,6 +3087,38 @@ function weekItems() {
   return out.sort((a, b) => a.dt.localeCompare(b.dt));
 }
 function relanceDays(c) { return ECH(c)?.rappel || 30; }
+/* V4.5.60 : « Faire maintenant » = enchaîne les actions à traiter (retards puis aujourd'hui), une fenêtre à la fois */
+function nowQueue() { return [...lateItems().filter(x => x.d && x.type), ...dayItems().filter(x => !x.done)].filter(x => x.rap || (x.c.nextDate && x.c.nextDate === x.dt)); }
+function openNow(first) {
+  const q = nowQueue();
+  if (!q.length) { ui.nowOn = false; toast(first ? 'Rien à traiter maintenant' : 'Tout est traité'); return; }
+  if (first) ui.nowLast = null;
+  ui.nowOn = true; ui.nowLast = q.length; const x = q[0];
+  traiter(x.rap ? 'rap' : 'next', x.c.id, x.rap);
+  $('tr-sub').insertAdjacentHTML('beforeend', `<br><b style="color:#C2410C">⚡ Faire maintenant · ${q.length} à traiter</b>`);
+}
+document.addEventListener('close', e => { if (!ui.nowOn || !e.target || e.target.tagName !== 'DIALOG') return; setTimeout(() => { if (!ui.nowOn || document.querySelector('dialog[open]')) return; const n = nowQueue().length; if (n && n < ui.nowLast) openNow(false); else ui.nowOn = false; }, 450); }, true);
+/* V4.5.60 : contrôle de cohérence (compteurs / listes / fiches) */
+function checkData() {
+  const R = [], ok = (t, s) => R.push({ok: 1, t, s}), ko = (t, s, fn, lab, fix) => R.push({ko: 1, t, s, fn, lab, fix});
+  const num = l => { const b = [...document.querySelectorAll('#pipe-stats .vk')].find(x => x.textContent.startsWith(l)); return b ? +b.querySelector('b').textContent : null; };
+  renderPipeline && renderPipeline();
+  [['Actifs', 'actifs'], ['RDV 7', 'rdv7'], ['RDV à fixer', 'afixer'], ['Sans action', 'idle']].forEach(([lab, k]) => { const n = num(lab), m = LISTS[k]().rows.length; n === m ? ok(`${lab} · ${m}`, 'compteur = liste') : ko(`${lab} : compteur ${n} ≠ liste ${m}`, 'Écart entre le tableau de bord et sa liste'); });
+  const pc = [...document.querySelectorAll('#pipeline .pc-n')].reduce((a, x) => a + +x.textContent, 0), na = clients.filter(isActive).length; pc === na ? ok(`Pipeline · ${na} dossiers`, 'total des étapes = dossiers actifs') : ko(`Pipeline ${pc} ≠ actifs ${na}`, 'Écart');
+  const dead = clients.filter(c => !isActive(c) && (c.rappels || []).some(r => !r.done)); if (dead.length) ko(`${dead.length} fiche${dead.length > 1 ? 's' : ''} signée${dead.length > 1 ? 's' : ''} ou perdue${dead.length > 1 ? 's' : ''} avec des rappels encore ouverts`, dead.slice(0, 3).map(c => c.pharma).join(', '), () => openClient(dead[0].id), 'Ouvrir', () => { dead.forEach(c => { c.rappels = (c.rappels || []).filter(r => r.done); }); save(); }); else ok('Rappels', 'aucun rappel ouvert sur un dossier clos');
+  const nd = clients.filter(c => c.step === 'Signé' && !c.signatureDate); nd.length ? ko(`${nd.length} vente${nd.length > 1 ? 's' : ''} sans date de signature`, nd.slice(0, 3).map(c => c.pharma).join(', '), () => openClient(nd[0].id), 'Ouvrir') : ok('Ventes signées', 'toutes ont une date de signature');
+  const seen = {}, dup = []; clients.forEach(c => { const k = (c.cip && 'c' + c.cip) || (c.pharma + '|' + c.cp).toLowerCase(); if (seen[k]) dup.push([seen[k], c]); else seen[k] = c; }); dup.length ? ko(`${dup.length} doublon${dup.length > 1 ? 's' : ''} possible${dup.length > 1 ? 's' : ''}`, dup.slice(0, 3).map(d => d[1].pharma).join(', '), () => openClient(dup[0][1].id), 'Ouvrir') : ok('Doublons', 'aucune pharmacie en double');
+  const late = lateItems().filter(x => x.d).length; late ? ko(`${late} action${late > 1 ? 's' : ''} en retard à traiter`, 'Ce ne sont pas des erreurs de données, mais des actions à faire', () => { closeDlg('dlg-chk'); openNow(true); }, 'Faire maintenant') : ok('Actions en retard', 'aucune');
+  return R;
+}
+function openCheck() {
+  const R = checkData(); ui.chk = R; const nK = R.filter(r => r.ko).length, nF = R.filter(r => r.fix).length;
+  $('chk-body').innerHTML = `<div class="dbn flex items-center gap-3 mr-11"><span class="ax-ib"><i class="fas fa-shield-halved"></i></span><h3 class="font-extrabold text-[17px]">Vérification des données</h3><span class="axp ${nK ? 'warn' : 'ok'}">${nK ? nK + ' point' + (nK > 1 ? 's' : '') + ' à voir' : 'Tout est cohérent'}</span></div>
+    <p class="text-xs text-muted mt-2 mb-1">Compare chaque compteur du tableau de bord avec sa liste et avec les fiches.</p>
+    ${R.map((r, i) => `<div class="flex items-center gap-2.5 rounded-xl px-3 py-2 mt-2 border-[1.5px]" style="${r.ok ? 'border-color:#A7F3D0;background:#F0FDF8' : 'border-color:#B42318;background:#FEF1F0'}"><span>${r.ok ? '✔' : '⚠'}</span><div class="flex-1 min-w-0"><b class="text-[13px]">${esc(r.t)}</b><div class="text-[11.5px] text-muted">${esc(r.s)}</div></div>${r.fn ? `<button class="btn btn-g !h-8 !px-3 !text-[12px]" onclick="ui.chk[${i}].fn()">${r.lab}</button>` : ''}</div>`).join('')}
+    <div class="flex gap-2 mt-3">${nF ? `<button class="btn btn-ok" onclick="ui.chk.filter(r=>r.fix).forEach(r=>r.fix());toast('Corrigé');openCheck()">Tout corriger (${nF})</button>` : ''}<button class="btn btn-g" onclick="openCheck()">Relancer le contrôle</button></div>`;
+  $('dlg-chk').showModal();
+}
 function lateItems() {
   const planned = clients.filter(c => c.nextDate && c.step !== 'Perdu' && parseD(c.nextDate) < TODAY).map(c => ({c, d: parseD(c.nextDate), dt: c.nextDate, type: c.nextType || 'relance', why: `${(ACTIONS[c.nextType] || ACTIONS.relance).label.toLowerCase()} prévu(e) le ${fmtD(c.nextDate)} non réalisé(e)`}));
   const idle = clients.filter(c => isActive(c) && !effNext(c).nextDate && daysSince(lastAction(c)) > relanceDays(c)).map(c => ({c, d: null, why: `${daysSince(lastAction(c))} j sans action · rythme ${ECH(c) ? lc1(ECH(c).label) : 'par défaut'} : ${relanceDays(c)} j`}));
@@ -3435,14 +3496,33 @@ const LISTS = {
   prob: i => { const tM = TODAY.getFullYear() * 12 + TODAY.getMonth(), inB = ds => { const d = parseD(ds); if (!d) return false; const k = d.getFullYear() * 12 + d.getMonth() - tM; return (k <= 0 ? 0 : k <= 3 ? 1 : k <= 6 ? 2 : -1) === i; };
     return {t: `Signatures probables · ${['ce mois-ci', 'M+1 à M+3', 'M+4 à M+6'][i]}`, i: 'fa-pen-nib', rows: [...clients.filter(c => isActive(c) && inB(c.dateDecision)).map(c => ({c, info: `Décision le ${fmtD(c.dateDecision)}`})), ...clients.flatMap(c => c.addons.filter(a => a.statut !== 'signe' && inB(a.date)).map(a => ({c, info: `Add-on : ${a.quoi} · décision ${fmtD(a.date)}`, m: a.montant})))]}; },
   probR: () => ({t: 'Signatures probables · période choisie', i: 'fa-pen-nib', rows: sigItems(sigPeriod()).sort((a, b) => a.d - b.d).map(x => ({c: x.c, info: x.info, m: x.add ? x.m : undefined}))}),
-  signes: () => { const {rob, add} = yearData(); return {t: `Ventes signées ${ui.year}`, i: 'fa-file-signature', rows: [...rob.map(c => ({c, info: `${(c.robots || []).join(', ')} · signé le ${fmtD(c.signatureDate)}`})), ...add.map(x => ({c: x.c, info: `Add-on : ${x.a.quoi} · ${fmtD(x.a.date)}`, m: x.a.montant}))]}; },
+  signes: () => { const {rob, add} = yearData(); return {t: `Ventes signées ${ui.year}`, i: 'fa-file-signature', rows: [...rob.map(c => ({c, sd: c.signatureDate, info: (c.robots || []).join(', ')})), ...add.map(x => ({c: x.c, sd: x.a.date, info: `Add-on : ${x.a.quoi}`, m: x.a.montant}))]}; },
   sintesi: () => ({t: `SINTESI signés ${ui.year}`, i: 'fa-robot', rows: yearData().rob.filter(c => famOf(c) === 'SINTESI').map(c => ({c, info: `${(c.robots || []).join(', ')} · signé le ${fmtD(c.signatureDate)}`}))}),
   robots: () => ({t: `Robots signés ${ui.year}`, i: 'fa-robot', rows: yearData().rob.map(c => ({c, info: `${(c.robots || []).join(', ')} · signé le ${fmtD(c.signatureDate)}`}))}),
   conv: () => { const {rob, lost} = yearData(); return {t: `Signés et perdus ${ui.year}`, i: 'fa-scale-balanced', rows: [...rob.map(c => ({c, info: `Signé le ${fmtD(c.signatureDate)}`})), ...lost.map(c => ({c, info: `${c.perduMotif === 'Perdu contre' ? 'Perdu contre ' + c.perduConcurrent : 'Abandonné'} · ${fmtD(c.perduDate)}`}))]}; },
   jour: t => { const its = dayItems().filter(x => !t || x.type === t); return {t: t ? `Aujourd'hui · ${ACTIONS[t].label}` : "Actions d'aujourd'hui", i: 'fa-calendar-day', rows: its.map(x => ({c: x.c, info: `${fmtHM(x.dt)} · ${(ACTIONS[x.type] || ACTIONS.relance).label}${x.done ? ' · fait' : ''}`}))}; }
 };
+const sgBtns = cid => { const c = byId(cid), tel = c.telPort || c.telFixe; return (tel ? `<a class="qb" href="${telUrl(c)}" title="Appeler ${esc(tel)}" aria-label="Appeler">${ic('phone', 16)}</a>` : `<span class="qb opacity-30">${ic('phone', 16)}</span>`) + (c.email ? `<a class="qb" href="${mailUrl(c, 'Pharmathek — votre projet', '')}" title="Écrire à ${esc(c.email)}" aria-label="E-mail">${ic('mail', 16)}</a>` : `<span class="qb opacity-30">${ic('mail', 16)}</span>`); };
+const sgS = {dir: 1, q: '', du: '', au: ''};
+function sgSet(o) { Object.assign(sgS, o); showList('signes'); }
 function showList(k, arg) {
-  const L = LISTS[k](arg), rows = L.rows;
+  const L = LISTS[k](arg); let rows = L.rows;
+  if (k === 'signes') {
+    rows = rows.filter(r => (!sgS.q || (r.c.pharma + ' ' + (r.c.ville || '')).toLowerCase().includes(sgS.q.toLowerCase())) && (!sgS.du || (r.sd || '') >= sgS.du) && (!sgS.au || (r.sd || '') <= sgS.au)).sort((a, b) => sgS.dir * String(a.sd || '').localeCompare(String(b.sd || '')));
+    $('ls-title').innerHTML = `<i class="fas ${L.i} text-ptkd"></i>${esc(L.t)}`;
+    $('ls-sub').textContent = `${rows.length} vente${rows.length > 1 ? 's' : ''} · cliquez sur « Date de signature » pour inverser le tri · cliquez une ligne pour ouvrir la fiche`;
+    const stpS = c => c.step === 'Signé' ? '<span class="pill bg-emerald-50 text-emerald-900">Signé</span>' : stepPill(c.step, true);
+    let cm = '';
+    const body = rows.map(r => { const c = r.c, d = r.sd ? parseD(r.sd) : null, mk = d ? cap1(d.toLocaleDateString('fr-FR', {month: 'long', year: 'numeric'})) : 'Sans date', head = mk !== cm ? `<tr class="sgm"><td colspan="6">${esc(mk.toUpperCase())}</td></tr>` : ''; cm = mk;
+      return head + `<tr class="hover:bg-orange-50/40 cursor-pointer" onclick="closeDlg('dlg-list');openClient(${c.id})">
+      <td><div class="flex items-center gap-2.5">${cIco(c, 30)}<div><div class="font-semibold">${esc(c.pharma)}</div><div class="text-xs text-muted">${esc(c.ville)}${r.info ? ' · <span class="text-slate-700">' + esc(r.info) + '</span>' : ''}</div></div></div></td>
+      <td>${stpS(c)}</td><td><span class="sgd">${r.sd ? fmtD(r.sd) : '—'}</span></td><td>${lastCell(c)}</td>
+      <td class="text-right font-semibold tabular-nums whitespace-nowrap">${eur(r.m ?? c.montant)}</td>
+      <td class="text-right pr-4" onclick="event.stopPropagation()"><div class="flex gap-1 justify-end">${sgBtns(c.id)}</div></td></tr>`; }).join('');
+    $('ls-body').innerHTML = `<div class="sgb"><input class="inp" placeholder="Rechercher une pharmacie…" value="${esc(sgS.q)}" oninput="sgS.q=this.value;clearTimeout(window._sgT);window._sgT=setTimeout(()=>{sgSet({});const i=document.querySelector('.sgb .inp');i.focus();i.setSelectionRange(99,99)},350)"><span>Signé du</span><input type="date" class="inp" value="${sgS.du}" onchange="sgSet({du:this.value})"><span>au</span><input type="date" class="inp" value="${sgS.au}" onchange="sgSet({au:this.value})"><button class="btn btn-g !h-9" onclick="sgS.q='';sgS.du='';sgS.au='';showList('signes')">Effacer</button><span class="ml-auto">Tri : <b style="color:#C2410C">date de signature ${sgS.dir > 0 ? '▲ (du plus ancien)' : '▼ (du plus récent)'}</b></span></div>
+      ${rows.length ? `<div class="overflow-x-auto"><table class="tbl w-full min-w-[820px]"><thead><tr><th><span class="block px-2.5 py-3 pl-5">Pharmacie</span></th><th><span class="block px-2.5 py-3">Étape</span></th><th class="sgh" onclick="sgSet({dir:-sgS.dir})"><span class="block px-2.5 py-3">Date de signature ${sgS.dir > 0 ? '▲' : '▼'}</span></th><th><span class="block px-2.5 py-3">Dernière action</span></th><th class="text-right"><span class="block px-2.5 py-3">Montant</span></th><th class="text-right"><span class="block px-2.5 py-3 pr-4">Contact</span></th></tr></thead><tbody>${body}</tbody></table></div>` : '<p class="py-12 text-center text-sm text-muted">Aucune vente sur ces critères</p>'}`;
+    $('dlg-list').showModal(); return;
+  }
   $('ls-title').innerHTML = `<i class="fas ${L.i} text-ptkd"></i>${esc(L.t)}`;
   $('ls-sub').textContent = `${rows.length} dossier${rows.length > 1 ? 's' : ''} · cliquez une ligne pour ouvrir la fiche`;
   const stp = c => isActive(c) ? stepPill(c.step, true) : c.step === 'Signé' ? '<span class="pill bg-emerald-50 text-emerald-900">Signé</span>' : '<span class="pill bg-rose-50 text-rose-800">Perdu</span>';
@@ -3462,12 +3542,12 @@ const intCell = v => { const [l, col, , fg] = INTEREST[v || ''] || INTEREST[''];
 const SITU = {cession: 'En cours de cession', associe: 'Reprise par un associé', creation: 'Ouverture / création'};
 const pharmaCell = (c, dep) => `<div class="font-semibold whitespace-nowrap">${dep && depOf(c) ? `<span class="depb" title="Département">${depOf(c)}</span>` : ''}${esc(c.pharma)}${cesPill(c, 1)}${c.situation && !c.cession?.on ? ` <span class="pill" style="background:#EEF2FC;color:#1E3A8A;font-size:10px;padding:1px 7px" title="${esc(SITU[c.situation])}">${c.situation === 'cession' ? 'Cession' : c.situation === 'associe' ? 'Associé' : 'Création'}</span>` : ''}</div><div class="text-xs text-muted pc-a" title="${esc(addr(c))}">${esc(addr(c))}</div>`;
 const cipCell = c => `<span class="font-mono text-indigo-900">${esc(c.cip || '—')}</span>`;
-function agePill(n) {
+function agePill(n, calm) {
   if (n == null) return '';
-  const [bg, fg] = n > 30 ? ['#FDECEC', '#B42318'] : n > 10 ? ['#FEF6E4', '#7A5208'] : ['#E8F5EE', '#14603F'];
+  const [bg, fg] = calm ? ['#F1F5F9', '#475569'] : n > 30 ? ['#FDECEC', '#B42318'] : n > 10 ? ['#FEF6E4', '#7A5208'] : ['#E8F5EE', '#14603F'];
   return `<span class="pill" style="background:${bg};color:${fg}">${n} j</span>`;
 }
-const lastCell = (c, a) => { const d = lastAction(c, a); return d ? `<span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="tabular-nums">${fmtD(d)}</span>${agePill(daysSince(d))}</span>` : '—'; };
+const lastCell = (c, a) => { const d = lastAction(c, a); return d ? `<span class="inline-flex items-center gap-2 whitespace-nowrap"><span class="tabular-nums">${fmtD(d)}</span>${agePill(daysSince(d), !!(c && !a && effNext(c).nextDate))}</span>` : '—'; };
 function decCell(ds) {
   if (!ds) return '<span class="text-rose-700 font-semibold">À fixer</span>';
   const n = -daysSince(ds);
@@ -3790,7 +3870,7 @@ const nextB = c => { c = effNext(c); if (!c.nextDate) return NEXT_B[4]; const d 
 const money = (f, col = '#0F172A') => ({l: 'Montant', v: f, t: r => eur(f(r)), h: r => `<b style="color:${col}">${eur(f(r))}</b>`, cls: 'text-right', b: r => moneyB(f(r)), bo: MONEY_B, money: true});
 
 const TABLES = {
-  portfolio: {label: 'Portefeuille', icon: 'fa-briefcase', desc: () => 'Projets robots en cours de négociation', file: 'portefeuille_en_cours', sort: {i: 7, asc: true},
+  portfolio: {label: 'Portefeuille', icon: 'fa-briefcase', desc: () => 'Projets de robots en cours', file: 'portefeuille_en_cours', sort: {i: 7, asc: true},
     rows: () => clients.filter(isActive), total: r => sum(r, c => c.montant),
     cols: [
       {l: 'Chance', v: c => -chOf(c), t: c => chOf(c) ? chOf(c) + ' %' : '—', h: c => { if (chOf(c)) return chancePill(c); if (!c.indicateur) return '<span class="pill" style="background:#F1F5F9;color:#94A3B8">—</span>'; const [l, col] = INTEREST[c.indicateur || ''] || INTEREST['']; return `<span title="Intérêt : ${l}" class="inline-block rounded-full align-middle" style="width:14px;height:14px;background:${col}"></span>`; }, bo: ['75 %', '50 %', '25 %', 'À renseigner']},
@@ -4100,10 +4180,10 @@ function saRange() {
 }
 function saActs(s, e) {
   const now = new Date(), out = [];
-  clients.forEach(c => (c.acts || []).forEach(a => { if (a.done === false && a.dt !== c.nextDate) return; const d = parseD(a.dt); if (d >= s && d < e && d <= now) out.push({c, ...a, d}); }));
+  clients.forEach(c => (c.acts || []).forEach(a => { if (a.done === false) return; const d = parseD(a.dt); if (d >= s && d < e && d <= now) out.push({c, ...a, d}); }));
   /* V4.2 : les actions planifiées/traitées comme « rappels » (relance, rappel, appel, visite, visio, e-mail) comptent aussi */
   const RA = {relance: 'suivi', rappel: 'suivi', appel: 'relance', visite: 'visite', visio: 'teams', mail: 'mail'};
-  clients.forEach(c => (c.rappels || []).forEach(r => { const d = parseD(r.done && r.doneAt ? r.doneAt : r.dt); if (d && d >= s && d < e && d <= now && RA[r.type]) out.push({c, dt: r.done && r.doneAt ? r.doneAt : r.dt, type: RA[r.type], motif: r.note || '', done: !!r.done, d}); }));
+  clients.forEach(c => (c.rappels || []).forEach(r => { if (!r.done) return; const d = parseD(r.doneAt || r.dt); if (d && d >= s && d < e && d <= now && RA[r.type]) out.push({c, dt: r.done && r.doneAt ? r.doneAt : r.dt, type: RA[r.type], motif: r.note || '', done: !!r.done, d}); }));
   return out.sort((a, b) => a.d - b.d);
 }
 const saHist = (s, e, rx) => sum(clients, c => (c.history || []).filter(h => { const d = parseD(h.date); return d >= s && d < e && rx.test(h.action); }).length);
@@ -4120,7 +4200,7 @@ function rdvList(s, e) {
 }
 function renderActivity() {
   const P = ui.sa || {k: 'week'};
-  $('sa-period').innerHTML = SA_P.map(([k, l]) => `<button class="h-9 px-3 rounded-lg text-[13px] font-semibold ${P.k === k ? 'bg-white text-ink shadow-sm' : 'text-muted hover:text-ink'}" onclick="ui.sa={k:'${k}',du:'${P.du || ''}',au:'${P.au || ''}'};renderActivity()">${l}</button>`).join('');
+  $('sa-period').innerHTML = SA_P.map(([k, l]) => `<button class="chip ${P.k === k ? 'on' : ''}" onclick="ui.sa={k:'${k}',du:'${P.du || ''}',au:'${P.au || ''}'};renderActivity()">${l}</button>`).join('');
   $('sa-custom').classList.toggle('hidden', P.k !== 'custom'); $('sa-custom').classList.toggle('flex', P.k === 'custom');
   if (P.k === 'custom') { $('sa-du').value = P.du || ''; $('sa-au').value = P.au || ''; }
   const {s, e, ps, pe} = saRange(), last = new Date(e.getTime() - 864e5);
@@ -4128,15 +4208,14 @@ function renderActivity() {
   const A = saActs(s, e), B = saActs(ps, pe);
   const types = ['visite', 'teams', 'relance', 'suivi', 'mail'].filter(t => t !== 'teams' || opt('teams'));
   const delta = (n, p) => { const d = n - p; return d === 0 ? '<span class="text-muted text-[11px]">=</span>' : `<span class="text-[11px] font-bold" style="color:${d > 0 ? '#14603F' : '#B42318'}">${d > 0 ? '▲ +' : '▼ '}${d}</span>`; };
-  const card = (icon, fg, bg, l, n, p, sub) => `<div class="rounded-xl border border-slate-200 bg-white px-3 py-2" style="border-left:4px solid ${fg}"><div class="kicker !text-[10.5px]">${l}</div><div class="flex items-baseline gap-1.5"><span class="text-[22px] font-bold leading-tight">${n}</span>${delta(n, p)}</div>${sub ? `<div class="text-[10.5px] text-muted">${sub}</div>` : ''}</div>`;
+  const card = (icon, fg, bg, l, n, p, sub) => `<div class="rounded-xl px-3 py-2" style="border:1.5px solid ${fg};background:${bg}"><div class="kicker !text-[10.5px]" style="color:${fg}">${l}</div><div class="flex items-baseline gap-1.5"><span class="text-[22px] font-bold leading-tight">${n}</span>${delta(n, p)}</div>${sub ? `<div class="text-[10.5px] text-muted">${sub}</div>` : ''}</div>`;
   $('sa-kpis').innerHTML = card(`<i class="fas fa-layer-group"></i>`, '#0F172A', '#F1F3F6', 'Total des actions', A.length, B.length, 'vs période précédente')
-    + types.map(t => card(ic(ACTIONS[t].icon, 16), ACTIONS[t].fg, ACTIONS[t].bg, ({visite: 'Visites sur site', teams: 'Visios Teams', relance: 'Appels', suivi: 'Relances', mail: 'E-mails'})[t], A.filter(a => a.type === t).length, B.filter(a => a.type === t).length)).join('');
+    + types.map(t => card(ic(ACTIONS[t].icon, 16), ACTIONS[t].fg, ACTIONS[t].bg, ({visite: 'Visites', teams: 'Visios', relance: 'Appels', suivi: 'Relances', mail: 'E-mails'})[t], A.filter(a => a.type === t).length, B.filter(a => a.type === t).length)).join('');
   { const R = rdvList(s, e), RB = rdvList(ps, pe), nv = R.filter(x => x.type === 'visite').length, nt = R.length - nv, d = R.length - RB.length;
     const k2 = (l, n, col) => `<div class="rounded-xl border border-slate-200 bg-white px-3 py-2 flex-1" style="border-left:4px solid ${col}"><div class="kicker !text-[10.5px]">${l}</div><div class="text-[22px] font-bold leading-tight">${n}</div></div>`;
     ui._rdvN = R.length; ui._rdvB = RB.length;
-    $('sa-rdv').innerHTML = `<div class="rounded-2xl p-4 flex flex-col gap-3" style="border:2px solid #6D28D9;background:#F5F3FF"><div class="flex items-baseline gap-2 flex-wrap"><h3 class="text-[15px] font-extrabold" style="color:#5B21B6"><i class="fas fa-calendar-plus mr-1.5"></i>Prises de rendez-vous</h3><span class="text-xs text-muted">rendez-vous créés sur la période (visite sur site ou visio), comptés le jour où vous les planifiez</span></div>
-      <div class="flex gap-2.5 flex-wrap"><div class="rounded-xl border bg-white px-3 py-2 flex-[1.3] min-w-[150px]" style="border-left:4px solid #6D28D9;border-color:#DDD6FE"><div class="kicker !text-[10.5px]">RDV pris</div><div class="flex items-baseline gap-1.5"><span class="text-[30px] font-extrabold leading-tight" style="color:#5B21B6">${R.length}</span>${delta(R.length, RB.length)}</div><div class="text-[10.5px] text-muted">vs période précédente</div></div>${k2('Visites sur site', nv, '#C2410C')}${k2('Visios Teams', nt, '#6366F1')}</div>
-      ${R.length ? `<div class="overflow-auto max-h-56"><table class="w-full text-[12.5px]"><thead><tr class="text-left text-[10.5px] text-muted uppercase"><th class="py-1">Pris le</th><th>Pharmacie</th><th>Type</th><th>RDV prévu</th></tr></thead><tbody>${R.slice(0, 40).map(x => `<tr class="border-t border-violet-100 cursor-pointer" onclick="openClient(${x.c.id})"><td class="py-1.5 tabular-nums whitespace-nowrap">${x.d.toLocaleDateString('fr-FR', {day: '2-digit', month: '2-digit'})} ${pad(x.d.getHours())}:${pad(x.d.getMinutes())}</td><td class="font-bold">${esc(x.c.pharma)}</td><td><span class="pill" style="background:${x.type === 'teams' ? '#E0E7FF;color:#3730A3' : '#FFEDD5;color:#9A3412'}">${x.type === 'teams' ? 'Visio' : 'Visite'}</span></td><td>${esc(x.prevu || '—')}</td></tr>`).join('')}</tbody></table>${R.length > 40 ? `<p class="text-[11px] text-muted mt-1">… et ${R.length - 40} autres</p>` : ''}</div>` : '<p class="text-[12.5px] text-muted">Aucun rendez-vous pris sur cette période.</p>'}</div>`; }
+    const lst = R.length ? `<div class="overflow-auto max-h-56"><table class="w-full text-[12.5px]"><thead><tr class="text-left text-[10.5px] text-muted uppercase"><th class="py-1">Pris le</th><th>Pharmacie</th><th>Type</th><th>RDV prévu</th></tr></thead><tbody>${R.slice(0, 40).map(x => `<tr class="border-t border-slate-100 cursor-pointer" onclick="openClient(${x.c.id})"><td class="py-1.5 tabular-nums whitespace-nowrap">${x.d.toLocaleDateString('fr-FR', {day: '2-digit', month: '2-digit'})} ${pad(x.d.getHours())}:${pad(x.d.getMinutes())}</td><td class="font-bold">${esc(x.c.pharma)}</td><td><span class="pill" style="background:${x.type === 'teams' ? '#E0E7FF;color:#3730A3' : '#FFEDD5;color:#9A3412'}">${x.type === 'teams' ? 'Visio' : 'Visite'}</span></td><td>${esc(x.prevu || '—')}</td></tr>`).join('')}</tbody></table>${R.length > 40 ? `<p class="text-[11px] text-muted mt-1">… et ${R.length - 40} autres</p>` : ''}</div>` : '<p class="text-[12.5px] text-muted">Aucun rendez-vous pris sur cette période.</p>';
+    $('sa-rdv').innerHTML = accHtml('a-rdv', 'fa-calendar-plus', 'Prises de rendez-vous', `${R.length} RDV pris · ${nv} visite${nv > 1 ? 's' : ''} · ${nt} visio${nt > 1 ? 's' : ''} ${d === 0 ? '' : (d > 0 ? '▲ +' : '▼ ') + d}`, `<p class="text-xs text-muted mb-2">Rendez-vous créés sur la période (visite sur site ou visio), comptés le jour où vous les planifiez · comparé à la période précédente : ${RB.length}</p>${lst}`); }
   const more = (l, n, p) => `<div class="rounded-xl bg-slate-50 px-4 py-3"><div class="text-xs font-semibold text-muted">${l}</div><div class="text-xl font-bold">${n}</div><div class="text-[11px]">${delta(n, p)}</div></div>`;
   const inR = (ds, a, b) => { const d = parseD(ds); return d && d >= a && d < b; };
   const sub = (l, n, p, txt, ic, bg, fg) => `<div class="rounded-xl border border-slate-200 bg-white px-3 py-2 flex items-center gap-2.5" style="${ic === 'fa-triangle-exclamation' && n ? 'border-color:#FCA5A5;background:#FEF2F2' : ''}"><span class="w-8 h-8 rounded-lg inline-flex items-center justify-center shrink-0" style="background:${bg};color:${fg}"><i class="fas ${ic}"></i></span><span class="text-[22px] font-bold leading-none">${n}</span><span class="text-[12px] text-slate-600 leading-tight">${txt}</span></div>`;
@@ -4146,7 +4225,6 @@ function renderActivity() {
   $('sa-more').innerHTML = sub('Pharmacies visitées', phs, visB.length, `pharmacie${phs > 1 ? 's' : ''} visitée${phs > 1 ? 's' : ''} · ${nbj ? (vis.length / nbj).toFixed(1).replace('.', ',') : '0'} / jour ouvré`, 'fa-location-dot', '#FFEDD5', '#C2410C')
     + sub('Sans déplacement', sans.length, sansB.length, 'sans déplacement (appels, relances, visios)', 'fa-headset', '#E0F2FE', '#0369A1')
     + sub('Actions traitées', A.filter(a => a.done !== false).length, B.filter(a => a.done !== false).length, 'actions traitées', 'fa-circle-check', '#E8F5EE', '#14603F')
-    + sub('RDV pris', ui._rdvN || 0, ui._rdvB || 0, 'RDV pris (visites et visios planifiées)', 'fa-calendar-plus', '#EDE9FE', '#5B21B6')
     + sub('Actions en retard', lateN, null, lateN ? 'en retard · à traiter' : 'rien en retard', 'fa-triangle-exclamation', lateN ? '#FEE2E2' : '#F1F3F6', lateN ? '#B42318' : '#475569');
   // graphique
   if (typeof Chart !== 'undefined') {
@@ -4154,10 +4232,11 @@ function renderActivity() {
     if (ui.saChart) ui.saChart.destroy();
     const days = (e - s) / 864e5, byDay = days <= 31, labels = [], keys = [];
     const cur = new Date(s); if (!byDay) cur.setDate(cur.getDate() - ((cur.getDay() + 6) % 7));
-    const eC = byDay ? new Date(Math.min(+e, +TODAY + 864e5)) : e;
-    while (cur < eC && labels.length < 40) { keys.push(isoDay(cur)); labels.push(byDay ? cur.toLocaleDateString('fr-FR', {day: '2-digit', month: '2-digit'}) : 'Sem. ' + cur.toLocaleDateString('fr-FR', {day: '2-digit', month: '2-digit'})); cur.setDate(cur.getDate() + (byDay ? 1 : 7)); }
+    const wk = days <= 7, eC = byDay && !wk ? new Date(Math.min(+e, +TODAY + 864e5)) : e;
+    while (cur < eC && labels.length < 40) { keys.push(isoDay(cur)); labels.push(byDay ? (wk ? cur.toLocaleDateString('fr-FR', {weekday: 'short'}) + ' ' : '') + cur.toLocaleDateString('fr-FR', {day: '2-digit', month: '2-digit'}) : 'Sem. ' + cur.toLocaleDateString('fr-FR', {day: '2-digit', month: '2-digit'})); cur.setDate(cur.getDate() + (byDay ? 1 : 7)); }
     const idx = d => { const k = new Date(d); k.setHours(0, 0, 0, 0); if (!byDay) k.setDate(k.getDate() - ((k.getDay() + 6) % 7)); return keys.indexOf(isoDay(k)); };
-    ui.saChart = new Chart($('sa-c1'), {type: 'bar', data: {labels, datasets: types.map(t => { const v = labels.map(() => 0); A.filter(a => a.type === t).forEach(a => { const i = idx(a.d); if (i >= 0) v[i]++; }); return {label: ACTIONS[t].label, data: v, backgroundColor: ({visite: '#C2410C', teams: '#6366F1', relance: '#F59E5B', suivi: '#14B8A6', mail: '#CBD5E1'})[t], borderRadius: 6, borderSkipped: false, stack: 's', maxBarThickness: 30}; })},
+    { const cw = $('sa-c1w'); if (cw) cw.style.maxWidth = wk ? '440px' : ''; const tt = $('sa-c1t'); if (tt) tt.textContent = wk ? `Semaine du ${s.toLocaleDateString('fr-FR', {day: '2-digit', month: '2-digit'})} au ${new Date(e - 864e5).toLocaleDateString('fr-FR', {day: '2-digit', month: '2-digit'})} · ${A.length} action${A.length > 1 ? 's' : ''}` : `${A.length} action${A.length > 1 ? 's' : ''}`; }
+    ui.saChart = new Chart($('sa-c1'), {type: 'bar', data: {labels, datasets: types.map(t => { const v = labels.map(() => 0); A.filter(a => a.type === t).forEach(a => { const i = idx(a.d); if (i >= 0) v[i]++; }); return {label: ACTIONS[t].label, data: v, backgroundColor: ({visite: '#C2410C', teams: '#6366F1', relance: '#F59E5B', suivi: '#14B8A6', mail: '#CBD5E1'})[t], borderRadius: 6, borderSkipped: false, stack: 's', maxBarThickness: 34}; })},
       options: {responsive: true, maintainAspectRatio: false, interaction: {mode: 'index', intersect: false}, plugins: {vlabels: {stack: true}}, scales: {x: {stacked: true, grid: {display: false}, ticks: {font: {size: 10}, maxRotation: 0, autoRotate: false, autoSkip: true, maxTicksLimit: 16}}, y: {stacked: true, beginAtZero: true, grace: '12%', ticks: {stepSize: 2}}}}});
   }
   // trajets (GPS)
@@ -4235,9 +4314,11 @@ function renderStats() {
   ui.sc.push(new Chart($('st-c5'), {type: 'bar', data: {labels: ECH_ORDER.map(e => [settings.echeances[e].label, settings.echeances[e].duree]), datasets: [{label: 'Montant du portefeuille', data: ECH_ORDER.map(e => sum(act.filter(c => c.echeance === e), c => c.montant)), backgroundColor: ['#C2410C', '#F59E5B', '#CBD5E1'], borderRadius: 8, borderSkipped: false, barPercentage: .6}]},
     options: {responsive: true, maintainAspectRatio: false, indexAxis: 'y', plugins: {legend: {display: false}, vlabels: {h: true, fmt: keur}, tooltip: {callbacks: {label: i => eur(i.raw)}}}, scales: {x: {beginAtZero: true, grace: '25%', ticks: {callback: v => keur(v)}}, y: {grid: {display: false}}}}}));
   const m = monthly(); cum = 0;
-  $('st-table').innerHTML = `<thead><tr><th><span class="block px-5 py-3">Mois</span></th>${['Robots', 'CA robots', 'Add-ons', 'CA add-ons', 'Total', 'Cumul'].map(h => `<th class="text-right"><span class="block px-2.5 py-3 text-right">${h}</span></th>`).join('')}</tr></thead><tbody>`
-    + MONTHS_L.map((l, i) => { const t = m.r[i] + m.a[i]; cum += t; return `<tr><td>${cap1(l)}</td><td class="text-right">${m.nr[i]}</td><td class="text-right">${eur(m.r[i])}</td><td class="text-right">${m.na[i]}</td><td class="text-right">${eur(m.a[i])}</td><td class="text-right font-bold">${eur(t)}</td><td class="text-right text-muted">${eur(cum)}</td></tr>`; }).join('')
-    + `<tr class="bg-slate-50 font-bold"><td>Total</td><td class="text-right">${sum(m.nr, x => x)}</td><td class="text-right">${eur(sum(m.r, x => x))}</td><td class="text-right">${sum(m.na, x => x)}</td><td class="text-right">${eur(sum(m.a, x => x))}</td><td class="text-right">${eur(cum)}</td><td></td></tr></tbody>`;
+  const Z = (v, s) => v ? s : `<span class="z">${s}</span>`, tots = m.r.map((v, i) => v + m.a[i]), mx = Math.max(1, ...tots), bi = tots.indexOf(Math.max(...tots)), isCurY = ui.year === CUR_YEAR, TA = sum(m.r, x => x) + sum(m.a, x => x);
+  $('mm-kpis').innerHTML = [['CA TOTAL', eur(TA), '#047857', '#ECFDF5'], ['ROBOTS', `${sum(m.nr, x => x)} · ${eur(sum(m.r, x => x))}`, '#C2410C', '#FFF1E7'], ['ADD-ONS', `${sum(m.na, x => x)} · ${eur(sum(m.a, x => x))}`, '#4F46E5', '#EEF0FF'], ['MEILLEUR MOIS', tots[bi] ? `${cap1(MONTHS_L[bi])} · ${eur(tots[bi])}` : '—', '#0F172A', '#F8FAFC']].map(([l, v, c, bg]) => `<div class="rounded-xl px-3 py-2" style="border:1.5px solid ${c};background:${bg}"><div class="kicker !text-[10.5px]" style="color:${c}">${l}</div><div class="text-[19px] font-bold leading-tight mt-0.5">${v}</div></div>`).join('');
+  $('st-table').innerHTML = `<thead><tr><th>Mois</th>${['Robots', 'CA robots', 'Add-ons', 'CA add-ons', 'Total', 'Cumul'].map(h => `<th>${h}</th>`).join('')}</tr></thead><tbody>`
+    + MONTHS_L.map((l, i) => { const t = tots[i]; cum += t; const cur = isCurY && i === TODAY.getMonth(); return `<tr class="${cur ? 'cur' : ''}"><td><span class="dot ${t || cur ? '' : 'f'}"></span>${cap1(l)}${cur ? '<span class="pl">en cours</span>' : ''}</td><td>${Z(m.nr[i], m.nr[i])}</td><td>${Z(m.r[i], eur(m.r[i]))}</td><td>${Z(m.na[i], m.na[i])}</td><td>${Z(m.a[i], eur(m.a[i]))}</td><td><div class="tt">${t ? `<span class="bar" style="width:${Math.round(t / mx * 70)}px"></span>` : ''}${Z(t, eur(t))}</div></td><td style="color:#64748B">${eur(cum)}</td></tr>`; }).join('')
+    + `<tr class="tot"><td>Total</td><td>${sum(m.nr, x => x)}</td><td>${eur(sum(m.r, x => x))}</td><td>${sum(m.na, x => x)}</td><td>${eur(sum(m.a, x => x))}</td><td>${eur(cum)}</td><td></td></tr></tbody>`;
 }
 function exportStats() {
   const m = monthly(); let cum = 0;
@@ -8323,7 +8404,7 @@ function pfBlocks() {
   };
 }
 function pfSync() { const X = pfBlocks(); $('pf-body').innerHTML = `<div class="flex flex-col gap-5">${X.syncIntro}${X.sync}</div>`; if (!opt('phone')) ['fb-app', 'fb-code', 'fb-in'].forEach(i => { const e = $(i); if (e) e.closest('.flex').classList.add('hidden'); }); }
-function pfSauv() { const X = pfBlocks(); $('pf-body').innerHTML = `<div class="flex flex-col gap-5">${X.sauv}</div>`; }
+function pfSauv() { const X = pfBlocks(); $('pf-body').innerHTML = `<div class="flex flex-col gap-5"><section class="card p-5 sm:p-6 flex flex-col gap-3"><div class="ax-st nm"><span class="ax-ib"><i class="fas fa-shield-halved"></i></span>Vérification des données</div><p class="text-[13px] text-muted">Compare chaque compteur du tableau de bord avec sa liste et avec les fiches, et signale les écarts.</p><div><button class="btn btn-ok" onclick="openCheck()"><i class="fas fa-shield-halved"></i>Vérifier mes données</button></div></section>${X.sauv}</div>`; }
 function pfSecteur() {
   pfSect();
   const X = pfBlocks();
