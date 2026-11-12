@@ -64,6 +64,36 @@
 
 .aide{font-size:14px;line-height:1.55;color:#1F2937}.aide h2{font-size:17px;font-weight:800;margin:22px 0 8px;padding-bottom:4px;border-bottom:2px solid #EA580C;color:#C2410C}.aide h3{font-size:14.5px;font-weight:700;margin:14px 0 4px}.aide p{margin:6px 0}.aide ol{list-style:decimal;margin:6px 0 6px 22px}.aide ul{list-style:disc;margin:6px 0 6px 22px}.aide li{margin:3px 0}.aide table{border-collapse:collapse;width:100%;margin:8px 0;font-size:13px}.aide td,.aide th{border:1px solid #E5E7EB;padding:5px 8px;text-align:left;vertical-align:top}.aide th{background:#F3F4F6}.aide code{background:#F3F4F6;padding:0 4px;border-radius:4px;font-size:12.5px;word-break:break-all}.aide .box{border-left:4px solid #EA580C;background:#FFF7ED;border-radius:6px;padding:8px 12px;margin:10px 0}.aide .ok{border-left-color:#15803D;background:#F0FDF4}.aide .see{border-left:4px solid #1D4ED8;background:#EFF6FF;border-radius:6px;padding:7px 12px;margin:8px 0}.aide .code{display:block;background:#111827;color:#F9FAFB;font:12px/1.4 ui-monospace,Consolas,monospace;padding:8px 12px;border-radius:8px;white-space:pre;overflow-x:auto;margin:8px 0}.aide .flow{display:flex;gap:6px;margin:10px 0;flex-wrap:wrap}.aide .flow div{flex:1;min-width:130px;border:1px solid #E5E7EB;border-radius:8px;padding:6px 9px;font-size:12.5px}.aide .flow b{display:block;color:#C2410C}.aide .flow span.ar{flex:none;align-self:center;font-size:18px;color:#EA580C}.aide .k{display:inline-block;background:#EA580C;color:#fff;border-radius:50%;width:22px;height:22px;text-align:center;line-height:22px;font-weight:700;font-size:12px;margin-right:6px}
 
+
+/* V4.10.0 : bloc 4, relecture des textes, historique */
+.chq{margin-bottom:12px}.chq-t{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:8px;flex-wrap:wrap}.chq-t b{font-size:14.5px}.chq-t span{font-size:12px;color:#64748b}
+.chq-g{display:grid;grid-template-columns:1fr 1fr;gap:10px}@media(max-width:560px){.chq-g{grid-template-columns:1fr}}
+.chq-c{display:flex;align-items:center;gap:11px;min-height:62px;padding:8px 14px;border:2px dashed #cbd3dc;border-radius:14px;background:#fff;color:#334155;text-align:left;cursor:pointer}
+.chq-c b{display:block;font-size:14.5px}.chq-c small{font-size:12px;color:#64748b;font-weight:500}.chq-c em{margin-left:auto;font-style:normal;font-size:11.5px;font-weight:700;color:#c2410c;border:1.5px solid #f4a46b;border-radius:20px;padding:3px 10px;white-space:nowrap}
+.chq-c .rd{width:21px;height:21px;border-radius:50%;border:2px solid #aab3bf;display:flex;align-items:center;justify-content:center;flex:none}.chq-c .rd i{width:9px;height:9px;border-radius:50%;background:#fff}
+.chq-c.sel{background:linear-gradient(135deg,#f97316,#ea580c);border:2px solid #c2410c;color:#fff;box-shadow:0 4px 10px rgba(234,88,12,.3)}.chq-c.sel small{color:#ffe7d3}.chq-c.sel em{background:#fff;border-color:#fff}.chq-c.sel .rd{border-color:#fff}
+.pst2{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:640px){.pst2{grid-template-columns:1fr}}
+.ps2{display:flex;flex-direction:column;border:1px solid #e6dccf;border-radius:14px;padding:14px;background:#fffaf5}.ps2 h4{margin:0 0 3px;font-size:12px;letter-spacing:.05em;color:#c2410c;text-transform:uppercase;font-weight:800}.ps2 p{margin:0 0 10px;font-size:12.5px;color:#556;flex:1}
+.btn-or{display:flex;align-items:center;justify-content:center;gap:8px;height:50px;padding:0 12px;border-radius:12px;font-weight:700;font-size:14.5px;color:#fff;background:linear-gradient(135deg,#f97316,#ea580c);box-shadow:0 4px 10px rgba(234,88,12,.3);border:0;cursor:pointer;text-align:center;line-height:1.15}.btn-or:hover{filter:brightness(1.05)}
+.plk{display:grid;grid-template-columns:1fr 1fr;gap:12px}.plk button{height:42px;border:1.5px solid #f4a46b;color:#c2410c;font-weight:700;font-size:13px;border-radius:10px;background:#fff;cursor:pointer}.plk button:hover{background:#fff7f0}
+.padv{border:1px solid #e2e8f0;border-radius:12px;background:#f8fafc;padding:10px 12px}.padv>b{display:block;font-size:12.5px;margin-bottom:8px;color:#475569}
+.ag2-note{display:flex;gap:12px;align-items:center;background:#fff7f0;border:1.5px solid #f4a46b;border-radius:14px;padding:11px 15px;font-size:13px;color:#7c2d12;line-height:1.45}
+.ag2-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px;align-items:start}
+.ag2-c{background:#fff;border:1px solid #dde3ea;border-radius:16px;padding:16px}.ag2-c.off{background:#f1f3f6;opacity:.72}
+.ag2-h{display:flex;align-items:center;gap:9px;margin-bottom:10px;font-weight:700;font-size:14.5px}.ag2-h .n{width:26px;height:26px;border-radius:50%;background:#f97316;color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;flex:none}.ag2-c.off .n{background:#cdd3db}.ag2-h .agsw{margin-left:auto}
+.ag2-hk{width:100%;border:1px solid #f4d2b6;background:#fffaf5;border-radius:10px;padding:8px 10px;font-weight:800;font-size:15px;color:#c2410c;margin-bottom:10px}
+.ag2-s b{display:block;font-size:10.5px;letter-spacing:.06em;color:#889;margin:8px 0 3px}
+.ag2-w{position:relative}.ag2-ta{width:100%;resize:none;overflow:hidden;border:1px solid #e8ecf1;background:#fafbfc;border-radius:10px;padding:8px 28px 8px 10px;font-size:13.5px;line-height:1.5;font-family:inherit;color:#1b2433}.ag2-ta:focus{outline:2px solid #f97316;background:#fff}.ag2-pen{position:absolute;right:10px;top:10px;color:#f97316;font-size:12px;pointer-events:none}
+.ag2-alt{margin-top:4px;width:100%;text-align:left;border:0;background:none;color:#c2410c;font-size:12px;font-weight:700;cursor:pointer;padding:3px 2px}.ag2-alt:hover{text-decoration:underline}
+.ag2-opts{border:1px solid #f4d2b6;border-radius:10px;background:#fffaf5;padding:6px;margin:3px 0 4px}.ag2-opts>div.t{padding:4px 8px;color:#c2410c;font-weight:800;font-size:10.5px;letter-spacing:.05em}
+.ag2-o{display:flex;gap:8px;width:100%;text-align:left;padding:7px 9px;border-radius:8px;font-size:12.5px;line-height:1.4;border:0;background:none;cursor:pointer;color:#334155}.ag2-o:hover{background:#fff}.ag2-o i{width:14px;height:14px;border:2px solid #cbd3dc;border-radius:50%;flex:none;margin-top:2px}.ag2-o.s{background:#fff;font-weight:600}.ag2-o.s i{border-color:#ea580c;background:radial-gradient(#ea580c 40%,#fff 45%)}.ag2-o em{display:block;font-style:normal;color:#0b7a4b;font-size:11px;font-weight:700}
+.ag2-o.mine{color:#c2410c;font-weight:700}
+.hs-tabs{display:flex;gap:16px;border-bottom:1px solid #e6eaf0;margin-bottom:4px;font-size:13px;flex-wrap:wrap}.hs-tabs button{padding:6px 2px;color:#778;background:none;border:0;cursor:pointer;font-size:13px}.hs-tabs button small{color:#aab}.hs-tabs button.s{color:#c2410c;font-weight:700;border-bottom:2px solid #f97316;margin-bottom:-1px}
+.hs-day{font-size:10.5px;font-weight:800;letter-spacing:.06em;color:#99a;margin:12px 0 3px}
+.hs-r{position:relative;display:flex;align-items:baseline;gap:10px;padding:5px 0 5px 14px;font-size:13.5px;border-left:2px solid #eceff3;margin-left:4px;flex-wrap:wrap}
+.hs-r:before{content:"";position:absolute;left:-5px;top:11px;width:8px;height:8px;border-radius:50%;background:#f97316}.hs-r.g:before{background:#0b7a4b}.hs-r.m{font-size:12.5px;color:#889}.hs-r.m:before{background:#cfd5dd;width:6px;height:6px;left:-4px;top:12px}
+.hs-r b{font-weight:600}.hs-r .tm{margin-left:auto;font-size:11.5px;color:#aab}.hs-r .dt{flex-basis:100%;font-size:12px;color:#889;white-space:pre-line;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.hs-mo{margin-top:10px;font-size:12.5px;color:#c2410c;font-weight:700;background:none;border:0;cursor:pointer}
 </style>
 <style>
 .gopt{display:flex;flex-direction:column;gap:10px}.goptc{display:block;cursor:pointer}
@@ -735,6 +765,24 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
   .num-btn:hover{box-shadow:0 0 0 2px #FDBA8C inset}
   ::-webkit-scrollbar{width:6px;height:6px}::-webkit-scrollbar-thumb{background:#CBD5E1;border-radius:3px}
 </style>
+<style id="v411-css">
+#dlg-imp{width:min(1180px,97vw)!important;max-width:97vw!important}#dlg-cmp{width:min(980px,97vw)!important;max-width:97vw!important}#dlg-expcom{width:min(520px,97vw)!important}#dlg-pay{width:min(720px,97vw)!important;max-width:97vw!important}
+.btn-or{background:#EA6A12;color:#fff;border:0;font-weight:700;border-radius:10px;padding:0 18px;min-height:40px;display:inline-flex;align-items:center;gap:8px;cursor:pointer}.btn-or:hover{background:#C2570C}.btn-or[disabled]{cursor:not-allowed}
+.ex-opts{display:flex;flex-direction:column;gap:6px}.ex-opts label{display:flex;gap:9px;align-items:center;border:1.5px solid #E2E8F0;border-radius:10px;padding:9px 12px;font-size:13.5px;cursor:pointer}.ex-opts label:has(input:checked){border-color:#EA6A12;background:#FFF6EF}.ex-opts input{accent-color:#EA6A12}
+.imp-steps{display:flex;gap:8px;margin-bottom:14px}.imp-st{flex:1;padding:8px 10px;border-radius:9px;font-size:12px;font-weight:700;background:#F3F4F6;color:#9CA3AF}.imp-st.on{background:#EA6A12;color:#fff}.imp-st.ok{background:#FDE8D8;color:#EA6A12}
+.imp-drop{border:2px dashed #EA6A12;background:#FFF6EF;border-radius:14px;padding:30px;text-align:center;cursor:pointer;display:flex;flex-direction:column;gap:6px;align-items:center}.imp-drop i{font-size:34px;color:#EA6A12}.imp-drop span{font-size:12.5px;color:#64748B;max-width:520px}
+.imp-note{background:#F3F4F6;border:1px solid #E5E7EB;border-radius:10px;padding:9px 12px;font-size:12.5px;color:#475569}
+.imp-yrs{display:flex;gap:10px;margin-bottom:10px;flex-wrap:wrap}.imp-yr{flex:1;min-width:110px;border:2px solid #E5E7EB;border-radius:11px;padding:9px;text-align:center;font-size:12px;color:#6B7280;background:#fff;cursor:pointer}.imp-yr b{display:block;font-size:19px;color:#1F2937}.imp-yr.sel{border-color:#EA6A12;background:#FFF6EF}.imp-yr.done{background:#F0FDF4;border-color:#86EFAC}
+.imp-tabs{display:flex;border-bottom:1px solid #E5E7EB;margin-bottom:4px}.imp-tabs button{padding:8px 14px;font-size:13px;font-weight:700;color:#6B7280;border-bottom:3px solid transparent;background:none}.imp-tabs button.on{color:#EA6A12;border-color:#EA6A12}
+.imp-scroll{max-height:46vh;overflow:auto}.imp-t{width:100%;border-collapse:collapse;font-size:12.5px}.imp-t th{text-align:left;color:#6B7280;padding:7px 6px;border-bottom:2px solid #E5E7EB;font-size:11px;text-transform:uppercase;position:sticky;top:0;background:#fff}.imp-t td{padding:7px 6px;border-bottom:1px solid #F0F1F4;vertical-align:top}.imp-t .r{text-align:right}.imp-t .c{text-align:center}.imp-t .mu{font-size:11px;color:#94A3B8}
+tr.imp-red td{background:#FFF5F5}tr.imp-red td b{text-decoration:line-through;color:#9CA3AF}tr.imp-off td{opacity:.55}
+.imp-chip{padding:2px 8px;border-radius:99px;font-size:11px;font-weight:700;display:inline-block;white-space:nowrap}.imp-chip.ok{background:#DCFCE7;color:#166534}.imp-chip.wa{background:#FEF3C7;color:#92400E}.imp-chip.bl{background:#DBEAFE;color:#1E40AF}.imp-chip.du{background:#E5E7EB;color:#4B5563}
+.imp-flag{font-size:11px;color:#92400E;margin-top:2px}.imp-sel,.imp-in{border:1.5px solid #D1D5DB;border-radius:7px;padding:3px 6px;font-size:12px;background:#fff}.imp-in.bad{border-color:#FBBF24;background:#FFFBEB}
+.imp-bar{height:8px;border-radius:9px;background:#E5E7EB;overflow:hidden;margin:2px 0 6px}.imp-bar i{display:block;height:100%;background:#EA6A12}
+.cmp-wrap{display:flex;gap:20px;align-items:flex-start}.cmp-left{width:220px;flex-shrink:0}.cmp-main{flex:1;min-width:0}.cmp-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.cmp-g3{display:grid;grid-template-columns:1fr 2fr;gap:8px}@media(max-width:720px){.cmp-wrap{flex-direction:column}.cmp-left{width:100%}.cmp-grid{grid-template-columns:1fr}}
+.cmp-q{display:block;width:100%;text-align:left;padding:7px 10px;border-radius:9px;font-size:12.5px;margin-bottom:3px;border:1.5px solid transparent;background:none;cursor:pointer}.cmp-q.cur{background:#FFF6EF;border-color:#EA6A12;font-weight:700}
+.cmp-info{background:#F0FDF4;border:1px solid #86EFAC;border-radius:10px;padding:9px 12px;font-size:12.5px}.cmp-res{border:1px solid #E2E8F0;border-radius:10px;max-height:190px;overflow:auto}.cmp-res button{display:block;width:100%;text-align:left;padding:8px 12px;border-bottom:1px solid #F1F5F9;font-size:13px;background:#fff;cursor:pointer}.cmp-res button:hover{background:#FFF6EF}.cmp-res span{display:block;font-size:11.5px;color:#64748B}
+</style>
 </head>
 <body class="min-h-screen font-sans antialiased">
 <div id="toast" role="status" aria-live="polite"></div>
@@ -1041,7 +1089,7 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
       </section>
       <section data-pane="hist" class="card p-5 flex flex-col gap-4">
         <div class="flex justify-between items-center"><h2 class="h2">Historique</h2><span id="f-hist-n" class="text-xs text-muted"></span></div>
-        <ol id="f-history" class="flex flex-col"></ol>
+        <div id="f-history"></div>
       </section>
     </aside>
   </div>
@@ -1314,13 +1362,33 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
   <div class="px-5 py-4 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-contact')">Annuler</button><button class="btn btn-ok" onclick="saveContact()">Enregistrer</button></div>
 </dialog>
 
-<dialog id="dlg-pay">
+<dialog id="dlg-expcom" class="!w-[min(520px,97vw)]">
+  <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-center"><h3 class="font-bold flex items-center gap-2"><i class="fas fa-file-export text-ptkd"></i>Exporter mes commissions</h3><button class="dlg-x" onclick="closeDlg('dlg-expcom')" aria-label="Fermer"><i class="fas fa-xmark"></i></button></div>
+  <div class="dlg-body p-5 flex flex-col gap-4">
+    <div><div class="lbl">Période</div><div class="ex-opts"><label><input type="radio" name="ex-per" value="annee" checked onchange="expSync()"><span id="ex-yr">Année civile</span></label><label><input type="radio" name="ex-per" value="periode" onchange="expSync()"><span id="ex-pd">Période affichée</span></label><label><input type="radio" name="ex-per" value="filtres" onchange="expSync()"><span>Filtres affichés</span></label></div></div>
+    <div><div class="lbl">Format</div><div class="ex-opts"><label><input type="radio" name="ex-fmt" value="pdf" checked onchange="expSync()"><span><b>Récapitulatif PDF</b> · 2 pages A4, prêt à imprimer</span></label><label><input type="radio" name="ex-fmt" value="csv" onchange="expSync()"><span><b>Tableau CSV</b> · une ligne par dossier, pour Excel</span></label></div></div>
+    <p class="text-[12.5px] text-muted" id="ex-n"></p>
+  </div>
+  <div class="px-5 py-4 border-t bg-slate-50 flex justify-end gap-2"><button class="btn btn-g" onclick="closeDlg('dlg-expcom')">Annuler</button><button id="ex-go" class="btn btn-or" onclick="expGo()">Générer le PDF</button></div>
+</dialog>
+<dialog id="dlg-imp" class="!w-[min(1180px,97vw)]">
+  <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-center"><h3 class="font-bold flex items-center gap-2"><i class="fas fa-clock-rotate-left text-ptkd"></i>Reprise d'historique</h3><button class="dlg-x" onclick="closeDlg('dlg-imp')" aria-label="Fermer"><i class="fas fa-xmark"></i></button></div>
+  <div id="imp-body" class="dlg-body p-5"></div>
+  <div id="imp-foot" class="px-5 py-4 border-t bg-slate-50 flex justify-between items-center gap-2 flex-wrap"></div>
+</dialog>
+<dialog id="dlg-cmp" class="!w-[min(980px,97vw)]">
+  <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-center"><h3 class="font-bold flex items-center gap-2"><i class="fas fa-pen-to-square text-ptkd"></i>Compléter les fiches</h3><button class="dlg-x" onclick="closeDlg('dlg-cmp');renderDashboard()" aria-label="Fermer"><i class="fas fa-xmark"></i></button></div>
+  <div id="cmp-body" class="dlg-body p-5 flex flex-col gap-3"></div>
+  <div id="cmp-foot" class="px-5 py-4 border-t bg-slate-50 flex justify-between items-center gap-2"></div>
+</dialog>
+<dialog id="dlg-pay" class="!w-[min(720px,97vw)]">
   <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-center">
     <h3 class="font-bold flex items-center gap-2"><i class="fas fa-circle-check text-emerald-700"></i>Commission payée</h3>
     <button class="dlg-x" onclick="closeDlg('dlg-pay')" aria-label="Fermer"><i class="fas fa-xmark"></i></button>
   </div>
   <div class="dlg-body p-5 flex flex-col gap-3">
     <p id="pay-sub" class="text-sm"></p>
+    <div id="pay-lines" class="flex flex-col gap-2"></div>
     <div><label class="lbl" for="pay-month">Pointée en (mois et année) *</label><input type="month" id="pay-month" class="inp"></div>
     <div><label class="lbl" for="pay-sal">Sur le salaire de (mois et année) *</label><input type="month" id="pay-sal" class="inp"><p class="text-xs text-muted mt-1">Par défaut le mois précédent : modifiez-le si la commission figure sur un autre bulletin de salaire.</p></div>
   </div>
@@ -1504,6 +1572,8 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
 <li><b>V4.8.2</b> : <b>phrases types réécrites</b> sans redondance (argumentaire, 3 piliers, option Pharmaload), nouveau bénéfice « Une équipe plus disponible, des journées plus sereines ».</li>
+<li><b>V4.11.0</b> : (1) <b>Écart attendu / perçu</b> dans Mes commissions : à chaque paiement, saisissez le montant réellement perçu (pré-rempli avec l'attendu) ; écart en € et en %, note libre facultative, filtre « Avec écart » ; (2) <b>Exporter</b> : récapitulatif PDF (2 pages A4 : payées, en attente, sous réserve, par motif) ou tableau CSV ; (3) <b>Reprise d'historique</b> (Paramètres) : import année par année de vos robots et add-ons signés depuis vos fichiers Excel, avec aperçu, lignes rouges en « Abandonné », doublons repérés, contrôle des totaux et annulation ; (4) <b>Modèle Essentiel</b> (jusqu'en 2025) à cocher dans la fiche du robot signé ; (5) <b>Compléter les fiches</b> importées (adresse, LGO, téléphone) avec la recherche annuaire.</li>
+<li><b>V4.10.0</b> : (1) <b>Bloc 4 « Document pour le client »</b> réorganisé : choix de l'offre en deux grandes cartes (Personnalisée / Synthétique), deux boutons alignés « 1 · Préparer » et « 2 · Remettre », « Aperçu rapide », et <b>Réglages avancés</b> repliés (Contenu, Textes, Noms, Implantation) ; (2) <b>Relecture des textes</b> refaite : les priorités s'affichent côte à côte, trois phrases par priorité (constat, réponse, au quotidien), un seul texte à l'écran, « Autres formulations » pour le remplacer par une variante, une note explicative ; textes par défaut réécrits et adaptés à la fiche (option Euclid3D ou Pharmaload citée seulement si elle est retenue, gain de temps calculé) ; (3) <b>Historique</b> filtré : onglets Essentiel / Documents / Tout, détails regroupés (« 3 fois »), rien n'est supprimé.</li>
 <li><b>V4.9.0</b> : <b>page « Solution préconisée » en une page</b> : jauges vertes identiques pour Euclid3D (jusqu'à 520 boîtes délivrées/h) et Pharmaload (jusqu'à 300 boîtes/h), options en lignes, pied de page avec contact, mention « Résultats indicatifs » et date. Nouvelles photos Euclid3D et Pharmaload partout, icône provisoire QuickPick24, blocs « Votre besoin, notre réponse », « Inclus dans votre projet » et anneaux retirés de cette page.</li>
 <li><b>V4.8.1</b> : <b>correction</b> du bouton « Préparer le PDF… » (il ouvrait les textes d’une autre fiche), <b>phrases ajoutées</b> conservées dans le PDF (une par ligne, espace et majuscule automatiques), phrase <b>Sérialisation FMD intégrée</b> dans « Services inclus » (désactivable dans « Contenu »).</li>
 <li><b>V4.8.0</b> : pastille unique <b>« N à traiter »</b> (relances, offres prêtes, annonces, suivi, sauvegarde, vérification), <b>suivi après signature</b>, <b>résumé du lundi</b>, rappel de sauvegarde, onglet « Préparation de l’offre » qui se coche, aperçu avant le premier PDF, infobulles, remise de maintenance surlignée en vert dans le PDF, libellé « stock actuel intégré au robot » avec mention TVA.</li>
@@ -1655,6 +1725,13 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
 <h2 id="m-pdf">4. La synthèse PDF pour le pharmacien</h2>
 <p>Depuis une fiche, générez l'argumentaire PDF : le <b>mot de l'interlocuteur</b> (« Ce que vous nous avez dit ») figure en première page, suivi de la solution, des <b>options retenues pour cette offre</b> (par exemple Euclid3D, Pharmaload, QuickAir, <b>PANNEAU TYPE A</b>), de l'implantation avec photos et des liens Pharmathek. Seules les options cochées sont imprimées.</p>
 <p><b>Assistant « Préparer l'offre » (V4.9.0)</b> : dans la fiche, le bouton orange <i>Assistant : préparer l'offre</i> ouvre une fenêtre en cinq étapes, avec l'aperçu de la page « Solution préconisée » à droite, mis à jour à chaque changement. (1) <b>Type d'offre</b> : standard, ou personnalisée avec les souhaits du client (bandeau « Ce que vous souhaitez »). (2) <b>Rapidité au comptoir</b> : Euclid3D, avec un curseur de temps gagné en pourcentage. (3) <b>Back-office</b> : Pharmaload, avec le temps gagné calculé d'après la fiche (réglable ; « Revenir au calcul »). (4) <b>Options</b> du devis (Double bras, QuickAir, QuickPick24, Parties vitrées, Étagères d'exposition, Transitique tapis) : cochez, choisissez « En ligne » ou « En grand » (une seule en grand), modifiez le texte. (5) <b>Validation</b> : pied de page (phrase de contact, mention « Résultats indicatifs », date), nom du fichier automatique, puis « Valider et générer le PDF ». Tous les textes et réglages sont modifiables et mémorisés dans la fiche ; « Texte type » rétablit la phrase d'origine.</p>
+<p><b>Bloc 4 « Document pour le client » (V4.10.0)</b> : choisissez d'abord l'offre à présenter (carte orange = choix actif). Puis <b>1 · Préparer</b> (assistant en 5 étapes) et <b>2 · Remettre</b> (génération du PDF). « Aperçu rapide » ouvre l'aperçu ; « Réglages avancés » déroule Contenu, Textes, Noms et Implantation. Dans <b>Textes</b>, chaque priorité tient en trois phrases : cliquez sur une phrase (✎) pour la corriger, ou sur « Autres formulations » pour la remplacer par une variante ; une seule phrase est utilisée dans le PDF. L'interrupteur d'une priorité la retire ou la remet dans le PDF.</p>
+<p><b>Historique filtré (V4.10.0)</b> : <b>Essentiel</b> (par défaut) montre les jalons commerciaux (étapes, offre présentée, signature, relances, chance de signature…) ; <b>Documents</b> montre les PDF générés ; <b>Tout</b> montre tout. Les petits détails répétés sont regroupés (« 3 fois »). Rien n'est supprimé : « Afficher les détails masqués » rouvre tout.</p>
+<p><b>Écart attendu / perçu (V4.11.0)</b> : dans <b>Mes commissions</b>, « Payée… » ouvre une fenêtre avec, pour chaque commission, le montant <b>attendu</b> (calculé) et le montant <b>perçu</b> (pré-rempli : ne le modifiez que s'il diffère). Une <b>note</b> libre et facultative est possible. Sur une commission déjà payée, « Perçu… » permet de corriger. L'écart s'affiche en euros et en pourcentage (rouge si vous avez reçu moins, vert si plus) ; en dessous de 1 € il n'est pas signalé. Le filtre <b>Avec écart</b> isole les lignes à vérifier ; les quatre cartes en haut donnent attendu, perçu, écart global et nombre de dossiers concernés.</p>
+<p><b>Exporter (V4.11.0)</b> : le bouton orange <b>Exporter</b> propose la période (année civile, période affichée ou filtres affichés) et le format : <b>Récapitulatif PDF</b> (la fenêtre d'impression s'ouvre : choisissez « Enregistrer au format PDF ») ou <b>Tableau CSV</b> (une ligne par dossier, lisible dans Excel, avec perçu, écart et note). Le PDF est cadré A4 portrait, marges de 12 mm, tableaux non coupés, en-tête de colonnes répété, numéros de page.</p>
+<p><b>Reprise d'historique (V4.11.0)</b> : <b>Paramètres › Reprise d'historique › Lancer l'assistant d'import</b>. Choisissez vos fichiers Excel (prévisions ou suivi des années passées). Seuls sont repris les <b>robots signés</b> et les <b>add-ons (ventes additionnelles) signés</b> ; les robots Blient / Automeds sont ignorés. Les années (2022 à 2025) s'affichent en pastilles : choisissez-en une, vérifiez l'aperçu, puis « Importer ». Les <b>lignes en rouge</b> sont proposées « Abandonné » (conservées dans l'historique, sans commission) ; les dates douteuses sont signalées et modifiables ; les doublons sont repérés (même CIP) ; chaque ligne peut être décochée. Cochez <b>NANCEO</b> si le robot était financé en leasing. Chaque dossier arrive « à pointer » dans Mes commissions. Un <b>contrôle des totaux</b> compare le fichier et l'import ; chaque import peut être <b>annulé</b> (fiches créées retirées, fiches modifiées restaurées). Les fichiers sont lus sur votre appareil, rien n'est envoyé.</p>
+<p><b>Modèle Essentiel (V4.11.0)</b> : modèle disponible jusqu'en 2025 inclus. Dans la fiche d'un robot signé (jusqu'au 31/12/2025), cochez <b>Modèle Essentiel</b> : il s'affiche dans la fiche, dans Mes commissions (pastille ESSENTIEL) et dans les exports. Pour le calcul des commissions, un robot Essentiel est compté dans la famille SINTESI (à vérifier avec vos règles).</p>
+<p><b>Compléter les fiches (V4.11.0)</b> : les fiches créées par l'import portent un bandeau « à compléter » sur le tableau de bord. L'assistant les présente une à une : « Compléter depuis l'annuaire » cherche la pharmacie par son nom (base officielle installée, ou annuaire en ligne), remplit les champs vides (adresse, ville, téléphone, titulaire) et conserve le code CIP du fichier ; « Enregistrer et suivante », « Passer » ou « Plus tard ».</p>
 <h2 id="m-ventes">5. Les signatures probables</h2>
 <ul>
 <li><b>Carte jaune « Ce mois-ci »</b> : les dossiers dont la décision est prévue ce mois-ci, avec le chiffre d'affaires de chaque pharmacie.</li>
@@ -1724,6 +1801,7 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
 <li>Pour supprimer une fiche, supprimez-la dans le dashboard : elle est supprimée aussi sur l'autre appareil et dans l'espace en ligne à la synchronisation suivante.</li>
 <li><b>Durée de conservation</b> (repères CNIL, à faire confirmer par votre DPO) : prospects et dossiers perdus, <b>3 ans après le dernier contact</b> ; clients, pendant la relation contractuelle puis en archivage (en général 5 ans après la fin du contrat) ; pièces comptables, 10 ans. Après ce délai, la fiche est supprimée ou <b>anonymisée</b> (identité, coordonnées et notes effacées ; étape, robot, montant et motif de perte conservés pour les statistiques).</li>
 <li><b>Paramètres › Profil › Conservation des données (RGPD)</b> liste les fiches sans action depuis 3 ans : <b>Supprimer</b>, <b>Anonymiser</b> ou <b>Prolonger</b> d'un an avec un motif. Rien n'est effacé automatiquement ; un message à l'ouverture signale les fiches à réviser.</li>
+<li><b>Reprise d'historique</b> : les fichiers Excel sont lus localement dans le navigateur ; ils ne sont ni envoyés ni conservés. Seules les lignes importées (pharmacie, CIP, dates, montants) entrent dans le dashboard ; l'annulation d'un import restaure l'état précédent.</li>
 <li>Avant un usage étendu à d'autres collaborateurs, faites valider le dispositif par votre direction ou votre DSI.</li>
 </ul>
 <h2 id="s-tel">Sécurité du site téléphone</h2>
@@ -1974,7 +2052,7 @@ th.sgh{cursor:pointer;color:#C2410C;background:#FFF7F0}
   <div id="ag-body" class="dlg-body p-5 flex flex-col gap-4"></div>
   <div class="px-5 py-4 border-t bg-slate-50 flex flex-wrap justify-between gap-2">
     <button class="btn btn-ko" onclick="argReset()"><i class="fas fa-rotate-left"></i>Réinitialiser</button>
-    <div class="flex gap-2 flex-wrap"><button class="btn btn-g" onclick="argSave()"><i class="fas fa-floppy-disk"></i>Enregistrer le brouillon</button><button class="btn btn-ok" onclick="argSave(true);closeDlg('dlg-arg');pdfArg(ui.argId)"><i class="fas fa-file-pdf"></i>Générer le PDF</button></div>
+    <div class="flex gap-2 flex-wrap"><button class="btn btn-g" onclick="argSave()"><i class="fas fa-floppy-disk"></i>Enregistrer le brouillon</button><button class="btn-or !h-11 !px-5" onclick="argSave(true);closeDlg('dlg-arg');pdfArg(ui.argId)"><i class="fas fa-file-pdf"></i>Générer le PDF</button></div>
   </div>
 </dialog>
 
@@ -2331,7 +2409,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.9.0';
+const APP_VERSION = '4.11.0';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2447,17 +2525,18 @@ const ARG_OLD = {
   'Effectif tendu': {h: 'Moins de pas, plus de conseil', p: 'Vous manquez de monde, surtout le samedi et pendant les congés.', r: 'Le robot va chercher les boîtes pendant que votre équipe reste au comptoir : rangement, recherche et apport sont automatisés.', b: "L'officine tourne sereinement, même avec une équipe réduite ou en période d'absences."},
   'Maximiser le panier moyen et le conseil associé': {h: 'Le temps gagné devient du conseil associé', p: "Au comptoir, on n'a pas toujours le temps de proposer un conseil complémentaire.", r: "Le temps gagné au comptoir est réinvesti dans l'échange avec le patient.", b: 'Plus de conseils associés, de parapharmacie et de suivi : le panier moyen progresse naturellement.'}
 };
+const ARG_V49 = {'Rapidité de délivrance': {h: 'Le patient est servi pendant que vous lui parlez', p: "Aux heures de pointe, la file d'attente s'allonge et l'équipe court entre le comptoir et les tiroirs.", r: "Le robot délivre les boîtes en quelques secondes pendant que vous restez face au patient.", b: "Moins d'attente au comptoir pour le patient."},'Gain de temps et confort': {h: "Moins de pas, plus de sérénité pour toute l'équipe", p: "Les allers-retours, le rangement des commandes et le port des caisses pèsent sur le quotidien de l'équipe.", r: "Le robot range et délivre les boîtes : fini les allers-retours et les ports de charge.", b: "Une équipe plus disponible, des journées plus sereines."},'Image innovante et modernisation': {h: 'Une officine moderne qui se démarque', p: "Vous voulez moderniser l'officine et offrir à vos patients une image innovante.", r: "Le robot Pharmathek incarne une pharmacie moderne, organisée et tournée vers le service.", b: "Une image valorisée auprès des patients et une équipe fière de son outil."},'Réception des commandes': {h: 'Les commandes se rangent sans mobiliser votre back-office', p: 'La réception des commandes des grossistes et répartiteurs mobilise une personne du back-office, souvent aux heures où le comptoir a besoin de monde.', r: 'Un chargeur automatique reçoit les bacs des grossistes et répartiteurs et range les boîtes dans le robot, sans saisie ni manipulation une à une.', b: "Votre équipe est libérée de la réception, et les produits sont disponibles au comptoir dès leur arrivée."}};
 const ARG = {
-  'Réception des commandes': {h: 'Les commandes se rangent sans mobiliser votre back-office', p: 'La réception des commandes des grossistes et répartiteurs mobilise une personne du back-office, souvent aux heures où le comptoir a besoin de monde.', r: 'Un chargeur automatique reçoit les bacs des grossistes et répartiteurs et range les boîtes dans le robot, sans saisie ni manipulation une à une.', b: "Votre équipe est libérée de la réception, et les produits sont disponibles au comptoir dès leur arrivée."},
-  'Rapidité de délivrance': {h: 'Le patient est servi pendant que vous lui parlez', p: "Aux heures de pointe, la file d'attente s'allonge et l'équipe court entre le comptoir et les tiroirs.", r: "Le robot délivre les boîtes en quelques secondes pendant que vous restez face au patient.", b: "Moins d'attente au comptoir pour le patient."},
+  'Réception des commandes': {"h": "Des commandes rangées dès leur arrivée", "p": "À chaque livraison, le contrôle et le rangement des produits immobilisent une personne de votre équipe.", "r": "Le chargeur automatique Pharmaload range les produits dès leur réception, sans manipulation : plus de rangement manuel, un stock fiabilisé.", "b": "Une réception plus rapide, un stock mieux maîtrisé et des péremptions mieux suivies."},
+  'Rapidité de délivrance': {"h": "Le patient est servi pendant que vous lui parlez", "p": "Aux heures de pointe, chaque délivrance mobilise un membre de l'équipe loin du comptoir et nécessite de nombreux allers-retours vers le back-office.", "r": "Le robot SINTESI prépare l'ordonnance en quelques secondes, sans aller-retour vers le back-office, pour une délivrance plus fluide et un meilleur service au patient.", "b": "Moins d'attente au comptoir, des patients mieux servis et plus de temps consacré à l'écoute, aux patients et au conseil pharmaceutique."},
   'Accompagnement patient': {h: 'Plus de temps pour écouter, conseiller et accompagner', p: 'Vous souhaitez développer les entretiens, la vaccination ou les bilans de médication, mais le temps manque.', r: "Plus de déplacements ni de recherche de boîtes : l'équipe reste au contact du patient.", b: "Du temps pour les entretiens, la vaccination et les bilans de médication."},
-  'Gain de temps et confort': {h: "Moins de pas, plus de sérénité pour toute l'équipe", p: "Les allers-retours, le rangement des commandes et le port des caisses pèsent sur le quotidien de l'équipe.", r: "Le robot range et délivre les boîtes : fini les allers-retours et les ports de charge.", b: "Une équipe plus disponible, des journées plus sereines."},
+  'Gain de temps et confort': {"h": "Du temps rendu à votre équipe, chaque jour", "p": "Le rangement des commandes mobilise une personne de votre équipe plusieurs heures par jour.", "r": "Le robot range les commandes sans manipulation : un gain de temps immédiat et une logistique fiabilisée.", "b": "Du temps gagné chaque jour, réaffecté aux missions de votre choix."},
   "Optimisation de l'espace": {h: "Des mètres carrés rendus à l'espace de vente", p: "La réserve est saturée et l'espace de vente manque de place.", r: "Le stockage haute densité du robot regroupe l'assortiment sur une faible emprise au sol.", b: 'La surface libérée accueille du conseil, de la parapharmacie ou un espace de confidentialité.'},
   'Sécurisation de la délivrance': {h: 'La bonne boîte, à chaque délivrance', p: "Quand le rythme s'accélère, le risque d'erreur de produit ou de dosage vous préoccupe.", r: "Chaque boîte est identifiée par son code Datamatrix avant d'être délivrée.", b: "Moins d'erreurs de produit, plus de sérénité pour l'équipe et le patient."},
   'Sérialisation | E-Prescription': {h: "Une officine prête pour la sérialisation et l'e-prescription", p: "Vérifier, tracer, éviter les ressaisies : les exigences réglementaires s'accumulent.", r: "Les codes sont lus à l'entrée et à la sortie, et transmis à votre logiciel d'officine.", b: "Ordonnances traitées sans ressaisie."},
   'Optimisation des stocks': {h: 'Le bon stock, au bon moment', p: 'Entre ruptures, périmés et stock dormant, la gestion des commandes vous échappe en partie.', r: "Inventaire permanent : quantités et dates de péremption visibles en temps réel.", b: "Commandes ajustées, moins de périmés, trésorerie moins immobilisée."},
   'Démarque inconnue': {h: "Chaque boîte est tracée, de l'entrée à la sortie", p: 'Vous constatez des écarts de stock sans pouvoir les expliquer.', r: "Le stock est fermé et chaque mouvement est enregistré automatiquement.", b: "Les écarts deviennent visibles et la démarque inconnue recule."},
-  'Image innovante et modernisation': {h: 'Une officine moderne qui se démarque', p: "Vous voulez moderniser l'officine et offrir à vos patients une image innovante.", r: "Le robot Pharmathek incarne une pharmacie moderne, organisée et tournée vers le service.", b: "Une image valorisée auprès des patients et une équipe fière de son outil."},
+  'Image innovante et modernisation': {"h": "Une officine à la hauteur de votre expertise", "p": "Vos patients attendent une pharmacie moderne, où la technologie sert la qualité du conseil.", "r": "Le robot SINTESI, visible depuis l'espace de vente, valorise votre officine.", "b": "Une image innovante qui renforce la confiance de vos patients et l'attractivité de votre pharmacie."},
   'Effectif tendu': {h: 'Moins de pas, plus de conseil', p: 'Vous manquez de monde, surtout le samedi et pendant les congés.', r: "Le robot va chercher les boîtes pendant que l'équipe reste au comptoir.", b: "L'officine tourne sereinement, même en effectif réduit ou en période d'absences."},
   'Maximiser le panier moyen et le conseil associé': {h: 'Le temps gagné devient du conseil associé', p: "Au comptoir, on n'a pas toujours le temps de proposer un conseil complémentaire.", r: "Le temps gagné au comptoir est consacré à l'échange avec le patient.", b: "Plus de conseils associés et de parapharmacie : le panier moyen progresse."}
 };
@@ -2785,7 +2864,7 @@ function secteur(c) {
 const secPill = c => { const s = secteur(c); if (!s) return ''; const [bg, fg] = s.ok === true ? ['#E8F5EE', '#14603F'] : s.ok === false ? ['#FDECEC', '#9F1C1C'] : ['#FEF6E4', '#6B4607']; return `<span class="pill" style="background:${bg};color:${fg}"><i class="fas fa-map-location-dot"></i>${esc(s.txt)}</span>`; };
 
 /* ================= COMMISSIONS ================= */
-function comRows() {
+function comRows0() {
   const rank = {};
   const rob = clients.filter(c => c.step === 'Signé' && c.signatureDate && famOf(c))
     .sort((a, b) => a.signatureDate.localeCompare(b.signatureDate) || a.id - b.id)
@@ -2810,6 +2889,7 @@ function comRows() {
   });
   return [...rob, ...add, ...nan].sort((a, b) => a.date.localeCompare(b.date));
 }
+function comRows() { return comRows0().map(r => { const t = r.a || r.c; r.perc = t.comPercu != null && t.comPercu !== '' ? +t.comPercu : null; r.note = t.comNote || ''; if (!r.a && r.c.essentiel) r.ess = true; return r; }); }
 const COM_ST = {bloque: ['Bloquée · réserves', '#FDECEC', '#9F1C1C', 'fa-lock'], attente: ['En attente de paiement', '#FEF6E4', '#6B4607', 'fa-hourglass-half'], paye: ['Payée', '#E8F5EE', '#14603F', 'fa-circle-check']};
 const comPillS = r => {
   const [l, bg, fg, ic] = COM_ST[r.statut];
@@ -3000,7 +3080,7 @@ function renderDashboard() {
   $('today-label').textContent = cap1(new Date().toLocaleDateString('fr-FR', {weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'})) + ' · version ' + APP_VERSION;
   $('hello').textContent = `${new Date().getHours() < 18 ? 'Bonjour' : 'Bonsoir'} ${settings.prenom}`;
   v4Recent(); renderDashAlert(); renderYearSelect('year-sel'); renderSales(); renderChart(); renderDay(); renderPipeline(); renderTiles(); renderTable();
-  autoCheck();
+  autoCheck(); histBanner();
 }
 function v4Recent() {
   let el = $('v4-recent');
@@ -5161,8 +5241,32 @@ function devisToggle() {
   devisApply(v);
 }
 const devisPill = c => { const d = c.devis; if (!d?.statut || c.step === 'Contact') return ''; const [l, col, bg, fg] = DEVIS[d.statut]; return `<span class="pill" style="background:${bg};color:${fg}"><span class="w-2 h-2 rounded-full" style="background:${col}"></span>Devis ${l.toLowerCase()}${d.statut === 'envoye' && d.date ? ' le ' + fmtD(d.date) : ''}</span>`; };
+/* V4.10.0 : textes par défaut adaptés à la fiche (options retenues, gain calculé) */
+function argDyn(c, k) {
+  let P, C; try { P = ptkOf(c); C = ptkCalc(P); } catch (e) { return {}; }
+  const ops = (P.options || []).map(o => String(o).toLowerCase()), has = re => ops.some(o => re.test(o)), fam = /genesi/i.test((c.robots || []).join(' ')) ? 'GENESI' : 'SINTESI';
+  if (k === 'Rapidité de délivrance') return {r: has(/euclid/) ? `Le robot ${fam} prépare l'ordonnance en quelques secondes. Avec l'option Euclid3D, ses performances progressent encore : jusqu'à 520 boîtes délivrées par heure, sans aucun aller-retour vers le back-office, pour une délivrance plus fluide et un meilleur service au patient.` : `Le robot ${fam} prépare l'ordonnance en quelques secondes, sans aller-retour vers le back-office, pour une délivrance plus fluide et un meilleur service au patient.`};
+  if (k === 'Gain de temps et confort') return {r: has(/pharmaload|chargeur/) ? "Le chargeur automatique Pharmaload range les commandes sans manipulation, jusqu'à 300 boîtes par heure : un gain de temps immédiat et une logistique fiabilisée." : "Le robot range les commandes sans manipulation : un gain de temps immédiat et une logistique fiabilisée.", b: C && C.gTot > .5 ? `Environ ${hm(C.gTot)} gagnées chaque jour, réaffectées aux missions de votre choix.` : 'Du temps gagné chaque jour, réaffecté aux missions de votre choix.'};
+  if (k === 'Image innovante et modernisation') { const o = []; if (has(/vitr/)) o.push('parties vitrées'); if (has(/expos|étag|etag/)) o.push("étagères d'exposition"); return {r: `Le robot ${fam}, visible depuis l'espace de vente, valorise votre officine${o.length ? ', avec des options sur mesure (' + o.join(', ') + ')' : ''}.`}; }
+  if (k === 'Réception des commandes') return {r: has(/pharmaload|chargeur/) ? ARG[k].r : "Le robot range les produits dès leur réception, sans manipulation : plus de rangement manuel, un stock fiabilisé."};
+  return {};
+}
+const ARG_VAR = {
+  'Rapidité de délivrance': {p: ["Chaque délivrance éloigne un collaborateur du comptoir et du patient.", "Les allers-retours aux tiroirs retardent la délivrance et le conseil."],
+    r: [{t: "Avec l'option Euclid3D, votre robot franchit un cap : jusqu'à 520 boîtes délivrées par heure, l'ordonnance complète servie en quelques secondes.", need: /euclid/}, {t: "Le robot délivre en quelques secondes ; l'option Euclid3D optimise ses déplacements : jusqu'à 520 boîtes par heure, pour la délivrance la plus fluide.", need: /euclid/}, "Le robot délivre l'ordonnance en quelques secondes, sans aller-retour vers le back-office."],
+    b: ["Le patient est servi sans attendre : l'équipe reste disponible pour l'écoute et le conseil.", "Une file d'attente qui se réduit, des patients mieux servis et un meilleur suivi."]},
+  'Gain de temps et confort': {p: ["Chaque jour, le rangement des commandes représente plusieurs heures de travail manuel pour votre équipe.", "Contrôler et ranger les commandes à la main occupe une personne de votre équipe plusieurs heures par jour."],
+    r: [{t: "Pharmaload range les commandes en continu, sans manipulation : jusqu'à 300 boîtes par heure.", need: /pharmaload|chargeur/}, {t: "Plus de rangement manuel : le chargeur automatique Pharmaload prend en charge jusqu'à 300 boîtes par heure.", need: /pharmaload|chargeur/}, "Le robot range les commandes à votre place : plus de rangement manuel."],
+    b: ["Plusieurs heures gagnées chaque jour, réaffectées aux missions de votre choix.", "Une équipe moins sollicitée par la logistique, des journées mieux organisées."]},
+  'Image innovante et modernisation': {p: ["Votre officine est le reflet de votre expertise : vos patients attendent une pharmacie moderne.", "Vous souhaitez offrir à vos patients une pharmacie moderne et rassurante."],
+    r: ["Un robot visible depuis l'espace de vente, au service d'une pharmacie moderne et organisée.", "Le robot et ses options sur mesure valorisent votre officine."],
+    b: ["Une image innovante, valorisée auprès de vos patients et de votre équipe.", "Une pharmacie qui se démarque et facilite les recrutements."]},
+  'Réception des commandes': {p: ["La réception des commandes mobilise une personne de votre équipe à chaque livraison.", "Contrôler et ranger les produits à la main prend du temps à chaque livraison."],
+    r: [{t: "Le chargeur automatique Pharmaload reçoit les bacs et range les boîtes dans le robot, sans saisie.", need: /pharmaload|chargeur/}, "Les produits sont rangés automatiquement dès leur réception, sans manipulation une à une."],
+    b: ["Des produits disponibles au comptoir dès leur arrivée.", "Une équipe libérée de la réception et un stock toujours à jour."]}
+};
 function argDefault(c, keep = {}) {
-  const items = (c.besoins || []).map(b => { const K = keep.items?.find(i => i.k === b && i.h !== undefined), D = ARG[b] || {h: b, p: '', r: '', b: ''}; const O = ARG_OLD[b] || {}, kp = f => (K && K[f] !== undefined && String(K[f]).trim() !== String(O[f] ?? '\u0000').trim()) ? K[f] : D[f]; return {k: b, h: K ? (K.h || K.h0 || D.h) : D.h, off: !!K && K.h === '', p: kp('p'), r: kp('r'), b: kp('b')}; });
+  const items = (c.besoins || []).map(b => { const K = keep.items?.find(i => i.k === b && i.h !== undefined), D = ARG[b] || {h: b, p: '', r: '', b: ''}; const O = ARG_OLD[b] || {}, O2 = ARG_V49[b] || {}, DY = argDyn(c, b), kp = f => (K && K[f] !== undefined && String(K[f]).trim() !== String(O[f] ?? '\u0000').trim() && String(K[f]).trim() !== String(O2[f] ?? '\u0000').trim()) ? K[f] : (DY[f] ?? D[f]); return {k: b, h: K ? (K.h || K.h0 || D.h) : D.h, off: !!K && K.h === '', p: kp('p'), r: kp('r'), b: kp('b')}; });
   return {
     title: keep.v7 ? keep.title : 'Ce que le robot Pharmathek change pour votre officine',
     dest: keep.dest ?? `${civLong(c)} ${titleCase(c.nom || '')},`,
@@ -5225,7 +5329,7 @@ function phAdd(tid) {
   $('phm-' + tid).innerHTML = ''; phChips(tid);
 }
 function phInit() {
-  const ids = ['ag-intro', 'ag-extra', ...[...document.querySelectorAll('#ag-body textarea')].map(t => t.id).filter(id => /^ag-it-[prb]-/.test(id))];
+  const ids = ['ag-intro', 'ag-extra'];
   ids.forEach(tid => { const t = $(tid); if (!t) return; if ($('ph-' + tid)) { phChips(tid); return; } t.closest('.mic-wrap').insertAdjacentHTML('afterend', `<button type="button" class="agsug mt-1.5" id="cor-${tid}" onclick="corrige('${tid}')"><i class="fas fa-spell-check mr-1"></i>Corriger</button><div class="phr ${tid === 'ag-extra' ? 'ext' : ''}" id="ph-${tid}"></div><div id="phm-${tid}"></div>`); phChips(tid); });
   $('ag-body').oninput = e => { if (e.target.tagName === 'TEXTAREA' && phKey(e.target.id)) { if (ui.cu && ui.cu[e.target.id] != null) { delete ui.cu[e.target.id]; const b = $('cor-' + e.target.id); if (b) b.innerHTML = '<i class="fas fa-spell-check mr-1"></i>Corriger'; } phChips(e.target.id); } };
 }
@@ -5242,16 +5346,34 @@ function corrige(tid) { const t = $(tid), b = $('cor-' + tid); if (!t) return; u
   ui.cu[tid] = t.value; t.value = n; if (b) b.innerHTML = '<i class="fas fa-rotate-left mr-1"></i>Annuler la correction'; phChips(tid); toast('Texte corrigé. Cliquez sur « Annuler la correction » pour revenir.'); }
 function agCount() { let n = 0, m = 0; for (let i = 0; $('ag-it-' + i); i++) { m++; if ($('ag-it-on-' + i).checked) n++; } return [n, m]; }
 function agDraw() {
-  const [n, m] = agCount(), sel = ui.agSel, bar = $('ag-bar');
+  const [n, m] = agCount(), bar = $('ag-bar');
   bar.className = 'rounded-xl px-4 py-2.5 text-[13.5px] font-semibold flex flex-wrap items-center gap-x-4 gap-y-1 ' + (n ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-amber-50 text-amber-800 border border-amber-200');
-  bar.innerHTML = `<span><i class="fas ${n ? 'fa-circle-check' : 'fa-triangle-exclamation'} mr-1.5"></i>${n ? `${n} priorité${n > 1 ? 's' : ''} sur ${m} ${n > 1 ? 'seront' : 'sera'} dans le PDF` : 'Aucune priorité ne sera dans le PDF'}</span><span class="ml-auto font-medium text-slate-600 text-[12.5px]">Ce que vous voyez à droite est ce qui s'imprime</span>`;
-  $('ag-side').innerHTML = Array.from({length: m}, (_, i) => { const on = $('ag-it-on-' + i).checked; return `<div class="agi ${sel === i ? 'sel' : ''} ${on ? '' : 'off'}" role="button" tabindex="0" onclick="agSel(${i})" onkeydown="if(event.key==='Enter')agSel(${i})"><span class="n">${on ? i + 1 : '–'}</span><span class="t">${esc($('ag-it-' + i).dataset.l || $('ag-it-' + i).dataset.k)}</span><button type="button" class="agsw ${on ? 'on' : ''}" onclick="event.stopPropagation();agTog(${i})" aria-label="Dans le PDF : ${on ? 'oui' : 'non'}" title="${on ? 'Retirer du PDF' : 'Remettre dans le PDF'}"></button></div>`; }).join('');
-  $('ag-gen-btn').classList.toggle('sel', sel === 'gen');
-  $('ag-pane-gen').style.display = sel === 'gen' ? 'flex' : 'none'; $('ag-pane-items').style.display = sel === 'gen' ? 'none' : '';
-  for (let i = 0; i < m; i++) { $('ag-it-' + i).style.display = i === sel ? '' : 'none'; const st = $('ag-st-' + i), on = $('ag-it-on-' + i).checked; if (st) { st.className = 'pill ' + (on ? 'bg-emerald-50 text-emerald-800' : 'bg-slate-100 text-slate-600'); st.textContent = on ? 'Dans le PDF' : 'Retirée du PDF'; } }
+  bar.innerHTML = `<span><i class="fas ${n ? 'fa-circle-check' : 'fa-triangle-exclamation'} mr-1.5"></i>${n ? `${n} priorité${n > 1 ? 's' : ''} sur ${m} ${n > 1 ? 'seront' : 'sera'} dans le PDF` : 'Aucune priorité ne sera dans le PDF'}</span><span class="ml-auto font-medium text-slate-600 text-[12.5px]">Chaque priorité = constat → réponse → bénéfice</span>`;
+  for (let i = 0; i < m; i++) { const on = $('ag-it-on-' + i).checked, c = $('ag-it-' + i), sw = $('ag-sw-' + i); c.classList.toggle('off', !on); if (sw) { sw.classList.toggle('on', on); sw.title = on ? 'Retirer du PDF' : 'Remettre dans le PDF'; sw.setAttribute('aria-label', 'Dans le PDF : ' + (on ? 'oui' : 'non')); } c.querySelectorAll('textarea').forEach(agGrow); }
+  const gp = $('ag-pane-gen'), gb = $('ag-gen-btn'); if (gp) gp.style.display = ui.agGen ? 'flex' : 'none'; if (gb) gb.innerHTML = ui.agGen ? 'Masquer les textes généraux ▴' : 'Textes généraux (introduction, éléments complémentaires) : <u>Modifier</u> ▾';
 }
-function agSel(i) { ui.agSel = i; document.querySelectorAll('#ag-body .phr.pop').forEach(x => x.style.display = 'none'); agDraw(); }
+function agSel(i) { if (i === 'gen') ui.agGen = !ui.agGen; agDraw(); }
 function agTog(i) { const k = $('ag-it-on-' + i); k.checked = !k.checked; agDraw(); }
+function agGrow(t) { if (!t) return; t.style.height = 'auto'; t.style.height = (t.scrollHeight + 2) + 'px'; }
+/* variantes d'une phrase : une seule est utilisée dans le PDF */
+function agOptList(i, f) {
+  const c = byId(ui.argId), blk = $('ag-it-' + i), k = blk.dataset.k, P = ptkOf(c), ops = (P.options || []).map(o => String(o).toLowerCase());
+  let def = ''; if (k === '__prob') def = ui.probIn ? ui.probIn[f] : ''; else { const D = (argDefault(c, {}).items || []).find(x => x.k === k); def = D ? D[f] : ''; }
+  let v = ((ARG_VAR[k] || {})[f] || []).filter(x => typeof x === 'string' || !x.need || ops.some(o => x.need.test(o))).map(x => typeof x === 'string' ? x : x.t);
+  if (!v.length) v = phAll(f, null).filter(x => x !== def).slice(0, 3);
+  return [...new Set([def, ...v].filter(Boolean))];
+}
+function agAlt(i, f) {
+  const b = $(`agalt-${i}-${f}`); if (b.style.display !== 'none') { b.style.display = 'none'; return; }
+  agAltDraw(i, f); b.style.display = '';
+}
+function agAltDraw(i, f) {
+  const b = $(`agalt-${i}-${f}`), t = $(`ag-it-${f}-${i}`), cur = t.value.trim(), L = agOptList(i, f), hit = L.indexOf(cur);
+  b.innerHTML = `<div class="t">CHOISISSEZ 1 FORMULATION</div>` + (hit < 0 && cur ? `<button type="button" class="ag2-o s" onclick="$('ag-it-${f}-${i}').focus()"><i></i><span>${esc(cur)}<em>✔ Utilisée dans le PDF · votre texte</em></span></button>` : '')
+    + L.map((x, j) => `<button type="button" class="ag2-o ${j === hit ? 's' : ''}" onclick="agPick(${i},'${f}',${j})"><i></i><span>${esc(x)}${j === hit ? '<em>✔ Utilisée dans le PDF</em>' : (j === 0 ? '<em style="color:#64748b">Texte standard</em>' : '')}</span></button>`).join('')
+    + `<button type="button" class="ag2-o mine" onclick="const t=$('ag-it-${f}-${i}');t.focus();t.select()">✎ Écrire ma propre phrase</button>`;
+}
+function agPick(i, f, j) { const t = $(`ag-it-${f}-${i}`), L = agOptList(i, f); if (L[j] == null) return; t.value = L[j]; agGrow(t); agAltDraw(i, f); }
 function argItReset(i) { const c = byId(ui.argId), k = $('ag-it-' + i).dataset.k; if (k === '__prob') { const Q = probGen(c); if (!Q || !Q.p) return toast('Pas de texte standard pour cette priorité.', true); $('ag-it-h-' + i).value = concTxt(c, Q.h); ['p', 'r', 'b'].forEach(f => { $(`ag-it-${f}-${i}`).value = concTxt(c, Q[f]); phChips(`ag-it-${f}-${i}`); }); return toast('Texte standard rétabli'); } const D = (argDefault(c, {}).items || []).find(x => x.k === k); if (!D) return toast('Pas de texte standard pour cette priorité.', true); $('ag-it-h-' + i).value = D.h || D.h0 || ''; ['p', 'r', 'b'].forEach(f => { $(`ag-it-${f}-${i}`).value = D[f] || ''; phChips(`ag-it-${f}-${i}`); }); toast('Texte standard rétabli'); }
 function openArg(id) {
   const c = byId(id); if (!c) return;
@@ -5263,27 +5385,25 @@ function openArg(id) {
   const inp = (k, l, v) => `<div><label class="lbl" for="ag-${k}">${l}</label><input id="ag-${k}" class="inp" value="${esc(v)}"></div>`;
   const ta = (k, l, v, rows = 3, ph = '') => `<div><label class="lbl" for="ag-${k}">${l}</label><div class="mic-wrap"><textarea id="ag-${k}" rows="${rows}" spellcheck="true" lang="fr" class="ta" placeholder="${esc(ph)}">${esc(v)}</textarea><button type="button" class="mic" onclick="dictate('ag-${k}',this)" aria-label="Dicter"><i class="fas fa-microphone"></i></button></div></div>`;
   $('ag-sub').textContent = `${c.pharma} — ${c.ville}${c.argDraft ? ' · brouillon enregistré' : ''}`;
-  const colT = (i, f, l, v, cls) => `<div class="min-w-0"><span class="agpill ${cls}">${l}</span><div class="mic-wrap"><textarea id="ag-it-${f}-${i}" rows="7" style="min-height:150px" spellcheck="true" lang="fr" class="ta !text-[13px]${f === 'p' ? ' !italic' : ''}" aria-label="${l}">${esc(v)}</textarea><button type="button" class="mic" onclick="dictate('ag-it-${f}-${i}',this)" aria-label="Dicter"><i class="fas fa-microphone"></i></button></div><div class="mt-1.5 flex flex-wrap gap-1.5"><button type="button" class="agsug" onclick="phToggle('ag-it-${f}-${i}')"><i class="fas fa-wand-magic-sparkles mr-1"></i>Suggestions ▾</button><button type="button" class="agsug" id="cor-ag-it-${f}-${i}" onclick="corrige('ag-it-${f}-${i}')"><i class="fas fa-spell-check mr-1"></i>Corriger</button></div><div class="phr pop" id="ph-ag-it-${f}-${i}"></div><div id="phm-ag-it-${f}-${i}"></div></div>`;
+  const colT = (i, f, l, v) => `<div class="ag2-s"><b>${l}</b><div class="ag2-w"><textarea id="ag-it-${f}-${i}" rows="2" spellcheck="true" lang="fr" class="ag2-ta" aria-label="${l}" oninput="agGrow(this)">${esc(v)}</textarea><i class="fas fa-pen ag2-pen"></i></div></div><button type="button" class="ag2-alt" onclick="agAlt(${i},'${f}')">Autres formulations ▾</button><div class="ag2-opts" id="agalt-${i}-${f}" style="display:none"></div>`;
   $('ag-body').innerHTML = `<div id="ag-bar" class="rounded-xl px-4 py-2.5 text-[13.5px] font-semibold flex flex-wrap items-center gap-x-4 gap-y-1"></div>
-    <div class="grid md:grid-cols-[270px_1fr] gap-4 items-start">
-      <div class="flex flex-col gap-1.5 md:sticky md:top-0"><span class="kicker !mb-1">Priorités du client · dans le PDF</span><div id="ag-side" class="flex flex-col gap-1.5"></div>
-        <button type="button" id="ag-gen-btn" class="agi mt-2" onclick="agSel('gen')"><span class="t !font-semibold text-slate-600">Textes généraux<small class="block font-normal text-muted text-[11.5px]">Introduction et éléments complémentaires</small></span><span class="text-ptkd font-bold text-[12.5px]">Modifier</span></button></div>
-      <div class="min-w-0">
-        <div id="ag-pane-items">${d.items.map((it, i) => `<div class="ag-blk" id="ag-it-${i}" data-k="${esc(it.k)}" data-l="${esc(it.l || it.k)}" ${i ? 'style="display:none"' : ''}>
+    <div class="ag2-note"><span style="font-size:20px">💡</span><span><b>Comment ça marche ?</b> Chaque priorité se lit en 3 phrases. Cliquez sur une phrase (✎) pour la corriger, ou sur « Autres formulations » pour la remplacer par une variante : <b>une seule phrase est utilisée dans le PDF</b>.</span></div>
+    <div id="ag-pane-items" class="ag2-g">${d.items.map((it, i) => `<div class="ag2-c ag-blk" id="ag-it-${i}" data-k="${esc(it.k)}" data-l="${esc(it.l || it.k)}">
           <input type="checkbox" id="ag-it-on-${i}" class="hidden" ${it.off ? '' : 'checked'}>
-          <div class="flex flex-wrap items-center justify-between gap-2 mb-2"><b class="text-[15px]">Priorité ${i + 1} · ${esc(it.l || it.k)}</b><span class="flex items-center gap-2"><span id="ag-st-${i}" class="pill"></span><span class="text-xs text-muted">Cliquez dans un texte pour le modifier</span></span></div>
-          <div class="rounded-2xl border border-slate-200 border-l-[5px] !border-l-orange-500 bg-slate-50 p-4"><input id="ag-it-h-${i}" class="inp !h-11 !text-[16px] font-bold bg-white" value="${esc(it.h || it.h0 || '')}" aria-label="Titre de la priorité ${i + 1}" placeholder="Titre">
-            <div class="grid md:grid-cols-3 gap-3 mt-3">${colT(i, 'p', 'VOTRE CONSTAT', it.p, 'bg-slate-200 text-slate-600')}${colT(i, 'r', 'NOTRE RÉPONSE', it.r, 'bg-orange-100 text-orange-800')}${colT(i, 'b', 'AU QUOTIDIEN', it.b, 'bg-orange-600 text-white')}</div></div>
-          <p class="text-xs text-muted mt-2 flex flex-wrap gap-x-3"><button type="button" class="text-ptkd font-bold underline" onclick="argItReset(${i})"><i class="fas fa-rotate-left mr-1"></i>Remettre le texte standard</button><span>Gras : entourez un passage de **doubles astérisques**.</span></p></div>`).join('')}</div>
-        <div id="ag-pane-gen" class="flex flex-col gap-3" style="display:none"><b class="text-[15px]">Textes généraux du PDF</b>
+          <div class="ag2-h"><span class="n">${i + 1}</span><span>${esc(it.l || it.k)}</span><button type="button" class="agsw on" id="ag-sw-${i}" onclick="agTog(${i})"></button></div>
+          <input id="ag-it-h-${i}" class="ag2-hk" value="${esc(it.h || it.h0 || '')}" aria-label="Titre de la priorité ${i + 1}" placeholder="Titre">
+          ${colT(i, 'p', 'VOTRE CONSTAT', it.p)}${colT(i, 'r', 'NOTRE RÉPONSE', it.r)}${colT(i, 'b', 'AU QUOTIDIEN', it.b)}
+          <p class="text-xs text-muted mt-3"><button type="button" class="text-ptkd font-bold underline" onclick="argItReset(${i})"><i class="fas fa-rotate-left mr-1"></i>Remettre les textes standard</button></p></div>`).join('')}</div>
+    <div><button type="button" id="ag-gen-btn" class="text-ptkd font-bold text-[13px]" onclick="agSel('gen')"></button></div>
+    <div id="ag-pane-gen" class="flex flex-col gap-3" style="display:none"><b class="text-[15px]">Textes généraux du PDF</b>
           <p class="text-[12.5px] text-muted">Seuls les textes ci-dessous s'impriment dans le PDF.</p>
           ${inp('title', "Titre de l'en-tête (affiché seulement si l'étude de productivité n'est pas calculée)", d.title)}
           ${['dest', 'projet', 'solution', 'dit', 'contact'].map(k => `<input type="hidden" id="ag-${k}" value="${esc(d[k])}">`).join('')}
           ${ta('intro', 'Introduction', d.intro, 2)}
-          ${ta('extra', 'Éléments complémentaires (facultatif)', d.extra, 3, "Ex. : conditions de financement, délai d'installation, référence d'une officine équipée proche…")}</div>
-      </div></div>`;
-  ui.agSel = 0; agDraw(); ui.argSnap = JSON.stringify(argRead());
-  $('dlg-arg').showModal(); phInit();
+          ${ta('extra', 'Éléments complémentaires (facultatif)', d.extra, 3, "Ex. : conditions de financement, délai d'installation, référence d'une officine équipée proche…")}</div>`;
+  ui.agGen = false;
+  agDraw(); ui.argSnap = JSON.stringify(argRead());
+  $('dlg-arg').showModal(); phInit(); agDraw();
 }
 function argRead() {
   const g = k => $('ag-' + k).value.trim(), items = [];
@@ -5407,9 +5527,10 @@ function renderArgBtn(c) {
       <div class="flex-1 min-w-[260px] flex flex-col gap-1 text-[13px]"><b class="text-orange-900">Il manque ${miss.length} élément${miss.length > 1 ? 's' : ''} pour générer le PDF :</b>${miss.map(m => `<div class="flex items-center gap-2"><span class="w-4 h-4 rounded-full border-2 border-slate-300 inline-block"></span><span>${esc(lbl[m] || m)}</span><button type="button" class="ml-auto font-bold text-[12px] text-ptkd underline" onclick="document.getElementById('${tgt[m]}')?.scrollIntoView({block:'center',behavior:'smooth'})">${go[m] || 'Renseigner →'}</button></div>`).join('')}</div></div>`
     : (() => { const [na, nt] = argCountLive(c), A2 = assocOf(c), nn = 1 + A2.filter(x => x.on).length;
       return `<div class="pbox"><div class="hd"><i class="n">4</i>Document pour le client<span class="r">${dm === 'synth' ? 'Offre synthétique' : 'Offre personnalisée'}</span></div><div class="p-3.5 flex flex-col gap-3">
-      ${dm === 'synth' ? `<div class="flex flex-wrap items-center gap-2"><button type="button" class="btn btn-g !h-11" onclick="printOffre(${c.id})"><i class="fas fa-print text-ptkd"></i>Imprimer</button><button type="button" class="btn btn-g !h-11" onclick="openOffre(${c.id})"><i class="fas fa-pen text-ptkd"></i>Modifier les lignes</button><button type="button" class="btn btn-p !h-12 text-[15px] font-bold shadow-md ml-auto" onclick="genOffre(${c.id})"><i class="fas fa-file-pdf text-lg"></i>Générer la synthèse (PDF)</button></div><p class="text-[12.5px] text-slate-600 m-0">Devis et contrat de maintenance seulement, sans argumentaire. <button type="button" class="font-bold text-ptkd underline" onclick="docMode(${c.id},'perso')">Passer en offre personnalisée</button></p>` : `<div class="ppills"><button type="button" class="ppill" onclick="prepGo('arg')"><i class="fas fa-list-check"></i>Contenu<b>${na}/${nt}</b></button><button type="button" class="ppill" onclick="prepGo('txt')"><i class="fas fa-pen-to-square"></i>Textes<b>${c.argDraft ? 'modifiés' : 'standard'}</b></button><button type="button" class="ppill" onclick="prepGo('nom')"><i class="fas fa-user-group"></i>Noms<b>${nn}</b></button><button type="button" class="ppill" onclick="document.getElementById('f-impl-box')?.scrollIntoView({block:'center',behavior:'smooth'})"><i class="fas fa-map-location-dot"></i>Implantation<b>plan et photos</b></button></div>
-      <div class="flex flex-wrap items-center gap-2"><button type="button" class="btn btn-p !h-11" onclick="o2Open(${c.id})"><i class="fas fa-wand-magic-sparkles"></i>Assistant : préparer l'offre</button><button type="button" class="btn btn-g !h-11" onclick="prepGo('txt')"><i class="fas fa-sliders text-ptkd"></i>Préparer le PDF…</button><button type="button" class="btn btn-g !h-11" onclick="prevArg(${c.id})"><i class="fas fa-eye text-ptkd"></i>Aperçu</button><button type="button" class="btn btn-p !h-12 text-[15px] font-bold shadow-md ml-auto" onclick="pdfArg(${c.id})"><i class="fas fa-file-pdf text-lg"></i>${lab}</button></div>
-      <p class="text-[12.5px] text-emerald-800 font-semibold m-0"><i class="fas fa-circle-check mr-1"></i>Tout est prêt : besoins, robot, devis + maintenance · ${esc(c.pharma)} · <button type="button" class="font-bold text-ptkd underline" onclick="docMode(${c.id},'synth')">Passer en offre synthétique</button></p>`}</div></div>`; })());
+      ${dm === 'synth' ? `<div class="flex flex-wrap items-center gap-2"><button type="button" class="btn btn-g !h-11" onclick="printOffre(${c.id})"><i class="fas fa-print text-ptkd"></i>Imprimer</button><button type="button" class="btn btn-g !h-11" onclick="openOffre(${c.id})"><i class="fas fa-pen text-ptkd"></i>Modifier les lignes</button><button type="button" class="btn btn-p !h-12 text-[15px] font-bold shadow-md ml-auto" onclick="genOffre(${c.id})"><i class="fas fa-file-pdf text-lg"></i>Générer la synthèse (PDF)</button></div><p class="text-[12.5px] text-slate-600 m-0">Devis et contrat de maintenance seulement, sans argumentaire. <button type="button" class="font-bold text-ptkd underline" onclick="docMode(${c.id},'perso')">Passer en offre personnalisée</button></p>` : `<p class="text-[12.5px] text-emerald-800 font-semibold m-0"><i class="fas fa-circle-check mr-1"></i>Tout est prêt : besoins, robot, devis + maintenance · ${esc(c.pharma)} · <button type="button" class="font-bold text-ptkd underline" onclick="docMode(${c.id},'synth')">Passer en offre synthétique</button></p>
+      <div class="pst2"><div class="ps2"><h4>1 · Préparer</h4><p>5 étapes guidées, aperçu du PDF en direct.</p><button type="button" class="btn-or" onclick="o2Open(${c.id})"><i class="fas fa-wand-magic-sparkles"></i>Assistant : préparer l'offre</button></div><div class="ps2"><h4>2 · Remettre</h4><p>Synthèse et offre commerciale, nom de fichier automatique.</p><button type="button" class="btn-or" onclick="pdfArg(${c.id})"><i class="fas fa-file-pdf"></i>${act ? lab : 'Générer le PDF'}</button></div></div>
+      <div class="plk"><button type="button" onclick="prevArg(${c.id})"><i class="fas fa-eye mr-1.5"></i>Aperçu rapide</button><button type="button" onclick="ui.advOpen=!ui.advOpen;renderArgBtn(byId(${c.id}))" aria-expanded="${!!ui.advOpen}"><i class="fas fa-sliders mr-1.5"></i>Réglages avancés ${ui.advOpen ? '▴' : '▾'}</button></div>
+      ${ui.advOpen ? `<div class="padv"><b>Réglages avancés</b><div class="ppills"><button type="button" class="ppill" onclick="prepGo('arg')"><i class="fas fa-list-check"></i>Contenu<b>${na}/${nt}</b></button><button type="button" class="ppill" onclick="prepGo('txt')"><i class="fas fa-pen-to-square"></i>Textes<b>${c.argDraft ? 'modifiés' : 'standard'}</b></button><button type="button" class="ppill" onclick="prepGo('nom')"><i class="fas fa-user-group"></i>Noms<b>${nn}</b></button><button type="button" class="ppill" onclick="document.getElementById('f-impl-box')?.scrollIntoView({block:'center',behavior:'smooth'})"><i class="fas fa-map-location-dot"></i>Implantation<b>plan et photos</b></button></div></div>` : ''}`}</div></div>`; })());
   renderStrip(c, miss); renderPres(c);
 }
 
@@ -5421,7 +5542,8 @@ const presOf = c => (c && Array.isArray(c.pres)) ? c.pres : [];
 const presMontant = c => { try { if (c.offre?.lignes?.length) { const n = offreCalc(c.offre).net; if (n) return Math.round(n); } } catch (e) { } return Math.round(+c.montant || 0); };
 function presSw(c) {
   if (!c || c.step === 'Perdu') return ''; const dm = c.docMode === 'synth' ? 'synth' : 'perso';
-  return `<div class="dsw"><b>Quelle offre présenter ?</b><div class="dsw-s" role="group" aria-label="Type d'offre"><button type="button" class="${dm === 'perso' ? 'a' : ''}" aria-pressed="${dm === 'perso'}" onclick="docMode(${c.id},'perso')"><i class="fas fa-bullseye"></i>Personnalisée<small>besoins + argumentaire</small></button><button type="button" class="${dm === 'synth' ? 'a' : ''}" aria-pressed="${dm === 'synth'}" onclick="docMode(${c.id},'synth')"><i class="fas fa-file-lines"></i>Synthétique<small>devis + maintenance</small></button></div><span class="dsw-n">Vous pouvez passer de l'une à l'autre à tout moment.</span></div>`;
+  const ch = (m, t, sub) => `<button type="button" class="chq-c ${dm === m ? 'sel' : ''}" aria-pressed="${dm === m}" onclick="docMode(${c.id},'${m}')"><span class="rd">${dm === m ? '<i></i>' : ''}</span><span><b>${t}</b><small>${sub}</small></span><em>${dm === m ? '✔ Choisie' : 'Choisir'}</em></button>`;
+  return `<div class="chq"><div class="chq-t"><b>Quelle offre présenter au client ?</b><span>Cliquez sur l'une des deux · modifiable à tout moment</span></div><div class="chq-g" role="group" aria-label="Type d'offre">${ch('perso', 'Personnalisée', 'Besoins du client + argumentaire')}${ch('synth', 'Synthétique', 'Devis + maintenance')}</div></div>`;
 }
 function docMode(id, m) { const c = byId(id); if (!c) return; c.docMode = m; c.maj = Date.now(); save(); renderArgBtn(c); }
 function presPrep(c, doc) {
@@ -6372,7 +6494,7 @@ function renderBanner(c) {
         <div><label class="lbl" for="b-sign-montant">Prix final (€ HT)</label><input type="number" id="b-sign-montant" class="inp font-bold" value="${c.montant || 0}"></div>
       </div>
       ${(!c.signatureDate || !c.livraisonDate || !(+c.montant > 0)) ? `<div class="rounded-xl bg-amber-50 border border-amber-200 text-amber-900 text-[12.5px] px-3 py-2 flex items-center gap-2"><i class="fas fa-triangle-exclamation"></i>À compléter : ${[!c.signatureDate && 'date de signature', !c.livraisonDate && 'date de livraison', !(+c.montant > 0) && 'prix final'].filter(Boolean).join(', ')}.</div>` : ''}
-      <div class="text-[13px] text-slate-700">Modèle : <b>${esc((c.robots || []).join(', ') || '—')}</b></div>
+      <div class="text-[13px] text-slate-700 flex flex-wrap items-center gap-3">Modèle : <b>${esc((c.robots || []).join(', ') || '—')}</b>${essOK(c) ? `<label class="inline-flex items-center gap-2 cursor-pointer rounded-lg px-3 py-1.5 border-2 ${c.essentiel ? 'border-orange-500 bg-orange-50' : 'border-slate-300 bg-white'}" style="border-style:dashed"><input type="checkbox" id="b-ess" class="w-4 h-4 accent-orange-700" ${c.essentiel ? 'checked' : ''} onchange="essTog(this)"><b>Modèle Essentiel</b><span class="text-[11px] text-slate-500">gamme disponible jusqu'en 2025</span></label>` : ''}</div>
       <div class="rounded-xl bg-white border border-slate-200 p-4 flex flex-col gap-3">
         <label class="flex items-center gap-2 text-[13px] font-semibold"><input type="checkbox" id="b-res" class="w-4 h-4 accent-orange-700" ${c.hasReserves ? 'checked' : ''} onchange="resToggle()">Contrat signé avec réserves (clauses suspensives)</label>
         <div id="b-res-box" class="${c.hasReserves ? 'flex' : 'hidden'} flex-col gap-3">
@@ -6900,13 +7022,31 @@ function histIcon(h) {
   if (/compte-rendu|notes de l|qualification|presentation|synthese/.test(a)) return ['fa-file-lines', '#334155', '#F1F3F6'];
   return ['fa-circle', '#64748B', '#F1F3F6'];
 }
+/* V4.10.0 : historique filtré (Essentiel / Documents / Tout) */
+function histLvl(h) {
+  const a = norm(h.action);
+  if (/temps back-office|controle automatique|conservation prolongee|action planifiee retiree|^synthese de l|synthese de l.offre/.test(a)) return 3;
+  if (/etape franchie|etape modifiee|lead (cree|transforme|classe|reactive)|dossier reactive|fiche creee|offre presentee|offre .*(retenue|supprimee)|contrat robot signe|add-on .*signe|reserves levees|annonce de la levee|chance de signature|financement leasing|commission|realise|annule|replanifie|action en retard|r3 reporte|visite sur site|visio teams/.test(a) && !/planifie[e(]/.test(a.replace(/replanifie/g, ''))) return 1;
+  return 2;
+}
+const histDoc = h => /genere|pdf|argumentaire|mail de levee|confirmation de levee|annonce|synthese/.test(norm(h.action));
+function histDay(ds) { const d = parseD(ds); if (!d) return ''; const k = Math.round((new Date(TODAY.getFullYear(), TODAY.getMonth(), TODAY.getDate()) - new Date(d.getFullYear(), d.getMonth(), d.getDate())) / 864e5); return k === 0 ? "AUJOURD'HUI" : k === 1 ? 'HIER' : d.toLocaleDateString('fr-FR', {weekday: 'long', day: 'numeric', month: 'long', year: k > 300 ? 'numeric' : undefined}).toUpperCase(); }
+function histF(k) { ui.hf = k; renderHistory(byId(ui.editId)); }
 function renderHistory(c) {
-  const H = c?.history || [];
-  $('f-hist-n').textContent = H.length ? `${H.length} événement${H.length > 1 ? 's' : ''}` : '';
-  $('f-history').innerHTML = H.length ? H.map((h, i) => { const [fa, fg, bg] = histIcon(h);
-    return `<li class="flex gap-3"><div class="flex flex-col items-center"><span class="w-8 h-8 rounded-full inline-flex items-center justify-center shrink-0" style="background:${bg};color:${fg}"><i class="fas ${fa} text-xs"></i></span>${i < H.length - 1 ? '<span class="flex-1 w-0.5 bg-slate-100 my-1"></span>' : ''}</div>
-      <div class="pb-4 min-w-0"><div class="text-xs text-muted">${parseD(h.date)?.toLocaleDateString('fr-FR') || ''}${h.author ? ' · ' + esc(h.author) : ''}</div><div class="text-sm font-semibold">${esc(h.action)}</div>${h.details ? `<div class="text-[13px] text-slate-700 whitespace-pre-line">${esc(h.details)}</div>` : ''}</div></li>`; }).join('')
-    : '<li class="text-sm text-muted italic">Aucun événement.</li>';
+  const H = c?.history || [], f = ui.hf || 'ess';
+  const lv = H.map(h => histLvl(h)), seenCh = new Set();
+  const keep = H.map((h, i) => { if (/^chance de signature/.test(norm(h.action))) { const k = String(h.date).slice(0, 10); if (seenCh.has(k)) { lv[i] = 3; return false; } seenCh.add(k); } return true; });
+  const nE = lv.filter(x => x === 1).length, nD = H.filter((h, i) => lv[i] !== 1 && histDoc(h)).length;
+  $('f-hist-n').textContent = H.length ? `${nE} jalon${nE > 1 ? 's' : ''} · ${H.length - nE} détail${H.length - nE > 1 ? 's' : ''}` : '';
+  const vis = H.map((h, i) => ({h, l: lv[i], i})).filter(x => f === 'all' ? true : f === 'doc' ? histDoc(x.h) : x.l === 1);
+  const rows = []; vis.forEach(x => { const key = norm(x.h.action).replace(/[0-9]+/g, '#'), day = String(x.h.date).slice(0, 10), p = rows[rows.length - 1]; if (x.l > 1 && p && p.l > 1 && p.key === key && p.day === day) { p.n++; } else rows.push({...x, key, day, n: 1}); });
+  const tab = (k, l, n) => `<button type="button" class="${f === k ? 's' : ''}" onclick="histF('${k}')">${l} <small>${n}</small></button>`;
+  let last = '', out = '';
+  rows.forEach(x => { const d = histDay(x.h.date); if (d !== last) { out += `<div class="hs-day">${esc(d)}</div>`; last = d; }
+    const tm = String(x.h.date).length >= 16 ? String(x.h.date).slice(11, 16) : '', sign = /contrat robot signe|add-on .*signe/.test(norm(x.h.action));
+    out += `<div class="hs-r ${x.l === 1 ? (sign ? 'g' : '') : 'm'}">${x.l === 1 ? `<b>${esc(x.h.action)}</b>` : esc(x.h.action) + (x.n > 1 ? ` · ${x.n} fois` : '')}<span class="tm">${tm}</span>${x.l === 1 && x.h.details ? `<span class="dt">${esc(x.h.details)}</span>` : ''}</div>`; });
+  const hid = H.length - vis.length;
+  $('f-history').outerHTML = `<div id="f-history"><div class="hs-tabs">${tab('ess', 'Essentiel', nE)}${tab('doc', 'Documents', nD)}${tab('all', 'Tout', H.length)}</div>${H.length ? (out || '<div class="text-sm text-muted italic py-3">Rien à afficher dans ce filtre.</div>') : '<div class="text-sm text-muted italic py-3">Aucun événement.</div>'}${f !== 'all' && hid > 0 ? `<button type="button" class="hs-mo" onclick="histF('all')">Afficher les ${hid} détails masqués ▾</button>` : ''}</div>`;
 }
 function horizon(ds) {
   const b = $('f-horizon');
@@ -6959,6 +7099,7 @@ function saveClient(back = true, silent = false) {
       if ($('b-dossier').value.trim() && !DOSSIER_RX.test($('b-dossier').value.trim())) { toast('N° de dossier : format attendu 25/03-19 B', true); $('b-dossier').focus(); return null; }
       Object.assign(c, {numDossier: $('b-dossier').value.trim(), signatureDate: $('b-sign-date').value || c.signatureDate, livraisonDate: $('b-livraison').value, montant: +$('b-sign-montant').value || c.montant,
         hasReserves: $('b-res').checked, leveeDate: $('b-res').checked ? $('b-levee').value : ''});
+      if ($('b-ess')) c.essentiel = $('b-ess').checked;
       if (c.leveeDate && c.leveeDate !== had && opt('annonce') && !annLvOn(c)) setTimeout(() => { try { annOpen(c.id, 0, 'levee'); } catch (e) { } }, 600);
       if (c.leveeDate && c.leveeDate !== had) { log(c, `Réserves levées le ${fmtD(c.leveeDate)}`, 'Réserve retournée signée par le client · commission débloquée.'); (c.rappels || []).filter(r => r.lev && !r.done).forEach(r => { r.done = true; r.doneAt = nowDT(); }); }
     }
@@ -8446,7 +8587,7 @@ function signAddon(cid, aid) {
 }
 
 /* ================= MON PROFIL ================= */
-const PTABS = [['profil', 'fa-user', 'Profil', 'Mon compte'], ['secteur', 'fa-map-location-dot', 'Mon secteur'], ['objectifs', 'fa-bullseye', 'Objectifs et commissions', 'Commercial'], ['sync', 'fa-arrows-rotate', 'Synchronisation', 'Données'], ['sauv', 'fa-floppy-disk', 'Sauvegardes'], ['options', 'fa-toggle-on', 'Options', 'Application'], ['docs', 'fa-book-open', 'Documents'], ['envois', 'fa-paper-plane', 'Envois et liens']];
+const PTABS = [['profil', 'fa-user', 'Profil', 'Mon compte'], ['secteur', 'fa-map-location-dot', 'Mon secteur'], ['objectifs', 'fa-bullseye', 'Objectifs et commissions', 'Commercial'], ['sync', 'fa-arrows-rotate', 'Synchronisation', 'Données'], ['sauv', 'fa-floppy-disk', 'Sauvegardes'], ['histo', 'fa-clock-rotate-left', "Reprise d'historique"], ['options', 'fa-toggle-on', 'Options', 'Application'], ['docs', 'fa-book-open', 'Documents'], ['envois', 'fa-paper-plane', 'Envois et liens']];
 const PTAB_LEG = {reglages: 'options', commissions: 'objectifs', challenges: 'objectifs'};
 function renderProfile() {
   setTimeout(snapRender, 0);
@@ -8455,7 +8596,7 @@ function renderProfile() {
   if (PTAB_LEG[ui.ptab]) ui.ptab = PTAB_LEG[ui.ptab];
   if (!PTABS.some(t => t[0] === ui.ptab)) ui.ptab = 'profil';
   $('pf-tabs').innerHTML = PTABS.map(([k, i, l, g]) => `${g ? `<span class="pf-grp">${g}</span>` : ''}<button class="ptab ${ui.ptab === k ? 'ptab-on' : ''}" onclick="ui.ptab='${k}';renderProfile()"><span class="pfi"><i class="fas ${i}"></i></span>${l}</button>`).join('');
-  ({profil: pfProfil, objectifs: pfObj, secteur: pfSecteur, sync: pfSync, sauv: pfSauv, options: pfOptions, docs: pfDocs, envois: pfEnvois})[ui.ptab]();
+  ({profil: pfProfil, objectifs: pfObj, secteur: pfSecteur, sync: pfSync, sauv: pfSauv, histo: pfHisto, options: pfOptions, docs: pfDocs, envois: pfEnvois})[ui.ptab]();
   $('pf-body').insertAdjacentHTML('afterbegin', pfSummary(ui.ptab));
   { const r1 = $('pf-body').querySelector('.v38-r1'), bn = $('pf-body').firstElementChild; if (r1 && bn && bn !== r1) r1.append(bn); }
   pfFrame();
@@ -8481,7 +8622,7 @@ function pfSummary(k) {
   if (k === 'secteur') return pfBand(B.n && !(age > PBASE_DAYS) ? 'ok' : 'warn', `${S.lgpi.length} départements clients LGPI · ${S.prospect.length} départements prospects · base ${B.n ? B.n.toLocaleString('fr-FR') + ' officines' + (age != null ? ' (mise à jour il y a ' + age + ' j)' : '') : 'non importée'}`);
   if (k === 'sync') { const [t, h] = fbSumInfo(); return pfBand(t, h, 'fb-sum'); }
   if (k === 'sauv') return pfBand('info', 'Copies de secours automatiques : lecture…', 'sauv-sum');
-  if (k === 'docs' || k === 'options') return '';
+  if (k === 'docs' || k === 'options' || k === 'histo') return '';
   if (k === 'envois') return '';
   const n = ['gps', 'teams', 'agenda', 'nearby', 'phone', 'com', 'chal'].filter(opt).length;
   return pfBand('info', `${n} module${n > 1 ? 's' : ''} actif${n > 1 ? 's' : ''} sur 7 · ${opt('social') ? 'liens Pharmathek dans le PDF' : 'liens Pharmathek masqués'}`);
@@ -8511,10 +8652,10 @@ function comFiltered() {
   return comRows().filter(r => P.mode === 'year' ? r.y === P.year : (!P.du || r.date >= P.du) && (!P.au || r.date <= P.au));
 }
 /* V3.6 : filtres du détail des commissions */
-const comF = () => ui.comF || (ui.comF = {st: 'tous', typ: '', mod: '', ms: '', sal: '', q: ''});
+const comF = () => ui.comF || (ui.comF = {st: 'tous', typ: '', mod: '', ms: '', sal: '', q: '', ec: false});
 function comView(rows, skip) {
   const F = comF(), q = F.q.trim().toLowerCase();
-  return rows.filter(r => (skip === 'st' || F.st === 'tous' || r.statut === F.st) && (skip === 'typ' || !F.typ || r.f === F.typ) && (skip === 'mod' || !F.mod || r.label === F.mod) && (skip === 'ms' || !F.ms || r.date.slice(0, 7) === F.ms) && (skip === 'sal' || !F.sal || r.sal === F.sal)
+  return rows.filter(r => (skip === 'ec' || !F.ec || (r.perc != null && Math.abs(r.perc - r.com) >= 1)) && (skip === 'st' || F.st === 'tous' || r.statut === F.st) && (skip === 'typ' || !F.typ || r.f === F.typ) && (skip === 'mod' || !F.mod || r.label === F.mod) && (skip === 'ms' || !F.ms || r.date.slice(0, 7) === F.ms) && (skip === 'sal' || !F.sal || r.sal === F.sal)
     && (!q || [r.c.pharma, r.c.numDossier, r.a && r.a.notes, r.label, r.c.ville].filter(Boolean).join(' ').toLowerCase().includes(q)));
 }
 function comSet(k, v) { comF()[k] = v; renderProfile(); }
@@ -8562,9 +8703,9 @@ function comBar(rows, vw) {
   const opts = (skip, key, vals, lab, all) => `<select class="inp !h-9 !text-[13px] ${F[key] ? 'cf-on' : ''}" onchange="comSet('${key}',this.value)" aria-label="${all}"><option value="">${all}</option>${vals.map(v => `<option value="${esc(v)}" ${F[key] === v ? 'selected' : ''}>${lab(v)}</option>`).join('')}</select>`;
   const base = k => comView(rows, k), uniq = (arr) => [...new Set(arr)].filter(Boolean);
   const types = uniq(base('typ').map(r => r.f)), mods = uniq(base('mod').map(r => r.label)).sort(), mss = uniq(base('ms').map(r => r.date.slice(0, 7))).sort().reverse(), sals = uniq(base('sal').map(r => r.sal)).sort().reverse();
-  const cnt = (k, f) => base(k).filter(f).length, active = F.st !== 'tous' || F.typ || F.mod || F.ms || F.sal || F.q.trim();
+  const cnt = (k, f) => base(k).filter(f).length, active = F.ec || F.st !== 'tous' || F.typ || F.mod || F.ms || F.sal || F.q.trim();
   const fld = (l, h) => `<div class="flex flex-col gap-1"><span class="text-[10.5px] font-extrabold tracking-wide text-slate-500">${l}</span>${h}</div>`;
-  return `<div class="cf-bar"><div class="flex flex-wrap gap-1.5">${chip('st', 'Tous', 'tous')}${chip('st', 'En attente', 'attente')}${chip('st', 'Payées', 'paye')}${chip('st', 'Bloquées', 'bloque')}</div>
+  return `<div class="cf-bar"><div class="flex flex-wrap gap-1.5">${chip('st', 'Tous', 'tous')}${chip('st', 'En attente', 'attente')}${chip('st', 'Payées', 'paye')}${chip('st', 'Bloquées', 'bloque')}<button type="button" class="cf-chip ${F.ec ? 'on' : ''}" onclick="comSet('ec',!comF().ec)">Avec écart<i>${comView(rows, 'ec').filter(r => r.perc != null && Math.abs(r.perc - r.com) >= 1).length}</i></button></div>
     <div class="flex flex-wrap gap-2.5 items-end">
       ${fld('TYPE DE VENTE', opts('typ', 'typ', types, v => `${v === 'Add-on' || v === 'Financement NANCEO' ? v : 'Robot ' + v} · ${cnt('typ', r => r.f === v)}`, 'Tous les types'))}
       ${fld('MODÈLE', opts('mod', 'mod', mods, v => `${esc(v)} · ${cnt('mod', r => r.label === v)}`, 'Tous les modèles'))}
@@ -8618,35 +8759,28 @@ function pfCom() {
     <section class="card overflow-hidden">
       <div class="flex flex-wrap justify-between items-center gap-3 px-5 py-3 border-b border-slate-200">
         <h2 class="h2">Détail des commissions</h2>
-        <div class="flex gap-2 flex-wrap"><button class="btn btn-ok !h-9" ${sel.size ? '' : 'disabled style="opacity:.45"'} onclick="openPay([...ui.paySel])"><i class="fas fa-circle-check"></i>Marquer comme payées (${sel.size})</button><button class="btn btn-g !h-9" onclick="exportCom()"><i class="fas fa-download"></i>CSV</button></div>
+        <div class="flex gap-2 flex-wrap"><button class="btn btn-ok !h-9" ${sel.size ? '' : 'disabled style="opacity:.45"'} onclick="openPay([...ui.paySel])"><i class="fas fa-circle-check"></i>Marquer comme payées (${sel.size})</button><button class="btn btn-or !h-9" onclick="openExpCom()"><i class="fas fa-file-export"></i>Exporter</button></div>
       </div>
-      <div class="v38-top">${accHtml('com-recap', 'fa-table-list', 'Récapitulatif', `${rows.length} vente${rows.length > 1 ? 's' : ''} · ${eur2(tot(''))}`, comRecap(rows))}${comBar(rows, vw)}</div>
+      ${ecKpi(rows)}<div class="v38-top">${accHtml('com-recap', 'fa-table-list', 'Récapitulatif', `${rows.length} vente${rows.length > 1 ? 's' : ''} · ${eur2(tot(''))}`, comRecap(rows))}${comBar(rows, vw)}</div>
       <div class="cf-tot"><span><b>${vw.length} ligne${vw.length > 1 ? 's' : ''}</b> affichée${vw.length > 1 ? 's' : ''} sur ${rows.length} · commissions <b>${eur2(sum(vw, r => r.com))}</b></span>${att.length ? `<label class="flex items-center gap-2 cursor-pointer"><input type="checkbox" class="w-4 h-4 accent-orange-700" ${att.every(r => sel.has(r.key)) ? 'checked' : ''} onchange="[${att.map(r => `'${r.key}'`).join(',')}].forEach(k=>this.checked?ui.paySel.add(k):ui.paySel.delete(k));renderProfile()"><b>Tout sélectionner</b> (${att.length} ligne${att.length > 1 ? 's' : ''} à pointer affichée${att.length > 1 ? 's' : ''})</label>` : ''}</div>
       <div class="tbl-com v38g">
         <div class="v38-grid v38-h"><span></span><span>Type</span><span>Pharmacie</span><span>Vente</span><span style="text-align:right">Calcul</span><span class="v38-n">Taux</span><span class="v38-n">Commission</span><span>Statut</span><span></span></div>
         ${vw.length ? [...vw].reverse().map(r => `<div class="v38-grid v38-r ${r.statut === 'bloque' ? 'cr-blk' : r.nan ? 'cr-nan' : r.a ? 'cr-add' : 'cr-rob'}">
           <span>${r.statut === 'attente' ? `<input type="checkbox" class="w-4 h-4 accent-orange-700" aria-label="Sélectionner" ${sel.has(r.key) ? 'checked' : ''} onchange="this.checked?ui.paySel.add('${r.key}'):ui.paySel.delete('${r.key}');renderProfile()">` : r.statut === 'bloque' ? '<i class="fas fa-lock text-rose-700" title="Commission bloquée : réserve non levée"></i>' : ''}</span>
-          <span>${r.nan ? '<span class="ty ty-nan" title="Financement leasing NANCEO"><i class="fas fa-building-columns"></i>NANCEO</span>' : r.a ? '<span class="ty ty-add"><i class="fas fa-circle-plus"></i>ADD-ON</span>' : '<span class="ty ty-rob"><i class="fas fa-boxes-stacked"></i>ROBOT</span>'}</span>
+          <span>${r.nan ? '<span class="ty ty-nan" title="Financement leasing NANCEO"><i class="fas fa-building-columns"></i>NANCEO</span>' : r.a ? '<span class="ty ty-add"><i class="fas fa-circle-plus"></i>ADD-ON</span>' : '<span class="ty ty-rob"><i class="fas fa-boxes-stacked"></i>ROBOT</span>' + (r.ess ? '<span class="ty" style="background:#FDE8D8;color:#B45309;margin-left:4px">ESSENTIEL</span>' : '')}</span>
           <div class="v38-ph"><button class="font-semibold text-left hover:underline" onclick="openClient(${r.c.id})">${esc(r.c.pharma)}</button><small>${fmtD(r.date)}${(r.a && !r.nan ? r.a.notes : r.c.numDossier) ? ' · ' + esc(r.a && !r.nan ? r.a.notes : r.c.numDossier) : ''}${!r.a && r.c.hasReserves && r.c.leveeDate ? ' · réserve levée le ' + fmtD(r.c.leveeDate) : ''}</small></div>
           <div class="v38-v">${r.nan ? '<i class="fas fa-building-columns" style="font-size:20px;color:#0E7490;width:26px;text-align:center"></i>' : r.a ? (optIco(r.label, 26) || '') : robotIco(r.label, 26)}<span>${esc(r.label)}${r.nan ? `<small>${r.inst ? (r.instReel ? 'Installé le ' : 'Install. prévue ') + fmtD(r.inst) + '<br>pointer en ' + fmtMonthS(r.pm) : 'Installation à renseigner'}</small>` : r.a ? '' : `<small>${rk(r.n)} ${r.f}</small>`}</span></div>
           <div class="v38-c"><i>${eur(r.montant)}${r.assiette ? ' − ' + eur(r.assiette) : ''}</i><b>= ${eur(r.base)}</b></div>
-          <div class="v38-n">${r.taux.toLocaleString('fr-FR', r.nan ? {maximumFractionDigits: 2} : undefined)} %</div><div class="v38-n v38-bd">${eur2(r.com)}</div>
+          <div class="v38-n">${r.taux.toLocaleString('fr-FR', r.nan ? {maximumFractionDigits: 2} : undefined)} %</div><div class="v38-n v38-bd">${eur2(r.com)}${ecHtml(r)}</div>
           <div class="v38-s">${comPillS(r)}</div>
-          <div>${r.statut === 'attente' ? `<button class="btn btn-g" onclick="openPay(['${r.key}'])">Payée…</button>` : r.statut === 'paye' ? `<button class="btn btn-g" onclick="unpay('${r.key}')">Annuler</button>` : `<button class="btn btn-g" onclick="openClient(${r.c.id})">Lever les réserves</button>`}</div></div>`).join('')
+          <div>${r.statut === 'attente' ? `<button class="btn btn-g" onclick="openPay(['${r.key}'])">Payée…</button>` : r.statut === 'paye' ? `<div class="flex flex-col gap-1"><button class="btn btn-g" onclick="openPay(['${r.key}'],true)">Perçu…</button><button class="btn btn-g" onclick="unpay('${r.key}')">Annuler</button></div>` : `<button class="btn btn-g" onclick="openClient(${r.c.id})">Lever les réserves</button>`}</div></div>`).join('')
           : `<div class="py-12 text-center text-muted">${rows.length ? 'Aucune ligne ne correspond aux filtres.' : 'Aucune vente signée sur cette période'}</div>`}
         ${vw.length ? `<div class="v38-grid v38-t"><span></span><span></span><span style="grid-column:3/5">Total · ${cnt3(vw)}</span><span class="v38-c"><b>= ${eur(sum(vw, r => r.base))}</b></span><span></span><span class="v38-n v38-bd" style="grid-column:7">${eur2(sum(vw, r => r.com))}</span></div>` : ''}
       </div>
       <p class="px-5 py-3 border-t border-slate-200 text-xs text-muted">Commission = (montant HT − assiette d'installation) × taux du palier. Chaque robot garde le taux de son rang dans l'année (pas de rattrapage). Les dossiers avec réserves non levées sont bloqués. Ventes additionnelles : ${(+settings.com.addon || 0).toLocaleString('fr-FR')} % du montant HT, sans assiette. Règles modifiables dans l'onglet « Paramétrage ».</p>
     </section>`;
 }
-function openPay(keys) {
-  if (!keys.length) return; ui.payIds = keys;
-  const rows = comRows().filter(r => keys.includes(r.key));
-  $('pay-sub').innerHTML = `${rows.length} commission${rows.length > 1 ? 's' : ''} · <b>${eur2(sum(rows, r => r.com))}</b><br><span class="text-xs text-muted">${esc(rows.map(r => r.c.pharma + (r.nan ? ' (financement NANCEO)' : r.a ? ' (add-on)' : '')).join(', '))}</span>`;
-  $('pay-month').value = isoDay(TODAY).slice(0, 7); $('pay-sal').value = prevMonth();
-  $('dlg-pay').showModal();
-}
-function confirmPay() {
+function confirmPay0() {
   const m = $('pay-month').value, sm = $('pay-sal').value; if (!m) return toast('Indiquez le mois de pointage.', true); if (!sm) return toast('Indiquez le mois du salaire.', true);
   const lab = `pointée en ${fmtMonth(m)} · salaire de ${fmtMonth(sm)}`;
   ui.payIds.forEach(k => { const {c, a} = comRef(k); if (!c) return; if (a) { a.commissionPaid = m; a.commissionSalary = sm; if (k[0] === 'n') a.tauxFige = +settings.com.nanceo || 0; log(c, k[0] === 'n' ? `Commission de financement NANCEO payée (${lab})` : `Commission add-on payée : ${a.quoi} (${lab})`); } else { c.commissionPaid = m; c.commissionSalary = sm; log(c, `Commission payée (${lab})`); } ui.paySel.delete(k); });
@@ -8660,6 +8794,330 @@ function exportCom() {
     ...rows.map(r => [fmtD(r.date), r.c.pharma, r.nan ? 'Financement NANCEO' : r.a ? 'Add-on' : 'Robot', r.a && !r.nan ? r.a.notes || '' : r.c.numDossier || '', r.label, r.a ? '' : `${r.n} ${r.f}`, r.montant, r.assiette, r.base, r.taux, r.com.toFixed(2).replace('.', ','), COM_ST[r.statut][0], r.paid ? fmtMonth(r.paid) : '', r.sal ? fmtMonth(r.sal) : ''].map(q).join(';'))];
   download(`commissions_${isoDay(new Date())}.csv`, '\uFEFF' + lines.join('\r\n'), 'text/csv;charset=utf-8'); toast('Export CSV réalisé');
 }
+/* ================= V4.11.0 : écart attendu / perçu, export, reprise d'historique ================= */
+const ESS_LAST = '2025-12-31';
+const essOK = c => !!c && (!!c.essentiel || (!!c.signatureDate && c.signatureDate <= ESS_LAST));
+const ecOf = r => { if (r.perc == null || r.perc === '') return null; const d = Math.round((+r.perc - r.com) * 100) / 100; return {d, p: r.com ? d / r.com * 100 : 0}; };
+const eurS = v => (v > 0 ? '+ ' : v < 0 ? '− ' : '') + eur2(Math.abs(v));
+const pctS = v => (v > 0 ? '+ ' : v < 0 ? '− ' : '') + Math.abs(v).toLocaleString('fr-FR', {maximumFractionDigits: 1}) + ' %';
+function ecHtml(r) {
+  if (r.statut !== 'paye') return ''; const e = ecOf(r); if (!e) return '';
+  const big = Math.abs(e.d) >= 1, cl = big ? (e.d < 0 ? '#B91C1C' : '#15803D') : '#64748B';
+  return `<span style="display:block;white-space:normal;line-height:1.25;font-size:11px;font-weight:600;color:#64748B;margin-top:3px;white-space:nowrap">Perçu :<br>${eur2(+r.perc).replace(/\s/g, '\u00A0')}</span>${big ? `<span style="display:block;white-space:normal;line-height:1.25;font-size:11.5px;font-weight:800;color:${cl}">${eurS(e.d)}<br>${pctS(e.p)}</span>` : ''}${r.note ? `<span style="display:block;white-space:normal;line-height:1.25;font-size:10.5px;font-style:italic;color:#64748B;font-weight:400">${esc(r.note)}</span>` : ''}`;
+}
+function ecCols(r) {
+  const e = r.statut === 'paye' ? ecOf(r) : null, has = r.statut === 'paye' && r.perc != null && r.perc !== '';
+  return [has ? (+r.perc).toFixed(2).replace('.', ',') : '', e ? e.d.toFixed(2).replace('.', ',') : '', e ? e.p.toFixed(1).replace('.', ',') : '', r.note || ''];
+}
+function ecKpi(rows) {
+  const p = rows.filter(r => r.statut === 'paye' && r.perc != null && r.perc !== '');
+  if (!p.length) return `<div class="px-5 py-2.5 border-b border-slate-200 text-[12.5px] text-muted"><i class="fas fa-scale-balanced mr-1.5"></i>Écart attendu / perçu : cliquez sur « Perçu… » à droite d'une commission payée pour saisir le montant réellement reçu.</div>`;
+  const a = sum(p, r => r.com), q = sum(p, r => +r.perc), d = Math.round((q - a) * 100) / 100, n = p.filter(r => Math.abs(ecOf(r).d) >= 1).length;
+  const k = (l, v, cl = '') => `<div class="rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 flex-1 min-w-[140px]"><div class="text-[10.5px] font-extrabold tracking-wide text-slate-500 uppercase">${l}</div><div class="text-[20px] font-extrabold tabular-nums ${cl}">${v}</div></div>`;
+  return `<div class="px-5 py-3 border-b border-slate-200 flex flex-wrap gap-2.5">${k('Attendu (payées saisies)', eur2(a))}${k('Perçu', eur2(q))}${k('Écart', Math.abs(d) < 1 ? '—' : `${eurS(d)} <span class="text-[12px] font-bold">(${pctS(a ? d / a * 100 : 0)})</span>`, d <= -1 ? 'text-red-700' : d >= 1 ? 'text-green-700' : '')}${k('Dossiers avec écart', `${n} sur ${p.length}`)}</div>`;
+}
+function openPay(keys, edit) {
+  if (!keys.length) return; ui.payIds = keys; ui.payEdit = !!edit;
+  const rows = comRows().filter(r => keys.includes(r.key)), r0 = rows[0] || {};
+  $('pay-sub').innerHTML = `${rows.length} commission${rows.length > 1 ? 's' : ''} · attendu <b>${eur2(sum(rows, r => r.com))}</b>`;
+  $('pay-month').value = edit && r0.paid ? r0.paid : isoDay(TODAY).slice(0, 7); $('pay-sal').value = edit && r0.sal ? r0.sal : prevMonth();
+  $('pay-lines').innerHTML = rows.map(r => `<div class="flex flex-wrap items-end gap-2 text-[13px] pb-2 border-b border-slate-100"><div class="flex-1 min-w-[150px]"><div class="font-semibold">${esc(r.c.pharma)}${r.nan ? ' · NANCEO' : r.a ? ' · add-on' : ''}</div><div class="text-[11.5px] text-muted">Attendue ${eur2(r.com)}</div></div><div><label class="lbl !mb-0.5" for="pp-${r.key}">Perçue (€)</label><input id="pp-${r.key}" type="number" step="0.01" class="inp !w-32 !h-10 text-right font-bold" value="${r.perc != null ? r.perc : r.com}"></div><div class="flex-1 min-w-[150px]"><label class="lbl !mb-0.5" for="pn-${r.key}">Note (facultatif)</label><input id="pn-${r.key}" class="inp !h-10" maxlength="120" value="${esc(r.note || '')}"></div></div>`).join('');
+  $('dlg-pay').showModal();
+}
+function confirmPay() {
+  const keys = [...ui.payIds], m = $('pay-month').value, sm = $('pay-sal').value;
+  if (!m) return toast('Indiquez le mois de pointage.', true); if (!sm) return toast('Indiquez le mois du salaire.', true);
+  const vals = {}, exp = {}; comRows().forEach(r => { if (keys.includes(r.key)) exp[r.key] = r.com; });
+  keys.forEach(k => { const pe = $('pp-' + k), pn = $('pn-' + k); vals[k] = {v: pe && pe.value !== '' ? Math.round(+pe.value * 100) / 100 : null, n: pn ? pn.value.trim() : ''}; });
+  if (ui.payEdit) keys.forEach(k => { const {c, a} = comRef(k); if (!c) return; const t = a || c; t.commissionPaid = m; t.commissionSalary = sm; log(c, 'Montant perçu modifié', vals[k].v != null ? `Attendu ${eur2(exp[k])} · perçu ${eur2(vals[k].v)}` : ''); });
+  else confirmPay0();
+  keys.forEach(k => { const {c, a} = comRef(k); if (!c) return; const t = a || c; t.comPercu = vals[k].v; t.comNote = vals[k].n;
+    if (!ui.payEdit && vals[k].v != null && Math.abs(vals[k].v - exp[k]) >= 1) log(c, `Écart de commission : attendu ${eur2(exp[k])}, perçu ${eur2(vals[k].v)}`, vals[k].n); });
+  save(); if (ui.payEdit) { closeDlg('dlg-pay'); toast('Montant perçu enregistré'); } renderProfile();
+}
+/* ---- export des commissions ---- */
+function expRows() {
+  const per = (document.querySelector('input[name=ex-per]:checked') || {}).value || 'annee', yr = ui.comP.mode === 'year' ? ui.comP.year : CUR_YEAR;
+  if (per === 'annee') return {rows: comRows().filter(r => r.y === yr), lab: `Année civile ${yr}`};
+  if (per === 'periode') return {rows: comFiltered(), lab: P_LABEL().replace(/^./, x => x.toUpperCase())};
+  return {rows: comView(comFiltered()), lab: P_LABEL().replace(/^./, x => x.toUpperCase()) + ' · filtres appliqués'};
+}
+function openExpCom() { const yr = ui.comP.mode === 'year' ? ui.comP.year : CUR_YEAR; $('ex-yr').textContent = `Année civile ${yr}`; $('ex-pd').textContent = P_LABEL().replace(/^./, x => x.toUpperCase()); expSync(); $('dlg-expcom').showModal(); }
+function expSync() { const f = (document.querySelector('input[name=ex-fmt]:checked') || {}).value || 'pdf', {rows} = expRows(); $('ex-go').innerHTML = f === 'pdf' ? '<i class="fas fa-file-pdf"></i>Générer le PDF' : '<i class="fas fa-file-csv"></i>Exporter le CSV'; $('ex-n').textContent = `${rows.length} ligne${rows.length > 1 ? 's' : ''} · ${eur2(sum(rows, r => r.com))}`; }
+function expGo() {
+  const f = (document.querySelector('input[name=ex-fmt]:checked') || {}).value || 'pdf', {rows, lab} = expRows(); if (!rows.length) return toast('Aucune commission sur cette sélection.', true);
+  closeDlg('dlg-expcom'); if (f === 'csv') comCsv(rows); else comPdfPrint(rows, lab);
+}
+function comCsv(rows) {
+  const q = v => `"${String(v ?? '').replace(/"/g, '""')}"`;
+  const H = ['Date de signature', 'Pharmacie', 'Ville', 'Type', 'Vente', 'Essentiel', 'N° dossier / réf.', 'Montant HT', 'Assiette', 'Base', 'Taux %', 'Commission attendue', 'Statut', 'Pointée en', 'Mois du salaire', 'Montant perçu', 'Écart €', 'Écart %', 'Note', 'Motif du blocage'];
+  const L = [H.map(q).join(';'), ...[...rows].sort((a, b) => a.date.localeCompare(b.date)).map(r => [fmtD(r.date), r.c.pharma, r.c.ville || '', r.nan ? 'Financement NANCEO' : r.a ? 'Add-on' : 'Robot', r.label, r.ess ? 'oui' : '', r.a && !r.nan ? r.a.notes || '' : r.c.numDossier || '', r.montant, r.assiette, r.base, String(r.taux).replace('.', ','), r.com.toFixed(2).replace('.', ','), COM_ST[r.statut][0], r.paid ? fmtMonth(r.paid) : '', r.sal ? fmtMonth(r.sal) : '', ...ecCols(r), r.statut === 'bloque' ? 'Réserves non levées' : ''].map(q).join(';'))];
+  download(`commissions_${isoDay(new Date())}.csv`, '﻿' + L.join('\r\n'), 'text/csv;charset=utf-8'); toast('Export CSV réalisé');
+}
+function comPdfHtml(rows, lab) {
+  const kind = r => r.nan ? 'n' : r.a ? 'a' : 'r', f0 = v => Math.round(v).toLocaleString('fr-FR') + ' €', T = x => sum(x, r => r.com);
+  const st = s => rows.filter(r => r.statut === s), P = st('paye'), A = st('attente'), B = st('bloque'), tot = T(rows), acq = T(P) + T(A), pc = v => tot ? v / tot * 100 : 0;
+  const GR = [['r', 'ROBOTS', '#ea580c'], ['a', 'ADD-ONS', '#0f766e'], ['n', 'FINANCEMENT NANCEO', '#4f46e5']];
+  const hasEc = P.some(r => r.perc != null && r.perc !== '');
+  const libl = r => r.nan ? 'Financement NANCEO' : esc(r.label) + (r.ess ? ' · Essentiel' : '');
+  const mc = k => { const x = rows.filter(r => kind(r) === k); return `<span>payées ${f0(T(x.filter(r => r.statut === 'paye')))} · attente ${f0(T(x.filter(r => r.statut === 'attente')))} · réserve ${f0(T(x.filter(r => r.statut === 'bloque')))}</span>`; };
+  const cards = GR.map(([k, n, c]) => { const x = rows.filter(r => kind(r) === k); return `<div class="c" style="border-left-color:${c}"><small>${n}</small><b>${f0(T(x))}</b>${mc(k)}</div>`; }).join('');
+  const sect = (ltr, color, title, list, mode) => {
+    if (!list.length) return '';
+    const th = mode === 'C' ? `<th style="width:62px">Signature</th><th>Pharmacie</th><th>Libellé</th><th>Motif du blocage</th><th class="r">Base HT</th><th class="r">Taux</th><th class="r">Commission</th>`
+      : `<th style="width:62px">${mode === 'A' ? 'Payée en' : 'Prévue'}</th><th>Pharmacie</th><th style="width:60px">Signature</th><th>Libellé</th><th class="r">Base HT</th><th class="r">Taux</th><th class="r">Commission</th>${mode === 'A' && hasEc ? '<th class="r">Perçue</th><th class="r">Écart</th>' : ''}`;
+    const ncol = mode === 'A' && hasEc ? 9 : 7;
+    const body = GR.map(([k, n, c]) => { const g = list.filter(r => kind(r) === k).sort((a, b) => a.date.localeCompare(b.date)); if (!g.length) return '';
+      const hd = `<tr class="gh"><td colspan="${ncol - 1}"><div><i style="background:${c}"></i><span style="color:${c}">${n}</span><span class="mu">· ${g.length} ligne${g.length > 1 ? 's' : ''}</span></div></td><td class="r s">${f0(T(g))}</td></tr>`;
+      return hd + g.map(r => { const ph = `<td><b>${esc(r.c.pharma)}</b><br><span class="mu">${esc(r.c.ville || '')}</span></td>`;
+        if (mode === 'C') return `<tr><td>${fmtD(r.date)}</td>${ph}<td>${libl(r)}</td><td><span class="pill pg3">Réserves non levées</span></td><td class="r">${f0(r.base)}</td><td class="r">${String(r.taux).replace('.', ',')} %</td><td class="r"><b>${eur2(r.com)}</b></td></tr>`;
+        const d = mode === 'A' ? (r.paid ? fmtMonthS(r.paid) : '—') : (r.nan && r.pm ? fmtMonthS(r.pm) : '—'), e = mode === 'A' && hasEc ? ecOf(r) : null;
+        return `<tr><td>${d}</td>${ph}<td>${fmtD(r.date)}</td><td>${libl(r)}${r.note ? `<br><span class="mu">${esc(r.note)}</span>` : ''}</td><td class="r">${f0(r.base)}</td><td class="r">${String(r.taux).replace('.', ',')} %</td><td class="r"><b>${eur2(r.com)}</b></td>${mode === 'A' && hasEc ? `<td class="r">${r.perc != null ? eur2(r.perc) : '—'}</td><td class="r" style="color:${e && e.d <= -1 ? '#b91c1c' : e && e.d >= 1 ? '#15803d' : '#889'}">${e && Math.abs(e.d) >= 1 ? eurS(e.d) : '—'}</td>` : ''}</tr>`; }).join(''); }).join('');
+    return `<div class="sec"><span class="n" style="background:${color}">${ltr}</span><h2>${title}</h2><span class="l"></span><span class="m" style="color:${color}">${f0(T(list))}</span></div><table><thead><tr>${th}</tr></thead><tbody>${body}</tbody></table>`;
+  };
+  const ecAll = P.filter(r => r.perc != null && r.perc !== ''), ecD = sum(ecAll, r => +r.perc) - T(ecAll);
+  const css = `@page{size:A4 portrait;margin:12mm 12mm 14mm;@bottom-right{content:"Page " counter(page) " / " counter(pages);font:8px Arial;color:#99a}@bottom-left{content:"Pharmathek France · Récapitulatif de commissions";font:8px Arial;color:#99a}}
+*{box-sizing:border-box;font-family:Inter,"Segoe UI",Arial,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}body{margin:0;color:#1b2433;font-size:10.5px}
+.top{background:linear-gradient(120deg,#f97316,#c2410c);color:#fff;padding:16px 20px 30px;display:flex;justify-content:space-between;align-items:flex-start;border-radius:12px}.top h1{margin:0;font-size:21px}.top small{opacity:.92;font-size:10.5px;display:block;margin-top:4px}
+.logo{background:#fff;color:#c2410c;font-weight:800;letter-spacing:.06em;font-size:11px;padding:5px 11px;border-radius:20px}
+.kp{display:grid;grid-template-columns:1.25fr 1fr 1fr 1fr;gap:9px;margin:-18px 10px 0;position:relative}.k{background:#fff;border:1px solid #e6eaf0;border-radius:12px;padding:9px 11px;box-shadow:0 3px 10px rgba(20,30,50,.08)}
+.k small{display:flex;align-items:center;gap:6px;color:#667;font-size:8px;letter-spacing:.07em;font-weight:700}.k small i{width:8px;height:8px;border-radius:50%;display:inline-block}.k b{font-size:19px;display:block;margin:3px 0 1px}.k span{font-size:8.5px;color:#889}
+.k.t{background:#1f2937;color:#fff;border-color:#1f2937}.k.t small,.k.t span{color:#cbd5e1}
+.bar{margin:12px 0 4px;display:flex;height:10px;border-radius:6px;overflow:hidden;background:#eef1f5}.bar i{display:block;height:100%}
+.lg{display:flex;gap:14px;font-size:8.5px;color:#556;margin-bottom:10px}.lg span{display:inline-flex;align-items:center;gap:5px}.lg i{width:8px;height:8px;border-radius:2px;display:inline-block}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:4px}.c{border-radius:10px;padding:8px 10px;background:#f8fafc;border-left:4px solid #ccc}.c small{font-size:8px;color:#667;font-weight:700;letter-spacing:.05em}.c b{display:block;font-size:13px;margin-top:2px}.c span{font-size:8px;color:#889}
+.sec{display:flex;align-items:center;gap:9px;margin:14px 0 6px;break-after:avoid}.sec .n{width:21px;height:21px;border-radius:50%;color:#fff;font-weight:800;font-size:10.5px;display:flex;align-items:center;justify-content:center}.sec h2{margin:0;font-size:12.5px}.sec .m{margin-left:auto;font-size:14px;font-weight:800}.sec .l{flex:1;height:1px;background:#e6eaf0}
+table{width:100%;border-collapse:collapse}thead{display:table-header-group}tr{break-inside:avoid}th{font-size:8px;text-align:left;padding:4px 6px;color:#889;font-weight:700;letter-spacing:.05em;text-transform:uppercase;border-bottom:1px solid #e6eaf0}td{padding:4px 6px;font-size:9.5px;border-top:1px solid #f0f2f5;vertical-align:top}.r{text-align:right}
+.gh td{border-top:0;padding:8px 6px 3px;font-weight:800;font-size:9px;letter-spacing:.05em;break-after:avoid}.gh td div{display:flex;align-items:center;gap:6px;white-space:nowrap}.gh i{width:9px;height:9px;border-radius:3px;display:inline-block}.gh .s{font-size:10.5px}
+.mu{color:#99a;font-size:8.5px;font-weight:400;letter-spacing:0}.pill{display:inline-block;border-radius:10px;padding:2px 8px;font-size:8.5px;font-weight:700}.pg3{background:#eef0f4;color:#475569}
+.tt{margin-top:14px;border-radius:12px;background:linear-gradient(120deg,#f97316,#c2410c);color:#fff;padding:12px 16px;display:grid;grid-template-columns:repeat(${hasEc ? 5 : 4},1fr);gap:8px;break-inside:avoid}.tt small{font-size:8px;letter-spacing:.07em;opacity:.92;font-weight:700}.tt b{display:block;font-size:15px;margin-top:2px}
+.note{margin-top:10px;font-size:8.5px;color:#778;line-height:1.5;background:#f8fafc;border-radius:8px;padding:8px 10px;break-inside:avoid}`;
+  return `<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Commissions_${isoDay(new Date())}</title><style>${css}</style></head><body>
+<div class="top"><div><h1>Récapitulatif de mes commissions</h1><small>${esc(lab)} · arrêté au ${fmtD(isoDay(new Date()))} · ${esc(settings.prenom)} ${esc(settings.nom)}</small></div><div class="logo">PHARMATHEK</div></div>
+<div class="kp"><div class="k t"><small><i style="background:#f97316"></i>TOTAL ACQUIS</small><b>${f0(acq)}</b><span>payées + en attente</span></div><div class="k"><small><i style="background:#0b7a4b"></i>PAYÉES</small><b>${f0(T(P))}</b><span>${P.length} ligne${P.length > 1 ? 's' : ''}</span></div><div class="k"><small><i style="background:#d9a21b"></i>EN ATTENTE</small><b>${f0(T(A))}</b><span>${A.length} ligne${A.length > 1 ? 's' : ''}</span></div><div class="k"><small><i style="background:#94a3b8"></i>SOUS RÉSERVE</small><b>${f0(T(B))}</b><span>${B.length} ligne${B.length > 1 ? 's' : ''}</span></div></div>
+<div class="bar"><i style="width:${pc(T(P))}%;background:#0b7a4b"></i><i style="width:${pc(T(A))}%;background:#d9a21b"></i><i style="width:${pc(T(B))}%;background:#94a3b8"></i></div>
+<div class="lg"><span><i style="background:#0b7a4b"></i>Payées ${Math.round(pc(T(P)))} %</span><span><i style="background:#d9a21b"></i>En attente ${Math.round(pc(T(A)))} %</span><span><i style="background:#94a3b8"></i>Sous réserve ${Math.round(pc(T(B)))} %</span></div>
+<div class="cards">${cards}</div>
+${sect('A', '#0b7a4b', 'Commissions payées', P, 'A')}${sect('B', '#c58a0a', 'En attente de paiement', A, 'B')}${sect('C', '#64748b', 'Sous réserve · bloquées', B, 'C')}
+<div class="tt"><div><small>PAYÉES</small><b>${f0(T(P))}</b></div><div><small>EN ATTENTE</small><b>${f0(T(A))}</b></div><div><small>SOUS RÉSERVE</small><b>${f0(T(B))}</b></div><div><small>TOTAL GÉNÉRAL</small><b>${f0(tot)}</b></div>${hasEc ? `<div><small>ÉCART PERÇU / ATTENDU</small><b>${Math.abs(ecD) < 1 ? '—' : eurS(ecD)}</b></div>` : ''}</div>
+<div class="note"><b>Légende :</b> Payée = versée sur le bulletin du mois indiqué · En attente = signée et due, pas encore payée (mois prévu indicatif, financement NANCEO) · Sous réserve = bloquée tant que les réserves ne sont pas levées · Financement NANCEO = leasing, payé à l'installation et pointé le mois suivant.${hasEc ? ' · Écart = montant perçu moins montant attendu.' : ''} Montants indicatifs, à rapprocher de vos bulletins de paie.</div></body></html>`;
+}
+function comPdfPrint(rows, lab) {
+  const f = document.createElement('iframe'); f.setAttribute('aria-hidden', 'true'); f.style.cssText = 'position:fixed;right:0;bottom:0;width:0;height:0;border:0';
+  document.body.appendChild(f); f.onload = () => setTimeout(() => { try { f.contentWindow.focus(); f.contentWindow.print(); } catch (e) { toast('Impression impossible.', true); } setTimeout(() => f.remove(), 120000); }, 350);
+  f.srcdoc = comPdfHtml(rows, lab); toast('Choisissez « Enregistrer au format PDF » dans la fenêtre d\'impression');
+}
+/* ---- Reprise d'historique : lecture des fichiers Excel ---- */
+const IMP_MOIS = {jan: 1, fev: 2, mar: 3, avr: 4, mai: 5, jun: 6, jui: 6, jul: 7, aou: 8, sep: 9, oct: 10, nov: 11, dec: 12};
+const impNorm = s => String(s == null ? '' : s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().trim();
+const impCell = c => { let v = c && c.value; if (v && typeof v === 'object' && !(v instanceof Date)) { if (v.result !== undefined) v = v.result; else if (v.richText) v = v.richText.map(t => t.text).join(''); else if (v.text) v = v.text; } return v == null ? '' : v; };
+const impRed = c => { const col = c && c.font && c.font.color; return !!(col && col.argb && /^FFFF0000$/i.test(col.argb)); };
+function impDate(v) {
+  if (v instanceof Date && !isNaN(v)) return {iso: v.toISOString().slice(0, 10)};
+  const s = String(v || '').trim(); let m;
+  if ((m = s.match(/^(\d{4})-(\d{2})-(\d{2})/))) return {iso: `${m[1]}-${m[2]}-${m[3]}`};
+  if ((m = s.match(/^(\d{1,2})[\/.\-](\d{1,2})[\/.\-](\d{4,5})$/))) { let y = m[3], fix = false; if (y.length === 5) { y = y.slice(0, 3) + y.slice(-1); fix = true; } return {iso: `${y}-${pad(+m[2])}-${pad(+m[1])}`, fix}; }
+  return {iso: ''};
+}
+function impLiv(v) {
+  if (v instanceof Date && !isNaN(v)) return {iso: v.toISOString().slice(0, 10), txt: fmtMonth(v.toISOString().slice(0, 7))};
+  const s = impNorm(v); if (!s) return {iso: '', txt: ''};
+  let m = s.match(/(\d{4})-(\d{2})/); if (m) return {iso: `${m[1]}-${m[2]}-01`, txt: fmtMonth(`${m[1]}-${m[2]}`)};
+  m = s.match(/^t([1-4])\D*(\d{2,4})$/); if (m) { const y = +m[2] < 100 ? 2000 + +m[2] : +m[2], mo = +m[1] * 3; return {iso: `${y}-${pad(mo)}-01`, txt: `T${m[1]} ${y}`}; }
+  m = s.match(/^([a-z]+)\D*(\d{2,4})$/); if (m) { const k = IMP_MOIS[m[1].slice(0, 3)], y = +m[2] < 100 ? 2000 + +m[2] : +m[2]; if (k) return {iso: `${y}-${pad(k)}-01`, txt: fmtMonth(`${y}-${pad(k)}`)}; }
+  return {iso: '', txt: String(v)};
+}
+function impSheet(ws, fname, fy, out, tot) {
+  const txt = (r, c) => impNorm(impCell(ws.getCell(r, c)));
+  for (let r = 1; r <= ws.rowCount; r++) {
+    if (txt(r, 1) !== 'cip') continue;
+    const cols = {}; for (let c = 1; c <= 8; c++) { const h = txt(r, c); if (!h) continue; if (h === 'cip') cols.cip = c; else if (h.startsWith('modele')) cols.mod = c; else if (h.startsWith('pharmacie')) cols.ph = c; else if (h.startsWith('titulaire')) cols.tit = c; else if (h.startsWith('region')) cols.reg = c; else if (h.startsWith('date')) cols.date = c; else if (h.startsWith('livraison')) cols.liv = c; else if (h.startsWith('montant')) cols.mt = c; }
+    if (!cols.ph || !cols.date || !cols.mt) continue;
+    let title = ''; for (let k = 1; k <= 4 && r - k > 0; k++) title += ' ' + txt(r - k, 1) + ' ' + txt(r - k, 2);
+    if (/automeds|blient/.test(title)) continue;
+    const kind = /vente|addit|add.?on/.test(title) ? 'addon' : 'robot';
+    for (let i = r + 1; i <= ws.rowCount; i++) {
+      const row = c => ws.getCell(i, c), allT = [1, 2, 3, 4, 5, 6, 7, 8].map(c => txt(i, c));
+      if (allT.some(t => /^total/.test(t))) { const m = [1, 2, 3, 4, 5, 6, 7, 8].map(c => impCell(row(c))).find(v => typeof v === 'number' && v > 1000); if (m) tot[`${fname}|${kind}`] = m; break; }
+      const ph = String(impCell(row(cols.ph))).trim(), mtv = impCell(row(cols.mt)), dv = impCell(row(cols.date));
+      if (!ph && !allT.slice(0, 8).some(Boolean)) break;
+      if (!ph || /^projets|^n°/.test(allT[0])) { if (!ph && !dv && !mtv) break; if (!ph) continue; }
+      const mt = typeof mtv === 'number' ? mtv : parseFloat(String(mtv).replace(/\s/g, '').replace(',', '.')) || 0;
+      const red = [1, 2, 3, 4, 5, 6, 7, 8].some(c => impCell(row(c)) !== '' && impRed(row(c)));
+      let note = ''; for (let c = 9; c <= 14; c++) { const s = String(impCell(row(c))); if (/annul|remplac/i.test(s)) note = s; }
+      const d = impDate(dv), lv = cols.liv ? impLiv(impCell(row(cols.liv))) : {iso: '', txt: ''}, md = cols.mod ? impNorm(impCell(row(cols.mod))) : '';
+      const L = {fname, fy, kind, row: i, cip: String(impCell(row(cols.cip))).replace(/\D/g, ''), model: /genesi/.test(md) ? 'GENESI' : 'SINTESI', pharma: ph, titulaire: cols.tit ? String(impCell(row(cols.tit))).trim() : '', region: cols.reg ? String(impCell(row(cols.reg))).trim() : '',
+        dateRaw: dv instanceof Date ? d.iso : String(dv), date: d.iso, liv: lv.iso, livTxt: lv.txt, montant: Math.round(mt * 100) / 100, red, note, flags: []};
+      if (d.fix) L.flags.push('date corrigée (année) : à vérifier');
+      if (!d.iso) L.flags.push('date de signature illisible');
+      else if (fy && +d.iso.slice(0, 4) !== fy) { L.flags.push(`date ${fmtD(d.iso)} dans le fichier ${fy} : ramenée à ${fy}`); L.date = `${fy}-${d.iso.slice(5)}`; }
+      L.year = L.date ? +L.date.slice(0, 4) : fy;
+      out.push(L);
+    }
+  }
+}
+async function impLoad(inp) {
+  const files = [...(inp.files || [])]; if (!files.length) return; try { inp.value = ''; } catch (e) { }
+  if (!window.ExcelJS) return toast('Lecteur Excel indisponible (connexion Internet requise au premier chargement).', true);
+  const lines = [], tot = {}, names = [];
+  for (const f of files) {
+    try { const wb = new ExcelJS.Workbook(); await wb.xlsx.load(await f.arrayBuffer()); const fy = +((f.name.match(/(20\d\d)/) || [])[1]) || 0;
+      wb.worksheets.forEach(ws => impSheet(ws, f.name, fy, lines, tot)); names.push(f.name);
+    } catch (e) { toast(`« ${f.name} » illisible : ${e.message || e}`, true); }
+  }
+  lines.forEach((L, i) => { L.i = i; L.on = true; L.abandon = L.kind === 'robot' && L.red; L.nan = false; L.chk = [];
+    L.key = [L.cip, L.date, L.montant].join('|'); });
+  lines.forEach(L => { const first = lines.find(o => o.kind === L.kind && o.key === L.key && o.cip); if (first && first !== L) { L.on = false; L.flags.push('doublon dans le fichier'); }
+    if (L.kind === 'addon') { const o = lines.find(x => x !== L && x.kind === 'addon' && x.cip && x.cip === L.cip && x.montant === L.montant && Math.abs(new Date(x.date) - new Date(L.date)) <= 30 * 864e5 && x.i < L.i); if (o) { L.on = false; L.flags.push('doublon probable ?'); } } });
+  ui.imp = {lines, tot, names, step: 'prev', year: null, tab: 'robot'};
+  const ys = impYears(); ui.imp.year = ys.find(y => !impDone(y)) || ys[0] || null;
+  if (!lines.length) toast('Aucun robot signé trouvé dans ces fichiers.', true);
+  impDraw();
+}
+const impYears = () => [...new Set((ui.imp?.lines || []).map(L => L.year).filter(y => y >= 2000 && y <= 2030))].sort();
+const impDone = y => (settings.impBatches || []).some(b => b.year === y);
+const impLines = () => (ui.imp?.lines || []).filter(L => L.year === ui.imp.year && L.kind === ui.imp.tab);
+function impMatch(L) {
+  if (!L.cip) return {t: 'new'};
+  const ex = clients.filter(c => c.cip === L.cip);
+  if (L.kind === 'robot') {
+    if (ex.some(c => (c.step === 'Signé' || c.step === 'Perdu') && c.signatureDate === L.date)) return {t: 'dup'};
+    const up = ex.find(c => c.step !== 'Signé' && c.step !== 'Perdu'); if (up) return {t: 'link', c: up};
+    return {t: 'new'};
+  }
+  if (ex.some(c => (c.addons || []).some(a => a.date === L.date && +a.montant === L.montant))) return {t: 'dup'};
+  if (ex.length) return {t: 'link', c: ex[0]};
+  const rb = (ui.imp.lines || []).find(x => x.kind === 'robot' && x.cip === L.cip && x.on); return rb ? {t: 'same'} : {t: 'new'};
+}
+function impSet(i, k, v) { const L = ui.imp.lines[i]; if (!L) return; L[k] = v; if (k === 'date') { L.year = v ? +v.slice(0, 4) : L.year; } impDraw(true); }
+function impDraw(keep) {
+  const I = ui.imp || {}, el = $('imp-body'), ft = $('imp-foot'); if (!el) return;
+  const old = keep ? el.querySelector('.imp-scroll') : null, sc = old ? old.scrollTop : 0;
+  const B = settings.impBatches || [];
+  const stp = n => `<div class="imp-st ${I.step === n[0] ? 'on' : n[2] ? 'ok' : ''}">${n[1]}</div>`;
+  const head = `<div class="imp-steps">${stp(['file', '1 · Fichiers', I.lines])}${stp(['prev', '2 · Année et aperçu', I.step === 'done'])}${stp(['done', '3 · Import', false])}</div>`;
+  const past = B.length ? `<div class="mt-4"><div class="lbl">Imports déjà réalisés</div>${B.map(b => `<div class="flex flex-wrap items-center justify-between gap-2 border border-slate-200 rounded-xl px-3 py-2 text-[13px] mb-1.5"><span><b>${b.year}</b> · ${b.n} dossier${b.n > 1 ? 's' : ''} importé${b.n > 1 ? 's' : ''} · ${fmtDT(b.at)}</span><button class="btn btn-g !h-9" onclick="impUndo(${b.id})"><i class="fas fa-rotate-left"></i>Annuler cet import</button></div>`).join('')}</div>` : '';
+  if (I.step === 'done') { el.innerHTML = head + I.doneHtml; ft.innerHTML = `<button class="btn btn-g" onclick="closeDlg('dlg-imp')">Fermer</button><span class="flex gap-2">${clients.some(c => c.toComplete) ? '<button class="btn btn-g" onclick="closeDlg(\'dlg-imp\');cmpOpen()"><i class="fas fa-pen-to-square"></i>Compléter les fiches</button>' : ''}<button class="btn btn-or" onclick="ui.imp.step=\'prev\';ui.imp.year=impYears().find(y=>!impDone(y))||ui.imp.year;impDraw()">Année suivante →</button></span>`; return; }
+  if (!I.lines || I.step === 'file') {
+    el.innerHTML = head + `<div class="imp-drop" onclick="$('imp-file').click()"><i class="fas fa-file-excel"></i><b>Choisir mes fichiers Excel</b><span>Prévisions ou suivi des années passées (2022 à 2025). Les robots Blient / Automeds sont ignorés. Les fichiers sont lus sur cet appareil.</span></div><input id="imp-file" type="file" accept=".xlsx" multiple class="hidden" onchange="impLoad(this)">
+      <div class="imp-note mt-3"><b>Rien n'est importé sans votre accord</b> : vous voyez d'abord un aperçu ligne par ligne, et chaque import peut être annulé.</div>${past}`;
+    ft.innerHTML = `<button class="btn btn-g" onclick="closeDlg('dlg-imp')">Fermer</button><span></span>`; return;
+  }
+  const ys = impYears(), rl = impLines(), L0 = I.lines.filter(L => L.year === I.year), nR = L0.filter(L => L.kind === 'robot').length, nA = L0.filter(L => L.kind === 'addon').length;
+  const chips = ys.map(y => `<button class="imp-yr ${y === I.year ? 'sel' : impDone(y) ? 'done' : ''}" onclick="ui.imp.year=${y};impDraw()"><b>${y}</b>${impDone(y) ? '✔ importé' : I.lines.filter(L => L.year === y && L.on).length + ' lignes'}</button>`).join('');
+  const tabs = `<div class="imp-tabs"><button class="${I.tab === 'robot' ? 'on' : ''}" onclick="ui.imp.tab='robot';impDraw()">Robots signés (${nR})</button><button class="${I.tab === 'addon' ? 'on' : ''}" onclick="ui.imp.tab='addon';impDraw()">Add-ons signés (${nA})</button></div>`;
+  const ficheChip = L => { const m = impMatch(L); L._m = m; return m.t === 'dup' ? '<span class="imp-chip du">Déjà dans le dashboard</span>' : m.t === 'link' ? `<span class="imp-chip bl">Rattaché à la fiche existante</span>` : m.t === 'same' ? '<span class="imp-chip bl">Fiche du robot</span>' : '<span class="imp-chip wa">Nouvelle fiche</span>'; };
+  const sel = (i, k, vals, cur) => `<select class="imp-sel" onchange="impSet(${i},'${k}',this.value)">${vals.map(([v, l]) => `<option value="${v}" ${v === cur ? 'selected' : ''}>${l}</option>`).join('')}</select>`;
+  const rows = rl.map(L => { const bad = !L.date || (L.flags.some(f => /date/.test(f)) && !L.dateOk);
+    return `<tr class="${L.abandon ? 'imp-red' : ''} ${!L.on ? 'imp-off' : ''}"><td><input type="checkbox" class="w-4 h-4 accent-orange-700" ${L.on ? 'checked' : ''} onchange="impSet(${L.i},'on',this.checked)" aria-label="Importer"></td>
+      <td><b>${esc(titleFr(L.pharma))}</b><div class="mu">${esc(L.titulaire)}${L.cip ? ' · CIP ' + esc(L.cip) : ' · <span class="text-red-700">CIP manquant</span>'}</div></td>
+      ${L.kind === 'robot' ? `<td>${sel(L.i, 'model', [['SINTESI', 'SINTESI'], ['GENESI', 'GENESI'], ['ESSENTIEL', 'Essentiel']], L.model)}</td>` : ''}
+      <td><input type="date" class="imp-in ${bad ? 'bad' : ''}" value="${esc(L.date)}" onchange="impSet(${L.i},'date',this.value);ui.imp.lines[${L.i}].dateOk=true"></td>
+      ${L.kind === 'robot' ? `<td>${esc(L.livTxt || '—')}</td>` : ''}<td class="r">${eur(L.montant)}</td>
+      ${L.kind === 'robot' ? `<td class="c"><input type="checkbox" class="w-4 h-4 accent-orange-700" ${L.nan ? 'checked' : ''} onchange="impSet(${L.i},'nan',this.checked)" aria-label="Financement NANCEO"></td><td>${sel(L.i, 'abandon', [['', 'Actif'], ['1', 'Abandonné']], L.abandon ? '1' : '')}</td>` : ''}
+      <td>${ficheChip(L)}${L.flags.map(f => `<div class="imp-flag">⚠ ${esc(f)}</div>`).join('')}${L.note ? `<div class="imp-flag">${esc(L.note)}</div>` : ''}</td></tr>`; }).join('');
+  const tbl = rl.length ? `<div class="imp-scroll"><table class="imp-t"><thead><tr><th></th><th>Pharmacie</th>${I.tab === 'robot' ? '<th>Modèle</th>' : ''}<th>Signature</th>${I.tab === 'robot' ? '<th>Installation</th>' : ''}<th class="r">Montant HT</th>${I.tab === 'robot' ? '<th class="c">NANCEO</th><th>Statut</th>' : ''}<th>Fiche</th></tr></thead><tbody>${rows}</tbody></table></div>` : `<p class="p-6 text-sm text-muted">Aucune ligne de ce type pour ${I.year}.</p>`;
+  const sl = L0.filter(L => L.on && L._m !== undefined ? L._m.t !== 'dup' : L.on), ab = sl.filter(L => L.abandon).length, badN = sl.filter(L => !L.date).length;
+  const ft1 = I.lines.filter(L => L.year === I.year && L.on);
+  const sumTxt = `<b>${ft1.filter(L => L.kind === 'robot').length} robot${ft1.filter(L => L.kind === 'robot').length > 1 ? 's' : ''}</b> · <b>${ft1.filter(L => L.kind === 'addon').length} add-on${ft1.filter(L => L.kind === 'addon').length > 1 ? 's' : ''}</b> à importer${ab ? ` · ${ab} abandonné${ab > 1 ? 's' : ''}` : ''}`;
+  el.innerHTML = head + `<div class="imp-yrs">${chips}</div>${tabs}${tbl}<div class="imp-note mt-2.5">Chaque dossier arrive <b>« à pointer »</b> dans Mes commissions. Un robot <b>abandonné</b> reste dans l'historique mais n'est plus compté dans vos commissions. Les dates corrigées (⚠) sont modifiables. Cochez <b>NANCEO</b> si le robot était financé par leasing.</div>`;
+  ft.innerHTML = `<button class="btn btn-g" onclick="ui.imp.step='file';impDraw()">← Changer de fichiers</button><span class="flex items-center gap-3"><span class="text-[12.5px] text-slate-600">${sumTxt}</span><button class="btn btn-or" ${impDone(I.year) || badN ? 'disabled style="opacity:.45"' : ''} onclick="impRun()">${impDone(I.year) ? 'Déjà importé' : 'Importer ' + I.year + ' →'}</button></span>`;
+  const n = el.querySelector('.imp-scroll'); if (n && keep) n.scrollTop = sc;
+}
+const impName = L => { const t = String(L.titulaire || '').trim(), m = t.match(/^(M\.?|Mme|Mlle|Madame|Monsieur|Mr)\s+(.*)$/i), g = m ? (/^m(r|onsieur|\.)?$/i.test(m[1]) ? 'M.' : 'Mme') : '', rest = (m ? m[2] : t).split(/\s+/).filter(Boolean), nom = rest.filter(w => w === w.toUpperCase()).join(' ') || rest[0] || '', pre = rest.filter(w => w !== w.toUpperCase() && w !== nom).join(' ');
+  return {genre: g, nom: titleCase(nom), prenom: pre}; };
+function impRun() {
+  const I = ui.imp, y = I.year, sel = I.lines.filter(L => L.year === y && L.on); if (!sel.length) return toast('Rien à importer pour cette année.', true);
+  if (sel.some(L => !L.date)) return toast('Corrigez d\'abord les dates manquantes.', true);
+  const batch = {id: Date.now(), year: y, at: isoDT(new Date()), created: [], modified: {}, n: 0, nR: 0, nA: 0, tot: 0}, snap = c => { if (!batch.modified[c.id] && !batch.created.includes(c.id)) batch.modified[c.id] = JSON.stringify(c); };
+  const now = isoDT(new Date()), dup = [];
+  const signed = (c, L) => { Object.assign(c, {step: L.abandon ? 'Perdu' : 'Signé', signatureDate: L.date, livraisonDate: L.liv || '', montant: L.montant, robots: [L.model === 'GENESI' ? 'GENESI' : 'SINTESI SLIM monobras'], essentiel: L.model === 'ESSENTIEL', hasReserves: false, leveeDate: ''});
+    if (L.cip) c.cip = L.cip; if (L.nan) c.nanceo = {on: true, instPrev: L.liv || ''}; if (L.abandon) { c.perduDate = L.date; c.perduMotif = 'Abandonné'; } c.histImport = {year: y, file: L.fname, batch: batch.id};
+    log(c, `Repris de l'historique ${y}${L.abandon ? ' · dossier abandonné' : ''}`, `${L.fname}${L.model === 'ESSENTIEL' ? ' · modèle Essentiel' : ''}${L.livTxt ? ' · installation ' + L.livTxt : ''}${L.nan ? ' · financement NANCEO' : ''} · modèle précis du robot à vérifier`); };
+  sel.filter(L => L.kind === 'robot').forEach(L => { const m = impMatch(L); if (m.t === 'dup') { dup.push(L); return; }
+    if (m.t === 'link') { snap(m.c); signed(m.c, L); } else { const nm = impName(L), c = {id: Date.now() + batch.created.length + Math.floor(Math.random() * 1e4), pharma: titleFr(L.pharma), genre: nm.genre, nom: nm.nom, prenom: nm.prenom, rue: '', cp: '', ville: '', region: L.region, telPort: '', telFixe: '', email: '', lgo: '', cip: L.cip, step: 'Contact', addons: [], contacts: [], history: [], rappels: [], acts: [], options: [], positions: [], nextDate: null, nextType: null, createdAt: now, toComplete: true};
+      clients.push(c); batch.created.push(c.id); signed(c, L); }
+    batch.n++; batch.nR++; batch.tot += L.montant; });
+  sel.filter(L => L.kind === 'addon').forEach(L => { const m = impMatch(L); if (m.t === 'dup') { dup.push(L); return; }
+    let c = m.t === 'link' ? m.c : null;
+    if (!c && m.t === 'same') c = clients.find(x => x.cip === L.cip && (x.step === 'Signé' || x.step === 'Perdu'));
+    if (!c) { const nm = impName(L); c = {id: Date.now() + batch.created.length + Math.floor(Math.random() * 1e4), pharma: titleFr(L.pharma), genre: nm.genre, nom: nm.nom, prenom: nm.prenom, rue: '', cp: '', ville: '', region: L.region, telPort: '', telFixe: '', email: '', lgo: '', cip: L.cip, step: 'Contact', addons: [], contacts: [], history: [], rappels: [], acts: [], options: [], positions: [], nextDate: null, nextType: null, createdAt: now, toComplete: true, addonOnly: true, histImport: {year: y, file: L.fname, batch: batch.id}, step: 'Signé', signatureDate: '', robots: [], montant: 0};
+      log(c, `Fiche créée à la reprise de l'historique ${y}`, 'Add-on repris du fichier ; robot signé avant la période reprise (fiche client sans robot).'); clients.push(c); batch.created.push(c.id); } else snap(c);
+    c.addons = c.addons || []; c.addons.push({id: Date.now() + Math.floor(Math.random() * 1e6), items: [], quoi: 'Add-on (repris du fichier)', montant: L.montant, statut: 'signe', statutDetail: 'Signé', date: L.date, lastActionDate: L.date, notes: ''});
+    log(c, `Add-on repris de l'historique ${y}`, `${eur(L.montant)} HT · ${L.fname}`); batch.n++; batch.nA++; batch.tot += L.montant; });
+  settings.impBatches = [...(settings.impBatches || []), batch]; saveSet(); save();
+  const all = I.lines.filter(L => L.year === y), fr = all.filter(L => L.kind === 'robot'), fa = all.filter(L => L.kind === 'addon');
+  const ctl = (lab, a, n, tt) => `<tr><td>${lab}</td><td class="r">${a.length}</td><td class="r">${eur(sum(a, L => L.montant))}</td><td class="r">${n}</td><td class="r">${eur(tt)}</td><td class="c">${a.length === n && Math.abs(sum(a, L => L.montant) - tt) < 1 ? '<span class="imp-chip ok">✔ identique</span>' : '<span class="imp-chip wa">écart (lignes décochées ou déjà présentes)</span>'}</td></tr>`;
+  I.doneHtml = `<div class="imp-note" style="background:#f0fdf4;border-color:#86efac"><b>Import ${y} terminé</b> : ${batch.nR} robot${batch.nR > 1 ? 's' : ''} et ${batch.nA} add-on${batch.nA > 1 ? 's' : ''}${dup.length ? ` (${dup.length} déjà présent${dup.length > 1 ? 's' : ''}, ignoré${dup.length > 1 ? 's' : ''})` : ''}.</div>
+    <div class="lbl mt-4">Contrôle des totaux · fichier / importé</div><table class="imp-t"><thead><tr><th></th><th class="r">Lignes du fichier</th><th class="r">Total HT fichier</th><th class="r">Importées</th><th class="r">Total HT importé</th><th></th></tr></thead><tbody>${ctl('Robots', fr, batch.nR, sum(sel.filter(L => L.kind === 'robot' && !dup.includes(L)), L => L.montant))}${fa.length ? ctl('Add-ons', fa, batch.nA, sum(sel.filter(L => L.kind === 'addon' && !dup.includes(L)), L => L.montant)) : ''}</tbody></table>
+    <p class="text-[13px] mt-3">Les dossiers sont dans <b>Mes commissions</b> (statut « en attente ») : marquez-les payés ou sous réserve. ${clients.some(c => c.toComplete) ? `<b>${clients.filter(c => c.toComplete).length} fiche(s) à compléter</b> (adresse, LGO…) : bouton « Compléter les fiches ».` : ''}</p>`;
+  I.step = 'done'; impDraw(); try { renderDashboard(); } catch (e) { } toast(`Import ${y} réalisé`);
+}
+function impUndo(id) {
+  const b = (settings.impBatches || []).find(x => x.id === id); if (!b) return;
+  if (!confirm(`Annuler l'import ${b.year} ? Les ${b.n} dossiers importés seront retirés et les fiches modifiées retrouveront leur état d'avant.`)) return;
+  b.created.forEach(cid => { const i = clients.findIndex(c => c.id === cid); if (i >= 0) clients.splice(i, 1); });
+  Object.entries(b.modified).forEach(([cid, js]) => { const i = clients.findIndex(c => c.id === +cid); if (i >= 0) clients[i] = JSON.parse(js); });
+  settings.impBatches = settings.impBatches.filter(x => x.id !== id); saveSet(); save();
+  if (ui.imp && ui.imp.step === 'done') ui.imp.step = 'prev'; impDraw(); try { renderDashboard(); if ($('view-profile') && !$('view-profile').classList.contains('hidden')) renderProfile(); } catch (e) { } toast(`Import ${b.year} annulé`);
+}
+function impOpen() { if (!ui.imp) ui.imp = {step: 'file'}; else if (!ui.imp.lines) ui.imp.step = 'file'; $('dlg-imp').showModal(); impDraw(); }
+function pfHisto() {
+  const B = settings.impBatches || [], n = clients.filter(c => c.toComplete).length;
+  $('pf-body').innerHTML = `<section class="card p-5 sm:p-6 flex flex-col gap-3"><h2 class="h2 flex items-center gap-2"><i class="fas fa-clock-rotate-left text-ptkd"></i>Reprise d'historique <span class="pill" style="background:#eef0f4;color:#475569">optionnel</span></h2>
+    <p class="text-[13px] text-slate-700">Récupérez vos <b>robots et add-ons signés</b> des années passées (fichiers Excel) pour suivre et pointer vos commissions restantes. Année par année, avec aperçu et possibilité d'annuler chaque import.</p>
+    ${B.length ? `<div class="text-[13px]">${B.map(b => `<div class="py-1"><b>${b.year}</b> · ${b.nR} robot${b.nR > 1 ? 's' : ''}, ${b.nA} add-on${b.nA > 1 ? 's' : ''} · ${fmtDT(b.at)}</div>`).join('')}</div>` : '<p class="text-[13px] text-muted">Aucun import réalisé.</p>'}
+    <div class="flex flex-wrap gap-2"><button class="btn btn-or" onclick="impOpen()"><i class="fas fa-file-import"></i>Lancer l'assistant d'import</button>${n ? `<button class="btn btn-g" onclick="cmpOpen()"><i class="fas fa-pen-to-square"></i>Compléter les fiches (${n})</button>` : ''}</div></section>`;
+}
+/* ---- Compléter les fiches ---- */
+function cmpOpen() {
+  const ids = clients.filter(c => c.toComplete).map(c => c.id); if (!ids.length) return toast('Aucune fiche à compléter.', true);
+  ui.cmp = {ids, i: 0, res: []}; cmpDraw(); $('dlg-cmp').showModal();
+}
+function cmpDraw() {
+  const S = ui.cmp, el = $('cmp-body'), ft = $('cmp-foot'); if (!S) return;
+  const left = clients.filter(c => c.toComplete).length;
+  if (!left) { el.innerHTML = '<div class="p-8 text-center"><i class="fas fa-circle-check text-4xl text-emerald-600"></i><p class="text-lg font-bold mt-3">Toutes les fiches sont complétées</p></div>'; ft.innerHTML = '<span></span><button class="btn btn-or" onclick="closeDlg(\'dlg-cmp\');renderDashboard()">Terminer</button>'; return; }
+  const ids = clients.filter(c => c.toComplete).map(c => c.id); if (S.i >= ids.length) S.i = 0; const c = byId(ids[S.i]), tot = S.ids.length, done = tot - left;
+  const li = ids.slice(0, 9).map((id, k) => { const x = byId(id); return `<button class="cmp-q ${k === S.i ? 'cur' : ''}" onclick="ui.cmp.i=${k};cmpDraw()">${esc(x.pharma)}</button>`; }).join('');
+  const I = (id, l, v, ex = '') => `<div><label class="lbl" for="${id}">${l}</label><input id="${id}" class="inp" value="${esc(v || '')}" ${ex}></div>`;
+  el.innerHTML = `<div class="flex justify-between items-center text-[12.5px] text-muted"><span>${done} complétée${done > 1 ? 's' : ''} sur ${tot}</span><span>Fiche ${S.i + 1} / ${left}</span></div><div class="imp-bar"><i style="width:${tot ? done / tot * 100 : 0}%"></i></div>
+    <div class="cmp-wrap"><div class="cmp-left"><div class="lbl">File d'attente</div>${li}${left > 9 ? `<div class="text-[12px] text-muted mt-1">… ${left - 9} autre${left - 9 > 1 ? 's' : ''}</div>` : ''}</div>
+    <div class="cmp-main"><div class="cmp-info">Fiche reprise de l'historique : <b>CIP ${esc(c.cip || '—')}</b>${c.signatureDate ? ' · signée le ' + fmtD(c.signatureDate) : ''}. Retrouvez la pharmacie dans l'annuaire pour pré-remplir l'adresse et le téléphone.</div>
+      <button class="btn btn-or !h-10 my-2" onclick="cmpSearch()"><i class="fas fa-wand-magic-sparkles"></i>Compléter depuis l'annuaire</button><div id="cm-res"></div>
+      <div class="cmp-grid mt-2">${I('cm-pharma', 'Pharmacie *', c.pharma)}${I('cm-cip', 'Code CIP', c.cip, 'inputmode="numeric" maxlength="7"')}${I('cm-rue', 'Adresse', c.rue)}${I('cm-ville', 'Ville', c.ville)}${I('cm-cp', 'Code postal', c.cp, 'inputmode="numeric" maxlength="5"')}${I('cm-grp', 'Groupement', c.groupement || c.grp || '')}
+        <div><label class="lbl" for="cm-lgo">Logiciel (LGO)</label><select id="cm-lgo" class="inp"><option value="">À renseigner</option>${LGOS.map(l => `<option ${c.lgo === l ? 'selected' : ''}>${l}</option>`).join('')}</select></div>${I('cm-tel', 'Téléphone', c.telFixe)}${I('cm-mail', 'E-mail', c.email)}
+        <div class="cmp-g3"><div><label class="lbl" for="cm-genre">Civ.</label><select id="cm-genre" class="inp"><option ${c.genre === 'M.' ? 'selected' : ''}>M.</option><option ${c.genre === 'Mme' ? 'selected' : ''}>Mme</option></select></div><div style="grid-column:span 2">${I('cm-nom', 'Nom du titulaire', c.nom)}</div></div>${I('cm-prenom', 'Prénom', c.prenom)}</div></div></div>`;
+  ft.innerHTML = `<button class="btn btn-g" onclick="closeDlg('dlg-cmp');renderDashboard()">Plus tard</button><span class="flex gap-2"><button class="btn btn-g" onclick="cmpNext(false)">Passer</button><button class="btn btn-or" onclick="cmpNext(true)">Enregistrer et suivante →</button></span>`;
+}
+async function cmpSearch() {
+  const q = $('cm-pharma').value.trim().replace(/^pharmacie\s+(de\s+la\s+|du\s+|des\s+|de\s+l'|de\s+)?/i, ''), cp = $('cm-cp').value.trim(), dep = /^\d{2}/.test(cp) ? cp.slice(0, 2) : '', box = $('cm-res');
+  if (q.length < 3) return toast('Nom de pharmacie trop court.', true);
+  box.innerHTML = '<div class="p-3 text-xs text-muted"><i class="fas fa-spinner fa-spin mr-1"></i>Recherche…</div>';
+  let loc = []; try { loc = await pbaseSearch(q, dep); } catch (e) { }
+  let api = []; try { const u = new URL('https://recherche-entreprises.api.gouv.fr/search'); u.searchParams.set('q', q); u.searchParams.set('activite_principale', '47.73Z'); u.searchParams.set('per_page', '6'); if (dep) u.searchParams.set('departement', dep); const r = await fetch(u); if (r.ok) api = (await r.json()).results || []; } catch (e) { }
+  ui.cmp.res = [...loc.map(x => ({nom: x.nom, rue: x.rue, cp: x.cp, ville: x.ville, tel: x.tel, tit: (x.tits && x.tits[0]) || x.tit || null, src: 'Base officielle'})), ...api.map(p => { const s = p.siege || {}; return {nom: titleCase(s.liste_enseignes?.[0] || p.nom_complet), rue: titleCase([s.numero_voie, s.indice_repetition, s.type_voie, s.libelle_voie].filter(Boolean).join(' ')), cp: s.code_postal || '', ville: titleCase(s.libelle_commune || ''), tel: '', tit: null, src: 'Annuaire en ligne'}; })];
+  box.innerHTML = ui.cmp.res.length ? `<div class="cmp-res">${ui.cmp.res.map((x, j) => `<button onclick="cmpPick(${j})"><b>${esc(x.nom)}</b><span>${esc([x.rue, x.cp + ' ' + x.ville].filter(Boolean).join(', '))} · ${x.src}</span></button>`).join('')}</div>` : `<div class="p-3 text-xs text-muted">Aucune correspondance${dep ? '' : ' — indiquez le code postal pour affiner'}.${settings.pbase?.n ? '' : ' <button class="font-semibold text-ptkd hover:underline" onclick="openBase()">Installer la base des pharmacies</button>.'}</div>`;
+}
+function cmpPick(j) {
+  const x = ui.cmp.res[j]; if (!x) return; const put = (id, v) => { const e = $(id); if (e && v && !e.value.trim()) e.value = v; };
+  put('cm-rue', x.rue); put('cm-cp', x.cp); put('cm-ville', x.ville); put('cm-tel', x.tel ? fmtPhone ? (() => { const t = {value: x.tel}; try { fmtPhone(t); return t.value; } catch (e) { return x.tel; } })() : x.tel : ''); if (x.tit) { put('cm-nom', titleCase(x.tit.nom || '')); put('cm-prenom', titleCase(x.tit.prenom || '')); }
+  $('cm-res').innerHTML = '<div class="p-2.5 text-[12.5px] font-semibold text-emerald-800"><i class="fas fa-circle-check mr-1.5"></i>Champs vides complétés, le reste est conservé. Vérifiez puis enregistrez.</div>';
+}
+function cmpNext(saveIt) {
+  const ids = clients.filter(c => c.toComplete).map(c => c.id), c = byId(ids[ui.cmp.i]);
+  if (c && saveIt) { const g = id => ($(id) ? $(id).value.trim() : ''); if (!g('cm-pharma')) return toast('Le nom de la pharmacie est obligatoire.', true);
+    Object.assign(c, {pharma: g('cm-pharma'), cip: g('cm-cip').replace(/\D/g, '').slice(0, 7), rue: g('cm-rue'), ville: g('cm-ville'), cp: g('cm-cp'), groupement: g('cm-grp'), lgo: g('cm-lgo'), telFixe: g('cm-tel'), email: g('cm-mail'), genre: g('cm-genre'), nom: g('cm-nom'), prenom: g('cm-prenom')});
+    c.toComplete = false; log(c, 'Fiche complétée (reprise de l\'historique)'); save(); toast('Fiche enregistrée'); }
+  else if (c) { ui.cmp.i++; }
+  cmpDraw();
+}
+function histBanner() {
+  const v = $('view-dashboard'); if (!v) return; const old = $('hist-banner'); if (old) old.remove(); const n = clients.filter(c => c.toComplete).length; if (!n) return;
+  v.insertAdjacentHTML('afterbegin', `<div id="hist-banner" class="rounded-2xl border-2 px-4 py-3 flex flex-wrap items-center gap-3" style="border-color:#EA6A12;background:#fff6ef"><div class="flex-1 min-w-[220px]"><b style="color:#EA6A12">${n} fiche${n > 1 ? 's' : ''} à compléter</b> <span class="text-[13px] text-slate-600">· reprises de l'historique avec CIP, pharmacie, titulaire et robot</span></div><button class="btn btn-or !h-10" onclick="cmpOpen()">Compléter les fiches</button></div>`);
+}
+function essTog(el) { const l = el.closest('label'); if (l) { l.classList.toggle('border-orange-500', el.checked); l.classList.toggle('bg-orange-50', el.checked); } try { setDirty(true); } catch (e) { } }
+
 function pfChal() {
   const L = [...settings.challenges].sort((a, b) => b.du.localeCompare(a.du));
   const ST = {encours: ['En cours', '#FEF6E4', '#6B4607'], atteint: ['Objectif atteint', '#E8F5EE', '#14603F'], echu: ['Terminé · non atteint', '#F1F3F6', '#475569'], avenir: ['À venir', '#EEF2FC', '#1E3A8A']};
