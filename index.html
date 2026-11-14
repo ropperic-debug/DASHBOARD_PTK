@@ -783,6 +783,20 @@ tr.imp-red td{background:#FFF5F5}tr.imp-red td b{text-decoration:line-through;co
 .cmp-q{display:block;width:100%;text-align:left;padding:7px 10px;border-radius:9px;font-size:12.5px;margin-bottom:3px;border:1.5px solid transparent;background:none;cursor:pointer}.cmp-q.cur{background:#FFF6EF;border-color:#EA6A12;font-weight:700}
 .cmp-info{background:#F0FDF4;border:1px solid #86EFAC;border-radius:10px;padding:9px 12px;font-size:12.5px}.cmp-res{border:1px solid #E2E8F0;border-radius:10px;max-height:190px;overflow:auto}.cmp-res button{display:block;width:100%;text-align:left;padding:8px 12px;border-bottom:1px solid #F1F5F9;font-size:13px;background:#fff;cursor:pointer}.cmp-res button:hover{background:#FFF6EF}.cmp-res span{display:block;font-size:11.5px;color:#64748B}
 </style>
+<style id="v412-css">
+.ct-pill{display:inline-block;border-radius:99px;padding:2px 10px;font-size:11.5px;font-weight:700;white-space:nowrap}
+.ct-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}@media(max-width:820px){.ct-3{grid-template-columns:1fr}}
+.ct-card{background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:10px 12px}.ct-chg{margin-top:2px}
+.ct-k{font-size:11px;font-weight:700;color:#64748B;text-transform:uppercase;letter-spacing:.02em}.ct-v{font-size:21px;font-weight:800;font-variant-numeric:tabular-nums;margin-top:2px}.ct-sub{font-size:12px;color:#475569;margin-top:3px}
+.ct-ec{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:10px 12px}
+.ct-warn{background:#FEF6E4;border:1px solid #FCD9A0;border-radius:10px;padding:8px 12px;font-size:12.5px;color:#7C4A03}.ct-ok{background:#F0FDF4;border:1px solid #BBF7D0;border-radius:10px;padding:6px 12px;font-size:12px;color:#166534}
+.ct-cmp{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:8px}.ct-nan{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end;margin-top:8px}
+.ct-sug{background:#ECFEFF;border:1px solid #A5F3FC;border-radius:10px;padding:8px 12px;font-size:12.5px;color:#155E75;display:flex;flex-wrap:wrap;gap:8px;align-items:center;max-width:520px}
+.ct-kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}@media(max-width:820px){.ct-kpis{grid-template-columns:repeat(2,1fr)}}
+.ct-kc{background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:12px 14px}.ct-kc .ct-v{font-size:24px}
+.ct-t{width:100%;border-collapse:collapse;font-size:13px;min-width:720px}.ct-t th{background:#1F3A5F;color:#fff;text-align:left;padding:9px 10px;font-size:12px}.ct-t td{padding:9px 10px;border-top:1px solid #EEF2F7;vertical-align:top}.ct-t tbody tr{cursor:pointer}.ct-t tbody tr:hover{background:#FFF7ED}.ct-t .n{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}.ct-empty{text-align:center;color:#64748B;padding:22px!important}
+.ct-par{background:#fff;border:1px solid #E2E8F0;border-radius:12px;padding:12px 14px;font-size:13px;display:flex;gap:10px 28px;flex-wrap:wrap}
+</style>
 </head>
 <body class="min-h-screen font-sans antialiased">
 <div id="toast" role="status" aria-live="polite"></div>
@@ -1572,7 +1586,7 @@ tr.imp-red td{background:#FFF5F5}tr.imp-red td b{text-decoration:line-through;co
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
 <li><b>V4.8.2</b> : <b>phrases types réécrites</b> sans redondance (argumentaire, 3 piliers, option Pharmaload), nouveau bénéfice « Une équipe plus disponible, des journées plus sereines ».</li>
-<li><b>V4.11.0</b> : (1) <b>Écart attendu / perçu</b> dans Mes commissions : à chaque paiement, saisissez le montant réellement perçu (pré-rempli avec l'attendu) ; écart en € et en %, note libre facultative, filtre « Avec écart » ; (2) <b>Exporter</b> : récapitulatif PDF (2 pages A4 : payées, en attente, sous réserve, par motif) ou tableau CSV ; (3) <b>Reprise d'historique</b> (Paramètres) : import année par année de vos robots et add-ons signés depuis vos fichiers Excel, avec aperçu, lignes rouges en « Abandonné », doublons repérés, contrôle des totaux et annulation ; (4) <b>Modèle Essentiel</b> (jusqu'en 2025) à cocher dans la fiche du robot signé ; (5) <b>Compléter les fiches</b> importées (adresse, LGO, téléphone) avec la recherche annuaire.</li>
+<li><b>V4.12.0</b> : (1) <b>Contrôle des commissions</b> : chaque fiche affiche le calcul de l'employeur, le montant réellement versé, le montant dû selon le contrat et l'écart, avec un motif libre et une pastille d'état ; (2) nouvel écran <b>Objectifs et commissions › Contrôle</b> (compteurs, tableau filtrable, Excel et PDF) ; (3) règles de calcul de l'employeur : palier SINTESI sur tous les robots de l'année (GENESI et annulés compris), quote-part GENESI 12 000 €, chargeur du modèle Essentiel, taux des ventes additionnelles = palier du robot d'origine, montant financé NANCEO modifiable ; (4) <b>retards de paiement</b> signalés (« Payé avec X mois de retard ») ; (5) pointage = mois qui suit le salaire. Les données « ctrl » de la sauvegarde sont lues et conservées.</li><li><b>V4.11.0</b> : (1) <b>Écart attendu / perçu</b> dans Mes commissions : à chaque paiement, saisissez le montant réellement perçu (pré-rempli avec l'attendu) ; écart en € et en %, note libre facultative, filtre « Avec écart » ; (2) <b>Exporter</b> : récapitulatif PDF (2 pages A4 : payées, en attente, sous réserve, par motif) ou tableau CSV ; (3) <b>Reprise d'historique</b> (Paramètres) : import année par année de vos robots et add-ons signés depuis vos fichiers Excel, avec aperçu, lignes rouges en « Abandonné », doublons repérés, contrôle des totaux et annulation ; (4) <b>Modèle Essentiel</b> (jusqu'en 2025) à cocher dans la fiche du robot signé ; (5) <b>Compléter les fiches</b> importées (adresse, LGO, téléphone) avec la recherche annuaire.</li>
 <li><b>V4.10.0</b> : (1) <b>Bloc 4 « Document pour le client »</b> réorganisé : choix de l'offre en deux grandes cartes (Personnalisée / Synthétique), deux boutons alignés « 1 · Préparer » et « 2 · Remettre », « Aperçu rapide », et <b>Réglages avancés</b> repliés (Contenu, Textes, Noms, Implantation) ; (2) <b>Relecture des textes</b> refaite : les priorités s'affichent côte à côte, trois phrases par priorité (constat, réponse, au quotidien), un seul texte à l'écran, « Autres formulations » pour le remplacer par une variante, une note explicative ; textes par défaut réécrits et adaptés à la fiche (option Euclid3D ou Pharmaload citée seulement si elle est retenue, gain de temps calculé) ; (3) <b>Historique</b> filtré : onglets Essentiel / Documents / Tout, détails regroupés (« 3 fois »), rien n'est supprimé.</li>
 <li><b>V4.9.0</b> : <b>page « Solution préconisée » en une page</b> : jauges vertes identiques pour Euclid3D (jusqu'à 520 boîtes délivrées/h) et Pharmaload (jusqu'à 300 boîtes/h), options en lignes, pied de page avec contact, mention « Résultats indicatifs » et date. Nouvelles photos Euclid3D et Pharmaload partout, icône provisoire QuickPick24, blocs « Votre besoin, notre réponse », « Inclus dans votre projet » et anneaux retirés de cette page.</li>
 <li><b>V4.8.1</b> : <b>correction</b> du bouton « Préparer le PDF… » (il ouvrait les textes d’une autre fiche), <b>phrases ajoutées</b> conservées dans le PDF (une par ligne, espace et majuscule automatiques), phrase <b>Sérialisation FMD intégrée</b> dans « Services inclus » (désactivable dans « Contenu »).</li>
@@ -1732,6 +1746,11 @@ tr.imp-red td{background:#FFF5F5}tr.imp-red td b{text-decoration:line-through;co
 <p><b>Reprise d'historique (V4.11.0)</b> : <b>Paramètres › Reprise d'historique › Lancer l'assistant d'import</b>. Choisissez vos fichiers Excel (prévisions ou suivi des années passées). Seuls sont repris les <b>robots signés</b> et les <b>add-ons (ventes additionnelles) signés</b> ; les robots Blient / Automeds sont ignorés. Les années (2022 à 2025) s'affichent en pastilles : choisissez-en une, vérifiez l'aperçu, puis « Importer ». Les <b>lignes en rouge</b> sont proposées « Abandonné » (conservées dans l'historique, sans commission) ; les dates douteuses sont signalées et modifiables ; les doublons sont repérés (même CIP) ; chaque ligne peut être décochée. Cochez <b>NANCEO</b> si le robot était financé en leasing. Chaque dossier arrive « à pointer » dans Mes commissions. Un <b>contrôle des totaux</b> compare le fichier et l'import ; chaque import peut être <b>annulé</b> (fiches créées retirées, fiches modifiées restaurées). Les fichiers sont lus sur votre appareil, rien n'est envoyé.</p>
 <p><b>Modèle Essentiel (V4.11.0)</b> : modèle disponible jusqu'en 2025 inclus. Dans la fiche d'un robot signé (jusqu'au 31/12/2025), cochez <b>Modèle Essentiel</b> : il s'affiche dans la fiche, dans Mes commissions (pastille ESSENTIEL) et dans les exports. Pour le calcul des commissions, un robot Essentiel est compté dans la famille SINTESI (à vérifier avec vos règles).</p>
 <p><b>Compléter les fiches (V4.11.0)</b> : les fiches créées par l'import portent un bandeau « à compléter » sur le tableau de bord. L'assistant les présente une à une : « Compléter depuis l'annuaire » cherche la pharmacie par son nom (base officielle installée, ou annuaire en ligne), remplit les champs vides (adresse, ville, téléphone, titulaire) et conserve le code CIP du fichier ; « Enregistrer et suivante », « Passer » ou « Plus tard ».</p>
+<p><b>Contrôle des commissions (V4.12.0)</b> : dans la fiche d'un robot signé, le bloc <b>Commission du dossier</b> affiche trois montants : <b>① calcul méthode employeur</b>, <b>② montant réellement versé</b> (saisissez-le ; vide = montant calculé) et <b>③ dû selon le contrat</b> (sans quote-part GENESI ni chargeur). L'<b>écart</b> (dû − versé) est en rouge s'il est positif ; ajoutez un <b>motif</b> libre. Pastilles : Conforme (vert), Écart (orange), Impayé (rouge), À expliquer (jaune), Sous réserve (gris). Le montant versé alimente le total « payé ».</p>
+<p><b>Écran Contrôle (V4.12.0)</b> : <b>Objectifs et commissions › Contrôle</b>. Quatre compteurs (écart total robots, financements impayés, dossiers à faire expliquer, commissions conformes), un tableau filtrable par année et par état (clic sur une ligne = ouverture de la fiche), l'encadré « Paramètres de calcul » et les exports <b>Excel</b> et <b>PDF</b> (fenêtre d'impression : « Enregistrer au format PDF »).</p>
+<p><b>Règles de calcul (V4.12.0)</b> : le rang d'un robot SINTESI compte <b>tous</b> les robots signés dans l'année civile (GENESI compris, annulés ou abandonnés compris) ; les GENESI ont leur propre décompte. Si le rang retenu par l'employeur diffère, saisissez-le dans « Rang à corriger » (fiche du robot). Quote-part GENESI : 12 000 € par défaut (Paramètres › Paramétrage). Modèle Essentiel : champ « Chargeur déduit » (21 500 € par défaut, modifiable par fiche). Vente additionnelle : taux du palier du robot d'origine (ou 2,5 % sans robot), modifiable. Financement NANCEO : champ « Montant financé HT » (vide = prix du robot) × 0,806 %. Pointage : « pointée en » = mois qui suit le mois du salaire.</p>
+<p><b>Retards (V4.12.0)</b> : pour un robot, le mois attendu est le mois qui suit la validation de la commande (ou la levée des réserves) ; pour un financement, le mois qui suit l'installation réelle (ou la date du procès-verbal). Si le salaire est postérieur, la fiche affiche « Payé avec X mois de retard ». Sans date de validation renseignée, aucun retard n'est calculé.</p>
+
 <h2 id="m-ventes">5. Les signatures probables</h2>
 <ul>
 <li><b>Carte jaune « Ce mois-ci »</b> : les dossiers dont la décision est prévue ce mois-ci, avec le chiffre d'affaires de chaque pharmacie.</li>
@@ -1801,7 +1820,7 @@ tr.imp-red td{background:#FFF5F5}tr.imp-red td b{text-decoration:line-through;co
 <li>Pour supprimer une fiche, supprimez-la dans le dashboard : elle est supprimée aussi sur l'autre appareil et dans l'espace en ligne à la synchronisation suivante.</li>
 <li><b>Durée de conservation</b> (repères CNIL, à faire confirmer par votre DPO) : prospects et dossiers perdus, <b>3 ans après le dernier contact</b> ; clients, pendant la relation contractuelle puis en archivage (en général 5 ans après la fin du contrat) ; pièces comptables, 10 ans. Après ce délai, la fiche est supprimée ou <b>anonymisée</b> (identité, coordonnées et notes effacées ; étape, robot, montant et motif de perte conservés pour les statistiques).</li>
 <li><b>Paramètres › Profil › Conservation des données (RGPD)</b> liste les fiches sans action depuis 3 ans : <b>Supprimer</b>, <b>Anonymiser</b> ou <b>Prolonger</b> d'un an avec un motif. Rien n'est effacé automatiquement ; un message à l'ouverture signale les fiches à réviser.</li>
-<li><b>Reprise d'historique</b> : les fichiers Excel sont lus localement dans le navigateur ; ils ne sont ni envoyés ni conservés. Seules les lignes importées (pharmacie, CIP, dates, montants) entrent dans le dashboard ; l'annulation d'un import restaure l'état précédent.</li>
+<li><b>Contrôle des commissions</b> : les montants versés, dus et les motifs restent enregistrés sur votre appareil et dans vos sauvegardes JSON, comme les autres données de la fiche ; ils suivent la synchronisation de la fiche si elle est activée.</li><li><b>Reprise d'historique</b> : les fichiers Excel sont lus localement dans le navigateur ; ils ne sont ni envoyés ni conservés. Seules les lignes importées (pharmacie, CIP, dates, montants) entrent dans le dashboard ; l'annulation d'un import restaure l'état précédent.</li>
 <li>Avant un usage étendu à d'autres collaborateurs, faites valider le dispositif par votre direction ou votre DSI.</li>
 </ul>
 <h2 id="s-tel">Sécurité du site téléphone</h2>
@@ -2409,7 +2428,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.11.0';
+const APP_VERSION = '4.12.0';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -2573,7 +2592,7 @@ const DEFAULTS = () => ({backMode: 'ask', levBody: '', prenom: 'Eric', nom: 'R.'
   echeances: {court: {label: 'Court terme', duree: 'moins de 6 mois', rappel: 14}, moyen: {label: 'Moyen terme', duree: '6 à 12 mois', rappel: 30}, long: {label: 'Long terme', duree: 'plus de 12 mois', rappel: 90}},
   secteur: {lgpi: ['03','08','10','18','19','21','23','25','28','36','37','41','45','51','52','54','55','57','58','63','67','68','70','71','72','75','77','86','87','88','89','90','91','94'],
     prospect: ['08','10','25','39','51','52','54','55','57','67','68','70','88','90']},
-  com: {addon: 2.5, nanceo: 0.806, assiette: {SINTESI: 17500, GENESI: 12500}, paliers: {SINTESI: [{de: 1, taux: 2.5}, {de: 10, taux: 3}, {de: 15, taux: 3.5}], GENESI: [{de: 1, taux: 2.5}, {de: 3, taux: 3}, {de: 5, taux: 3.5}]}},
+  com: {addon: 2.5, nanceo: 0.806, assiette: {SINTESI: 17500, GENESI: 12000}, chargeur: 21500, paliers: {SINTESI: [{de: 1, taux: 2.5}, {de: 10, taux: 3}, {de: 15, taux: 3.5}], GENESI: [{de: 1, taux: 2.5}, {de: 3, taux: 3}, {de: 5, taux: 3.5}]}},
   operations: [],
   challenges: [{id: 1, nom: `Challenge fin d'année ${CUR_YEAR} (exemple)`, du: `${CUR_YEAR}-09-01`, au: `${CUR_YEAR}-12-31`, famille: 'SINTESI', objectif: 14, prime: 1500}]
 });
@@ -2864,32 +2883,42 @@ function secteur(c) {
 const secPill = c => { const s = secteur(c); if (!s) return ''; const [bg, fg] = s.ok === true ? ['#E8F5EE', '#14603F'] : s.ok === false ? ['#FDECEC', '#9F1C1C'] : ['#FEF6E4', '#6B4607']; return `<span class="pill" style="background:${bg};color:${fg}"><i class="fas fa-map-location-dot"></i>${esc(s.txt)}</span>`; };
 
 /* ================= COMMISSIONS ================= */
+const SPEC_ST = ['à expliquer', 'sous réserve', 'annulé', 'non détaillé', 'annoncé', 'non recalculé', 'trop-perçu apparent', 'en attente chez NANCEO', 'non retrouvé (période prescrite)'];
+function rankAll() {
+  const L = clients.filter(c => c.signatureDate && famOf(c) && (c.step === 'Signé' || c.step === 'Perdu')).sort((a, b) => a.signatureDate.localeCompare(b.signatureDate) || a.id - b.id), cnt = {}, out = {};
+  L.forEach(c => { const y = c.signatureDate.slice(0, 4); cnt[y] = (cnt[y] || 0) + 1; out[c.id] = cnt[y]; });
+  return out;
+}
+const rkYear = y => clients.filter(c => c.signatureDate && String(c.signatureDate).slice(0, 4) === String(y) && famOf(c) && (c.step === 'Signé' || c.step === 'Perdu')).length;
 function comRows0() {
-  const rank = {};
+  const rank = {}, rAll = rankAll();
   const rob = clients.filter(c => c.step === 'Signé' && c.signatureDate && famOf(c))
     .sort((a, b) => a.signatureDate.localeCompare(b.signatureDate) || a.id - b.id)
     .map(c => {
-      const f = famOf(c), y = +c.signatureDate.slice(0, 4), k = y + f; rank[k] = (rank[k] || 0) + 1; const n = rank[k];
+      const f = famOf(c), y = +c.signatureDate.slice(0, 4), k = y + f; rank[k] = (rank[k] || 0) + 1;
+      const nAuto = f === 'SINTESI' ? (rAll[c.id] || rank[k]) : rank[k], n = +c.rangEmp > 0 ? +c.rangEmp : nAuto;
       const tiers = [...settings.com.paliers[f]].sort((a, b) => a.de - b.de);
       const taux = (tiers.filter(t => n >= t.de).pop() || {taux: 0}).taux;
-      const assiette = +settings.com.assiette[f] || 0, base = Math.max(0, (c.montant || 0) - assiette), com = Math.round(base * taux) / 100;
+      const ch = c.essentiel ? (c.chargeur != null && c.chargeur !== '' ? +c.chargeur || 0 : +settings.com.chargeur || 0) : 0;
+      const assiette = (+settings.com.assiette[f] || 0) + ch, base = Math.max(0, (c.montant || 0) - assiette), com = Math.round(base * taux) / 100;
+      const assC = f === 'SINTESI' ? (+settings.com.assiette.SINTESI || 0) : 0, duCalc = Math.round(Math.max(0, (c.montant || 0) - assC) * taux) / 100;
       const statut = c.hasReserves && !c.leveeDate ? 'bloque' : c.commissionPaid ? 'paye' : 'attente';
-      return {key: 'c' + c.id, c, f, n, y, date: c.signatureDate, montant: c.montant || 0, label: (c.robots || []).join(', '), taux, assiette, base, com, statut, paid: c.commissionPaid, sal: c.commissionPaid ? (c.commissionSalary || c.commissionPaid) : ''};
+      return {key: 'c' + c.id, c, f, n, nAuto, y, date: c.signatureDate, montant: c.montant || 0, label: (c.robots || []).join(', '), taux, assiette, ch, base, com, duCalc, statut, paid: c.commissionPaid, sal: c.commissionPaid ? (c.commissionSalary || c.commissionPaid) : ''};
     });
   const tA = +settings.com.addon || 0;
   const add = clients.flatMap(c => (c.addons || []).filter(a => a.statut === 'signe' && a.date).map(a => {
-    const base = a.montant || 0, com = Math.round(base * tA) / 100;
-    return {key: 'a' + a.id, c, a, f: 'Add-on', n: null, y: +a.date.slice(0, 4), date: a.date, montant: base, label: a.quoi, taux: tA, assiette: 0, base, com, statut: a.commissionPaid ? 'paye' : 'attente', paid: a.commissionPaid, sal: a.commissionPaid ? (a.commissionSalary || a.commissionPaid) : ''};
+    const orig = rob.find(r => r.c.id === c.id), tx = a.tauxCom != null && a.tauxCom !== '' ? +a.tauxCom : (orig ? orig.taux : tA);
+    const base = a.montant || 0, com = Math.round(base * tx) / 100;
+    return {key: 'a' + a.id, c, a, f: 'Add-on', n: null, y: +a.date.slice(0, 4), date: a.date, montant: base, label: a.quoi, taux: tx, tauxOrig: !!orig, assiette: 0, base, com, duCalc: com, statut: a.commissionPaid ? 'paye' : 'attente', paid: a.commissionPaid, sal: a.commissionPaid ? (a.commissionSalary || a.commissionPaid) : ''};
   }));
   const nanT = +settings.com.nanceo || 0, curM = isoDay(TODAY).slice(0, 7);
   const nan = clients.filter(c => c.step === 'Signé' && c.signatureDate && c.nanceo && c.nanceo.on).map(c => {
-    const n = c.nanceo, taux = n.commissionPaid && n.tauxFige != null ? n.tauxFige : nanT, base = c.montant || 0, com = Math.round(base * taux) / 100, inst = n.instReel || n.instPrev || '', pm = inst ? addMonthYM(inst.slice(0, 7), 1) : '';
+    const n = c.nanceo, taux = n.commissionPaid && n.tauxFige != null ? n.tauxFige : nanT, base = +n.montantFinance > 0 ? +n.montantFinance : (c.montant || 0), com = Math.round(base * taux) / 100, inst = n.instReel || n.instPrev || '', pm = inst ? addMonthYM(inst.slice(0, 7), 1) : '';
     const phase = n.commissionPaid ? 'paye' : (inst && pm <= curM ? 'apointer' : 'avenir');
-    return {key: 'n' + c.id, c, a: n, nan: true, f: 'Financement NANCEO', n: null, y: +c.signatureDate.slice(0, 4), date: c.signatureDate, montant: base, label: 'Financement NANCEO', taux, assiette: 0, base, com, statut: n.commissionPaid ? 'paye' : 'attente', paid: n.commissionPaid, sal: n.commissionPaid ? (n.commissionSalary || n.commissionPaid) : '', inst, pm, phase, instReel: !!n.instReel};
+    return {key: 'n' + c.id, c, a: n, nan: true, f: 'Financement NANCEO', n: null, y: +c.signatureDate.slice(0, 4), date: c.signatureDate, montant: base, label: 'Financement NANCEO', taux, assiette: 0, base, com, duCalc: com, statut: n.commissionPaid ? 'paye' : 'attente', paid: n.commissionPaid, sal: n.commissionPaid ? (n.commissionSalary || n.commissionPaid) : '', inst, pm, phase, instReel: !!n.instReel};
   });
   return [...rob, ...add, ...nan].sort((a, b) => a.date.localeCompare(b.date));
 }
-function comRows() { return comRows0().map(r => { const t = r.a || r.c; r.perc = t.comPercu != null && t.comPercu !== '' ? +t.comPercu : null; r.note = t.comNote || ''; if (!r.a && r.c.essentiel) r.ess = true; return r; }); }
 const COM_ST = {bloque: ['Bloquée · réserves', '#FDECEC', '#9F1C1C', 'fa-lock'], attente: ['En attente de paiement', '#FEF6E4', '#6B4607', 'fa-hourglass-half'], paye: ['Payée', '#E8F5EE', '#14603F', 'fa-circle-check']};
 const comPillS = r => {
   const [l, bg, fg, ic] = COM_ST[r.statut];
@@ -6436,18 +6465,18 @@ function renderChrome(c) {
 }
 /* ----- Commissions dans la fiche client ----- */
 const comTickUi = (r, big) => {
-  const lock = r.statut === 'bloque', on = r.statut === 'paye', m = on ? r.paid : (r.nan && r.pm ? r.pm : isoDay(TODAY).slice(0, 7)), sm = on ? (r.sal || r.paid) : prevMonth();
+  const lock = r.statut === 'bloque', on = r.statut === 'paye', sm = on ? (r.sal || r.paid) : prevMonth(), m = on ? r.paid : addMonthYM(sm, 1);
   return `<label class="flex flex-wrap items-center gap-2 rounded-xl border-2 ${lock ? 'border-slate-200 bg-slate-50 text-slate-400' : on ? 'border-emerald-500 bg-emerald-50 text-emerald-900' : 'border-emerald-300 bg-white text-emerald-900'} ${big ? 'px-3 py-2' : 'px-2 py-1'} font-bold ${lock ? '' : 'cursor-pointer'}" title="${lock ? 'Bloquée : les réserves ne sont pas encore levées' : on ? 'Décocher pour annuler le paiement' : 'Cocher quand la commission est payée'}">
     <input type="checkbox" class="${big ? 'w-5 h-5' : 'w-4 h-4'} accent-emerald-700" ${on ? 'checked' : ''} ${lock ? 'disabled' : ''} onchange="comTick('${r.key}',this.checked)">${big ? (r.nan ? 'Commission de financement NANCEO payée' : 'Commission payée') : 'Payée'}
     ${lock ? '' : `<span class="text-xs font-medium text-muted">pointée en : <input type="month" class="inp !h-7 !w-36 !text-xs !py-0" id="cm-${r.key}" value="${esc(m)}" onclick="event.stopPropagation()" onchange="comMonth('${r.key}',this.value)" title="Mois où la commission est pointée"></span><span class="text-xs font-medium text-muted">sur le salaire de : <input type="month" class="inp !h-7 !w-36 !text-xs !py-0" id="cs-${r.key}" value="${esc(sm)}" onclick="event.stopPropagation()" onchange="comSal('${r.key}',this.value)" title="Mois du bulletin de salaire"></span>`}</label>`;
 };
 function comTick(key, on) {
-  const {c, a} = comRef(key); if (!c) return; const t = a || c, mEl = $('cm-' + key), m = (mEl && mEl.value) || isoDay(TODAY).slice(0, 7), sEl = $('cs-' + key), sm = (sEl && sEl.value) || prevMonth();
+  const {c, a} = comRef(key); if (!c) return; const t = a || c, sEl = $('cs-' + key), sm = (sEl && sEl.value) || prevMonth(), m = addMonthYM(sm, 1);
   const done = () => { save(); refreshComFiche(c); if (ui.ptab === 'objectifs' && !$('view-profile')?.classList.contains('hidden')) renderProfile(); };
   if (on) { t.commissionPaid = m; t.commissionSalary = sm; if (key[0] === 'n') t.tauxFige = +settings.com.nanceo || 0; log(c, a ? `Commission ${key[0] === 'n' ? 'de financement NANCEO' : 'add-on'} payée${key[0] === 'n' ? '' : ' : ' + a.quoi} (pointée en ${fmtMonth(m)} · salaire de ${fmtMonth(sm)})` : `Commission payée (pointée en ${fmtMonth(m)} · salaire de ${fmtMonth(sm)})`); done(); toast(`Commission pointée : ${fmtMonth(m)} · salaire de ${fmtMonth(sm)}`); }
   else confirmBox('Annuler le paiement ?', `La commission ${a ? (key[0] === 'n' ? 'de <b>financement NANCEO</b>' : "de l'add-on <b>" + esc(a.quoi) + '</b>') : 'du robot'} repassera « en attente de paiement ».`, '<i class="fas fa-rotate-left"></i>Oui, annuler', () => { t.commissionPaid = ''; t.commissionSalary = ''; log(c, 'Paiement de commission annulé'); done(); toast('Paiement annulé'); }, {no: 'Non, garder', icon: 'fa-circle-question', onNo: () => refreshComFiche(c)});
 }
-function comSal(key, m) { const {c, a} = comRef(key); if (!c || !m) return; const t = a || c; if (t.commissionPaid) { t.commissionSalary = m; save(); refreshComFiche(c); if (ui.ptab === 'objectifs' && !$('view-profile')?.classList.contains('hidden')) renderProfile(); } }
+function comSal(key, m) { const {c, a} = comRef(key); if (!c || !m) return; const t = a || c; if (t.commissionPaid) { t.commissionSalary = m; t.commissionPaid = addMonthYM(m, 1); save(); refreshComFiche(c); if (ui.ptab === 'objectifs' && !$('view-profile')?.classList.contains('hidden')) renderProfile(); } else { const el = $('cm-' + key); if (el) el.value = addMonthYM(m, 1); } }
 function comMonth(key, m) { const {c, a} = comRef(key); if (!c || !m) return; const t = a || c; if (t.commissionPaid) { t.commissionPaid = m; save(); refreshComFiche(c); } }
 function refreshComFiche(c) { if ($('f-com')) $('f-com').outerHTML = comFicheBox(c); renderAddonsList(c); if (ui.editId === c.id) renderHistory(c); }
 const nanTxt = r => r.inst ? `Commission de financement NANCEO payée le mois suivant l'installation → à pointer en <b>${fmtMonth(r.pm)}</b>` : "Commission de financement NANCEO payée le mois suivant l'installation : indiquez la date d'installation.";
@@ -6456,7 +6485,7 @@ const nanBlock = (c, r) => { const n = c.nanceo; return `<div class="v43-nan"><d
     <div class="flex flex-wrap gap-4 items-end mt-2"><div><label class="lbl" for="nan-prev">Installation prévisionnelle</label><input type="date" id="nan-prev" class="inp !w-44" value="${esc(n.instPrev || '')}" onchange="nanSet(${c.id},'instPrev',this.value)"></div>
       <div><label class="lbl" for="nan-reel">Installation réelle (quand faite)</label><input type="date" id="nan-reel" class="inp !w-44" value="${esc(n.instReel || '')}" onchange="nanSet(${c.id},'instReel',this.value)"></div>
       <p class="text-[12px] flex-1 min-w-[220px]" style="color:#155E75">${nanTxt(r)}<br><span class="text-muted">${eur(r.base)} HT × ${r.taux.toLocaleString('fr-FR')} %</span></p></div>
-    <div class="mt-2">${comTickUi(r, true)}</div></div>`; };
+    ${nanExtra(c, r)}<div class="mt-2">${comTickUi(r, true)}</div></div>`; };
 const nanAdd = c => `<label class="v43-nan-add"><input type="checkbox" class="w-4 h-4" style="accent-color:#0E7490" onchange="nanToggle(${c.id},this.checked)"><span><b>Financement leasing NANCEO</b> <span class="text-muted">· commission payée le mois suivant l'installation</span></span></label>`;
 function nanToggle(id, on) {
   const c = byId(id); if (!c) return; const n = c.nanceo || {};
@@ -6465,22 +6494,7 @@ function nanToggle(id, on) {
   log(c, on ? 'Financement leasing NANCEO ajouté' : 'Financement leasing NANCEO retiré'); save(); refreshComFiche(c); if (ui.ptab === 'objectifs' && !$('view-profile')?.classList.contains('hidden')) renderProfile();
 }
 function nanSet(id, f, v) { const c = byId(id); if (!c || !c.nanceo) return; c.nanceo[f] = v; save(); refreshComFiche(c); }
-function comFicheBox(c) {
-  if (!opt('com') || c?.step !== 'Signé') return '<div id="f-com"></div>';
-  const R = comRows().filter(r => r.c.id === c.id), rob = R.find(r => !r.a); if (!rob) return '<div id="f-com"></div>';
-  const tot = sum(R.filter(r => r.statut !== 'bloque'), r => r.com), paid = sum(R.filter(r => r.statut === 'paye'), r => r.com), blk = sum(R.filter(r => r.statut === 'bloque'), r => r.com);
-  return `<div id="f-com" class="rounded-xl border-2 border-orange-400 bg-orange-50/40 p-3.5 flex flex-col gap-2.5">
-    <div class="flex flex-wrap justify-between items-center gap-2"><h3 class="font-bold text-[14px]"><i class="fas fa-euro-sign text-ptkd mr-1.5"></i>Commission du dossier</h3>
-      <span class="text-[12px] text-slate-600">Acquis <b class="text-ink">${eur2(tot)}</b> · payé <b class="text-emerald-800">${eur2(paid)}</b> · à payer <b class="text-orange-800">${eur2(tot - paid)}</b>${blk ? ` · bloqué <b class="text-rose-700">${eur2(blk)}</b>` : ''}</span></div>
-    <div class="flex flex-wrap items-center gap-3 rounded-xl bg-white border border-slate-200 px-3 py-2">
-      <b class="text-[22px] tabular-nums">${eur2(rob.com)}</b>
-      <span class="flex-1 min-w-[200px] text-[12px] text-slate-600">Robot ${esc(rob.label)} · ${eur(rob.montant)} − assiette ${eur(rob.assiette)} = ${eur(rob.base)} × ${rob.taux.toLocaleString('fr-FR')} % · ${rob.n}<sup>e</sup> ${rob.f} ${rob.y}</span>
-      ${comPill(rob)}${comTickUi(rob, true)}</div>
-    ${R.find(r => r.nan) ? nanBlock(c, R.find(r => r.nan)) : nanAdd(c)}
-    ${rob.statut === 'bloque' ? '<p class="text-xs text-rose-800"><i class="fas fa-lock mr-1"></i>Commission bloquée tant que la réserve n\'est pas retournée signée (date de levée à renseigner, puis enregistrer).</p>' : ''}
-    <p class="text-[11.5px] text-muted">Calcul automatique actif (Paramètres › Options). Case cochée = commission payée : elle est reprise dans « Objectifs et commissions ».</p></div>`;
-}
-const comAddonLine = (c, a) => { if (!opt('com')) return ''; const r = comRows().find(x => x.key === 'a' + a.id); if (!r) return ''; return `<div class="basis-full flex flex-wrap items-center gap-2.5 pl-10 text-[12px]"><b class="text-[14px] tabular-nums">${eur2(r.com)}</b><span class="text-slate-600">Commission add-on · ${r.taux.toLocaleString('fr-FR')} % de ${eur(r.base)}</span>${comPill(r)}${comTickUi(r, false)}</div>`; };
+const comAddonLine = (c, a) => { if (!opt('com')) return ''; const r = comRows().find(x => x.key === 'a' + a.id); if (!r) return ''; return `<div class="basis-full flex flex-wrap items-center gap-2.5 pl-10 text-[12px]"><b class="text-[14px] tabular-nums">${eur2(r.com)}</b><span class="text-slate-600">Commission add-on · ${r.taux.toLocaleString('fr-FR')} % de ${eur(r.base)}</span>${comPill(r)}${r.stC ? stPill(r.stC) : ''}${addonCtrl(r)}${comTickUi(r, false)}</div>`; };
 function renderBanner(c) {
   const signed = c?.step === 'Signé', lost = c?.step === 'Perdu';
   if (signed) {
@@ -8627,12 +8641,13 @@ function pfSummary(k) {
   const n = ['gps', 'teams', 'agenda', 'nearby', 'phone', 'com', 'chal'].filter(opt).length;
   return pfBand('info', `${n} module${n > 1 ? 's' : ''} actif${n > 1 ? 's' : ''} sur 7 · ${opt('social') ? 'liens Pharmathek dans le PDF' : 'liens Pharmathek masqués'}`);
 }
-const objSub = () => { const sub = ui.comSub || 'mes'; return `<div class="flex flex-wrap gap-1 bg-white border border-slate-200 rounded-2xl p-1 w-fit">${[['param', 'fa-sliders', 'Paramétrage', 1], ['mes', 'fa-coins', 'Mes commissions', opt('com')], ['chal', 'fa-trophy', 'Challenges et opérations', opt('chal')]].filter(x => x[3]).map(([k, i, l]) => `<button class="h-10 px-4 rounded-xl text-[13px] font-semibold inline-flex items-center gap-2 ${sub === k ? 'bg-orange-50 text-ptkd' : 'text-slate-600 hover:bg-slate-50'}" onclick="ui.comSub='${k}';renderProfile()"><i class="fas ${i}"></i>${l}</button>`).join('')}</div>`; };
+const objSub = () => { const sub = ui.comSub || 'mes'; return `<div class="flex flex-wrap gap-1 bg-white border border-slate-200 rounded-2xl p-1 w-fit">${[['param', 'fa-sliders', 'Paramétrage', 1], ['mes', 'fa-coins', 'Mes commissions', opt('com')], ['ctrl', 'fa-scale-balanced', 'Contrôle', opt('com')], ['chal', 'fa-trophy', 'Challenges et opérations', opt('chal')]].filter(x => x[3]).map(([k, i, l]) => `<button class="h-10 px-4 rounded-xl text-[13px] font-semibold inline-flex items-center gap-2 ${sub === k ? 'bg-orange-50 text-ptkd' : 'text-slate-600 hover:bg-slate-50'}" onclick="ui.comSub='${k}';renderProfile()"><i class="fas ${i}"></i>${l}</button>`).join('')}</div>`; };
 function pfObj() {
   let sub = ui.comSub || 'mes';
-  if ((sub === 'mes' && !opt('com')) || (sub === 'chal' && !opt('chal'))) sub = 'param';
+  if (((sub === 'mes' || sub === 'ctrl') && !opt('com')) || (sub === 'chal' && !opt('chal'))) sub = 'param';
   ui.comSub = sub;
   if (sub === 'chal') return pfChal();
+  if (sub === 'ctrl') return pfCtrl();
   if (sub === 'mes') return pfCom();
   $('pf-body').innerHTML = objSub() + paramsHTML(opt('com'));
 }
@@ -8655,7 +8670,7 @@ function comFiltered() {
 const comF = () => ui.comF || (ui.comF = {st: 'tous', typ: '', mod: '', ms: '', sal: '', q: '', ec: false});
 function comView(rows, skip) {
   const F = comF(), q = F.q.trim().toLowerCase();
-  return rows.filter(r => (skip === 'ec' || !F.ec || (r.perc != null && Math.abs(r.perc - r.com) >= 1)) && (skip === 'st' || F.st === 'tous' || r.statut === F.st) && (skip === 'typ' || !F.typ || r.f === F.typ) && (skip === 'mod' || !F.mod || r.label === F.mod) && (skip === 'ms' || !F.ms || r.date.slice(0, 7) === F.ms) && (skip === 'sal' || !F.sal || r.sal === F.sal)
+  return rows.filter(r => (skip === 'ec' || !F.ec || (r.statut === 'paye' && r.perc != null && Math.abs(r.perc - r.com) >= 1)) && (skip === 'st' || F.st === 'tous' || r.statut === F.st) && (skip === 'typ' || !F.typ || r.f === F.typ) && (skip === 'mod' || !F.mod || r.label === F.mod) && (skip === 'ms' || !F.ms || r.date.slice(0, 7) === F.ms) && (skip === 'sal' || !F.sal || r.sal === F.sal)
     && (!q || [r.c.pharma, r.c.numDossier, r.a && r.a.notes, r.label, r.c.ville].filter(Boolean).join(' ').toLowerCase().includes(q)));
 }
 function comSet(k, v) { comF()[k] = v; renderProfile(); }
@@ -8705,7 +8720,7 @@ function comBar(rows, vw) {
   const types = uniq(base('typ').map(r => r.f)), mods = uniq(base('mod').map(r => r.label)).sort(), mss = uniq(base('ms').map(r => r.date.slice(0, 7))).sort().reverse(), sals = uniq(base('sal').map(r => r.sal)).sort().reverse();
   const cnt = (k, f) => base(k).filter(f).length, active = F.ec || F.st !== 'tous' || F.typ || F.mod || F.ms || F.sal || F.q.trim();
   const fld = (l, h) => `<div class="flex flex-col gap-1"><span class="text-[10.5px] font-extrabold tracking-wide text-slate-500">${l}</span>${h}</div>`;
-  return `<div class="cf-bar"><div class="flex flex-wrap gap-1.5">${chip('st', 'Tous', 'tous')}${chip('st', 'En attente', 'attente')}${chip('st', 'Payées', 'paye')}${chip('st', 'Bloquées', 'bloque')}<button type="button" class="cf-chip ${F.ec ? 'on' : ''}" onclick="comSet('ec',!comF().ec)">Avec écart<i>${comView(rows, 'ec').filter(r => r.perc != null && Math.abs(r.perc - r.com) >= 1).length}</i></button></div>
+  return `<div class="cf-bar"><div class="flex flex-wrap gap-1.5">${chip('st', 'Tous', 'tous')}${chip('st', 'En attente', 'attente')}${chip('st', 'Payées', 'paye')}${chip('st', 'Bloquées', 'bloque')}<button type="button" class="cf-chip ${F.ec ? 'on' : ''}" onclick="comSet('ec',!comF().ec)">Avec écart<i>${comView(rows, 'ec').filter(r => r.statut === 'paye' && r.perc != null && Math.abs(r.perc - r.com) >= 1).length}</i></button></div>
     <div class="flex flex-wrap gap-2.5 items-end">
       ${fld('TYPE DE VENTE', opts('typ', 'typ', types, v => `${v === 'Add-on' || v === 'Financement NANCEO' ? v : 'Robot ' + v} · ${cnt('typ', r => r.f === v)}`, 'Tous les types'))}
       ${fld('MODÈLE', opts('mod', 'mod', mods, v => `${esc(v)} · ${cnt('mod', r => r.label === v)}`, 'Tous les modèles'))}
@@ -8718,9 +8733,9 @@ function comBar(rows, vw) {
 function pfCom() {
   const P = ui.comP, rows = comFiltered(), all = comRows();
   const yr = P.mode === 'year' ? P.year : CUR_YEAR;
-  const tot = st => sum(rows.filter(r => !st || r.statut === st), r => r.com);
+  const tot = st => sum(rows.filter(r => !st || r.statut === st), r => st === 'paye' ? r.verse : r.com);
   const yrRows = all.filter(r => r.y === yr), nS = yrRows.filter(r => r.f === 'SINTESI').length, nG = yrRows.filter(r => r.f === 'GENESI').length;
-  const obj = +settings.objectif || 18, tS = tierInfo('SINTESI', nS), tG = tierInfo('GENESI', nG);
+  const obj = +settings.objectif || 18, tS = tierInfo('SINTESI', rkYear(yr)), tG = tierInfo('GENESI', nG);
   const tile = (l, v, s, bg, fg, bd, st) => `<div class="rounded-2xl p-4 cd-click" role="button" tabindex="0" title="Voir le détail" onclick="comDet('${st}')" onkeydown="if(event.key==='Enter')comDet('${st}')" style="background:${bg};--tb:${bd}"><div class="text-[11px] font-semibold uppercase tracking-wider" style="color:${fg}">${l}</div><div class="text-[22px] font-bold mt-1" style="color:${fg}">${v}</div><div class="text-xs" style="color:${fg}">${s}</div></div>`;
   const years = [...new Set([CUR_YEAR, ...all.map(r => r.y)])].sort((a, b) => b - a);
   const vw = comView(rows), attP = rows.filter(r => r.statut === 'attente'), att = vw.filter(r => r.statut === 'attente');
@@ -8822,6 +8837,7 @@ function openPay(keys, edit) {
   $('pay-sub').innerHTML = `${rows.length} commission${rows.length > 1 ? 's' : ''} · attendu <b>${eur2(sum(rows, r => r.com))}</b>`;
   $('pay-month').value = edit && r0.paid ? r0.paid : isoDay(TODAY).slice(0, 7); $('pay-sal').value = edit && r0.sal ? r0.sal : prevMonth();
   $('pay-lines').innerHTML = rows.map(r => `<div class="flex flex-wrap items-end gap-2 text-[13px] pb-2 border-b border-slate-100"><div class="flex-1 min-w-[150px]"><div class="font-semibold">${esc(r.c.pharma)}${r.nan ? ' · NANCEO' : r.a ? ' · add-on' : ''}</div><div class="text-[11.5px] text-muted">Attendue ${eur2(r.com)}</div></div><div><label class="lbl !mb-0.5" for="pp-${r.key}">Perçue (€)</label><input id="pp-${r.key}" type="number" step="0.01" class="inp !w-32 !h-10 text-right font-bold" value="${r.perc != null ? r.perc : r.com}"></div><div class="flex-1 min-w-[150px]"><label class="lbl !mb-0.5" for="pn-${r.key}">Note (facultatif)</label><input id="pn-${r.key}" class="inp !h-10" maxlength="120" value="${esc(r.note || '')}"></div></div>`).join('');
+  $('pay-sal').onchange = () => { if ($('pay-sal').value) $('pay-month').value = addMonthYM($('pay-sal').value, 1); };
   $('dlg-pay').showModal();
 }
 function confirmPay() {
@@ -9118,6 +9134,138 @@ function histBanner() {
 }
 function essTog(el) { const l = el.closest('label'); if (l) { l.classList.toggle('border-orange-500', el.checked); l.classList.toggle('bg-orange-50', el.checked); } try { setDirty(true); } catch (e) { } }
 
+/* ================= V4.12.0 : contrôle des commissions (employeur / versé / contrat) ================= */
+const ST_PILL = {conforme: ['Conforme', '#DCFCE7', '#166534'], 'écart': ['Écart', '#FEF3C7', '#92400E'], impayé: ['Impayé', '#FEE2E2', '#991B1B'], 'à expliquer': ['À expliquer', '#FEF9C3', '#854D0E'], 'sous réserve': ['Sous réserve', '#E2E8F0', '#334155']};
+const stPill = s => { const p = ST_PILL[s] || [s.charAt(0).toUpperCase() + s.slice(1), '#E2E8F0', '#334155']; return `<span class="ct-pill" style="background:${p[1]};color:${p[2]}">${esc(p[0])}</span>`; };
+const ymN = ym => (+ym.slice(0, 4)) * 12 + (+ym.slice(5, 7));
+function ctrlState(r) {
+  const ct = r.ctrl; if (ct && ct.statut && SPEC_ST.includes(ct.statut)) return ct.statut;
+  if (r.statut === 'paye' || ct) { if (r.verse <= 0.004 && r.du > 0) return 'impayé'; return Math.abs(r.du - r.verse) < 1 ? 'conforme' : 'écart'; }
+  return null;
+}
+function retardOf(r) {
+  const sal = r.sal || (r.ctrl && r.ctrl.bulletin) || ''; if (!sal || r.statut === 'bloque') return null; let d = '';
+  if (r.nan) d = r.a.instReel || (r.a.ctrl && r.a.ctrl.pv) || ''; else if (!r.a) d = r.c.hasReserves ? (r.c.leveeDate || '') : ((r.c.suivi && r.c.suivi.cmd) || ''); else return null;
+  if (!d) return null; const att = addMonthYM(String(d).slice(0, 7), 1); return {att, sal: String(sal).slice(0, 7), m: ymN(String(sal)) - ymN(att)};
+}
+function comRows() { return comRows0().map(r => {
+  const t = r.a || r.c, ct = t.ctrl || null; r.ctrl = ct;
+  const vP = t.comPercu != null && t.comPercu !== '' ? +t.comPercu : (ct && ct.verse != null && ct.verse !== '' ? +ct.verse : null);
+  r.perc = vP; r.verseSaisi = vP != null; r.verse = vP != null ? vP : r.com;
+  r.note = t.comNote != null && t.comNote !== '' ? t.comNote : ((ct && ct.motif) || '');
+  const dU = t.comDu != null && t.comDu !== '' ? +t.comDu : (ct && ct.du != null && ct.du !== '' ? +ct.du : null); r.du = dU != null ? dU : r.duCalc; r.duSaisi = dU != null;
+  if (!r.a && r.c.essentiel) r.ess = true;
+  r.ecC = (r.statut === 'paye' || ct) ? Math.round((r.du - r.verse) * 100) / 100 : null; r.stC = ctrlState(r); r.ret = retardOf(r);
+  return r; }); }
+const eurE = v => (v > 0.004 ? '+ ' : v < -0.004 ? '− ' : '') + eur2(Math.abs(v));
+function comEdit(key, f, v) {
+  const {c, a} = comRef(key); if (!c) return; const t = a || c, num = v === '' || v == null ? null : Math.round(+String(v).replace(',', '.') * 100) / 100;
+  if (f === 'verse') { t.comPercu = num; log(c, 'Montant versé modifié', num != null ? eur2(num) : 'retour au montant calculé'); }
+  else if (f === 'du') { t.comDu = num; log(c, 'Montant dû selon le contrat modifié', num != null ? eur2(num) : 'retour au calcul du contrat'); }
+  else if (f === 'motif') t.comNote = String(v || '').trim();
+  else if (f === 'rang') { c.rangEmp = num != null && num > 0 ? Math.round(num) : ''; log(c, 'Rang du robot dans l\'année (employeur)', c.rangEmp ? `${c.rangEmp}e` : 'retour au décompte automatique'); }
+  else if (f === 'chargeur') { c.chargeur = num; log(c, 'Chargeur déduit modifié', num != null ? eur2(num) : 'valeur par défaut'); }
+  else if (f === 'mfin') { if (a) { a.montantFinance = num != null && num > 0 ? num : ''; log(c, 'Montant financé NANCEO modifié', num != null ? eur2(num) : 'prix du robot'); } }
+  else if (f === 'taux') { if (a) { a.tauxCom = num != null ? num : ''; log(c, 'Taux de la vente additionnelle modifié', num != null ? num + ' %' : 'taux du robot d\'origine'); } }
+  save(); refreshComFiche(c); if (ui.ptab === 'objectifs' && !$('view-profile')?.classList.contains('hidden')) renderProfile();
+}
+const numIn = (key, f, v, w = '9rem', ph = '') => `<input type="number" step="0.01" class="inp !h-10 text-right font-bold" style="width:${w}" value="${v == null ? '' : v}" placeholder="${ph}" onchange="comEdit('${key}','${f}',this.value)">`;
+const retHtml = r => r.ret && r.ret.m > 0 ? `<div class="ct-warn"><i class="fas fa-clock"></i> <b>Payé avec ${r.ret.m} mois de retard</b> : attendu sur ${fmtMonth(r.ret.att)}, payé sur le salaire de ${fmtMonth(r.ret.sal)}.</div>` : (r.ret && r.ret.m <= 0 ? `<div class="ct-ok"><i class="fas fa-check"></i> Payé dans les délais (attendu ${fmtMonth(r.ret.att)}, salaire de ${fmtMonth(r.ret.sal)}).</div>` : '');
+function ctrlEcart(r, key) {
+  if (r.ecC == null) return '';
+  return `<div class="ct-ec"><div><div class="ct-k">Écart (dû − versé)</div><div class="ct-v" style="color:${r.ecC > 0.004 ? '#DC2626' : '#166534'}">${Math.abs(r.ecC) < 0.005 ? '0,00 €' : eurE(r.ecC)}</div></div>${r.stC ? stPill(r.stC) : ''}<div style="flex:1;min-width:230px"><label class="lbl" for="mt-${key}">Motif (texte libre)</label><input id="mt-${key}" class="inp !h-10" value="${esc(r.note || '')}" onchange="comEdit('${key}','motif',this.value)"></div></div>`;
+}
+function ctrlRobotCards(r) {
+  const c = r.c, key = r.key, rk = `${r.n}<sup>e</sup>`, auto = +c.rangEmp > 0 ? `<span class="ct-sub">(auto : ${r.nAuto}<sup>e</sup>)</span>` : '';
+  const chg = c.essentiel ? `<div class="ct-card ct-chg"><label class="lbl" for="chg-${c.id}">Chargeur déduit (€)</label><input id="chg-${c.id}" type="number" step="50" class="inp !h-10 text-right font-bold" style="width:9rem" value="${c.chargeur != null && c.chargeur !== '' ? c.chargeur : (+settings.com.chargeur || 0)}" onchange="comEdit('${key}','chargeur',this.value)"><span class="ct-sub">Modèle Essentiel : 21 500 € par défaut (21 150 € sur certains dossiers). Ne sert qu'au calcul employeur.</span></div>` : '';
+  const sal = r.sal || (r.ctrl && r.ctrl.bulletin) || '';
+  return `<div class="ct-3">
+    <div class="ct-card"><div class="ct-k">① Calcul méthode employeur</div><div class="ct-v">${eur2(r.com)}</div><div class="ct-sub">${eur(r.montant)} − assiette ${eur(r.assiette)}${r.ch ? ` (dont chargeur ${eur(r.ch)})` : ''} = ${eur(r.base)} × ${r.taux.toLocaleString('fr-FR')} %<br>${rk} ${r.f === 'SINTESI' ? 'robot signé en ' + r.y + ' (tous modèles, annulés compris)' : 'GENESI ' + r.y} ${auto}</div>
+      <div class="ct-sub" style="margin-top:6px"><label for="rg-${c.id}">Rang à corriger :</label> <input id="rg-${c.id}" type="number" min="1" step="1" class="inp !h-8 !w-20 text-center" value="${+c.rangEmp > 0 ? c.rangEmp : ''}" placeholder="${r.nAuto}" onchange="comEdit('${key}','rang',this.value)" title="À renseigner seulement si le rang retenu par l'employeur diffère du décompte automatique"></div></div>
+    <div class="ct-card"><div class="ct-k">② Montant réellement versé</div><div style="margin-top:4px">${numIn(key, 'verse', r.verseSaisi ? r.verse : '', '9rem', r.com.toFixed(2).replace('.', ','))}</div><div class="ct-sub">${sal ? `Bulletin de <b>${fmtMonth(sal)}</b>${r.paid ? ` · pointée en <b>${fmtMonth(r.paid)}</b>` : ''}` : 'Vide = montant du calcul employeur'}</div></div>
+    <div class="ct-card" style="border-color:#FCA5A5"><div class="ct-k">③ Dû selon le contrat</div><div style="margin-top:4px">${numIn(key, 'du', r.duSaisi ? r.du : '', '9rem', r.duCalc.toFixed(2).replace('.', ','))}</div><div class="ct-sub">(${eur(r.montant)}${r.f === 'SINTESI' ? ' − ' + eur(+settings.com.assiette.SINTESI || 0) : ''}) × ${r.taux.toLocaleString('fr-FR')} % · sans quote-part GENESI, sans chargeur</div></div></div>${chg}`;
+}
+function ctrlCompact(r, lab) {
+  const key = r.key, sal = r.sal || (r.ctrl && r.ctrl.bulletin) || '';
+  return `<div class="ct-cmp"><span class="ct-sub"><b>${lab}</b> calculé ${eur2(r.com)}</span><label class="ct-sub" for="vv-${key}">Versé</label>${numIn(key, 'verse', r.verseSaisi ? r.verse : '', '8rem', r.com.toFixed(2).replace('.', ','))}<span class="ct-sub">${sal ? 'bulletin ' + fmtMonth(sal) : ''}</span></div>`;
+}
+function nanExtra(c, r) {
+  const n = c.nanceo, imp = r.ctrl && r.ctrl.verse > 0 ? Math.round(r.ctrl.verse / (r.taux / 100) * 100) / 100 : 0, sug = imp && Math.abs(imp - r.base) > 1 && !(+n.montantFinance > 0);
+  return `<div class="ct-nan"><div><label class="lbl" for="mf-${r.key}">Montant financé HT (€)</label>${numIn(r.key, 'mfin', +n.montantFinance > 0 ? n.montantFinance : '', '10rem', String(c.montant || ''))}<div class="ct-sub">Vide = prix du robot (${eur(c.montant || 0)}). Peut inclure une vente additionnelle.</div></div>
+    ${sug ? `<div class="ct-sug">Le versé de ${eur2(r.ctrl.verse)} correspond à un montant financé de <b>${eur2(imp)}</b> (÷ ${r.taux.toLocaleString('fr-FR')} %). <button type="button" class="btn btn-g !h-8" onclick="comEdit('${r.key}','mfin',${imp})">Appliquer</button></div>` : ''}</div>${ctrlCompact(r, 'Financement')}${r.ctrl && r.ctrl.dossier ? `<div class="ct-sub">Dossier NANCEO ${esc(r.ctrl.dossier)}${r.ctrl.pv ? ' · PV du ' + fmtD(r.ctrl.pv) : ''}</div>` : ''}${retHtml(r)}${ctrlEcart(r, r.key)}`;
+}
+function addonCtrl(r) {
+  const ct = r.ctrl, tc = ct && ct.tauxConstate != null ? ct.tauxConstate : null;
+  return `<span class="ct-sub">· versé</span>${numIn(r.key, 'verse', r.verseSaisi ? r.verse : '', '6.5rem', r.com.toFixed(2).replace('.', ','))}<span class="ct-sub">· taux %</span><input type="number" step="0.1" class="inp !h-10 text-right font-bold" style="width:4.6rem" value="${r.a.tauxCom != null && r.a.tauxCom !== '' ? r.a.tauxCom : ''}" placeholder="${r.taux}" title="Vide = taux du robot d'origine (ou 2,5 % sans robot)" onchange="comEdit('${r.key}','taux',this.value)">${tc != null ? `<span class="ct-sub">· taux constaté ${tc.toLocaleString('fr-FR')} %</span>` : ''}${r.ecC != null && Math.abs(r.ecC) >= 1 ? `<span class="ct-sub" style="color:#DC2626;font-weight:700">écart ${eurE(r.ecC)}</span>` : ''}`;
+}
+function comFicheBox(c) {
+  if (!opt('com') || c?.step !== 'Signé') return '<div id="f-com"></div>';
+  const R = comRows().filter(r => r.c.id === c.id), rob = R.find(r => !r.a); if (!rob) return '<div id="f-com"></div>';
+  const tot = sum(R.filter(r => r.statut !== 'bloque'), r => r.com), paid = sum(R.filter(r => r.statut === 'paye'), r => r.verse), att = sum(R.filter(r => r.statut === 'attente'), r => r.com), blk = sum(R.filter(r => r.statut === 'bloque'), r => r.com);
+  return `<div id="f-com" class="rounded-xl border-2 border-orange-400 bg-orange-50/40 p-3.5 flex flex-col gap-2.5">
+    <div class="flex flex-wrap justify-between items-center gap-2"><h3 class="font-bold text-[14px]"><i class="fas fa-euro-sign text-ptkd mr-1.5"></i>Commission du dossier</h3>
+      <span class="text-[12px] text-slate-600">Acquis <b class="text-ink">${eur2(tot)}</b> · versé <b class="text-emerald-800">${eur2(paid)}</b> · à payer <b class="text-orange-800">${eur2(att)}</b>${blk ? ` · bloqué <b class="text-rose-700">${eur2(blk)}</b>` : ''}</span></div>
+    ${ctrlRobotCards(rob)}${ctrlEcart(rob, rob.key)}${retHtml(rob)}
+    <div class="flex flex-wrap items-center gap-3 rounded-xl bg-white border border-slate-200 px-3 py-2"><span class="flex-1 min-w-[200px] text-[12px] text-slate-600">Robot ${esc(rob.label)}${essTag(rob)}</span>${comPill(rob)}${comTickUi(rob, true)}</div>
+    ${R.find(r => r.nan) ? nanBlock(c, R.find(r => r.nan)) : nanAdd(c)}
+    ${rob.statut === 'bloque' ? '<p class="text-xs text-rose-800"><i class="fas fa-lock mr-1"></i>Commission bloquée tant que la réserve n\'est pas retournée signée (date de levée à renseigner, puis enregistrer).</p>' : ''}
+    <p class="text-[11.5px] text-muted">Calcul automatique actif (Paramètres › Options). Case cochée = commission payée : le montant versé est repris dans « Objectifs et commissions ».</p></div>`;
+}
+const essTag = r => r.c.essentiel ? ' · <b style="color:#C2410C">ESSENTIEL</b>' : '';
+
+/* ---- écran « Contrôle des commissions » ---- */
+const ctF = () => ui.ctF || (ui.ctF = {y: '', st: 'todo'});
+function ctrlRowsAll() { return comRows().filter(r => r.ctrl || (r.statut === 'paye' && r.perc != null)); }
+function ctrlView(rows) { const F = ctF(); return rows.filter(r => (!F.y || String(r.y) === String(F.y)) && (F.st === 'tous' || (F.st === 'todo' ? r.stC !== 'conforme' : r.stC === F.st))); }
+const ctTypeLab = r => r.nan ? 'Financement' : r.a ? 'Vente add.' : 'Robot';
+function ctrlKpis(all) {
+  const rob = all.filter(r => !r.a), ecT = sum(rob.filter(r => ['écart', 'impayé', 'à expliquer'].includes(r.stC)), r => Math.max(0, r.ecC || 0));
+  const fi = all.filter(r => r.nan && r.stC === 'impayé' || r.nan && r.ctrl && r.ctrl.statut === 'impayé'), ex = all.filter(r => r.stC === 'à expliquer'), ok = all.filter(r => r.stC === 'conforme');
+  return {ecT, fi, ex, ok, n: all.length};
+}
+function pfCtrl() {
+  const all = ctrlRowsAll(), F = ctF(), K = ctrlKpis(all), vw = ctrlView(all).sort((a, b) => (b.ecC || 0) - (a.ecC || 0));
+  const ys = [...new Set(all.map(r => r.y))].sort(), kp = (l, v, s, cl = '') => `<div class="ct-kc"><div class="ct-k">${l}</div><div class="ct-v" style="color:${cl}">${v}</div><div class="ct-sub">${s}</div></div>`;
+  const chipY = (v, l) => `<button type="button" class="cf-chip ${F.y === v ? 'on' : ''}" onclick="ctF().y='${v}';renderProfile()">${l}</button>`, chipS = (v, l, n) => `<button type="button" class="cf-chip ${F.st === v ? 'on' : ''}" onclick="ctF().st='${v}';renderProfile()">${l}<i>${n}</i></button>`;
+  const cnt = s => all.filter(r => (!F.y || String(r.y) === String(F.y)) && (s === 'tous' || (s === 'todo' ? r.stC !== 'conforme' : r.stC === s))).length;
+  $('pf-body').innerHTML = objSub() + `<div class="flex flex-col gap-4 mt-3">
+    <div class="dbn flex items-center gap-3 flex-wrap"><h2 class="h2 !text-lg flex-1"><i class="fas fa-scale-balanced mr-2 text-ptkd"></i>Contrôle des commissions</h2><button class="btn btn-d !h-10" onclick="ctrlXlsx()"><i class="fas fa-file-excel"></i>Excel</button><button class="btn btn-d !h-10" onclick="ctrlPdf()"><i class="fas fa-file-pdf"></i>PDF</button></div>
+    ${all.length ? `<div class="ct-kpis">${kp('Écart total robots', eur2(K.ecT), 'dû selon le contrat − versé', K.ecT > 0 ? '#DC2626' : '#166534')}${kp('Financements impayés', K.fi.length, eur2(sum(K.fi, r => r.com)) + ' à réclamer', K.fi.length ? '#DC2626' : '#166534')}${kp('À faire expliquer', K.ex.length, 'dossiers', K.ex.length ? '#A16207' : '#166534')}${kp('Commissions conformes', K.ok.length, `sur ${K.n} pointées`, '#166534')}</div>
+    <div class="cf-bar"><div class="flex flex-wrap gap-1.5 items-center"><span class="text-[12px] text-muted font-semibold">Année</span>${chipY('', 'Toutes')}${ys.map(y => chipY(String(y), String(y))).join('')}</div>
+      <div class="flex flex-wrap gap-1.5 items-center mt-2"><span class="text-[12px] text-muted font-semibold">État</span>${chipS('todo', 'À traiter', cnt('todo'))}${chipS('écart', 'Écart', cnt('écart'))}${chipS('impayé', 'Impayé', cnt('impayé'))}${chipS('à expliquer', 'À expliquer', cnt('à expliquer'))}${chipS('conforme', 'Conforme', cnt('conforme'))}${chipS('tous', 'Tous', cnt('tous'))}</div></div>
+    <div class="card !p-0 overflow-x-auto"><table class="ct-t"><thead><tr><th>Pharmacie</th><th>Type</th><th class="n">Dû (contrat)</th><th class="n">Versé</th><th class="n">Écart</th><th>Bulletin</th><th>État</th></tr></thead><tbody>${vw.length ? vw.map(r => `<tr onclick="openClient(${r.c.id})" tabindex="0" onkeydown="if(event.key==='Enter')openClient(${r.c.id})" title="Ouvrir la fiche"><td><b>${esc(r.c.pharma)}</b><div class="ct-sub">${fmtD(r.date)}${r.note ? ' · ' + esc(String(r.note).slice(0, 90)) : ''}</div></td><td>${ctTypeLab(r)}</td><td class="n">${eur2(r.du)}</td><td class="n">${eur2(r.verse)}</td><td class="n" style="color:${r.ecC > 0.004 ? '#DC2626' : '#166534'};font-weight:700">${Math.abs(r.ecC || 0) < 0.005 ? '—' : eurE(r.ecC)}</td><td>${r.sal || (r.ctrl && r.ctrl.bulletin) ? fmtMonth(r.sal || r.ctrl.bulletin) : '—'}${r.ret && r.ret.m > 0 ? `<div class="ct-sub" style="color:#B45309">${r.ret.m} mois de retard</div>` : ''}</td><td>${stPill(r.stC || 'écart')}</td></tr>`).join('') : '<tr><td colspan="7" class="ct-empty">Aucun dossier pour ce filtre.</td></tr>'}</tbody></table></div>` : `<div class="card p-5 text-[13px] text-slate-600">Aucune commission pointée pour l'instant. Les dossiers contrôlés apparaîtront ici dès qu'un montant versé sera renseigné (fiche du dossier › Commission du dossier).</div>`}
+    <div class="ct-par"><b>Paramètres de calcul</b><span>Quote-part GENESI de l'application : <b>${eur(+settings.com.assiette.GENESI || 0)}</b></span><span>Appliquée par l'employeur : <b>${eur(12000)}</b></span><span>Selon le contrat : <b>aucune</b></span><span>Chargeur Essentiel (employeur) : <b>${eur(+settings.com.chargeur || 0)}</b> · contrat : <b>aucun</b></span></div></div>`;
+}
+function ctrlLines(rows) {
+  return rows.map(r => [r.c.pharma, ctTypeLab(r), r.date, r.label || '', r.montant, r.com, r.du, r.verse, r.ecC == null ? 0 : r.ecC, r.sal || (r.ctrl && r.ctrl.bulletin) || '', r.stC ? (ST_PILL[r.stC] ? ST_PILL[r.stC][0] : r.stC) : '', r.ret && r.ret.m > 0 ? r.ret.m : '', r.note || '']);
+}
+const CT_H = ['Pharmacie', 'Type', 'Date de signature', 'Vente', 'Montant HT (€)', 'Calcul employeur (€)', 'Dû selon le contrat (€)', 'Versé (€)', 'Écart (€)', 'Bulletin', 'État', 'Retard (mois)', 'Motif'];
+async function ctrlXlsx() {
+  if (!window.ExcelJS) return toast('Générateur Excel indisponible (connexion Internet requise au premier chargement).', true);
+  const rows = ctrlView(ctrlRowsAll()); if (!rows.length) return toast('Aucune ligne à exporter.', true);
+  const wb = new ExcelJS.Workbook(); wb.creator = `${settings.prenom || ''} ${settings.nom || ''}`.trim(); const ws = wb.addWorksheet('Contrôle des commissions');
+  ws.addRow(CT_H); ws.getRow(1).font = {bold: true, color: {argb: 'FFFFFFFF'}}; ws.getRow(1).fill = {type: 'pattern', pattern: 'solid', fgColor: {argb: 'FF1F3A5F'}};
+  ctrlLines([...rows].sort((a, b) => a.date.localeCompare(b.date))).forEach(l => { const w = ws.addRow(l.map((v, i) => i === 2 && v ? fmtD(v) : i === 9 && v ? fmtMonth(v) : v)); if (l[8] > 0.004) w.getCell(9).font = {color: {argb: 'FFDC2626'}, bold: true}; });
+  [30, 13, 14, 26, 14, 16, 16, 14, 13, 16, 14, 11, 50].forEach((w, i) => ws.getColumn(i + 1).width = w); [5, 6, 7, 8, 9].forEach(i => ws.getColumn(i).numFmt = '#,##0.00'); ws.views = [{state: 'frozen', ySplit: 1}];
+  const tot = ws.addRow(['TOTAL', '', '', '', '', sum(rows, r => r.com), sum(rows, r => r.du), sum(rows, r => r.verse), sum(rows, r => r.ecC || 0)]); tot.font = {bold: true};
+  const buf = await wb.xlsx.writeBuffer(); download(`controle_commissions_${isoDay(new Date())}.xlsx`, buf, 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'); toast('Export Excel réalisé');
+}
+function ctrlPdfHtml(rows) {
+  const L = ctrlLines([...rows].sort((a, b) => a.date.localeCompare(b.date))), K = ctrlKpis(rows), f = v => (+v).toLocaleString('fr-FR', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+  return `<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>Contrôle des commissions</title><style>@page{size:A4 landscape;margin:12mm}body{font-family:Arial,Helvetica,sans-serif;font-size:10.5px;color:#0f172a}h1{font-size:17px;margin:0 0 2px;color:#C2410C}.s{color:#475569;margin-bottom:8px}.k{display:flex;gap:10px;margin:8px 0}.k div{border:1px solid #cbd5e1;border-radius:6px;padding:5px 9px;flex:1}.k b{display:block;font-size:14px}table{width:100%;border-collapse:collapse}th{background:#1F3A5F;color:#fff;text-align:left;padding:4px 5px;font-size:9.5px}td{padding:4px 5px;border-bottom:1px solid #e2e8f0;vertical-align:top}td.n,th.n{text-align:right;white-space:nowrap}.r{color:#DC2626;font-weight:700}tr{page-break-inside:avoid}.f{margin-top:8px;font-size:9.5px;color:#64748b}</style></head><body><h1>Contrôle des commissions</h1><div class="s">${esc(`${settings.prenom || ''} ${settings.nom || ''}`.trim())} · édité le ${fmtD(isoDay(new Date()))} · ${L.length} ligne(s)</div>
+  <div class="k"><div>Écart total robots<b>${f(K.ecT)} €</b></div><div>Financements impayés<b>${K.fi.length}</b></div><div>À faire expliquer<b>${K.ex.length}</b></div><div>Conformes<b>${K.ok.length} / ${K.n}</b></div></div>
+  <table><thead><tr><th>Pharmacie</th><th>Type</th><th>Signature</th><th class="n">Dû contrat</th><th class="n">Versé</th><th class="n">Écart</th><th>Bulletin</th><th>État</th><th>Motif</th></tr></thead><tbody>${L.map(l => `<tr><td><b>${esc(l[0])}</b></td><td>${l[1]}</td><td>${fmtD(l[2])}</td><td class="n">${f(l[6])} €</td><td class="n">${f(l[7])} €</td><td class="n ${l[8] > 0.004 ? 'r' : ''}">${Math.abs(l[8]) < 0.005 ? '—' : (l[8] > 0 ? '+ ' : '− ') + f(Math.abs(l[8])) + ' €'}</td><td>${l[9] ? fmtMonth(l[9]) : '—'}</td><td>${esc(l[10])}${l[11] ? ' · ' + l[11] + ' mois de retard' : ''}</td><td>${esc(String(l[12]).slice(0, 140))}</td></tr>`).join('')}</tbody></table>
+  <div class="f">Quote-part GENESI : application ${f(+settings.com.assiette.GENESI || 0)} € · employeur 12 000,00 € · contrat : aucune. Chargeur Essentiel : employeur ${f(+settings.com.chargeur || 0)} € · contrat : aucun.</div></body></html>`;
+}
+function ctrlPdf() {
+  const rows = ctrlView(ctrlRowsAll()); if (!rows.length) return toast('Aucune ligne à exporter.', true);
+  const f = document.createElement('iframe'); f.setAttribute('aria-hidden', 'true'); f.style.cssText = 'position:fixed;right:0;bottom:0;width:0;height:0;border:0';
+  document.body.appendChild(f); f.onload = () => setTimeout(() => { try { f.contentWindow.focus(); f.contentWindow.print(); } catch (e) { toast('Impression impossible.', true); } setTimeout(() => f.remove(), 120000); }, 350);
+  f.srcdoc = ctrlPdfHtml(rows); toast('Choisissez « Enregistrer au format PDF » dans la fenêtre d\'impression');
+}
+function mig412() { try { const C = settings.com; if (!C) return; if (C.chargeur == null) C.chargeur = 21500; if (C.assiette && +C.assiette.GENESI === 12500 && !C.qpUser) { C.assiette.GENESI = 12000; saveSet(); } } catch (e) { } }
+mig412();
+
 function pfChal() {
   const L = [...settings.challenges].sort((a, b) => b.du.localeCompare(a.du));
   const ST = {encours: ['En cours', '#FEF6E4', '#6B4607'], atteint: ['Objectif atteint', '#E8F5EE', '#14603F'], echu: ['Terminé · non atteint', '#F1F3F6', '#475569'], avenir: ['À venir', '#EEF2FC', '#1E3A8A']};
@@ -9379,8 +9527,8 @@ function paramsHTML(withCom) {
   return `<section class="card p-5 sm:p-6 flex flex-col gap-5"><h2 class="h2 !text-lg ftitle">Paramètres</h2>
     <div class="grid lg:grid-cols-3 gap-5">
       <div class="rounded-2xl border border-slate-200 p-4 flex flex-col gap-3"><h3 class="text-sm font-bold">Objectifs ${CUR_YEAR}</h3>${fld('set-obj', 'Robots SINTESI à vendre (tous modèles)', settings.objectif, 'number', 'min="1"')}${fld('set-objca', "Chiffre d'affaires (€ HT)", settings.objectifCA, 'number', 'min="0" step="1000"')}</div>
-      ${withCom ? `<div class="rounded-2xl border border-slate-200 p-4 flex flex-col gap-3"><h3 class="text-sm font-bold flex items-center gap-2">${robotIco('SINTESI XL', 30)}Commissions SINTESI</h3>${fld('com-as-S', "Assiette d'installation déduite (€)", C.assiette.SINTESI, 'number', 'min="0" step="500"')}${tier('SINTESI')}</div>
-      <div class="rounded-2xl border border-slate-200 p-4 flex flex-col gap-3"><h3 class="text-sm font-bold flex items-center gap-2">${robotIco('GENESI', 30)}Commissions GENESI</h3>${fld('com-as-G', "Assiette d'installation déduite (€)", C.assiette.GENESI, 'number', 'min="0" step="500"')}${tier('GENESI')}</div>
+      ${withCom ? `<div class="rounded-2xl border border-slate-200 p-4 flex flex-col gap-3"><h3 class="text-sm font-bold flex items-center gap-2">${robotIco('SINTESI XL', 30)}Commissions SINTESI</h3>${fld('com-as-S', "Assiette d'installation déduite (€)", C.assiette.SINTESI, 'number', 'min="0" step="500"')}${fld('com-chg', 'Chargeur déduit — modèle Essentiel (€), par défaut', C.chargeur ?? 21500, 'number', 'min="0" step="50"')}${tier('SINTESI')}</div>
+      <div class="rounded-2xl border border-slate-200 p-4 flex flex-col gap-3"><h3 class="text-sm font-bold flex items-center gap-2">${robotIco('GENESI', 30)}Commissions GENESI</h3>${fld('com-as-G', "Quote-part GENESI déduite (€) · 12 000 € chez l'employeur", C.assiette.GENESI, 'number', 'min="0" step="500"')}${tier('GENESI')}</div>
       <div class="rounded-2xl border border-slate-200 p-4 flex flex-col gap-3 lg:col-span-3 lg:flex-row lg:items-end lg:gap-6"><div class="lg:flex-1"><h3 class="text-sm font-bold">Commissions ventes additionnelles (add-ons)</h3><p class="text-xs text-muted mt-1">Appliqué au montant HT total de chaque add-on signé, sans assiette déduite.</p></div><div class="lg:w-56">${fld('com-addon', 'Taux (%)', settings.com.addon, 'number', 'step="0.1" min="0"')}</div></div>
       <div class="rounded-2xl border-2 p-4 flex flex-col gap-3 lg:col-span-3" style="border-color:#67E8F9;background:#ECFEFF"><h3 class="text-sm font-bold"><i class="fas fa-building-columns mr-1.5" style="color:#0E7490"></i>Commission de financement leasing NANCEO</h3><div class="flex flex-wrap gap-6 items-end"><div class="w-56">${fld('com-nanceo', 'Taux de rémunération (%)', settings.com.nanceo, 'number', 'step="0.001" min="0"')}</div><p class="text-xs flex-1 min-w-[260px]" style="color:#155E75">Appliqué au montant HT du robot. <b>Payée le mois suivant la date d’installation.</b><br>Exemple : robot à 91 000 € HT × ${(+settings.com.nanceo || 0).toLocaleString('fr-FR')} % = <b>${eur2(Math.round(91000 * (+settings.com.nanceo || 0)) / 100)}</b> · affiché « ${(+settings.com.nanceo || 0).toLocaleString('fr-FR', {maximumFractionDigits: 2})} % » dans les listes.</p></div><p class="text-xs text-muted">Modifiable à tout moment : le nouveau taux s’applique aux commissions non encore pointées ; celles déjà pointées gardent leur taux.</p></div>` : ''}
     </div>
@@ -9393,7 +9541,7 @@ function saveReg() {
   ECH_ORDER.forEach(k => { const e = settings.echeances[k]; e.label = $(`ech-${k}-label`).value.trim() || e.label; e.duree = $(`ech-${k}-duree`).value.trim(); e.rappel = Math.max(1, +$(`ech-${k}-rappel`).value || e.rappel); });
   if ($('com-addon')) settings.com.addon = Math.max(0, +$('com-addon').value || 0);
   if ($('com-nanceo')) settings.com.nanceo = Math.max(0, +$('com-nanceo').value || 0);
-  if ($('com-as-S')) { settings.com.assiette.SINTESI = +$('com-as-S').value || 0; settings.com.assiette.GENESI = +$('com-as-G').value || 0;
+  if ($('com-as-S')) { settings.com.assiette.SINTESI = +$('com-as-S').value || 0; settings.com.assiette.GENESI = +$('com-as-G').value || 0; settings.com.qpUser = true; if ($('com-chg')) settings.com.chargeur = +$('com-chg').value || 0;
   ['SINTESI', 'GENESI'].forEach(f => settings.com.paliers[f].forEach((t, i) => { t.de = i === 0 ? 1 : Math.max(2, +$(`pal-${f}-${i}-de`).value || t.de); t.taux = +$(`pal-${f}-${i}-taux`).value || 0; })); }
   saveSet(); renderProfile(); toast('Paramètres enregistrés');
 }
@@ -9739,7 +9887,7 @@ function importJSON(input) {
       if (!confirm(`Remplacer les données actuelles par ${arr.length} fiches ?`)) return;
       snapAdd('Avant la restauration d\'une sauvegarde JSON');
       clients = arr; clients.forEach(c => { c.addons = c.addons || []; c.history = c.history || []; c.contacts = c.contacts || []; });
-      if (j.settings) { mergeDeep(settings, j.settings); saveSet(); renderBrand(); }
+      if (j.settings) { mergeDeep(settings, j.settings); mig412(); saveSet(); renderBrand(); }
       save(); toast('Données restaurées'); showView('dashboard');
     } catch { toast('Fichier de sauvegarde invalide.', true); }
     input.value = '';
