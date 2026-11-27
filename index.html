@@ -1497,7 +1497,7 @@ tr.imp-red td{background:#FFF5F5}tr.imp-red td b{text-decoration:line-through;co
   <div class="idband hidden" data-idb></div>
   <div class="dlg-body ax-bd">
     <div class="ax-card"><div class="ax-st"><span class="ax-n">1</span>Quand ?</div><div class="flex items-center justify-between mb-1"><label class="lbl !mb-0" for="nr-dt">Tentative effectuée le *</label><button type="button" class="text-xs font-bold text-ptkd hover:underline" onclick="$('nr-dt').value=nowDT();nrUpd()">Maintenant</button></div><input type="datetime-local" id="nr-dt" class="inp !h-11" oninput="nrUpd()"></div>
-    <div class="ax-card"><div class="ax-st"><span class="ax-n">2</span>Nouvelle date</div><div class="ax-days"><button type="button" class="ax-chip" onclick="$('nr-new').value=addDays(1,'10:00');nrUpd()">Demain</button><button type="button" class="ax-chip" onclick="$('nr-new').value=addDays(3,'10:00');nrUpd()">Dans 3 jours</button><button type="button" class="ax-chip" onclick="$('nr-new').value=addDays(7,'10:00');nrUpd()">Dans 1 semaine</button></div><label class="lbl" for="nr-new" id="nr-newl">Nouvelle date et heure *</label><input type="datetime-local" id="nr-new" class="inp !h-11" oninput="nrUpd()"></div>
+    <div class="ax-card"><div class="ax-st"><span class="ax-n">2</span>Nouvelle date</div><div class="ax-days"><button type="button" class="ax-chip" onclick="$('nr-new').value=addWd(1,'10:00');nrUpd()">Demain</button><button type="button" class="ax-chip" onclick="$('nr-new').value=addWd(3,'10:00');nrUpd()">Dans 3 jours</button><button type="button" class="ax-chip" onclick="$('nr-new').value=addWd(7,'10:00');nrUpd()">Dans 1 semaine</button></div><label class="lbl" for="nr-new" id="nr-newl">Nouvelle date et heure *</label><input type="datetime-local" id="nr-new" class="inp !h-11" oninput="nrUpd()"></div>
     <div id="nr-notebox"><button type="button" id="nr-note-btn" class="ax-note w-full" onclick="this.classList.add('hidden');$('nr-notewrap').classList.remove('hidden');$('nr-note').focus()"><b>+ Ajouter une note</b> <span>(facultatif)</span></button><div id="nr-notewrap" class="ax-msg hidden"><div class="ax-msg-h"><span class="ax-msg-t">Note (facultatif)</span></div><div class="mic-wrap"><textarea id="nr-note" rows="2" class="inp !h-auto py-2" placeholder="Messagerie, occupé, pas de réponse…"></textarea><button type="button" class="mic !top-1 !w-9 !h-9" onclick="dictate('nr-note',this)" aria-label="Dicter la note"><i class="fas fa-microphone"></i></button></div></div></div>
     <p id="nr-err" class="hidden text-[12.5px] font-semibold" style="color:#B42318"></p>
     <div class="rounded-xl p-3 text-[13px]" style="background:#fff;border:1.5px solid #86EFAC;color:#14532D"><div class="font-extrabold mb-1.5">Ce qui sera enregistré :</div><div id="nr-sum" class="flex flex-col gap-1.5"></div></div>
@@ -1587,7 +1587,7 @@ tr.imp-red td{background:#FFF5F5}tr.imp-red td b{text-decoration:line-through;co
 <li><b>Page de garde des PDF (V2.9)</b> : nouvelle photo pleine largeur avec le bandeau « SINTESI SLIM avec partie vitrée (type A) » ; la même photo illustre l'option <b>PANNEAU TYPE A</b> (carte de la fiche et PDF).</li>
 <li><b>Présentation compacte (V3.8)</b> : menus du haut plus fins ; page « Objectifs et commissions » plus compacte (bandeau et onglets sur une ligne, tuiles et cartes encadrées en couleur) ; récapitulatif et filtres côte à côte ; tableau du détail sur des lignes basses aux colonnes alignées. Le contenu est identique.</li>
 <li><b>V4.8.2</b> : <b>phrases types réécrites</b> sans redondance (argumentaire, 3 piliers, option Pharmaload), nouveau bénéfice « Une équipe plus disponible, des journées plus sereines ».</li>
-<li><b>V4.14.0</b> : (1) <b>Ma journée</b> refaite : l'onglet « Aujourd'hui » montre d'abord vos rendez-vous du jour par heure (visite en grande carte avec Appeler, Itinéraire, mode visite, trajet), puis des lignes repliées « En retard » et « Sans action prévue » ; l'onglet « En retard » affiche une ligne par action ; (2) la <b>date se met à jour toute seule</b> (retour dans l'application, minuit) : plus de journée périmée sur un téléphone resté ouvert ; (3) une visite planifiée avec le motif <b>Signature du contrat (R3)</b> met à jour la <b>Décision probable</b> de la fiche.</li><li><b>V4.13.0</b> : (1) <b>Mode visite</b> : écran plein format téléphone avec gros boutons Appeler / Itinéraire / E-mail, modification des coordonnées de la pharmacie sur place et saisie du besoin constaté (postes, distance comptoirs → back-office, dossiers par jour, équipe, besoins), avec notes dictées ; (2) <b>rappel d'e-mail</b> à la planification d'une visite ou d'une visio et proposition d'un brouillon de confirmation ; (3) bouton <b>Dossier absent</b> dans Contrôle pour ajouter un robot ou un financement vu sur une fiche de paie ; (4) affichage téléphone optimisé (en-tête compact, boutons de 44 px, textes plus lisibles, contrôle en cartes) ; (5) style intégré à l'application (plus de dépendance à un site externe au premier lancement) ; (6) bandeaux « Enregistrement impossible » et « Sauvegarde à faire ».</li><li><b>V4.12.0</b> : (1) <b>Contrôle des commissions</b> : chaque fiche affiche le calcul de l'employeur, le montant réellement versé, le montant dû selon le contrat et l'écart, avec un motif libre et une pastille d'état ; (2) nouvel écran <b>Objectifs et commissions › Contrôle</b> (compteurs, tableau filtrable, Excel et PDF) ; (3) règles de calcul de l'employeur : palier SINTESI sur tous les robots de l'année (GENESI et annulés compris), quote-part GENESI 12 000 €, chargeur du modèle Essentiel, taux des ventes additionnelles = palier du robot d'origine, montant financé NANCEO modifiable ; (4) <b>retards de paiement</b> signalés (« Payé avec X mois de retard ») ; (5) pointage = mois qui suit le salaire. Les données « ctrl » de la sauvegarde sont lues et conservées.</li><li><b>V4.11.0</b> : (1) <b>Écart attendu / perçu</b> dans Mes commissions : à chaque paiement, saisissez le montant réellement perçu (pré-rempli avec l'attendu) ; écart en € et en %, note libre facultative, filtre « Avec écart » ; (2) <b>Exporter</b> : récapitulatif PDF (2 pages A4 : payées, en attente, sous réserve, par motif) ou tableau CSV ; (3) <b>Reprise d'historique</b> (Paramètres) : import année par année de vos robots et add-ons signés depuis vos fichiers Excel, avec aperçu, lignes rouges en « Abandonné », doublons repérés, contrôle des totaux et annulation ; (4) <b>Modèle Essentiel</b> (jusqu'en 2025) à cocher dans la fiche du robot signé ; (5) <b>Compléter les fiches</b> importées (adresse, LGO, téléphone) avec la recherche annuaire.</li>
+<li><b>V4.14.2</b> : <b>offre « Synthétique »</b> : nouveau bouton <b>Maquettes et plans</b> : ajoutez jusqu'à 6 images (collées, glissées ou choisies) ou un <b>PDF de maquettes</b> (chaque page devient une image), avec une légende ; elles forment une page à la fin du PDF synthétique et de l'impression. Ce sont les mêmes images que celles de « Implantation : plan et photos ».</li><li><b>V4.14.1</b> : <b>jours ouvrés</b> : une action ne peut plus être planifiée un samedi, un dimanche ou un jour férié. Les dates proposées par défaut (nouveau lead, relances, suivis, boutons Demain / Dans 3 jours) tombent sur un jour ouvré, et une date choisie à la main un jour non ouvré est décalée automatiquement au jour ouvré suivant, avec un message.</li><li><b>V4.14.0</b> : (1) <b>Ma journée</b> refaite : l'onglet « Aujourd'hui » montre d'abord vos rendez-vous du jour par heure (visite en grande carte avec Appeler, Itinéraire, mode visite, trajet), puis des lignes repliées « En retard » et « Sans action prévue » ; l'onglet « En retard » affiche une ligne par action ; (2) la <b>date se met à jour toute seule</b> (retour dans l'application, minuit) : plus de journée périmée sur un téléphone resté ouvert ; (3) une visite planifiée avec le motif <b>Signature du contrat (R3)</b> met à jour la <b>Décision probable</b> de la fiche.</li><li><b>V4.13.0</b> : (1) <b>Mode visite</b> : écran plein format téléphone avec gros boutons Appeler / Itinéraire / E-mail, modification des coordonnées de la pharmacie sur place et saisie du besoin constaté (postes, distance comptoirs → back-office, dossiers par jour, équipe, besoins), avec notes dictées ; (2) <b>rappel d'e-mail</b> à la planification d'une visite ou d'une visio et proposition d'un brouillon de confirmation ; (3) bouton <b>Dossier absent</b> dans Contrôle pour ajouter un robot ou un financement vu sur une fiche de paie ; (4) affichage téléphone optimisé (en-tête compact, boutons de 44 px, textes plus lisibles, contrôle en cartes) ; (5) style intégré à l'application (plus de dépendance à un site externe au premier lancement) ; (6) bandeaux « Enregistrement impossible » et « Sauvegarde à faire ».</li><li><b>V4.12.0</b> : (1) <b>Contrôle des commissions</b> : chaque fiche affiche le calcul de l'employeur, le montant réellement versé, le montant dû selon le contrat et l'écart, avec un motif libre et une pastille d'état ; (2) nouvel écran <b>Objectifs et commissions › Contrôle</b> (compteurs, tableau filtrable, Excel et PDF) ; (3) règles de calcul de l'employeur : palier SINTESI sur tous les robots de l'année (GENESI et annulés compris), quote-part GENESI 12 000 €, chargeur du modèle Essentiel, taux des ventes additionnelles = palier du robot d'origine, montant financé NANCEO modifiable ; (4) <b>retards de paiement</b> signalés (« Payé avec X mois de retard ») ; (5) pointage = mois qui suit le salaire. Les données « ctrl » de la sauvegarde sont lues et conservées.</li><li><b>V4.11.0</b> : (1) <b>Écart attendu / perçu</b> dans Mes commissions : à chaque paiement, saisissez le montant réellement perçu (pré-rempli avec l'attendu) ; écart en € et en %, note libre facultative, filtre « Avec écart » ; (2) <b>Exporter</b> : récapitulatif PDF (2 pages A4 : payées, en attente, sous réserve, par motif) ou tableau CSV ; (3) <b>Reprise d'historique</b> (Paramètres) : import année par année de vos robots et add-ons signés depuis vos fichiers Excel, avec aperçu, lignes rouges en « Abandonné », doublons repérés, contrôle des totaux et annulation ; (4) <b>Modèle Essentiel</b> (jusqu'en 2025) à cocher dans la fiche du robot signé ; (5) <b>Compléter les fiches</b> importées (adresse, LGO, téléphone) avec la recherche annuaire.</li>
 <li><b>V4.10.0</b> : (1) <b>Bloc 4 « Document pour le client »</b> réorganisé : choix de l'offre en deux grandes cartes (Personnalisée / Synthétique), deux boutons alignés « 1 · Préparer » et « 2 · Remettre », « Aperçu rapide », et <b>Réglages avancés</b> repliés (Contenu, Textes, Noms, Implantation) ; (2) <b>Relecture des textes</b> refaite : les priorités s'affichent côte à côte, trois phrases par priorité (constat, réponse, au quotidien), un seul texte à l'écran, « Autres formulations » pour le remplacer par une variante, une note explicative ; textes par défaut réécrits et adaptés à la fiche (option Euclid3D ou Pharmaload citée seulement si elle est retenue, gain de temps calculé) ; (3) <b>Historique</b> filtré : onglets Essentiel / Documents / Tout, détails regroupés (« 3 fois »), rien n'est supprimé.</li>
 <li><b>V4.9.0</b> : <b>page « Solution préconisée » en une page</b> : jauges vertes identiques pour Euclid3D (jusqu'à 520 boîtes délivrées/h) et Pharmaload (jusqu'à 300 boîtes/h), options en lignes, pied de page avec contact, mention « Résultats indicatifs » et date. Nouvelles photos Euclid3D et Pharmaload partout, icône provisoire QuickPick24, blocs « Votre besoin, notre réponse », « Inclus dans votre projet » et anneaux retirés de cette page.</li>
 <li><b>V4.8.1</b> : <b>correction</b> du bouton « Préparer le PDF… » (il ouvrait les textes d’une autre fiche), <b>phrases ajoutées</b> conservées dans le PDF (une par ligne, espace et majuscule automatiques), phrase <b>Sérialisation FMD intégrée</b> dans « Services inclus » (désactivable dans « Contenu »).</li>
@@ -2092,6 +2092,11 @@ tr.imp-red td{background:#FFF5F5}tr.imp-red td b{text-decoration:line-through;co
     <button type="button" class="text-left p-4 rounded-xl border-2 border-slate-200 hover:border-violet-600 hover:bg-violet-50" onclick="leadOpen()"><b class="flex items-center gap-2 text-violet-900"><i class="fas fa-phone-volume"></i>Lead à recontacter</b><span class="block text-[12.5px] text-muted mt-1">Pas de projet pour l'instant (lead marketing, salon, appel). Va dans « Prospection non aboutie ».</span></button>
   </div>
 </dialog>
+<dialog id="dlg-mq" class="!w-[min(720px,97vw)]">
+  <div class="px-5 py-4 border-b bg-slate-50"><h3 class="font-bold flex items-center gap-2"><i class="fas fa-images text-ptkd"></i>Maquettes, plans et photos</h3><p class="text-xs text-muted mt-0.5">Elles s'ajoutent sur une page à la fin du PDF « Synthétique » (6 images au maximum).</p></div>
+  <div class="p-5"><div id="mq-box"></div></div>
+  <div class="px-5 py-4 border-t bg-slate-50 flex justify-end"><button class="btn btn-p" onclick="mqClose()"><i class="fas fa-check"></i>Terminer</button></div>
+</dialog>
 <dialog id="dlg-lead" class="!w-[min(720px,97vw)]">
   <div class="px-5 py-4 border-b bg-slate-50 flex justify-between items-start"><div><h3 class="font-bold flex items-center gap-2 text-violet-900"><i class="fas fa-phone-volume"></i>Lead à recontacter</h3><p class="text-xs text-muted">Aucun projet pour l'instant : la fiche reste hors portefeuille.</p></div><button class="dlg-x" onclick="closeDlg('dlg-lead')" aria-label="Fermer"><i class="fas fa-xmark"></i></button></div>
   <div class="dlg-body p-5 flex flex-col gap-3">
@@ -2419,6 +2424,9 @@ const isoDT = d => `${isoDay(d)}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
 const parseD = s => { if (!s) return null; const [y, m, d] = s.slice(0, 10).split('-').map(Number); const t = s.length > 10 ? s.slice(11, 16).split(':').map(Number) : [0, 0]; return new Date(y, m - 1, d || 1, t[0] || 0, t[1] || 0); };
 const TODAY = new Date(); TODAY.setHours(0, 0, 0, 0);
 const CUR_YEAR = TODAY.getFullYear();
+const wdFix = s => { if (!s) return s; let d = new Date(s.slice(0, 10) + 'T12:00'); if (isNaN(d)) return s; let k = 0; while ((d.getDay() === 0 || d.getDay() === 6 || isHolFR(d)) && k++ < 14) d.setDate(d.getDate() + 1); return isoDay(d) + s.slice(10); };
+const addWd = (n, time) => wdFix(addDays(n, time));
+document.addEventListener('change', e => { const t = e.target; if (!t || !['act-dt', 'f-next', 'ld-dt', 'r3-next', 'st-dt', 'st-rappel', 'rl-dt', 'nr-new', 'rpn-d'].includes(t.id) || !t.value) return; const f = wdFix(t.value); if (f !== t.value) { t.value = f; try { toast('Week-end ou jour férié : date décalée au ' + fmtD(f.slice(0, 10)) + ' (jour ouvré).'); } catch (x) { } } }, true);
 const addDays = (n, time) => { const d = new Date(TODAY); d.setDate(d.getDate() + n); if (time) { const [h, mi] = time.split(':'); d.setHours(+h, +mi); return isoDT(d); } return isoDay(d); };
 const fmtD = s => { const d = parseD(s); return d ? d.toLocaleDateString('fr-FR') : '—'; };
 const fmtDT = s => { const d = parseD(s); return d ? `${d.toLocaleDateString('fr-FR', {weekday: 'short', day: '2-digit', month: '2-digit'})} à ${pad(d.getHours())}h${pad(d.getMinutes())}` : '—'; };
@@ -2438,7 +2446,7 @@ const lc1 = s => s ? s[0].toLowerCase() + s.slice(1) : s;
 const addr = c => [c.rue, [c.cp, c.ville].filter(Boolean).join(' ')].filter(Boolean).join(', ');
 const depOf = c => { const cp = String(c.cp || '').trim(); if (/^\d{5}$/.test(cp)) return cp.slice(0, 2); const d = String(c.dep || '').trim().toUpperCase(); return /^(\d{2,3}|2[AB])$/.test(d) ? d.padStart(2, '0') : ''; };
 const enc = encodeURIComponent;
-const APP_VERSION = '4.14.0';
+const APP_VERSION = '4.14.2';
 const __boot = (() => { const g = k => { try { return localStorage.getItem(k); } catch { return null; } }; return {d: g('ptk_clients_v2'), s: g('ptk_user_settings'), v: g('ptk_app_version')}; })();
 const store = {
   load(k, d) { try { const v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } },
@@ -4056,7 +4064,7 @@ function openReplan(cid, rid) {
   if (!c || (!rid && !c.nextDate) || (rid && !r)) return rid ? openRap(r ? r.type : 'rappel', rid) : gotoPlan(cid);
   _rpn = cid; _rpr = rid || null; const A = r ? {label: (RAP_T[r.type] || RAP_T.rappel).l} : (ACTIONS[c.nextType] || ACTIONS.relance), cur = r ? r.dt : c.nextDate;
   $('rpn-sub').innerHTML = `${esc(A.label)} · ${esc(c.pharma)}<br>Prévue le <b>${fmtDT(cur)}</b>`;
-  $('rpn-d').value = addDays(1); $('rpn-h').value = (cur.split('T')[1] || '10:00').slice(0, 5); $('rpn-cal').checked = !!opt('agenda'); $('rpn-cal').closest('label').classList.toggle('hidden', !opt('agenda')); $('rpn-err').classList.add('hidden');
+  $('rpn-d').value = addWd(1); $('rpn-h').value = (cur.split('T')[1] || '10:00').slice(0, 5); $('rpn-cal').checked = !!opt('agenda'); $('rpn-cal').closest('label').classList.toggle('hidden', !opt('agenda')); $('rpn-err').classList.add('hidden');
   $('dlg-replan').showModal();
 }
 function rpnQuick(n) { $('rpn-d').value = addDays(n); }
@@ -4082,7 +4090,7 @@ function rpnSave() {
 function openRap(type = 'rappel', rid = null) {
   const c = byId(ui.editId); if (!c) return;
   const r = rid ? (c.rappels || []).find(x => x.id === rid) : null, kind = r ? r.type : type, T = RAP_T[kind] || RAP_T.rappel;
-  openAction(c.id, T.a, null, {dt: r ? r.dt : addDays(1, '10:00'), rap: {rid: r ? r.id : null, kind}, motif: r ? r.note : undefined});
+  openAction(c.id, T.a, null, {dt: r ? r.dt : addWd(1, '10:00'), rap: {rid: r ? r.id : null, kind}, motif: r ? r.note : undefined});
 }
 function saveRap() {
   const c = byId(ui.rap.cid), d = $('rp-d').value, h = $('rp-h').value, n = $('rp-n').value.trim(), er = $('rp-err');
@@ -4704,7 +4712,7 @@ function openAction(cid, type = 'relance', aid = null, opts = {}) {
   $('act-name').textContent = c.pharma; $('act-sub').textContent = `${c.genre || ''} ${c.prenom || ''} ${c.nom || ''} · ${c.ville || ''}`.replace(/\s+/g, ' ').trim();
   $('act-ini').textContent = (String(c.pharma || 'PH').replace(/^pharmacie\s+(de\s+la\s+|de\s+l'|du\s+|des\s+|de\s+|d')?/i, '').match(/[A-Za-zÀ-ÿ]+/g) || ['P']).slice(0, 2).map(x => x[0].toUpperCase()).join('') || 'PH';
   { const T = [[c.telPort, 'Portable', 'fa-mobile-screen'], [c.telFixe, 'Fixe', 'fa-phone']].filter(x => x[0]); $('act-ph').innerHTML = T.length ? T.map(([n, l, f]) => `<a href="tel:${esc(String(n).replace(/\s/g, ''))}"><span class="pi ${l === 'Fixe' ? 'f' : ''}"><i class="fas ${f}"></i></span><span><b>${esc(n)}</b><small>${l}</small></span></a>`).join('') : `<span class="ax-no"><span class="pi f"><i class="fas fa-phone-slash"></i></span><span><b>Aucun numéro</b><small>à renseigner sur la fiche</small></span></span>`; }
-  $('act-dt').value = opts.dt || (type === 'suivi' ? addDays(1, '10:00') : nowDT());
+  $('act-dt').value = opts.dt || (type === 'suivi' ? addWd(1, '10:00') : nowDT());
   $('act-next').checked = !!opts.dt || type === 'suivi';
   { const L = opts.rap ? [] : rapLate(c), rl = $('act-rep-l'); rl.classList.toggle('hidden', !L.length); rl.classList.toggle('flex', !!L.length); $('act-rep').checked = true; if (L.length) $('act-next').checked = true;
     $('act-rep-t').innerHTML = L.length ? `<b>Remplace l'action en retard</b> : ${L.map(r => `${esc((RAP_T[r.type] || RAP_T.rappel).l)} du ${fmtDT(r.dt)}`).join(', ')}<br><span class="text-slate-600">Elle est retirée de « Ma journée » (décochez pour la garder).</span>` : ''; }
@@ -4721,7 +4729,7 @@ function openAction(cid, type = 'relance', aid = null, opts = {}) {
 const actAddon = () => { const {cid, aid} = ui.act; return aid ? byId(cid).addons.find(a => a.id === aid) : null; };
 function setActType(type) {
   ui.act.type = type; ui.act.prop = 0;
-  if (!ui.act.dtFixed && !ui.act.dtTouched) { $('act-dt').value = type === 'suivi' ? addDays(1, '10:00') : nowDT(); if (!ui.act.rap) $('act-next').checked = type === 'suivi' || !$('act-rep-l').classList.contains('hidden'); }
+  if (!ui.act.dtFixed && !ui.act.dtTouched) { $('act-dt').value = type === 'suivi' ? addWd(1, '10:00') : nowDT(); if (!ui.act.rap) $('act-next').checked = type === 'suivi' || !$('act-rep-l').classList.contains('hidden'); }
   if (!ui.act.calTouched) $('act-cal').checked = opt('agenda') && (type === 'visite' || type === 'teams');
   actTelShow();
   const a = actAddon();
@@ -4741,7 +4749,7 @@ function actMode() {
   $('act-msg-ttl').textContent = ui.act.type === 'mail' ? "Message de l'e-mail" : ui.act.type === 'teams' ? "Message de l'invitation" : 'Note (facultatif)';
 }
 function actDayChips() {
-  const D = [["Aujourd'hui", nowDT()], ['Demain', addDays(1, '10:00')], ['Dans 3 jours', addDays(3, '10:00')], ['Lundi', (() => { let n = 1; while (new Date(new Date(TODAY).setDate(new Date(TODAY).getDate() + n)).getDay() !== 1) n++; return addDays(n, '10:00'); })()], ['Dans 1 semaine', addDays(7, '10:00')]];
+  const D = [["Aujourd'hui", nowDT()], ['Demain', addWd(1, '10:00')], ['Dans 3 jours', addWd(3, '10:00')], ['Lundi', (() => { let n = 1; while (new Date(new Date(TODAY).setDate(new Date(TODAY).getDate() + n)).getDay() !== 1) n++; return addWd(n, '10:00'); })()], ['Dans 1 semaine', addWd(7, '10:00')]];
   const cur = ($('act-dt').value || '').slice(0, 10);
   $('act-days').innerHTML = D.map(([l, v], i) => `<button type="button" class="ax-chip ${v.slice(0, 10) === cur ? 'on' : ''}" onclick="actDay(${i})">${l}</button>`).join(''); ui.act.days = D;
 }
@@ -4881,7 +4889,7 @@ function leadPick(i) {
 }
 function leadOpen() {
   closeDlg('dlg-newtype');
-  ['ld-ph', 'ld-vil', 'ld-cp', 'ld-nom', 'ld-tel', 'ld-mail', 'ld-mot'].forEach(i => $(i).value = ''); $('ld-ori').value = 'Lead marketing'; $('ld-act').value = 'relance'; $('ld-dt').value = addDays(3); $('ld-hm').value = '09:00'; $('ld-plan').checked = true; ldPlanTog();
+  ['ld-ph', 'ld-vil', 'ld-cp', 'ld-nom', 'ld-tel', 'ld-mail', 'ld-mot'].forEach(i => $(i).value = ''); $('ld-ori').value = 'Lead marketing'; $('ld-act').value = 'relance'; $('ld-dt').value = addWd(3); $('ld-hm').value = '09:00'; $('ld-plan').checked = true; ldPlanTog();
   ui.ldExtra = {}; ui.ldPicked = ''; ui.ldTits = []; ui.ldTitTyped = false; ui.ldTitSeq = (ui.ldTitSeq || 0) + 1; $('ld-tits').innerHTML = ''; ['ld-q', 'ld-dep'].forEach(i => $(i).value = ''); $('ld-res').classList.add('hidden');
   $('dlg-lead').showModal(); setTimeout(() => $('ld-q').focus(), 200);
 }
@@ -4891,7 +4899,7 @@ function leadCreate() {
   const mail = $('ld-mail').value.trim(); if (mail && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)) { toast('Adresse e-mail incorrecte.', true); return $('ld-mail').focus(); }
   const dup = clients.find(x => (x.pharma || '').trim().toLowerCase() === ph.toLowerCase() && (!$('ld-vil').value.trim() || (x.ville || '').trim().toLowerCase() === $('ld-vil').value.trim().toLowerCase()));
   const go = () => {
-    const dt = $('ld-plan').checked && $('ld-dt').value ? `${$('ld-dt').value}T${$('ld-hm').value || '09:00'}` : null, type = $('ld-act').value, ori = $('ld-ori').value, mot = $('ld-mot').value.trim();
+    const dt = $('ld-plan').checked && $('ld-dt').value ? `${wdFix($('ld-dt').value)}T${$('ld-hm').value || '09:00'}` : null, type = $('ld-act').value, ori = $('ld-ori').value, mot = $('ld-mot').value.trim();
     const c = {id: Date.now(), step: 'Lead', pharma: ph, ville: $('ld-vil').value.trim(), cp: $('ld-cp').value.trim(), genre: 'M.', nom: $('ld-nom').value.trim(), prenom: '', rue: ui.ldExtra?.rue || '', siret: ui.ldExtra?.siret || '', telFixe: $('ld-tel').value.trim(), email: mail, cip: '', montant: 0,
       lead: {statut: 'recontacter', origine: ori, motif: mot, depuis: isoDay(TODAY)}, addons: [], contacts: [], history: [], acts: [], nextDate: dt, nextType: dt ? type : null, createdAt: isoDT(new Date())};
     { const tv = $('ld-nom').value.trim(), t = (ui.ldTits || []).find(x => ldFull(x) === tv); if (t) { c.nom = t.nom || ''; c.prenom = t.prenom || ''; c.genre = t.civ === 'Mme' ? 'Mme' : 'M.'; } }
@@ -5570,7 +5578,7 @@ function renderArgBtn(c) {
       <div class="flex-1 min-w-[260px] flex flex-col gap-1 text-[13px]"><b class="text-orange-900">Il manque ${miss.length} élément${miss.length > 1 ? 's' : ''} pour générer le PDF :</b>${miss.map(m => `<div class="flex items-center gap-2"><span class="w-4 h-4 rounded-full border-2 border-slate-300 inline-block"></span><span>${esc(lbl[m] || m)}</span><button type="button" class="ml-auto font-bold text-[12px] text-ptkd underline" onclick="document.getElementById('${tgt[m]}')?.scrollIntoView({block:'center',behavior:'smooth'})">${go[m] || 'Renseigner →'}</button></div>`).join('')}</div></div>`
     : (() => { const [na, nt] = argCountLive(c), A2 = assocOf(c), nn = 1 + A2.filter(x => x.on).length;
       return `<div class="pbox"><div class="hd"><i class="n">4</i>Document pour le client<span class="r">${dm === 'synth' ? 'Offre synthétique' : 'Offre personnalisée'}</span></div><div class="p-3.5 flex flex-col gap-3">
-      ${dm === 'synth' ? `<div class="flex flex-wrap items-center gap-2"><button type="button" class="btn btn-g !h-11" onclick="printOffre(${c.id})"><i class="fas fa-print text-ptkd"></i>Imprimer</button><button type="button" class="btn btn-g !h-11" onclick="openOffre(${c.id})"><i class="fas fa-pen text-ptkd"></i>Modifier les lignes</button><button type="button" class="btn btn-p !h-12 text-[15px] font-bold shadow-md ml-auto" onclick="genOffre(${c.id})"><i class="fas fa-file-pdf text-lg"></i>Générer la synthèse (PDF)</button></div><p class="text-[12.5px] text-slate-600 m-0">Devis et contrat de maintenance seulement, sans argumentaire. <button type="button" class="font-bold text-ptkd underline" onclick="docMode(${c.id},'perso')">Passer en offre personnalisée</button></p>` : `<p class="text-[12.5px] text-emerald-800 font-semibold m-0"><i class="fas fa-circle-check mr-1"></i>Tout est prêt : besoins, robot, devis + maintenance · ${esc(c.pharma)} · <button type="button" class="font-bold text-ptkd underline" onclick="docMode(${c.id},'synth')">Passer en offre synthétique</button></p>
+      ${dm === 'synth' ? `<div class="flex flex-wrap items-center gap-2"><button type="button" class="btn btn-g !h-11" onclick="mqOpen(${c.id})"><i class="fas fa-images text-ptkd"></i>Maquettes et plans${IMPL.id === c.id && IMPL.imgs.length ? ` (${IMPL.imgs.length})` : ''}</button><button type="button" class="btn btn-g !h-11" onclick="printOffre(${c.id})"><i class="fas fa-print text-ptkd"></i>Imprimer</button><button type="button" class="btn btn-g !h-11" onclick="openOffre(${c.id})"><i class="fas fa-pen text-ptkd"></i>Modifier les lignes</button><button type="button" class="btn btn-p !h-12 text-[15px] font-bold shadow-md ml-auto" onclick="genOffre(${c.id})"><i class="fas fa-file-pdf text-lg"></i>Générer la synthèse (PDF)</button></div><p class="text-[12.5px] text-slate-600 m-0">Devis et contrat de maintenance seulement, sans argumentaire. Vos maquettes et plans s'ajoutent sur une page à la fin. <button type="button" class="font-bold text-ptkd underline" onclick="docMode(${c.id},'perso')">Passer en offre personnalisée</button></p>` : `<p class="text-[12.5px] text-emerald-800 font-semibold m-0"><i class="fas fa-circle-check mr-1"></i>Tout est prêt : besoins, robot, devis + maintenance · ${esc(c.pharma)} · <button type="button" class="font-bold text-ptkd underline" onclick="docMode(${c.id},'synth')">Passer en offre synthétique</button></p>
       <div class="pst2"><div class="ps2"><h4>1 · Préparer</h4><p>5 étapes guidées, aperçu du PDF en direct.</p><button type="button" class="btn-or" onclick="o2Open(${c.id})"><i class="fas fa-wand-magic-sparkles"></i>Assistant : préparer l'offre</button></div><div class="ps2"><h4>2 · Remettre</h4><p>Synthèse et offre commerciale, nom de fichier automatique.</p><button type="button" class="btn-or" onclick="pdfArg(${c.id})"><i class="fas fa-file-pdf"></i>${act ? lab : 'Générer le PDF'}</button></div></div>
       <div class="plk"><button type="button" onclick="prevArg(${c.id})"><i class="fas fa-eye mr-1.5"></i>Aperçu rapide</button><button type="button" onclick="ui.advOpen=!ui.advOpen;renderArgBtn(byId(${c.id}))" aria-expanded="${!!ui.advOpen}"><i class="fas fa-sliders mr-1.5"></i>Réglages avancés ${ui.advOpen ? '▴' : '▾'}</button></div>
       ${ui.advOpen ? `<div class="padv"><b>Réglages avancés</b><div class="ppills"><button type="button" class="ppill" onclick="prepGo('arg')"><i class="fas fa-list-check"></i>Contenu<b>${na}/${nt}</b></button><button type="button" class="ppill" onclick="prepGo('txt')"><i class="fas fa-pen-to-square"></i>Textes<b>${c.argDraft ? 'modifiés' : 'standard'}</b></button><button type="button" class="ppill" onclick="prepGo('nom')"><i class="fas fa-user-group"></i>Noms<b>${nn}</b></button><button type="button" class="ppill" onclick="document.getElementById('f-impl-box')?.scrollIntoView({block:'center',behavior:'smooth'})"><i class="fas fa-map-location-dot"></i>Implantation<b>plan et photos</b></button></div></div>` : ''}`}</div></div>`; })());
@@ -5727,22 +5735,23 @@ function renderImpl(c) {
   implDraw();
 }
 function implDraw() {
-  const box = $('f-impl-box'); if (!box || !IMPL.id) return; const L = IMPL.imgs;
-  box.innerHTML = `<div class="rounded-2xl border border-slate-200 bg-white p-3.5 flex flex-col gap-2.5">
-    <div class="flex items-center gap-2"><span class="inline-flex w-8 h-8 rounded-full bg-orange-100 text-orange-800 items-center justify-center"><i class="fas fa-map-location-dot"></i></span><div class="flex-1"><h2 class="h2">Implantation : plan &amp; photos</h2><p class="text-[12px] text-muted">Pour la page « Implantation » de l'argumentaire PDF${L.length ? ` · ${L.length} image${L.length > 1 ? 's' : ''}` : ''}</p></div></div>
+  if (!IMPL.id) return; const L = IMPL.imgs;
+  const html = `<div class="rounded-2xl border border-slate-200 bg-white p-3.5 flex flex-col gap-2.5">
+    <div class="flex items-center gap-2"><span class="inline-flex w-8 h-8 rounded-full bg-orange-100 text-orange-800 items-center justify-center"><i class="fas fa-map-location-dot"></i></span><div class="flex-1"><h2 class="h2">Implantation : plan &amp; photos</h2><p class="text-[12px] text-muted">Pour la page « Implantation » ou « Maquettes » du PDF${L.length ? ` · ${L.length} image${L.length > 1 ? 's' : ''}` : ''}</p></div></div>
     <div id="impl-drop" tabindex="0" class="rounded-xl border-2 border-dashed border-orange-300 bg-orange-50/50 p-3 text-center text-[13px] text-slate-600 outline-none focus:border-orange-600" ondragover="event.preventDefault();this.classList.add('bg-orange-100')" ondragleave="this.classList.remove('bg-orange-100')" ondrop="event.preventDefault();this.classList.remove('bg-orange-100');implAdd(event.dataTransfer.files)">
       <i class="fas fa-paste text-orange-700"></i> <b>Collez</b> une image (Ctrl+V), <b>glissez-la</b> ici ou
-      <label class="btn btn-g !h-8 !px-2.5 text-[12.5px] cursor-pointer ml-1"><i class="fas fa-image"></i>Choisir des images<input type="file" accept="image/*" multiple class="hidden" onchange="implAdd(this.files);this.value=''"></label></div>
+      <label class="btn btn-g !h-8 !px-2.5 text-[12.5px] cursor-pointer ml-1"><i class="fas fa-image"></i>Choisir des images ou un PDF<input type="file" accept="image/*,application/pdf" multiple class="hidden" onchange="implAdd(this.files);this.value=''"></label></div>
     ${L.length ? `<div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">${L.map((m, i) => `<figure class="m-0 rounded-xl border border-slate-200 p-1.5 flex flex-col gap-1.5"><img src="${m.d}" alt="" class="w-full h-24 object-contain rounded-md bg-slate-50"><input class="inp !h-8 text-[12.5px]" maxlength="60" value="${esc(m.cap)}" aria-label="Légende" onchange="implCap(${i},this.value)"><div class="flex justify-between"><span class="flex gap-1"><button type="button" class="btn btn-g !h-7 !px-2" ${i ? '' : 'disabled'} onclick="implMove(${i},-1)" aria-label="Avancer"><i class="fas fa-arrow-left text-[11px]"></i></button><button type="button" class="btn btn-g !h-7 !px-2" ${i < L.length - 1 ? '' : 'disabled'} onclick="implMove(${i},1)" aria-label="Reculer"><i class="fas fa-arrow-right text-[11px]"></i></button></span><button type="button" class="btn btn-g !h-7 !px-2 !text-rose-700" onclick="implDel(${i})" aria-label="Supprimer"><i class="fas fa-trash text-[11px]"></i></button></div></figure>`).join('')}</div>` : ''}
     <p class="text-[11.5px] text-muted"><i class="fas fa-lock"></i> Images conservées uniquement dans ce navigateur (non synchronisées, non exportées). Redimensionnées automatiquement.</p></div>`;
+  ['f-impl-box', 'mq-box'].forEach(i => { const b = $(i); if (b) b.innerHTML = html; });
 }
 function implShrink(file) {
   return new Promise(res => { const u = URL.createObjectURL(file), im = new Image(); im.onload = () => { const k = Math.min(1, 1600 / Math.max(im.width, im.height)), w = Math.round(im.width * k), h = Math.round(im.height * k), cv = document.createElement('canvas'); cv.width = w; cv.height = h; const g = cv.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, w, h); g.drawImage(im, 0, 0, w, h); URL.revokeObjectURL(u); res({d: cv.toDataURL('image/jpeg', .82), w, h}); }; im.onerror = () => { URL.revokeObjectURL(u); res(null); }; im.src = u; });
 }
 async function implAdd(files) {
-  if (!IMPL.id) return; const fl = [...(files || [])].filter(f => /^image\//.test(f.type)); if (!fl.length) return toast('Aucune image détectée.', true);
-  for (const f of fl) { if (IMPL.imgs.length >= 6) { toast('6 images maximum (page A4).', true); break; } const r = await implShrink(f); if (r) IMPL.imgs.push({...r, cap: "Plan d'implantation"}); }
-  await implSet(); implDraw(); toast('Image ajoutée à la page Implantation');
+  if (!IMPL.id) return; const fl = [...(files || [])].filter(f => /^image\//.test(f.type) || f.type === 'application/pdf' || /\.pdf$/i.test(f.name)); if (!fl.length) return toast('Aucune image ni PDF détecté.', true);
+  for (const f of fl) { if (IMPL.imgs.length >= 6) { toast('6 images maximum (page A4).', true); break; } if (f.type === 'application/pdf' || /\.pdf$/i.test(f.name)) { try { toast('Lecture du PDF…'); (await implPdf(f, 6 - IMPL.imgs.length)).forEach(r => IMPL.imgs.push({...r, cap: 'Maquette'})); } catch (e) { toast('PDF illisible (connexion Internet requise la première fois).', true); } continue; } const r = await implShrink(f); if (r) IMPL.imgs.push({...r, cap: "Plan d'implantation"}); }
+  await implSet(); implDraw(); toast('Ajouté à la page Implantation / maquettes');
 }
 function implCap(i, v) { if (IMPL.imgs[i]) { IMPL.imgs[i].cap = v.trim(); implSet(); } }
 function implDel(i) { IMPL.imgs.splice(i, 1); implSet(); implDraw(); }
@@ -7459,7 +7468,7 @@ function cesSync(c) {
   c.rappels = (c.rappels || []).filter(r => !(r.ces && !r.done));
   const k = c.cession; if (!k || !k.on || !k.rappel || !k.date) return;
   const [y, m] = k.date.split('-').map(Number); if (!y || !m) return;
-  const d = new Date(y, m - 2, 1); let dt = isoDay(d) + 'T09:00'; if (d < TODAY) dt = addDays(1, '09:00');
+  const d = new Date(y, m - 2, 1); let dt = isoDay(d) + 'T09:00'; if (d < TODAY) dt = addWd(1, '09:00');
   c.rappels.push({id: Date.now() + 1, dt, type: 'appel', note: `Contacter ${k.futur || 'le futur titulaire'} : cession prévue en ${cesMois(k.date).toLowerCase()}`, done: false, ces: 1});
 }
 /* Titulaires trouvés dans l'annuaire : plusieurs personnes, rôle au choix, suppression */
@@ -7946,7 +7955,8 @@ function offreSave(pdf) {
   toast(old !== k.net ? `Offre enregistrée · montant du dossier mis à jour : ${eur(k.net)}` : 'Offre enregistrée');
   if (pdf) genOffre(c.id);
 }
-function printOffre(id) {
+function printOffre(id) { if (IMPL.id === id) { MQ_IMG = IMPL.imgs || []; try { printOffre0(id); } finally { MQ_IMG = []; } } else implGet(id).then(a => { MQ_IMG = a || []; try { printOffre0(id); } finally { MQ_IMG = []; } }); }
+function printOffre0(id) {
   const c = byId(id), o = c?.offre; if (!o?.lignes?.length) return toast("Préparez d'abord l'offre.", true);
   if (!window.jspdf) return toast('Générateur PDF indisponible (connexion Internet requise au premier chargement).', true);
   PSEC = {}; const K = pdfKit(`Synthèse, projet de robotisation · ${c.pharma} · Réf. ${o.ref || '—'}`); K.solo = true; genOffre(id, K);
@@ -7954,7 +7964,8 @@ function printOffre(id) {
   const u = K.doc.output('bloburl'), w = window.open(u, '_blank');
   if (!w) { K.doc.save(`Synthese_seule_${slug(c.pharma)}_${slug(o.ref || isoDay(TODAY))}.pdf`); toast('Fenêtre bloquée : le PDF a été téléchargé, ouvrez-le pour l\'imprimer.'); }
 }
-function genOffre(id, K0) {
+function genOffre(id, K0) { if (K0) return genOffre0(id, K0); const run = a => { MQ_IMG = a || []; try { genOffre0(id); } finally { MQ_IMG = []; } }; if (IMPL.id === id) run(IMPL.imgs); else implGet(id).then(run); }
+function genOffre0(id, K0) {
   if (!K0) PSEC = {};
   const c = byId(id), o = c?.offre; if (!o?.lignes?.length) return toast("Préparez d'abord l'offre.", true);
   if (!window.jspdf) return toast('Générateur PDF indisponible (connexion Internet requise au premier chargement).', true);
@@ -8082,6 +8093,7 @@ function genOffre(id, K0) {
   if (K.deferGamme) { const f = K.deferGamme; K.deferGamme = null; f(); }
   if (K.deferPil) { const f = K.deferPil; K.deferPil = null; f(); }
   if (K.deferSoc) { const f = K.deferSoc; K.deferSoc = null; f(); }
+  if (!K0 || K0.solo) mqPages(K, MQ_IMG);
   K.foot();
   if (K0) return;
   K.save(`Synthese_projet_de_robotisation_${slug(c.pharma)}_${slug(o.ref || isoDay(TODAY))}.pdf`);
@@ -8548,7 +8560,7 @@ function openR3(id) {
   const c = byId(id); ui.r3Id = id;
   document.querySelector('input[name=r3][value=signe]').checked = true; r3Toggle();
   document.querySelector('input[name=r3-res][value=non]').checked = true;
-  $('r3-date').value = isoDay(new Date()); $('r3-montant').value = c.montant || ''; $('r3-next').value = addDays(7, '10:00'); $('r3-dossier').value = c.numDossier || '';
+  $('r3-date').value = isoDay(new Date()); $('r3-montant').value = c.montant || ''; $('r3-next').value = addWd(7, '10:00'); $('r3-dossier').value = c.numDossier || '';
   offSignUi(c); $('r3-nan').checked = !!(c.nanceo && c.nanceo.on); $('r3-nan-date').value = (c.nanceo && c.nanceo.instPrev) || c.livraisonDate || ''; r3Nan(); $('dlg-r3').showModal();
 }
 function r3Nan() { const on = $('r3-nan').checked; $('r3-nan-d').classList.toggle('hidden', !on); const d = $('r3-nan-date').value; $('r3-nan-pm').textContent = on && d ? '→ à pointer en ' + fmtMonth(addMonthYM(d.slice(0, 7), 1)) : ''; }
@@ -9456,6 +9468,37 @@ function vmR3Decision(c, type, dt, motif, doneNow) {
   const nd = String(dt).slice(0, 10), old = c.dateDecision || ''; if (old === nd) return;
   c.dateDecision = nd; log(c, 'Décision probable mise à jour (visite R3)', `${old ? fmtD(old) : 'non renseignée'} → ${fmtD(nd)}`);
   if (ui.editId === c.id && $('f-decision')) { $('f-decision').value = nd; try { horizon(nd); } catch (e) { } }
+}
+
+/* ================= V4.14.2 : maquettes, plans et photos dans l'offre « Synthétique » ================= */
+let MQ_IMG = [];
+async function implPdf(f, room) {
+  const lib = await loadPdfJs(), pdf = await lib.getDocument({data: new Uint8Array(await f.arrayBuffer())}).promise, out = [];
+  for (let p = 1; p <= Math.min(pdf.numPages, room); p++) {
+    const pg = await pdf.getPage(p), v0 = pg.getViewport({scale: 1}), k = 1600 / Math.max(v0.width, v0.height), v = pg.getViewport({scale: k}), cv = document.createElement('canvas');
+    cv.width = Math.round(v.width); cv.height = Math.round(v.height); const g = cv.getContext('2d'); g.fillStyle = '#fff'; g.fillRect(0, 0, cv.width, cv.height);
+    await pg.render({canvasContext: g, viewport: v}).promise; out.push({d: cv.toDataURL('image/jpeg', .82), w: cv.width, h: cv.height});
+  }
+  return out;
+}
+async function mqOpen(id) {
+  const c = byId(id); if (!c) return;
+  if (IMPL.id !== id) { IMPL.id = id; IMPL.imgs = await implGet(id); }
+  implDraw(); $('dlg-mq').showModal();
+}
+function mqClose() { closeDlg('dlg-mq'); const c = byId(IMPL.id); if (c) { try { renderArgBtn(c); renderStrip(c); } catch (e) { } } }
+const mqImgs = id => IMPL.id === id ? Promise.resolve(IMPL.imgs) : implGet(id);
+function mqPages(K, IMG) {
+  if (!IMG || !IMG.length) return; const doc = K.doc, M = K.M, CW = K.CW;
+  for (let s = 0; s < IMG.length; s += 4) {
+    const part = IMG.slice(s, s + 4), n = part.length; doc.addPage(); let y = 22;
+    K.font(15, 'bold', PK.ink); K.t(s ? 'Maquettes et plans (suite)' : 'Maquettes et plans de votre projet', M, y); y += 3; doc.setDrawColor(...PK.or); doc.setLineWidth(.8); doc.line(M, y, M + 38, y); y += 7;
+    const ah = 270 - y, cell = (m, x, yy, w, h) => { doc.setDrawColor(...PK.line); doc.setLineWidth(.25); doc.roundedRect(x, yy, w, h, 2.6, 2.6, 'S'); const ch = 9, iw = w - 6, ih = h - ch - 4, ar = m.w / m.h; let ww = iw, hh = iw / ar; if (hh > ih) { hh = ih; ww = ih * ar; }
+      try { doc.addImage(m.d, 'JPEG', x + (w - ww) / 2, yy + 3 + (ih - hh) / 2, ww, hh); } catch (e) { } K.font(7.8, 'bold', PK.ink); K.t(m.cap || 'Maquette', x + w / 2, yy + h - 4, {align: 'center', maxWidth: w - 6}); };
+    if (n === 1) cell(part[0], M, y, CW, ah);
+    else if (n === 2) { const h2 = (ah - 4) / 2; cell(part[0], M, y, CW, h2); cell(part[1], M, y + h2 + 4, CW, h2); }
+    else { const h2 = (ah - 4) / 2, w2 = (CW - 4) / 2; part.forEach((m, i) => { const last = n === 3 && i === 2; cell(m, last ? M : M + (i % 2) * (w2 + 4), y + Math.floor(i / 2) * (h2 + 4), last ? CW : w2, h2); }); }
+  }
 }
 
 function pfChal() {
